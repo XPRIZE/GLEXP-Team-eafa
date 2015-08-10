@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ActivitiesMainFrame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/reg_white" >
+
+    <TableLayout
+        android:id="@+id/ActivitiesSubFrame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/lettersYellow" >
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.4" >
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5" />
+
+            <LinearLayout
+                android:id="@+id/LinearLayout1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="4dp"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <View
+                    android:id="@+id/view5"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".07" />
+
+                <ImageView
+                    android:id="@+id/btnAvatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/none"
+                    android:scaleType="fitCenter"
+                    android:soundEffectsEnabled="false"
+                    android:src="@drawable/btn_setting" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayout2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="4dp"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <View
+                    android:id="@+id/view6"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".07" />
+
+                <ImageView
+                    android:id="@+id/btnBack"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/none"
+                    android:scaleType="fitCenter"
+                    android:soundEffectsEnabled="false"
+                    android:src="@drawable/btn_move_blue" />
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/letter_row_3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <View
+                android:id="@+id/View01"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".2" />
+
+            <ImageView
+                android:id="@+id/Activity_1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/activity_platform_icon_margin"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/activity_icon"
+                android:scaleType="fitCenter"
+                android:src="@drawable/btn_circle_blank" />
+
+            <ImageView
+                android:id="@+id/Activity_2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/activity_platform_icon_margin"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/activity_icon"
+                android:scaleType="fitCenter"
+                android:src="@drawable/btn_circle_blank" />
+
+            <ImageView
+                android:id="@+id/Activity_3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/activity_platform_icon_margin"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/activity_icon"
+                android:scaleType="fitCenter"
+                android:src="@drawable/btn_circle_blank" />
+
+            <View
+                android:id="@+id/View02"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".2" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".2" />
+
+            <ImageView
+                android:id="@+id/Activity_4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/activity_platform_icon_margin"
+                android:layout_weight="1"
+                android:contentDescription="@string/activity_icon"
+                android:src="@drawable/btn_circle_blank" />
+
+            <ImageView
+                android:id="@+id/Activity_5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/activity_platform_icon_margin"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/activity_icon"
+                android:scaleType="fitCenter"
+                android:src="@drawable/btn_circle_blank" />
+
+            <ImageView
+                android:id="@+id/Activity_6"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/activity_platform_icon_margin"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/activity_icon"
+                android:scaleType="fitCenter"
+                android:src="@drawable/btn_circle_blank" />
+
+            <ImageView
+                android:id="@+id/Activity_7"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/activity_platform_icon_margin"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/activity_icon"
+                android:scaleType="fitCenter"
+                android:src="@drawable/btn_circle_blank"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/Activity_8"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/activity_platform_icon_margin"
+                android:layout_weight="1"
+                android:contentDescription="@string/activity_icon"
+                android:src="@drawable/btn_circle_blank"
+                android:visibility="gone" />
+
+            <View
+                android:id="@+id/view4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".2" />
+
+        </TableRow>
+
+    </TableLayout>
+
+</FrameLayout><!-- From: file:/C:/Users/abors/StudioProjects/Motoli%20All%20Subjects/app/src/main/res/layout/activities_platform.xml -->

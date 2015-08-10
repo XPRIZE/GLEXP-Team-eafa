@@ -1,0 +1,219 @@
+-- Merging decision tree log ---
+manifest
+ADDED from AndroidManifest.xml:2:1
+	xmlns:android
+		ADDED from AndroidManifest.xml:2:11
+	package
+		ADDED from AndroidManifest.xml:3:5
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:versionName
+		ADDED from AndroidManifest.xml:5:5
+	android:versionCode
+		ADDED from AndroidManifest.xml:4:5
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:installLocation
+		ADDED from AndroidManifest.xml:5:31
+uses-sdk
+ADDED from AndroidManifest.xml:8:5
+	android:targetSdkVersion
+		ADDED from AndroidManifest.xml:10:9
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:minSdkVersion
+		ADDED from AndroidManifest.xml:9:9
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from AndroidManifest.xml:11:2
+	android:name
+		ADDED from AndroidManifest.xml:11:19
+uses-permission#android.permission.INTERNET
+ADDED from AndroidManifest.xml:13:1
+	android:name
+		ADDED from AndroidManifest.xml:13:18
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from AndroidManifest.xml:14:4
+	android:name
+		ADDED from AndroidManifest.xml:14:21
+uses-permission#android.permission.MODIFY_AUDIO_SETTINGS
+ADDED from AndroidManifest.xml:16:4
+	android:name
+		ADDED from AndroidManifest.xml:16:21
+application
+ADDED from AndroidManifest.xml:18:3
+	android:label
+		ADDED from AndroidManifest.xml:22:9
+	android:allowBackup
+		ADDED from AndroidManifest.xml:19:9
+	android:icon
+		ADDED from AndroidManifest.xml:21:9
+	android:theme
+		ADDED from AndroidManifest.xml:23:9
+	android:largeHeap
+		ADDED from AndroidManifest.xml:20:9
+	android:name
+		ADDED from AndroidManifest.xml:23:107
+	android:logo
+		ADDED from AndroidManifest.xml:23:74
+activity#com.motoli.apps.allsubjects.Motoli_Front
+ADDED from AndroidManifest.xml:24:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:28:78
+	android:label
+		ADDED from AndroidManifest.xml:27:13
+	android:configChanges
+		ADDED from AndroidManifest.xml:26:13
+	android:theme
+		ADDED from AndroidManifest.xml:28:13
+	android:name
+		ADDED from AndroidManifest.xml:25:13
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:29:13
+action#android.intent.action.MAIN
+ADDED from AndroidManifest.xml:30:17
+	android:name
+		ADDED from AndroidManifest.xml:30:25
+category#android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:32:17
+	android:name
+		ADDED from AndroidManifest.xml:32:27
+provider#com.motoli.apps.allsubjects.Motoli_ContentProvidor
+ADDED from AndroidManifest.xml:35:9
+	android:exported
+		ADDED from AndroidManifest.xml:35:58
+	android:authorities
+		ADDED from AndroidManifest.xml:37:14
+	android:readPermission
+		ADDED from AndroidManifest.xml:36:4
+	android:name
+		ADDED from AndroidManifest.xml:35:19
+	android:writePermission
+		ADDED from AndroidManifest.xml:36:34
+activity#com.motoli.apps.allsubjects.UserSelect
+ADDED from AndroidManifest.xml:38:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:38:45
+	android:configChanges
+		ADDED from AndroidManifest.xml:38:148
+	android:theme
+		ADDED from AndroidManifest.xml:38:83
+	android:name
+		ADDED from AndroidManifest.xml:38:19
+activity#com.motoli.apps.allsubjects.Launch_Platform
+ADDED from AndroidManifest.xml:39:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:39:115
+	android:configChanges
+		ADDED from AndroidManifest.xml:39:153
+	android:theme
+		ADDED from AndroidManifest.xml:39:50
+	android:name
+		ADDED from AndroidManifest.xml:39:19
+activity#com.motoli.apps.allsubjects.Activities_Platform
+ADDED from AndroidManifest.xml:40:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:40:181
+	android:configChanges
+		ADDED from AndroidManifest.xml:40:119
+	android:theme
+		ADDED from AndroidManifest.xml:40:54
+	android:name
+		ADDED from AndroidManifest.xml:40:19
+activity#com.motoli.apps.allsubjects.Activity_LE02
+ADDED from AndroidManifest.xml:41:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:41:113
+	android:configChanges
+		ADDED from AndroidManifest.xml:41:151
+	android:theme
+		ADDED from AndroidManifest.xml:41:48
+	android:name
+		ADDED from AndroidManifest.xml:41:19
+	android:logo
+		ADDED from AndroidManifest.xml:41:213
+activity#com.motoli.apps.allsubjects.Activity_TL01
+ADDED from AndroidManifest.xml:42:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:42:175
+	android:configChanges
+		ADDED from AndroidManifest.xml:42:113
+	android:theme
+		ADDED from AndroidManifest.xml:42:48
+	android:name
+		ADDED from AndroidManifest.xml:42:19
+	android:logo
+		ADDED from AndroidManifest.xml:42:213
+activity#com.motoli.apps.allsubjects.Activity_WD07
+ADDED from AndroidManifest.xml:43:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:43:175
+	android:configChanges
+		ADDED from AndroidManifest.xml:43:113
+	android:theme
+		ADDED from AndroidManifest.xml:43:48
+	android:name
+		ADDED from AndroidManifest.xml:43:19
+	android:logo
+		ADDED from AndroidManifest.xml:43:213
+activity#com.motoli.apps.allsubjects.Activity_WD01
+ADDED from AndroidManifest.xml:44:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:44:175
+	android:configChanges
+		ADDED from AndroidManifest.xml:44:113
+	android:theme
+		ADDED from AndroidManifest.xml:44:48
+	android:name
+		ADDED from AndroidManifest.xml:44:19
+	android:logo
+		ADDED from AndroidManifest.xml:44:213
+activity#com.motoli.apps.allsubjects.Activity_WD04
+ADDED from AndroidManifest.xml:45:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:45:175
+	android:configChanges
+		ADDED from AndroidManifest.xml:45:113
+	android:theme
+		ADDED from AndroidManifest.xml:45:48
+	android:name
+		ADDED from AndroidManifest.xml:45:19
+	android:logo
+		ADDED from AndroidManifest.xml:45:213
+activity#com.motoli.apps.allsubjects.Activity_LL01
+ADDED from AndroidManifest.xml:46:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:46:175
+	android:configChanges
+		ADDED from AndroidManifest.xml:46:113
+	android:theme
+		ADDED from AndroidManifest.xml:46:48
+	android:name
+		ADDED from AndroidManifest.xml:46:19
+	android:logo
+		ADDED from AndroidManifest.xml:46:213
+activity#com.motoli.apps.allsubjects.Activity_LL02
+ADDED from AndroidManifest.xml:47:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:47:175
+	android:configChanges
+		ADDED from AndroidManifest.xml:47:113
+	android:theme
+		ADDED from AndroidManifest.xml:47:48
+	android:name
+		ADDED from AndroidManifest.xml:47:19
+	android:logo
+		ADDED from AndroidManifest.xml:47:213
+activity#com.motoli.apps.allsubjects.Activity_WD08
+ADDED from AndroidManifest.xml:48:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:48:175
+	android:configChanges
+		ADDED from AndroidManifest.xml:48:113
+	android:theme
+		ADDED from AndroidManifest.xml:48:48
+	android:name
+		ADDED from AndroidManifest.xml:48:19
+	android:logo
+		ADDED from AndroidManifest.xml:48:213

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="le01_fontsize">70sp</dimen>
+    <dimen name="tl01_letterfontsize">90sp</dimen>
+    <dimen name="le01_chosenfontsize">70sp</dimen>
+    <dimen name="wd07_general_fontsize">120sp</dimen>
+    <dimen name="wd01_correct_font_size">240sp</dimen>
+    <dimen name="wd01_guess_font_size">90sp</dimen>
+    <dimen name="wd08_font_size">70sp</dimen>
+
+    
+</resources>

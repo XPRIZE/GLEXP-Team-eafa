@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Motoli All Subjects</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="strNone"/>
+    <string name="none"/>
+    <string name="strRandomString">RandomString</string>
+    <string name="strRandomLetter">lj</string>
+    <string name="strNewUser">New User</string>
+        <string name="strGuestUser">Guest</string>
+        <string name="le01_key">letter key</string>
+        <string name="activity_icon">Activity Icon</string>
+        <string name="strLeaveApp">Would You Like To Leave The App</string>
+        <string name="strWouldYouLieToLeave">You sure you would like to leave?</string>
+        <string name="strYes">Yes</string>
+        <string name="strNo">No</string>
+        
+        
+</resources>

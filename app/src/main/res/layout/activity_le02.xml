@@ -1,0 +1,855 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/launchpagbck" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <View
+            android:id="@+id/view6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+
+<TableLayout 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".01" />
+
+            <include
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                layout="@layout/activity_top_area" />
+
+            <View
+                android:id="@+id/view4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".01" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow11"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".2" >
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".02" />
+
+            <TableLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <TableRow
+                    android:id="@+id/letter_row_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" >
+
+                    <View
+                        android:id="@+id/View08"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".1" />
+
+                    <RelativeLayout
+                        android:id="@+id/letter_layout_1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/le01_margins"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:id="@+id/letter_image_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/round_vowell_le01"
+                            android:contentDescription="@string/le01_key" />
+
+                        <TextView
+                            android:id="@+id/letter_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentTop="true"
+                          
+                            android:layout_marginBottom="@dimen/le01_text_bottom_margin" 
+                            android:layout_marginTop="@dimen/le01_text_top_margin"
+                            android:gravity="center_horizontal"
+                            android:text="@string/letter_1"
+                            android:textColor="@color/le02_letter"
+                            android:textSize="@dimen/le01_fontsize" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                         android:id="@+id/letter_layout_2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/le01_margins"
+                        android:layout_weight="1"
+                        android:alpha=".1" >
+
+                        <ImageView
+                            android:id="@+id/letter_image_2"
+                                                        android:contentDescription="@string/le01_key"
+                                                        android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/round_con_le01" />
+
+                        <TextView
+                            android:id="@+id/letter_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:layout_marginBottom="@dimen/le01_text_bottom_margin" android:layout_marginTop="@dimen/le01_text_top_margin"
+                            android:text="@string/letter_2"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/le02_letter"
+                            android:textSize="@dimen/le01_fontsize" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/letter_layout_3"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/le01_margins"
+                        android:layout_weight="1" >
+
+                        <ImageView android:id="@+id/letter_image_3" android:layout_width="match_parent" android:layout_height="match_parent" android:contentDescription="@string/le01_key" android:background="@drawable/round_con_le01" />
+
+                        <TextView
+                            android:id="@+id/letter_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginBottom="@dimen/le01_text_bottom_margin" android:layout_marginTop="@dimen/le01_text_top_margin"
+                            android:gravity="center_horizontal"
+                            android:text="@string/letter_3"
+                            android:textColor="@color/le02_letter"
+                            android:textSize="@dimen/le01_fontsize" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                         android:id="@+id/letter_layout_4"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/le01_margins"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:id="@+id/letter_image_4"
+                            android:layout_width="match_parent"
+                                                     android:contentDescription="@string/le01_key"
+                                                        android:layout_height="match_parent"
+                            android:background="@drawable/round_con_le01" />
+
+                        <TextView
+                            android:id="@+id/letter_4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:layout_marginBottom="@dimen/le01_text_bottom_margin" android:layout_marginTop="@dimen/le01_text_top_margin"
+                            android:text="@string/letter_4"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/le02_letter"
+                            android:textSize="@dimen/le01_fontsize" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                         android:id="@+id/letter_layout_5"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/le01_margins"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:id="@+id/letter_image_5"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/round_vowell_le01"
+                            android:contentDescription="@string/le01_key" />
+
+                        <TextView
+                            android:id="@+id/letter_5"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:layout_marginBottom="@dimen/le01_text_bottom_margin" android:layout_marginTop="@dimen/le01_text_top_margin"
+                            android:text="@string/letter_5"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/le02_letter"
+                            android:textSize="@dimen/le01_fontsize" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                         android:id="@+id/letter_layout_6"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/le01_margins"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:id="@+id/letter_image_6"
+                            android:layout_width="match_parent"
+                                                       android:contentDescription="@string/le01_key"
+                                                        android:layout_height="match_parent"
+                            android:background="@drawable/round_con_le01" />
+
+                        <TextView
+                            android:id="@+id/letter_6"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:layout_marginBottom="@dimen/le01_text_bottom_margin" android:layout_marginTop="@dimen/le01_text_top_margin"
+                            android:text="@string/letter_6"
+                            android:textAllCaps="false"
+                            android:textColor="@color/le02_letter"
+                            android:textSize="@dimen/le01_fontsize"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                         android:id="@+id/letter_layout_7"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/le01_margins"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:id="@+id/letter_image_7"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                                                       android:contentDescription="@string/le01_key"
+                                                        android:background="@drawable/round_con_le01" />
+
+                        <TextView
+                            android:id="@+id/letter_7"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:layout_marginBottom="@dimen/le01_text_bottom_margin" android:layout_marginTop="@dimen/le01_text_top_margin"
+                            android:text="@string/letter_7"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/le02_letter"
+                            android:textSize="@dimen/le01_fontsize" />
+                    </RelativeLayout>
+
+                    <View
+                        android:id="@+id/View07"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".1" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/letter_row_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" >
+
+                    <View
+                        android:id="@+id/View04"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".6" />
+
+                    <RelativeLayout
+                         android:id="@+id/letter_layout_8"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/le01_margins"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:id="@+id/letter_image_8"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/round_con_le01"
+                            android:contentDescription="@string/le01_key" />
+
+                        <TextView
+                            android:id="@+id/letter_8"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:layout_marginBottom="@dimen/le01_text_bottom_margin" android:layout_marginTop="@dimen/le01_text_top_margin"
+                            android:text="@string/letter_8"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/le02_letter"
+                            android:textSize="@dimen/le01_fontsize" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                         android:id="@+id/letter_layout_9"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/le01_margins"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:id="@+id/letter_image_9"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/round_vowell_le01"
+                            android:contentDescription="@string/le01_key" />
+
+                        <TextView
+                            android:id="@+id/letter_9"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:layout_marginBottom="@dimen/le01_text_bottom_margin" android:layout_marginTop="@dimen/le01_text_top_margin"
+                            android:text="@string/letter_9"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/le02_letter"
+                            android:textSize="@dimen/le01_fontsize" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                         android:id="@+id/letter_layout_10"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/le01_margins"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:id="@+id/letter_image_10"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                                                       android:contentDescription="@string/le01_key"
+                                                       android:background="@drawable/round_con_le01" />
+
+                        <TextView
+                            android:id="@+id/letter_10"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:layout_marginBottom="@dimen/le01_text_bottom_margin" android:layout_marginTop="@dimen/le01_text_top_margin"
+                            android:text="@string/letter_10"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/le02_letter"
+                            android:textSize="@dimen/le01_fontsize" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                         android:id="@+id/letter_layout_11"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/le01_margins"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:id="@+id/letter_image_11"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                                                        android:contentDescription="@string/le01_key"
+                                                        android:background="@drawable/round_con_le01" />
+
+                        <TextView
+                            android:id="@+id/letter_11"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:layout_marginBottom="@dimen/le01_text_bottom_margin" android:layout_marginTop="@dimen/le01_text_top_margin"
+                            android:text="@string/letter_11"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/le02_letter"
+                            android:textSize="@dimen/le01_fontsize" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                         android:id="@+id/letter_layout_12"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/le01_margins"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:id="@+id/letter_image_12"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                                                       android:contentDescription="@string/le01_key"
+                                                        android:background="@drawable/round_con_le01" />
+
+                        <TextView
+                            android:id="@+id/letter_12"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:layout_marginBottom="@dimen/le01_text_bottom_margin" android:layout_marginTop="@dimen/le01_text_top_margin"
+                            android:text="@string/letter_12"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/le02_letter"
+                            android:textSize="@dimen/le01_fontsize" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                         android:id="@+id/letter_layout_13"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/le01_margins"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:id="@+id/letter_image_13"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                                                       android:contentDescription="@string/le01_key"
+                                                        android:background="@drawable/round_con_le01" />
+
+                        <TextView
+                            android:id="@+id/letter_13"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:layout_marginBottom="@dimen/le01_text_bottom_margin" android:layout_marginTop="@dimen/le01_text_top_margin"
+                            android:text="@string/letter_13"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/le02_letter"
+                            android:textSize="@dimen/le01_fontsize" />
+                    </RelativeLayout>
+
+                    <View
+                        android:id="@+id/View03"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".6" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/letter_row_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" >
+
+                    <View
+                        android:id="@+id/View02"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".1" />
+
+                    <RelativeLayout
+                         android:id="@+id/letter_layout_14"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/le01_margins"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:id="@+id/letter_image_14"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/round_con_le01"
+                            android:contentDescription="@string/le01_key" />
+
+                        <TextView
+                            android:id="@+id/letter_14"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:layout_marginBottom="@dimen/le01_text_bottom_margin" android:layout_marginTop="@dimen/le01_text_top_margin"
+                            android:text="@string/letter_14"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/le02_letter"
+                            android:textSize="@dimen/le01_fontsize" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                         android:id="@+id/letter_layout_15"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/le01_margins"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:id="@+id/letter_image_15"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/round_vowell_le01"
+                            android:contentDescription="@string/le01_key" />
+
+                        <TextView
+                            android:id="@+id/letter_15"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:layout_marginBottom="@dimen/le01_text_bottom_margin" android:layout_marginTop="@dimen/le01_text_top_margin"
+                            android:text="@string/letter_15"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/le02_letter"
+                            android:textSize="@dimen/le01_fontsize" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                         android:id="@+id/letter_layout_16"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/le01_margins"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:id="@+id/letter_image_16"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/round_con_le01"
+                            android:contentDescription="@string/le01_key" />
+
+                        <TextView
+                            android:id="@+id/letter_16"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:layout_marginBottom="@dimen/le01_text_bottom_margin" android:layout_marginTop="@dimen/le01_text_top_margin"
+                            android:text="@string/letter_16"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/le02_letter"
+                            android:textSize="@dimen/le01_fontsize" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                         android:id="@+id/letter_layout_17"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/le01_margins"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:id="@+id/letter_image_17"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                                                       android:contentDescription="@string/le01_key"
+                                                        android:background="@drawable/round_con_le01" />
+
+                        <TextView
+                            android:id="@+id/letter_17"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:layout_marginBottom="@dimen/le01_text_bottom_margin" android:layout_marginTop="@dimen/le01_text_top_margin"
+                            android:text="@string/letter_17"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/le02_letter"
+                            android:textSize="@dimen/le01_fontsize" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                         android:id="@+id/letter_layout_18"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/le01_margins"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:id="@+id/letter_image_18"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                                                       android:contentDescription="@string/le01_key"
+                                                        android:background="@drawable/round_con_le01" />
+
+                        <TextView
+                            android:id="@+id/letter_18"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:layout_marginBottom="@dimen/le01_text_bottom_margin" android:layout_marginTop="@dimen/le01_text_top_margin"
+                            android:text="@string/letter_18"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/le02_letter"
+                            android:textSize="@dimen/le01_fontsize" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                         android:id="@+id/letter_layout_19"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/le01_margins"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:id="@+id/letter_image_19"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                                                        android:contentDescription="@string/le01_key"
+                                                        android:background="@drawable/round_con_le01" />
+
+                        <TextView
+                            android:id="@+id/letter_19"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:layout_marginBottom="@dimen/le01_text_bottom_margin" android:layout_marginTop="@dimen/le01_text_top_margin"
+                            android:text="@string/letter_19"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/le02_letter"
+                            android:textSize="@dimen/le01_fontsize" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                         android:id="@+id/letter_layout_20"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/le01_margins"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:id="@+id/Activity_20"
+                            android:layout_width="match_parent"
+                                                      android:contentDescription="@string/le01_key"
+                                                        android:layout_height="match_parent"
+                            android:background="@drawable/round_con_le01" />
+
+                        <TextView
+                            android:id="@+id/letter_20"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:layout_marginBottom="@dimen/le01_text_bottom_margin" android:layout_marginTop="@dimen/le01_text_top_margin"
+                            android:text="@string/letter_20"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/le02_letter"
+                            android:textSize="@dimen/le01_fontsize" />
+                    </RelativeLayout>
+
+                    <View
+                        android:id="@+id/View01"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".1" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/letter_row_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" >
+
+                    <View
+                        android:id="@+id/View05"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".6" />
+
+                    <RelativeLayout
+                         android:id="@+id/letter_layout_21"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/le01_margins"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:id="@+id/letter_image_21"
+                            android:layout_width="match_parent"
+                                                       android:contentDescription="@string/le01_key"
+                                                        android:layout_height="match_parent"
+                            android:background="@drawable/round_vowell_le01" />
+
+                        <TextView
+                            android:id="@+id/letter_21"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:layout_marginBottom="@dimen/le01_text_bottom_margin" android:layout_marginTop="@dimen/le01_text_top_margin"
+                            android:text="@string/letter_21"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/le02_letter"
+                            android:textSize="@dimen/le01_fontsize" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                         android:id="@+id/letter_layout_22"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/le01_margins"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:id="@+id/letter_image_22"
+                            android:layout_width="match_parent"
+                                                        android:contentDescription="@string/le01_key"
+                                                        android:layout_height="match_parent"
+                            android:background="@drawable/round_con_le01" />
+
+                        <TextView
+                            android:id="@+id/letter_22"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:layout_marginBottom="@dimen/le01_text_bottom_margin" android:layout_marginTop="@dimen/le01_text_top_margin"
+                            android:text="@string/letter_22"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/le02_letter"
+                            android:textSize="@dimen/le01_fontsize" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                         android:id="@+id/letter_layout_23"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/le01_margins"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:id="@+id/letter_image_23"
+                                                        android:contentDescription="@string/le01_key"
+                                                        android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/round_con_le01" />
+
+                        <TextView
+                            android:id="@+id/letter_23"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:layout_marginBottom="@dimen/le01_text_bottom_margin" android:layout_marginTop="@dimen/le01_text_top_margin"
+                            android:text="@string/letter_23"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/le02_letter"
+                            android:textSize="@dimen/le01_fontsize" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                         android:id="@+id/letter_layout_24"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/le01_margins"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:id="@+id/letter_image_24"
+                            android:layout_width="match_parent"
+                                                      android:contentDescription="@string/le01_key"
+                                                        android:layout_height="match_parent"
+                            android:background="@drawable/round_con_le01" />
+
+                        <TextView
+                            android:id="@+id/letter_24"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:layout_marginBottom="@dimen/le01_text_bottom_margin" android:layout_marginTop="@dimen/le01_text_top_margin"
+                            android:text="@string/letter_24"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/le02_letter"
+                            android:textSize="@dimen/le01_fontsize" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/letter_layout_25"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/le01_margins"
+                        android:layout_weight="1"
+                        android:alpha="0.08" >
+
+                        <ImageView
+                            android:id="@+id/letter_image_25"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/round_con_le01"
+                            android:contentDescription="@string/le01_key" />
+
+                        <TextView
+                            android:id="@+id/letter_25"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:layout_marginBottom="@dimen/le01_text_bottom_margin" 
+                            android:layout_marginTop="@dimen/le01_text_top_margin"
+                            android:text="@string/letter_25"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/le02_letter"
+                            android:textSize="@dimen/le01_fontsize" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                         android:id="@+id/letter_layout_26"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/le01_margins"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:id="@+id/letter_image_26"
+                                                     android:contentDescription="@string/le01_key"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/round_con_le01" />
+
+                        <TextView
+                            android:id="@+id/letter_26"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:layout_marginBottom="@dimen/le01_text_bottom_margin" 
+                            android:layout_marginTop="@dimen/le01_text_top_margin"
+                            android:text="@string/letter_26"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/le02_letter"
+                            android:textSize="@dimen/le01_fontsize" />
+
+                    </RelativeLayout>
+
+                    <View
+                        android:id="@+id/View06"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".6" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.3" >
+
+                    <View
+                        android:id="@+id/view5"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                </TableRow>
+
+            </TableLayout>
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".02" />
+
+        </TableRow>
+
+</TableLayout>
+
+</FrameLayout>

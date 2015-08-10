@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="le01_margins">4dp</dimen>
+    <dimen name="activity_platform_icon_margin">16dp</dimen>
+    <dimen name="tl01_text_top_margin">10dp</dimen>
+    <dimen name="tl01_text_bottom_margin">20dp</dimen>
+    <dimen name="wd01_text_top_margin">10dp</dimen>
+    <dimen name="wd01_text_bottom_margin">20dp</dimen>
+    <dimen name="wd01_ctext_top_margin">-55dp</dimen>
+    <dimen name="wd01_ctext_bottom_margin">10dp</dimen>
+     <dimen name="wd01_ctext_image_top_margin">30dp</dimen>
+     <dimen name="wd01_ctext_image_side_margin">8dp</dimen>
+     <dimen name="wd01_ctext_image_bottom_margin">12dp</dimen>
+    <dimen name="wd07_text_top_margin">-60dp</dimen>
+    <dimen name="wd07_text_bottom_margin">12dp</dimen>
+    <dimen name="wd07_textbox_margins">2dp</dimen>
+    <dimen name="wd04_image_top_bottom_margin">42dp</dimen>
+    <dimen name="wd04_image_sides_margins">50dp</dimen>
+        <dimen name="wd04_ctext_top_margin">-55dp</dimen>
+    <dimen name="wd04_ctext_bottom_margin">0dp</dimen>
+     <dimen name="wd04_ctext_image_top_margin">30dp</dimen>
+     <dimen name="wd04_ctext_image_side_margin">8dp</dimen>
+     <dimen name="wd04_ctext_image_bottom_margin">12dp</dimen>    
+     <dimen name="wd08_text_image_margin">4dp</dimen> 
+     <dimen name="le01_text_top_margin">-24dp</dimen>
+    <dimen name="le01_text_bottom_margin">20dp</dimen>   
+</resources>

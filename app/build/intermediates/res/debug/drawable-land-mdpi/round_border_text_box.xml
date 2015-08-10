@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?> 
+
+    <shape xmlns:android="http://schemas.android.com/apk/res/android" 
+         android:shape="rectangle" 
+          >
+ <solid android:color="@color/reg_white"/>
+
+        <corners android:bottomRightRadius="10sp" android:bottomLeftRadius="10sp" 
+         android:topLeftRadius="10sp" android:topRightRadius="10sp"/>
+
+          <stroke
+            android:color="@color/reg_black"
+           
+            android:width="1dp"
+
+             />
+
+    </shape><!-- From: file:/C:/Users/abors/StudioProjects/Motoli%20All%20Subjects/app/src/main/res/drawable-land-mdpi/round_border_text_box.xml -->

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/C:/Users/abors/StudioProjects/Motoli%20All%20Subjects/app/src/main/res/values/colors.xml -->
+    <eat-comment/>
+    <color name="bad_guest_blue">#385bac</color>
+    <color name="blackHighlight">#80000000</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="blueHighlight">#800d20ff</color>
+    <color name="brownText">#675A3f</color>
+    <color name="correct_green">#669900</color>
+    <color name="dark_gray">#90666666</color>
+    <color name="drk_green">#2b621e</color>
+    <color name="free_admin_gold">#dad034</color>
+    <color name="grayHighlight">#90CCCCCC</color>
+    <color name="greenHighlight">#8020ff0d</color>
+    <color name="guest_arriving">#3d7338</color>
+    <color name="guest_leaving">#b51414</color>
+    <color name="incorrect_red">#990000</color>
+    <color name="launchpagbck">#f1eacd</color>
+    <color name="le02_con">#6ac9c9</color>
+    <color name="le02_con_border">#4d8889</color>
+    <color name="le02_letter">#58595a</color>
+    <color name="le02_vowell">#fccc00</color>
+    <color name="le02_vowell_border">#b29209</color>
+    <color name="lettersYellow">#60f7ef31</color>
+    <color name="lght_blue">#1bc8c6</color>
+    <color name="lightGrey">#bbbbbb</color>
+    <color name="off_white">#efefef</color>
+    <color name="opa_bg">#952d2c25</color>
+    <color name="opaque_white">#80ffffff</color>
+    <color name="progress_bar">#ff9900</color>
+    <color name="progress_bar_second">#cc6600</color>
+    <color name="redHighlight">#80ff200d</color>
+    <color name="reg_black">#000000</color>
+    <color name="reg_blue">#1c75bc</color>
+    <color name="reg_gold">#ffcc00</color>
+    <color name="reg_gray">#CCCCCC</color>
+    <color name="reg_orange">#e4950d</color>
+    <color name="reg_red">#ff200d</color>
+    <color name="reg_white">#ffffff</color>
+    <color name="reg_yellow">#fff200</color>
+    <color name="regwhite">#FFFFFF</color>
+    <color name="section_color">#60669933</color>
+    <color name="settingBrownText">#725a42</color>
+    <color name="unitlist">#333366</color>
+    <color name="ver_off_white">#f4f4f4</color>
+    <color name="w2Blue">#cdffff</color>
+    <color name="wd01_boxborder">#e6e7e8</color>
+    <color name="yellowHighlight">#80fff200</color>
+    <declare-styleable name="ButtonBarContainerTheme"><attr format="reference" name="metaButtonBarStyle"/><attr format="reference" name="metaButtonBarButtonStyle"/></declare-styleable>
+    <!-- From: file:/C:/Users/abors/StudioProjects/Motoli%20All%20Subjects/app/src/main/res/values/sizes.xml -->
+    <eat-comment/>
+    <dimen name="activity_platform_icon_margin">16dp</dimen>
+    <!-- From: file:/C:/Users/abors/StudioProjects/Motoli%20All%20Subjects/app/src/main/res/values/fonts.xml -->
+    <eat-comment/>
+    <dimen name="le01_chosenfontsize">70sp</dimen>
+    <dimen name="le01_fontsize">70sp</dimen>
+    <!-- From: file:/C:/Users/abors/StudioProjects/Motoli%20All%20Subjects/app/src/main/res/values/sizes.xml -->
+    <eat-comment/>
+    <dimen name="le01_margins">4dp</dimen>
+    <dimen name="le01_text_bottom_margin">20dp</dimen>
+    <dimen name="le01_text_top_margin">-24dp</dimen>
+    <!-- From: file:/C:/Users/abors/StudioProjects/Motoli%20All%20Subjects/app/src/main/res/values/fonts.xml -->
+    <eat-comment/>
+    <dimen name="tl01_letterfontsize">90sp</dimen>
+    <!-- From: file:/C:/Users/abors/StudioProjects/Motoli%20All%20Subjects/app/src/main/res/values/sizes.xml -->
+    <eat-comment/>
+    <dimen name="tl01_text_bottom_margin">20dp</dimen>
+    <dimen name="tl01_text_top_margin">10dp</dimen>
+    <!-- From: file:/C:/Users/abors/StudioProjects/Motoli%20All%20Subjects/app/src/main/res/values/fonts.xml -->
+    <eat-comment/>
+    <dimen name="wd01_correct_font_size">240sp</dimen>
+    <!-- From: file:/C:/Users/abors/StudioProjects/Motoli%20All%20Subjects/app/src/main/res/values/sizes.xml -->
+    <eat-comment/>
+    <dimen name="wd01_ctext_bottom_margin">10dp</dimen>
+    <dimen name="wd01_ctext_image_bottom_margin">12dp</dimen>
+    <dimen name="wd01_ctext_image_side_margin">8dp</dimen>
+    <dimen name="wd01_ctext_image_top_margin">30dp</dimen>
+    <dimen name="wd01_ctext_top_margin">-55dp</dimen>
+    <!-- From: file:/C:/Users/abors/StudioProjects/Motoli%20All%20Subjects/app/src/main/res/values/fonts.xml -->
+    <eat-comment/>
+    <dimen name="wd01_guess_font_size">90sp</dimen>
+    <!-- From: file:/C:/Users/abors/StudioProjects/Motoli%20All%20Subjects/app/src/main/res/values/sizes.xml -->
+    <eat-comment/>
+    <dimen name="wd01_text_bottom_margin">20dp</dimen>
+    <dimen name="wd01_text_top_margin">10dp</dimen>
+    <dimen name="wd04_ctext_bottom_margin">0dp</dimen>
+    <dimen name="wd04_ctext_image_bottom_margin">12dp</dimen>
+    <dimen name="wd04_ctext_image_side_margin">8dp</dimen>
+    <dimen name="wd04_ctext_image_top_margin">30dp</dimen>
+    <dimen name="wd04_ctext_top_margin">-55dp</dimen>
+    <dimen name="wd04_image_sides_margins">50dp</dimen>
+    <dimen name="wd04_image_top_bottom_margin">42dp</dimen>
+    <!-- From: file:/C:/Users/abors/StudioProjects/Motoli%20All%20Subjects/app/src/main/res/values/fonts.xml -->
+    <eat-comment/>
+    <dimen name="wd07_general_fontsize">120sp</dimen>
+    <!-- From: file:/C:/Users/abors/StudioProjects/Motoli%20All%20Subjects/app/src/main/res/values/sizes.xml -->
+    <eat-comment/>
+    <dimen name="wd07_text_bottom_margin">12dp</dimen>
+    <dimen name="wd07_text_top_margin">-60dp</dimen>
+    <dimen name="wd07_textbox_margins">2dp</dimen>
+    <!-- From: file:/C:/Users/abors/StudioProjects/Motoli%20All%20Subjects/app/src/main/res/values/fonts.xml -->
+    <eat-comment/>
+    <dimen name="wd08_font_size">70sp</dimen>
+    <!-- From: file:/C:/Users/abors/StudioProjects/Motoli%20All%20Subjects/app/src/main/res/values/sizes.xml -->
+    <eat-comment/>
+    <dimen name="wd08_text_image_margin">4dp</dimen>
+    <!-- From: file:/C:/Users/abors/StudioProjects/Motoli%20All%20Subjects/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="activity_icon">Activity Icon</string>
+    <string name="app_name">Motoli All Subjects</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="le01_key">letter key</string>
+    <!-- From: file:/C:/Users/abors/StudioProjects/Motoli%20All%20Subjects/app/src/main/res/values/letters.xml -->
+    <eat-comment/>
+    <string name="letter_1">a</string>
+    <string name="letter_10">j</string>
+    <string name="letter_11">k</string>
+    <string name="letter_12">l</string>
+    <string name="letter_13">m</string>
+    <string name="letter_14">n</string>
+    <string name="letter_15">o</string>
+    <string name="letter_16">p</string>
+    <string name="letter_17">q</string>
+    <string name="letter_18">r</string>
+    <string name="letter_19">s</string>
+    <string name="letter_2">b</string>
+    <string name="letter_20">t</string>
+    <string name="letter_21">u</string>
+    <string name="letter_22">v</string>
+    <string name="letter_23">w</string>
+    <string name="letter_24">x</string>
+    <string name="letter_25">y</string>
+    <string name="letter_26">z</string>
+    <string name="letter_3">c</string>
+    <string name="letter_4">d</string>
+    <string name="letter_5">e</string>
+    <string name="letter_6">f</string>
+    <string name="letter_7">g</string>
+    <string name="letter_8">h</string>
+    <string name="letter_9">i</string>
+    <!-- From: file:/C:/Users/abors/StudioProjects/Motoli%20All%20Subjects/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="none"/>
+    <string name="strGuestUser">Guest</string>
+    <string name="strLeaveApp">Would You Like To Leave The App</string>
+    <string name="strNewUser">New User</string>
+    <string name="strNo">No</string>
+    <string name="strNone"/>
+    <string name="strRandomLetter">lj</string>
+    <string name="strRandomString">RandomString</string>
+    <string name="strWouldYouLieToLeave">You sure you would like to leave?</string>
+    <string name="strYes">Yes</string>
+    <!-- From: file:/C:/Users/abors/StudioProjects/Motoli%20All%20Subjects/app/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+
+        -->
+    </style>
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    <style name="ButtonBar">
+        <item name="android:paddingLeft">2dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingRight">2dp</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:background">@android:drawable/bottom_bar</item>
+    </style>
+    <style name="ButtonBarButton"/>
+    <style name="FullscreenTheme" parent="android:Theme.NoTitleBar">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="metaButtonBarStyle">@style/ButtonBar</item>
+        <item name="metaButtonBarButtonStyle">@style/ButtonBarButton</item>
+    </style>
+</resources>

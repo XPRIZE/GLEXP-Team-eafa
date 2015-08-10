@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ android:layout_width="fill_parent" android:layout_height="wrap_content"
+ android:orientation="vertical" android:padding="6dip">
+ 
+ <TextView
+     android:id="@+id/letter1"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_alignParentLeft="true"
+     android:layout_alignParentTop="true"
+     android:textAppearance="?android:attr/textAppearanceMedium" />
+ 
+ <TextView
+     android:id="@+id/textView2"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_alignParentTop="true"
+     android:layout_toRightOf="@+id/letter1"
+     android:text="ID:"
+     android:textAppearance="?android:attr/textAppearanceMedium" />
+ 
+ <TextView
+     android:id="@+id/id"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_alignParentTop="true"
+     android:layout_marginRight="8dp"
+     android:layout_toRightOf="@+id/textView2"
+     android:text="asdas "
+     android:textAppearance="?android:attr/textAppearanceMedium" />
+ 
+ <TextView
+     android:id="@+id/textView3"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_alignParentTop="false"
+     android:layout_toRightOf="@+id/id"
+     android:text="Name:"
+     android:textAppearance="?android:attr/textAppearanceMedium" />
+ 
+ <TextView
+     android:id="@+id/name"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_alignParentTop="true"
+     android:layout_marginRight="8dp"
+     android:layout_toRightOf="@+id/textView3"
+     android:text="2"
+     android:textAppearance="?android:attr/textAppearanceMedium" />
+ 
+ <TextView
+     android:id="@+id/textView4"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_toRightOf="@+id/name"
+     android:text="Avatara:"
+     android:textAppearance="?android:attr/textAppearanceMedium" />
+ 
+ <TextView
+     android:id="@+id/avatar"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_alignBaseline="@+id/textView4"
+     android:layout_alignBottom="@+id/textView4"
+     android:layout_toRightOf="@+id/textView4"
+     android:text="5"
+     android:textAppearance="?android:attr/textAppearanceMedium" />
+ 
+</RelativeLayout>

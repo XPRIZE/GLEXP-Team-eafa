@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.motoli.apps.allsubjects"
+    android:versionCode="1"
+    android:versionName="1.0" android:installLocation="auto"
+    >
+
+    <uses-sdk
+        android:minSdkVersion="17"
+        android:targetSdkVersion="22" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />*/
+	
+<uses-permission android:name="android.permission.INTERNET"/>
+			<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+			<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+			<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+   
+		<application
+        android:allowBackup="true"
+        android:largeHeap="true"
+        android:icon="@drawable/applogo"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" android:logo="@drawable/applogo" android:name="Motoli_Application">
+        <activity
+            android:name=".Motoli_Front"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <provider android:name=".Motoli_ContentProvidor" android:exported="true"
+   android:readPermission="true" android:writePermission="true"
+             android:authorities="com.motoli.apps.allsubjects.Motoli_ContentProvidor"></provider>
+        <activity android:name="UserSelect" android:screenOrientation="landscape" android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" android:configChanges="orientation|keyboardHidden|screenSize"></activity>
+        <activity android:name="Launch_Platform" android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden|screenSize"></activity>
+        <activity android:name="Activities_Platform" android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" android:configChanges="orientation|keyboardHidden|screenSize" android:screenOrientation="landscape"></activity>
+        <activity android:name="Activity_LE02" android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden|screenSize" android:logo="@drawable/btn_le02_act"></activity>
+        <activity android:name="Activity_TL01" android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" android:configChanges="orientation|keyboardHidden|screenSize" android:screenOrientation="landscape" android:logo="@drawable/btn_tl01_act"></activity>
+        <activity android:name="Activity_WD07" android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" android:configChanges="orientation|keyboardHidden|screenSize" android:screenOrientation="landscape" android:logo="@drawable/btn_wd07_act"></activity>
+        <activity android:name="Activity_WD01" android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" android:configChanges="orientation|keyboardHidden|screenSize" android:screenOrientation="landscape" android:logo="@drawable/btn_wd01_act"></activity>
+        <activity android:name="Activity_WD04" android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" android:configChanges="orientation|keyboardHidden|screenSize" android:screenOrientation="landscape" android:logo="@drawable/btn_wd04_act"></activity>
+        <activity android:name="Activity_LL01" android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" android:configChanges="orientation|keyboardHidden|screenSize" android:screenOrientation="landscape" android:logo="@drawable/btn_wd04_act"></activity>
+        <activity android:name="Activity_LL02" android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" android:configChanges="orientation|keyboardHidden|screenSize" android:screenOrientation="landscape" android:logo="@drawable/btn_wd04_act"></activity>
+        <activity android:name="Activity_WD08" android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" android:configChanges="orientation|keyboardHidden|screenSize" android:screenOrientation="landscape" android:logo="@drawable/btn_wd04_act"></activity>
+        </application>
+
+</manifest>

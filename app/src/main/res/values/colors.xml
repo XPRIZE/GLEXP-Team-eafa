@@ -1,0 +1,52 @@
+<resources>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="regwhite">#FFFFFF</color>
+    <color name="settingBrownText">#725a42</color>
+    <color name="greenHighlight">#8020ff0d</color>
+    <color name="redHighlight">#80ff200d</color>
+        <color name="blueHighlight">#800d20ff</color>
+        <color name="yellowHighlight">#80fff200</color>
+        <color name="reg_yellow">#fff200</color>
+        <color name="bad_guest_blue">#385bac</color>
+        <color name="free_admin_gold">#dad034</color>
+        <color name="guest_arriving">#3d7338</color>
+        <color name="guest_leaving">#b51414</color>
+        <color name="lght_blue">#1bc8c6</color>
+        <color name="drk_green">#2b621e</color>
+        <color name="blackHighlight">#80000000</color>
+        <color name="grayHighlight">#90CCCCCC</color>
+        <color name="lightGrey">#bbbbbb</color>
+        <color name="reg_black">#000000</color>
+        <color name="reg_red">#ff200d</color>
+        <color name="reg_gold">#ffcc00</color>
+         <color name="reg_gray">#CCCCCC</color>
+        <color name="correct_green">#669900</color>
+        <color name="incorrect_red">#990000</color>
+                <color name="reg_blue">#1c75bc</color>
+                <color name="reg_orange">#e4950d</color>
+        <color name="section_color">#60669933</color>
+        <color name="reg_white">#ffffff</color>
+        <color name="off_white">#efefef</color>
+        <color name="ver_off_white">#f4f4f4</color>
+        <color name="opaque_white">#80ffffff</color>
+        <color name="dark_gray">#90666666</color>
+        <color name="brownText">#675A3f</color>
+        <color name="unitlist">#333366</color>
+        <color name="w2Blue">#cdffff</color>
+         <color name="progress_bar">#ff9900</color>
+         <color name="progress_bar_second">#cc6600</color>
+         <color name="launchpagbck">#f1eacd</color>
+         <color name="opa_bg">#952d2c25</color>
+         <color name="lettersYellow">#60f7ef31</color>
+         <color name="le02_vowell">#fccc00</color>
+         <color name="le02_con">#6ac9c9</color>
+          <color name="le02_letter">#58595a</color>
+        <color name="le02_vowell_border">#b29209</color>
+        <color name="le02_con_border">#4d8889</color>
+        <color name="wd01_boxborder">#e6e7e8</color>
+        
+                  
+          
+         
+</resources>

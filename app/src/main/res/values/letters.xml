@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="letter_1">a</string>
+<string name="letter_2">b</string>
+<string name="letter_3">c</string>
+<string name="letter_4">d</string>
+<string name="letter_5">e</string>
+<string name="letter_6">f</string>
+<string name="letter_7">g</string>
+<string name="letter_8">h</string>
+<string name="letter_9">i</string>
+<string name="letter_10">j</string>
+<string name="letter_11">k</string>
+<string name="letter_12">l</string>
+<string name="letter_13">m</string>
+<string name="letter_14">n</string>
+<string name="letter_15">o</string>
+<string name="letter_16">p</string>
+<string name="letter_17">q</string>
+<string name="letter_18">r</string>
+<string name="letter_19">s</string>
+<string name="letter_20">t</string>
+<string name="letter_21">u</string>
+<string name="letter_22">v</string>
+<string name="letter_23">w</string>
+<string name="letter_24">x</string>
+<string name="letter_25">y</string>
+<string name="letter_26">z</string>
+    
+</resources>
