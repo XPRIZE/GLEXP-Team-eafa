@@ -1,5 +1,10 @@
 package com.motoli.apps.allsubjects;
-
+/**
+ * Part of Project Motoli All Subjects
+ * for Education Technology For Development
+ * created by Aaron D Michaelis Borsay
+ * on 8/12/2015.
+ */
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -174,7 +179,7 @@ public class Activity_TL01 extends Activity_General_Parent implements LoaderMana
 					currentLtrWrdAudio=currentText.get(0).get(3);
 					currentWordID=currentText.get(0).get(0);
 					//playGeneralAudio(currentLtrWrdAudio);
-					correctChoice=(currentText.get(0).get(0).equals("1")) ? true : false;
+					correctChoice=(currentText.get(0).get(0).equals("1"));
 					setUpFrame(0);	
 				}
 			}
@@ -187,7 +192,7 @@ public class Activity_TL01 extends Activity_General_Parent implements LoaderMana
 					currentLtrWrdAudio=currentText.get(1).get(3);
 					currentWordID=currentText.get(1).get(0);
 					//playGeneralAudio(currentLtrWrdAudio);
-					correctChoice=(currentText.get(1).get(0).equals("1")) ? true : false;
+					correctChoice=(currentText.get(1).get(0).equals("1"));
 					setUpFrame(1);	
 				}
 			}
@@ -200,7 +205,7 @@ public class Activity_TL01 extends Activity_General_Parent implements LoaderMana
 					currentLtrWrdAudio=currentText.get(2).get(3);
 					currentWordID=currentText.get(2).get(0);
 					//playGeneralAudio(currentLtrWrdAudio);
-					correctChoice=(currentText.get(2).get(0).equals("1")) ? true : false;
+					correctChoice=(currentText.get(2).get(0).equals("1"));
 					setUpFrame(2);	
 				}
 			}
@@ -213,7 +218,7 @@ public class Activity_TL01 extends Activity_General_Parent implements LoaderMana
 					currentLtrWrdAudio=currentText.get(3).get(3);
 					currentWordID=currentText.get(3).get(0);
 					//playGeneralAudio(currentLtrWrdAudio);
-					correctChoice=(currentText.get(3).get(0).equals("1")) ? true : false;
+					correctChoice=(currentText.get(3).get(0).equals("1"));
 					setUpFrame(3);	
 				}
 			}
@@ -270,7 +275,7 @@ public class Activity_TL01 extends Activity_General_Parent implements LoaderMana
 		 String where=" WHERE "+S4K_Database.App_Users_Words_Activities_Right_Wrong.APP_USER_ID+"="+appData.getCurrentUserID()
 		    		+" AND "+S4K_Database.App_Users_Words_Activities_Right_Wrong.WORD_ID+"="+currentWordID
 		    		+" AND "+S4K_Database.App_Users_Words_Activities_Right_Wrong.ACTIVITY_ID+"="+appData.getCurrentActivity().get(0);
-		 String[] selectionArgs=null;
+		 String[] selectionArgs;
 		 ArrayList<String> currentGSP=new ArrayList<String>(appData.getCurrentGroup_Section_Phase());
 
 		if(correctChoice){
@@ -410,7 +415,7 @@ public class Activity_TL01 extends Activity_General_Parent implements LoaderMana
 		
 		@Override
 		public void run(){
-			long audioDuration=0;
+			long audioDuration;
 			
 			switch(processGuessPosition){
 				case 0:
@@ -471,8 +476,8 @@ public class Activity_TL01 extends Activity_General_Parent implements LoaderMana
 	
 	@Override
 	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-		String[] projection =null;
-		CursorLoader cursorLoader=null;
+		String[] projection;
+		CursorLoader cursorLoader;
 		switch(id){
 			default:
 			case MotoliConstants.ACTIVITY_CURRENT_WRDS_LTRS:{
@@ -554,7 +559,7 @@ public class Activity_TL01 extends Activity_General_Parent implements LoaderMana
 	
 		//Collections.shuffle(currentWords);
 		ArrayList<ArrayList<String>> sortedWords=new ArrayList<ArrayList<String>>(currentWords);
-		String word_id="";
+		String word_id;
 		allActivityText.clear();
 	
 		for(int currentCount=0; currentCount<currentWords.size();currentCount++){

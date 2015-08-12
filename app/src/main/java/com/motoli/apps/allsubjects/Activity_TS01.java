@@ -5,15 +5,6 @@ package com.motoli.apps.allsubjects;
  * created by Aaron D Michaelis Borsay
  * on 8/12/2015.
  */
-import java.util.ArrayList;
-import java.util.Collections;
-
-
-
-
-
-
-
 
 import android.app.LoaderManager;
 import android.content.CursorLoader;
@@ -22,19 +13,21 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.ImageView;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 
-public class Activity_WD01 extends Activity_General_Parent implements LoaderManager.LoaderCallbacks<Cursor>{
+public class Activity_TS01 extends Activity_General_Parent implements LoaderManager.LoaderCallbacks<Cursor>{
 	
 
 	
 	private int currentTextLocation=0;
 	private int incorrectInRound=0;
 	
-	private String correctText="";
 	
 	private ArrayList<ArrayList<String>> currentText;
 	
@@ -46,7 +39,7 @@ public class Activity_WD01 extends Activity_General_Parent implements LoaderMana
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out);
-		setContentView(R.layout.activity_wd01);
+		setContentView(R.layout.activity_ts01);
 		appData.addToClassOrder(5);
 		allActivityText = new ArrayList<ArrayList<ArrayList<String>>>();
 
@@ -56,7 +49,7 @@ public class Activity_WD01 extends Activity_General_Parent implements LoaderMana
 		setUpListeners();
 		setupFrameListens();
 		
-		((TextView) findViewById(R.id.Activity_Text0)).setTypeface(appData.getCurrentFontType());	
+		
 		((TextView) findViewById(R.id.Activity_Text1)).setTypeface(appData.getCurrentFontType());
 		((TextView) findViewById(R.id.Activity_Text2)).setTypeface(appData.getCurrentFontType());
 		((TextView) findViewById(R.id.Activity_Text3)).setTypeface(appData.getCurrentFontType());
@@ -71,13 +64,8 @@ public class Activity_WD01 extends Activity_General_Parent implements LoaderMana
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 
 	private long playInstructionAudio(){
-		return playGeneralAudio("info_wd01.mp3");
+		return playGeneralAudio("info_ts01.mp3");
 	}
-	
-	///////////////////////////////////////////////////////////////////////////////////////////////////
-
-	
-	
 	private void clearActivity(){
 		findViewById(R.id.Activity_LoadingCircle1).setVisibility(ProgressBar.VISIBLE);
 		findViewById(R.id.Activity_LoadingCircle2).setVisibility(ProgressBar.VISIBLE);
@@ -106,46 +94,46 @@ public class Activity_WD01 extends Activity_General_Parent implements LoaderMana
 	private void displayScreen(){
 		incorrectInRound=0;
 		
+		
+		
+		
+		//correctOrNot.clear();
 		currentText = new ArrayList<ArrayList<String>>(allActivityText.get(roundNumber));
 		Collections.shuffle(currentText);
+	//	allActivityText.get(i)
 		
 		((TextView) findViewById(R.id.Activity_Text1)).setText(currentText.get(0).get(2));
 		findViewById(R.id.Activity_LoadingCircle1).setVisibility(ProgressBar.INVISIBLE);
+//		currentText.add(new ArrayList<String>(allActivityText.get(roundNumber).get(0)));
 		if(currentText.get(0).get(0).equals("1")){
 			correctLocation=0;
-			correctText=currentText.get(0).get(2);
 			matchingLtrWrdAudio=currentText.get(0).get(3);
 		}
 		
 			
 		((TextView) findViewById(R.id.Activity_Text2)).setText(currentText.get(1).get(2));
 		findViewById(R.id.Activity_LoadingCircle2).setVisibility(ProgressBar.INVISIBLE);
+	//	currentText.add(new ArrayList<String>(allActivityText.get(roundNumber).get(1)));
 		if(currentText.get(1).get(0).equals("1")){
 			correctLocation=1;
-			correctText=currentText.get(1).get(2);
 			matchingLtrWrdAudio=currentText.get(1).get(3);
 		}
 		
 		((TextView) findViewById(R.id.Activity_Text3)).setText(currentText.get(2).get(2));
 		findViewById(R.id.Activity_LoadingCircle3).setVisibility(ProgressBar.INVISIBLE);
+	//	currentText.add(new ArrayList<String>(allActivityText.get(roundNumber).get(2)));
 		if(currentText.get(2).get(0).equals("1")){
 			correctLocation=2;
-			correctText=currentText.get(2).get(2);
 			matchingLtrWrdAudio=currentText.get(2).get(3);
 		}
 		
 		((TextView) findViewById(R.id.Activity_Text4)).setText(currentText.get(3).get(2));
 		findViewById(R.id.Activity_LoadingCircle4).setVisibility(ProgressBar.INVISIBLE);
+	//	currentText.add(new ArrayList<String>(allActivityText.get(roundNumber).get(3)));
 		if(currentText.get(3).get(0).equals("1")){
 			correctLocation=3;
-			correctText=currentText.get(3).get(2);
 			matchingLtrWrdAudio=currentText.get(3).get(3);
 		}
-		
-		((TextView) findViewById(R.id.Activity_Text0)).setText(correctText);
-		findViewById(R.id.Activity_LoadingCircle0).setVisibility(ProgressBar.INVISIBLE);
-		
-		
 		long audioDuration=0;
 		if(roundNumber==0)
 			audioDuration=playInstructionAudio();
@@ -163,8 +151,8 @@ public class Activity_WD01 extends Activity_General_Parent implements LoaderMana
 		public void run(){
 			audioHandler.removeCallbacks(playLtrAudio);
 			beingValidated=false;
-			//if(!matchingLtrWrdAudio.equals(""))
-			//	playGeneralAudio(matchingLtrWrdAudio);			
+			if(!matchingLtrWrdAudio.equals(""))
+				playGeneralAudio(matchingLtrWrdAudio);			
 		}
 	};
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -245,19 +233,19 @@ public class Activity_WD01 extends Activity_General_Parent implements LoaderMana
 		switch(frameNumber){
 			default:
 			case 0:{
-				((ImageView)findViewById(R.id.Activity_TextFrame1)).setImageResource(R.drawable.frm_wd01_on);
+				((ImageView)findViewById(R.id.Activity_TextFrame1)).setImageResource(R.drawable.frm_ts01_on);
 				break;
 			}
 			case 1:{
-				((ImageView)findViewById(R.id.Activity_TextFrame2)).setImageResource(R.drawable.frm_wd01_on);
+				((ImageView)findViewById(R.id.Activity_TextFrame2)).setImageResource(R.drawable.frm_ts01_on);
 				break;
 			}
 			case 2:{
-				((ImageView)findViewById(R.id.Activity_TextFrame3)).setImageResource(R.drawable.frm_wd01_on);
+				((ImageView)findViewById(R.id.Activity_TextFrame3)).setImageResource(R.drawable.frm_ts01_on);
 				break;
 			}
 			case 3:{
-				((ImageView)findViewById(R.id.Activity_TextFrame4)).setImageResource(R.drawable.frm_wd01_on);
+				((ImageView)findViewById(R.id.Activity_TextFrame4)).setImageResource(R.drawable.frm_ts01_on);
 				break;
 			}
 		}
@@ -267,10 +255,10 @@ public class Activity_WD01 extends Activity_General_Parent implements LoaderMana
 
 	private void clearFrames(){
 		//clear frames
-		((ImageView)findViewById(R.id.Activity_TextFrame1)).setImageResource(R.drawable.frm_wd01_off);
-		((ImageView)findViewById(R.id.Activity_TextFrame2)).setImageResource(R.drawable.frm_wd01_off);
-		((ImageView)findViewById(R.id.Activity_TextFrame3)).setImageResource(R.drawable.frm_wd01_off);
-		((ImageView)findViewById(R.id.Activity_TextFrame4)).setImageResource(R.drawable.frm_wd01_off);
+		((ImageView)findViewById(R.id.Activity_TextFrame1)).setImageResource(R.drawable.frm_ts01_off);
+		((ImageView)findViewById(R.id.Activity_TextFrame2)).setImageResource(R.drawable.frm_ts01_off);
+		((ImageView)findViewById(R.id.Activity_TextFrame3)).setImageResource(R.drawable.frm_ts01_off);
+		((ImageView)findViewById(R.id.Activity_TextFrame4)).setImageResource(R.drawable.frm_ts01_off);
 
 
 	}
@@ -343,10 +331,10 @@ public class Activity_WD01 extends Activity_General_Parent implements LoaderMana
 					currentWordID};
 			
 			
-			getContentResolver().update(Motoli_ContentProvidor.CONTENT_URI_ACTIVITY_USER_RW_UPDATE, null, where, selectionArgs);;
+			getContentResolver().update(Motoli_ContentProvidor.CONTENT_URI_ACTIVITY_USER_RW_UPDATE, null, where, selectionArgs);
 		     if(incorrectInRound>=2){
 		    	 switch(correctLocation){
-		    	 default:
+		    	 	default:
 		    	 	case 0:
 						currentText.get(0).add(6, "1");
 		    			((TextView) findViewById(R.id.Activity_Text2)).setText("");
@@ -530,8 +518,7 @@ public class Activity_WD01 extends Activity_General_Parent implements LoaderMana
 
 	@Override
 	public void onLoaderReset(Loader<Cursor> loader) {
-		// TODO Auto-generated method stub
-		
+
 	}	
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -619,7 +606,7 @@ public class Activity_WD01 extends Activity_General_Parent implements LoaderMana
 
 
 	private void setUpListeners(){
-		findViewById(R.id.Activity_CorrectText).setOnClickListener(new OnClickListener() {
+		findViewById(R.id.Activity_MicDude).setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				if(!matchingLtrWrdAudio.equals(""))
 					playGeneralAudio(matchingLtrWrdAudio);

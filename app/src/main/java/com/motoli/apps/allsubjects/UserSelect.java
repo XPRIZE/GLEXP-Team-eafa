@@ -1,4 +1,10 @@
 package com.motoli.apps.allsubjects;
+/**
+ * Part of Project Motoli All Subjects
+ * for Education Technology For Development
+ * created by Aaron D Michaelis Borsay
+ * on 8/12/2015.
+ */
 import android.media.AudioManager;
 import android.media.MediaPlayer;import android.os.Bundle;
 import android.os.Handler;

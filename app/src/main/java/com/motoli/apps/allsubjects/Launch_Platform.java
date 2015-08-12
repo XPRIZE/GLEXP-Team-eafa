@@ -1,4 +1,11 @@
 package com.motoli.apps.allsubjects;
+/**
+ * Part of Project Motoli All Subjects
+ * for Education Technology For Development
+ * created by Aaron D Michaelis Borsay
+ * on 8/12/2015.
+ */
+
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;

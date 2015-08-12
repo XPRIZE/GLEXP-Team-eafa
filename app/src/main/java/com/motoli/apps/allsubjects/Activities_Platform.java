@@ -1,9 +1,15 @@
 package com.motoli.apps.allsubjects;
 
+/**
+ * Part of Project Motoli All Subjects
+ * for Education Technology For Development
+ * created by Aaron D Michaelis Borsay
+ * on 8/12/2015.
+ */
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
-import com.motoli.apps.allsubjects.R;
 import com.motoli.apps.allsubjects.R.drawable;
 
 
@@ -21,6 +27,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.Toast;
+
 
 
 public class Activities_Platform extends Activity_General_Parent implements LoaderManager.LoaderCallbacks<Cursor> {  

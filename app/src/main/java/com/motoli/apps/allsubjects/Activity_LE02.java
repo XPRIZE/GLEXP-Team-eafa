@@ -1,5 +1,10 @@
 package com.motoli.apps.allsubjects;
-
+/**
+ * Part of Project Motoli All Subjects
+ * for Education Technology For Development
+ * created by Aaron D Michaelis Borsay
+ * on 8/12/2015.
+ */
 
 
 import java.util.ArrayList;
@@ -12,12 +17,7 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TableLayout;
-import android.widget.TableRow;
+
 import android.widget.TextView;
 
 public class Activity_LE02 extends Activity_General_Parent  implements
@@ -25,7 +25,7 @@ LoaderManager.LoaderCallbacks<Cursor>{
 	
 	
 
-	private ArrayList<ArrayList<String>> currentWords;
+
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -92,7 +92,7 @@ LoaderManager.LoaderCallbacks<Cursor>{
 
 		getLoaderManager().initLoader(MotoliConstants.ACTIVITY_CURRENT_WRDS_LTRS, null, this);
 		 
-			findViewById(R.id.btnBack).setOnClickListener(new OnClickListener() {
+			findViewById(R.id.btnBack).setOnClickListener(new View.OnClickListener() {
 				public void onClick(View v) {
 					playClickSound();
 					moveBackwords();		
@@ -173,14 +173,14 @@ LoaderManager.LoaderCallbacks<Cursor>{
 
 	private void setUpButtonListeners(){
 		
-		findViewById(R.id.letter_layout_1).setOnClickListener(new OnClickListener() {
+		findViewById(R.id.letter_layout_1).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				if(!((String)findViewById(R.id.letter_layout_1).getTag()).equals("")){
-					Long audioDuration=playGeneralAudio("piano_"+((String) findViewById(R.id.letter_layout_1).getTag()));
+				if(!(findViewById(R.id.letter_layout_1).getTag()).equals("")){
+					Long audioDuration=playGeneralAudio("piano_"+( findViewById(R.id.letter_layout_1).getTag()));
 					resetFontsTypeFace(); 					
 					audioHandler.postDelayed(runRestFontTypeFace, audioDuration);
 					((TextView)findViewById(R.id.letter_1)).setTypeface(appData.getCurrentFontTypeBold()); 
-					((TextView)findViewById(R.id.letter_1)).setTextSize(getResources().getDimension(R.dimen.le01_chosenfontsize));
+					((TextView)findViewById(R.id.letter_1)).setTextSize(getResources().getDimension(R.dimen.le01_chosenFontSize));
 					/*
 					TableRow row=((TableRow) findViewById(R.id.letter_row_1));
 					TableRow.LayoutParams params = new TableRow.LayoutParams(
@@ -203,347 +203,350 @@ LoaderManager.LoaderCallbacks<Cursor>{
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		
-		findViewById(R.id.letter_layout_2).setOnClickListener(new OnClickListener() {
+		findViewById(R.id.letter_layout_2).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				if(!((String)findViewById(R.id.letter_layout_2).getTag()).equals("")){
-					Long audioDuration=playGeneralAudio("piano_"+((String) findViewById(R.id.letter_layout_2).getTag()));
+				if(!(findViewById(R.id.letter_layout_2).getTag()).equals("")){
+					Long audioDuration=playGeneralAudio("piano_"+ findViewById(R.id.letter_layout_2).getTag());
 					resetFontsTypeFace(); 					
 					audioHandler.postDelayed(runRestFontTypeFace, audioDuration);
 					((TextView)findViewById(R.id.letter_2)).setTypeface(appData.getCurrentFontTypeBold());
-					((TextView)findViewById(R.id.letter_2)).setTextSize(getResources().getDimension(R.dimen.le01_chosenfontsize));
+					((TextView)findViewById(R.id.letter_2)).setTextSize(getResources().getDimension(R.dimen.le01_chosenFontSize));
 				}
 			}
 		});
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////
-		findViewById(R.id.letter_layout_3).setOnClickListener(new OnClickListener() {
+		findViewById(R.id.letter_layout_3).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				if(!((String)findViewById(R.id.letter_layout_3).getTag()).equals("")){
-					Long audioDuration=playGeneralAudio("piano_"+((String) findViewById(R.id.letter_layout_3).getTag()));
+				if(!(findViewById(R.id.letter_layout_3).getTag()).equals("")){
+					Long audioDuration=playGeneralAudio("piano_"+( findViewById(R.id.letter_layout_3).getTag()));
 					resetFontsTypeFace(); 					
 					audioHandler.postDelayed(runRestFontTypeFace, audioDuration);
 					((TextView)findViewById(R.id.letter_3)).setTypeface(appData.getCurrentFontTypeBold());
-					((TextView)findViewById(R.id.letter_3)).setTextSize(getResources().getDimension(R.dimen.le01_chosenfontsize));
+					((TextView)findViewById(R.id.letter_3)).setTextSize(getResources().getDimension(R.dimen.le01_chosenFontSize));
 				}
+
 			}
 		});
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		
-		findViewById(R.id.letter_layout_4).setOnClickListener(new OnClickListener() {
+		findViewById(R.id.letter_layout_4).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				if(!((String)findViewById(R.id.letter_layout_4).getTag()).equals("")){
-					Long audioDuration=playGeneralAudio("piano_"+((String) findViewById(R.id.letter_layout_4).getTag()));
+				if(!(findViewById(R.id.letter_layout_4).getTag()).equals("")){
+					Long audioDuration=playGeneralAudio("piano_"+( findViewById(R.id.letter_layout_4).getTag()));
 					resetFontsTypeFace(); 					
 					audioHandler.postDelayed(runRestFontTypeFace, audioDuration);
 					((TextView)findViewById(R.id.letter_4)).setTypeface(appData.getCurrentFontTypeBold());
-					((TextView)findViewById(R.id.letter_4)).setTextSize(getResources().getDimension(R.dimen.le01_chosenfontsize));
+					((TextView)findViewById(R.id.letter_4)).setTextSize(getResources().getDimension(R.dimen.le01_chosenFontSize));
 				}
 			}
 		});
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		
-		findViewById(R.id.letter_layout_5).setOnClickListener(new OnClickListener() {
+		findViewById(R.id.letter_layout_5).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				if(!((String)findViewById(R.id.letter_layout_5).getTag()).equals("")){
-					Long audioDuration=playGeneralAudio("piano_"+((String) findViewById(R.id.letter_layout_5).getTag()));
-					resetFontsTypeFace(); 					audioHandler.postDelayed(runRestFontTypeFace, audioDuration);
+				if(!(findViewById(R.id.letter_layout_5).getTag()).equals("")){
+                    Long audioDuration=playGeneralAudio("piano_"+ findViewById(R.id.letter_layout_5).getTag());
+					resetFontsTypeFace();
+					audioHandler.postDelayed(runRestFontTypeFace, audioDuration);
 					((TextView)findViewById(R.id.letter_5)).setTypeface(appData.getCurrentFontTypeBold());
-					((TextView)findViewById(R.id.letter_5)).setTextSize(getResources().getDimension(R.dimen.le01_chosenfontsize));
+					((TextView)findViewById(R.id.letter_5)).setTextSize(getResources().getDimension(R.dimen.le01_chosenFontSize));
 				}
 			}
 		});
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		
-		findViewById(R.id.letter_layout_6).setOnClickListener(new OnClickListener() {
+		findViewById(R.id.letter_layout_6).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				if(!((String)findViewById(R.id.letter_layout_6).getTag()).equals("")){
-					Long audioDuration=playGeneralAudio("piano_"+((String) findViewById(R.id.letter_layout_6).getTag()));
+				if(!(findViewById(R.id.letter_layout_6).getTag()).equals("")){
+					Long audioDuration=playGeneralAudio("piano_"+( findViewById(R.id.letter_layout_6).getTag()));
 					resetFontsTypeFace(); 					
 					audioHandler.postDelayed(runRestFontTypeFace, audioDuration);
 					((TextView)findViewById(R.id.letter_6)).setTypeface(appData.getCurrentFontTypeBold());
-					((TextView)findViewById(R.id.letter_6)).setTextSize(getResources().getDimension(R.dimen.le01_chosenfontsize));
+					((TextView)findViewById(R.id.letter_6)).setTextSize(getResources().getDimension(R.dimen.le01_chosenFontSize));
 				}
 			}
 		});
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		
-		findViewById(R.id.letter_layout_7).setOnClickListener(new OnClickListener() {
+		findViewById(R.id.letter_layout_7).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				if(!((String)findViewById(R.id.letter_layout_7).getTag()).equals("")){
-					Long audioDuration=playGeneralAudio("piano_"+((String) findViewById(R.id.letter_layout_7).getTag()));
-					resetFontsTypeFace(); 					audioHandler.postDelayed(runRestFontTypeFace, audioDuration);
+				if(!(findViewById(R.id.letter_layout_7).getTag()).equals("")){
+					Long audioDuration=playGeneralAudio("piano_"+( findViewById(R.id.letter_layout_7).getTag()));
+					resetFontsTypeFace();
+                    audioHandler.postDelayed(runRestFontTypeFace, audioDuration);
 					((TextView)findViewById(R.id.letter_7)).setTypeface(appData.getCurrentFontTypeBold());
-					((TextView)findViewById(R.id.letter_7)).setTextSize(getResources().getDimension(R.dimen.le01_chosenfontsize));
+					((TextView)findViewById(R.id.letter_7)).setTextSize(getResources().getDimension(R.dimen.le01_chosenFontSize));
 				}
 			}
 		});
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		
-		findViewById(R.id.letter_layout_8).setOnClickListener(new OnClickListener() {
+		findViewById(R.id.letter_layout_8).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				if(!((String)findViewById(R.id.letter_layout_8).getTag()).equals("")){
-					Long audioDuration=playGeneralAudio("piano_"+((String) findViewById(R.id.letter_layout_8).getTag()));
+				if(!(findViewById(R.id.letter_layout_8).getTag()).equals("")){
+					Long audioDuration=playGeneralAudio("piano_"+( findViewById(R.id.letter_layout_8).getTag()));
 					resetFontsTypeFace(); 					
 					audioHandler.postDelayed(runRestFontTypeFace, audioDuration);
 					((TextView)findViewById(R.id.letter_8)).setTypeface(appData.getCurrentFontTypeBold());
-					((TextView)findViewById(R.id.letter_8)).setTextSize(getResources().getDimension(R.dimen.le01_chosenfontsize));
+					((TextView)findViewById(R.id.letter_8)).setTextSize(getResources().getDimension(R.dimen.le01_chosenFontSize));
 				}
 			}
 		});
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		
-		findViewById(R.id.letter_layout_9).setOnClickListener(new OnClickListener() {
+		findViewById(R.id.letter_layout_9).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				if(!((String)findViewById(R.id.letter_layout_9).getTag()).equals("")){
-					Long audioDuration=playGeneralAudio("piano_"+((String) findViewById(R.id.letter_layout_9).getTag()));
+				if(!(findViewById(R.id.letter_layout_9).getTag()).equals("")){
+					Long audioDuration=playGeneralAudio("piano_"+( findViewById(R.id.letter_layout_9).getTag()));
 					resetFontsTypeFace(); 					
 					audioHandler.postDelayed(runRestFontTypeFace, audioDuration);
 					((TextView)findViewById(R.id.letter_9)).setTypeface(appData.getCurrentFontTypeBold());
-					((TextView)findViewById(R.id.letter_9)).setTextSize(getResources().getDimension(R.dimen.le01_chosenfontsize));
+					((TextView)findViewById(R.id.letter_9)).setTextSize(getResources().getDimension(R.dimen.le01_chosenFontSize));
 				}
 			}
 		});
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		
-		findViewById(R.id.letter_layout_10).setOnClickListener(new OnClickListener() {
+		findViewById(R.id.letter_layout_10).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				if(!((String)findViewById(R.id.letter_layout_10).getTag()).equals("")){
-					Long audioDuration=playGeneralAudio("piano_"+((String) findViewById(R.id.letter_layout_10).getTag()));
+				if(!(findViewById(R.id.letter_layout_10).getTag()).equals("")){
+					Long audioDuration=playGeneralAudio("piano_"+( findViewById(R.id.letter_layout_10).getTag()));
 					resetFontsTypeFace(); 					
 					audioHandler.postDelayed(runRestFontTypeFace, audioDuration);
 					((TextView)findViewById(R.id.letter_10)).setTypeface(appData.getCurrentFontTypeBold());
-					((TextView)findViewById(R.id.letter_10)).setTextSize(getResources().getDimension(R.dimen.le01_chosenfontsize));
+					((TextView)findViewById(R.id.letter_10)).setTextSize(getResources().getDimension(R.dimen.le01_chosenFontSize));
 				}
 			}
 		});
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		
-		findViewById(R.id.letter_layout_11).setOnClickListener(new OnClickListener() {
+		findViewById(R.id.letter_layout_11).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				if(!((String)findViewById(R.id.letter_layout_11).getTag()).equals("")){
-					Long audioDuration=playGeneralAudio("piano_"+((String) findViewById(R.id.letter_layout_11).getTag()));
+				if(!(findViewById(R.id.letter_layout_11).getTag()).equals("")){
+					Long audioDuration=playGeneralAudio("piano_"+( findViewById(R.id.letter_layout_11).getTag()));
 					resetFontsTypeFace(); 					
 					audioHandler.postDelayed(runRestFontTypeFace, audioDuration);
 					((TextView)findViewById(R.id.letter_11)).setTypeface(appData.getCurrentFontTypeBold());
-					((TextView)findViewById(R.id.letter_11)).setTextSize(getResources().getDimension(R.dimen.le01_chosenfontsize));
+					((TextView)findViewById(R.id.letter_11)).setTextSize(getResources().getDimension(R.dimen.le01_chosenFontSize));
 				}
 			}
 		});
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		
-		findViewById(R.id.letter_layout_12).setOnClickListener(new OnClickListener() {
+		findViewById(R.id.letter_layout_12).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				if(!((String)findViewById(R.id.letter_layout_12).getTag()).equals("")){
-					Long audioDuration=playGeneralAudio("piano_"+((String) findViewById(R.id.letter_layout_12).getTag()));
+				if(!(findViewById(R.id.letter_layout_12).getTag()).equals("")){
+					Long audioDuration=playGeneralAudio("piano_"+( findViewById(R.id.letter_layout_12).getTag()));
 					resetFontsTypeFace(); 					
 					audioHandler.postDelayed(runRestFontTypeFace, audioDuration);
 					((TextView)findViewById(R.id.letter_12)).setTypeface(appData.getCurrentFontTypeBold());
-					((TextView)findViewById(R.id.letter_12)).setTextSize(getResources().getDimension(R.dimen.le01_chosenfontsize));
+					((TextView)findViewById(R.id.letter_12)).setTextSize(getResources().getDimension(R.dimen.le01_chosenFontSize));
 				}
 			}
 		});
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		
-		findViewById(R.id.letter_layout_13).setOnClickListener(new OnClickListener() {
+		findViewById(R.id.letter_layout_13).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				if(!((String)findViewById(R.id.letter_layout_13).getTag()).equals("")){
-					Long audioDuration=playGeneralAudio("piano_"+((String) findViewById(R.id.letter_layout_13).getTag()));
+				if(!(findViewById(R.id.letter_layout_13).getTag()).equals("")){
+					Long audioDuration=playGeneralAudio("piano_"+( findViewById(R.id.letter_layout_13).getTag()));
 					resetFontsTypeFace(); 				
 					audioHandler.postDelayed(runRestFontTypeFace, audioDuration);
 					((TextView)findViewById(R.id.letter_13)).setTypeface(appData.getCurrentFontTypeBold());
-					((TextView)findViewById(R.id.letter_13)).setTextSize(getResources().getDimension(R.dimen.le01_chosenfontsize));
+					((TextView)findViewById(R.id.letter_13)).setTextSize(getResources().getDimension(R.dimen.le01_chosenFontSize));
 				}
 			}
 		});
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		
-		findViewById(R.id.letter_layout_14).setOnClickListener(new OnClickListener() {
+		findViewById(R.id.letter_layout_14).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				if(!((String)findViewById(R.id.letter_layout_14).getTag()).equals("")){
-					Long audioDuration=playGeneralAudio("piano_"+((String) findViewById(R.id.letter_layout_14).getTag()));
+				if(!(findViewById(R.id.letter_layout_14).getTag()).equals("")){
+					Long audioDuration=playGeneralAudio("piano_"+( findViewById(R.id.letter_layout_14).getTag()));
 					resetFontsTypeFace(); 				
 					audioHandler.postDelayed(runRestFontTypeFace, audioDuration);
 					((TextView)findViewById(R.id.letter_14)).setTypeface(appData.getCurrentFontTypeBold());
-					((TextView)findViewById(R.id.letter_14)).setTextSize(getResources().getDimension(R.dimen.le01_chosenfontsize));
+					((TextView)findViewById(R.id.letter_14)).setTextSize(getResources().getDimension(R.dimen.le01_chosenFontSize));
 				}
 			}
 		});
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		
-		findViewById(R.id.letter_layout_15).setOnClickListener(new OnClickListener() {
+		findViewById(R.id.letter_layout_15).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				if(!((String)findViewById(R.id.letter_layout_15).getTag()).equals("")){
-					Long audioDuration=playGeneralAudio("piano_"+((String) findViewById(R.id.letter_layout_15).getTag()));
+				if(!(findViewById(R.id.letter_layout_15).getTag()).equals("")){
+					Long audioDuration=playGeneralAudio("piano_"+( findViewById(R.id.letter_layout_15).getTag()));
 					resetFontsTypeFace(); 				
 					audioHandler.postDelayed(runRestFontTypeFace, audioDuration);
 					((TextView)findViewById(R.id.letter_15)).setTypeface(appData.getCurrentFontTypeBold());
-					((TextView)findViewById(R.id.letter_15)).setTextSize(getResources().getDimension(R.dimen.le01_chosenfontsize));
+					((TextView)findViewById(R.id.letter_15)).setTextSize(getResources().getDimension(R.dimen.le01_chosenFontSize));
 				}
 			}
 		});
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		
-		findViewById(R.id.letter_layout_16).setOnClickListener(new OnClickListener() {
+		findViewById(R.id.letter_layout_16).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				if(!((String)findViewById(R.id.letter_layout_16).getTag()).equals("")){
-					Long audioDuration=playGeneralAudio("piano_"+((String) findViewById(R.id.letter_layout_16).getTag()));
+				if(!(findViewById(R.id.letter_layout_16).getTag()).equals("")){
+					Long audioDuration=playGeneralAudio("piano_"+( findViewById(R.id.letter_layout_16).getTag()));
 					resetFontsTypeFace(); 				
 					audioHandler.postDelayed(runRestFontTypeFace, audioDuration);
 					((TextView)findViewById(R.id.letter_16)).setTypeface(appData.getCurrentFontTypeBold());
-					((TextView)findViewById(R.id.letter_16)).setTextSize(getResources().getDimension(R.dimen.le01_chosenfontsize));
+					((TextView)findViewById(R.id.letter_16)).setTextSize(getResources().getDimension(R.dimen.le01_chosenFontSize));
 				}
 			}
 		});
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		
-		findViewById(R.id.letter_layout_17).setOnClickListener(new OnClickListener() {
+		findViewById(R.id.letter_layout_17).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				if(!((String)findViewById(R.id.letter_layout_17).getTag()).equals("")){
-					Long audioDuration=playGeneralAudio("piano_"+((String) findViewById(R.id.letter_layout_17).getTag()));
+				if(!(findViewById(R.id.letter_layout_17).getTag()).equals("")){
+					Long audioDuration=playGeneralAudio("piano_"+( findViewById(R.id.letter_layout_17).getTag()));
 					resetFontsTypeFace(); 				
 					audioHandler.postDelayed(runRestFontTypeFace, audioDuration);
 					((TextView)findViewById(R.id.letter_17)).setTypeface(appData.getCurrentFontTypeBold());
-					((TextView)findViewById(R.id.letter_17)).setTextSize(getResources().getDimension(R.dimen.le01_chosenfontsize));
+					((TextView)findViewById(R.id.letter_17)).setTextSize(getResources().getDimension(R.dimen.le01_chosenFontSize));
 				}
 			}
 		});
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		
-		findViewById(R.id.letter_layout_18).setOnClickListener(new OnClickListener() {
+		findViewById(R.id.letter_layout_18).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				if(!((String)findViewById(R.id.letter_layout_18).getTag()).equals("")){
-					Long audioDuration=playGeneralAudio("piano_"+((String) findViewById(R.id.letter_layout_18).getTag()));
+				if(!(findViewById(R.id.letter_layout_18).getTag()).equals("")){
+					Long audioDuration=playGeneralAudio("piano_"+( findViewById(R.id.letter_layout_18).getTag()));
 					resetFontsTypeFace(); 				
 					audioHandler.postDelayed(runRestFontTypeFace, audioDuration);
 					((TextView)findViewById(R.id.letter_18)).setTypeface(appData.getCurrentFontTypeBold());
-					((TextView)findViewById(R.id.letter_18)).setTextSize(getResources().getDimension(R.dimen.le01_chosenfontsize));
+					((TextView)findViewById(R.id.letter_18)).setTextSize(getResources().getDimension(R.dimen.le01_chosenFontSize));
 				}
 			}
 		});
-		
+
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		
-		findViewById(R.id.letter_layout_19).setOnClickListener(new OnClickListener() {
+		findViewById(R.id.letter_layout_19).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				if(!((String)findViewById(R.id.letter_layout_19).getTag()).equals("")){
-					Long audioDuration=playGeneralAudio("piano_"+((String) findViewById(R.id.letter_layout_19).getTag()));
+				if(!(findViewById(R.id.letter_layout_19).getTag()).equals("")){
+					Long audioDuration=playGeneralAudio("piano_"+( findViewById(R.id.letter_layout_19).getTag()));
 					resetFontsTypeFace(); 			
 					audioHandler.postDelayed(runRestFontTypeFace, audioDuration);
 					((TextView)findViewById(R.id.letter_19)).setTypeface(appData.getCurrentFontTypeBold());
-					((TextView)findViewById(R.id.letter_19)).setTextSize(getResources().getDimension(R.dimen.le01_chosenfontsize));
+					((TextView)findViewById(R.id.letter_19)).setTextSize(getResources().getDimension(R.dimen.le01_chosenFontSize));
 				}
 			}
 		});
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		
-		findViewById(R.id.letter_layout_20).setOnClickListener(new OnClickListener() {
+		findViewById(R.id.letter_layout_20).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				if(!((String)findViewById(R.id.letter_layout_20).getTag()).equals("")){
-					Long audioDuration=playGeneralAudio("piano_"+((String) findViewById(R.id.letter_layout_20).getTag()));
+				if(!(findViewById(R.id.letter_layout_20).getTag()).equals("")){
+					Long audioDuration=playGeneralAudio("piano_"+( findViewById(R.id.letter_layout_20).getTag()));
 					resetFontsTypeFace(); 				
 					audioHandler.postDelayed(runRestFontTypeFace, audioDuration);
 					((TextView)findViewById(R.id.letter_20)).setTypeface(appData.getCurrentFontTypeBold());
-					((TextView)findViewById(R.id.letter_20)).setTextSize(getResources().getDimension(R.dimen.le01_chosenfontsize));
+					((TextView)findViewById(R.id.letter_20)).setTextSize(getResources().getDimension(R.dimen.le01_chosenFontSize));
 				}
 			}
 		});
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		
-		findViewById(R.id.letter_layout_21).setOnClickListener(new OnClickListener() {
+		findViewById(R.id.letter_layout_21).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				if(!((String)findViewById(R.id.letter_layout_21).getTag()).equals("")){
-					Long audioDuration=playGeneralAudio("piano_"+((String) findViewById(R.id.letter_layout_21).getTag()));
+				if(!(findViewById(R.id.letter_layout_21).getTag()).equals("")){
+					Long audioDuration=playGeneralAudio("piano_"+( findViewById(R.id.letter_layout_21).getTag()));
 					resetFontsTypeFace(); 				
 					audioHandler.postDelayed(runRestFontTypeFace, audioDuration);
 					((TextView)findViewById(R.id.letter_21)).setTypeface(appData.getCurrentFontTypeBold());
-					((TextView)findViewById(R.id.letter_21)).setTextSize(getResources().getDimension(R.dimen.le01_chosenfontsize));
+					((TextView)findViewById(R.id.letter_21)).setTextSize(getResources().getDimension(R.dimen.le01_chosenFontSize));
 				}
 			}
 		});
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		
-		findViewById(R.id.letter_layout_22).setOnClickListener(new OnClickListener() {
+		findViewById(R.id.letter_layout_22).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				if(!((String)findViewById(R.id.letter_layout_22).getTag()).equals("")){
-					Long audioDuration=playGeneralAudio("piano_"+((String) findViewById(R.id.letter_layout_22).getTag()));
+				if(!(findViewById(R.id.letter_layout_22).getTag()).equals("")){
+					Long audioDuration=playGeneralAudio("piano_"+( findViewById(R.id.letter_layout_22).getTag()));
 					resetFontsTypeFace(); 			
 					audioHandler.postDelayed(runRestFontTypeFace, audioDuration);
 					((TextView)findViewById(R.id.letter_22)).setTypeface(appData.getCurrentFontTypeBold());
-					((TextView)findViewById(R.id.letter_22)).setTextSize(getResources().getDimension(R.dimen.le01_chosenfontsize));
+					((TextView)findViewById(R.id.letter_22)).setTextSize(getResources().getDimension(R.dimen.le01_chosenFontSize));
 				}
 			}
 		});
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		
-		findViewById(R.id.letter_layout_23).setOnClickListener(new OnClickListener() {
+		findViewById(R.id.letter_layout_23).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				if(!((String)findViewById(R.id.letter_layout_23).getTag()).equals("")){
-					Long audioDuration=playGeneralAudio("piano_"+((String) findViewById(R.id.letter_layout_23).getTag()));
+				if(!(findViewById(R.id.letter_layout_23).getTag()).equals("")){
+					Long audioDuration=playGeneralAudio("piano_"+( findViewById(R.id.letter_layout_23).getTag()));
 					resetFontsTypeFace(); 			
 					audioHandler.postDelayed(runRestFontTypeFace, audioDuration);
 					((TextView)findViewById(R.id.letter_23)).setTypeface(appData.getCurrentFontTypeBold());
-					((TextView)findViewById(R.id.letter_23)).setTextSize(getResources().getDimension(R.dimen.le01_chosenfontsize));
+					((TextView)findViewById(R.id.letter_23)).setTextSize(getResources().getDimension(R.dimen.le01_chosenFontSize));
 				}
 			}
 		});
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		
-		findViewById(R.id.letter_layout_24).setOnClickListener(new OnClickListener() {
+		findViewById(R.id.letter_layout_24).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				if(!((String)findViewById(R.id.letter_layout_24).getTag()).equals("")){
-					Long audioDuration=playGeneralAudio("piano_"+((String) findViewById(R.id.letter_layout_24).getTag()));
+				if(!(findViewById(R.id.letter_layout_24).getTag()).equals("")){
+					Long audioDuration=playGeneralAudio("piano_"+( findViewById(R.id.letter_layout_24).getTag()));
 					resetFontsTypeFace(); 			
 					audioHandler.postDelayed(runRestFontTypeFace, audioDuration);
 					((TextView)findViewById(R.id.letter_24)).setTypeface(appData.getCurrentFontTypeBold());
-					((TextView)findViewById(R.id.letter_24)).setTextSize(getResources().getDimension(R.dimen.le01_chosenfontsize));
+					((TextView)findViewById(R.id.letter_24)).setTextSize(getResources().getDimension(R.dimen.le01_chosenFontSize));
 				}
 			}
 		});
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		
-		findViewById(R.id.letter_layout_25).setOnClickListener(new OnClickListener() {
+		findViewById(R.id.letter_layout_25).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				if(!((String)findViewById(R.id.letter_layout_25).getTag()).equals("")){
-					Long audioDuration=playGeneralAudio("piano_"+((String) findViewById(R.id.letter_layout_25).getTag()));
+				if(!(findViewById(R.id.letter_layout_25).getTag()).equals("")){
+					Long audioDuration=playGeneralAudio("piano_"+( findViewById(R.id.letter_layout_25).getTag()));
 					resetFontsTypeFace(); 			
 					audioHandler.postDelayed(runRestFontTypeFace, audioDuration);
 					((TextView)findViewById(R.id.letter_25)).setTypeface(appData.getCurrentFontTypeBold());
-					((TextView)findViewById(R.id.letter_25)).setTextSize(getResources().getDimension(R.dimen.le01_chosenfontsize));
+					((TextView)findViewById(R.id.letter_25)).setTextSize(getResources().getDimension(R.dimen.le01_chosenFontSize));
 				}
 			}
 		});
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		
-		findViewById(R.id.letter_layout_26).setOnClickListener(new OnClickListener() {
+		findViewById(R.id.letter_layout_26).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				if(!((String)findViewById(R.id.letter_layout_26).getTag()).equals("")){
-					Long audioDuration=playGeneralAudio("piano_"+((String) findViewById(R.id.letter_layout_26).getTag()));
+				if(!(findViewById(R.id.letter_layout_26).getTag()).equals("")){
+					Long audioDuration=playGeneralAudio("piano_"+ findViewById(R.id.letter_layout_26).getTag());
 					resetFontsTypeFace(); 				
 					audioHandler.postDelayed(runRestFontTypeFace, audioDuration);
 					((TextView)findViewById(R.id.letter_26)).setTypeface(appData.getCurrentFontTypeBold());
-					((TextView)findViewById(R.id.letter_26)).setTextSize(getResources().getDimension(R.dimen.le01_chosenfontsize));
+					((TextView)findViewById(R.id.letter_26)).setTextSize(getResources().getDimension(R.dimen.le01_chosenFontSize));
 				}
 			}
 		});
@@ -556,6 +559,7 @@ LoaderManager.LoaderCallbacks<Cursor>{
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 
 	private void displayScreen(Cursor currentWordsCursor){
+        ArrayList<ArrayList<String>> currentWords;
 		currentWords=new ArrayList<ArrayList<String>>();
 		int currentWordNumber=0;
 		while(currentWordsCursor.moveToNext()){
@@ -856,8 +860,8 @@ LoaderManager.LoaderCallbacks<Cursor>{
 	@Override
 	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
 		//String[] projection =null;
-		CursorLoader cursorLoader=null;
-		switch(id){
+		CursorLoader cursorLoader;
+        switch(id){
 			default:
 			case MotoliConstants.ACTIVITY_CURRENT_WRDS_LTRS:{
 				
