@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:id="@+id/Activity_BaseFrame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/normalBlack" >
+
+    <ImageView
+        android:id="@+id/Activity_Background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:baselineAlignBottom="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_lt06"
+        android:visibility="visible" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TableRow
+            android:id="@+id/TableRow01"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <include
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                layout="@layout/activity_top_area" />
+        </TableRow>
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".2" />
+    </TableLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.7" />
+
+        <TableRow
+            android:id="@+id/Activity_Center"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:visibility="visible" >
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".2" />
+
+            <RelativeLayout
+                android:id="@+id/Activity_Correct_Text_Box"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/Activity_CorrectText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/lt06_ctext_image_bottom_margin"
+                    android:layout_marginLeft="@dimen/lt06_ctext_image_side_margin"
+                    android:layout_marginRight="@dimen/lt06_ctext_image_side_margin"
+                    android:layout_marginTop="@dimen/lt06_ctext_image_top_margin"
+                    android:contentDescription="@string/none"
+                    android:src="@drawable/rounded_box_selected" />
+
+                <TextView
+                    android:id="@+id/Activity_Text0"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="@dimen/lt06_ctext_bottom_margin"
+                    android:layout_marginTop="@dimen/lt06_ctext_top_margin"
+                    android:gravity="center_horizontal"
+                    android:text="@string/strRandomLetter"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/normalBlack"
+                    android:textSize="@dimen/lt06_correctFontSize" />
+
+                <ProgressBar
+                    android:id="@+id/Activity_LoadingCircle0"
+                    style="?android:attr/progressBarStyleLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/View01"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".3" />
+
+            <LinearLayout
+                android:id="@+id/LinearLayout1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <View
+                    android:id="@+id/view6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".8" />
+
+                <ImageButton
+                    android:id="@+id/btnValidate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight=".2"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/strNone"
+                    android:scaleType="fitStart"
+                    android:src="@drawable/btn_validate_assess_off" />
+
+                <View
+                    android:id="@+id/view7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.8" >
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/Activity_ImageFrame1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/strNone"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/frm_lt06_off" />
+
+                <ImageView
+                    android:id="@+id/Activity_Image1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignBottom="@+id/Activity_ImageFrame1"
+                    android:layout_alignLeft="@+id/Activity_ImageFrame1"
+                    android:layout_alignRight="@+id/Activity_ImageFrame1"
+                    android:layout_alignTop="@+id/Activity_ImageFrame1"
+                    android:layout_marginBottom="@dimen/lt06_image_top_bottom_margin"
+                    android:layout_marginLeft="@dimen/lt06_image_sides_margins"
+                    android:layout_marginRight="@dimen/lt06_image_sides_margins"
+                    android:layout_marginTop="@dimen/lt06_image_top_bottom_margin"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/rounded_border_correct"
+                    android:contentDescription="@string/strNone"
+                    android:padding="4dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/no_image" />
+
+                <ProgressBar
+                    android:id="@+id/Activity_LoadingCircle1"
+                    style="?android:attr/progressBarStyleLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/Activity_Image1"
+                    android:layout_alignTop="@+id/Activity_Image1"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/Activity_ImageFrame2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/strNone"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/frm_lt06_off" />
+
+                <ImageView
+                    android:id="@+id/Activity_Image2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignBottom="@+id/Activity_ImageFrame2"
+                    android:layout_alignLeft="@+id/Activity_ImageFrame2"
+                    android:layout_alignRight="@+id/Activity_ImageFrame2"
+                    android:layout_alignTop="@+id/Activity_ImageFrame2"
+                    android:layout_marginBottom="@dimen/lt06_image_top_bottom_margin"
+                    android:layout_marginLeft="@dimen/lt06_image_sides_margins"
+                    android:layout_marginRight="@dimen/lt06_image_sides_margins"
+                    android:layout_marginTop="@dimen/lt06_image_top_bottom_margin"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/rounded_border_unchosen"
+                    android:contentDescription="@string/strNone"
+                    android:padding="4dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/randomimage" />
+
+                <ProgressBar
+                    android:id="@+id/Activity_LoadingCircle2"
+                    style="?android:attr/progressBarStyleLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/Activity_Image2"
+                    android:layout_alignTop="@+id/Activity_Image2"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/Activity_ImageFrame3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/strNone"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/frm_lt06_on" />
+
+                <ImageView
+                    android:id="@+id/Activity_Image3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignBottom="@+id/Activity_ImageFrame3"
+                    android:layout_alignLeft="@+id/Activity_ImageFrame3"
+                    android:layout_alignRight="@+id/Activity_ImageFrame3"
+                    android:layout_alignTop="@+id/Activity_ImageFrame3"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/lt06_image_top_bottom_margin"
+                    android:layout_marginLeft="@dimen/lt06_image_sides_margins"
+                    android:layout_marginRight="@dimen/lt06_image_sides_margins"
+                    android:layout_marginTop="@dimen/lt06_image_top_bottom_margin"
+                    android:background="@drawable/rounded_border_correct"
+                    android:contentDescription="@string/strNone"
+                    android:padding="4dp"
+                    android:src="@drawable/randomimage" />
+
+                <ProgressBar
+                    android:id="@+id/Activity_LoadingCircle3"
+                    style="?android:attr/progressBarStyleLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/Activity_Image3"
+                    android:layout_alignTop="@+id/Activity_Image3"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/Activity_ImageFrame4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/strNone"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/frm_lt06_off" />
+
+                <ImageView
+                    android:id="@+id/Activity_Image4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignBottom="@+id/Activity_ImageFrame4"
+                    android:layout_alignLeft="@+id/Activity_ImageFrame4"
+                    android:layout_alignRight="@+id/Activity_ImageFrame4"
+                    android:layout_alignTop="@+id/Activity_ImageFrame4"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/lt06_image_top_bottom_margin"
+                    android:layout_marginLeft="@dimen/lt06_image_sides_margins"
+                    android:layout_marginRight="@dimen/lt06_image_sides_margins"
+                    android:layout_marginTop="@dimen/lt06_image_top_bottom_margin"
+                    android:background="@drawable/rounded_border_unchosen"
+                    android:contentDescription="@string/strNone"
+                    android:padding="4dp"
+                    android:src="@drawable/blank_image" />
+
+                <ProgressBar
+                    android:id="@+id/Activity_LoadingCircle4"
+                    style="?android:attr/progressBarStyleLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/Activity_Image4"
+                    android:layout_alignTop="@+id/Activity_Image4"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+        </TableRow>
+    </TableLayout>
+
+</FrameLayout>
