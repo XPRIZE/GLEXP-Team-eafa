@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/Activity_BaseFrame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/normalBlack" >
+
+    <ImageView
+        android:id="@+id/Activity_Background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:baselineAlignBottom="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_sd03"
+        android:visibility="visible" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".02" />
+
+            <include
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                layout="@layout/activity_top_area"
+                android:layout_weight="1" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".02" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".25">
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".15" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/btnMicMan0"
+                android:layout_weight="1"
+                android:src="@drawable/btn_dude_sd03"
+                android:scaleType="fitEnd" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".06" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:id="@+id/btnValidate"
+                    android:layout_weight="1"
+                    android:src="@drawable/btn_validate_assess_off"
+                    android:scaleType="fitStart"
+                    />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="top"
+                    android:layout_weight=".8" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".15" />
+
+        </TableRow>
+    </TableLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".7" />
+
+        <TableRow
+            android:id="@+id/tableRow"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5" >
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/frmImage1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/strNone"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/frm_sd03_on" />
+
+                <ImageView
+                    android:id="@+id/phonicImage1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/sd03_image_bottom_margin"
+                    android:layout_marginLeft="@dimen/sd03_image_sides_margins"
+                    android:layout_marginRight="@dimen/sd03_image_sides_margins"
+                    android:layout_marginTop="@dimen/sd03_image_top_margin"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/strNone"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/no_image" />
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyleLarge"
+                    android:id="@+id/loadingCircle1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/phonicImage1"
+                    android:layout_alignTop="@+id/phonicImage1"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/frmImage2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/strNone"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/frm_sd03_off" />
+
+                <ImageView
+                    android:id="@+id/phonicImage2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/sd03_image_bottom_margin"
+                    android:layout_marginLeft="@dimen/sd03_image_sides_margins"
+                    android:layout_marginRight="@dimen/sd03_image_sides_margins"
+                    android:layout_marginTop="@dimen/sd03_image_top_margin"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/strNone"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/randomimage" />
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyleLarge"
+                    android:id="@+id/loadingCircle2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/phonicImage2"
+                    android:layout_alignTop="@+id/phonicImage2"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/frmImage3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/strNone"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/frm_sd03_off" />
+
+                <ImageView
+                    android:id="@+id/phonicImage3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/sd03_image_bottom_margin"
+                    android:layout_marginLeft="@dimen/sd03_image_sides_margins"
+                    android:layout_marginRight="@dimen/sd03_image_sides_margins"
+                    android:layout_marginTop="@dimen/sd03_image_top_margin"
+                    android:contentDescription="@string/strNone"
+                    android:src="@drawable/randomimage"
+                    android:scaleType="fitCenter" />
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyleLarge"
+                    android:id="@+id/loadingCircle3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/phonicImage3"
+                    android:layout_alignTop="@+id/phonicImage3"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/frmImage4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/strNone"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/frm_sd03_off" />
+
+                <ImageView
+                    android:id="@+id/phonicImage4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/sd03_image_bottom_margin"
+                    android:layout_marginLeft="@dimen/sd03_image_sides_margins"
+                    android:layout_marginRight="@dimen/sd03_image_sides_margins"
+                    android:layout_marginTop="@dimen/sd03_image_top_margin"
+                    android:contentDescription="@string/strNone"
+                    android:src="@drawable/blank_image"
+                    android:scaleType="fitCenter" />
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyleLarge"
+                    android:id="@+id/loadingCircle4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/phonicImage4"
+                    android:layout_alignTop="@+id/phonicImage4"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+        </TableRow>
+
+    </TableLayout>
+
+</FrameLayout>

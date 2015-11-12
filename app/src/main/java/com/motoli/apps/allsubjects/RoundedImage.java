@@ -1,0 +1,73 @@
+package com.motoli.apps.allsubjects;
+
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Path;
+import android.graphics.RectF;
+import android.util.AttributeSet;
+import android.view.View;
+import android.widget.ImageView;
+
+/**
+ * Part of Project Motoli All Subjects
+ * for Education Technology For Development
+ * created by Aaron D Michaelis Borsay
+ * on 10/13/2015.
+ */
+public class RoundedImage extends ImageView {
+
+    private Path roundedPath;
+    private int rounded;
+
+    public RoundedImage(Context context) {
+        super(context);
+        init();
+    }
+
+    public RoundedImage(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init();
+    }
+
+    public RoundedImage(Context context, AttributeSet attrs,
+                           int defStyle) {
+        super(context, attrs, defStyle);
+        init();
+    }
+
+    private void init() {
+        // If the application is hardware accelerated,
+        // must disable it for this view.
+        setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+        // Set a default radius
+        setRounded(30);
+    }
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        if (w != oldw || h != oldh) {
+            roundedPath = new Path();
+            roundedPath.addRoundRect(new RectF(0, 0, w, h),
+                    rounded, rounded, Path.Direction.CW);
+        }
+    }
+
+    public int getRounded() {
+        return rounded;
+    }
+
+    public void setRounded(int rounded) {
+        this.rounded = rounded;
+        roundedPath = new Path();
+        roundedPath.addRoundRect(new RectF(0, 0, getWidth(), getHeight()),
+                rounded, rounded, Path.Direction.CW);
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        //Apply the clip
+        canvas.clipPath(roundedPath);
+        //Let the view draw as normal
+        super.onDraw(canvas);
+    }
+}

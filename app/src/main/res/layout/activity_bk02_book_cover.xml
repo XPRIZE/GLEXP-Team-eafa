@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/lps_back"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:padding="5dp" >
+
+
+    <com.motoli.apps.allsubjects.GridViewItem xmlns:android="http://schemas.android.com/apk/res/android"
+                                              android:id="@+id/grid_item_image"
+                                              android:layout_width="match_parent"
+                                              android:layout_height="0dp"
+                                              android:scaleType="centerCrop"
+                                              android:src="@color/ver_off_white"
+                                              android:layout_weight="1">
+    </com.motoli.apps.allsubjects.GridViewItem>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="New Text"
+        android:id="@+id/gridText"
+        android:layout_weight=".1"
+        android:textSize="@dimen/bk02_font_size"
+        android:gravity="center_vertical|center_horizontal"
+        android:textColor="@color/bk02_font_color"
+        />
+
+
+</LinearLayout>

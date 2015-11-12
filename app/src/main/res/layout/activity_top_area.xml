@@ -25,11 +25,45 @@
         android:layout_weight="1"
         android:orientation="horizontal" >
 
-        <View
-            android:id="@+id/view1"
+        <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="6" />
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/finishedRoundStar"
+                android:src="@drawable/btn_star_finished_round"
+                android:scaleType="fitCenter"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="35dp"
+                android:layout_marginRight="10dp"
+                android:visibility="invisible"/>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/activityName"
+            android:layout_weight="5"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/darkGray"
+            android:textSize="@dimen/activity_name_font_size"
+            android:gravity="top"
+            android:layout_marginTop="10dp"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/btnChangeCase"
+            android:layout_weight="1"
+            android:src="@drawable/btn_changecase"
+            android:scaleType="fitCenter"
+            android:visibility="invisible"/>
 
         <ImageButton
             android:id="@+id/btnInfo"

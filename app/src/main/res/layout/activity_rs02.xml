@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@drawable/bg_rs02" >
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <include
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                layout="@layout/activity_top_area" />
+        </TableRow>
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".2" />
+    </TableLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.7" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:visibility="visible" >
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".2" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/imageFrame0"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/sd05_image_bottom_margin"
+                    android:layout_marginLeft="@dimen/sd05_frame_side_margin"
+                    android:layout_marginRight="@dimen/sd05_frame_side_margin"
+                    android:layout_marginTop="@dimen/sd05_image_top_margin"
+                    android:src="@drawable/rounded_box_selected"
+                    android:scaleType="fitXY" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/syllableImage0"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/xpeng_img_phonic_word_id155"
+                    android:layout_alignParentStart="false"
+                    android:layout_alignParentEnd="false"
+                    android:layout_marginLeft="@dimen/sd05_image_sides"
+                    android:layout_marginRight="@dimen/sd05_image_sides"
+                    android:layout_marginTop="@dimen/sd05_image_top_margin"
+                    android:layout_marginBottom="@dimen/sd05_image_bottom_margin"
+                    android:layout_alignTop="@+id/imageFrame0"
+                    android:layout_alignBottom="@+id/imageFrame0"
+                    android:layout_alignStart="@+id/imageFrame0"
+                    android:layout_alignEnd="@+id/imageFrame0" />
+
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/view4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".3" />
+
+            <LinearLayout
+                android:id="@+id/LinearLayout1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <View
+                    android:id="@+id/view6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".8" />
+
+                <ImageButton
+                    android:id="@+id/btnValidate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight=".2"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/strNone"
+                    android:scaleType="fitStart"
+                    android:src="@drawable/btn_validate_assess_off" />
+
+                <View
+                    android:id="@+id/view7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.8" >
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/syllableTextFrame1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="false"
+                    android:contentDescription="@string/strNone"
+                    android:src="@drawable/frm_rs02_off" />
+
+                <TextView
+                    android:id="@+id/syllableText1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="@dimen/rs02_text_bottom_margin"
+                    android:layout_marginTop="@dimen/rs02_text_top_margin"
+                    android:gravity="center_horizontal"
+                    android:lineSpacingMultiplier=".8"
+                    android:linksClickable="true"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:scrollbarAlwaysDrawVerticalTrack="true"
+                    android:text="@string/strRandomLetter"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/normalBlack"
+                    android:textSize="@dimen/lt01_letterFontSize" />
+
+                <ProgressBar
+                    android:id="@+id/progressCircle1"
+                    style="?android:attr/progressBarStyleLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/syllableTextFrame1"
+                    android:layout_alignTop="@+id/syllableTextFrame1"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/syllableTextFrame2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/strNone"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/frm_rs02_off" />
+
+                <TextView
+                    android:id="@+id/syllableText2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="@dimen/rs02_text_bottom_margin"
+                    android:layout_marginTop="@dimen/rs02_text_top_margin"
+                    android:gravity="center_horizontal"
+                    android:lineSpacingMultiplier=".8"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:scrollbarAlwaysDrawVerticalTrack="true"
+                    android:text="@string/strRandomLetter"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/normalBlack"
+                    android:textSize="@dimen/lt01_letterFontSize" />
+
+                <ProgressBar
+                    android:id="@+id/progressCircle2"
+                    style="?android:attr/progressBarStyleLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/syllableTextFrame2"
+                    android:layout_alignTop="@+id/syllableTextFrame2"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/syllableTextFrame3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/strNone"
+                    android:src="@drawable/frm_rs02_off" />
+
+                <TextView
+                    android:id="@+id/syllableText3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="@dimen/rs02_text_bottom_margin"
+                    android:layout_marginTop="@dimen/rs02_text_top_margin"
+                    android:gravity="center_horizontal"
+                    android:lineSpacingMultiplier=".8"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:scrollbarAlwaysDrawVerticalTrack="true"
+                    android:text="@string/strRandomLetter"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/normalBlack"
+                    android:textSize="@dimen/lt01_letterFontSize" />
+
+                <ProgressBar
+                    android:id="@+id/progressCircle3"
+                    style="?android:attr/progressBarStyleLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/syllableTextFrame3"
+                    android:layout_alignTop="@+id/syllableTextFrame3"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/syllableTextFrame4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="false"
+                    android:contentDescription="@string/strNone"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/frm_rs02_off" />
+
+                <TextView
+                    android:id="@+id/syllableText4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="@dimen/rs02_text_bottom_margin"
+                    android:layout_marginTop="@dimen/rs02_text_top_margin"
+                    android:gravity="center_horizontal"
+                    android:lineSpacingMultiplier=".8"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:scrollbarAlwaysDrawVerticalTrack="true"
+                    android:text="@string/strRandomLetter"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/normalBlack"
+                    android:textSize="@dimen/lt01_letterFontSize" />
+
+                <ProgressBar
+                    android:id="@+id/progressCircle4"
+                    style="?android:attr/progressBarStyleLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/syllableTextFrame4"
+                    android:layout_alignTop="@+id/syllableTextFrame4"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+        </TableRow>
+    </TableLayout>
+
+</FrameLayout>

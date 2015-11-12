@@ -81,21 +81,13 @@ public class UserSelectRow extends BaseAdapter{
 		TextView title = (TextView) vi.findViewById(R.id.UserSelectText); // unit name
 		
 		ImageView currentArrow = (ImageView) vi.findViewById(R.id.UserSelectArrow);
-		vi.findViewById(R.id.UserSelectIcon).setTag(userCodes.get(position).toString());
+		vi.findViewById(R.id.UserSelectIcon).setTag(userCodes.get(position));
 
 		Log.d("My Logs", "position: "+position);
 		
-		if(currentUserTag != null && !currentUserTag.isEmpty() && !currentUserTag.equals("")) {
-			Log.d("My Logs","current activity tag code: "+currentUserTag);
 
-			if(currentUserTag.equals(vi.findViewById(R.id.UserSelectArrow).getTag().toString())){
-				currentArrow.setVisibility(ImageView.VISIBLE);
-			}else{
-				currentArrow.setVisibility(ImageView.INVISIBLE);
-			}
-		}else{
 			currentArrow.setVisibility(ImageView.INVISIBLE);
-		}
+
 		
 		
 		if(currentFontType!=null){
@@ -151,10 +143,10 @@ public class UserSelectRow extends BaseAdapter{
 	//	((ImageView) vi.findViewById(R.id.UserSelectIcon)).setImageResource(resId);
 		
 		if(title.getText().equals("")){
-			((ImageView) vi.findViewById(R.id.UserSelectIcon)).setVisibility(ImageView.INVISIBLE);
+			 vi.findViewById(R.id.UserSelectIcon).setVisibility(ImageView.INVISIBLE);
 		}
-		if(userCodes.get(position).toString().equals("")){
-			((ImageView) vi.findViewById(R.id.UserSelectIcon)).setVisibility(ImageView.INVISIBLE);
+		if(userCodes.get(position).equals("")){
+			vi.findViewById(R.id.UserSelectIcon).setVisibility(ImageView.INVISIBLE);
 			title.setVisibility(TextView.INVISIBLE);
 		}
 		//((TextView) vi.findViewById(R.id.unitNumber)).setText(unitNumbers.get(position));

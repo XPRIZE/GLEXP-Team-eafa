@@ -26,5 +26,34 @@
 <string name="letter_24">x</string>
 <string name="letter_25">y</string>
 <string name="letter_26">z</string>
-    
+
+
+
+
+    <string name="phonic_1">a</string>
+    <string name="phonic_2">b</string>
+    <string name="phonic_3">c</string>
+    <string name="phonic_4">d</string>
+    <string name="phonic_5">e</string>
+    <string name="phonic_6">f</string>
+    <string name="phonic_7">g</string>
+    <string name="phonic_8">h</string>
+    <string name="phonic_9">i</string>
+    <string name="phonic_10">j</string>
+    <string name="phonic_11">k</string>
+    <string name="phonic_12">l</string>
+    <string name="phonic_13">m</string>
+    <string name="phonic_14">n</string>
+    <string name="phonic_15">o</string>
+    <string name="phonic_16">p</string>
+    <string name="phonic_17">q</string>
+    <string name="phonic_18">r</string>
+    <string name="phonic_19">s</string>
+    <string name="phonic_20">t</string>
+    <string name="phonic_21">u</string>
+    <string name="phonic_22">v</string>
+    <string name="phonic_23">w</string>
+    <string name="phonic_24">x</string>
+    <string name="phonic_25">y</string>
+    <string name="phonic_26">z</string>
 </resources>

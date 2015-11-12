@@ -5,8 +5,7 @@
           >
  <solid android:color="@color/reg_white"/>
 
-        <corners android:bottomRightRadius="30sp" android:bottomLeftRadius="30sp" 
-         android:topLeftRadius="30sp" android:topRightRadius="30sp"/>
+    <corners android:radius="20sp"/>
 
           <stroke
             android:color="@color/reg_gray"

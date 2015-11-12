@@ -1,320 +1,307 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/Activity_BaseFrame"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/black_overlay" >
+             android:id="@+id/FrameLayout1"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent" >
 
     <ImageView
-        android:id="@+id/Activity_Background"
+        android:id="@+id/Activity_TextBox1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:baselineAlignBottom="true"
-        android:scaleType="centerCrop"
-        android:src="@drawable/bg_w01"
-        android:visibility="visible" />
+        android:adjustViewBounds="false"
+        android:cropToPadding="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/bg_wd01" />
 
-    <TableLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
+        <View
+            android:id="@+id/view3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
         <TableRow
-            android:id="@+id/Curriculum_Top_Buttons"
+            android:id="@+id/tableRow1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1" >
+            android:layout_weight=".2" >
 
             <include
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 layout="@layout/activity_top_area" />
+
         </TableRow>
 
-        <View
-            android:id="@+id/view1"
+        <RelativeLayout
+            android:id="@+id/RelativeLayout1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight=".2" />
-    </TableLayout>
-
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-
-        <View
-            android:id="@+id/view2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="2.7" />
-
-        <TableRow
-            android:id="@+id/Activity_Center"
-            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:visibility="visible" >
+            android:layout_weight="1" >
 
             <View
-                android:id="@+id/view3"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".2" />
+                android:id="@+id/view1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-            <RelativeLayout
-                android:id="@+id/Activity_Correct_Text_Box"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" >
+            <TableRow
+                android:id="@+id/tableRow2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
 
-                <ImageView
-                    android:id="@+id/Activity_CorrectText"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/wd01_ctext_image_bottom_margin"
-                    android:layout_marginLeft="@dimen/wd01_ctext_image_side_margin"
-                    android:layout_marginRight="@dimen/wd01_ctext_image_side_margin"
-                    android:layout_marginTop="@dimen/wd01_ctext_image_top_margin"
-                    android:src="@drawable/rounded_text_wd01_selected" />
-
-                <TextView
-                    android:id="@+id/Activity_Text0"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="@dimen/wd01_ctext_top_margin"
-                    android:gravity="center_horizontal"
-                    android:text="@string/strRandomLetter"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/reg_black"
-                    android:textSize="@dimen/wd01_correct_font_size" />
-
-                <ProgressBar
-                    android:id="@+id/Activity_LoadingCircle0"
-                    style="?android:attr/progressBarStyleLarge"
-                    android:layout_width="wrap_content"
+                <View
+                    android:id="@+id/Activity_Number"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true" />
-            </RelativeLayout>
+                    android:layout_weight=".5" />
 
-            <View
-                android:id="@+id/view4"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".3" />
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" >
+
+                    <ImageView
+                        android:id="@+id/Activity_MicDude"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="-10dp"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/none"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/btn_dude_wd01" />
+
+                </RelativeLayout>
+
+                <View
+                    android:id="@+id/view5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".2" />
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" >
+
+                    <ImageButton
+                        android:id="@+id/btnValidate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="20dp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="@string/strNone"
+                        android:scaleType="fitStart"
+                        android:src="@drawable/btn_validate_assess_off" />
+
+                </RelativeLayout>
+
+                <View
+                    android:id="@+id/view2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5" />
+            </TableRow>
 
             <LinearLayout
-                android:id="@+id/LinearLayout1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:orientation="vertical" >
 
                 <View
-                    android:id="@+id/view6"
+                    android:id="@+id/view4"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".8" />
+                    android:layout_height="0dp"
+                    android:layout_weight=".7" />
 
-                <ImageButton
-                    android:id="@+id/btnValidate"
+                <TableRow
+                    android:id="@+id/tableRow3"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_weight=".2"
-                    android:background="@android:color/transparent"
-                    android:contentDescription="@string/strNone"
-                    android:scaleType="fitStart"
-                    android:src="@drawable/btn_validate_assess_off" />
+                    android:layout_height="0dp"
+                    android:layout_weight="1" >
 
-                <View
-                    android:id="@+id/view7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" >
 
+                        <ImageView
+                            android:id="@+id/activityFrame1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="false"
+                            android:contentDescription="@string/strNone"
+                            android:src="@drawable/frm_wd01_off" />
+
+                        <TextView
+                            android:id="@+id/activityText1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginBottom="@dimen/wd01_text_bottom_margin"
+                            android:layout_marginTop="@dimen/wd01_text_top_margin"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:lineSpacingMultiplier=".8"
+                            android:linksClickable="true"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:scrollbarAlwaysDrawVerticalTrack="true"
+                            android:text="@string/strRandomString"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/normalBlack"
+                            android:textSize="@dimen/wd01_letterFontSize" />
+
+                        <ProgressBar
+                            android:id="@+id/loadingCircle1"
+                            style="?android:attr/progressBarStyleLarge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@+id/activityFrame1"
+                            android:layout_alignTop="@+id/activityFrame1"
+                            android:layout_centerHorizontal="true" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:id="@+id/activityFrame2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="@string/strNone"
+                            android:src="@drawable/frm_wd01_on" />
+
+                        <TextView
+                            android:id="@+id/activityText2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginBottom="@dimen/wd01_text_bottom_margin"
+                            android:layout_marginTop="@dimen/wd01_text_top_margin"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:lineSpacingMultiplier=".8"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:scrollbarAlwaysDrawVerticalTrack="true"
+                            android:text="@string/strRandomString"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/normalBlack"
+                            android:textSize="@dimen/wd01_letterFontSize" />
+
+                        <ProgressBar
+                            android:id="@+id/loadingCircle2"
+                            style="?android:attr/progressBarStyleLarge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@+id/activityFrame2"
+                            android:layout_alignTop="@+id/activityFrame2"
+                            android:layout_centerHorizontal="true" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:id="@+id/activityFrame3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="@string/strNone"
+                            android:src="@drawable/frm_wd01_off" />
+
+                        <TextView
+                            android:id="@+id/activityText3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginBottom="@dimen/wd01_text_bottom_margin"
+                            android:layout_marginTop="@dimen/wd01_text_top_margin"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:lineSpacingMultiplier=".8"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:scrollbarAlwaysDrawVerticalTrack="true"
+                            android:text="@string/strRandomString"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/normalBlack"
+                            android:textSize="@dimen/wd01_letterFontSize" />
+
+                        <ProgressBar
+                            android:id="@+id/loadingCircle3"
+                            style="?android:attr/progressBarStyleLarge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@+id/activityFrame3"
+                            android:layout_alignTop="@+id/activityFrame3"
+                            android:layout_centerHorizontal="true" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" >
+
+                        <ImageView
+                            android:id="@+id/activityFrame4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:adjustViewBounds="false"
+                            android:contentDescription="@string/strNone"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/frm_wd01_on" />
+
+                        <TextView
+                            android:id="@+id/activityText4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginBottom="@dimen/wd01_text_bottom_margin"
+                            android:layout_marginTop="@dimen/wd01_text_top_margin"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:lineSpacingMultiplier=".8"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:scrollbarAlwaysDrawVerticalTrack="true"
+                            android:text="@string/strRandomString"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/normalBlack"
+                            android:textSize="@dimen/wd01_letterFontSize" />
+
+                        <ProgressBar
+                            android:id="@+id/loadingCircle4"
+                            style="?android:attr/progressBarStyleLarge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@+id/activityFrame4"
+                            android:layout_alignTop="@+id/activityFrame4"
+                            android:layout_centerHorizontal="true" />
+
+                    </RelativeLayout>
+
+                </TableRow>
             </LinearLayout>
 
-            <View
-                android:id="@+id/view5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".2" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/Activity_Bottom"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.8" >
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" >
-
-                <ImageView
-                    android:id="@+id/Activity_TextFrame1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:clickable="false"
-                    android:contentDescription="@string/strNone"
-                    android:src="@drawable/frm_wd01_off" />
-
-                <TextView
-                    android:id="@+id/Activity_Text1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginBottom="@dimen/wd01_text_bottom_margin"
-                    android:layout_marginTop="@dimen/wd01_text_top_margin"
-                    android:gravity="center_horizontal"
-                    android:lineSpacingMultiplier=".8"
-                    android:linksClickable="true"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:scrollbarAlwaysDrawVerticalTrack="true"
-                    android:text="@string/strRandomLetter"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/reg_black"
-                    android:textSize="@dimen/tl01_letterfontsize" />
-
-                <ProgressBar
-                    android:id="@+id/Activity_LoadingCircle1"
-                    style="?android:attr/progressBarStyleLarge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/Activity_TextFrame1"
-                    android:layout_alignTop="@+id/Activity_TextFrame1"
-                    android:layout_centerHorizontal="true" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" >
-
-                <ImageView
-                    android:id="@+id/Activity_TextFrame2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@string/strNone"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/frm_wd01_on" />
-
-                <TextView
-                    android:id="@+id/Activity_Text2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginBottom="@dimen/wd01_text_bottom_margin"
-                    android:layout_marginTop="@dimen/wd01_text_top_margin"
-                    android:gravity="center_horizontal"
-                    android:lineSpacingMultiplier=".8"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:scrollbarAlwaysDrawVerticalTrack="true"
-                    android:text="@string/strRandomLetter"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/reg_black"
-                    android:textSize="@dimen/tl01_letterfontsize" />
-
-                <ProgressBar
-                    android:id="@+id/Activity_LoadingCircle2"
-                    style="?android:attr/progressBarStyleLarge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/Activity_TextFrame2"
-                    android:layout_alignTop="@+id/Activity_TextFrame2"
-                    android:layout_centerHorizontal="true" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" >
-
-                <ImageView
-                    android:id="@+id/Activity_TextFrame3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@string/strNone"
-                    android:src="@drawable/frm_wd01_off" />
-
-                <TextView
-                    android:id="@+id/Activity_Text3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginBottom="@dimen/wd01_text_bottom_margin"
-                    android:layout_marginTop="@dimen/wd01_text_top_margin"
-                    android:gravity="center_horizontal"
-                    android:lineSpacingMultiplier=".8"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:scrollbarAlwaysDrawVerticalTrack="true"
-                    android:text="@string/strRandomLetter"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/reg_black"
-                    android:textSize="@dimen/tl01_letterfontsize" />
-
-                <ProgressBar
-                    android:id="@+id/Activity_LoadingCircle3"
-                    style="?android:attr/progressBarStyleLarge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/Activity_TextFrame3"
-                    android:layout_alignTop="@+id/Activity_TextFrame3"
-                    android:layout_centerHorizontal="true" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" >
-
-                <ImageView
-                    android:id="@+id/Activity_TextFrame4"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:adjustViewBounds="false"
-                    android:contentDescription="@string/strNone"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/frm_wd01_on" />
-
-                <TextView
-                    android:id="@+id/Activity_Text4"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginBottom="@dimen/wd01_text_bottom_margin"
-                    android:layout_marginTop="@dimen/wd01_text_top_margin"
-                    android:gravity="center_horizontal"
-                    android:lineSpacingMultiplier=".8"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:scrollbarAlwaysDrawVerticalTrack="true"
-                    android:text="g"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/reg_black"
-                    android:textSize="@dimen/tl01_letterfontsize" />
-
-                <ProgressBar
-                    android:id="@+id/Activity_LoadingCircle4"
-                    style="?android:attr/progressBarStyleLarge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/Activity_TextFrame4"
-                    android:layout_alignTop="@+id/Activity_TextFrame4"
-                    android:layout_centerHorizontal="true" />
-            </RelativeLayout>
-        </TableRow>
-    </TableLayout>
+        </RelativeLayout>
+    </LinearLayout>
 
 </FrameLayout>

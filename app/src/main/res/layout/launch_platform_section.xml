@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="5dp" >
+    android:padding="5dp"
+    >
 
     
     <com.motoli.apps.allsubjects.GridViewItem xmlns:android="http://schemas.android.com/apk/res/android"
@@ -12,7 +13,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scaleType="centerCrop"
-    android:src="@drawable/xpsec_words_practice" >
+    android:src="@drawable/icon_letters_name_learn" >
 </com.motoli.apps.allsubjects.GridViewItem>
 
     

@@ -18,19 +18,19 @@ public class Activity_LL02 extends Activity_General_Parent {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out);
-		setContentView(R.layout.activity_ll01);
+		setContentView(R.layout.activity_ll02);
 		appData.addToClassOrder(28);
 		allActivityText = new ArrayList<ArrayList<ArrayList<String>>>();
 		
 		
         // VideoView refference see main.xml
-        VideoView mVideoView = (VideoView)findViewById(R.id.Activity_Video);
+        VideoView mVideoView = (VideoView)findViewById(R.id.videoActivity);
         
-        String uriPath = "android.resource://com.motoli.apps.allsubjects.raw/"+R.raw.alphabet_en;
+        String uriPath = "android.resource://com.motoli.apps.allsubjects.raw/"+R.raw.letter_a_learn;
          
         Uri uri = Uri.parse(uriPath); //Declare your url here.
         Uri video = Uri.parse("android.resource://" + getPackageName() + "/" 
-        	      + R.raw.learn_upper_lower);
+        	      + R.raw.letter_a_learn);
         
         mVideoView.setMediaController(new MediaController(this));       
         mVideoView.setVideoURI(video);

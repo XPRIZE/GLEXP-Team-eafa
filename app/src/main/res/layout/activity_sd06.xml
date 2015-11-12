@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imageView2"
+        android:layout_gravity="center"
+        android:src="@drawable/bg_sd06"
+        android:scaleType="fitXY" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/activity_top_area"
+            android:layout_weight="1" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight=".25" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/btnCircleSD06"
+                android:src="@drawable/btn_sd06_circle"
+                android:scaleType="fitStart"
+                android:layout_alignParentStart="false"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/sd06_shape_outside_margins"
+                android:layout_marginRight="@dimen/sd06_shape_inside_margins"
+                android:layout_marginTop="@dimen/sd06_shape_top_margin" />
+        </RelativeLayout>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.22" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/btnStarSD06"
+                android:src="@drawable/btn_sd06_star"
+                android:scaleType="fitStart"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="@dimen/sd06_shape_outside_margins"
+                android:layout_marginLeft="@dimen/sd06_shape_inside_margins"
+                android:layout_marginTop="@dimen/sd06_shape_top_margin" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".4" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2.1">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnValidate"
+                    android:src="@drawable/btn_validate_assess_off" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".4">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageView3"
+                    android:src="@drawable/sd06_line"
+                    android:layout_marginLeft="@dimen/sd06_line_padding"
+                    android:layout_marginRight="@dimen/sd06_line_padding"
+                    android:layout_marginTop="@dimen/sd06_line_top_margin" />
+            </RelativeLayout>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/imageView5"
+                        android:src="@drawable/frm_sd06"
+                        android:scaleType="fitCenter" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/btnTextsd06"
+                        android:layout_marginLeft="@dimen/sd06_innerframe_side_margins"
+                        android:layout_marginRight="@dimen/sd06_innerframe_side_margins"
+                        android:layout_marginBottom="@dimen/sd06_text_bottom_margin"
+                        android:text="@string/letter_13"
+                        android:textColor="@color/normalBlack"
+                        android:textStyle="normal"
+                        android:textSize="@dimen/sd06_font_size"
+                        android:gravity="center_vertical|center_horizontal" />
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleLarge"
+                        android:id="@+id/loadingCircle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"/>
+                </RelativeLayout>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".2" />
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/imageView6"
+                        android:layout_weight="1"
+                        android:src="@drawable/frm_sd06"
+                        android:scaleType="fitCenter" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnImageSD06"
+                        android:src="@drawable/xpeng_img_phonic_word_id98"
+                        android:layout_marginRight="@dimen/sd06_innerframe_side_margins"
+                        android:layout_marginLeft="@dimen/sd06_innerframe_side_margins"
+                        android:layout_marginTop="@dimen/sd06_innerframe_top_margins"
+                        android:layout_marginBottom="@dimen/sd06_innerframe_top_margins" />
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleLarge"
+                        android:id="@+id/loadingCircle2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"/>
+                </RelativeLayout>
+
+            </TableRow>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".1" />
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
+</FrameLayout>

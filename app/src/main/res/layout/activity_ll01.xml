@@ -1,71 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+             android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/reg_black" >
+    android:background="@color/activitiesPlatformBackground" >
 
-        <RelativeLayout
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".2"
+        >
+
+        <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight=".15" >
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/activityName"
+            android:layout_weight="1"/>
 
-            <View
-                android:id="@+id/view2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </RelativeLayout>
-
-        <LinearLayout
+        <Space
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="1.7"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/btnBack"
             android:layout_weight="1"
-            android:orientation="vertical" >
+            android:src="@drawable/btn_move_blue"
+            android:scaleType="fitEnd"/>
 
-            <View
-                android:id="@+id/view3"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight=".04" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-
-                <VideoView
-                    android:id="@+id/Activity_Video"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true" />
-
-            </RelativeLayout>
-
-            <View
-                android:id="@+id/view4"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight=".04" />
-        </LinearLayout>
-
-        <RelativeLayout
+        <Space
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight=".15" >
+            android:layout_weight=".1"/>
+    </TableRow>
 
-            <ImageButton
-                android:id="@+id/btnBack"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:background="@android:color/transparent"
-                android:contentDescription="@string/none"
-                android:scaleType="fitCenter"
-                android:soundEffectsEnabled="false"
-                android:src="@drawable/btn_move_blue" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".02"/>
 
-        </RelativeLayout>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-</TableRow>
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".1"/>
+
+        <VideoView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/videoActivity"
+            android:layout_weight="1"
+            android:theme="@style/FullscreenTheme"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".1"/>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".1"
+        >
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+    </TableRow>
+
+</LinearLayout>

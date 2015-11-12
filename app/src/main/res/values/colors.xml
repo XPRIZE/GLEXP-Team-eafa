@@ -1,52 +1,104 @@
 <resources>
+    <color name="reg_white">#FFFFFF</color>
+    <color name="opaque_white">#80ffffff</color>
 
-    <color name="black_overlay">#66000000</color>
-    <color name="regwhite">#FFFFFF</color>
-    <color name="settingBrownText">#725a42</color>
-    <color name="greenHighlight">#8020ff0d</color>
-    <color name="redHighlight">#80ff200d</color>
-        <color name="blueHighlight">#800d20ff</color>
-        <color name="yellowHighlight">#80fff200</color>
-        <color name="reg_yellow">#fff200</color>
-        <color name="bad_guest_blue">#385bac</color>
-        <color name="free_admin_gold">#dad034</color>
-        <color name="guest_arriving">#3d7338</color>
-        <color name="guest_leaving">#b51414</color>
-        <color name="lght_blue">#1bc8c6</color>
-        <color name="drk_green">#2b621e</color>
-        <color name="blackHighlight">#80000000</color>
-        <color name="grayHighlight">#90CCCCCC</color>
-        <color name="lightGrey">#bbbbbb</color>
-        <color name="reg_black">#000000</color>
-        <color name="reg_red">#ff200d</color>
-        <color name="reg_gold">#ffcc00</color>
-         <color name="reg_gray">#CCCCCC</color>
-        <color name="correct_green">#669900</color>
-        <color name="incorrect_red">#990000</color>
-                <color name="reg_blue">#1c75bc</color>
-                <color name="reg_orange">#e4950d</color>
-        <color name="section_color">#60669933</color>
-        <color name="reg_white">#ffffff</color>
-        <color name="off_white">#efefef</color>
-        <color name="ver_off_white">#f4f4f4</color>
-        <color name="opaque_white">#80ffffff</color>
-        <color name="dark_gray">#90666666</color>
-        <color name="brownText">#675A3f</color>
-        <color name="unitlist">#333366</color>
-        <color name="w2Blue">#cdffff</color>
-         <color name="progress_bar">#ff9900</color>
-         <color name="progress_bar_second">#cc6600</color>
-         <color name="launchpagbck">#f1eacd</color>
-         <color name="opa_bg">#952d2c25</color>
-         <color name="lettersYellow">#60f7ef31</color>
-         <color name="le02_vowell">#fccc00</color>
-         <color name="le02_con">#6ac9c9</color>
-          <color name="le02_letter">#58595a</color>
-        <color name="le02_vowell_border">#b29209</color>
-        <color name="le02_con_border">#4d8889</color>
-        <color name="wd01_boxborder">#e6e7e8</color>
-        
-                  
-          
-         
+    <color name="ver_off_white">#f4f4f4</color>
+    <color name="off_white">#efefef</color>
+
+
+    <color name="reg_gray">#CCCCCC</color>
+    <color name="lightGrey">#bbbbbb</color>
+    <color name="opa_bg">#952d2c25</color>
+    <color name="darkGray">#666666</color>
+    <color name="veryDarkGray">#494949</color>
+    <color name="normalBlack">#000000</color>
+
+    <color name="reg_gold">#ffcc00</color>
+    <color name="activitiesPlatformBackground">#f1e883</color>
+
+    <color name="drk_green">#FF2b621e</color>
+    <color name="correct_green">#FF2b621e</color>
+    <color name="correct_green_border">#FF103009</color>
+
+    <color name="reg_red">#ffff200d</color>
+    <color name="incorrect_red">#FF990000</color>
+    <color name="incorrect_red_border">#ff500000</color>
+
+    <color name="reg_blue">#1c75bc</color>
+
+    <color name="cs01_unchosen_box">#fff06697</color>
+    <color name="cs01_unchosen_border">#ff542636</color>
+
+
+    <color name="cs01_chosen_box">#fff9ed32</color>
+    <color name="cs01_chosen_border">#ffffc60b</color>
+
+
+
+    <color name="launchpagbckold">#f1eacd</color>
+    <color name="launchpagbck">#f3eccf</color>
+
+    <color name="le02_vowell">#fccc00</color>
+    <color name="le02_con">#6ac9c9</color>
+    <color name="le02_letter">#58595a</color>
+    <color name="le02_vowell_border">#b29209</color>
+    <color name="le02_con_border">#4d8889</color>
+    <color name="wd01_boxborder">#e6e7e8</color>
+
+    <color name="application_syllables">#1c4063</color>
+    <color name="application_letters">#f5ec34</color>
+    <color name="application_words">#b5ce4a</color>
+    <color name="application_books">#4ac5ef</color>
+    <color name="application_math">#7b5295</color>
+    <color name="application_number">#ee4a49</color>
+    <color name="application_write">#d4d6c5</color>
+
+    <color name="settings_bgnd">#996633</color>
+
+
+    <color name="sd07_bg">#fff1ebcb</color>
+    <color name="sd07_letter_white">#FFFFFFFF</color>
+    <color name="sd07_letter_black">#FF000000</color>
+
+    <color name="sd07_box_1">#ff345e6e</color>
+    <color name="sd07_box_2">#ff419b46</color>
+    <color name="sd07_box_3">#ffa4bc3c</color>
+    <color name="sd07_box_4">#ffcd6d2a</color>
+    <color name="sd07_box_5">#ffcb3928</color>
+    <color name="sd07_box_6">#ffea2290</color>
+    <color name="sd07_box_7">#ff8e69ae</color>
+    <color name="sd07_box_8">#ff4c6eb5</color>
+    <color name="sd07_box_9">#ff72829f</color>
+    <color name="sd07_box_10">#ff6f826e</color>
+
+    <color name="sd07_box_11">#ff7ab7b7</color>
+    <color name="sd07_box_12">#ff8fb77c</color>
+    <color name="sd07_box_13">#ff98bc62</color>
+    <color name="sd07_box_14">#fffdcd0f</color>
+    <color name="sd07_box_15">#fff18ca1</color>
+    <color name="sd07_box_16">#ffcc8bbc</color>
+    <color name="sd07_box_17">#ffb2acd5</color>
+    <color name="sd07_box_18">#ff5b87c6</color>
+    <color name="sd07_box_19">#ff73959e</color>
+    <color name="sd07_box_20">#ff6fc6a5</color>
+
+    <color name="sd07_box_21">#ff75966f</color>
+    <color name="sd07_box_22">#ff8db778</color>
+    <color name="sd07_box_23">#ffc4b677</color>
+    <color name="sd07_box_24">#ffcbb347</color>
+    <color name="sd07_box_25">#ffc79985</color>
+    <color name="sd07_box_26">#ffbb94be</color>
+    <color name="sd07_box_27">#ff6c779f</color>
+    <color name="sd07_box_28">#ff539391</color>
+    <color name="sd07_box_29">#ff9e92b3</color>
+    <color name="sd07_box_30">#ffbcbb36</color>
+
+    <color name="bk02_bg">#ff46c8f5</color>
+    <color name="bk02_font_color">#ff000000</color>
+    <color name="bk02_highlight">#cc3333</color>
+
+    <color name="bg_progress_letters">#f5ec34</color>
+
+    <color name="progress_bar">#f1636a</color>
+    <color name="progress_bar_second">#9a5155</color>
 </resources>

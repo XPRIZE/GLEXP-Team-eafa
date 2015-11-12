@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/Activity_BaseFrame"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/black_overlay" >
+             android:id="@+id/Activity_BaseFrame"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@color/normalBlack" >
 
     <ImageView
         android:id="@+id/Activity_Background"
@@ -20,10 +19,10 @@
         android:layout_height="match_parent" >
 
         <TableRow
-            android:id="@+id/TableRow01"
+            android:id="@+id/Curriculum_Top_Buttons"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1" >
+            android:layout_weight="5" >
 
             <include
                 android:layout_width="0dp"
@@ -32,294 +31,410 @@
                 layout="@layout/activity_top_area" />
         </TableRow>
 
-        <View
-            android:id="@+id/view1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight=".2" />
-    </TableLayout>
-
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-
-        <View
-            android:id="@+id/view2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="2.7" />
-
-        <TableRow
-            android:id="@+id/Activity_Center"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:visibility="visible" >
-
-            <View
-                android:id="@+id/view3"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".2" />
-
-            <RelativeLayout
-                android:id="@+id/Activity_Correct_Text_Box"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" >
-
-                <ImageView
-                    android:id="@+id/Activity_CorrectText"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/wd04_ctext_image_bottom_margin"
-                    android:layout_marginLeft="@dimen/wd04_ctext_image_side_margin"
-                    android:layout_marginRight="@dimen/wd04_ctext_image_side_margin"
-                    android:layout_marginTop="@dimen/wd04_ctext_image_top_margin"
-                    android:contentDescription="@string/none"
-                    android:src="@drawable/rounded_text_wd01_selected" />
-
-                <TextView
-                    android:id="@+id/Activity_Text0"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginBottom="@dimen/wd04_ctext_bottom_margin"
-                    android:layout_marginTop="@dimen/wd04_ctext_top_margin"
-                    android:gravity="center_horizontal"
-                    android:text="@string/strRandomLetter"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/reg_black"
-                    android:textSize="@dimen/wd01_correct_font_size" />
-
-                <ProgressBar
-                    android:id="@+id/Activity_LoadingCircle0"
-                    style="?android:attr/progressBarStyleLarge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true" />
-            </RelativeLayout>
-
-            <View
-                android:id="@+id/View01"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".3" />
-
-            <LinearLayout
-                android:id="@+id/LinearLayout1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical" >
-
-                <View
-                    android:id="@+id/view6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".8" />
-
-                <ImageButton
-                    android:id="@+id/btnValidate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_weight=".2"
-                    android:background="@android:color/transparent"
-                    android:contentDescription="@string/strNone"
-                    android:scaleType="fitStart"
-                    android:src="@drawable/btn_validate_assess_off" />
-
-                <View
-                    android:id="@+id/view7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-            </LinearLayout>
-
-            <View
-                android:id="@+id/view5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".2" />
-        </TableRow>
-
         <TableRow
             android:id="@+id/tableRow1"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="1.8" >
+            android:layout_weight="1.1" >
+
+            <View
+                android:id="@+id/Activity_SideView1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3" />
 
             <RelativeLayout
+                android:id="@+id/Activity_Center"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" >
+                android:layout_weight="15"
+                android:visibility="visible" >
 
                 <ImageView
-                    android:id="@+id/Activity_ImageFrame1"
+                    android:id="@+id/Activity_WordBox"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:adjustViewBounds="true"
-                    android:contentDescription="@string/strNone"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/frm_wd04_off" />
-
-                <ImageView
-                    android:id="@+id/Activity_Image1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignBottom="@+id/Activity_ImageFrame1"
-                    android:layout_alignLeft="@+id/Activity_ImageFrame1"
-                    android:layout_alignRight="@+id/Activity_ImageFrame1"
-                    android:layout_alignTop="@+id/Activity_ImageFrame1"
-                    android:layout_marginBottom="@dimen/wd04_image_top_bottom_margin"
-                    android:layout_marginLeft="@dimen/wd04_image_sides_margins"
-                    android:layout_marginRight="@dimen/wd04_image_sides_margins"
-                    android:layout_marginTop="@dimen/wd04_image_top_bottom_margin"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/rounded_border_correct"
-                    android:contentDescription="@string/strNone"
-                    android:padding="4dp"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/no_image" />
-
-                <ProgressBar
-                    android:id="@+id/Activity_LoadingCircle1"
-                    style="?android:attr/progressBarStyleLarge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/Activity_Image1"
-                    android:layout_alignTop="@+id/Activity_Image1"
-                    android:layout_centerHorizontal="true" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" >
-
-                <ImageView
-                    android:id="@+id/Activity_ImageFrame2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:adjustViewBounds="true"
-                    android:contentDescription="@string/strNone"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/frm_wd04_off" />
-
-                <ImageView
-                    android:id="@+id/Activity_Image2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignBottom="@+id/Activity_ImageFrame2"
-                    android:layout_alignLeft="@+id/Activity_ImageFrame2"
-                    android:layout_alignRight="@+id/Activity_ImageFrame2"
-                    android:layout_alignTop="@+id/Activity_ImageFrame2"
-                    android:layout_marginBottom="@dimen/wd04_image_top_bottom_margin"
-                    android:layout_marginLeft="@dimen/wd04_image_sides_margins"
-                    android:layout_marginRight="@dimen/wd04_image_sides_margins"
-                    android:layout_marginTop="@dimen/wd04_image_top_bottom_margin"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/rounded_border_unchosen"
-                    android:contentDescription="@string/strNone"
-                    android:padding="4dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/randomimage" />
-
-                <ProgressBar
-                    android:id="@+id/Activity_LoadingCircle2"
-                    style="?android:attr/progressBarStyleLarge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/Activity_Image2"
-                    android:layout_alignTop="@+id/Activity_Image2"
-                    android:layout_centerHorizontal="true" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" >
-
-                <ImageView
-                    android:id="@+id/Activity_ImageFrame3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:adjustViewBounds="true"
-                    android:contentDescription="@string/strNone"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/frm_wd04_on" />
-
-                <ImageView
-                    android:id="@+id/Activity_Image3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignBottom="@+id/Activity_ImageFrame3"
-                    android:layout_alignLeft="@+id/Activity_ImageFrame3"
-                    android:layout_alignRight="@+id/Activity_ImageFrame3"
-                    android:layout_alignTop="@+id/Activity_ImageFrame3"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="@dimen/wd04_image_top_bottom_margin"
-                    android:layout_marginLeft="@dimen/wd04_image_sides_margins"
-                    android:layout_marginRight="@dimen/wd04_image_sides_margins"
-                    android:layout_marginTop="@dimen/wd04_image_top_bottom_margin"
-                    android:background="@drawable/rounded_border_correct"
-                    android:contentDescription="@string/strNone"
-                    android:padding="4dp"
-                    android:src="@drawable/randomimage" />
-
-                <ProgressBar
-                    android:id="@+id/Activity_LoadingCircle3"
-                    style="?android:attr/progressBarStyleLarge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/Activity_Image3"
-                    android:layout_alignTop="@+id/Activity_Image3"
-                    android:layout_centerHorizontal="true" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" >
-
-                <ImageView
-                    android:id="@+id/Activity_ImageFrame4"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
                     android:adjustViewBounds="true"
-                    android:contentDescription="@string/strNone"
+                    android:baselineAlignBottom="false"
+                    android:contentDescription="@string/none"
+                    android:cropToPadding="false"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/frm_wd04_off" />
+                    android:src="@drawable/frm_w07" />
 
-                <ImageView
-                    android:id="@+id/Activity_Image4"
+                <TableLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_alignBottom="@+id/Activity_ImageFrame4"
-                    android:layout_alignLeft="@+id/Activity_ImageFrame4"
-                    android:layout_alignRight="@+id/Activity_ImageFrame4"
-                    android:layout_alignTop="@+id/Activity_ImageFrame4"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="@dimen/wd04_image_top_bottom_margin"
-                    android:layout_marginLeft="@dimen/wd04_image_sides_margins"
-                    android:layout_marginRight="@dimen/wd04_image_sides_margins"
-                    android:layout_marginTop="@dimen/wd04_image_top_bottom_margin"
-                    android:background="@drawable/rounded_border_unchosen"
-                    android:contentDescription="@string/strNone"
-                    android:padding="4dp"
-                    android:src="@drawable/blank_image" />
+                    android:layout_alignBottom="@+id/Activity_WordBox"
+                    android:layout_alignLeft="@+id/Activity_WordBox"
+                    android:layout_alignRight="@+id/Activity_WordBox"
+                    android:layout_alignTop="@+id/Activity_WordBox"
+                    android:layout_marginBottom="60dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginTop="60dp" >
 
-                <ProgressBar
-                    android:id="@+id/Activity_LoadingCircle4"
-                    style="?android:attr/progressBarStyleLarge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/Activity_Image4"
-                    android:layout_alignTop="@+id/Activity_Image4"
-                    android:layout_centerHorizontal="true" />
+                    <TableRow
+                        android:id="@+id/Curriculum_TableRow1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" >
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" >
+
+                            <ImageView
+                                android:id="@+id/wordBox1"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="@dimen/wd04_textbox_margins"
+                                android:src="@drawable/rounded_text_selected" />
+
+                            <TextView
+                                android:id="@+id/word1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/wordBox1"
+                                android:layout_alignLeft="@+id/wordBox1"
+                                android:layout_alignRight="@+id/wordBox1"
+                                android:layout_alignTop="@+id/wordBox1"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="@dimen/wd04_text_bottom_margin"
+                                android:layout_marginTop="@dimen/wd04_text_top_margin"
+                                android:contentDescription="@string/strRandomLetter"
+                                android:gravity="center_vertical|center_horizontal"
+                                android:text="@string/strRandomLetter"
+                                android:textColor="@color/normalBlack"
+                                android:textSize="@dimen/wd04_generalFontSize" />
+
+                            <ProgressBar
+                                android:id="@+id/loadingCircle1"
+                                style="?android:attr/progressBarStyleLarge"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/wordBox1"
+                                android:layout_alignLeft="@+id/wordBox1"
+                                android:layout_alignRight="@+id/wordBox1"
+                                android:layout_alignTop="@+id/wordBox1"
+                                android:visibility="invisible" />
+
+                            <ImageButton
+                                android:id="@+id/image1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/wordBox1"
+                                android:layout_alignLeft="@+id/wordBox1"
+                                android:layout_alignRight="@+id/wordBox1"
+                                android:layout_alignTop="@+id/wordBox1"
+                                android:adjustViewBounds="true"
+                                android:background="@android:color/white"
+                                android:contentDescription="@string/strRandomLetter"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/btn_saucer_1"
+                                android:visibility="visible" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1" >
+
+                            <ImageView
+                                android:id="@+id/wordBox2"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="@dimen/wd04_textbox_margins"
+                                android:src="@drawable/rounded_text_selected" />
+
+                            <TextView
+                                android:id="@+id/word2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/wordBox2"
+                                android:layout_alignLeft="@+id/wordBox2"
+                                android:layout_alignRight="@+id/wordBox2"
+                                android:layout_alignTop="@+id/wordBox2"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="@dimen/wd04_text_bottom_margin"
+                                android:layout_marginTop="@dimen/wd04_text_top_margin"
+                                android:gravity="center_vertical|center_horizontal"
+                                android:text="@string/strRandomLetter"
+                                android:textColor="@color/normalBlack"
+                                android:textSize="@dimen/wd04_generalFontSize" />
+
+                            <ProgressBar
+                                android:id="@+id/loadingCircle2"
+                                style="?android:attr/progressBarStyleLarge"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@id/wordBox2"
+                                android:layout_alignLeft="@id/wordBox2"
+                                android:layout_alignRight="@id/wordBox2"
+                                android:layout_alignTop="@id/wordBox2" />
+
+                            <ImageButton
+                                android:id="@+id/image2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/wordBox2"
+                                android:layout_alignLeft="@+id/wordBox2"
+                                android:layout_alignRight="@+id/wordBox2"
+                                android:layout_alignTop="@id/wordBox2"
+                                android:adjustViewBounds="true"
+                                android:background="@android:color/white"
+                                android:contentDescription="@string/strRandomLetter"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/btn_saucer_2"
+                                android:visibility="invisible" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1" >
+
+                            <ImageView
+                                android:id="@+id/wordBox3"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="@dimen/wd04_textbox_margins"
+                                android:src="@drawable/rounded_text_selected" />
+
+                            <TextView
+                                android:id="@+id/word3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/wordBox3"
+                                android:layout_alignLeft="@+id/wordBox3"
+                                android:layout_alignRight="@+id/wordBox3"
+                                android:layout_alignTop="@+id/wordBox3"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="@dimen/wd04_text_bottom_margin"
+                                android:layout_marginTop="@dimen/wd04_text_top_margin"
+                                android:gravity="center_vertical|center_horizontal"
+                                android:text="@string/strRandomLetter"
+                                android:textColor="@color/normalBlack"
+                                android:textSize="@dimen/wd04_generalFontSize" />
+
+                            <ProgressBar
+                                android:id="@+id/loadingCircle3"
+                                style="?android:attr/progressBarStyleLarge"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@id/wordBox3"
+                                android:layout_alignLeft="@id/wordBox3"
+                                android:layout_alignRight="@id/wordBox3"
+                                android:layout_alignTop="@id/wordBox3" />
+
+                            <ImageButton
+                                android:id="@+id/image3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/wordBox3"
+                                android:layout_alignLeft="@+id/wordBox3"
+                                android:layout_alignRight="@+id/wordBox3"
+                                android:layout_alignTop="@+id/wordBox3"
+                                android:adjustViewBounds="true"
+                                android:background="@android:color/white"
+                                android:contentDescription="@string/strRandomLetter"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/btn_saucer_1"
+                                android:visibility="invisible" />
+
+                        </RelativeLayout>
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/tableRow2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" >
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" >
+
+                            <ImageView
+                                android:id="@+id/wordBox4"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="@dimen/wd04_textbox_margins"
+                                android:src="@drawable/rounded_text_selected" />
+
+                            <TextView
+                                android:id="@+id/word4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/wordBox4"
+                                android:layout_alignLeft="@+id/wordBox4"
+                                android:layout_alignRight="@+id/wordBox4"
+                                android:layout_alignTop="@+id/wordBox4"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="@dimen/wd04_text_bottom_margin"
+                                android:layout_marginTop="@dimen/wd04_text_top_margin"
+                                android:contentDescription="@string/strRandomLetter"
+                                android:gravity="center_vertical|center_horizontal"
+                                android:text="@string/strRandomLetter"
+                                android:textColor="@color/normalBlack"
+                                android:textSize="@dimen/wd04_generalFontSize" />
+
+                            <ProgressBar
+                                android:id="@+id/loadingCircle4"
+                                style="?android:attr/progressBarStyleLarge"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/wordBox4"
+                                android:layout_alignLeft="@+id/wordBox4"
+                                android:layout_alignRight="@+id/wordBox4"
+                                android:layout_alignTop="@+id/wordBox4" />
+
+                            <ImageButton
+                                android:id="@+id/image4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/wordBox4"
+                                android:layout_alignLeft="@+id/wordBox4"
+                                android:layout_alignRight="@+id/wordBox4"
+                                android:layout_alignTop="@+id/wordBox4"
+                                android:adjustViewBounds="true"
+                                android:background="@android:color/white"
+                                android:contentDescription="@string/strRandomLetter"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/btn_saucer_2"
+                                android:visibility="invisible" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1" >
+
+                            <ImageView
+                                android:id="@+id/wordBox5"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="@dimen/wd04_textbox_margins"
+                                android:src="@drawable/rounded_text_selected" />
+
+                            <TextView
+                                android:id="@+id/word5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/wordBox5"
+                                android:layout_alignLeft="@+id/wordBox5"
+                                android:layout_alignRight="@+id/wordBox5"
+                                android:layout_alignTop="@+id/wordBox5"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="@dimen/wd04_text_bottom_margin"
+                                android:layout_marginTop="@dimen/wd04_text_top_margin"
+                                android:gravity="center_vertical|center_horizontal"
+                                android:text="@string/strRandomLetter"
+                                android:textColor="@color/normalBlack"
+                                android:textSize="@dimen/wd04_generalFontSize" />
+
+                            <ProgressBar
+                                android:id="@+id/loadingCircle5"
+                                style="?android:attr/progressBarStyleLarge"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/wordBox5"
+                                android:layout_alignLeft="@+id/wordBox5"
+                                android:layout_alignRight="@+id/wordBox5"
+                                android:layout_alignTop="@+id/wordBox5" />
+
+                            <ImageButton
+                                android:id="@+id/image5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/wordBox5"
+                                android:layout_alignLeft="@+id/wordBox5"
+                                android:layout_alignRight="@+id/wordBox5"
+                                android:layout_alignTop="@+id/wordBox5"
+                                android:adjustViewBounds="true"
+                                android:background="@android:color/white"
+                                android:contentDescription="@string/strRandomLetter"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/btn_saucer_1"
+                                android:visibility="invisible" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1" >
+
+                            <ImageView
+                                android:id="@+id/wordBox6"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="@dimen/wd04_textbox_margins"
+                                android:src="@drawable/rounded_text_selected" />
+
+                            <TextView
+                                android:id="@+id/word6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/wordBox6"
+                                android:layout_alignLeft="@+id/wordBox6"
+                                android:layout_alignRight="@+id/wordBox6"
+                                android:layout_alignTop="@+id/wordBox6"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginBottom="@dimen/wd04_text_bottom_margin"
+                                android:layout_marginTop="@dimen/wd04_text_top_margin"
+                                android:gravity="center_vertical|center_horizontal"
+                                android:text="@string/strRandomLetter"
+                                android:textColor="@color/normalBlack"
+                                android:textSize="@dimen/wd04_generalFontSize" />
+
+                            <ProgressBar
+                                android:id="@+id/loadingCircle6"
+                                style="?android:attr/progressBarStyleLarge"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/wordBox6"
+                                android:layout_alignLeft="@+id/wordBox6"
+                                android:layout_alignRight="@+id/wordBox6"
+                                android:layout_alignTop="@+id/wordBox6"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true" />
+
+                            <ImageButton
+                                android:id="@+id/image6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/wordBox6"
+                                android:layout_alignLeft="@+id/wordBox6"
+                                android:layout_alignRight="@+id/wordBox6"
+                                android:layout_alignTop="@+id/wordBox6"
+                                android:adjustViewBounds="true"
+                                android:background="@android:color/white"
+                                android:contentDescription="@string/strRandomLetter"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/btn_saucer_2"
+                                android:visibility="invisible" />
+
+                        </RelativeLayout>
+                    </TableRow>
+                </TableLayout>
             </RelativeLayout>
+
+            <View
+                android:id="@+id/Activity_SideView2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3" />
+
         </TableRow>
     </TableLayout>
 

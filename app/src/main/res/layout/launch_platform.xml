@@ -31,7 +31,7 @@
                 android:layout_weight=".035" />
 
             <ImageView
-                android:id="@+id/btnAvatar"
+                android:id="@+id/btnSettings"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight=".24"
@@ -40,7 +40,7 @@
                 android:contentDescription="@string/none"
                 android:scaleType="fitStart"
                 android:soundEffectsEnabled="false"
-                android:src="@drawable/btn_setting" />
+                android:src="@drawable/btn_act_setting" />
 
             <View
                 android:id="@+id/View01"

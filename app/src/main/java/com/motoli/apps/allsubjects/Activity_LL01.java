@@ -7,6 +7,8 @@ package com.motoli.apps.allsubjects;
  */
 
 import java.util.ArrayList;
+
+import android.content.ContentResolver;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -25,16 +27,19 @@ public class Activity_LL01 extends Activity_General_Parent {
 		
 		
         // VideoView refference see main.xml
-        VideoView mVideoView = (VideoView)findViewById(R.id.Activity_Video);
+        VideoView mVideoView = (VideoView)findViewById(R.id.videoActivity);
         
         String uriPath = "android.resource://com.motoli.apps.allsubjects.raw/"+R.raw.alphabet_en;
-         
-        Uri uri = Uri.parse(uriPath); //Declare your url here.
-        Uri video = Uri.parse("android.resource://" + getPackageName() + "/" 
-        	      + R.raw.alphabet_en);
-        
+
+        Uri uri = new Uri.Builder()
+                .scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
+                .authority(getPackageName())
+                .path(Integer.toString(R.raw.alphabet_en))
+                .build();
+
         mVideoView.setMediaController(new MediaController(this));       
-        mVideoView.setVideoURI(video);
+        mVideoView.setVideoURI(uri);
+
         mVideoView.requestFocus();
         mVideoView.start();
         

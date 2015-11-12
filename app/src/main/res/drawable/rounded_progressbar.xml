@@ -10,7 +10,7 @@
             android:width="0.25dp"
 
              />
-        <corners android:radius="5dip" />
+        <corners android:radius="20dip" />
         <gradient
                 android:startColor="@color/reg_white"
              
@@ -42,7 +42,7 @@
              />
             
             <corners
-                android:radius="5dip" />
+                android:radius="0dip" />
             
             <gradient
                                     android:startColor="@color/progress_bar_second"
