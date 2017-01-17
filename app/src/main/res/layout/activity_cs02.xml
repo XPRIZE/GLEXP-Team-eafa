@@ -4,132 +4,118 @@
              android:layout_height="match_parent"
              android:background="@drawable/bg_cs02" >
 
-    <TableLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TableRow
+        <include
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1" >
+            android:layout_weight="0.23"
+            layout="@layout/activity_top_area" />
 
-            <include
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                layout="@layout/activity_top_area" />
-        </TableRow>
-
-        <View
-            android:id="@+id/view1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight=".2" />
-    </TableLayout>
-
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-
-        <View
-            android:id="@+id/view2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.5" />
-
-        <TableRow
+        <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".8"
+            android:layout_weight="1.3"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/activityMainPart">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".15" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5"
             android:visibility="visible" >
 
-            <View
-                android:id="@+id/view3"
+            <Space
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight=".2" />
+                android:layout_weight=".4" />
 
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" >
-
-                <ImageView
-                    android:id="@+id/syllableImageFrame"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/frm_cs02_image"
-                    android:scaleType="fitCenter" />
+                android:layout_weight="1"
+                android:background="@drawable/rounded_box_selected_blue">
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/syllableImage"
                     android:layout_centerInParent="true"
-                    android:src="@drawable/xpeng_img_phonic_word_id155"
-                    android:layout_alignParentStart="false"
-                    android:layout_alignParentEnd="false"
+                    android:src="@drawable/dummy_img_phonic_word"
+
                     android:layout_marginLeft="@dimen/cs02_syllable_image_sides"
                     android:layout_marginRight="@dimen/cs02_syllable_image_sides"
                     android:layout_marginTop="@dimen/cs02_syllable_image_top_bottom"
                     android:layout_marginBottom="@dimen/cs02_syllable_image_top_bottom"
-                    android:layout_alignTop="@+id/imageFrame0"
-                    android:layout_alignBottom="@+id/imageFrame0"
-                    android:layout_alignStart="@+id/imageFrame0"
-                    android:layout_alignEnd="@+id/imageFrame0"
                     android:visibility="visible"/>
 
             </RelativeLayout>
 
-            <View
-                android:id="@+id/view4"
+            <Space
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight=".3" />
+                android:layout_weight=".1" />
 
             <LinearLayout
-                android:id="@+id/LinearLayout1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical" >
 
-                <View
-                    android:id="@+id/view6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".95" />
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".15" />
 
                 <ImageButton
                     android:id="@+id/btnValidate"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_weight=".2"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:background="@android:color/transparent"
                     android:contentDescription="@string/strNone"
-                    android:scaleType="fitStart"
-                    android:src="@drawable/btn_validate_assess_off" />
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/btn_validate_off" />
 
-                <View
-                    android:id="@+id/view7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".1" />
 
             </LinearLayout>
 
-            <View
-                android:id="@+id/view5"
+            <Space
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".2" />
-        </TableRow>
+                android:layout_height="match_parent"
+                android:layout_weight=".4" />
+        </LinearLayout>
 
-        <TableRow
+        <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1" >
+            android:layout_weight=".1"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:baselineAligned="false">
 
             <RelativeLayout
                 android:layout_width="0dp"
@@ -145,15 +131,15 @@
                     android:src="@drawable/frm_cs02_off" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:id="@+id/syllableHand1"
                     android:src="@drawable/btn_hand_1"
                     android:layout_marginLeft="@dimen/cs02_syllable_hand_sides"
                     android:layout_marginRight="@dimen/cs02_syllable_hand_sides"
                     android:layout_marginTop="@dimen/cs02_syllable_hand_top_bottom"
                     android:layout_marginBottom="@dimen/cs02_syllable_hand_top_bottom"
-                    android:background="@drawable/rounded_border_unchosen"/>
+                    />
 
             </RelativeLayout>
 
@@ -168,18 +154,18 @@
                     android:layout_height="match_parent"
                     android:contentDescription="@string/strNone"
                     android:scaleType="centerInside"
-                    android:src="@drawable/frm_cs02_off" />
+                    android:src="@drawable/frm_cs02_on" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:id="@+id/syllableHand2"
                     android:src="@drawable/btn_hand_2"
                     android:layout_marginLeft="@dimen/cs02_syllable_hand_sides"
                     android:layout_marginRight="@dimen/cs02_syllable_hand_sides"
                     android:layout_marginTop="@dimen/cs02_syllable_hand_top_bottom"
                     android:layout_marginBottom="@dimen/cs02_syllable_hand_top_bottom"
-                    android:background="@drawable/rounded_border_correct"/>
+                    />
 
             </RelativeLayout>
 
@@ -196,8 +182,8 @@
                     android:src="@drawable/frm_cs02_off" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:id="@+id/syllableHand3"
                     android:src="@drawable/btn_hand_3"
                     android:layout_marginLeft="@dimen/cs02_syllable_hand_sides"
@@ -222,8 +208,8 @@
                     android:src="@drawable/frm_cs02_off" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:id="@+id/syllableHand4"
                     android:src="@drawable/btn_hand_4"
                     android:layout_marginLeft="@dimen/cs02_syllable_hand_sides"
@@ -232,7 +218,7 @@
                     android:layout_marginBottom="@dimen/cs02_syllable_hand_top_bottom"/>
 
             </RelativeLayout>
-        </TableRow>
-    </TableLayout>
+        </LinearLayout>
+    </LinearLayout>
 
 </FrameLayout>

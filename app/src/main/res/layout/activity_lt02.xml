@@ -3,152 +3,113 @@
     android:id="@+id/Activity_BaseFrame"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/normalBlack" >
+    android:background="@drawable/bg_lt02" >
+    >
 
-    <ImageView
-        android:id="@+id/Activity_Background"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:baselineAlignBottom="true"
-        android:scaleType="centerCrop"
-        android:src="@drawable/bg_lt02"
-        android:visibility="visible" />
+        android:orientation="vertical">
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-
-        <TableRow
-            android:id="@+id/Curriculum_Top_Buttons"
+        <include
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1" >
+            android:layout_weight="0.23"
+            layout="@layout/activity_top_area" />
 
-            <include
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.3"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/activityMainPart">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".1"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.6"
+            android:orientation="horizontal" >
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".2"/>
+
+            <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                layout="@layout/activity_top_area" />
-        </TableRow>
-
-        <View
-            android:id="@+id/view1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight=".2" />
-    </TableLayout>
-
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-
-        <View
-            android:id="@+id/view2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="2.7" />
-
-        <TableRow
-            android:id="@+id/Activity_Center"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:visibility="visible" >
-
-            <View
-                android:id="@+id/view3"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".2" />
-
-            <RelativeLayout
-                android:id="@+id/Activity_Correct_Text_Box"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" >
-
-                <ImageView
-                    android:id="@+id/Activity_CorrectText"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/lt02_ctext_image_bottom_margin"
-                    android:layout_marginLeft="@dimen/lt02_ctext_image_side_margin"
-                    android:layout_marginRight="@dimen/lt02_ctext_image_side_margin"
-                    android:layout_marginTop="@dimen/lt02_ctext_image_top_margin"
-                    android:src="@drawable/rounded_box_selected" />
+                android:background="@drawable/rounded_box_selected_blue">
 
                 <TextView
-                    android:id="@+id/Activity_Text0"
+                    android:id="@+id/letter0"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="@dimen/lt02_ctext_top_margin"
-                    android:gravity="center_horizontal"
+                    android:gravity="center_vertical|center_horizontal"
                     android:text="@string/strRandomLetter"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/normalBlack"
-                    android:textSize="@dimen/lt02_correctFontSize" />
+                    android:textSize="@dimen/letterTopTextBox" />
 
-                <ProgressBar
-                    android:id="@+id/loadingCircle0"
-                    style="?android:attr/progressBarStyleLarge"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_centerInParent="true"
-                    android:layout_margin="@dimen/lt02_text_top_wait_margin"/>
             </RelativeLayout>
 
-            <View
-                android:id="@+id/view4"
+            <Space
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight=".3" />
+                android:layout_weight=".04"/>
 
             <LinearLayout
-                android:id="@+id/LinearLayout1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical" >
 
-                <View
-                    android:id="@+id/view6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".8" />
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".1"/>
 
                 <ImageButton
                     android:id="@+id/btnValidate"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_marginTop="20dp"
-                    android:layout_weight=".2"
+                    android:layout_weight="1"
                     android:background="@android:color/transparent"
                     android:contentDescription="@string/strNone"
                     android:scaleType="fitStart"
-                    android:src="@drawable/btn_validate_assess_off" />
+                    android:src="@drawable/btn_validate_off" />
 
-                <View
-                    android:id="@+id/view7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".1"/>
 
             </LinearLayout>
 
-            <View
-                android:id="@+id/view5"
+            <Space
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".2" />
-        </TableRow>
+                android:layout_height="match_parent"
+                android:layout_weight=".2"/>
+
+        </LinearLayout>
 
         <TableRow
-            android:id="@+id/Activity_Bottom"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.8" >
+            android:layout_weight="1" >
 
             <RelativeLayout
                 android:layout_width="0dp"
@@ -156,40 +117,25 @@
                 android:layout_weight="1" >
 
                 <ImageView
-                    android:id="@+id/Activity_TextFrame1"
+                    android:id="@+id/frame1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:clickable="false"
                     android:contentDescription="@string/strNone"
-                    android:src="@drawable/frm_lt02_off" />
+                    android:src="@drawable/frm_sd01_off" />
 
                 <TextView
-                    android:id="@+id/Activity_Text1"
+                    android:id="@+id/letter1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginBottom="@dimen/lt02_text_bottom_margin"
-                    android:layout_marginTop="@dimen/lt02_text_top_margin"
-                    android:gravity="center_horizontal"
-                    android:lineSpacingMultiplier=".8"
-                    android:linksClickable="true"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:scrollbarAlwaysDrawVerticalTrack="true"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:linksClickable="false"
+                    android:scrollbarAlwaysDrawVerticalTrack="false"
                     android:text="@string/strRandomLetter"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/normalBlack"
-                    android:textSize="@dimen/lt01_letterFontSize" />
+                    android:textSize="@dimen/letterSetOf4Boxes" />
 
-                <ProgressBar
-                    android:id="@+id/Activity_LoadingCircle1"
-                    style="?android:attr/progressBarStyleLarge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/Activity_TextFrame1"
-                    android:layout_alignTop="@+id/Activity_TextFrame1"
-                    android:layout_centerHorizontal="true" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -198,39 +144,24 @@
                 android:layout_weight="1" >
 
                 <ImageView
-                    android:id="@+id/Activity_TextFrame2"
+                    android:id="@+id/frame2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:contentDescription="@string/strNone"
                     android:scaleType="centerInside"
-                    android:src="@drawable/frm_lt02_on" />
+                    android:src="@drawable/frm_sd01_off" />
 
                 <TextView
-                    android:id="@+id/Activity_Text2"
+                    android:id="@+id/letter2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginBottom="@dimen/lt02_text_bottom_margin"
-                    android:layout_marginTop="@dimen/lt02_text_top_margin"
-                    android:gravity="center_horizontal"
-                    android:lineSpacingMultiplier=".8"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:scrollbarAlwaysDrawVerticalTrack="true"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:scrollbarAlwaysDrawVerticalTrack="false"
                     android:text="@string/strRandomLetter"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/normalBlack"
-                    android:textSize="@dimen/lt01_letterFontSize" />
+                    android:textSize="@dimen/letterSetOf4Boxes" />
 
-                <ProgressBar
-                    android:id="@+id/Activity_LoadingCircle2"
-                    style="?android:attr/progressBarStyleLarge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/Activity_TextFrame2"
-                    android:layout_alignTop="@+id/Activity_TextFrame2"
-                    android:layout_centerHorizontal="true" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -239,38 +170,23 @@
                 android:layout_weight="1" >
 
                 <ImageView
-                    android:id="@+id/Activity_TextFrame3"
+                    android:id="@+id/frame3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:contentDescription="@string/strNone"
-                    android:src="@drawable/frm_lt02_off" />
+                    android:src="@drawable/frm_sd01_off" />
 
                 <TextView
-                    android:id="@+id/Activity_Text3"
+                    android:id="@+id/letter3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginBottom="@dimen/lt02_text_bottom_margin"
-                    android:layout_marginTop="@dimen/lt02_text_top_margin"
-                    android:gravity="center_horizontal"
-                    android:lineSpacingMultiplier=".8"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:scrollbarAlwaysDrawVerticalTrack="true"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:scrollbarAlwaysDrawVerticalTrack="false"
                     android:text="@string/strRandomLetter"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/normalBlack"
-                    android:textSize="@dimen/lt01_letterFontSize" />
+                    android:textSize="@dimen/letterSetOf4Boxes" />
 
-                <ProgressBar
-                    android:id="@+id/Activity_LoadingCircle3"
-                    style="?android:attr/progressBarStyleLarge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/Activity_TextFrame3"
-                    android:layout_alignTop="@+id/Activity_TextFrame3"
-                    android:layout_centerHorizontal="true" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -279,42 +195,28 @@
                 android:layout_weight="1" >
 
                 <ImageView
-                    android:id="@+id/Activity_TextFrame4"
+                    android:id="@+id/frame4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:adjustViewBounds="false"
                     android:contentDescription="@string/strNone"
                     android:scaleType="centerInside"
-                    android:src="@drawable/frm_lt02_on" />
+                    android:src="@drawable/frm_sd01_on" />
 
                 <TextView
-                    android:id="@+id/Activity_Text4"
+                    android:id="@+id/letter4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginBottom="@dimen/lt02_text_bottom_margin"
-                    android:layout_marginTop="@dimen/lt02_text_top_margin"
-                    android:gravity="center_horizontal"
-                    android:lineSpacingMultiplier=".8"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:scrollbarAlwaysDrawVerticalTrack="true"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:scrollbarAlwaysDrawVerticalTrack="false"
                     android:text="g"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/normalBlack"
-                    android:textSize="@dimen/lt01_letterFontSize" />
+                    android:textSize="@dimen/letterSetOf4Boxes"
+                    android:textIsSelectable="false"/>
 
-                <ProgressBar
-                    android:id="@+id/Activity_LoadingCircle4"
-                    style="?android:attr/progressBarStyleLarge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/Activity_TextFrame4"
-                    android:layout_alignTop="@+id/Activity_TextFrame4"
-                    android:layout_centerHorizontal="true" />
             </RelativeLayout>
         </TableRow>
-    </TableLayout>
+    </LinearLayout>
 
 </FrameLayout>

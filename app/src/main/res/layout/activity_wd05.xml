@@ -3,40 +3,36 @@
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              android:background="@drawable/bg_wd05" >
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TableRow
+        <include
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1" >
-
-            <include
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                layout="@layout/activity_top_area" />
-        </TableRow>
+            android:layout_weight="0.23"
+            layout="@layout/activity_top_area" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="5"/>
+            android:layout_weight="1.3"/>
+
     </LinearLayout>
 
     <LinearLayout
-        
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/activityMainPart"
+        android:visibility="visible">
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".4" />
+            android:layout_weight=".15" />
 
         <TableRow
             android:layout_width="match_parent"
@@ -52,13 +48,13 @@
             <Space
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight=".12"/>
+                android:layout_weight=".02"/>
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight=".96">
+                android:layout_weight="1">
 
                 <Space
                     android:layout_width="match_parent"
@@ -75,27 +71,25 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/wordFrame0"
                         android:src="@drawable/frm_wd05"
-                        android:scaleType="fitXY"/>
+                        android:scaleType="fitXY"
+                        android:contentDescription="@string/general_image"/>
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="@string/strRandomString"
+                        android:text="books"
                         android:id="@+id/word0"
                         android:textColor="@color/normalBlack"
-                        android:layout_alignStart="@id/wordFrame0"
-                        android:layout_toEndOf="@id/wordFrame0"
-                        android:layout_toStartOf="@id/wordFrame0"
-                        android:layout_alignEnd="@id/wordFrame0"
                         android:gravity="center_vertical|center_horizontal"
-                        android:textSize="@dimen/wd05_text_main"/>
+                        android:textSize="@dimen/wdFirstFontSizeWD05"
+                        android:textIsSelectable="false"
+                        />
                 </RelativeLayout>
 
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight=".8"/>
+                    android:layout_weight=".5"/>
 
             </LinearLayout>
 
@@ -103,60 +97,41 @@
 
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight=".12" />
+                android:layout_weight=".02" />
 
-            <LinearLayout
-                android:orientation="vertical"
+            <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:id="@+id/imageArea0"
+                android:visibility="visible">
 
-                <Space
+                <ImageView
+                    android:id="@+id/imageFrame0"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight=".07"/>
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/sd05_image_bottom_margin"
+                    android:layout_marginLeft="@dimen/sd05_frame_side_margin"
+                    android:layout_marginRight="@dimen/sd05_frame_side_margin"
+                    android:layout_marginTop="@dimen/sd05_image_top_margin"
+                    android:src="@drawable/rounded_box_selected_blue"
+                    android:scaleType="fitXY" />
 
-                <RelativeLayout
+                <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1">
+                    android:layout_height="match_parent"
+                    android:id="@+id/image0"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/bird_no_image"
 
-                    <ImageView
-                        android:id="@+id/imageFrame0"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="@dimen/sd05_image_bottom_margin"
-                        android:layout_marginLeft="@dimen/sd05_frame_side_margin"
-                        android:layout_marginRight="@dimen/sd05_frame_side_margin"
-                        android:layout_marginTop="@dimen/sd05_image_top_margin"
-                        android:src="@drawable/rounded_box_selected"
-                        android:scaleType="fitXY" />
+                    android:layout_marginLeft="@dimen/sd05_image_sides"
+                    android:layout_marginRight="@dimen/sd05_image_sides"
+                    android:layout_marginTop="@dimen/sd05_image_top_margin"
+                    android:layout_marginBottom="@dimen/sd05_image_bottom_margin"
+                    android:layout_alignTop="@+id/imageFrame0"
+                    android:layout_alignBottom="@+id/imageFrame0" />
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/image0"
-                        android:layout_centerInParent="true"
-                        android:src="@drawable/xpeng_img_phonic_word_id150"
-                        android:layout_alignParentStart="false"
-                        android:layout_alignParentEnd="false"
-                        android:layout_marginLeft="@dimen/sd05_image_sides"
-                        android:layout_marginRight="@dimen/sd05_image_sides"
-                        android:layout_marginTop="@dimen/sd05_image_top_margin"
-                        android:layout_marginBottom="@dimen/sd05_image_bottom_margin"
-                        android:layout_alignTop="@+id/imageFrame0"
-                        android:layout_alignBottom="@+id/imageFrame0"
-                        android:layout_alignStart="@+id/imageFrame0"
-                        android:layout_alignEnd="@+id/imageFrame0" />
-
-                </RelativeLayout>
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight=".01"/>
-
-            </LinearLayout>
+            </RelativeLayout>
 
             <Space
                 android:layout_width="0dp"
@@ -167,13 +142,13 @@
                 android:id="@+id/LinearLayout1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1.2"
+                android:layout_weight="1"
                 android:orientation="vertical" >
 
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight=".3" />
+                    android:layout_weight=".4" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -184,19 +159,16 @@
                         android:id="@+id/btnValidate"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
                         android:background="@android:color/transparent"
                         android:contentDescription="@string/strNone"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/btn_validate_assess_off"
-                        android:layout_alignParentEnd="false"
-                        android:layout_alignParentStart="false"/>
+                        android:src="@drawable/btn_validate_off"/>
                 </RelativeLayout>
 
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight=".3" />
+                    android:layout_weight=".15" />
 
             </LinearLayout>
 
@@ -206,10 +178,17 @@
                 android:layout_weight=".06" />
         </TableRow>
 
-        <TableRow
+        <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1" >
+            android:layout_weight=".05"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.3"
+            android:baselineAligned="false">
 
             <RelativeLayout
                 android:layout_width="0dp"
@@ -228,29 +207,15 @@
                     android:id="@+id/letter1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginBottom="@dimen/wd05_text_bottom_margin"
-                    android:layout_marginTop="@dimen/wd05_text_top_margin"
-                    android:gravity="center_horizontal"
+                    android:gravity="center_vertical|center_horizontal"
                     android:lineSpacingMultiplier=".8"
                     android:linksClickable="true"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
                     android:scrollbarAlwaysDrawVerticalTrack="true"
                     android:text="@string/strRandomLetter"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/normalBlack"
-                    android:textSize="@dimen/wd05_lowerLetterFontSize" />
+                    android:textSize="@dimen/wdNormalLetterFontSize" />
 
-                <ProgressBar
-                    android:id="@+id/loadingCircle1"
-                    style="?android:attr/progressBarStyleLarge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/letterFrame1"
-                    android:layout_alignTop="@+id/letterFrame1"
-                    android:layout_centerHorizontal="true" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -270,28 +235,14 @@
                     android:id="@+id/letter2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginBottom="@dimen/wd05_text_bottom_margin"
-                    android:layout_marginTop="@dimen/wd05_text_top_margin"
-                    android:gravity="center_horizontal"
+                    android:gravity="center_vertical|center_horizontal"
                     android:lineSpacingMultiplier=".8"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:scrollbarAlwaysDrawVerticalTrack="true"
+                    android:scrollbarAlwaysDrawVerticalTrack="false"
                     android:text="@string/strRandomLetter"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/normalBlack"
-                    android:textSize="@dimen/wd05_lowerLetterFontSize" />
+                    android:textSize="@dimen/wdNormalLetterFontSize" />
 
-                <ProgressBar
-                    android:id="@+id/loadingCircle2"
-                    style="?android:attr/progressBarStyleLarge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/letterFrame2"
-                    android:layout_alignTop="@+id/letterFrame2"
-                    android:layout_centerHorizontal="true" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -310,28 +261,14 @@
                     android:id="@+id/letter3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginBottom="@dimen/wd05_text_bottom_margin"
-                    android:layout_marginTop="@dimen/wd05_text_top_margin"
-                    android:gravity="center_horizontal"
+                    android:gravity="center_vertical|center_horizontal"
                     android:lineSpacingMultiplier=".8"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
                     android:scrollbarAlwaysDrawVerticalTrack="true"
                     android:text="@string/strRandomLetter"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/normalBlack"
-                    android:textSize="@dimen/wd05_lowerLetterFontSize" />
+                    android:textSize="@dimen/wdNormalLetterFontSize" />
 
-                <ProgressBar
-                    android:id="@+id/loadingCircle3"
-                    style="?android:attr/progressBarStyleLarge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/letterFrame3"
-                    android:layout_alignTop="@+id/letterFrame3"
-                    android:layout_centerHorizontal="true" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -352,30 +289,16 @@
                     android:id="@+id/letter4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginBottom="@dimen/wd05_text_bottom_margin"
-                    android:layout_marginTop="@dimen/wd05_text_top_margin"
-                    android:gravity="center_horizontal"
+                    android:gravity="center_vertical|center_horizontal"
                     android:lineSpacingMultiplier=".8"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
                     android:scrollbarAlwaysDrawVerticalTrack="true"
                     android:text="@string/strRandomLetter"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/normalBlack"
-                    android:textSize="@dimen/wd05_lowerLetterFontSize" />
+                    android:textSize="@dimen/wdNormalLetterFontSize" />
 
-                <ProgressBar
-                    android:id="@+id/loadingCircle4"
-                    style="?android:attr/progressBarStyleLarge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/letterFrame4"
-                    android:layout_alignTop="@+id/letterFrame4"
-                    android:layout_centerHorizontal="true" />
             </RelativeLayout>
-        </TableRow>
+        </LinearLayout>
     </LinearLayout>
 
 </FrameLayout>

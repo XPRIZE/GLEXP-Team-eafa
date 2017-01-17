@@ -14,7 +14,7 @@
             android:adjustViewBounds="true"
             android:contentDescription="@string/none"
             android:focusable="false"
-            android:src="@drawable/btn_arrow_user"
+            android:src="@drawable/blank_image"
             android:visibility="invisible" />
  
         <ImageView
@@ -28,7 +28,7 @@
             android:background="@android:color/transparent"
             android:contentDescription="@string/strNewUser"
             android:scaleType="fitCenter"
-            android:src="@drawable/bnt_avatar_3"
+            android:src="@drawable/blank_image"
             android:visibility="invisible" />
 
                     <RelativeLayout

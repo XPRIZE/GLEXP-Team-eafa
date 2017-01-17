@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@color/application_math_operations"
+             android:id="@+id/op7Frame">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/Launch_General"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".46"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".25" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:srcCompat="@drawable/btn_addition"
+                    android:id="@+id/btnAddition"
+                    android:layout_weight="1"
+                    android:src="@drawable/btn_addition" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:id="@+id/btnSubtraction"
+                    android:src="@drawable/btn_subtraction"
+                    android:visibility="visible"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:id="@+id/btnMultiplication"
+                    android:src="@drawable/btn_multiplication"
+                    android:scaleType="fitCenter"
+                    android:visibility="visible"
+                    android:layout_weight="1" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".5" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="8.2">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Large Text"
+                        android:id="@+id/activityName"
+                        android:layout_weight="5"
+                        android:textColor="@color/darkGray"
+                        android:textSize="@dimen/activity_name_font_size"
+                        android:gravity="top"
+                        />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"/>
+
+                    <ImageButton
+                        android:id="@+id/btnInfo"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="@string/none"
+                        android:scaleType="fitCenter"
+                        android:soundEffectsEnabled="false"
+                        android:src="@drawable/btn_info" />
+
+                    <ImageButton
+                        android:id="@+id/btnBack"
+                        android:layout_width="0dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_weight="1"
+                        android:onClick="backButtonClicked"
+                        android:adjustViewBounds="true"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="@string/none"
+                        android:scaleType="fitCenter"
+                        android:soundEffectsEnabled="false"
+                        android:src="@drawable/btn_move_blue"
+                        android:layout_height="match_parent" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_weight=".2"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.07"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.1"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.1" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                >
+
+                <com.motoli.apps.allsubjects.GridViewItem
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/round_square_white"
+                    android:padding="8px"
+                    android:layout_alignParentTop="false"
+                    android:layout_alignParentLeft="false"
+                    android:layout_alignParentStart="false">
+                </com.motoli.apps.allsubjects.GridViewItem>
+
+                <TextView
+                    android:text="@string/number_0"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/op07_font_size"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:id="@+id/number0" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                >
+                <com.motoli.apps.allsubjects.GridViewItem xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/round_square_white"
+                    android:padding="8px">
+                </com.motoli.apps.allsubjects.GridViewItem>
+                <com.motoli.apps.allsubjects.MathOperationDots
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:tag="1"
+                    android:layout_alignTop="@+id/numberBox"
+                    android:layout_alignBottom="@+id/numberBox"
+                    android:layout_alignRight="@+id/numberBox"
+                    android:layout_alignLeft="@+id/numberBox"
+                    android:layout_margin="15dp"/>
+                <TextView
+                    android:text="@string/number_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/op07_font_size"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:id="@+id/number1" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                >
+                <com.motoli.apps.allsubjects.GridViewItem xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/round_square_white"
+                    android:padding="8px"
+                    >
+                </com.motoli.apps.allsubjects.GridViewItem>
+                <com.motoli.apps.allsubjects.MathOperationDots
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:tag="2"
+                    android:layout_alignTop="@+id/numberBox"
+                    android:layout_alignBottom="@+id/numberBox"
+                    android:layout_alignRight="@+id/numberBox"
+                    android:layout_alignLeft="@+id/numberBox"
+                    android:layout_margin="15dp"/>
+                <TextView
+                    android:text="@string/number_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/op07_font_size"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:id="@+id/number2" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                >
+                <com.motoli.apps.allsubjects.GridViewItem xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/round_square_white"
+                    android:padding="8px"
+                    >
+                </com.motoli.apps.allsubjects.GridViewItem>
+                <com.motoli.apps.allsubjects.MathOperationDots
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:tag="3"
+                    android:layout_alignTop="@+id/numberBox"
+                    android:layout_alignBottom="@+id/numberBox"
+                    android:layout_alignRight="@+id/numberBox"
+                    android:layout_alignLeft="@+id/numberBox"
+                    android:layout_margin="15dp"/>
+                <TextView
+                    android:text="@string/number_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/op07_font_size"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:id="@+id/number3" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                >
+                <com.motoli.apps.allsubjects.GridViewItem xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/round_square_white"
+                    android:padding="8px"
+                    >
+                </com.motoli.apps.allsubjects.GridViewItem>
+                <com.motoli.apps.allsubjects.MathOperationDots
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:tag="4"
+                    android:layout_alignTop="@+id/numberBox"
+                    android:layout_alignBottom="@+id/numberBox"
+                    android:layout_alignRight="@+id/numberBox"
+                    android:layout_alignLeft="@+id/numberBox"
+                    android:layout_margin="15dp"/>
+                <TextView
+                    android:text="@string/number_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/op07_font_size"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:id="@+id/number4" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                >
+                <com.motoli.apps.allsubjects.GridViewItem xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/round_square_white"
+                    android:padding="8px"
+                    >
+                </com.motoli.apps.allsubjects.GridViewItem>
+                <com.motoli.apps.allsubjects.MathOperationDots
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:tag="5"
+                    android:layout_alignTop="@+id/numberBox"
+                    android:layout_alignBottom="@+id/numberBox"
+                    android:layout_alignRight="@+id/numberBox"
+                    android:layout_alignLeft="@+id/numberBox"
+                    android:layout_margin="15dp"/>
+
+                <TextView
+                    android:text="@string/number_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/op07_font_size"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:layout_alignParentTop="false"
+                    android:layout_alignParentLeft="false"
+                    android:layout_alignParentStart="false"
+                    android:id="@+id/number5" />
+            </RelativeLayout>
+
+<RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+    >
+                <com.motoli.apps.allsubjects.GridViewItem xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/round_square_white"
+                    android:padding="8px"
+                    >
+                </com.motoli.apps.allsubjects.GridViewItem>
+    <com.motoli.apps.allsubjects.MathOperationDots
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:tag="6"
+        android:layout_alignTop="@+id/numberBox"
+        android:layout_alignBottom="@+id/numberBox"
+        android:layout_alignRight="@+id/numberBox"
+        android:layout_alignLeft="@+id/numberBox"
+        android:layout_margin="15dp"/>
+    <TextView
+        android:text="@string/number_6"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="@dimen/op07_font_size"
+        android:textColor="@color/black"
+        android:gravity="center_vertical|center_horizontal"
+        android:id="@+id/number6" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                >
+                <com.motoli.apps.allsubjects.GridViewItem xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/round_square_white"
+
+                    android:padding="8px"
+                    >
+                </com.motoli.apps.allsubjects.GridViewItem>
+                <com.motoli.apps.allsubjects.MathOperationDots
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:tag="7"
+                    android:layout_alignTop="@+id/numberBox"
+                    android:layout_alignBottom="@+id/numberBox"
+                    android:layout_alignRight="@+id/numberBox"
+                    android:layout_alignLeft="@+id/numberBox"
+                    android:layout_margin="15dp"/>
+                <TextView
+                    android:text="@string/number_7"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/op07_font_size"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:id="@+id/number7" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                >
+                <com.motoli.apps.allsubjects.GridViewItem xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/round_square_white"
+
+                    android:padding="8px"
+                    >
+                </com.motoli.apps.allsubjects.GridViewItem>
+                <com.motoli.apps.allsubjects.MathOperationDots
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:tag="8"
+                    android:layout_alignTop="@+id/numberBox"
+                    android:layout_alignBottom="@+id/numberBox"
+                    android:layout_alignRight="@+id/numberBox"
+                    android:layout_alignLeft="@+id/numberBox"
+                    android:layout_margin="15dp"/>
+                <TextView
+                    android:text="@string/number_8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/op07_font_size"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:id="@+id/number8" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                >
+                <com.motoli.apps.allsubjects.GridViewItem xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/round_square_white"
+
+                    android:padding="8px"
+                    >
+                </com.motoli.apps.allsubjects.GridViewItem>
+                <com.motoli.apps.allsubjects.MathOperationDots
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:tag="9"
+                    android:layout_alignTop="@+id/numberBox"
+                    android:layout_alignBottom="@+id/numberBox"
+                    android:layout_alignRight="@+id/numberBox"
+                    android:layout_alignLeft="@+id/numberBox"
+                    android:layout_margin="15dp"/>
+                <TextView
+                    android:text="@string/number_9"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/op07_font_size"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:id="@+id/number9" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".1"
+                android:background="@color/application_math_operations" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5">
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".1" />
+
+            <GridView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/variablesGrid"
+                android:layout_weight="11"
+                android:listSelector="@android:color/transparent"
+                android:numColumns="11" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".1" />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

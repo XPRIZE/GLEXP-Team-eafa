@@ -9,11 +9,12 @@
 
     
     <com.motoli.apps.allsubjects.GridViewItem xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/grid_item_image"
+    android:id="@+id/tracingImage"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scaleType="centerCrop"
-    android:src="@drawable/icon_letters_name_learn" >
+    android:src="@drawable/icon_letters_name_learn"
+        >
 </com.motoli.apps.allsubjects.GridViewItem>
 
     

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/lps_back"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:padding="2dp"
+    >
+
+
+    <com.motoli.apps.allsubjects.GridViewItem xmlns:android="http://schemas.android.com/apk/res/android"
+                                              android:id="@+id/numberBox"
+                                              android:layout_width="match_parent"
+                                              android:layout_height="match_parent"
+                                              android:scaleType="centerCrop"
+                                              android:src="@drawable/round_square_1"
+        >
+    </com.motoli.apps.allsubjects.GridViewItem>
+
+    <com.motoli.apps.allsubjects.MathOperationDots
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/shape0"
+        android:tag="4"
+        android:layout_alignTop="@+id/numberBox"
+        android:layout_alignBottom="@+id/numberBox"
+        android:layout_alignRight="@+id/numberBox"
+        android:layout_alignLeft="@+id/numberBox"
+        android:layout_margin="15dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/phonic_1"
+        android:id="@+id/number0"
+        android:layout_alignTop="@+id/numberBox"
+        android:layout_alignBottom="@+id/numberBox"
+        android:layout_alignLeft="@+id/numberBox"
+        android:layout_alignRight="@+id/numberBox"
+        android:gravity="center_vertical|center_horizontal"
+        android:textSize="@dimen/qn01_font_size"
+        android:textColor="@color/normalBlack"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="-10dp"/>
+
+
+</RelativeLayout>

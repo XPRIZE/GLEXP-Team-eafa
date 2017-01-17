@@ -1,7 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-</LinearLayout>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/lps_back"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:orientation="horizontal"
+        android:background="@drawable/border"
+        android:padding="4dp">
+
+
+        <com.motoli.apps.allsubjects.GridViewItem xmlns:android="http://schemas.android.com/apk/res/android"
+                                                  android:id="@+id/tracingImage"
+                                                  android:layout_width="0dp"
+                                                  android:layout_height="wrap_content"
+                                                  android:scaleType="fitStart"
+                                                  android:src="@drawable/icon_letters_name_learn"
+                                                  android:layout_weight="1"
+                                                  android:layout_margin="8dp">
+        </com.motoli.apps.allsubjects.GridViewItem>
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:id="@+id/sectionProgress"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:progress="80"
+            android:progressDrawable="@drawable/rounded_progressbar"
+            android:visibility="visible"
+            android:layout_weight="3"
+            android:layout_alignBottom="@+id/tracingImage"
+            android:layout_alignTop="@+id/tracingImage"
+            android:layout_toRightOf="@+id/tracingImage"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="40dp"/>
+
+
+    </LinearLayout>
+</FrameLayout>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              android:background="@drawable/bg_wd06" >
@@ -31,7 +32,8 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/activityMainPart">
 
         <Space
             android:layout_width="match_parent"
@@ -47,18 +49,13 @@
             <Space
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight=".06"/>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".12"/>
+                android:layout_weight=".05"/>
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight=".96">
+                android:layout_weight="1">
 
                 <Space
                     android:layout_width="match_parent"
@@ -78,18 +75,14 @@
                         android:scaleType="fitXY"/>
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="@string/strRandomString"
+                        android:text="@string/mediumRandomString"
                         android:id="@+id/word0"
                         android:textColor="@color/normalBlack"
-                        android:layout_alignStart="@id/wordFrame0"
-                        android:layout_toEndOf="@id/wordFrame0"
-                        android:layout_toStartOf="@id/wordFrame0"
-                        android:layout_alignEnd="@id/wordFrame0"
                         android:gravity="center_vertical|center_horizontal"
-                        android:textSize="@dimen/wd06_text_main"/>
+                        android:textSize="@dimen/wd06_word"/>
                 </RelativeLayout>
 
                 <Space
@@ -103,7 +96,7 @@
 
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight=".12" />
+                android:layout_weight=".05" />
 
             <LinearLayout
                 android:orientation="vertical"
@@ -114,7 +107,7 @@
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight=".07"/>
+                    android:layout_weight=".1"/>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -122,14 +115,9 @@
                     android:layout_weight="1">
 
                     <ImageView
-                        android:id="@+id/imageFrame0"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="@dimen/sd05_image_bottom_margin"
-                        android:layout_marginLeft="@dimen/sd05_frame_side_margin"
-                        android:layout_marginRight="@dimen/sd05_frame_side_margin"
-                        android:layout_marginTop="@dimen/sd05_image_top_margin"
-                        android:src="@drawable/rounded_box_selected"
+                        android:src="@drawable/rounded_box_selected_orange"
                         android:scaleType="fitXY" />
 
                     <ImageView
@@ -137,24 +125,17 @@
                         android:layout_height="match_parent"
                         android:id="@+id/image0"
                         android:layout_centerInParent="true"
-                        android:src="@drawable/xpeng_img_phonic_word_id150"
-                        android:layout_alignParentStart="false"
-                        android:layout_alignParentEnd="false"
-                        android:layout_marginLeft="@dimen/sd05_image_sides"
-                        android:layout_marginRight="@dimen/sd05_image_sides"
-                        android:layout_marginTop="@dimen/sd05_image_top_margin"
-                        android:layout_marginBottom="@dimen/sd05_image_bottom_margin"
+                        android:src="@drawable/bird_no_image"
                         android:layout_alignTop="@+id/imageFrame0"
                         android:layout_alignBottom="@+id/imageFrame0"
-                        android:layout_alignStart="@+id/imageFrame0"
-                        android:layout_alignEnd="@+id/imageFrame0" />
+                        android:layout_margin="@dimen/wd06_image"/>
 
                 </RelativeLayout>
 
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight=".01"/>
+                    android:layout_weight=".05"/>
 
             </LinearLayout>
 
@@ -164,16 +145,15 @@
                 android:layout_weight=".05" />
 
             <LinearLayout
-                android:id="@+id/LinearLayout1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1.2"
+                android:layout_weight="1"
                 android:orientation="vertical" >
 
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight=".3" />
+                    android:layout_weight=".1" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -188,22 +168,24 @@
                         android:background="@android:color/transparent"
                         android:contentDescription="@string/strNone"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/btn_validate_assess_off"
-                        android:layout_alignParentEnd="false"
-                        android:layout_alignParentStart="false"/>
+                        android:src="@drawable/btn_validate_off"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"/>
                 </RelativeLayout>
+
 
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight=".3" />
+                    android:layout_weight=".1" />
 
             </LinearLayout>
 
             <Space
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight=".06" />
+                android:layout_weight=".05" />
         </TableRow>
 
         <TableRow
@@ -211,49 +193,16 @@
             android:layout_height="0dp"
             android:layout_weight="1" >
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".1"/>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".5"
-                android:id="@+id/leftLetter6Space"/>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".5"
-                android:visibility="visible"
-                android:id="@+id/leftLetter5Space"/>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".5"
-                android:visibility="visible"
-                android:id="@+id/leftLetter4Space"/>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".5"
-                android:visibility="visible"
-                android:id="@+id/leftLetter3Space"/>
-
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:id="@+id/letter1Frame">
+                android:id="@+id/frame1"
+                android:visibility="visible">
 
                 <ImageView
-                    android:id="@+id/letterFrame1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:clickable="false"
                     android:contentDescription="@string/strNone"
                     android:src="@drawable/frm_wd06_off" />
 
@@ -261,82 +210,45 @@
                     android:id="@+id/letter1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginBottom="@dimen/wd06_text_bottom_margin"
-                    android:layout_marginTop="@dimen/wd06_text_top_margin"
                     android:gravity="center_vertical|center_horizontal"
-                    android:lineSpacingMultiplier=".8"
-                    android:linksClickable="true"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:scrollbarAlwaysDrawVerticalTrack="true"
                     android:text="@string/strRandomLetter"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/normalBlack"
-                    android:textSize="@dimen/wd06_letterFontSize" />
+                    android:textSize="@dimen/wd06_letter" />
 
-                <ProgressBar
-                    android:id="@+id/loadingCircle1"
-                    style="?android:attr/progressBarStyleLarge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/letterFrame1"
-                    android:layout_alignTop="@+id/letterFrame1"
-                    android:layout_centerHorizontal="true" />
+
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:id="@+id/letter2Frame">
+                android:id="@+id/frame2">
 
-                <ImageView
-                    android:id="@+id/letterFrame2"
-                    android:layout_width="match_parent"
+                <ImageView android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:contentDescription="@string/strNone"
-                    android:scaleType="centerInside"
                     android:src="@drawable/frm_wd06_off" />
 
                 <TextView
                     android:id="@+id/letter2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginBottom="@dimen/wd06_text_bottom_margin"
-                    android:layout_marginTop="@dimen/wd06_text_top_margin"
                     android:gravity="center_vertical|center_horizontal"
-                    android:lineSpacingMultiplier=".8"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:scrollbarAlwaysDrawVerticalTrack="true"
                     android:text="@string/strRandomLetter"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/normalBlack"
-                    android:textSize="@dimen/wd06_letterFontSize" />
+                    android:textSize="@dimen/wd06_letter"/>
 
-                <ProgressBar
-                    android:id="@+id/loadingCircle2"
-                    style="?android:attr/progressBarStyleLarge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/letterFrame2"
-                    android:layout_alignTop="@+id/letterFrame2"
-                    android:layout_centerHorizontal="true" />
+
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:visibility="gone"
-                android:id="@+id/letter3Frame">
+                android:visibility="visible"
+                android:id="@+id/frame3">
 
                 <ImageView
-                    android:id="@+id/letterFrame3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:contentDescription="@string/strNone"
@@ -346,28 +258,15 @@
                     android:id="@+id/letter3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginBottom="@dimen/wd06_text_bottom_margin"
-                    android:layout_marginTop="@dimen/wd06_text_top_margin"
                     android:gravity="center_vertical|center_horizontal"
-                    android:lineSpacingMultiplier=".8"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:scrollbarAlwaysDrawVerticalTrack="true"
-                    android:text="@string/strRandomLetter"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/normalBlack"
-                    android:textSize="@dimen/wd06_letterFontSize" />
 
-                <ProgressBar
-                    android:id="@+id/loadingCircle3"
-                    style="?android:attr/progressBarStyleLarge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/letterFrame3"
-                    android:layout_alignTop="@+id/letterFrame3"
-                    android:layout_centerHorizontal="true" />
+                    android:text="@string/strRandomLetter"
+                    android:textColor="@color/normalBlack"
+                    android:textSize="@dimen/wd06_letter"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"/>
+
             </RelativeLayout>
 
             <RelativeLayout
@@ -375,43 +274,24 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:visibility="gone"
-                android:id="@+id/letter4Frame">
+                android:id="@+id/frame4">
 
                 <ImageView
-                    android:id="@+id/letterFrame4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:adjustViewBounds="false"
                     android:contentDescription="@string/strNone"
-                    android:scaleType="centerInside"
                     android:src="@drawable/frm_wd06_off" />
 
                 <TextView
                     android:id="@+id/letter4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginBottom="@dimen/wd06_text_bottom_margin"
-                    android:layout_marginTop="@dimen/wd06_text_top_margin"
                     android:gravity="center_vertical|center_horizontal"
-                    android:lineSpacingMultiplier=".8"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:scrollbarAlwaysDrawVerticalTrack="true"
                     android:text="@string/strRandomLetter"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/normalBlack"
-                    android:textSize="@dimen/wd06_letterFontSize" />
+                    android:textSize="@dimen/wd06_letter" />
 
-                <ProgressBar
-                    android:id="@+id/loadingCircle4"
-                    style="?android:attr/progressBarStyleLarge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/letterFrame4"
-                    android:layout_alignTop="@+id/letterFrame4"
-                    android:layout_centerHorizontal="true" />
+
             </RelativeLayout>
 
             <RelativeLayout
@@ -419,43 +299,24 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:visibility="gone"
-                android:id="@+id/letter5Frame">
+                android:id="@+id/frame5">
 
                 <ImageView
-                    android:id="@+id/letterFrame5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:adjustViewBounds="false"
                     android:contentDescription="@string/strNone"
-                    android:scaleType="centerInside"
                     android:src="@drawable/frm_wd06_off"/>
 
                 <TextView
                     android:id="@+id/letter5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginBottom="@dimen/wd06_text_bottom_margin"
-                    android:layout_marginTop="@dimen/wd06_text_top_margin"
                     android:gravity="center_vertical|center_horizontal"
-                    android:lineSpacingMultiplier=".8"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:scrollbarAlwaysDrawVerticalTrack="true"
                     android:text="@string/strRandomLetter"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/normalBlack"
-                    android:textSize="@dimen/wd06_letterFontSize"/>
+                    android:textSize="@dimen/wd06_letter"/>
 
-                <ProgressBar
-                    style="?android:attr/progressBarStyleLarge"
-                    android:id="@+id/loadingCircle5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/letterFrame5"
-                    android:layout_alignTop="@+id/letterFrame5"
-                    android:layout_centerHorizontal="true"/>
+
             </RelativeLayout>
 
             <RelativeLayout
@@ -463,76 +324,25 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:visibility="gone"
-                android:id="@+id/letter6Frame">
+                android:id="@+id/frame6">
 
                 <ImageView
-                    android:id="@+id/letterFrame6"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:adjustViewBounds="false"
                     android:contentDescription="@string/strNone"
-                    android:scaleType="centerInside"
                     android:src="@drawable/frm_wd06_off"/>
 
                 <TextView
                     android:id="@+id/letter6"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginBottom="@dimen/wd06_text_bottom_margin"
-                    android:layout_marginTop="@dimen/wd06_text_top_margin"
                     android:gravity="center_vertical|center_horizontal"
-                    android:lineSpacingMultiplier=".8"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:scrollbarAlwaysDrawVerticalTrack="true"
                     android:text="@string/strRandomLetter"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/normalBlack"
-                    android:textSize="@dimen/wd06_letterFontSize"/>
+                    android:textSize="@dimen/wd06_letter"/>
 
-                <ProgressBar
-                    style="?android:attr/progressBarStyleLarge"
-                    android:id="@+id/loadingCircle6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/letterFrame6"
-                    android:layout_alignTop="@+id/letterFrame6"
-                    android:layout_centerHorizontal="true"/>
+
             </RelativeLayout>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".5"
-                android:visibility="visible"
-                android:id="@+id/rightLetter3Space"/>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".5"
-                android:visibility="visible"
-                android:id="@+id/rightLetter4Space"/>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".5"
-                android:visibility="visible"
-                android:id="@+id/rightLetter5Space"/>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".5"
-                android:id="@+id/rightLetter6Space"/>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".1"/>
 
         </TableRow>
     </LinearLayout>

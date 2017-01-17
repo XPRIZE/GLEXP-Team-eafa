@@ -1,113 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/Activity_BaseFrame"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/normalBlack" >
-
-    <ImageView
-        android:id="@+id/Activity_Background"
+    android:background="@drawable/bg_tan_sky_blue_clouds" >
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:baselineAlignBottom="true"
-        android:scaleType="centerCrop"
-        android:src="@drawable/bg_sd03"
-        android:visibility="visible" />
+        android:orientation="vertical">
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-
-        <TableRow
+        <include
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_weight="0.23"
+            layout="@layout/activity_top_area" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.3"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/activityMainPart">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".2" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.3">
 
             <Space
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight=".02" />
+                android:layout_weight=".05"/>
 
-            <include
+            <ImageView
+                android:id="@+id/btnMicDude"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                layout="@layout/activity_top_area"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/none"
+                android:scaleType="fitCenter"
+                android:src="@drawable/btn_dude_sd03"
                 android:layout_weight="1" />
 
             <Space
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight=".02" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".25">
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".15" />
+                android:layout_weight=".06"/>
 
             <ImageView
+                android:id="@+id/btnValidate"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:id="@+id/btnMicMan0"
-                android:layout_weight="1"
-                android:src="@drawable/btn_dude_sd03"
-                android:scaleType="fitEnd" />
+                android:layout_alignParentTop="true"
+                android:contentDescription="@string/strNone"
+                android:scaleType="fitStart"
+                android:src="@drawable/btn_validate_on_mic"
+                android:layout_weight="1" />
 
             <Space
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight=".06" />
+                android:layout_weight=".05"/>
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
+        </LinearLayout>
+    </LinearLayout>
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:id="@+id/btnValidate"
-                    android:layout_weight="1"
-                    android:src="@drawable/btn_validate_assess_off"
-                    android:scaleType="fitStart"
-                    />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_gravity="top"
-                    android:layout_weight=".8" />
-            </LinearLayout>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".15" />
-
-        </TableRow>
-    </TableLayout>
-
-    <TableLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:id="@+id/activityMainPartSecond"
+        android:visibility="visible">
 
-        <View
-            android:id="@+id/view2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight=".7" />
-
-        <TableRow
-            android:id="@+id/tableRow"
+        <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.5" >
+            android:layout_weight="1.6" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:baselineAligned="false"
+            android:id="@+id/frameGroup">
 
             <RelativeLayout
                 android:layout_width="0dp"
@@ -115,7 +103,7 @@
                 android:layout_weight="1" >
 
                 <ImageView
-                    android:id="@+id/frmImage1"
+                    android:id="@+id/frame1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:adjustViewBounds="true"
@@ -124,7 +112,37 @@
                     android:src="@drawable/frm_sd03_on" />
 
                 <ImageView
-                    android:id="@+id/phonicImage1"
+                    android:id="@+id/image1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/sd03_image_bottom_margin"
+                    android:layout_marginLeft="@dimen/sd03_image_sides_margins"
+                    android:layout_marginRight="@dimen/sd03_image_sides_margins"
+                    android:layout_marginTop="@dimen/sd03_image_top_margin"
+                    android:adjustViewBounds="false"
+                    android:contentDescription="@string/strNone"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/applogo" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/frame2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/strNone"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/frm_sd03_off" />
+
+                <ImageView
+                    android:id="@+id/image2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="@dimen/sd03_image_bottom_margin"
@@ -134,16 +152,8 @@
                     android:adjustViewBounds="true"
                     android:contentDescription="@string/strNone"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/no_image" />
+                    android:src="@drawable/blank_image" />
 
-                <ProgressBar
-                    style="?android:attr/progressBarStyleLarge"
-                    android:id="@+id/loadingCircle1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/phonicImage1"
-                    android:layout_alignTop="@+id/phonicImage1"
-                    android:layout_centerHorizontal="true" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -152,7 +162,7 @@
                 android:layout_weight="1" >
 
                 <ImageView
-                    android:id="@+id/frmImage2"
+                    android:id="@+id/frame3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:adjustViewBounds="true"
@@ -161,81 +171,7 @@
                     android:src="@drawable/frm_sd03_off" />
 
                 <ImageView
-                    android:id="@+id/phonicImage2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/sd03_image_bottom_margin"
-                    android:layout_marginLeft="@dimen/sd03_image_sides_margins"
-                    android:layout_marginRight="@dimen/sd03_image_sides_margins"
-                    android:layout_marginTop="@dimen/sd03_image_top_margin"
-                    android:adjustViewBounds="true"
-                    android:contentDescription="@string/strNone"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/randomimage" />
-
-                <ProgressBar
-                    style="?android:attr/progressBarStyleLarge"
-                    android:id="@+id/loadingCircle2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/phonicImage2"
-                    android:layout_alignTop="@+id/phonicImage2"
-                    android:layout_centerHorizontal="true" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" >
-
-                <ImageView
-                    android:id="@+id/frmImage3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:adjustViewBounds="true"
-                    android:contentDescription="@string/strNone"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/frm_sd03_off" />
-
-                <ImageView
-                    android:id="@+id/phonicImage3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="@dimen/sd03_image_bottom_margin"
-                    android:layout_marginLeft="@dimen/sd03_image_sides_margins"
-                    android:layout_marginRight="@dimen/sd03_image_sides_margins"
-                    android:layout_marginTop="@dimen/sd03_image_top_margin"
-                    android:contentDescription="@string/strNone"
-                    android:src="@drawable/randomimage"
-                    android:scaleType="fitCenter" />
-
-                <ProgressBar
-                    style="?android:attr/progressBarStyleLarge"
-                    android:id="@+id/loadingCircle3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/phonicImage3"
-                    android:layout_alignTop="@+id/phonicImage3"
-                    android:layout_centerHorizontal="true" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" >
-
-                <ImageView
-                    android:id="@+id/frmImage4"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:adjustViewBounds="true"
-                    android:contentDescription="@string/strNone"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/frm_sd03_off" />
-
-                <ImageView
-                    android:id="@+id/phonicImage4"
+                    android:id="@+id/image3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerHorizontal="true"
@@ -247,17 +183,38 @@
                     android:src="@drawable/blank_image"
                     android:scaleType="fitCenter" />
 
-                <ProgressBar
-                    style="?android:attr/progressBarStyleLarge"
-                    android:id="@+id/loadingCircle4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/phonicImage4"
-                    android:layout_alignTop="@+id/phonicImage4"
-                    android:layout_centerHorizontal="true" />
             </RelativeLayout>
-        </TableRow>
 
-    </TableLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/frame4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/strNone"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/frm_sd03_off" />
+
+                <ImageView
+                    android:id="@+id/image4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/sd03_image_bottom_margin"
+                    android:layout_marginLeft="@dimen/sd03_image_sides_margins"
+                    android:layout_marginRight="@dimen/sd03_image_sides_margins"
+                    android:layout_marginTop="@dimen/sd03_image_top_margin"
+                    android:contentDescription="@string/strNone"
+                    android:src="@drawable/blank_image"
+                    android:scaleType="fitCenter" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </LinearLayout>
 
 </FrameLayout>

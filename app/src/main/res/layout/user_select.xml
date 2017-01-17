@@ -3,7 +3,7 @@
     android:id="@+id/Curriculum_FrameArea"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/bg_users"
+    android:background="@color/launchpagbck"
     android:gravity="right"
     android:orientation="vertical" >
 
@@ -64,7 +64,7 @@
                 android:contentDescription="@string/none"
                 android:scaleType="fitCenter"
                 android:soundEffectsEnabled="false"
-                android:src="@drawable/btn_setting" />
+                android:src="@drawable/btn_act_setting" />
 
             <View
                 android:id="@+id/view1"
@@ -95,6 +95,7 @@
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/none"
                 android:scaleType="fitCenter"
+                android:onClick="backButtonClicked"
                 android:soundEffectsEnabled="false"
                 android:src="@drawable/btn_move_blue" />
         </TableRow>
@@ -111,5 +112,12 @@
                 android:layout_height="match_parent" />
         </TableRow>
     </TableLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imageView4"
+        android:src="@drawable/bg_splash"
+        android:scaleType="fitXY"/>
 
 </FrameLayout>

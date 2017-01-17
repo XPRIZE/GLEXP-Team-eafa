@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/lps_back"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+
+    <com.motoli.apps.allsubjects.GridViewItem xmlns:android="http://schemas.android.com/apk/res/android"
+                                              android:id="@+id/numberBox"
+                                              android:layout_width="match_parent"
+                                              android:layout_height="match_parent"
+                                              android:scaleType="centerCrop"
+                                              android:src="@drawable/round_square_1"
+        >
+    </com.motoli.apps.allsubjects.GridViewItem>
+
+    <com.motoli.apps.allsubjects.MathOperationDots
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/shape0"
+        android:tag="4"
+        android:layout_alignTop="@+id/numberBox"
+        android:layout_alignBottom="@+id/numberBox"
+        android:layout_alignRight="@+id/numberBox"
+        android:layout_alignLeft="@+id/numberBox"
+        android:layout_margin="15dp"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/numberBox"
+        android:layout_alignParentStart="false"
+        android:layout_alignTop="@+id/numberBox"
+        android:layout_alignLeft="@+id/numberBox"
+        android:layout_below="@+id/numberBox"
+        android:layout_alignRight="@+id/numberBox"
+        android:layout_alignEnd="@+id/numberBox"
+        android:layout_alignStart="@+id/numberBox">
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/equation"
+            android:textSize="@dimen/op07_equation_font_size"
+            android:textColor="@color/normalBlack"
+            android:layout_weight=".6"
+            android:gravity="bottom|center_horizontal" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.2"
+            android:paddingBottom="10dp">
+
+            <TextView
+                android:text="="
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/normalBlack"
+                android:textSize="@dimen/op07_equation_font_size"
+                android:layout_toStartOf="@+id/answer"
+                android:gravity="center_vertical"
+                android:id="@+id/equal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/phonic_1"
+                android:id="@+id/answer"
+                android:gravity="center_vertical|center_horizontal"
+                android:textSize="@dimen/op07_font_size"
+                android:textColor="@color/normalBlack"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

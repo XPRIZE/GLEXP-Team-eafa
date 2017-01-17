@@ -1,59 +1,641 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-            android:background="@color/application_books">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/application_books">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TableRow
+
+        <LinearLayout
+            android:id="@+id/Launch_General"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".3">
-
-            <include
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                layout="@layout/activity_top_area"
-                android:layout_weight="1"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_weight="0.23"
+            android:orientation="horizontal" >
 
             <Space
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight=".1"/>
+                android:layout_weight="1"/>
 
-            <GridView
+            <ImageView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:id="@+id/booksGrid"
+                android:id="@+id/btnBackward"
                 android:layout_weight="1"
-                android:numColumns="5"
-                android:clickable="false"
-                android:stretchMode="columnWidth"
-                android:columnWidth="50dp"
+                android:src="@drawable/btn_move_bluelight_up"
+                android:onClick="moveBackward" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/btnForward"
+                android:layout_weight="1"
+                android:src="@drawable/btn_move_bluelight_down"
+                android:onClick="moveForward" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text"
+                android:id="@+id/activityName"
+                android:layout_weight="2"
+                android:textColor="@color/darkGray"
+                android:textSize="@dimen/activity_name_font_size"
+                android:gravity="top"
                 />
 
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/btnChangeCase"
+                android:src="@drawable/btn_changecase"
+                android:scaleType="fitCenter"
+                android:visibility="invisible"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/btnVideo"
+                android:src="@drawable/btn_video"
+                android:layout_weight="1"
+                android:visibility="visible"
+                android:onClick="tvButtonClicked" />
+
+            <ImageButton
+                android:id="@+id/btnInfo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/none"
+                android:scaleType="fitCenter"
+                android:onClick="infoButtonClicked"
+                android:soundEffectsEnabled="false"
+                android:src="@drawable/btn_info" />
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/none"
+                android:scaleType="fitCenter"
+                android:soundEffectsEnabled="false"
+                android:src="@drawable/btn_move_blue"
+                android:onClick="backButtonClicked" />
+
             <Space
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight=".1"/>
-        </TableRow>
+                android:layout_weight=".2" />
+
+        </LinearLayout>
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".04"/>
+            android:layout_weight="1.3"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".3"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".7">
+
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".05" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+                    <com.motoli.apps.allsubjects.GridViewItem xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:id="@+id/image1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@color/ver_off_white"
+                        android:layout_margin="6dp"
+                        android:onClick="openBook">
+                    </com.motoli.apps.allsubjects.GridViewItem>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2.4"/>
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/cup1"
+                            android:src="@drawable/btn_award_red"
+
+                            android:adjustViewBounds="true"
+                            android:layout_weight="1"
+                            />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:text="New Text"
+                    android:id="@+id/text1"
+                    android:layout_weight=".1"
+                    android:textSize="@dimen/bk02_font_size"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textColor="@color/bk02_font_color"
+                    />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".05" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+                    <com.motoli.apps.allsubjects.GridViewItem xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:id="@+id/image2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@color/ver_off_white"
+                        android:layout_margin="6dp"
+                        android:onClick="openBook">
+                    </com.motoli.apps.allsubjects.GridViewItem>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2.4"/>
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/cup2"
+                            android:src="@drawable/btn_award_red"
+
+                            android:adjustViewBounds="true"
+                            android:layout_weight="1"
+                            />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:text="New Text"
+                    android:id="@+id/text2"
+                    android:layout_weight=".1"
+                    android:textSize="@dimen/bk02_font_size"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textColor="@color/bk02_font_color"
+                    />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".05" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <com.motoli.apps.allsubjects.GridViewItem
+                        android:id="@+id/image3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@color/ver_off_white"
+                        android:layout_margin="6dp"
+                        android:onClick="openBook">
+                    </com.motoli.apps.allsubjects.GridViewItem>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2.4"/>
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/cup3"
+                            android:src="@drawable/btn_award_red"
+
+                            android:adjustViewBounds="true"
+                            android:layout_weight="1"
+                            />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:text="New Text"
+                    android:id="@+id/text3"
+                    android:layout_weight=".1"
+                    android:textSize="@dimen/bk02_font_size"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textColor="@color/bk02_font_color"
+                    />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".05" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+                    <com.motoli.apps.allsubjects.GridViewItem xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:id="@+id/image4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@color/ver_off_white"
+                        android:layout_margin="6dp"
+                        android:onClick="openBook">
+                    </com.motoli.apps.allsubjects.GridViewItem>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2.4"/>
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/cup4"
+                            android:src="@drawable/btn_award_red"
+
+                            android:adjustViewBounds="true"
+                            android:layout_weight="1"
+                            />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:text="New Text"
+                    android:id="@+id/text4"
+                    android:layout_weight=".1"
+                    android:textSize="@dimen/bk02_font_size"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textColor="@color/bk02_font_color"
+                    />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".05" />
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".02" />
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".7">
+
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".05" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+                        <com.motoli.apps.allsubjects.GridViewItem xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:id="@+id/image5"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@color/ver_off_white"
+                            android:layout_margin="6dp"
+                            android:onClick="openBook">
+                        </com.motoli.apps.allsubjects.GridViewItem>
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <Space
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2.4"/>
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/cup5"
+                                android:src="@drawable/btn_award_red"
+
+                                android:adjustViewBounds="true"
+                                android:layout_weight="1"
+                                />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:text="New Text"
+                        android:id="@+id/text5"
+                        android:layout_weight=".1"
+                        android:textSize="@dimen/bk02_font_size"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:textColor="@color/bk02_font_color"
+                        />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".05" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                        <com.motoli.apps.allsubjects.GridViewItem
+                            android:id="@+id/image6"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@color/ver_off_white"
+                            android:layout_margin="6dp"
+                            android:onClick="openBook">
+                        </com.motoli.apps.allsubjects.GridViewItem>
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <Space
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2.4"/>
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/cup6"
+                                android:src="@drawable/btn_award_red"
+
+                                android:adjustViewBounds="true"
+                                android:layout_weight="1"
+                                />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:text="New Text"
+                        android:id="@+id/text6"
+                        android:layout_weight=".1"
+                        android:textSize="@dimen/bk02_font_size"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:textColor="@color/bk02_font_color"
+                        />
+                </LinearLayout>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".05" />
+
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+                        <com.motoli.apps.allsubjects.GridViewItem xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:id="@+id/image7"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@color/ver_off_white"
+                            android:layout_margin="6dp"
+                            android:onClick="openBook">
+                        </com.motoli.apps.allsubjects.GridViewItem>
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <Space
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2.4"/>
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/cup7"
+                                android:src="@drawable/btn_award_red"
+
+                                android:adjustViewBounds="true"
+                                android:layout_weight="1"
+                                />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:text="New Text"
+                        android:id="@+id/text7"
+                        android:layout_weight=".1"
+                        android:textSize="@dimen/bk02_font_size"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:textColor="@color/bk02_font_color"
+                        />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".05" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+                        <com.motoli.apps.allsubjects.GridViewItem xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:id="@+id/image8"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@color/ver_off_white"
+                            android:layout_margin="6dp"
+                            android:onClick="openBook">
+                        </com.motoli.apps.allsubjects.GridViewItem>
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <Space
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2.4"/>
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/cup8"
+                                android:src="@drawable/btn_award_red"
+
+                                android:adjustViewBounds="true"
+                                android:layout_weight="1"
+                                />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:text="New Text"
+                        android:id="@+id/text8"
+                        android:layout_weight=".1"
+                        android:textSize="@dimen/bk02_font_size"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:textColor="@color/bk02_font_color"
+                        />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".05" />
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".02"/>
 
     </LinearLayout>
+
 
 </FrameLayout>

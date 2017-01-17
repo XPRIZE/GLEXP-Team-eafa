@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/tr_background">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tracingBack">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".23">
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="7" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnBack"
+                android:onClick="backButtonClicked"
+                android:layout_weight=".9"
+                android:src="@drawable/btn_move_blue" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".1" />
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        android:orientation="horizontal"
+        android:id="@+id/tracingIcons">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/launch_side_icon_margin"
+            android:background="@color/tr_side"
+            android:layout_weight=".35">
+
+            <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:id="@+id/activityName"
+                android:layout_weight=".2"
+                android:gravity="right|center_vertical"
+                android:paddingRight="10dp"
+                android:textColor="@color/rs04_letter_white" />
+
+            <ImageView
+                android:id="@+id/shapesIcon"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="false"
+                android:contentDescription="@string/none"
+                android:scaleType="fitCenter"
+                android:soundEffectsEnabled="false"
+                android:src="@drawable/icon_menu_shape" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".4" />
+
+            <ImageView
+                android:id="@+id/numbersIcon"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="false"
+                android:contentDescription="@string/none"
+                android:scaleType="fitCenter"
+                android:soundEffectsEnabled="@drawable/icon_menu_number"
+                android:src="@drawable/icon_menu_number" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_weight=".4"
+                android:layout_height="0dp" />
+
+            <ImageView
+                android:id="@+id/lowerCaseAlphaIcon"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="false"
+                android:contentDescription="@string/none"
+                android:scaleType="fitCenter"
+                android:soundEffectsEnabled="false"
+                android:src="@drawable/icon_menu_lowercase" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".4" />
+
+            <ImageView
+                android:id="@+id/upperCaseAlphaIcon"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="false"
+                android:contentDescription="@string/none"
+                android:scaleType="fitCenter"
+                android:soundEffectsEnabled="false"
+                android:src="@drawable/icon_menu_uppercase" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".2" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            android:layout_weight="1">
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".05" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <GridView
+                    android:id="@+id/iconGrid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center"
+                    android:numColumns="2"
+                    android:scrollbarAlwaysDrawVerticalTrack="false"
+                    android:stretchMode="columnWidth"
+                    android:drawSelectorOnTop="false"
+                    android:listSelector="@color/transparent"
+                    android:columnWidth="100dp">
+
+                </GridView>
+
+            </RelativeLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".2"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</FrameLayout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/lps_back"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:padding="2dp"
+    >
+
+
+    <com.motoli.apps.allsubjects.GridViewItem xmlns:android="http://schemas.android.com/apk/res/android"
+                                              android:id="@+id/tracingImage"
+                                              android:layout_width="match_parent"
+                                              android:layout_height="match_parent"
+                                              android:scaleType="centerCrop"
+                                              android:src="@drawable/round_square_1" >
+    </com.motoli.apps.allsubjects.GridViewItem>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/phonic_1"
+        android:id="@+id/grid_item_text"
+        android:textColor="@color/normalBlack"
+        android:layout_marginBottom="1dp"
+        android:layout_marginTop="-1dp"
+        android:layout_centerHorizontal="false"
+        android:layout_centerInParent="true"
+        android:gravity="center_vertical|center_horizontal"
+        android:textSize="@dimen/gridText"
+
+ />
+
+
+</RelativeLayout>

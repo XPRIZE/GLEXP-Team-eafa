@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@color/bg_bk03_side" >
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:baselineAligned="true">
+
+        <ListView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/bookList"
+            android:layout_weight=".25"
+            android:layout_gravity="center"
+            android:paddingLeft="@dimen/bk03_leftright_list"
+            android:paddingRight="@dimen/bk03_leftright_list"
+            android:divider="@color/bg_bk03_side"
+            android:background="@color/bg_bk03_side"
+            android:drawSelectorOnTop="false"
+            android:listSelector="@color/bg_bk03_side"/>
+
+        <LinearLayout
+                      android:orientation="vertical"
+                      android:layout_width="0dp"
+                      android:layout_height="match_parent"
+                      android:background="@color/bg_bk03"
+                      android:layout_weight="1">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".25"/>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.2">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".05"/>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+
+
+                    <com.motoli.apps.allsubjects.RoundedImage
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/bookPageView"
+                        android:src="@color/reg_white"
+                        android:visibility="visible"/>
+
+                    <TextView
+                        android:id="@+id/bookPageText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:gravity="center_vertical"
+                        android:text="I enjoy skipping rope"
+                        android:textColor="@color/bk02_font_color"
+                        android:textSize="@dimen/bk02_font_normal"
+                        android:padding="@dimen/bk02_text_padding"
+                        android:layout_alignParentBottom="false"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/bk03_left_text"/>
+
+                </RelativeLayout>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".05"/>
+            </TableRow>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".05"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableRow
+            android:id="@+id/Launch_General"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".23"
+            android:orientation="horizontal" >
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2.5"/>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/movePageLeft"
+                android:layout_weight="1"
+
+                android:src="@drawable/btn_move_bluelight_left"
+                android:scaleType="fitCenter"
+                android:visibility="visible"/>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/movePageRight"
+                android:layout_weight="1"
+                android:src="@drawable/btn_move_bluelight_right"
+                android:scaleType="fitCenter"
+                android:visibility="visible"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text"
+                android:id="@+id/activityName"
+                android:textColor="@color/darkGray"
+                android:textSize="@dimen/activity_name_font_size"
+                android:gravity="top"
+                android:layout_weight="2.5"/>
+
+            <ImageButton
+                android:id="@+id/btnRepeat"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/none"
+                android:scaleType="fitCenter"
+                android:soundEffectsEnabled="false"
+                android:src="@drawable/btn_repeat_bluelight" />
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:onClick="backButtonClicked"
+                android:adjustViewBounds="true"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/none"
+                android:scaleType="fitCenter"
+                android:soundEffectsEnabled="false"
+                android:src="@drawable/btn_move_bluelight" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2" />
+        </TableRow>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.3"/>
+
+    </LinearLayout>
+
+</FrameLayout>
