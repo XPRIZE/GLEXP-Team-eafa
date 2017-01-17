@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+    <inset xmlns:android="http://schemas.android.com/apk/res/android"
+       android:insetLeft="20dp"
+       android:insetRight="20dp" >
+        <rotate  android:fromDegrees="90"
+                 android:toDegrees="90">
+            <shape
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:shape="line"
+        >
+
+        <stroke
+            android:width="8dp"
+            android:color="#ff000000" />
+    </shape>  </rotate>
+</inset>
