@@ -21,8 +21,9 @@ public class Master_Parent extends Activity {
 
     protected boolean allowSound=true;
     protected int maxVolume=100;
-    
-    protected Handler audioHandler = new Handler();
+    protected  boolean mFinishRound=false;
+
+    protected Handler mAudioHandler = new Handler();
 
     protected Audio_Functions audioFunctions;
     
@@ -33,32 +34,56 @@ public class Master_Parent extends Activity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
-        audioFunctions =new Audio_Functions(this, allowSound,maxVolume);
-        audioFunctions.stopAudio();
         appData=((Motoli_Application) getApplicationContext());
 
     }
-    
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-    protected long playGeneralAudio(String audio_url){
-        return audioFunctions.playGeneralAudio(audio_url);
-        
+    public void onStart(){
+        super.onStart();
+        audioFunctions =new Audio_Functions(this, allowSound,maxVolume);
+        audioFunctions.stopAudio();
     }
 
+    public void onDestroy(){
+        super.onDestroy();
+        //audioFunctions.stopAudio();
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////
+
+    protected long getAudioDuration(String mAudioUrl){
+        return audioFunctions.getAudioDuration(mAudioUrl);
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////
+
+    protected long playGeneralAudio(String mAudioUrl){
+        return audioFunctions.playGeneralAudio(mAudioUrl);
+        
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+    protected long playFeedBackAudio(String mAudioUrl){
+        return audioFunctions.playFeedBackAudio(mAudioUrl);
+
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+
+    protected long playSplitAudio(String mFirstAudio, String mSecondSudio){
+        return audioFunctions.playSplitAudio(mFirstAudio, mSecondSudio);
+    }
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     
     protected void playClickSound(){
         audioFunctions.playGeneralAudio("sfx_select");
-        
     }
     
     
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         boolean result =true;
-        if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK && !mFinishRound)) {
             moveBackwords();
         }
 
@@ -72,16 +97,38 @@ public class Master_Parent extends Activity {
         
         return result;
     }
-    
-    
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-    
+
+    ///////////////////////////////////////////////////////////////////////////////////////////
+
+    protected void exitApplication(){
+        new AlertDialog.Builder(this).setTitle(getResources().getString(R.string.strLeaveApp))
+                .setMessage(getResources().getString(R.string.strWouldYouLieToLeave))
+                .setPositiveButton(getResources().getString(R.string.strYes),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                finish();
+                            }
+                        }
+                )
+                .setNegativeButton(getResources().getString(R.string.strNo),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                appData.addToClassOrder(2);
+                            }
+                        }
+                )
+                .show();
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////
+
     protected void moveBackwords(){
-        int class_number=appData.getPreviousClass();
+        int mActivityType=appData.getActivityType();
         Intent main;
         audioFunctions.stopAudio();
+
         
-        switch(class_number){
+        switch(mActivityType){
             default:
             case 0://FRONT PAGE
             case 1:
@@ -95,148 +142,126 @@ public class Master_Parent extends Activity {
                     }
                  })
                 .setNegativeButton(getResources().getString(R.string.strNo), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) { 
+                    public void onClick(DialogInterface dialog, int which) {
+                        appData.addToClassOrder(2);
                     }
                  })
-                /* .setNeutralButton(getResources().getString(R.string.strCancel), new DialogInterface.OnClickListener() {
-                    
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        
-                    }
-                })*/
                  .show();
-                //finish();
                 break;
             /*
             case 1://USER SELECT
-                appData.setmCurrentActivityName("UserSelect");
+                appData.setCurrentActivityName("UserSelect");
                 main = new Intent(getApplicationContext(),UserSelect.class);
 
                 startActivity(main);
                 finish();break;
                 */
-            case 2://LAUNCH PLATFORM
-                appData.setmCurrentActivityName("Launch_Platform");
+            case 2://Goto LAUNCH PLATFORM
+            case 4:
+                appData.setCurrentActivityName("Launch_Platform");
 
                 main = new Intent(getApplicationContext(),Launch_Platform.class);
                 startActivity(main);
                 finish();
                 break;
-            case 3://ACTIVITIES PLATFORM
-                appData.setmCurrentActivityName("Activities_Platform");
+            case 3://Goto ACTIVITIES PLATFORM
+                appData.setCurrentActivityName("Activities_Platform");
 
                 main = new Intent(getApplicationContext(),Activities_Platform.class);
                 startActivity(main);
                 finish();
                 break;
-            case 4://ACTIVITY LT05
-                appData.setmCurrentActivityName("Activity_LT05");
+            case 5://Goto ACTIVITY BK02 BOOK LIST
+                appData.setCurrentActivityName("ActivityBK02BookList");
 
-                main = new Intent(getApplicationContext(),Activity_LT05.class);
-                startActivity(main);
-                finish();
-                break;
-            case 5://ACTIVITY LT01
-                appData.setmCurrentActivityName("Activity_LT01");
-
-                main = new Intent(getApplicationContext(),Activity_LT01.class);
+                main = new Intent(getApplicationContext(),ActivityBK02BookList.class);
                 startActivity(main);
                 finish();
                 break;
 
             case 6://ACTIVITY LT03
-                appData.setmCurrentActivityName("Activity_LT03");
-                main = new Intent(getApplicationContext(),Activity_LT03.class);
+                appData.setCurrentActivityName("ActivityTR02");
+                main = new Intent(getApplicationContext(),ActivityTR02.class);
                 startActivity(main);
                 finish();	
                 break;
-            case 7://ACTIVITY SD01
-                appData.setmCurrentActivityName("ActivitySD01");
+        /*    case 7://ACTIVITY SD01
+                appData.setCurrentActivityName("ActivitySD01");
                 main = new Intent(getApplicationContext(),ActivitySD01.class);
                 startActivity(main);
                 finish();
                 break;
             case 8://ACTIVITY SD02
-                appData.setmCurrentActivityName("ActivitySD02");
+                appData.setCurrentActivityName("ActivitySD02");
                 main = new Intent(getApplicationContext(),ActivitySD02.class);
                 startActivity(main);
                 finish();
                 break;
             case 9://ACTIVITY SD03
-                appData.setmCurrentActivityName("ActivitySD03");
+                appData.setCurrentActivityName("ActivitySD03");
                 main = new Intent(getApplicationContext(),ActivitySD03.class);
                 startActivity(main);
                 finish();
                 break;
             case 10://ACTIVITY SD06
-                appData.setmCurrentActivityName("ActivitySD06");
+                appData.setCurrentActivityName("ActivitySD06");
                 main = new Intent(getApplicationContext(),ActivitySD06.class);
                 startActivity(main);
                 finish();
                 break;
             case 11://ACTIVITY SD04
-                appData.setmCurrentActivityName("ActivitySD04");
+                appData.setCurrentActivityName("ActivitySD04");
                 main = new Intent(getApplicationContext(),ActivitySD04.class);
                 startActivity(main);
                 finish();
                 break;
-            case 12://ACTIVITY SD05
-                appData.setmCurrentActivityName("ActivitySD05");
-                main = new Intent(getApplicationContext(),ActivitySD05.class);
-                startActivity(main);
-                finish();
-                break;
+
 
             case 13://ACTIVITY CS01
-                appData.setmCurrentActivityName("ActivityCS01");
+                appData.setCurrentActivityName("ActivityCS01");
                 main = new Intent(getApplicationContext(),ActivityCS01.class);
                 startActivity(main);
                 finish();
                 break;
             case 14://ACTIVITY CS02
-                appData.setmCurrentActivityName("ActivityCS02");
+                appData.setCurrentActivityName("ActivityCS02");
                 main = new Intent(getApplicationContext(),ActivityCS02.class);
                 startActivity(main);
                 finish();
                 break;
-            case 15://ACTIVITY CS03
-                appData.setmCurrentActivityName("ActivityCS03");
-                main = new Intent(getApplicationContext(),ActivityCS03.class);
-                startActivity(main);
-                finish();
-                break;
+
 
             case 16://ACTIVITY RS01
-                appData.setmCurrentActivityName("ActivityRS01");
+                appData.setCurrentActivityName("ActivityRS01");
                 main = new Intent(getApplicationContext(),ActivityRS01.class);
                 startActivity(main);
                 finish();
                 break;
             case 17://ACTIVITY RS02
-                appData.setmCurrentActivityName("ActivityRS02");
+                appData.setCurrentActivityName("ActivityRS02");
                 main = new Intent(getApplicationContext(),ActivityRS02.class);
                 startActivity(main);
                 finish();
                 break;
             case 18://ACTIVITY RS03
-                appData.setmCurrentActivityName("ActivityRS03");
+                appData.setCurrentActivityName("ActivityRS03");
                 main = new Intent(getApplicationContext(),ActivityRS03.class);
                 startActivity(main);
                 finish();
                 break;
             case 19://ACTIVITY BK02
-                appData.setmCurrentActivityName("ActivityBK02BookList");
+                appData.setCurrentActivityName("ActivityBK02BookList");
                 main = new Intent(getApplicationContext(),ActivityBK02BookList.class);
                 startActivity(main);
                 finish();
                 break;
             case 20://ACTIVITY BK02
-                appData.setmCurrentActivityName("ActivityBK02Book");
+                appData.setCurrentActivityName("ActivityBK02Book");
                 main = new Intent(getApplicationContext(),ActivityBK02Book.class);
                 startActivity(main);
                 finish();
                 break;
+           */
         }
 
     }

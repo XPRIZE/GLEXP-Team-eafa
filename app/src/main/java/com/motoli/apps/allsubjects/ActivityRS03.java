@@ -13,15 +13,19 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 
-public class ActivityRS03 extends Activity_General_Parent implements LoaderManager.LoaderCallbacks<Cursor>{
+public class ActivityRS03 extends ActivitiesMasterParent
+        implements LoaderManager.LoaderCallbacks<Cursor>{
 
     private int mCurrentSyllablesWordsLocation=0;
     private int mIncorrectInRound=0;
@@ -51,24 +55,45 @@ public class ActivityRS03 extends Activity_General_Parent implements LoaderManag
         setContentView(R.layout.activity_rs03);
         appData.addToClassOrder(8);
         mAllActivityText = new ArrayList<ArrayList<ArrayList<String>>>();
-        roundNumber = 0;
-        beingValidated=true;
-
+        mRoundNumber = 0;
+        mBeingValidated=true;
+        findViewById(R.id.activityMainPart)
+                .setVisibility(LinearLayout.VISIBLE);
+        findViewById(R.id.activityMainPart)
+                .setAnimation(AnimationUtils.loadAnimation(
+                        getApplicationContext(), R.anim.fade_in));
+        findViewById(R.id.activityMainPart)
+                .setVisibility(LinearLayout.VISIBLE);
+        findViewById(R.id.activityMainPartSecond)
+                .setAnimation(AnimationUtils.loadAnimation(
+                        getApplicationContext(), R.anim.fade_in));
+        mInstructionAudio="info_rs03";
         setUpListeners();
         visibleProgress();
         clearActivity();
         setupFrameListens();
         ((TextView) findViewById(R.id.btnTextRS03)).setTypeface(appData.getCurrentFontType());
 
-        getLoaderManager().initLoader(MotoliConstants.CURRENT_SYLLABLE_WRDS, null, this);
-
+        startActivityHandler.postDelayed(startActivity, 500);
     }//end public void onCreate(Bundle savedInstanceState) {
 
+    private Runnable startActivity = new Runnable() {
+        @Override
+        public void run() {
+            start();
+        }
+    };
+
+    private void start(){
+        getLoaderManager().initLoader(Constants.CURRENT_SYLLABLE_WRDS, null, this);
+    }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-    private long playInstructionAudio(){
-        return playGeneralAudio("info_rs03");
+    protected long playInstructionAudio(){
+        long mAudioDuration= super.playInstructionAudio();
+        mAudioHandler.postDelayed(playWordAudio, mAudioDuration + 20);
+        return mAudioDuration;
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -76,8 +101,8 @@ public class ActivityRS03 extends Activity_General_Parent implements LoaderManag
     //////////////////////////////////////////////////////////////////////////////////////////////
 
     private void visibleProgress(){
-        findViewById(R.id.loadingCircle1).setVisibility(ProgressBar.VISIBLE);
-        findViewById(R.id.loadingCircle2).setVisibility(ProgressBar.VISIBLE);
+
+
 
     }
 
@@ -87,15 +112,15 @@ public class ActivityRS03 extends Activity_General_Parent implements LoaderManag
         ((ImageView) findViewById(R.id.btnImageRS03)).setImageResource(R.drawable.blank_image);
         ((TextView) findViewById(R.id.btnTextRS03)).setText("");
 
-        ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_assess_off);
+        ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_off);
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-    private void displayScreen(){
+    protected void displayScreen(){
         mIncorrectInRound=0;
 
-        mCurrentSyllable = new ArrayList<String>(mAllSyllables.get(roundNumber));
+        mCurrentSyllable = new ArrayList<String>(mAllSyllables.get(mRoundNumber));
 
 
         mCurrentSyllableWords=new ArrayList<ArrayList<String>>();
@@ -103,8 +128,8 @@ public class ActivityRS03 extends Activity_General_Parent implements LoaderManag
 
         Collections.shuffle(mAllSyllableWordsBundle);
 
-        ((ImageView) findViewById(R.id.btnCircleRS03)).setImageResource(R.drawable.btn_rs03_circle);
-        ((ImageView) findViewById(R.id.btnStarRS03)).setImageResource(R.drawable.btn_rs03_star);
+        ((ImageView) findViewById(R.id.btnCircleRS03)).setImageResource(R.drawable.btn_circle);
+        ((ImageView) findViewById(R.id.btnStarRS03)).setImageResource(R.drawable.btn_star);
 
         boolean foundMatch=false;
         for(int i=0;i<mAllSyllableWordsBundle.size(); i++){
@@ -132,9 +157,9 @@ public class ActivityRS03 extends Activity_General_Parent implements LoaderManag
             }
         }
 
-        long audioDuration = 0;
-        if (roundNumber == 0)
-            audioDuration = playInstructionAudio();
+        long mAudioDuration = 0;
+        if (mRoundNumber == 0)
+            mAudioDuration = playInstructionAudio();
 
         if(foundMatch) {
 
@@ -142,8 +167,8 @@ public class ActivityRS03 extends Activity_General_Parent implements LoaderManag
             mCurrentWordAudio=mCurrentSyllableWords.get(0).get(2);
 
 
-            findViewById(R.id.loadingCircle2).setVisibility(ProgressBar.INVISIBLE);
-            findViewById(R.id.loadingCircle1).setVisibility(ProgressBar.INVISIBLE);
+
+
 
             ((TextView) findViewById(R.id.btnTextRS03)).setText(mCurrentSyllable.get(1));
 
@@ -164,19 +189,28 @@ public class ActivityRS03 extends Activity_General_Parent implements LoaderManag
             }
 
 
-            audioHandler.postDelayed(playLtrAudio, audioDuration + 20);
+            mAudioHandler.postDelayed(playWordAudio, mAudioDuration + 20);
         }else{
             mCurrentSyllableAudio="";
             mCurrentWordAudio="";
-            correctChoice=true;
-            processGuessPosition=2;
+            mCorrect=true;
+            mProcessGuessPosition=2;
             guessHandler.postDelayed(processGuess, 10);
         }
 
     }//end private void displayScreen(Cursor currentWordsCursor){
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private Runnable playWordAudio = new Runnable(){
 
+        @Override
+        public void run(){
+            mAudioHandler.removeCallbacks(playWordAudio);
+            mBeingValidated=false;
+            if(!mCurrentWordAudio.equals(""))
+                playGeneralAudio(mCurrentWordAudio);
+        }
+    };
 
     ////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -184,8 +218,8 @@ public class ActivityRS03 extends Activity_General_Parent implements LoaderManag
 
         @Override
         public void run(){
-            audioHandler.removeCallbacks(playLtrAudio);
-            beingValidated=false;
+            mAudioHandler.removeCallbacks(playLtrAudio);
+            mBeingValidated=false;
             if(!mCurrentSyllableAudio.equals(""))
                 playGeneralAudio(mCurrentSyllableAudio);
         }
@@ -203,14 +237,14 @@ public class ActivityRS03 extends Activity_General_Parent implements LoaderManag
     protected void setupFrameListens(){
         findViewById(R.id.btnCircleRS03).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (/*!mCurrentSyllableWords.get(0).get(7).equals("2") && */!beingValidated) {
+                if (/*!mCurrentSyllableWords.get(0).get(7).equals("2") && */!mBeingValidated) {
                     mCurrentSyllablesWordsLocation = 0;
                     mCurrentSyllableWords.get(0).set(7,"1");
-                    ((ImageView) findViewById(R.id.btnCircleRS03)).setImageResource(R.drawable.btn_rs03_circle_select);
+                    ((ImageView) findViewById(R.id.btnCircleRS03)).setImageResource(R.drawable.btn_circle_select);
                     if (!mCurrentSyllableWords.get(0).get(8).equals("2")) {
-                        ((ImageView) findViewById(R.id.btnStarRS03)).setImageResource(R.drawable.btn_rs03_star);
+                        ((ImageView) findViewById(R.id.btnStarRS03)).setImageResource(R.drawable.btn_star);
                     }
-                    correctChoice = mCurrentSyllableWords.get(0).get(6).equals("0");
+                    mCorrect = mCurrentSyllableWords.get(0).get(6).equals("0");
                     setUpFrame();
                 }
             }
@@ -218,15 +252,15 @@ public class ActivityRS03 extends Activity_General_Parent implements LoaderManag
 
         findViewById(R.id.btnStarRS03).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (/*!mCurrentSyllableWords.get(0).get(8).equals("2") && */ !beingValidated) {
+                if (/*!mCurrentSyllableWords.get(0).get(8).equals("2") && */ !mBeingValidated) {
                     mCurrentSyllableWords.get(0).set(8,"1");
                     mCurrentSyllablesWordsLocation = 1;
                     if (!mCurrentSyllableWords.get(0).get(7).equals("2")) {
-                        ((ImageView) findViewById(R.id.btnCircleRS03)).setImageResource(R.drawable.btn_rs03_circle);
+                        ((ImageView) findViewById(R.id.btnCircleRS03)).setImageResource(R.drawable.btn_circle);
                     }
-                    ((ImageView) findViewById(R.id.btnStarRS03)).setImageResource(R.drawable.btn_rs03_star_select);
+                    ((ImageView) findViewById(R.id.btnStarRS03)).setImageResource(R.drawable.btn_star_select);
 
-                    correctChoice = mCurrentSyllableWords.get(0).get(6).equals("1");
+                    mCorrect = mCurrentSyllableWords.get(0).get(6).equals("1");
                     setUpFrame();
                 }
             }
@@ -240,8 +274,8 @@ public class ActivityRS03 extends Activity_General_Parent implements LoaderManag
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private void setUpFrame(){
-        ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_assess_on);
-        validateAvailable=true;
+        ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_on);
+        mValidateAvailable=true;
 
     }
 
@@ -250,25 +284,25 @@ public class ActivityRS03 extends Activity_General_Parent implements LoaderManag
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-    private void validate(){
-        beingValidated=true;
-        String where=" WHERE "+Database.App_Users_Activity_Variable_Values.APP_USER_ID+"="+appData.getCurrentUserID()
-                +" AND "+Database.App_Users_Activity_Variable_Values.VARIABLE_ID+"="+mCurrentSyllable.get(0)
-                +" AND "+Database.App_Users_Activity_Variable_Values.ACTIVITY_ID+"="+appData.getCurrentActivity().get(0);
+    protected void validate(){
+        mBeingValidated=true;
+        String where=" WHERE app_user_id="+appData.getCurrentUserID()
+                +" AND variable_id="+mCurrentSyllable.get(0)
+                +" AND activity_id="+appData.getCurrentActivity().get(0);
         String[] selectionArgs;
-        ArrayList<String> currentGSP=new ArrayList<String>(appData.getCurrentGroup_Section_Phase());
+        mCurrentGSP=new HashMap<String, String>(appData.getCurrentGroup_Section_Phase());
 
-        if(correctChoice){
+        if(mCorrect){
             //processLayoutAfterGuess(true);
             //correctWordCount++;
 
 
-            ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_assess_ok);
+            ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_ok);
             if(mIncorrectInRound>=1){
                 selectionArgs = new String[]{
                         "0",
                         "0",
-                        currentGSP.get(3),
+                        mCurrentGSP.get("current_level"),
                         mCurrentSyllable.get(0),
                         String.valueOf(mIncorrectInRound)};
                 mAllSyllables.add(mCurrentSyllable);
@@ -276,12 +310,12 @@ public class ActivityRS03 extends Activity_General_Parent implements LoaderManag
                 selectionArgs = new String[]{
                         "1",
                         "0",
-                        currentGSP.get(3),
+                        mCurrentGSP.get("current_level"),
                         mCurrentSyllable.get(0),
                         String.valueOf(mIncorrectInRound)};
             }
 
-            getContentResolver().update(MotoliContentProvider.CONTENT_URI_ACTIVITY_USER_RW_UPDATE, null, where, selectionArgs);
+            getContentResolver().update(AppProvider.CONTENT_URI_ACTIVITY_USER_RW_UPDATE, null, where, selectionArgs);
             switch(mCurrentSyllablesWordsLocation){
                 default:
                 case 0:
@@ -296,28 +330,28 @@ public class ActivityRS03 extends Activity_General_Parent implements LoaderManag
         }else{
             mIncorrectInRound++;
 
-            ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_assess_no_ok);
+            ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_no_ok);
             selectionArgs = new String[]{
                     "0",
                     "1",
-                    currentGSP.get(3),
+                    mCurrentGSP.get("current_level"),
                     mCurrentSyllable.get(0),
                     String.valueOf(mIncorrectInRound)};
 
 
-            getContentResolver().update(MotoliContentProvider.CONTENT_URI_ACTIVITY_USER_RW_UPDATE, null, where, selectionArgs);
+            getContentResolver().update(AppProvider.CONTENT_URI_ACTIVITY_USER_RW_UPDATE, null, where, selectionArgs);
             if(mIncorrectInRound>=2){
                 switch(mCorrectLocation){
                     default:
                     case 0:
                         mCurrentSyllableWords.get(0).set(8,"2");
-                        ((ImageView) findViewById(R.id.btnCircleRS03)).setImageResource(R.drawable.btn_rs03_circle_select);
+                        ((ImageView) findViewById(R.id.btnCircleRS03)).setImageResource(R.drawable.btn_circle_select);
                         ((ImageView) findViewById(R.id.btnStarRS03)).setImageResource(R.drawable.btn_rs03_star_wrong);
 
                         break;
                     case 1:
                         mCurrentSyllableWords.get(0).set(7,"2");
-                        ((ImageView) findViewById(R.id.btnStarRS03)).setImageResource(R.drawable.btn_rs03_star_select);
+                        ((ImageView) findViewById(R.id.btnStarRS03)).setImageResource(R.drawable.btn_star_select);
                         ((ImageView) findViewById(R.id.btnCircleRS03)).setImageResource(R.drawable.btn_rs03_circle_wrong);
                         break;
                 }
@@ -341,11 +375,11 @@ public class ActivityRS03 extends Activity_General_Parent implements LoaderManag
         //processPoints();
 
 
-        //processGuessPosition=0;
+        //mProcessGuessPosition=0;
 
         //guessHandler.postDelayed(processGuess, 10);
 
-        processGuessPosition=0;
+        mProcessGuessPosition=0;
         guessHandler.postDelayed(processGuess, 10);
 
 
@@ -357,61 +391,72 @@ public class ActivityRS03 extends Activity_General_Parent implements LoaderManag
 
     private Runnable processGuess = new Runnable(){
 
-        //beingValidated=false;
+        //mBeingValidated=false;
 
 
         @Override
         public void run(){
-            long audioDuration;
+            long mAudioDuration;
 
-            switch(processGuessPosition){
+            switch(mProcessGuessPosition){
                 case 0:
                 default:{
-                    if(correctChoice){
-                        audioDuration=playGeneralAudio("sfx_right");
+                    if(mCorrect){
+                        mAudioDuration=playGeneralAudio("sfx_right");
                     }else{
-                        audioDuration=playGeneralAudio("sfx_wrong");
+                        mAudioDuration=playGeneralAudio("sfx_wrong");
                     }
-                    processGuessPosition++;
-                    audioHandler.postDelayed(processGuess, audioDuration+10);
+                    mProcessGuessPosition++;
+                    mAudioHandler.postDelayed(processGuess, mAudioDuration+10);
                     break;
                 }
                 case 1:{
-                    audioDuration=playGeneralAudio(currentLtrWrdAudio);
-                    processGuessPosition++;
-                    audioHandler.postDelayed(processGuess, audioDuration+10);
+                    mAudioDuration=playGeneralAudio(currentLtrWrdAudio);
+                    mProcessGuessPosition++;
+                    mAudioHandler.postDelayed(processGuess, mAudioDuration+10);
                     break;
                 }
                 case 2:{
                     guessHandler.removeCallbacks(processGuess);
-                    if(correctChoice){
-                        roundNumber++;
-                        if(roundNumber!=(mAllSyllables.size())){
-                            //beingValidated=false;
-                            validateAvailable=false;
+                    if(mCorrect){
+                        mRoundNumber++;
+                        if(mRoundNumber!=(mAllSyllables.size())){
+                            //mBeingValidated=false;
+                            mValidateAvailable=false;
                             clearActivity();
-                            processGuessPosition++;
+                            mProcessGuessPosition++;
                             guessHandler.postDelayed(processGuess, 500);
                         }else{
-                            lastActivityData=0;
+                            mLastActivityData=0;
+
                             lastActivityDataHandler.postDelayed(returnToActivities_Platorm,10);
+                            findViewById(R.id.activityMainPart)
+                                    .setVisibility(LinearLayout.INVISIBLE);
+                            findViewById(R.id.activityMainPart)
+                                    .setAnimation(AnimationUtils.loadAnimation(
+                                            getApplicationContext(), R.anim.fade_out));
+                            findViewById(R.id.activityMainPart)
+                                    .setVisibility(LinearLayout.INVISIBLE);
+                            findViewById(R.id.activityMainPartSecond)
+                                    .setAnimation(AnimationUtils.loadAnimation(
+                                            getApplicationContext(), R.anim.fade_out));
                         }
                     }else{
-                        ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_assess_off);
-                        beingValidated=false;
-                        validateAvailable=false;
+                        ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_off);
+                        mBeingValidated=false;
+                        mValidateAvailable=false;
                     }
 
                     break;
                 }
                 case 3:{
-                    ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_assess_off);
+                    ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_off);
 
                     guessHandler.removeCallbacks(processGuess);
                     displayScreen();
                     break;
                 }
-            }//switch(processGuessPosition){
+            }//switch(mProcessGuessPosition){
         }//public void run(){
     };
 
@@ -426,33 +471,28 @@ public class ActivityRS03 extends Activity_General_Parent implements LoaderManag
         CursorLoader cursorLoader;
         switch(id){
             default:
-            case MotoliConstants.CURRENT_SYLLABLE_WRDS:{
-                String selection=Database.Syllable_Words.SYLLABLE_WORDS_TABLE+"."+
-                        Database.Syllable_Words.SYLLABLE_WORD_TEXT+"!=''";
+            case Constants.CURRENT_SYLLABLE_WRDS:{
+                String selection="syllable_words.syllable_word_text!=''";
+
 
                 cursorLoader = new CursorLoader(this,
-                        MotoliContentProvider.CONTENT_URI_CURRENT_SYLLABLE_WORDS,null,selection,null,null);
+                        AppProvider.CONTENT_URI_CURRENT_SYLLABLE_WORDS,null,selection,null,null);
                 break;
             }
-            case MotoliConstants.CURRENT_SYLLABLE:{
+            case Constants.CURRENT_SYLLABLE:{
 
-                ArrayList<String> currentGSP=new ArrayList<String>(appData.getCurrentGroup_Section_Phase());
+                mCurrentGSP=new HashMap<String,String>(appData.getCurrentGroup_Section_Phase());
                 String[] projection = new String[]{
                         appData.getCurrentActivity().get(0),
                         appData.getCurrentUserID(),
-                        currentGSP.get(0),
-                        currentGSP.get(1),
-                        currentGSP.get(2),
-                        currentGSP.get(3)};
-                String selection=Database.Variable_Phase_Levels.VARIABLE_PHASE_LEVELS_TABLE+"."+
-                        Database.Variable_Phase_Levels.GROUP_ID+"="+currentGSP.get(0)
-                        +" AND "+Database.Variable_Phase_Levels.VARIABLE_PHASE_LEVELS_TABLE+"."+
-                        Database.Variable_Phase_Levels.PHASE_ID+"="+currentGSP.get(1)
-                        +" AND "+Database.Variable_Phase_Levels.VARIABLE_PHASE_LEVELS_TABLE+"."+
-                        Database.Variable_Phase_Levels.LEVEL_NUMBER+"<="+currentGSP.get(3);
+                        mCurrentGSP.get("group_id"),
+                        mCurrentGSP.get("phase_id"),
+                        mCurrentGSP.get("section_id"),
+                        mCurrentGSP.get("current_level")};
+                String selection="";
 
                 cursorLoader = new CursorLoader(this,
-                        MotoliContentProvider.CONTENT_URI_CURRENT_SYLLABLES, projection, selection, null, null);
+                        AppProvider.CONTENT_URI_CURRENT_SYLLABLES, projection, selection, null, null);
                 break;
             }
         }
@@ -469,7 +509,7 @@ public class ActivityRS03 extends Activity_General_Parent implements LoaderManag
         switch(loader.getId()) {
             default:
                 break;
-            case MotoliConstants.CURRENT_SYLLABLE_WRDS:{
+            case Constants.CURRENT_SYLLABLE_WRDS:{
                 mAllSyllableWordsBundle=new ArrayList<Bundle>();
                 mAllSyllableWords=new ArrayList<ArrayList<String>>();
                 int currentSyllableWordNumber=0;
@@ -478,7 +518,7 @@ public class ActivityRS03 extends Activity_General_Parent implements LoaderManag
                     mAllSyllableWords.add(new ArrayList<String>());
                     mAllSyllableWordsBundle.add(new Bundle());
 
-                    mAllSyllableWordsBundle.get(currentSyllableWordNumber).putString(mSyllableWordId, 
+                    mAllSyllableWordsBundle.get(currentSyllableWordNumber).putString(mSyllableWordId,
                             data.getString(data.getColumnIndex(mSyllableWordId)));
                     mAllSyllableWordsBundle.get(currentSyllableWordNumber).putString(mSyllableWordText,
                             data.getString(data.getColumnIndex(mSyllableWordText)));
@@ -500,12 +540,13 @@ public class ActivityRS03 extends Activity_General_Parent implements LoaderManag
                     mAllSyllableWords.get(currentSyllableWordNumber).add(data.getString(data.getColumnIndex("syllable_word_image")));
                     mAllSyllableWords.get(currentSyllableWordNumber).add(data.getString(data.getColumnIndex("syllable_word_first_id")));
                     mAllSyllableWords.get(currentSyllableWordNumber).add(data.getString(data.getColumnIndex("syllable_word_last_id")));
+
                     currentSyllableWordNumber++;
                 }
-                getLoaderManager().restartLoader(MotoliConstants.CURRENT_SYLLABLE, null, this);
+                getLoaderManager().restartLoader(Constants.CURRENT_SYLLABLE, null, this);
                 break;
             }
-            case MotoliConstants.CURRENT_SYLLABLE:{
+            case Constants.CURRENT_SYLLABLE:{
         
                 processData(data);
 
@@ -516,14 +557,16 @@ public class ActivityRS03 extends Activity_General_Parent implements LoaderManag
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    private void processData(Cursor mCursor){
-        int mNumberOfSyllableVariables=(mCursor.getCount()*2>MotoliConstants.NUMBER_SYLLABLE_VARIABLES) ?
-                MotoliConstants.NUMBER_SYLLABLE_VARIABLES : mCursor.getCount()*2;
-        int mNumberCorrectInARow=MotoliConstants.INA_ROW_CORRECT;
+    protected void processData(Cursor mCursor){
+        int mNumberOfSyllableVariables=(mCursor.getCount()*2>Constants.NUMBER_SYLLABLE_VARIABLES) ?
+                Constants.NUMBER_SYLLABLE_VARIABLES : mCursor.getCount()*2;
+        int mNumberCorrectInARow=Constants.INA_ROW_CORRECT;
         mAllSyllables=new ArrayList<ArrayList<String>>();
         int mSyllableNumber=0;
         mCursor.moveToFirst();
         while (!mCursor.isAfterLast()) {
+            mCurrentGSP.put("current_level",
+                    mCursor.getString(mCursor.getColumnIndex("app_user_current_level")));
             mAllSyllables.add(new ArrayList<String>());
             mAllSyllables.get(mSyllableNumber).add(mCursor.getString(mCursor.getColumnIndex("syllables_id"))); //0
             mAllSyllables.get(mSyllableNumber).add(mCursor.getString(mCursor.getColumnIndex("syllables_text"))); //1
@@ -531,6 +574,7 @@ public class ActivityRS03 extends Activity_General_Parent implements LoaderManag
             mAllSyllables.get(mSyllableNumber).add(mCursor.getString(mCursor.getColumnIndex("number_correct"))); //3
             mAllSyllables.get(mSyllableNumber).add(mCursor.getString(mCursor.getColumnIndex("number_incorrect"))); //4
             mAllSyllables.get(mSyllableNumber).add(mCursor.getString(mCursor.getColumnIndex("number_correct_in_a_row"))); //5
+            mAllSyllables.get(mSyllableNumber).add(mCursor.getString(mCursor.getColumnIndex("syllable_sister_id"))); //6
 
             mNumberCorrectInARow=(mNumberCorrectInARow>Integer.parseInt(mAllSyllables.get(mSyllableNumber).get(5)))
                     ? Integer.parseInt(mAllSyllables.get(mSyllableNumber).get(5)):mNumberCorrectInARow;
@@ -571,11 +615,6 @@ public class ActivityRS03 extends Activity_General_Parent implements LoaderManag
         mAllSyllables=new ArrayList<ArrayList<String>>(mTempCurrentWords);
 
 
-        if((mNumberCorrectInARow==MotoliConstants.INA_ROW_CORRECT)){
-           showCompleteLevelStar(true);
-        }else{
-            showCompleteLevelStar(false);
-        }
 
         displayScreen();
 
@@ -596,11 +635,11 @@ public class ActivityRS03 extends Activity_General_Parent implements LoaderManag
 
 
 
-    private void setUpListeners(){
+    protected void setUpListeners(){
 
         findViewById(R.id.btnTextRS03).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if(!mCurrentSyllableAudio.equals("") && !beingValidated){
+                if(!mCurrentSyllableAudio.equals("") && !mBeingValidated){
                     playClickSound();
                     playGeneralAudio(mCurrentSyllableAudio);
                 }
@@ -610,7 +649,7 @@ public class ActivityRS03 extends Activity_General_Parent implements LoaderManag
 
         findViewById(R.id.btnImageRS03).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if(!mCurrentWordAudio.equals("") && !beingValidated){
+                if(!mCurrentWordAudio.equals("") && !mBeingValidated){
                     playClickSound();
                     playGeneralAudio(mCurrentWordAudio);
                 }
@@ -619,25 +658,10 @@ public class ActivityRS03 extends Activity_General_Parent implements LoaderManag
         });
 
 
-        findViewById(R.id.btnInfo).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                playClickSound();
-                long audioDuration=playInstructionAudio();
-                audioHandler.postDelayed(playLtrAudio, audioDuration + 20);
-            }
-        });
-
-        findViewById(R.id.btnBack).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                playClickSound();
-                moveBackwords();
-            }
-        });
-
 
         findViewById(R.id.btnValidate).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if(validateAvailable && !beingValidated){
+                if(mValidateAvailable && !mBeingValidated){
                     playClickSound();
                     validate();
                 }

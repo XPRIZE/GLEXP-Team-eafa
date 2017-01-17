@@ -36,10 +36,7 @@ public class RoundedImage extends ImageView {
     }
 
     private void init() {
-        // If the application is hardware accelerated,
-        // must disable it for this view.
         setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-        // Set a default radius
         setRounded(30);
     }
 
@@ -65,9 +62,7 @@ public class RoundedImage extends ImageView {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        //Apply the clip
         canvas.clipPath(roundedPath);
-        //Let the view draw as normal
         super.onDraw(canvas);
     }
 }

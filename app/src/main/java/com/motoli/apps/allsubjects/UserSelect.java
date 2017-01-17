@@ -17,15 +17,10 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
 
 public class UserSelect extends Master_Parent {
 
@@ -58,14 +53,6 @@ public class UserSelect extends Master_Parent {
         appData.addToClassOrder(1);
         playInstructions();
 
-        findViewById(R.id.btnBack).setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                playClickSound();
-                moveBackwords();
-            }
-        });
-
-
 
         ImageButton speakerButton=(ImageButton) findViewById(R.id.btnInfo);
         speakerButton.setOnClickListener(new View.OnClickListener() {
@@ -89,14 +76,8 @@ public class UserSelect extends Master_Parent {
         ArrayList<String> userName = new ArrayList<String>();
         ArrayList<String> userAvatar = new ArrayList<String>();
 
-        //sqlDB=mpDB.getReadableDatabase();
-
-        //mpDB.createGuestUser(getResources().getString(R.string.strGuestUser));
-
-        ArrayList<ArrayList<String>> allUsers=appData.getAllUsers();
-
-        //databaseOpenCloseFunctions(3);
-
+       // ArrayList<ArrayList<String>> allUsers=appData.getAllUsers();
+ /*
         if(allUsers.size()<=1){
             userTags.add("");
             userName.add("");
@@ -132,7 +113,7 @@ public class UserSelect extends Master_Parent {
 
         ListActivity.setAdapter(adapter);
 
-        /*
+
         ListActivity.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
@@ -153,13 +134,12 @@ public class UserSelect extends Master_Parent {
 
                     String userTag=view.findViewById(R.id.UserSelectIcon).getTag().toString();
                     appData.setCurrentUserID(userTag);
-                    appData.createCurrentDefaultLevels();
                     currentUserId=userTag;
 
                     ImageView currentArrow = (ImageView) view.findViewById(R.id.UserSelectArrow);
                     currentArrow.setVisibility(ImageView.VISIBLE);
                    TextView txt = (TextView) view.findViewById(R.id.UserSelectText);
-                   Log.d(MotoliConstants.LOGCAT, "user name: "+txt.getText()+"current user tag: "+userTag);
+                   Log.d(Constants.LOGCAT, "user name: "+txt.getText()+"current user tag: "+userTag);
 
 
                     validate();
@@ -169,7 +149,6 @@ public class UserSelect extends Master_Parent {
         */
 
         appData.setCurrentUserID("0");
-        appData.createCurrentDefaultLevels();
         currentUserId="0";
         validate();
 
@@ -191,7 +170,7 @@ public class UserSelect extends Master_Parent {
         Intent main = new Intent(this,Launch_Platform.class);
         startActivity(main);
         finish();
-//  		startActivityForResult(main, MotoliConstants.ACTIVITY_USERSELECT);
+//  		startActivityForResult(main, Constants.ACTIVITY_USERSELECT);
 
 
         /*
@@ -209,26 +188,24 @@ public class UserSelect extends Master_Parent {
     // ///////////////////////////////////////////////////////////////////////////////////////////
 /*
     private void newUserClick(){
-        validateAvailable=true;
+        mValidateAvailable=true;
         currentUserId="new";
         ((ImageButton) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_on);
     //	findViewById(R.id.UserNewArrow).setVisibility(ImageView.VISIBLE);
-        Toast.makeText(UserSelect.this, "User New  Button", Toast.LENGTH_LONG).show();
     }
 
     // ///////////////////////////////////////////////////////////////////////////////////////////
 
     private void guestUserClick(){
-        validateAvailable=true;
+        mValidateAvailable=true;
         currentUserId="0";
         ((ImageButton) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_on);
     //	findViewById(R.id.UserGuestArrow).setVisibility(ImageView.VISIBLE);
-        Toast.makeText(UserSelect.this, "User Guest  Button", Toast.LENGTH_LONG).show();
     }
     */
     // ///////////////////////////////////////////////////////////////////////////////////////////
 
-    private void validate(){
+    protected void validate(){
 
 
         /**
@@ -256,7 +233,6 @@ public class UserSelect extends Master_Parent {
     /////////////////////////////////////////////////////////////////////////////////////////
 
     protected void playInstructions(){
-        //playGeneralAudio("app_sc01_b");
     }
 
 
@@ -277,7 +253,7 @@ public class UserSelect extends Master_Parent {
                         /*
                             actAudio.playSFXAudio("sfx_select");
                             Intent main = new Intent(UserSelect.this,Settings_App.class);
-                            startActivityForResult(main, MotoliConstants.ACTIVITY_SETTINGS);
+                            startActivityForResult(main, Constants.ACTIVITY_SETTINGS);
 
 
                             */

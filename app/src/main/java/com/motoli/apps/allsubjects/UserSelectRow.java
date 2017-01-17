@@ -107,35 +107,35 @@ public class UserSelectRow extends BaseAdapter{
 		switch(Integer.valueOf(userAvatars.get(position))){
 			default:
 			case 0:{
-				((ImageView) vi.findViewById(R.id.UserSelectIcon)).setImageResource(R.drawable.bnt_avatar_guest);
+				((ImageView) vi.findViewById(R.id.UserSelectIcon)).setImageResource(R.drawable.blank_image);
 				break;
 			}
 			case 1:{
-				((ImageView) vi.findViewById(R.id.UserSelectIcon)).setImageResource(R.drawable.bnt_avatar_1);
+				((ImageView) vi.findViewById(R.id.UserSelectIcon)).setImageResource(R.drawable.blank_image);
 				break;
 			}
 			case 2:{
-				((ImageView) vi.findViewById(R.id.UserSelectIcon)).setImageResource(R.drawable.bnt_avatar_2);
+				((ImageView) vi.findViewById(R.id.UserSelectIcon)).setImageResource(R.drawable.blank_image);
 				break;
 			}
 			case 3:{
-				((ImageView) vi.findViewById(R.id.UserSelectIcon)).setImageResource(R.drawable.bnt_avatar_3);
+				((ImageView) vi.findViewById(R.id.UserSelectIcon)).setImageResource(R.drawable.blank_image);
 				break;
 			}
 			case 4:{
-				((ImageView) vi.findViewById(R.id.UserSelectIcon)).setImageResource(R.drawable.bnt_avatar_4);
+				((ImageView) vi.findViewById(R.id.UserSelectIcon)).setImageResource(R.drawable.blank_image);
 				break;
 			}
 			case 5:{
-				((ImageView) vi.findViewById(R.id.UserSelectIcon)).setImageResource(R.drawable.bnt_avatar_5);
+				((ImageView) vi.findViewById(R.id.UserSelectIcon)).setImageResource(R.drawable.blank_image);
 				break;
 			}
 			case 6:{
-				((ImageView) vi.findViewById(R.id.UserSelectIcon)).setImageResource(R.drawable.bnt_avatar_6);
+				((ImageView) vi.findViewById(R.id.UserSelectIcon)).setImageResource(R.drawable.blank_image);
 				break;
 			}
 			case 7:{
-				((ImageView) vi.findViewById(R.id.UserSelectIcon)).setImageResource(R.drawable.bnt_avatar_new);
+				((ImageView) vi.findViewById(R.id.UserSelectIcon)).setImageResource(R.drawable.blank_image);
 				break;
 			}
 		}

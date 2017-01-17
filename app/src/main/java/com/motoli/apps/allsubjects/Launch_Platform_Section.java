@@ -6,128 +6,118 @@ package com.motoli.apps.allsubjects;
  * on 8/12/2015.
  */
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-
-import com.motoli.apps.allsubjects.R.color;
+import java.util.HashMap;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 public class Launch_Platform_Section extends BaseAdapter {
-		private Context context;
-	//	private final String[] mobileValues;
-		private ArrayList<ArrayList<String>> sectionData;
-		
-		static class ViewHolder {
-			 TextView text;
-			 ImageView icon;
-			}
-		
-		public Launch_Platform_Section(Context context, ArrayList<ArrayList<String>> sectionData) {
-			this.context = context;
-			//this.mobileValues = mobileValues;
-			this.sectionData=sectionData;
+        private Context context;
+        private ArrayList<HashMap<String,String>> mSectionData;
 
-		}
-	 
-		public View getView(int position, View convertView, ViewGroup parent) {
-	 		LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        static class ViewHolder {
+             TextView text;
+             ImageView icon;
+            }
 
-	
-			ViewHolder holder;
-			 
-			if (convertView == null) {
-				convertView = mInflater.inflate(R.layout.launch_platform_section,parent, false);
-				holder = new ViewHolder();
-				//holder.text = (TextView) convertView.findViewById(R.id.text);
-				holder.icon = (ImageView) convertView.findViewById(R.id.grid_item_image);
-			 
-				convertView.setTag(holder);
-			} else {
-				holder = (ViewHolder) convertView.getTag();
-			}
-			
-			if(sectionData.get(position).get(8).equals("0")){
-				holder.icon.setAlpha(0.2f);
-			}else{
-				holder.icon.setAlpha(1.0f);
-			}
-			
-			holder.icon.setImageResource(context.getResources().getIdentifier(sectionData.get(position).get(3).replace(".png","") , "drawable", context.getPackageName()));
-			holder.icon.setTag(sectionData.get(position));
-			
-			holder.icon.setScaleType(ImageView.ScaleType.FIT_CENTER);
-			holder.icon.setPadding(8, 8, 8, 8);
+        public Launch_Platform_Section(Context context,
+                                       ArrayList<HashMap<String,String>> mSectionData) {
+            this.context = context;
+            this.mSectionData=mSectionData;
+
+        }
+
+        public View getView(int mPosition, View convertView, ViewGroup parent) {
+            LayoutInflater mInflater = (LayoutInflater) 
+                    context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+            ViewHolder holder;
+
+            if (convertView == null) {
+                convertView = mInflater.inflate(R.layout.launch_platform_section,parent, false);
+                holder = new ViewHolder();
+                holder.icon = (ImageView) convertView.findViewById(R.id.tracingImage);
+                convertView.setTag(holder);
+            } else {
+                holder = (ViewHolder) convertView.getTag();
+            }
+            Log.d(Constants.LOGCAT, mSectionData.get(mPosition).get("section_id"));
+
+            if(mSectionData.get(mPosition).get("group_id").equals("2")
+                    && Integer.parseInt(mSectionData.get(mPosition).get("variable_count"))>0){
+                holder.icon.setAlpha(1.0f);
+            }else if(mSectionData.get(mPosition).get("activity_count").equals("0") ||
+                   mSectionData.get(mPosition).get("app_user_current_level").equals("0")){
+                holder.icon.setAlpha(0.5f);
+            }else if(mSectionData.get(mPosition).get("section_id").equals("8")){
+                holder.icon.setAlpha(1.0f);
+            }else if (mSectionData.get(mPosition).get("usable_section").equals("0")) {
+                holder.icon.setAlpha(0.5f);
+
+            }else if(mSectionData.get(mPosition).get("activity_count").equals("1") &&
+                    mSectionData.get(mPosition).get("variable_count").equals("0")) {
+                holder.icon.setAlpha(1.0f);
+
+            //number and math section
+            }else if(mSectionData.get(mPosition).get("section_id").equals("17") ||
+                    mSectionData.get(mPosition).get("section_id").equals("20") ||
+                    mSectionData.get(mPosition).get("section_id").equals("23")){
+                holder.icon.setAlpha(1.0f);
+            }else if(Integer.parseInt(mSectionData.get(mPosition).get("activity_count"))>1 &&
+                    Integer.parseInt(mSectionData.get(mPosition).get("variable_count"))>=4){
+                holder.icon.setAlpha(1.0f);
+            }else{
+                holder.icon.setAlpha(0.5f);
+            }
+
+
+            holder.icon.setImageResource(context.getResources()
+                    .getIdentifier(mSectionData.get(mPosition).get("section_image")
+                            .replace(".png","") , "drawable", context.getPackageName()));
+            holder.icon.setTag(mSectionData.get(mPosition));
+
+            holder.icon.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            holder.icon.setPadding(8, 8, 8, 8);
             
-			holder.icon.destroyDrawingCache();
-			 
-			 
+            holder.icon.destroyDrawingCache();
 
 
 
-			return convertView;
-		}
-	 
-		
-		
-		private Bitmap decodeFile(File f) {
-		    try {
-		        // Decode image size
-		        BitmapFactory.Options o = new BitmapFactory.Options();
-		        o.inJustDecodeBounds = true;
-		        BitmapFactory.decodeStream(new FileInputStream(f), null, o);
-
-		        // The new size we want to scale to
-		        final int REQUIRED_SIZE=70;
-
-		        // Find the correct scale value. It should be the power of 2.
-		        int scale = 1;
-		        while(o.outWidth / scale / 2 >= REQUIRED_SIZE && 
-		              o.outHeight / scale / 2 >= REQUIRED_SIZE) {
-		            scale *= 2;
-		        }
-
-		        // Decode with inSampleSize
-		        BitmapFactory.Options o2 = new BitmapFactory.Options();
-		        o2.inSampleSize = scale;
-		        return BitmapFactory.decodeStream(new FileInputStream(f), null, o2);
-		    } catch (FileNotFoundException e) {}
-		    return null;
-		}
-		
-		
-		
-		@Override
-		public int getCount() {
-			return sectionData.size();
-		}
-	 
-		@Override
-		public Object getItem(int position) {
-			return null;
-		}
-	 
-		@Override
-		public long getItemId(int position) {
-			return 0;
-		}
 
 
-		
-	 
-	}
+            return convertView;
+        }
+
+
+
+
+
+
+        @Override
+        public int getCount() {
+            return mSectionData.size();
+        }
+
+        @Override
+        public Object getItem(int mPosition) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int mPosition) {
+            return 0;
+        }
+
+
+
+
+    }
 
 

@@ -6,15 +6,19 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * Part of Project Motoli All Subjects
@@ -22,21 +26,23 @@ import java.util.Collections;
  * created by Aaron D Michaelis Borsay
  * on 10/31/2015.
  */
-public class ActivityWD04 extends Activity_General_Parent  implements LoaderManager.LoaderCallbacks<Cursor>{
+public class ActivityWD04 extends ActivitiesMasterParent
+        implements LoaderManager.LoaderCallbacks<Cursor>{
 
 
-    private int correctWordCount=0;
-    private int processGuessPosition=0;
-    private int numberOfWordsChosen=0;
+    private int mCorrectWordCount=0;
+    private int mProcessGuessPosition=0;
+    private int mNumberOfWordsChosen=0;
 
-    private String currentWordID="";
+    private String mCurrentWordID="";
 
 
-    private ArrayList<String> wordStatus;
-    private ArrayList<String> chosenFrames;
+    private ArrayList<String> mWordStatus;
+    private ArrayList<String> mChosenFrames;
     //Handlers
     private ArrayList<ArrayList<String>> mAllText;
 
+private ArrayList<ArrayList<String>> mCurrentText;
 
 
 
@@ -48,10 +54,16 @@ public class ActivityWD04 extends Activity_General_Parent  implements LoaderMana
         setContentView(R.layout.activity_wd04);
 
         appData.addToClassOrder(6);
-        allActivityText = new ArrayList<ArrayList<ArrayList<String>>>();
+        allActivityText = new ArrayList<>();
+        mCurrentGSP=new HashMap<>(appData.getCurrentGroup_Section_Phase());
 
-        beingValidated=true;
-
+        findViewById(R.id.activityMainPart)
+                .setVisibility(LinearLayout.VISIBLE);
+        findViewById(R.id.activityMainPart)
+                .setAnimation(AnimationUtils.loadAnimation(
+                        getApplicationContext(), R.anim.fade_in));
+        mBeingValidated=true;
+        mInstructionAudio="info_wd04";
         clearActivity();
         viewProgressBars();
 
@@ -60,64 +72,154 @@ public class ActivityWD04 extends Activity_General_Parent  implements LoaderMana
         roundNumber=0;
 
 
-        currentText = new ArrayList<ArrayList<String>>();
-        chosenFrames=new ArrayList<String>();
-        chosenFrames.add("");
-        chosenFrames.add("");
+        mCurrentText = new ArrayList<>();
+        mChosenFrames=new ArrayList<>();
+        mChosenFrames.add("");
+        mChosenFrames.add("");
 
-        validateAvailable=false;
-        beingValidated=false;
+        mValidateAvailable=false;
+        mBeingValidated=false;
 
         //ArrayList<String> currentUser=new ArrayList<String>();
 
         //database
 
-        getLoaderManager().initLoader(MotoliConstants.CURRENT_WORDS, null, this);
 
+        startActivityHandler.postDelayed(startActivity, 200);
+    }//end public void onCreate(Bundle savedInstanceState) {
+
+    //////////////////////////////////////////////////////////////////////////////////////////
+
+    private Runnable startActivity = new Runnable() {
+        @Override
+        public void run() {
+            start();
+        }
+    };
+
+    //////////////////////////////////////////////////////////////////////////////////////////
+
+    private void start(){
+        getLoaderManager().initLoader(Constants.CURRENT_WORDS, null, this);
     }
+
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-    private void displayScreen(){
+    protected void displayScreen(){
         hideProgressBars();
         loadImagesAndHideText();
-        wordStatus=new ArrayList<String>();
+        mWordStatus=new ArrayList<String>();
         for(int i=0; i<6;i++){
-            wordStatus.add("0");
+            mWordStatus.add("0");
         }
 
-        numberOfWordsChosen=0;
-        correctWordCount=0;
+        mNumberOfWordsChosen=0;
+        mCorrectWordCount=0;
 
         if(roundNumber==0){
             playInstructionAudio();
         }
 
         clearText();
-        currentText.clear();
-        currentText = new ArrayList<ArrayList<String>>(allActivityText.get(roundNumber));
-        Collections.shuffle(currentText);
+        mCurrentText.clear();
+        mCurrentText = new ArrayList<ArrayList<String>>(allActivityText.get(roundNumber));
+        Collections.shuffle(mCurrentText);
 
-        findViewById(R.id.word1).setTag(currentText.get(0).get(0));
-        ((TextView)findViewById(R.id.word1)).setText(currentText.get(0).get(1));
 
-        findViewById(R.id.word2).setTag(currentText.get(1).get(0));
-        ((TextView)findViewById(R.id.word2)).setText(currentText.get(1).get(1));
+        int mFontSize=0;
+        for(int i=0;i<mCurrentText.size();i++){
+            mFontSize=(mCurrentText.get(i).get(1).length()>mFontSize) ?
+                    mCurrentText.get(i).get(1).length() : mFontSize;
+        }
 
-        findViewById(R.id.word3).setTag(currentText.get(2).get(0));
-        ((TextView)findViewById(R.id.word3)).setText(currentText.get(2).get(1));
+        if(mFontSize>=8) {
+            ((TextView) findViewById(R.id.activityText1))
+                    .setTextSize(getResources().getDimension(R.dimen.wdFifthFontSize));
+            ((TextView) findViewById(R.id.activityText2))
+                    .setTextSize(getResources().getDimension(R.dimen.wdFifthFontSize));
+            ((TextView) findViewById(R.id.activityText3))
+                    .setTextSize(getResources().getDimension(R.dimen.wdFifthFontSize));
+            ((TextView) findViewById(R.id.activityText4))
+                    .setTextSize(getResources().getDimension(R.dimen.wdFifthFontSize));
+            ((TextView) findViewById(R.id.activityText5))
+                    .setTextSize(getResources().getDimension(R.dimen.wdFifthFontSize));
+            ((TextView) findViewById(R.id.activityText6))
+                    .setTextSize(getResources().getDimension(R.dimen.wdFifthFontSize));
+        }else if(mFontSize>=7){
+            ((TextView) findViewById(R.id.activityText1))
+                    .setTextSize(getResources().getDimension(R.dimen.wdForthFontSize));
+            ((TextView) findViewById(R.id.activityText2))
+                    .setTextSize(getResources().getDimension(R.dimen.wdForthFontSize));
+            ((TextView) findViewById(R.id.activityText3))
+                    .setTextSize(getResources().getDimension(R.dimen.wdForthFontSize));
+            ((TextView) findViewById(R.id.activityText4))
+                    .setTextSize(getResources().getDimension(R.dimen.wdForthFontSize));
+            ((TextView) findViewById(R.id.activityText5))
+                    .setTextSize(getResources().getDimension(R.dimen.wdForthFontSize));
+            ((TextView) findViewById(R.id.activityText6))
+                    .setTextSize(getResources().getDimension(R.dimen.wdForthFontSize));
+        }else if(mFontSize>=6){
+            ((TextView) findViewById(R.id.activityText1))
+                    .setTextSize(getResources().getDimension(R.dimen.wdThirdFontSize));
+            ((TextView) findViewById(R.id.activityText2))
+                    .setTextSize(getResources().getDimension(R.dimen.wdThirdFontSize));
+            ((TextView) findViewById(R.id.activityText3))
+                    .setTextSize(getResources().getDimension(R.dimen.wdThirdFontSize));
+            ((TextView) findViewById(R.id.activityText4))
+                    .setTextSize(getResources().getDimension(R.dimen.wdThirdFontSize));
+            ((TextView) findViewById(R.id.activityText5))
+                    .setTextSize(getResources().getDimension(R.dimen.wdThirdFontSize));
+            ((TextView) findViewById(R.id.activityText6))
+                    .setTextSize(getResources().getDimension(R.dimen.wdThirdFontSize));
+        }else if(mFontSize>=5){
+            ((TextView) findViewById(R.id.activityText1))
+                    .setTextSize(getResources().getDimension(R.dimen.wdSecondFontSize));
+            ((TextView) findViewById(R.id.activityText2))
+                    .setTextSize(getResources().getDimension(R.dimen.wdSecondFontSize));
+            ((TextView) findViewById(R.id.activityText3))
+                    .setTextSize(getResources().getDimension(R.dimen.wdSecondFontSize));
+            ((TextView) findViewById(R.id.activityText4))
+                    .setTextSize(getResources().getDimension(R.dimen.wdSecondFontSize));
+            ((TextView) findViewById(R.id.activityText5))
+                    .setTextSize(getResources().getDimension(R.dimen.wdSecondFontSize));
+            ((TextView) findViewById(R.id.activityText6))
+                    .setTextSize(getResources().getDimension(R.dimen.wdSecondFontSize));
+        }else{
+            ((TextView) findViewById(R.id.activityText1))
+                    .setTextSize(getResources().getDimension(R.dimen.wdFirstFontSize));
+            ((TextView) findViewById(R.id.activityText2))
+                    .setTextSize(getResources().getDimension(R.dimen.wdFirstFontSize));
+            ((TextView) findViewById(R.id.activityText3))
+                    .setTextSize(getResources().getDimension(R.dimen.wdFirstFontSize));
+            ((TextView) findViewById(R.id.activityText4))
+                    .setTextSize(getResources().getDimension(R.dimen.wdFirstFontSize));
+            ((TextView) findViewById(R.id.activityText5))
+                    .setTextSize(getResources().getDimension(R.dimen.wdFirstFontSize));
+            ((TextView) findViewById(R.id.activityText6))
+                    .setTextSize(getResources().getDimension(R.dimen.wdFirstFontSize));
+        }
 
-        findViewById(R.id.word4).setTag(currentText.get(3).get(0));
-        ((TextView)findViewById(R.id.word4)).setText(currentText.get(3).get(1));
+        findViewById(R.id.activityText1).setTag(mCurrentText.get(0).get(0));
+        ((TextView)findViewById(R.id.activityText1)).setText(mCurrentText.get(0).get(1));
 
-        findViewById(R.id.word5).setTag(currentText.get(4).get(0));
-        ((TextView)findViewById(R.id.word5)).setText(currentText.get(4).get(1));
+        findViewById(R.id.activityText2).setTag(mCurrentText.get(1).get(0));
+        ((TextView)findViewById(R.id.activityText2)).setText(mCurrentText.get(1).get(1));
 
-        findViewById(R.id.word6).setTag(currentText.get(5).get(0));
-        ((TextView)findViewById(R.id.word6)).setText(currentText.get(5).get(1));
+        findViewById(R.id.activityText3).setTag(mCurrentText.get(2).get(0));
+        ((TextView)findViewById(R.id.activityText3)).setText(mCurrentText.get(2).get(1));
 
-        validateAvailable=false;
-        beingValidated=false;
+        findViewById(R.id.activityText4).setTag(mCurrentText.get(3).get(0));
+        ((TextView)findViewById(R.id.activityText4)).setText(mCurrentText.get(3).get(1));
+
+        findViewById(R.id.activityText5).setTag(mCurrentText.get(4).get(0));
+        ((TextView)findViewById(R.id.activityText5)).setText(mCurrentText.get(4).get(1));
+
+        findViewById(R.id.activityText6).setTag(mCurrentText.get(5).get(0));
+        ((TextView)findViewById(R.id.activityText6)).setText(mCurrentText.get(5).get(1));
+
+        mValidateAvailable=false;
+        mBeingValidated=false;
         setupFrameListens();
     }
 
@@ -125,53 +227,31 @@ public class ActivityWD04 extends Activity_General_Parent  implements LoaderMana
     ////////////////////////////////////////////////////////////////////////////////////////////
 
     private void hideProgressBars(){
-        findViewById(R.id.loadingCircle1).setVisibility(ProgressBar.INVISIBLE);
-        findViewById(R.id.loadingCircle2).setVisibility(ProgressBar.INVISIBLE);
-        findViewById(R.id.loadingCircle3).setVisibility(ProgressBar.INVISIBLE);
-        findViewById(R.id.loadingCircle4).setVisibility(ProgressBar.INVISIBLE);
-        findViewById(R.id.loadingCircle5).setVisibility(ProgressBar.INVISIBLE);
-        findViewById(R.id.loadingCircle6).setVisibility(ProgressBar.INVISIBLE);
+
+
+
+
+
+
     }
 
     private void viewProgressBars(){
-        findViewById(R.id.loadingCircle1).setVisibility(ProgressBar.VISIBLE);
-        findViewById(R.id.loadingCircle2).setVisibility(ProgressBar.VISIBLE);
-        findViewById(R.id.loadingCircle3).setVisibility(ProgressBar.VISIBLE);
-        findViewById(R.id.loadingCircle4).setVisibility(ProgressBar.VISIBLE);
-        findViewById(R.id.loadingCircle5).setVisibility(ProgressBar.VISIBLE);
-        findViewById(R.id.loadingCircle6).setVisibility(ProgressBar.VISIBLE);
+
+
+
+
+
+
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////
 
-    private void setUpListeners(){
-
-        findViewById(R.id.btnInfo).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                playClickSound();
-                playInstructionAudio();
-            }
-        });
-
-        findViewById(R.id.btnBack).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                playClickSound();
-                moveBackwords();
-            }
-        });
-
-
+    protected void setUpListeners(){
 
 
     }
 
 
-    ////////////////////////////////////////////////////////////////////////////////////////////
-
-    private int playInstructionAudio(){
-
-        return (int) playGeneralAudio("info_wd04");
-    }
 
     ////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -182,19 +262,19 @@ public class ActivityWD04 extends Activity_General_Parent  implements LoaderMana
     ////////////////////////////////////////////////////////////////////////////////////////////
 
     private void loadImagesAndHideText(){
-        findViewById(R.id.word1).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.word2).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.word3).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.word4).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.word5).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.word6).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.activityText1).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.activityText2).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.activityText3).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.activityText4).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.activityText5).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.activityText6).setVisibility(TextView.INVISIBLE);
 
-        findViewById(R.id.wordBox1).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.wordBox2).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.wordBox3).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.wordBox4).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.wordBox5).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.wordBox6).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.activityTextBox1).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.activityTextBox2).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.activityTextBox3).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.activityTextBox4).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.activityTextBox5).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.activityTextBox6).setVisibility(TextView.INVISIBLE);
 
 
         findViewById(R.id.image1).setVisibility(ImageButton.VISIBLE);
@@ -214,17 +294,17 @@ public class ActivityWD04 extends Activity_General_Parent  implements LoaderMana
     protected void setupFrameListens(){
         findViewById(R.id.image1).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if(wordStatus.get(0).equals("0") && !beingValidated && numberOfWordsChosen<2){
-                    numberOfWordsChosen++;
-                    currentLtrWrdAudio=currentText.get(0).get(2);
-                    //currentWordID=currentText.get(0).get(0);
-                    if(!currentWordID.equals("")){
-                        chosenFrames.set(0, "0");
-                        correctChoice =findViewById(R.id.word1).getTag().equals(currentWordID);
+                if(mWordStatus.get(0).equals("0") && !mBeingValidated && mNumberOfWordsChosen<2){
+                    mNumberOfWordsChosen++;
+                    currentLtrWrdAudio=mCurrentText.get(0).get(2);
+                    //mCurrentWordID=mCurrentText.get(0).get(0);
+                    if(!mCurrentWordID.equals("")){
+                        mChosenFrames.set(0, "0");
+                        mCorrect =findViewById(R.id.activityText1).getTag().equals(mCurrentWordID);
                         setUpFrame(0,true);
                     }else{
-                        chosenFrames.set(1, "0");
-                        currentWordID=findViewById(R.id.word1).getTag().toString();
+                        mChosenFrames.set(1, "0");
+                        mCurrentWordID=findViewById(R.id.activityText1).getTag().toString();
                         setUpFrame(0,false);
                     }
                 }
@@ -233,17 +313,17 @@ public class ActivityWD04 extends Activity_General_Parent  implements LoaderMana
 
         findViewById(R.id.image2).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if(wordStatus.get(1).equals("0") && !beingValidated && numberOfWordsChosen<2){
-                    numberOfWordsChosen++;
-                    currentLtrWrdAudio=currentText.get(1).get(2);
-                    //currentWordID=currentText.get(1).get(0);
-                    if(!currentWordID.equals("")){
-                        chosenFrames.set(0, "1");
-                        correctChoice =findViewById(R.id.word2).getTag().equals(currentWordID);
+                if(mWordStatus.get(1).equals("0") && !mBeingValidated && mNumberOfWordsChosen<2){
+                    mNumberOfWordsChosen++;
+                    currentLtrWrdAudio=mCurrentText.get(1).get(2);
+                    //mCurrentWordID=mCurrentText.get(1).get(0);
+                    if(!mCurrentWordID.equals("")){
+                        mChosenFrames.set(0, "1");
+                        mCorrect =findViewById(R.id.activityText2).getTag().equals(mCurrentWordID);
                         setUpFrame(1,true);
                     }else{
-                        chosenFrames.set(1, "1");
-                        currentWordID=findViewById(R.id.word2).getTag().toString();
+                        mChosenFrames.set(1, "1");
+                        mCurrentWordID=findViewById(R.id.activityText2).getTag().toString();
                         setUpFrame(1,false);
                     }
                 }
@@ -252,18 +332,18 @@ public class ActivityWD04 extends Activity_General_Parent  implements LoaderMana
 
         findViewById(R.id.image3).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if(wordStatus.get(2).equals("0") && !beingValidated && numberOfWordsChosen<2){
-                    numberOfWordsChosen++;
-                    currentLtrWrdAudio=currentText.get(2).get(2);
-                    //currentWordID=currentText.get(2).get(0);
-                    if(!currentWordID.equals("")){
-                        chosenFrames.set(0, "2");
-                        correctChoice =findViewById(R.id.word3).getTag().equals(currentWordID);
+                if(mWordStatus.get(2).equals("0") && !mBeingValidated && mNumberOfWordsChosen<2){
+                    mNumberOfWordsChosen++;
+                    currentLtrWrdAudio=mCurrentText.get(2).get(2);
+                    //mCurrentWordID=mCurrentText.get(2).get(0);
+                    if(!mCurrentWordID.equals("")){
+                        mChosenFrames.set(0, "2");
+                        mCorrect =findViewById(R.id.activityText3).getTag().equals(mCurrentWordID);
                         setUpFrame(2,true);
                     }else{
-                        chosenFrames.set(1, "2");
+                        mChosenFrames.set(1, "2");
 
-                        currentWordID=findViewById(R.id.word3).getTag().toString();
+                        mCurrentWordID=findViewById(R.id.activityText3).getTag().toString();
                         setUpFrame(2,false);
                     }
                 }
@@ -272,18 +352,18 @@ public class ActivityWD04 extends Activity_General_Parent  implements LoaderMana
 
         findViewById(R.id.image4).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if(wordStatus.get(3).equals("0") && !beingValidated && numberOfWordsChosen<2){
-                    numberOfWordsChosen++;
-                    currentLtrWrdAudio=currentText.get(3).get(2);
-                    //currentWordID=currentText.get(3).get(0);
-                    if(!currentWordID.equals("")){
-                        chosenFrames.set(0, "3");
-                        correctChoice =findViewById(R.id.word4).getTag().equals(currentWordID);
+                if(mWordStatus.get(3).equals("0") && !mBeingValidated && mNumberOfWordsChosen<2){
+                    mNumberOfWordsChosen++;
+                    currentLtrWrdAudio=mCurrentText.get(3).get(2);
+                    //mCurrentWordID=mCurrentText.get(3).get(0);
+                    if(!mCurrentWordID.equals("")){
+                        mChosenFrames.set(0, "3");
+                        mCorrect =findViewById(R.id.activityText4).getTag().equals(mCurrentWordID);
                         setUpFrame(3,true);
                     }else{
-                        chosenFrames.set(1, "3");
+                        mChosenFrames.set(1, "3");
 
-                        currentWordID=findViewById(R.id.word4).getTag().toString();
+                        mCurrentWordID=findViewById(R.id.activityText4).getTag().toString();
                         setUpFrame(3,false);
                     }
                 }
@@ -292,18 +372,18 @@ public class ActivityWD04 extends Activity_General_Parent  implements LoaderMana
 
         findViewById(R.id.image5).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if(wordStatus.get(4).equals("0") && !beingValidated && numberOfWordsChosen<2){
-                    numberOfWordsChosen++;
-                    currentLtrWrdAudio=currentText.get(4).get(2);
-                    //currentWordID=currentText.get(4).get(0);
-                    if(!currentWordID.equals("")){
-                        chosenFrames.set(0, "4");
-                        correctChoice =findViewById(R.id.word5).getTag().equals(currentWordID);
+                if(mWordStatus.get(4).equals("0") && !mBeingValidated && mNumberOfWordsChosen<2){
+                    mNumberOfWordsChosen++;
+                    currentLtrWrdAudio=mCurrentText.get(4).get(2);
+                    //mCurrentWordID=mCurrentText.get(4).get(0);
+                    if(!mCurrentWordID.equals("")){
+                        mChosenFrames.set(0, "4");
+                        mCorrect =findViewById(R.id.activityText5).getTag().equals(mCurrentWordID);
                         setUpFrame(4,true);
                     }else{
-                        chosenFrames.set(1, "4");
+                        mChosenFrames.set(1, "4");
 
-                        currentWordID=findViewById(R.id.word5).getTag().toString();
+                        mCurrentWordID=findViewById(R.id.activityText5).getTag().toString();
                         setUpFrame(4,false);
                     }
                 }
@@ -312,17 +392,17 @@ public class ActivityWD04 extends Activity_General_Parent  implements LoaderMana
 
         findViewById(R.id.image6).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if(wordStatus.get(5).equals("0") && !beingValidated && numberOfWordsChosen<2){
-                    numberOfWordsChosen++;
-                    currentLtrWrdAudio=currentText.get(5).get(2);
-                    //currentWordID=currentText.get(5).get(0);
-                    if(!currentWordID.equals("")){
-                        chosenFrames.set(0, "5");
-                        correctChoice =findViewById(R.id.word6).getTag().equals(currentWordID);
+                if(mWordStatus.get(5).equals("0") && !mBeingValidated && mNumberOfWordsChosen<2){
+                    mNumberOfWordsChosen++;
+                    currentLtrWrdAudio=mCurrentText.get(5).get(2);
+                    //mCurrentWordID=mCurrentText.get(5).get(0);
+                    if(!mCurrentWordID.equals("")){
+                        mChosenFrames.set(0, "5");
+                        mCorrect =findViewById(R.id.activityText6).getTag().equals(mCurrentWordID);
                         setUpFrame(5,true);
                     }else{
-                        chosenFrames.set(1, "5");
-                        currentWordID=findViewById(R.id.word6).getTag().toString();
+                        mChosenFrames.set(1, "5");
+                        mCurrentWordID=findViewById(R.id.activityText6).getTag().toString();
                         setUpFrame(5,false);
                     }
                 }
@@ -339,9 +419,9 @@ public class ActivityWD04 extends Activity_General_Parent  implements LoaderMana
         //((ImageView) findViewById(R.id.btnAudio)).setImageResource(R.drawable.btn_audio_on);
         if(secondGuess){
             //((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_on);
-            validateAvailable=false;
-            long audioDuration=playGeneralAudio(currentLtrWrdAudio);
-            validateHandler.postDelayed(processValidate, audioDuration+100);
+            mValidateAvailable=false;
+            long mAudioDuration=playGeneralAudio(currentLtrWrdAudio);
+            validateHandler.postDelayed(processValidate, mAudioDuration+100);
 
         }else{
             playGeneralAudio(currentLtrWrdAudio);
@@ -350,45 +430,45 @@ public class ActivityWD04 extends Activity_General_Parent  implements LoaderMana
             default:
             case 0:{
                 findViewById(R.id.image1).setVisibility(ImageButton.INVISIBLE);
-                findViewById(R.id.word1).setVisibility(TextView.VISIBLE);
-                findViewById(R.id.wordBox1).setVisibility(TextView.VISIBLE);
+                findViewById(R.id.activityText1).setVisibility(TextView.VISIBLE);
+                findViewById(R.id.activityTextBox1).setVisibility(TextView.VISIBLE);
 
-                findViewById(R.id.wordBox1).setBackground(getResources().getDrawable(R.drawable.rounded_text_selected));
+                findViewById(R.id.activityTextBox1).setBackground(getResources().getDrawable(R.drawable.rounded_text_selected));
                 break;
             }
             case 1:{
                 findViewById(R.id.image2).setVisibility(ImageButton.INVISIBLE);
-                findViewById(R.id.word2).setVisibility(TextView.VISIBLE);
-                findViewById(R.id.wordBox2).setVisibility(TextView.VISIBLE);
-                findViewById(R.id.wordBox2).setBackground(getResources().getDrawable(R.drawable.rounded_text_selected));
+                findViewById(R.id.activityText2).setVisibility(TextView.VISIBLE);
+                findViewById(R.id.activityTextBox2).setVisibility(TextView.VISIBLE);
+                findViewById(R.id.activityTextBox2).setBackground(getResources().getDrawable(R.drawable.rounded_text_selected));
                 break;
             }
             case 2:{
                 findViewById(R.id.image3).setVisibility(ImageButton.INVISIBLE);
-                findViewById(R.id.word3).setVisibility(TextView.VISIBLE);
-                findViewById(R.id.wordBox3).setVisibility(TextView.VISIBLE);
-                findViewById(R.id.wordBox3).setBackground(getResources().getDrawable(R.drawable.rounded_text_selected));
+                findViewById(R.id.activityText3).setVisibility(TextView.VISIBLE);
+                findViewById(R.id.activityTextBox3).setVisibility(TextView.VISIBLE);
+                findViewById(R.id.activityTextBox3).setBackground(getResources().getDrawable(R.drawable.rounded_text_selected));
                 break;
             }
             case 3:{
                 findViewById(R.id.image4).setVisibility(ImageButton.INVISIBLE);
-                findViewById(R.id.word4).setVisibility(TextView.VISIBLE);
-                findViewById(R.id.wordBox4).setVisibility(TextView.VISIBLE);
-                findViewById(R.id.wordBox4).setBackground(getResources().getDrawable(R.drawable.rounded_text_selected));
+                findViewById(R.id.activityText4).setVisibility(TextView.VISIBLE);
+                findViewById(R.id.activityTextBox4).setVisibility(TextView.VISIBLE);
+                findViewById(R.id.activityTextBox4).setBackground(getResources().getDrawable(R.drawable.rounded_text_selected));
                 break;
             }
             case 4:{
                 findViewById(R.id.image5).setVisibility(ImageButton.INVISIBLE);
-                findViewById(R.id.word5).setVisibility(TextView.VISIBLE);
-                findViewById(R.id.wordBox5).setVisibility(TextView.VISIBLE);
-                findViewById(R.id.wordBox5).setBackground(getResources().getDrawable(R.drawable.rounded_text_selected));
+                findViewById(R.id.activityText5).setVisibility(TextView.VISIBLE);
+                findViewById(R.id.activityTextBox5).setVisibility(TextView.VISIBLE);
+                findViewById(R.id.activityTextBox5).setBackground(getResources().getDrawable(R.drawable.rounded_text_selected));
                 break;
             }
             case 5:{
                 findViewById(R.id.image6).setVisibility(ImageButton.INVISIBLE);
-                findViewById(R.id.word6).setVisibility(TextView.VISIBLE);
-                findViewById(R.id.wordBox6).setVisibility(TextView.VISIBLE);
-                findViewById(R.id.wordBox6).setBackground(getResources().getDrawable(R.drawable.rounded_text_selected));
+                findViewById(R.id.activityText6).setVisibility(TextView.VISIBLE);
+                findViewById(R.id.activityTextBox6).setVisibility(TextView.VISIBLE);
+                findViewById(R.id.activityTextBox6).setBackground(getResources().getDrawable(R.drawable.rounded_text_selected));
                 break;
             }
         }//end switch(frameNumber){
@@ -406,36 +486,35 @@ public class ActivityWD04 extends Activity_General_Parent  implements LoaderMana
     };
     ////////////////////////////////////////////////////////////////////////////////////////////
 
-    private void validate(){
-        beingValidated=true;
-        String where=" WHERE "+Database.App_Users_Activity_Variable_Values.APP_USER_ID+"="+appData.getCurrentUserID()
-                +" AND "+Database.App_Users_Activity_Variable_Values.VARIABLE_ID+"="+currentWordID
-                +" AND "+Database.App_Users_Activity_Variable_Values.ACTIVITY_ID+"="+appData.getCurrentActivity().get(0);
+    protected void validate(){
+        mBeingValidated=true;
+        String where=" WHERE app_user_id="+appData.getCurrentUserID()
+                +" AND variable_id="+mCurrentWordID
+                +" AND activity_id="+appData.getCurrentActivity().get(0);
         String[] selectionArgs;
-        ArrayList<String> currentGSP=new ArrayList<String>(appData.getCurrentGroup_Section_Phase());
 
-        if(correctChoice){
+        if(mCorrect){
             selectionArgs = new String[]{
                     "1",
                     "0",
-                    currentGSP.get(3),
-                    currentWordID,
+                    mCurrentGSP.get("current_level"),
+                    mCurrentWordID,
                     "0"};
 
 
-            getContentResolver().update(MotoliContentProvider.CONTENT_URI_ACTIVITY_USER_RW_UPDATE, null, where, selectionArgs);
+            //getContentResolver().update(AppProvider.CONTENT_URI_ACTIVITY_USER_RW_UPDATE, null, where, selectionArgs);
             processLayoutAfterGuess();
-            correctWordCount++;
+            mCorrectWordCount++;
         }else{
             selectionArgs = new String[]{
                     "0",
                     "1",
-                    currentGSP.get(3),
-                    currentWordID,
+                    mCurrentGSP.get("current_level"),
+                    mCurrentWordID,
                     "0"};
 
 
-            getContentResolver().update(MotoliContentProvider.CONTENT_URI_ACTIVITY_USER_RW_UPDATE, null, where, selectionArgs);
+            //getContentResolver().update(AppProvider.CONTENT_URI_ACTIVITY_USER_RW_UPDATE, null, where, selectionArgs);
             processLayoutAfterGuess();
         }
 
@@ -443,119 +522,107 @@ public class ActivityWD04 extends Activity_General_Parent  implements LoaderMana
         //processPoints();
 
 
-        processGuessPosition=0;
+        mProcessGuessPosition=0;
         guessHandler.postDelayed(processGuess, 10);
 
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////
 
-    private void addPointToAllAvailable(){
-        ArrayList<String> currentGSP=new ArrayList<String>(appData.getCurrentGroup_Section_Phase());
-        for(int i=0;i<mCurrentWords.size();i++){
-            String where=" WHERE "+Database.App_Users_Activity_Variable_Values.APP_USER_ID+
-                    "="+appData.getCurrentUserID()
-                    +" AND "+Database.App_Users_Activity_Variable_Values.VARIABLE_ID+
-                    "="+mCurrentWords.get(i).get(0)
-                    +" AND "+Database.App_Users_Activity_Variable_Values.ACTIVITY_ID+
-                    "="+appData.getCurrentActivity().get(0);
+    protected void addPointToAllAvailable(){
+            String where=" activity_id="+appData.getCurrentActivity().get(0)+" " +
+                    "AND app_user_id="+appData.getCurrentUserID();
 
-            String[] selectionArgs = new String[]{
-                    "2",
-                    "0",
-                    currentGSP.get(3),
-                    mCurrentWords.get(i).get(0),
-                    "0"};
-
-            getContentResolver().update(MotoliContentProvider.CONTENT_URI_ACTIVITY_USER_RW_UPDATE,
-                    null, where, selectionArgs);
+            getContentResolver().update(AppProvider.CONTENT_URI_ACTIVITY_USER_RW_ALL_UPDATE,
+                    null, where, null);
 
 
-        }
+
 
 
     }
     private void processLayoutAfterGuess(){
         for(int i=0;i<2;i++){
-            int currentWordLocation=Integer.valueOf(chosenFrames.get(i));
+            int currentWordLocation=Integer.valueOf(mChosenFrames.get(i));
 
             switch(currentWordLocation){
                 default:
                 case 0:{
-                    if(correctChoice){
-                        wordStatus.set(0, "2");
-                        ((TextView) findViewById(R.id.word1)).setTextColor(getResources().getColor(R.color.correct_green));
-                        ( findViewById(R.id.wordBox1)).setBackground(getResources().getDrawable(R.drawable.rounded_text_correct));
+                    if(mCorrect){
+                        mWordStatus.set(0, "2");
+                        ((TextView) findViewById(R.id.activityText1)).setTextColor(getResources().getColor(R.color.correct_green));
+                        ( findViewById(R.id.activityTextBox1)).setBackground(getResources().getDrawable(R.drawable.rounded_text_correct));
                     }else{
-                        wordStatus.set(0, "1");
-                        ((TextView) findViewById(R.id.word1)).setTextColor(getResources().getColor(R.color.incorrect_red));
-                        ((TextView) findViewById(R.id.word1)).setPaintFlags(((TextView) findViewById(R.id.word1)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-                        ( findViewById(R.id.wordBox1)).setBackground(getResources().getDrawable(R.drawable.rounded_text_incorrect));
+                        mWordStatus.set(0, "1");
+                        ((TextView) findViewById(R.id.activityText1)).setTextColor(getResources().getColor(R.color.incorrect_red));
+                        ((TextView) findViewById(R.id.activityText1)).setPaintFlags(((TextView) findViewById(R.id.activityText1)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                        ( findViewById(R.id.activityTextBox1)).setBackground(getResources().getDrawable(R.drawable.rounded_text_incorrect));
                     }
                     break;
                 }
                 case 1:{
-                    if(correctChoice){
-                        wordStatus.set(1, "2");
-                        ((TextView) findViewById(R.id.word2)).setTextColor(getResources().getColor(R.color.correct_green));
-                        ( findViewById(R.id.wordBox2)).setBackground(getResources().getDrawable(R.drawable.rounded_text_correct));
+                    if(mCorrect){
+                        mWordStatus.set(1, "2");
+                        ((TextView) findViewById(R.id.activityText2)).setTextColor(getResources().getColor(R.color.correct_green));
+                        ( findViewById(R.id.activityTextBox2)).setBackground(getResources().getDrawable(R.drawable.rounded_text_correct));
                     }else{
-                        wordStatus.set(1, "1");
-                        ((TextView) findViewById(R.id.word2)).setTextColor(getResources().getColor(R.color.incorrect_red));
-                        ((TextView) findViewById(R.id.word2)).setPaintFlags(((TextView) findViewById(R.id.word2)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-                        ( findViewById(R.id.wordBox2)).setBackground(getResources().getDrawable(R.drawable.rounded_text_incorrect));
+                        mWordStatus.set(1, "1");
+                        ((TextView) findViewById(R.id.activityText2)).setTextColor(getResources().getColor(R.color.incorrect_red));
+                        ((TextView) findViewById(R.id.activityText2)).setPaintFlags(((TextView) findViewById(R.id.activityText2)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                        ( findViewById(R.id.activityTextBox2)).setBackground(getResources().getDrawable(R.drawable.rounded_text_incorrect));
                     }
                     break;
                 }
                 case 2:{
-                    if(correctChoice){
-                        wordStatus.set(2, "2");
-                        ((TextView) findViewById(R.id.word3)).setTextColor(getResources().getColor(R.color.correct_green));
-                        ( findViewById(R.id.wordBox3)).setBackground(getResources().getDrawable(R.drawable.rounded_text_correct));
+                    if(mCorrect){
+                        mWordStatus.set(2, "2");
+                        ((TextView) findViewById(R.id.activityText3)).setTextColor(getResources().getColor(R.color.correct_green));
+                        ( findViewById(R.id.activityTextBox3)).setBackground(getResources().getDrawable(R.drawable.rounded_text_correct));
                     }else{
-                        wordStatus.set(2, "1");
-                        ((TextView) findViewById(R.id.word3)).setTextColor(getResources().getColor(R.color.incorrect_red));
-                        ((TextView) findViewById(R.id.word3)).setPaintFlags(((TextView) findViewById(R.id.word3)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-                        ( findViewById(R.id.wordBox3)).setBackground(getResources().getDrawable(R.drawable.rounded_text_incorrect));
+                        mWordStatus.set(2, "1");
+                        ((TextView) findViewById(R.id.activityText3)).setTextColor(getResources().getColor(R.color.incorrect_red));
+                        ((TextView) findViewById(R.id.activityText3)).setPaintFlags(((TextView) findViewById(R.id.activityText3)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                        ( findViewById(R.id.activityTextBox3)).setBackground(getResources().getDrawable(R.drawable.rounded_text_incorrect));
                     }
                     break;
                 }
                 case 3:{
-                    if(correctChoice){
-                        wordStatus.set(3, "2");
-                        ((TextView) findViewById(R.id.word4)).setTextColor(getResources().getColor(R.color.correct_green));
-                        ( findViewById(R.id.wordBox4)).setBackground(getResources().getDrawable(R.drawable.rounded_text_correct));
+                    if(mCorrect){
+                        mWordStatus.set(3, "2");
+                        ((TextView) findViewById(R.id.activityText4)).setTextColor(getResources().getColor(R.color.correct_green));
+                        ( findViewById(R.id.activityTextBox4)).setBackground(getResources().getDrawable(R.drawable.rounded_text_correct));
                     }else{
-                        wordStatus.set(3, "1");
-                        ((TextView) findViewById(R.id.word4)).setTextColor(getResources().getColor(R.color.incorrect_red));
-                        ((TextView) findViewById(R.id.word4)).setPaintFlags(((TextView) findViewById(R.id.word4)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-                        ( findViewById(R.id.wordBox4)).setBackground(getResources().getDrawable(R.drawable.rounded_text_incorrect));
+                        mWordStatus.set(3, "1");
+                        ((TextView) findViewById(R.id.activityText4)).setTextColor(getResources().getColor(R.color.incorrect_red));
+                        ((TextView) findViewById(R.id.activityText4)).setPaintFlags(((TextView) findViewById(R.id.activityText4)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                        ( findViewById(R.id.activityTextBox4)).setBackground(getResources().getDrawable(R.drawable.rounded_text_incorrect));
                     }
                     break;
                 }
                 case 4:{
-                    if(correctChoice){
-                        wordStatus.set(4, "2");
-                        ((TextView) findViewById(R.id.word5)).setTextColor(getResources().getColor(R.color.correct_green));
-                        ( findViewById(R.id.wordBox5)).setBackground(getResources().getDrawable(R.drawable.rounded_text_correct));
+                    if(mCorrect){
+                        mWordStatus.set(4, "2");
+                        ((TextView) findViewById(R.id.activityText5)).setTextColor(getResources().getColor(R.color.correct_green));
+                        ( findViewById(R.id.activityTextBox5)).setBackground(getResources().getDrawable(R.drawable.rounded_text_correct));
                     }else{
-                        wordStatus.set(4, "1");
-                        ((TextView) findViewById(R.id.word5)).setTextColor(getResources().getColor(R.color.incorrect_red));
-                        ((TextView) findViewById(R.id.word5)).setPaintFlags(((TextView) findViewById(R.id.word5)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-                        ( findViewById(R.id.wordBox5)).setBackground(getResources().getDrawable(R.drawable.rounded_text_incorrect));
+                        mWordStatus.set(4, "1");
+                        ((TextView) findViewById(R.id.activityText5)).setTextColor(getResources().getColor(R.color.incorrect_red));
+                        ((TextView) findViewById(R.id.activityText5)).setPaintFlags(((TextView) findViewById(R.id.activityText5)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                        ( findViewById(R.id.activityTextBox5)).setBackground(getResources().getDrawable(R.drawable.rounded_text_incorrect));
                     }
                     break;
                 }
                 case 5:{
-                    if(correctChoice){
-                        wordStatus.set(5, "2");
-                        ((TextView) findViewById(R.id.word6)).setTextColor(getResources().getColor(R.color.correct_green));
-                        ( findViewById(R.id.wordBox6)).setBackground(getResources().getDrawable(R.drawable.rounded_text_correct));
+                    if(mCorrect){
+                        mWordStatus.set(5, "2");
+                        ((TextView) findViewById(R.id.activityText6)).setTextColor(getResources().getColor(R.color.correct_green));
+                        ( findViewById(R.id.activityTextBox6)).setBackground(getResources().getDrawable(R.drawable.rounded_text_correct));
                     }else{
-                        wordStatus.set(5, "1");
-                        ((TextView) findViewById(R.id.word6)).setTextColor(getResources().getColor(R.color.incorrect_red));
-                        ((TextView) findViewById(R.id.word6)).setPaintFlags(((TextView) findViewById(R.id.word6)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-                        (findViewById(R.id.wordBox6)).setBackground(getResources().getDrawable(R.drawable.rounded_text_incorrect));
+                        mWordStatus.set(5, "1");
+                        ((TextView) findViewById(R.id.activityText6)).setTextColor(getResources().getColor(R.color.incorrect_red));
+                        ((TextView) findViewById(R.id.activityText6)).setPaintFlags(
+                                ((TextView) findViewById(R.id.activityText6)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                        (findViewById(R.id.activityTextBox6)).setBackground(getResources().getDrawable(R.drawable.rounded_text_incorrect));
                     }
                     break;
                 }
@@ -568,55 +635,58 @@ public class ActivityWD04 extends Activity_General_Parent  implements LoaderMana
     private Runnable processGuess = new Runnable(){
         @Override
         public void run(){
-            long audioDuration=0;
+            long mAudioDuration=0;
 
-            switch(processGuessPosition){
+            switch(mProcessGuessPosition){
                 case 0:
                 default:{
-                    if(correctChoice){
-                        audioDuration=playGeneralAudio("sfx_right");
+                    Log.d(Constants.LOGCAT,"processGuess case 0");
+                    if(mCorrect){
+                        mAudioDuration=playGeneralAudio("sfx_right");
                     }else{
-                        audioDuration=playGeneralAudio("sfx_wrong");
+                        mAudioDuration=playGeneralAudio("sfx_wrong");
                     }
-                    processGuessPosition++;
-                    audioHandler.postDelayed(processGuess, audioDuration+10);
+                    mProcessGuessPosition++;
+                    mAudioHandler.postDelayed(processGuess, mAudioDuration+10);
                     break;
                 }
                 case 1:{
-                    /*
-                    if(correctChoice){
-                        audioDuration=playGeneralAudio(currentLtrWrdAudio);
-                    }
-                    */
-                    processGuessPosition++;
-                    audioHandler.postDelayed(processGuess, audioDuration+10);
+                    Log.d(Constants.LOGCAT,"processGuess case 1");
+
+                    mProcessGuessPosition++;
+                    mAudioHandler.postDelayed(processGuess, mAudioDuration+10);
                     break;
                 }
                 case 2:{
-                    numberOfWordsChosen=0;
-                    currentWordID="";
-                    chosenFrames.set(0, "");
-                    chosenFrames.set(1, "");
+                    mNumberOfWordsChosen=0;
+                    mCurrentWordID="";
+                    mChosenFrames.set(0, "");
+                    mChosenFrames.set(1, "");
                     guessHandler.removeCallbacks(processGuess);
-                    if(correctWordCount==3){
+                    if(mCorrectWordCount==3){
                         roundNumber++;
-                        if(roundNumber!=(allActivityText.size())){
+                        if(roundNumber<(allActivityText.size())){
                             clearText();
                             inBetweenRounds(0);
-                            processGuessPosition++;
+                            mProcessGuessPosition++;
                             guessHandler.postDelayed(processGuess, 500);
                         }else{
-                            lastActivityData=0;
+                            mLastActivityData=0;
                             addPointToAllAvailable();
 
+                            findViewById(R.id.activityMainPart)
+                                    .setVisibility(LinearLayout.INVISIBLE);
+                            findViewById(R.id.activityMainPart)
+                                    .setAnimation(AnimationUtils.loadAnimation(
+                                            getApplicationContext(), R.anim.fade_out));
                             lastActivityDataHandler.postDelayed(returnToActivities_Platorm,10);
                         }
                     }else{
-                        //if(correctChoice){
+                        //if(mCorrect){
                         clearInCorrects();
                         //}
-                        beingValidated=false;
-                        validateAvailable=false;
+                        mBeingValidated=false;
+                        mValidateAvailable=false;
                     }
                     break;
                 }
@@ -626,65 +696,67 @@ public class ActivityWD04 extends Activity_General_Parent  implements LoaderMana
                     guessHandler.removeCallbacks(processGuess);
                     break;
                 }
-            }//switch(processGuessPosition){
+            }//switch(mProcessGuessPosition){
         }//public void run(){
     };//end private Runnable processGuess = new Runnable(){
 
     ////////////////////////////////////////////////////////////////////////////////////////////
 
     private void clearInCorrects(){
-        if(wordStatus.get(0).equals("0") || wordStatus.get(0).equals("1")){
-            wordStatus.set(0, "0");
-            findViewById(R.id.wordBox1).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
-            ((TextView) findViewById(R.id.word1)).setTextColor(getResources().getColor(R.color.normalBlack));
-            ((TextView) findViewById(R.id.word1)).setPaintFlags(((TextView) findViewById(R.id.word1)).getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
-            findViewById(R.id.word1).setVisibility(TextView.INVISIBLE);
-            findViewById(R.id.wordBox1).setVisibility(TextView.INVISIBLE);
+        if(mWordStatus.get(0).equals("0") || mWordStatus.get(0).equals("1")){
+            mWordStatus.set(0, "0");
+            findViewById(R.id.activityTextBox1).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
+            ((TextView) findViewById(R.id.activityText1)).setTextColor(getResources().getColor(R.color.normalBlack));
+            ((TextView) findViewById(R.id.activityText1)).setPaintFlags(
+                    ((TextView) findViewById(R.id.activityText1)).getPaintFlags()
+                            & (~Paint.STRIKE_THRU_TEXT_FLAG));
+            findViewById(R.id.activityText1).setVisibility(TextView.INVISIBLE);
+            findViewById(R.id.activityTextBox1).setVisibility(TextView.INVISIBLE);
             findViewById(R.id.image1).setVisibility(ImageButton.VISIBLE);
         }
-        if(wordStatus.get(1).equals("0") || wordStatus.get(1).equals("1")){
-            wordStatus.set(1, "0");
-            findViewById(R.id.wordBox2).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
-            ((TextView) findViewById(R.id.word2)).setTextColor(getResources().getColor(R.color.normalBlack));
-            ((TextView) findViewById(R.id.word2)).setPaintFlags(((TextView) findViewById(R.id.word2)).getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
-            findViewById(R.id.word2).setVisibility(TextView.INVISIBLE);
-            findViewById(R.id.wordBox2).setVisibility(TextView.INVISIBLE);
+        if(mWordStatus.get(1).equals("0") || mWordStatus.get(1).equals("1")){
+            mWordStatus.set(1, "0");
+            findViewById(R.id.activityTextBox2).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
+            ((TextView) findViewById(R.id.activityText2)).setTextColor(getResources().getColor(R.color.normalBlack));
+            ((TextView) findViewById(R.id.activityText2)).setPaintFlags(((TextView) findViewById(R.id.activityText2)).getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
+            findViewById(R.id.activityText2).setVisibility(TextView.INVISIBLE);
+            findViewById(R.id.activityTextBox2).setVisibility(TextView.INVISIBLE);
             findViewById(R.id.image2).setVisibility(ImageButton.VISIBLE);
         }
-        if(wordStatus.get(2).equals("0") || wordStatus.get(2).equals("1")){
-            wordStatus.set(2, "0");
-            findViewById(R.id.wordBox3).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
-            ((TextView) findViewById(R.id.word3)).setTextColor(getResources().getColor(R.color.normalBlack));
-            ((TextView) findViewById(R.id.word3)).setPaintFlags(((TextView) findViewById(R.id.word3)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
-            findViewById(R.id.word3).setVisibility(TextView.INVISIBLE);
-            findViewById(R.id.wordBox3).setVisibility(TextView.INVISIBLE);
+        if(mWordStatus.get(2).equals("0") || mWordStatus.get(2).equals("1")){
+            mWordStatus.set(2, "0");
+            findViewById(R.id.activityTextBox3).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
+            ((TextView) findViewById(R.id.activityText3)).setTextColor(getResources().getColor(R.color.normalBlack));
+            ((TextView) findViewById(R.id.activityText3)).setPaintFlags(((TextView) findViewById(R.id.activityText3)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+            findViewById(R.id.activityText3).setVisibility(TextView.INVISIBLE);
+            findViewById(R.id.activityTextBox3).setVisibility(TextView.INVISIBLE);
             findViewById(R.id.image3).setVisibility(ImageButton.VISIBLE);
         }
-        if(wordStatus.get(3).equals("0") || wordStatus.get(3).equals("1")){
-            wordStatus.set(3, "0");
-            findViewById(R.id.wordBox4).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
-            ((TextView) findViewById(R.id.word4)).setTextColor(getResources().getColor(R.color.normalBlack));
-            ((TextView) findViewById(R.id.word4)).setPaintFlags(((TextView) findViewById(R.id.word4)).getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
-            findViewById(R.id.word4).setVisibility(TextView.INVISIBLE);
-            findViewById(R.id.wordBox4).setVisibility(TextView.INVISIBLE);
+        if(mWordStatus.get(3).equals("0") || mWordStatus.get(3).equals("1")){
+            mWordStatus.set(3, "0");
+            findViewById(R.id.activityTextBox4).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
+            ((TextView) findViewById(R.id.activityText4)).setTextColor(getResources().getColor(R.color.normalBlack));
+            ((TextView) findViewById(R.id.activityText4)).setPaintFlags(((TextView) findViewById(R.id.activityText4)).getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
+            findViewById(R.id.activityText4).setVisibility(TextView.INVISIBLE);
+            findViewById(R.id.activityTextBox4).setVisibility(TextView.INVISIBLE);
             findViewById(R.id.image4).setVisibility(ImageButton.VISIBLE);
         }
-        if(wordStatus.get(4).equals("0") || wordStatus.get(4).equals("1")){
-            wordStatus.set(4, "0");
-            findViewById(R.id.wordBox5).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
-            ((TextView) findViewById(R.id.word5)).setTextColor(getResources().getColor(R.color.normalBlack));
-            ((TextView) findViewById(R.id.word5)).setPaintFlags(((TextView) findViewById(R.id.word5)).getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
-            findViewById(R.id.word5).setVisibility(TextView.INVISIBLE);
-            findViewById(R.id.wordBox5).setVisibility(TextView.INVISIBLE);
+        if(mWordStatus.get(4).equals("0") || mWordStatus.get(4).equals("1")){
+            mWordStatus.set(4, "0");
+            findViewById(R.id.activityTextBox5).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
+            ((TextView) findViewById(R.id.activityText5)).setTextColor(getResources().getColor(R.color.normalBlack));
+            ((TextView) findViewById(R.id.activityText5)).setPaintFlags(((TextView) findViewById(R.id.activityText5)).getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
+            findViewById(R.id.activityText5).setVisibility(TextView.INVISIBLE);
+            findViewById(R.id.activityTextBox5).setVisibility(TextView.INVISIBLE);
             findViewById(R.id.image5).setVisibility(ImageButton.VISIBLE);
         }
-        if(wordStatus.get(5).equals("0") || wordStatus.get(5).equals("1")){
-            wordStatus.set(5, "0");
-            findViewById(R.id.wordBox6).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
-            ((TextView) findViewById(R.id.word6)).setTextColor(getResources().getColor(R.color.normalBlack));
-            ((TextView) findViewById(R.id.word6)).setPaintFlags(((TextView) findViewById(R.id.word6)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
-            findViewById(R.id.word6).setVisibility(TextView.INVISIBLE);
-            findViewById(R.id.wordBox6).setVisibility(TextView.INVISIBLE);
+        if(mWordStatus.get(5).equals("0") || mWordStatus.get(5).equals("1")){
+            mWordStatus.set(5, "0");
+            findViewById(R.id.activityTextBox6).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
+            ((TextView) findViewById(R.id.activityText6)).setTextColor(getResources().getColor(R.color.normalBlack));
+            ((TextView) findViewById(R.id.activityText6)).setPaintFlags(((TextView) findViewById(R.id.activityText6)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+            findViewById(R.id.activityText6).setVisibility(TextView.INVISIBLE);
+            findViewById(R.id.activityTextBox6).setVisibility(TextView.INVISIBLE);
             findViewById(R.id.image6).setVisibility(ImageButton.VISIBLE);
         }
 
@@ -706,77 +778,76 @@ public class ActivityWD04 extends Activity_General_Parent  implements LoaderMana
     ////////////////////////////////////////////////////////////////////////////////////////////
 
     private void clearText(){
-        findViewById(R.id.word1).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.word2).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.word3).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.word4).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.word5).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.word6).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.activityText1).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.activityText2).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.activityText3).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.activityText4).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.activityText5).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.activityText6).setVisibility(TextView.INVISIBLE);
 
-        findViewById(R.id.wordBox1).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.wordBox2).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.wordBox3).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.wordBox4).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.wordBox5).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.wordBox6).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.activityTextBox1).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.activityTextBox2).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.activityTextBox3).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.activityTextBox4).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.activityTextBox5).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.activityTextBox6).setVisibility(TextView.INVISIBLE);
 
 
         //clear image
-        ((TextView)findViewById(R.id.word1)).setText("");
-        ((TextView)findViewById(R.id.word2)).setText("");
-        ((TextView)findViewById(R.id.word3)).setText("");
-        ((TextView)findViewById(R.id.word4)).setText("");
-        ((TextView)findViewById(R.id.word5)).setText("");
-        ((TextView)findViewById(R.id.word6)).setText("");
+        ((TextView)findViewById(R.id.activityText1)).setText("");
+        ((TextView)findViewById(R.id.activityText2)).setText("");
+        ((TextView)findViewById(R.id.activityText3)).setText("");
+        ((TextView)findViewById(R.id.activityText4)).setText("");
+        ((TextView)findViewById(R.id.activityText5)).setText("");
+        ((TextView)findViewById(R.id.activityText6)).setText("");
 
-        ((TextView)findViewById(R.id.word1)).setTypeface(appData.getCurrentFontType());
-        ((TextView)findViewById(R.id.word2)).setTypeface(appData.getCurrentFontType());
-        ((TextView)findViewById(R.id.word3)).setTypeface(appData.getCurrentFontType());
-        ((TextView)findViewById(R.id.word4)).setTypeface(appData.getCurrentFontType());
-        ((TextView)findViewById(R.id.word5)).setTypeface(appData.getCurrentFontType());
-        ((TextView)findViewById(R.id.word6)).setTypeface(appData.getCurrentFontType());
+        ((TextView)findViewById(R.id.activityText1)).setTypeface(appData.getCurrentFontType());
+        ((TextView)findViewById(R.id.activityText2)).setTypeface(appData.getCurrentFontType());
+        ((TextView)findViewById(R.id.activityText3)).setTypeface(appData.getCurrentFontType());
+        ((TextView)findViewById(R.id.activityText4)).setTypeface(appData.getCurrentFontType());
+        ((TextView)findViewById(R.id.activityText5)).setTypeface(appData.getCurrentFontType());
+        ((TextView)findViewById(R.id.activityText6)).setTypeface(appData.getCurrentFontType());
 
-        ArrayList<String> currentGSP=new ArrayList<String>(appData.getCurrentGroup_Section_Phase());
 
-        if(currentGSP.get(0).equals("2") && currentGSP.get(1).equals("2")){
+        if(mCurrentGSP.get("group_id").equals("2") && mCurrentGSP.get("phase_id").equals("2")){
             RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
                     RelativeLayout.LayoutParams.MATCH_PARENT,
                     RelativeLayout.LayoutParams.WRAP_CONTENT);
             params.setMargins(params.leftMargin,
                     getResources().getDimensionPixelSize(R.dimen.wd04_text_ucase_top_margin),
                     params.rightMargin, 0);
-            ((TextView) findViewById(R.id.word1)).setGravity(Gravity.CENTER_HORIZONTAL);
-            findViewById(R.id.word1).setLayoutParams(params);
-            findViewById(R.id.word2).setLayoutParams(params);
-            findViewById(R.id.word3).setLayoutParams(params);
-            findViewById(R.id.word4).setLayoutParams(params);
-            findViewById(R.id.word5).setLayoutParams(params);
-            findViewById(R.id.word6).setLayoutParams(params);
-            //((TextView)findViewById(R.id.word1)).se
+            ((TextView) findViewById(R.id.activityText1)).setGravity(Gravity.CENTER_HORIZONTAL);
+            findViewById(R.id.activityText1).setLayoutParams(params);
+            findViewById(R.id.activityText2).setLayoutParams(params);
+            findViewById(R.id.activityText3).setLayoutParams(params);
+            findViewById(R.id.activityText4).setLayoutParams(params);
+            findViewById(R.id.activityText5).setLayoutParams(params);
+            findViewById(R.id.activityText6).setLayoutParams(params);
+            //((TextView)findViewById(R.id.activityText1)).se
         }
 
-        ((TextView) findViewById(R.id.word1)).setTextColor(getResources().getColor(R.color.normalBlack));
-        ((TextView) findViewById(R.id.word2)).setTextColor(getResources().getColor(R.color.normalBlack));
-        ((TextView) findViewById(R.id.word3)).setTextColor(getResources().getColor(R.color.normalBlack));
-        ((TextView) findViewById(R.id.word4)).setTextColor(getResources().getColor(R.color.normalBlack));
-        ((TextView) findViewById(R.id.word5)).setTextColor(getResources().getColor(R.color.normalBlack));
-        ((TextView) findViewById(R.id.word6)).setTextColor(getResources().getColor(R.color.normalBlack));
+        ((TextView) findViewById(R.id.activityText1)).setTextColor(getResources().getColor(R.color.normalBlack));
+        ((TextView) findViewById(R.id.activityText2)).setTextColor(getResources().getColor(R.color.normalBlack));
+        ((TextView) findViewById(R.id.activityText3)).setTextColor(getResources().getColor(R.color.normalBlack));
+        ((TextView) findViewById(R.id.activityText4)).setTextColor(getResources().getColor(R.color.normalBlack));
+        ((TextView) findViewById(R.id.activityText5)).setTextColor(getResources().getColor(R.color.normalBlack));
+        ((TextView) findViewById(R.id.activityText6)).setTextColor(getResources().getColor(R.color.normalBlack));
 
         //remove stricktrough
-        ((TextView) findViewById(R.id.word1)).setPaintFlags(((TextView) findViewById(R.id.word1)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
-        ((TextView) findViewById(R.id.word2)).setPaintFlags(((TextView) findViewById(R.id.word2)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
-        ((TextView) findViewById(R.id.word3)).setPaintFlags(((TextView) findViewById(R.id.word3)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
-        ((TextView) findViewById(R.id.word4)).setPaintFlags(((TextView) findViewById(R.id.word4)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
-        ((TextView) findViewById(R.id.word5)).setPaintFlags(((TextView) findViewById(R.id.word5)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
-        ((TextView) findViewById(R.id.word6)).setPaintFlags(((TextView) findViewById(R.id.word6)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+        ((TextView) findViewById(R.id.activityText1)).setPaintFlags(((TextView) findViewById(R.id.activityText1)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+        ((TextView) findViewById(R.id.activityText2)).setPaintFlags(((TextView) findViewById(R.id.activityText2)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+        ((TextView) findViewById(R.id.activityText3)).setPaintFlags(((TextView) findViewById(R.id.activityText3)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+        ((TextView) findViewById(R.id.activityText4)).setPaintFlags(((TextView) findViewById(R.id.activityText4)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+        ((TextView) findViewById(R.id.activityText5)).setPaintFlags(((TextView) findViewById(R.id.activityText5)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+        ((TextView) findViewById(R.id.activityText6)).setPaintFlags(((TextView) findViewById(R.id.activityText6)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
 
 
-        findViewById(R.id.wordBox1).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
-        findViewById(R.id.wordBox2).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
-        findViewById(R.id.wordBox3).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
-        findViewById(R.id.wordBox4).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
-        findViewById(R.id.wordBox5).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
-        findViewById(R.id.wordBox6).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
+        findViewById(R.id.activityTextBox1).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
+        findViewById(R.id.activityTextBox2).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
+        findViewById(R.id.activityTextBox3).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
+        findViewById(R.id.activityTextBox4).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
+        findViewById(R.id.activityTextBox5).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
+        findViewById(R.id.activityTextBox6).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
 
     }
 
@@ -791,8 +862,6 @@ public class ActivityWD04 extends Activity_General_Parent  implements LoaderMana
     }//end private void clearText(){
 
     ////////////////////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private void shuffleGameData(){
 
@@ -843,64 +912,67 @@ public class ActivityWD04 extends Activity_General_Parent  implements LoaderMana
         CursorLoader cursorLoader;
         switch(id){
             default:
-            case MotoliConstants.GUESS_WORDS:{
-                ArrayList<String> currentGSP=new ArrayList<String>(appData.getCurrentGroup_Section_Phase());
-                if(currentGSP.get(1).equals("3")){
-                    currentGSP.set(1,"2");
+            case Constants.GUESS_WORDS:{
+                if(mCurrentGSP.get("phase_id").equals("3")){
+                    mCurrentGSP.put("phase_id","2");
                 }
                 projection = new String[]{
                         appData.getCurrentActivity().get(0),
-                        appData.getCurrentUserID(),
-                        currentGSP.get(0),
-                        currentGSP.get(1),
-                        currentGSP.get(2),
-                        currentGSP.get(3)};
-                //NOTICE THIS IS ALWAYS DEFAULTING TO PHASE 1
+                        appData.getCurrentUserID(),"4", "1", "11",
+                        mCurrentGSP.get("current_level"),"1"};
 
-                String selection="variable_phase_levels.group_id="+currentGSP.get(0)+
-                        " AND variable_phase_levels.phase_id="+currentGSP.get(1)+
-                        " AND ((variable_phase_levels.level_number="+currentGSP.get(3)+"-1 "+
-                        " OR variable_phase_levels.level_number="+currentGSP.get(3)+"-2 "+
-                        " OR variable_phase_levels.level_number="+currentGSP.get(3)+"-3"+
-                        " OR variable_phase_levels.level_number="+currentGSP.get(3)+" ) "+
-                        " OR variable_phase_levels.level_number<="+currentGSP.get(3)+" -3)"+
-                        " AND variable_phase_levels.level_number!=0";
+                String selection="variable_phase_levels.group_id" +
+                        "="+mCurrentGSP.get("group_id")+
+                        " AND variable_phase_levels.phase_id" +
+                        "="+mCurrentGSP.get("phase_id")+
+                        " AND ((variable_phase_levels.level_number" +
+                        "="+mCurrentGSP.get("current_level")+"-1 "+
+                        " OR variable_phase_levels.level_number" +
+                        "="+mCurrentGSP.get("current_level")+"-2 "+
+                        " OR variable_phase_levels.level_number" +
+                        "="+mCurrentGSP.get("current_level")+"-3"+
+                        " OR variable_phase_levels.level_number" +
+                        "="+mCurrentGSP.get("current_level")+" ) "+
+                        " OR variable_phase_levels.level_number" +
+                        "<="+mCurrentGSP.get("current_level")+" -3)"+
+                        " AND variable_phase_levels.level_number>0";
 
 
                 cursorLoader = new CursorLoader(this,
-                        MotoliContentProvider.CONTENT_URI_GUESS_WORDS, projection, selection, null, null);
+                        AppProvider.CONTENT_URI_GUESS_WORDS, projection, selection, null, null);
                 break;
             }
-            case MotoliConstants.CURRENT_WORDS:{
+            case Constants.CURRENT_WORDS:{
 
-                ArrayList<String> currentGSP=new ArrayList<String>(appData.getCurrentGroup_Section_Phase());
-                if(currentGSP.get(1).equals("3")){
-                    currentGSP.set(1,"2");
+                if(mCurrentGSP.get("phase_id").equals("3")){
+                    mCurrentGSP.put("phase_id","2");
                 }
                 projection = new String[]{
                         appData.getCurrentActivity().get(0),
-                        appData.getCurrentUserID(),
-                        currentGSP.get(0),
-                        currentGSP.get(1),
-                        currentGSP.get(2),
-                        currentGSP.get(3)};
-                //NOTICE THIS IS ALWAYS DEFAULTING TO PHASE 1
+                        appData.getCurrentUserID(),"4", "1", "11",
+                        mCurrentGSP.get("current_level"),"0"};
 
-                String selection="variable_phase_levels.group_id="+currentGSP.get(0)+
-                        " AND variable_phase_levels.phase_id="+currentGSP.get(1)+
-                        " AND ((variable_phase_levels.level_number="+currentGSP.get(3)+"-1 "+
-                        " OR variable_phase_levels.level_number="+currentGSP.get(3)+"-2 "+
-                        " OR variable_phase_levels.level_number="+currentGSP.get(3)+"-3"+
-                        " OR variable_phase_levels.level_number="+currentGSP.get(3)+" ) "+
-                        " OR variable_phase_levels.level_number<="+currentGSP.get(3)+" -3)"+
-                        " AND variable_phase_levels.level_number!=0";
+                String selection="variable_phase_levels.group_id" +
+                        "="+mCurrentGSP.get("group_id")+
+                        " AND variable_phase_levels.phase_id" +
+                        "="+mCurrentGSP.get("phase_id")+
+                        " AND ((variable_phase_levels.level_number" +
+                        "="+mCurrentGSP.get("current_level")+"-1 "+
+                        " OR variable_phase_levels.level_number" +
+                        "="+mCurrentGSP.get("current_level")+"-2 "+
+                        " OR variable_phase_levels.level_number" +
+                        "="+mCurrentGSP.get("current_level")+"-3"+
+                        " OR variable_phase_levels.level_number" +
+                        "="+mCurrentGSP.get("current_level")+" ) "+
+                        " OR variable_phase_levels.level_number" +
+                        "<="+mCurrentGSP.get("current_level")+" -3)"+
+                        " AND variable_phase_levels.level_number>0";
 
                 cursorLoader = new CursorLoader(this,
-                        MotoliContentProvider.CONTENT_URI_CURRENT_WORDS_BY_LEVEL, projection, selection, null, null);
+                        AppProvider.CONTENT_URI_CURRENT_WORDS_BY_LEVEL, projection, selection, null, null);
                 break;
             }
         }
-
         return cursorLoader;
     }
 
@@ -912,8 +984,8 @@ public class ActivityWD04 extends Activity_General_Parent  implements LoaderMana
         switch(loader.getId()) {
             default:
                 break;
-            case MotoliConstants.GUESS_WORDS:{
-                mAllText=new ArrayList<ArrayList<String>>();
+            case Constants.GUESS_WORDS:{
+                mAllText=new ArrayList<>();
                 int mGuessWordNumber=0;
                 if(data.moveToFirst()) {
                     do{
@@ -921,18 +993,18 @@ public class ActivityWD04 extends Activity_General_Parent  implements LoaderMana
                         mAllText.get(mGuessWordNumber).add(data.getString(data.getColumnIndex("word_id"))); //0
                         mAllText.get(mGuessWordNumber).add(data.getString(data.getColumnIndex("word_text"))); //1
                         mAllText.get(mGuessWordNumber).add(data.getString(data.getColumnIndex("audio_url"))); //2
-                        mAllText.get(mGuessWordNumber).add(data.getString(data.getColumnIndex("number_correct"))); //3
-                        mAllText.get(mGuessWordNumber).add(data.getString(data.getColumnIndex("number_incorrect"))); //4
+                        mAllText.get(mGuessWordNumber).add("0"); //3
+                        mAllText.get(mGuessWordNumber).add("0"); //4
                         mAllText.get(mGuessWordNumber).add(data.getString(data.getColumnIndex("image_url"))); //5
-                        mAllText.get(mGuessWordNumber).add(data.getString(data.getColumnIndex("number_correct_in_a_row"))); //6
+                        mAllText.get(mGuessWordNumber).add("0"); //6
                         mGuessWordNumber++;
                     }while (data.moveToNext()) ;
                 }
                 Collections.shuffle(mAllText);
-                getLoaderManager().restartLoader(MotoliConstants.CURRENT_WORDS, null, this);
+                getLoaderManager().restartLoader(Constants.CURRENT_WORDS, null, this);
                 break;
             }
-            case MotoliConstants.CURRENT_WORDS:{
+            case Constants.CURRENT_WORDS:{
                 processData(data);
                 break;
             }
@@ -947,26 +1019,22 @@ public class ActivityWD04 extends Activity_General_Parent  implements LoaderMana
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    private void processData(Cursor mCursor){
-        mCurrentWords=new ArrayList<ArrayList<String>>();
+    protected void processData(Cursor mCursor){
+        mCurrentWords=new ArrayList<>();
         int currentWordNumber=0;
-        int mNumberCorrectInARow=MotoliConstants.INA_ROW_CORRECT;
         mCursor.moveToFirst();
         while (!mCursor.isAfterLast()) {
             mCurrentWords.add(new ArrayList<String>());
             mCurrentWords.get(currentWordNumber).add(mCursor.getString(mCursor.getColumnIndex("word_id")));
             mCurrentWords.get(currentWordNumber).add(mCursor.getString(mCursor.getColumnIndex("word_text")));
             mCurrentWords.get(currentWordNumber).add(mCursor.getString(mCursor.getColumnIndex("audio_url")));
-            mCurrentWords.get(currentWordNumber).add(mCursor.getString(mCursor.getColumnIndex("number_correct")));
-            mCurrentWords.get(currentWordNumber).add(mCursor.getString(mCursor.getColumnIndex("number_incorrect")));
+            mCurrentWords.get(currentWordNumber).add("0");
+            mCurrentWords.get(currentWordNumber).add("0");
             mCurrentWords.get(currentWordNumber).add(mCursor.getString(mCursor.getColumnIndex("image_url")));
-            mCurrentWords.get(currentWordNumber).add(mCursor.getString(mCursor.getColumnIndex("number_correct_in_a_row"))); //6
-
-            mNumberCorrectInARow=(mNumberCorrectInARow>Integer.parseInt(mCurrentWords.get(currentWordNumber).get(6)))
-                    ? Integer.parseInt(mCurrentWords.get(currentWordNumber).get(6)):mNumberCorrectInARow;
+            mCurrentWords.get(currentWordNumber).add("0"); //6
 
             currentWordNumber++;
-            if (currentWordNumber == MotoliConstants.NUMBER_VARIABLES) {
+            if (currentWordNumber == Constants.NUMBER_VARIABLES) {
                 break;
             }else if(mCursor.isLast()){
                 mCursor.moveToFirst();
@@ -975,12 +1043,6 @@ public class ActivityWD04 extends Activity_General_Parent  implements LoaderMana
             }else {
                 mCursor.moveToNext();
             }
-        }
-
-        if((mNumberCorrectInARow == MotoliConstants.INA_ROW_CORRECT)){
-            showCompleteLevelStar(true);
-        }else{
-            showCompleteLevelStar(false);
         }
 
         Collections.shuffle(mCurrentWords);
@@ -994,7 +1056,7 @@ public class ActivityWD04 extends Activity_General_Parent  implements LoaderMana
         int mletterListCount=0;
         do{
             if(mletterCount==0 || mletterCount==3){
-                mTempCurrentWords.add(new ArrayList<String>(mCurrentWords.get(mletterListCount)));
+                mTempCurrentWords.add(new ArrayList<>(mCurrentWords.get(mletterListCount)));
                 mPreviousWordId=mCurrentWords.get(mletterListCount).get(0);
                 mletterCount++;
                 mletterListCount++;
@@ -1035,7 +1097,7 @@ public class ActivityWD04 extends Activity_General_Parent  implements LoaderMana
         }while(!mCompleted);
 
 
-        mCurrentWords=new ArrayList<ArrayList<String>>(mTempCurrentWords);
+        mCurrentWords=new ArrayList<>(mTempCurrentWords);
 
 
         shuffleGameData();
