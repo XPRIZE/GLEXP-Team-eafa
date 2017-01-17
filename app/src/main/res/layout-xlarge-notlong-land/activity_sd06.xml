@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_desert_with_cactus">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.23"
+            layout="@layout/activity_top_area" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.3"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/activityMainPart">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/beginningPhonicCircle"
+                android:src="@drawable/btn_circle"
+                android:scaleType="fitStart"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/sd06_shape_outside_margins"
+                android:layout_marginRight="@dimen/sd06_shape_inside_margins"
+                android:layout_marginTop="@dimen/sd06_shape_top_margin" />
+        </RelativeLayout>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.22" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/endingPhonicStar"
+                android:src="@drawable/btn_star"
+                android:scaleType="fitStart"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="@dimen/sd06_shape_outside_margins"
+                android:layout_marginLeft="@dimen/sd06_shape_inside_margins"
+                android:layout_marginTop="@dimen/sd06_shape_top_margin" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/activityMainPartSecond">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.45"
+            android:id="@+id/frameGroup">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".4" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2.1">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnValidate"
+                    android:src="@drawable/btn_validate_off" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".4">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/sd06_line"
+                    android:layout_marginLeft="@dimen/sd06_line_padding"
+                    android:layout_marginRight="@dimen/sd06_line_padding"
+                    android:layout_marginTop="@dimen/sd06_line_top_margin"
+                    android:focusableInTouchMode="false"
+                    android:contentDescription="@string/general_image"/>
+            </RelativeLayout>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/frm_sd06"
+                        android:scaleType="fitCenter" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/phonic0"
+                        android:text="@string/strRandomLetter"
+                        android:textColor="@color/normalBlack"
+                        android:textStyle="normal"
+                        android:textSize="@dimen/sd06_font_size"
+                        android:gravity="center_vertical|center_horizontal" />
+
+
+
+                </RelativeLayout>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".2" />
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@drawable/frm_sd06"
+                        android:scaleType="fitCenter" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/image0"
+                        android:src="@drawable/dummy_img_phonic_word"
+                        android:layout_marginRight="@dimen/sd06_innerframe_side_margins"
+                        android:layout_marginLeft="@dimen/sd06_innerframe_side_margins"
+                        android:layout_marginTop="@dimen/sd06_innerframe_top_margins"
+                        android:layout_marginBottom="@dimen/sd06_innerframe_top_margins" />
+
+                </RelativeLayout>
+
+            </TableRow>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".1" />
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
+</FrameLayout>

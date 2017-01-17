@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_blue_cloves_green_balls" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.23"
+            layout="@layout/activity_top_area" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.3"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/activityMainPart">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".15" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.7"
+            android:visibility="visible" >
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".2" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/imageFrame0"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/sd05_image_bottom_margin"
+                    android:layout_marginLeft="@dimen/sd05_frame_side_margin"
+                    android:layout_marginRight="@dimen/sd05_frame_side_margin"
+                    android:layout_marginTop="@dimen/sd05_image_top_margin"
+                    android:src="@drawable/rounded_box_selected"
+                    android:scaleType="fitXY" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/syllableImage0"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/dummy_img_phonic_word"
+
+                    android:layout_marginLeft="@dimen/sd05_image_sides"
+                    android:layout_marginRight="@dimen/sd05_image_sides"
+                    android:layout_marginTop="@dimen/sd05_image_top_margin"
+                    android:layout_marginBottom="@dimen/sd05_image_bottom_margin"
+                    android:layout_alignTop="@+id/imageFrame0"
+                    android:layout_alignBottom="@+id/imageFrame0"
+                    />
+
+            </RelativeLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".2" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".2" />
+
+                <ImageButton
+                    android:id="@+id/btnValidate"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/strNone"
+                    android:scaleType="fitStart"
+                    android:src="@drawable/btn_validate_off" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".05" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:baselineAligned="false">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/syllableTextFrame1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="false"
+                    android:contentDescription="@string/strNone"
+                    android:src="@drawable/frm_rs02_off" />
+
+                <TextView
+                    android:id="@+id/syllableText1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentTop="true"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:lineSpacingMultiplier=".8"
+                    android:linksClickable="true"
+                    android:scrollbarAlwaysDrawVerticalTrack="true"
+                    android:text="@string/strRandomLetter"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/normalBlack"
+                    android:textSize="@dimen/rs01_letterFontSize" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/syllableTextFrame2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/strNone"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/frm_rs02_off" />
+
+                <TextView
+                    android:id="@+id/syllableText2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentTop="true"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:lineSpacingMultiplier=".8"
+                    android:scrollbarAlwaysDrawVerticalTrack="true"
+                    android:text="@string/strRandomLetter"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/normalBlack"
+                    android:textSize="@dimen/rs01_letterFontSize" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/syllableTextFrame3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/strNone"
+                    android:src="@drawable/frm_rs02_off" />
+
+                <TextView
+                    android:id="@+id/syllableText3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentTop="true"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:lineSpacingMultiplier=".8"
+                    android:scrollbarAlwaysDrawVerticalTrack="true"
+                    android:text="@string/strRandomLetter"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/normalBlack"
+                    android:textSize="@dimen/rs01_letterFontSize" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/syllableTextFrame4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="false"
+                    android:contentDescription="@string/strNone"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/frm_rs02_off" />
+
+                <TextView
+                    android:id="@+id/syllableText4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentTop="true"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:lineSpacingMultiplier=".8"
+                    android:scrollbarAlwaysDrawVerticalTrack="true"
+                    android:text="@string/strRandomLetter"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/normalBlack"
+                    android:textSize="@dimen/rs01_letterFontSize" />
+
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

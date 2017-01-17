@@ -1,0 +1,954 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_beach_with_palm_trees">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.23"
+            layout="@layout/activity_top_area" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.3"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/activityMainVertical"
+        android:visibility="visible">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".1" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.25">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".25" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2.6"
+                android:background="@drawable/rounded_box_selected_blue">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".1">
+
+                    <TextView
+                        android:text="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/verticalCarryNumber"
+                        android:textColor="@color/regularBlack"
+                        android:textSize="@dimen/vertical_carry_number"
+                        android:gravity="right"
+                        android:layout_weight="1"
+                        android:visibility="invisible" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".4" />
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:text="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/verticalNumber1"
+                        android:textColor="@color/regularBlack"
+                        android:textSize="@dimen/numbers_vertical"
+                        android:gravity="end|center_vertical"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:paddingRight="30dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:text="+"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/verticalSymbol"
+                        android:textColor="@color/regularBlack"
+                        android:textSize="@dimen/numbers_vertical"
+                        android:gravity="left|center_vertical"
+                        android:paddingRight="30dp"
+                        android:paddingLeft="30dp" />
+
+                    <TextView
+                        android:text="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/verticalNumber2"
+                        android:textColor="@color/regularBlack"
+                        android:textSize="@dimen/numbers_vertical"
+                        android:gravity="end|center_vertical"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:paddingRight="30dp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".1">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/imageView20"
+                        android:src="@drawable/a_line"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:paddingLeft="30dp"
+                        android:paddingRight="30dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:text="="
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/verticalEqual"
+                        android:textColor="@color/regularBlack"
+                        android:textSize="@dimen/numbers_vertical"
+                        android:gravity="left|center_vertical"
+                        android:visibility="invisible" />
+
+                    <TextView
+                        android:text="20"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/verticalResult"
+                        android:textColor="@color/regularBlack"
+                        android:textSize="@dimen/numbers_vertical"
+                        android:gravity="end|center_vertical"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:paddingRight="30dp" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".1" />
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".1" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".5" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:srcCompat="@drawable/btn_validate_off"
+                android:id="@+id/btnVerticalValidate"
+                android:layout_weight="1" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".1" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.5"
+                android:background="@drawable/rounded_box_selected_blue"
+                android:focusable="false">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/verticalNumberPad">
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight=".2"/>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".2"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="@string/number_7"
+                            android:id="@+id/verticalGuessNumber7"
+                            android:textColor="@color/normalBlack"
+                            android:textSize="@dimen/op_number_set"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:background="@drawable/number_box_selected"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".02"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="@string/number_8"
+                            android:id="@+id/verticalGuessNumber8"
+                            android:textColor="@color/normalBlack"
+                            android:textSize="@dimen/op_number_set"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:background="@drawable/number_box_unselected"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".02"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="@string/number_9"
+                            android:id="@+id/verticalGuessNumber9"
+                            android:textColor="@color/normalBlack"
+                            android:textSize="@dimen/op_number_set"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:background="@drawable/number_box_unselected"
+                            android:layout_margin="@dimen/number_box_margin"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".2"/>
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".2"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="@string/number_4"
+                            android:id="@+id/verticalGuessNumber4"
+                            android:textColor="@color/normalBlack"
+                            android:textSize="@dimen/op_number_set"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:background="@drawable/number_box_unselected"
+                            android:layout_margin="@dimen/number_box_margin"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".02"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="@string/number_5"
+                            android:id="@+id/verticalGuessNumber5"
+                            android:textColor="@color/normalBlack"
+                            android:textSize="@dimen/op_number_set"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:background="@drawable/number_box_unselected"
+                            android:layout_margin="@dimen/number_box_margin"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".02"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="@string/number_6"
+                            android:id="@+id/verticalGuessNumber6"
+                            android:textColor="@color/normalBlack"
+                            android:textSize="@dimen/op_number_set"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:background="@drawable/number_box_unselected"
+                            android:layout_margin="@dimen/number_box_margin"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".2"/>
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".2"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="@string/number_1"
+                            android:id="@+id/verticalGuessNumber1"
+                            android:textColor="@color/normalBlack"
+                            android:textSize="@dimen/op_number_set"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:background="@drawable/number_box_unselected"
+                            android:layout_margin="@dimen/number_box_margin"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".02"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="@string/number_2"
+                            android:id="@+id/verticalGuessNumber2"
+                            android:textColor="@color/normalBlack"
+                            android:textSize="@dimen/op_number_set"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:background="@drawable/number_box_unselected"
+                            android:layout_margin="@dimen/number_box_margin"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".02"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="@string/number_3"
+                            android:id="@+id/verticalGuessNumber3"
+                            android:textColor="@color/normalBlack"
+                            android:textSize="@dimen/op_number_set"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:background="@drawable/number_box_unselected"
+                            android:layout_margin="@dimen/number_box_margin"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".2"/>
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".2"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="@string/number_0"
+                            android:id="@+id/verticalGuessNumber0"
+                            android:textColor="@color/normalBlack"
+                            android:textSize="@dimen/op_number_set"
+                            android:layout_weight="2.1"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:layout_margin="@dimen/number_box_margin"
+                            android:background="@drawable/number_box_unselected"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".02"/>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@+id/verticalBackspace"
+                                android:src="@drawable/backspace"
+                                android:scaleType="fitCenter"/>
+
+
+                        </RelativeLayout>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".2"/>
+                    </TableRow>
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight=".2"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".1" />
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:focusableInTouchMode="false"
+        android:id="@+id/activityMainPart"
+        android:visibility="invisible">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".4"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".75">
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".15"/>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageView25"
+                    android:src="@drawable/frm_op_blue_square"
+                    android:contentDescription="@string/general_image"
+                    android:scaleType="fitXY"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/number_1"
+                    android:id="@+id/equationNumber1"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="@dimen/op_number_problem_large_font"
+                    android:textColor="@color/normalBlack"
+                    android:gravity="center_vertical|center_horizontal"/>
+            </RelativeLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".01"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/stringPlus"
+                android:id="@+id/equationSymbol"
+                android:textColor="@color/normalBlack"
+                android:layout_alignParentTop="false"
+                android:layout_alignParentBottom="false"
+                android:layout_alignParentLeft="false"
+                android:layout_centerInParent="true"
+                android:textSize="@dimen/op_symbol_extra_large_font_size"
+                android:layout_weight=".5"
+                android:gravity="center_vertical|center_horizontal"/>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".01"/>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageView28"
+                    android:src="@drawable/frm_op_blue_square"
+                    android:contentDescription="@string/general_image"
+                    android:scaleType="fitXY"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/number_4"
+                    android:id="@+id/equationNumber2"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="@dimen/op_number_problem_large_font"
+                    android:textColor="@color/normalBlack"
+                    android:gravity="center_vertical|center_horizontal"/>
+            </RelativeLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".01"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/stringEqual"
+                android:id="@+id/equalSymbol"
+                android:textColor="@color/normalBlack"
+                android:layout_alignParentTop="false"
+                android:layout_alignParentBottom="false"
+                android:layout_alignParentLeft="false"
+                android:layout_centerInParent="true"
+                android:layout_weight=".5"
+                android:gravity="center_vertical|center_horizontal"
+                android:textSize="@dimen/op_symbol_extra_large_font_size"/>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".01"/>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageView27"
+                    android:src="@drawable/frm_op_blue_square"
+                    android:contentDescription="@string/general_image"
+                    android:layout_alignParentTop="false"
+                    android:layout_alignParentLeft="false"
+                    android:scaleType="fitXY"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="100"
+                    android:id="@+id/equationResult"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="@dimen/op_number_problem_large_font"
+                    android:textColor="@color/normalBlack"
+                    android:gravity="center_vertical|center_horizontal"/>
+            </RelativeLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".15"/>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".1"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".15"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:id="@+id/btnValidate"
+                    android:src="@drawable/btn_validate_ok"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="1"/>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".04"/>
+            </LinearLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:background="@drawable/rounded_box_selected_blue"
+                android:focusable="false">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/numberPad">
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight=".2"/>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".2"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="@string/number_7"
+                            android:id="@+id/guessNumber7"
+                            android:textColor="@color/normalBlack"
+                            android:textSize="@dimen/op_number_set"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:background="@drawable/number_box_selected"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".02"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="@string/number_8"
+                            android:id="@+id/guessNumber8"
+                            android:textColor="@color/normalBlack"
+                            android:textSize="@dimen/op_number_set"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:background="@drawable/number_box_unselected"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".02"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="@string/number_9"
+                            android:id="@+id/guessNumber9"
+                            android:textColor="@color/normalBlack"
+                            android:textSize="@dimen/op_number_set"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:background="@drawable/number_box_unselected"
+                            android:layout_margin="@dimen/number_box_margin"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".2"/>
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".2"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="@string/number_4"
+                            android:id="@+id/guessNumber4"
+                            android:textColor="@color/normalBlack"
+                            android:textSize="@dimen/op_number_set"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:background="@drawable/number_box_unselected"
+                            android:layout_margin="@dimen/number_box_margin"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".02"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="@string/number_5"
+                            android:id="@+id/guessNumber5"
+                            android:textColor="@color/normalBlack"
+                            android:textSize="@dimen/op_number_set"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:background="@drawable/number_box_unselected"
+                            android:layout_margin="@dimen/number_box_margin"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".02"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="@string/number_6"
+                            android:id="@+id/guessNumber6"
+                            android:textColor="@color/normalBlack"
+                            android:textSize="@dimen/op_number_set"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:background="@drawable/number_box_unselected"
+                            android:layout_margin="@dimen/number_box_margin"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".2"/>
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".2"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="@string/number_1"
+                            android:id="@+id/guessNumber1"
+                            android:textColor="@color/normalBlack"
+                            android:textSize="@dimen/op_number_set"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:background="@drawable/number_box_unselected"
+                            android:layout_margin="@dimen/number_box_margin"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".02"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="@string/number_2"
+                            android:id="@+id/guessNumber2"
+                            android:textColor="@color/normalBlack"
+                            android:textSize="@dimen/op_number_set"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:background="@drawable/number_box_unselected"
+                            android:layout_margin="@dimen/number_box_margin"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".02"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="@string/number_3"
+                            android:id="@+id/guessNumber3"
+                            android:textColor="@color/normalBlack"
+                            android:textSize="@dimen/op_number_set"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:background="@drawable/number_box_unselected"
+                            android:layout_margin="@dimen/number_box_margin"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".2"/>
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".2"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="@string/number_0"
+                            android:id="@+id/guessNumber0"
+                            android:textColor="@color/normalBlack"
+                            android:textSize="@dimen/op_number_set"
+                            android:layout_weight="2.1"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:layout_margin="@dimen/number_box_margin"
+                            android:background="@drawable/number_box_unselected"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".02"/>
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@+id/backspace"
+                                android:src="@drawable/backspace"
+                                android:scaleType="fitCenter"/>
+
+
+                        </RelativeLayout>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".2"/>
+                    </TableRow>
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight=".2"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".15"/>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".07"/>
+
+    </LinearLayout>
+
+</FrameLayout>
