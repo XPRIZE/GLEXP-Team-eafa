@@ -5,13 +5,12 @@
           >
  <solid android:color="@color/reg_white"/>
 
-        <corners android:bottomRightRadius="60sp" android:bottomLeftRadius="60sp" 
-         android:topLeftRadius="60sp" android:topRightRadius="60sp"/>
+        <corners android:radius="20dp"/>
 
           <stroke
             android:color="@color/wd01_boxborder"
            
-            android:width="4dp"
+            android:width="8dp"
 
              />
 

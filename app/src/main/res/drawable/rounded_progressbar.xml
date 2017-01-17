@@ -12,9 +12,9 @@
              />
         <corners android:radius="20dip" />
         <gradient
-                android:startColor="@color/reg_white"
+                android:startColor="@color/launchpagbck"
              
-                android:endColor="@color/reg_white"
+                android:endColor="@color/launchpagbck"
                 android:angle="90"
         />
     </shape>
