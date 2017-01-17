@@ -1,0 +1,40 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context=".MainActivity">
+    <item
+        android:id="@+id/action_erase"
+        android:title="@string/action_erase"
+        android:icon="@drawable/ic_action_erase"
+         />
+
+    <item
+        android:id="@+id/action_delete"
+        android:title="@string/action_delete"
+        android:icon="@drawable/ic_action_delete"
+         />
+
+    <item
+        android:id="@+id/action_undo"
+        android:title="@string/action_undo"
+        android:icon="@drawable/ic_action_undo"
+         />
+
+    <item
+        android:id="@+id/action_brush"
+        android:title="@string/action_brush"
+        android:icon="@drawable/ic_action_brush"
+         />
+
+    <item
+        android:id="@+id/action_color"
+        android:title="@string/action_color"
+        android:icon="@drawable/ic_action_color"
+         />
+
+    <item
+        android:id="@+id/action_save"
+        android:title="@string/action_save"
+        android:icon="@drawable/ic_action_save"
+         />
+</menu>

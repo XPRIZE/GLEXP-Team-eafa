@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="letterTopTextBox">250sp</dimen>
+
+
+    <dimen name="letterTopTextBox">300sp</dimen>
     <dimen name="letterSetOf4Boxes">130sp</dimen>
 
-    <dimen name="wd06_word">72sp</dimen>
-    <dimen name="wd06_letter">72sp</dimen>
+
+    <dimen name="sd04_font_size">150sp</dimen>
+
+    <dimen name="wd06_word">100sp</dimen>
+    <dimen name="wd06_letter">100sp</dimen>
 
     <dimen name="le01_fontSize">70sp</dimen>
     <dimen name="lt05_chosenFontSize">90sp</dimen>
@@ -15,23 +20,17 @@
     <dimen name="lt06_guessFontSize">90sp</dimen>
     <dimen name="lt04_font_size">96sp</dimen>
 
-    <dimen name="sd01_letterFontSize">90sp</dimen>
+    <dimen name="sd01_letterFontSize">140sp</dimen>
     <dimen name="sd06_font_size">102sp</dimen>
-    <dimen name="sd04_font_size">90sp</dimen>
     <dimen name="activity_name_font_size">14sp</dimen>
 
-    <dimen name="rs01_letterFontSize">90sp</dimen>
-    <dimen name="rs03_font_size">90sp</dimen>
-
-    <dimen name="rs04_fontSize">60sp</dimen>
 
     <dimen name="gridText">70sp</dimen>
     <dimen name="bk02_font_size">14sp</dimen>
-    
+
     <dimen name="bk02_font_smallest">25sp</dimen>
     <dimen name="bk02_font_below_normal">34sp</dimen>
 
-    <dimen name="numbers_vertical">90sp</dimen>
 
     <dimen name="bk02_font_normal">40sp</dimen>
     <dimen name="bk03_font_normal">56sp</dimen>
@@ -39,20 +38,20 @@
     <dimen name="bk02_font_above_normal">28sp</dimen>
     <dimen name="bk02_font_largest">59sp</dimen>
 
-    <dimen name="wdFirstFontSize">72sp</dimen>
-    <dimen name="wdSecondFontSize">64sp</dimen>
-    <dimen name="wdThirdFontSize">56sp</dimen>
-    <dimen name="wdForthFontSize">48sp</dimen>
-    <dimen name="wdFifthFontSize">40sp</dimen>
+    <dimen name="wdFirstFontSize">46sp</dimen>
+    <dimen name="wdSecondFontSize">40sp</dimen>
+    <dimen name="wdThirdFontSize">35sp</dimen>
+    <dimen name="wdForthFontSize">29sp</dimen>
+    <dimen name="wdFifthFontSize">24sp</dimen>
 
-    <dimen name="wdFirstFontSizeWD05">38sp</dimen>
-    <dimen name="wdSecondFontSizeWD05">36sp</dimen>
-    <dimen name="wdThirdFontSizeWD05">64sp</dimen>
-    <dimen name="wdForthFontSizeWD05">30sp</dimen>
-    <dimen name="wdFifthFontSizeWD05">26sp</dimen>
+    <dimen name="wdFirstFontSizeWD05">46sp</dimen>
+    <dimen name="wdSecondFontSizeWD05">40sp</dimen>
+    <dimen name="wdThirdFontSizeWD05">35sp</dimen>
+    <dimen name="wdForthFontSizeWD05">29sp</dimen>
+    <dimen name="wdFifthFontSizeWD05">24sp</dimen>
 
 
-    <dimen name="wdNormalLetterFontSize">72sp</dimen>
+    <dimen name="wdNormalLetterFontSize">110sp</dimen>
 
     <dimen name="loadingTextSize">36px</dimen>
 
@@ -66,9 +65,12 @@
 
     <dimen name="op_symbol_font_size">110sp</dimen>
     <dimen name="op_symbol_large_font_size">120sp</dimen>
-    <dimen name="op_symbol_extra_large_font_size">170sp</dimen>
-    <dimen name="op_number_set">52sp</dimen>
+    <dimen name="op_symbol_extra_large_font_size">190sp</dimen>
+    <dimen name="op_number_set">66sp</dimen>
     <dimen name="op_number_large_set">56sp</dimen>
+
+    <dimen name="numbers_vertical">200sp</dimen>
+    <dimen name="vertical_carry_number">90sp</dimen>
 
     <dimen name="op_backspace">28sp</dimen>
     <dimen name="op_backspace_large">42sp</dimen>
@@ -78,18 +80,28 @@
     <dimen name="op_number_set_large">56sp</dimen>
 
 
-    <dimen name="op_number_problem_font">120sp</dimen>
+    <dimen name="op_number_problem_font">145sp</dimen>
     <dimen name="op_number_problem_large_font">150sp</dimen>
 
 
-    <dimen name="qn_numbers">90sp</dimen>
-    <dimen name="qn_massive_numbers">130sp</dimen>
+    <dimen name="qn_numbers">120sp</dimen>
+    <dimen name="qn_massive_numbers">170sp</dimen>
     <dimen name="qn01_font_size">70sp</dimen>
+    <dimen name="qn07_top_numbers">110sp</dimen>
+
+
+
+
+    <dimen name="rs01_letterFontSize">120sp</dimen>
+    <dimen name="rs03_font_size">90sp</dimen>
+
+    <dimen name="rs04_fontSize">60sp</dimen>
+
+
+
     <dimen name="settings_font_size">36sp</dimen>
     <dimen name="lt06_lower_font">90sp</dimen>
-    <dimen name="qn07_top_numbers">96sp</dimen>
-    <dimen name="vertical_carry_number">90sp</dimen>
     <dimen name="op07_font_size">70sp</dimen>
-    <dimen name="op07_equation_font_size">36sp</dimen>
+    <dimen name="op07_equation_font_size">24sp</dimen>
     <dimen name="coming_soon_font">120sp</dimen>
 </resources>

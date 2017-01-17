@@ -1,10 +1,26 @@
 <resources>
+    <color name="application_tracing">#d3d6c6</color>
     <color name="reg_white">#FFFFFF</color>
-    <color name="opaque_white">#80ffffff</color>
+    <color name="opaque_white">#80FFFFFF</color>
 
+
+    <color name="tr_correct">#0966b1</color>
+    <color name="tr_incorrect">#ffffff</color>
+
+    <color name="tr_canvas_page_bg">#f2ecd2</color>
     <color name="ver_off_white">#f4f4f4</color>
     <color name="off_white">#efefef</color>
 
+    <color name="off_white_semi">#90efefef</color>
+
+    <color name="very_light_gray">#eeeeee</color>
+
+    <color name="video_page_letters_main">#d2d6c5</color>
+    <color name="video_page_letters_side">#939588</color>
+
+    <color name="orange_bx_border">#ff9933</color>
+    <color name="green_bx_border">#669900</color>
+    <color name="blue_bx_border">#27aae1</color>
 
     <color name="reg_gray">#CCCCCC</color>
     <color name="lightGrey">#bbbbbb</color>
@@ -12,31 +28,33 @@
     <color name="darkGray">#666666</color>
     <color name="veryDarkGray">#494949</color>
     <color name="normalBlack">#000000</color>
+    <color name="wood">#cc6601</color>
 
-    <color name="reg_gold">#ffcc00</color>
+    <color name="reg_gold">#FFcc00</color>
     <color name="activitiesPlatformBackground">#f1e883</color>
 
     <color name="drk_green">#FF2b621e</color>
     <color name="correct_green">#FF2b621e</color>
     <color name="correct_green_border">#FF103009</color>
 
-    <color name="reg_red">#ffff200d</color>
+    <color name="reg_red">#FFFF200d</color>
     <color name="incorrect_red">#FF990000</color>
-    <color name="incorrect_red_border">#ff500000</color>
+    <color name="incorrect_red_border">#FF500000</color>
 
     <color name="reg_blue">#1c75bc</color>
 
-    <color name="cs01_unchosen_box">#fff06697</color>
-    <color name="cs01_unchosen_border">#ff542636</color>
+    <color name="cs01_unchosen_box">#FFf06697</color>
+    <color name="cs01_unchosen_border">#542636</color>
 
 
-    <color name="cs01_chosen_box">#fff9ed32</color>
-    <color name="cs01_chosen_border">#ffffc60b</color>
+    <color name="cs01_chosen_box">#FFf9ed32</color>
+    <color name="cs01_chosen_border">#FFFFc60b</color>
 
 
 
     <color name="launchpagbckold">#f1eacd</color>
-    <color name="launchpagbck">#f3eccf</color>
+    <color name="launchpagbck">#f2ecd2</color>
+    <color name="launch_side">#9fdcef</color>
 
     <color name="le02_vowell">#fccc00</color>
     <color name="le02_con">#6ac9c9</color>
@@ -46,59 +64,143 @@
     <color name="wd01_boxborder">#e6e7e8</color>
 
     <color name="application_syllables">#1c4063</color>
+    <color name="application_syllables_side">#50a4cd</color>
+
     <color name="application_letters">#f5ec34</color>
     <color name="application_words">#b5ce4a</color>
+
+    <color name="application_words_video">#e6f9b1</color>
+    <color name="application_words_video_side">#cddc98</color>
+
     <color name="application_books">#4ac5ef</color>
-    <color name="application_math">#7b5295</color>
-    <color name="application_number">#ee4a49</color>
+    <color name="application_math_operations">#7b5295</color>
+    <color name="application_math_shape">#ef7b52</color>
+    <color name="application_numbers">#ee4a49</color>
+
     <color name="application_write">#d4d6c5</color>
 
     <color name="settings_bgnd">#996633</color>
 
+    <color name="rs04_bg">#FFf1ebcb</color>
+    <color name="rs04_letter_white">#FFFFFFFF</color>
+    <color name="rs04_letter_black">#FF000000</color>
 
-    <color name="sd07_bg">#fff1ebcb</color>
+    <color name="sd07_bg">#FFf1ebcb</color>
     <color name="sd07_letter_white">#FFFFFFFF</color>
     <color name="sd07_letter_black">#FF000000</color>
 
-    <color name="sd07_box_1">#ff345e6e</color>
-    <color name="sd07_box_2">#ff419b46</color>
-    <color name="sd07_box_3">#ffa4bc3c</color>
-    <color name="sd07_box_4">#ffcd6d2a</color>
-    <color name="sd07_box_5">#ffcb3928</color>
-    <color name="sd07_box_6">#ffea2290</color>
-    <color name="sd07_box_7">#ff8e69ae</color>
-    <color name="sd07_box_8">#ff4c6eb5</color>
-    <color name="sd07_box_9">#ff72829f</color>
-    <color name="sd07_box_10">#ff6f826e</color>
+    <color name="round_square_color_1">#FFED5F67</color>
+    <color name="round_square_color_2">#FFEA9A6C</color>
+    <color name="round_square_color_3">#FFF8C368</color>
+    <color name="round_square_color_4">#FFFDF462</color>
+    <color name="round_square_color_5">#FFFEF9C8</color>
+    <color name="round_square_color_6">#FFDEE790</color>
+    <color name="round_square_color_7">#FFA8D381</color>
+    <color name="round_square_color_8">#FF60BD84</color>
+    <color name="round_square_color_9">#FF52A174</color>
+    <color name="round_square_color_10">#FF519191</color>
+    <color name="round_square_color_11">#FF55ABBC</color>
+    <color name="round_square_color_12">#FF6ED2E0</color>
+    <color name="round_square_color_13">#FFABE0F7</color>
+    <color name="round_square_color_14">#FF56A8D5</color>
+    <color name="round_square_color_15">#FF5287BC</color>
+    <color name="round_square_color_16">#FF7C72A2</color>
+    <color name="round_square_color_17">#FF875A94</color>
+    <color name="round_square_color_18">#FFA261A1</color>
+    <color name="round_square_color_19">#FFC26CA5</color>
+    <color name="round_square_color_20">#FFE5A1C6</color>
+    <color name="round_square_color_21">#FFF7CADD</color>
+    <color name="round_square_color_22">#FFF4A9AF</color>
+    <color name="round_square_color_23">#FFEF798A</color>
+    <color name="round_square_color_24">#FFC06975</color>
+    <color name="round_square_color_25">#FF9A5954</color>
+    <color name="round_square_color_26">#FF896E70</color>
+    <color name="round_square_color_27">#FF967B63</color>
+    <color name="round_square_color_28">#FFB48E6F</color>
+    <color name="round_square_color_29">#FFB5ADA7</color>
+    <color name="round_square_color_30">#FF918F8E</color>
 
-    <color name="sd07_box_11">#ff7ab7b7</color>
-    <color name="sd07_box_12">#ff8fb77c</color>
-    <color name="sd07_box_13">#ff98bc62</color>
-    <color name="sd07_box_14">#fffdcd0f</color>
-    <color name="sd07_box_15">#fff18ca1</color>
-    <color name="sd07_box_16">#ffcc8bbc</color>
-    <color name="sd07_box_17">#ffb2acd5</color>
-    <color name="sd07_box_18">#ff5b87c6</color>
-    <color name="sd07_box_19">#ff73959e</color>
-    <color name="sd07_box_20">#ff6fc6a5</color>
 
-    <color name="sd07_box_21">#ff75966f</color>
-    <color name="sd07_box_22">#ff8db778</color>
-    <color name="sd07_box_23">#ffc4b677</color>
-    <color name="sd07_box_24">#ffcbb347</color>
-    <color name="sd07_box_25">#ffc79985</color>
-    <color name="sd07_box_26">#ffbb94be</color>
-    <color name="sd07_box_27">#ff6c779f</color>
-    <color name="sd07_box_28">#ff539391</color>
-    <color name="sd07_box_29">#ff9e92b3</color>
-    <color name="sd07_box_30">#ffbcbb36</color>
 
-    <color name="bk02_bg">#ff46c8f5</color>
-    <color name="bk02_font_color">#ff000000</color>
+    <color name="bk02_bg">#FF46c8f5</color>
+    <color name="bk02_font_color">#FF000000</color>
     <color name="bk02_highlight">#cc3333</color>
 
-    <color name="bg_progress_letters">#f5ec34</color>
+
+    <color name="progress_bar_letters">#f6ec31</color>
+    <color name="progress_bar_syllables">#1567b5</color>
+    <color name="progress_bar_words">#b8d036</color>
+    <color name="progress_bar_shapes">#ea7d52</color>
+    <color name="progress_bar_numbers">#e94846</color>
+    <color name="progress_bar_math">#795197</color>
+
+
+    <color name="progress_bar_letters_second">#cfc513</color>
+    <color name="progress_bar_syllables_second">#034079</color>
+    <color name="progress_bar_words_second">#829713</color>
+    <color name="progress_bar_shapes_second">#ad451c</color>
+    <color name="progress_bar_numbers_second">#ac201e</color>
+    <color name="progress_bar_math_second">#38194f</color>
+
 
     <color name="progress_bar">#f1636a</color>
     <color name="progress_bar_second">#9a5155</color>
+    <color name="regularBlack">#000000</color>
+    <color name="bg_bk03">#b5ecFF</color>
+    <color name="bg_bk03_side">#50a4cd</color>
+    <color name="bg_rs04">#63ACF3</color>
+    <color name="bg_sh_color">#dfbfff</color>
+    <color name="bg_qn">#ee4b4a</color>
+    <color name="bg_op">#7b5499</color>
+
+    <color name="blue_dot">#79b1d6</color>
+    <color name="pink_dot">#cd0067</color>
+
+
+    <color name="piano_vowel">#FFDC72</color>
+    <color name="piano_const">#72DCFF</color>
+    <color name="ll02_side_bar">#929587</color>
+    <color name="ll02_main">#d2d6c4</color>
+    <color name="rs_side_bar">#FF1c4063</color>
+    <color name="rs_main">#FF397bc4</color>
+    <color name="transparent">#00FFFFFF</color>
+
+    <color name="shape_color_green">#6b9b50</color>
+    <color name="shape_color_blue">#21b1d8</color>
+    <color name="shape_color_red">#da2127</color>
+    <color name="shape_color_yellow">#fcc73b</color>
+    <color name="shape_color_pink">#f7868b</color>
+    <color name="shape_color_orange">#f95706</color>
+    <color name="shape_color_orange_qn03">#ff6d00</color>
+
+    <color name="dot_color">#FF27aae1</color>
+    <color name="dot_color_fade">#3021b1d8</color>
+
+    <color name="math_operation_blue_dot">#21b1d8</color>
+    <color name="math_operation_green_dot">#6b9b50</color>
+    <color name="math_operation_orange_dot">#f95706</color>
+    <color name="math_operation_pink_dot">#f7868b</color>
+    <color name="math_operation_red_dot">#da2127</color>
+    <color name="math_operation_yellow_dot">#fcc73b</color>
+    <color name="math_operation_transparent_dot">#00FFFFFF</color>
+    <color name="drk_green_fade">#472b621e</color>
+    <color name="math_operation_tens">#ff9900</color>
+
+    <color name="op7_addition">#b6d04a</color>
+    <color name="op7_subtraction">#cc9999</color>
+    <color name="op7_multiplication">#cfebef</color>
+    <color name="tr_background">#d2d7c5</color>
+    <color name="tr_side">#729381</color>
+
+    <color name="doodle_red">#ff2626</color>
+    <color name="doodle_orange">#ff8000</color>
+    <color name="doodle_yellow">#ffff00</color>
+    <color name="doodle_green">#6dd900</color>
+    <color name="doodle_light_blue">#00d9d9</color>
+    <color name="doodle_blue">#0036d9</color>
+    <color name="doodle_purple">#6d00d9</color>
+    <color name="doodle_pink">#ff4dff</color>
+    <color name="doodle_black">#000000</color>
+    <color name="doodle_white">#ffffff</color>
+
 </resources>

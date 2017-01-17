@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="medium_size">5</integer>
+
+    <dimen name="small_brush">10dp</dimen>
+    <integer name="small_brush_size">10</integer>
+    <dimen name="medium_brush">20dp</dimen>
+    <integer name="medium_brush_size">20</integer>
+    <dimen name="large_brush">30dp</dimen>
+    <integer name="large_brush_size">30</integer>
+
+
+
+    <dimen name="dots_margin">72dp</dimen>
+
+    <dimen name="qn04_top_number_margin">-50dp</dimen>
+    <dimen name="qn04_sides_dots_margin">110dp</dimen>
+    <dimen name="qn04_top_dots_margin">110dp</dimen>
+    <dimen name="qn04_bottom_dots_margin">110dp</dimen>
+    <dimen name="qn04_shape_space_margin">50dp</dimen>
+
+
+
+    <dimen name="round_square_border_width">4dp</dimen>
+    <dimen name="vl01_video_margin">10dp</dimen>
+    <dimen name="le01_margins">4dp</dimen>
+
+    <dimen name="lt01_text_top_margin">10dp</dimen>
+    <dimen name="lt01_text_bottom_margin">40dp</dimen>
+    <dimen name="lt01_letterFontSize">90dp</dimen>
+
+    <dimen name="sd01_text_top_margin">10dp</dimen>
+    <dimen name="sd01_text_bottom_margin">70dp</dimen>
+
+    <dimen name="wd01_text_top_margin">10dp</dimen>
+    <dimen name="wd01_text_bottom_margin">20dp</dimen>
+
+    <dimen name="wd02_text_top_margin">10dp</dimen>
+    <dimen name="wd02_text_bottom_margin">20dp</dimen>
+
+    <dimen name="activity_platform_icon_margin">16dp</dimen>
+
+    <dimen name="lt02_text_top_wait_margin">70dp</dimen>
+    <dimen name="lt02_text_top_margin">10dp</dimen>
+    <dimen name="lt02_text_bottom_margin">20dp</dimen>
+    <dimen name="lt02_ctext_top_margin">-55dp</dimen>
+    <dimen name="lt02_ctext_bottom_margin">10dp</dimen>
+    <dimen name="lt02_ctext_image_top_margin">30dp</dimen>
+    <dimen name="lt02_ctext_image_side_margin">8dp</dimen>
+    <dimen name="lt02_ctext_image_bottom_margin">12dp</dimen>
+
+
+
+    <dimen name="qn06_text_top_wait_margin">70dp</dimen>
+    <dimen name="qn06_text_top_margin">10dp</dimen>
+    <dimen name="qn06_text_bottom_margin">20dp</dimen>
+    <dimen name="qn06_ctext_top_margin">-55dp</dimen>
+    <dimen name="qn06_ctext_bottom_margin">10dp</dimen>
+    <dimen name="qn06_ctext_image_top_margin">30dp</dimen>
+    <dimen name="qn06_ctext_image_side_margin">8dp</dimen>
+    <dimen name="qn06_ctext_image_bottom_margin">12dp</dimen>
+
+    <dimen name="sd05_image_sides">16dp</dimen>
+    <dimen name="sd05_image_top_margin">24dp</dimen>
+    <dimen name="sd05_image_bottom_margin">16dp</dimen>
+
+    <dimen name="sd05_frame_top_margin">20dp</dimen>
+    <dimen name="sd05_frame_side_margin">8dp</dimen>
+    <dimen name="sd05_frame_bottom_margin">4dp</dimen>
+
+
+    <dimen name="lt04_text_top_margin">-50dp</dimen>
+    <dimen name="lt04_text_ucase_top_margin">-30dp</dimen>
+
+    <dimen name="sh04_top_wait_margin">70dp</dimen>
+    <dimen name="sh04_image_top_margin">30dp</dimen>
+    <dimen name="sh04_image_side_margin">8dp</dimen>
+    <dimen name="sh04_image_bottom_margin">12dp</dimen>
+
+    <dimen name="lt03_text_top_margin">-60dp</dimen>
+    <dimen name="lt03_text_ucase_top_margin">-40dp</dimen>
+    <dimen name="lt03_text_bottom_margin">12dp</dimen>
+    <dimen name="lt03_textbox_margins">2dp</dimen>
+
+    <dimen name="lt06_image_top_bottom_margin">42dp</dimen>
+    <dimen name="lt06_image_sides_margins">50dp</dimen>
+    <dimen name="lt06_ctext_top_margin">-55dp</dimen>
+    <dimen name="lt06_ctext_bottom_margin">0dp</dimen>
+    <dimen name="lt06_ctext_image_top_margin">30dp</dimen>
+    <dimen name="lt06_ctext_image_side_margin">8dp</dimen>
+    <dimen name="lt06_ctext_image_bottom_margin">12dp</dimen>
+    <dimen name="lt04_text_image_margin">4dp</dimen>
+    <dimen name="le01_text_top_margin">-24dp</dimen>
+    <dimen name="le01_text_bottom_margin">20dp</dimen>
+
+    <dimen name="sd02_image_top_margin">80dp</dimen>
+    <dimen name="sd02_image_bottom_margin">70dp</dimen>
+    <dimen name="sd02_image_padding">7dp</dimen>
+    <dimen name="sd02_image_sides_margins">84dp</dimen>
+
+
+    <dimen name="sd03_image_top_margin">74dp</dimen>
+    <dimen name="sd03_image_bottom_margin">70dp</dimen>
+    <dimen name="sd03_image_sides_margins">84dp</dimen>
+
+    <dimen name="sd06_line_padding">30dp</dimen>
+
+    <dimen name="sd06_shape_top_margin">130dp</dimen>
+    <dimen name="sd06_line_top_margin">20dp</dimen>
+    <dimen name="sd06_shape_outside_margins">70px</dimen>
+    <dimen name="sd06_shape_inside_margins">20px</dimen>
+    <dimen name="sd06_innerframe_side_margins">25dp</dimen>
+    <dimen name="sd06_innerframe_top_margins">40dp</dimen>
+    <dimen name="sd06_text_bottom_margin">70dp</dimen>
+
+    <dimen name="sd04_top_val">20dp</dimen>
+    <dimen name="sd04_image_margins">40dp</dimen>
+    <dimen name="sd04_bottom_text_margin">44dp</dimen>
+
+    <dimen name="cs02_syllable_hand_sides">50dp</dimen>
+    <dimen name="cs02_syllable_hand_top_bottom">44dp</dimen>
+
+    <dimen name="cs02_syllable_image_sides">60dp</dimen>
+    <dimen name="cs02_syllable_image_top_bottom">30dp</dimen>
+
+    <dimen name="cs03_syllable_hand_sides">65dp</dimen>
+    <dimen name="cs03_syllable_hand_top_bottom">34dp</dimen>
+
+    <dimen name="rs01_text_top_margin">20dp</dimen>
+    <dimen name="rs01_text_bottom_margin">10dp</dimen>
+
+
+    <dimen name="rs02_text_top_margin">10dp</dimen>
+    <dimen name="rs02_text_bottom_margin">20dp</dimen>
+
+    <dimen name="rs03_line_padding">30dp</dimen>
+    <dimen name="rs03_shape_top_margin">130dp</dimen>
+    <dimen name="rs03_line_top_margin">20dp</dimen>
+    <dimen name="rs03_shape_outside_margins">70px</dimen>
+    <dimen name="rs03_shape_inside_margins">20px</dimen>
+    <dimen name="rs03_innerframe_side_margins">25dp</dimen>
+    <dimen name="rs03_innerframe_top_margins">40dp</dimen>
+    <dimen name="rs03_text_bottom_margin">60dp</dimen>
+    <dimen name="bk02_text_padding">8dp</dimen>
+    <dimen name="bk02_text_left_padding">16dp</dimen>
+    <dimen name="progress_bar_top_bottom_margin">30dp</dimen>
+
+
+    <dimen name="wd03_text_image_margin">2dp</dimen>
+    <dimen name="wd03_text_top_margin">-10dp</dimen>
+    <dimen name="wd03_text_ucase_top_margin">-30dp</dimen>
+
+
+    <dimen name="wd04_text_top_margin">-60dp</dimen>
+    <dimen name="wd04_text_ucase_top_margin">-40dp</dimen>
+    <dimen name="wd04_text_bottom_margin">38dp</dimen>
+    <dimen name="wd04_textbox_margins">2dp</dimen>
+
+    <dimen name="wd05_text_top_margin">4dp</dimen>
+    <dimen name="wd05_text_bottom_margin">36dp</dimen>
+
+
+    <dimen name="wd06_text_top_margin">10dp</dimen>
+    <dimen name="wd06_text_bottom_margin">20dp</dimen>
+
+
+    <dimen name="wd02_image_sides">16dp</dimen>
+    <dimen name="wd02_image_top_margin">24dp</dimen>
+    <dimen name="wd02_image_bottom_margin">16dp</dimen>
+
+    <dimen name="wd02_frame_top_margin">20dp</dimen>
+    <dimen name="wd02_frame_side_margin">8dp</dimen>
+    <dimen name="wd02_frame_bottom_margin">4dp</dimen>
+    <dimen name="dudeWithTailBottomMargin">-15dp</dimen>
+    <dimen name="dudeValidateTopMargin">15dp</dimen>
+    <dimen name="activities_platform_top_prog">200px</dimen>
+    <dimen name="loadingCircleMargins">10px</dimen>
+    <dimen name="bk03_left_text">18dp</dimen>
+    <dimen name="bk03_leftright_list">15dp</dimen>
+    <dimen name="launch_side_icon_margin">8dp</dimen>
+    <dimen name="launch_button_margin">8dp</dimen>
+
+    <dimen name="top_shape_margin_large">30dp</dimen>
+    <dimen name="top_shape_margin_small">20dp</dimen>
+
+    <dimen name="side_numbers_margin_small">50dp</dimen>
+    <dimen name="vert_numbers_margin_small">60dp</dimen>
+    <dimen name="dots_margin_side">56dp</dimen>
+
+    <dimen name="dots_margin_small">10dp</dimen>
+    <dimen name="mathcing_sides">80dp</dimen>
+    <dimen name="mathing_topbottom">50dp</dimen>
+    <dimen name="qn05_dots_all_sm_margin">60dp</dimen>
+    <dimen name="qn05_top_number_margin">-60dp</dimen>
+    <dimen name="qn06_dots_all_margin">20dp</dimen>
+    <dimen name="qn06_number_top_margin">40dp</dimen>
+    <dimen name="qn03_top_margin">-10dp</dimen>
+    <dimen name="number_box_margin">1sp</dimen>
+    <dimen name="qn_dots_all_margin">15dp</dimen>
+    <dimen name="video_page_all_margin">50dp</dimen>
+    <dimen name="op3_loading_circle_margin">20dp</dimen>
+    <dimen name="lt03_box_side_margines">40dp</dimen>
+    <dimen name="lt03_box_top_bottom_margin">60dp</dimen>
+    <dimen name="lg04_side_margin">34dp</dimen>
+    <dimen name="qn07_backarrow">20dp</dimen>
+    <dimen name="sh02_shape_margin_large">75dp</dimen>
+    <dimen name="sh02_shape_margin_small">110dp</dimen>
+
+    <dimen name="shape_margin_large">85dp</dimen>
+    <dimen name="shape_margin_small">120dp</dimen>
+    <dimen name="number_line_sides">20dp</dimen>
+    <dimen name="wd06_image">24dp</dimen>
+    <dimen name="sh06_top_tops_margins">46dp</dimen>
+    <dimen name="sh06_top_side_margins">42dp</dimen>
+    <dimen name="sh06_top_tops_large_margins">16dp</dimen>
+    <dimen name="sh06_top_side_large_margins">8dp</dimen>
+    <dimen name="sh06_bottom_tops_margins">96dp</dimen>
+    <dimen name="sh06_bottom_side_margins">72dp</dimen>
+    <dimen name="sh06_bottom_tops_large_margins">68dp</dimen>
+    <dimen name="sh06_bottom_side_large_margins">44dp</dimen>
+</resources>
