@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:background="@drawable/bg_blue_sky_snow_white_ground" >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_blue_sky_snow_white_ground"
+    >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -126,8 +127,6 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentBottom="true"/>
 
-
-
             </RelativeLayout>
 
             <RelativeLayout
@@ -154,7 +153,6 @@
                     android:gravity="center_vertical|center_horizontal"
                     />
 
-
             </RelativeLayout>
 
             <RelativeLayout
@@ -179,7 +177,6 @@
                     android:textColor="@color/normalBlack"
                     android:gravity="center_vertical|center_horizontal"
                     />
-
 
             </RelativeLayout>
 
@@ -209,7 +206,6 @@
                     android:gravity="center_vertical|center_horizontal"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentBottom="true"/>
-
 
             </RelativeLayout>
 

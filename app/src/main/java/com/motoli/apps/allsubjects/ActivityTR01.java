@@ -6,7 +6,9 @@ import android.database.Cursor;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 /**
  * Part of Project Motoli All Subjects
@@ -22,8 +24,14 @@ public class ActivityTR01 extends ActivitiesMasterParent
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tr01);
+        overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out);
 
+        setContentView(R.layout.activity_tr01);
+        findViewById(R.id.activityMainPart)
+                .setVisibility(LinearLayout.VISIBLE);
+        findViewById(R.id.activityMainPart)
+                .setAnimation(AnimationUtils.loadAnimation(
+                        getApplicationContext(), R.anim.fade_in));
 
         appData.addToClassOrder(28);
         appData.setActivityType(4);

@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -91,7 +92,7 @@ private int mSection;
         }
 
         Log.d(Constants.LOGCAT, "book list");
-        
+
         int mBookSize = mAllBooks.size();
         for(int mPosition=1; mPosition<=8; mPosition++) {
             ImageView mBookImage;

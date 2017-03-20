@@ -217,5 +217,6 @@
     <dimen name="sh06_bottom_side_margins">46sp</dimen>
     <dimen name="sh06_bottom_tops_large_margins">32sp</dimen>
     <dimen name="sh06_bottom_side_large_margins">26sp</dimen>
+    <dimen name="op8_numberpad">5dp</dimen>
 
 </resources>

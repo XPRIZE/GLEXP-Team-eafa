@@ -27,6 +27,7 @@ public class S4K_DBHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME_TEMP="db_allaubjects.new.sqlite";
     private static	String DB_PATH_TEMP = null;
+    private int mDatabaseVersion=0;
 
 
     private final Context myContext;
@@ -35,48 +36,18 @@ public class S4K_DBHelper extends SQLiteOpenHelper {
     public S4K_DBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
         this.myContext=context;
-
-        /*
-        //DB_NAME=context.getResources().getString(R.string.database);
-        DB_PATH = "/data/data/" + context.getPackageName() + "/" + "databases/";
-         try {
-            createDataBase();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        // TODO Auto-generated constructor stub
-        */
     }
 
-    public S4K_DBHelper(Context context, String name, CursorFactory factory,
-            int version, DatabaseErrorHandler errorHandler) {
-        super(context, name, factory, version, errorHandler);
-        this.myContext=context;
 
-
-    //	DB_NAME=context.getResources().getString(R.string.database);
-        DB_PATH = "/data/data/" + context.getPackageName() + "/" + "databases/";
-
-        try {
-            createDataBase() ;
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        // TODO Auto-generated constructor stub
-    }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
         Database.onCreate(db);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.d(Constants.LOGCAT, "upgrade database please");
-        //Database.App_Users.onUpgrade(db, oldVersion, newVersion);
     }
 
 
@@ -92,12 +63,18 @@ public class S4K_DBHelper extends SQLiteOpenHelper {
     }
 
 
+    public int getDatabaseVersion(){
+        return mDatabaseVersion;
+    }
+
+    public void setDatabaseVersion(int mDatabaseVersion){
+        this.mDatabaseVersion = mDatabaseVersion;
+    }
+
     @Override
     public SQLiteDatabase getWritableDatabase(){
         File dbFile = myContext.getDatabasePath(DB_NAME);
         SQLiteDatabase mDB;
-        Motoli_Application appData =
-                ((Motoli_Application) myContext.getApplicationContext());
 
         if (!dbFile.exists()) {
             try {
@@ -114,21 +91,21 @@ public class S4K_DBHelper extends SQLiteOpenHelper {
                 moveDatabaseFile(mDB);
 
                 mDB.setVersion(1);
-                appData.setDatabaseVersion(1);
+                setDatabaseVersion(1);
             } catch (IOException e) {
                 throw new RuntimeException("Error creating source database", e);
             }
         }
         else{
-            if(appData.getDatabaseVersion() < DB_VERSION){
+            if(getDatabaseVersion() < DB_VERSION){
                 mDB = SQLiteDatabase.openDatabase(dbFile.getPath(), null,
                         SQLiteDatabase.OPEN_READWRITE);
 
                 Log.d(Constants.LOGCAT, "mDB.getVersion(): "+mDB.getVersion());
                 Log.d(Constants.LOGCAT, "DB_VERSION: "+DB_VERSION);
-                appData.setDatabaseVersion(mDB.getVersion());
+                setDatabaseVersion(mDB.getVersion());
                 mDB.close();
-                if(appData.getDatabaseVersion() < DB_VERSION) {
+                if(getDatabaseVersion() < DB_VERSION) {
                     Log.d(Constants.LOGCAT, "needs to change");
                     DB_PATH = "/data/data/" + myContext.getPackageName() + "/" + "databases/";
                     File to = new File(DB_PATH, DB_NAME_OLD);

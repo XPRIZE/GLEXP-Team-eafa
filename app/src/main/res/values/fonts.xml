@@ -92,4 +92,6 @@
     <dimen name="op07_font_size">70sp</dimen>
     <dimen name="op07_equation_font_size">36sp</dimen>
     <dimen name="coming_soon_font">120sp</dimen>
+    <dimen name="op8_number_box_font_size">96dp</dimen>
+    <dimen name="op8_large_number_font_size">120dp</dimen>
 </resources>

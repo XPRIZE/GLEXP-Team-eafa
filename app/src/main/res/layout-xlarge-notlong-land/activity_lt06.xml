@@ -3,8 +3,9 @@
     android:id="@+id/Activity_BaseFrame"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_lt06" >
+    android:background="@drawable/bg_lt06"
     >
+
 
     <LinearLayout
         android:layout_width="match_parent"

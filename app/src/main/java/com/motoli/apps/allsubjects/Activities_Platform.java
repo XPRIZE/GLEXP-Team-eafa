@@ -538,8 +538,8 @@ public class Activities_Platform extends ActivitiesMasterParent
                                 >=Constants.INA_ROW_CORRECT)
                                 && !mCurrentGSP.get("group_id").equals("8")){
                             if(mCurrentGSP.get("section_id").equals("11") ||
-                                    mCurrentGSP.get("section_id").equals("8")  ||
-                                    mCurrentGSP.get("section_id").equals("23")){
+                                    mCurrentGSP.get("section_id").equals("8") /* ||
+                                    mCurrentGSP.get("section_id").equals("23")*/){
                                 findViewById(R.id.activityReward1)
                                         .setVisibility(LinearLayout.VISIBLE);
                             }else {
@@ -1175,8 +1175,12 @@ public class Activities_Platform extends ActivitiesMasterParent
                 break;
             }
             case 61:{
+                /*
                 appData.setCurrentActivityName("ActivityOP02");
                 Intent main = new Intent(this,ActivityOP02.class);
+                 */
+                appData.setCurrentActivityName("ActivityOP08");
+                Intent main = new Intent(this,ActivityOP08.class);
                 startActivity(main);
                 finish();
                 break;

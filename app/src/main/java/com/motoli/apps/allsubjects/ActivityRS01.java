@@ -137,20 +137,22 @@ public class ActivityRS01 extends ActivitiesMasterParent
         ((TextView) findViewById(R.id.syllableText4)).setTextColor(getResources().getColor(R.color.normalBlack));
 
 
-        ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_off);
+        ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_off_mic);
 
         clearFrames();
 
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////
 
     protected void validate(){
         mBeingValidated=true;
         if(mCorrect) {
-            ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_ok);
+            ((ImageView) findViewById(R.id.btnValidate))
+                    .setImageResource(R.drawable.btn_validate_ok_mic);
         }else{
-            ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_no_ok);
+            ((ImageView) findViewById(R.id.btnValidate))
+                    .setImageResource(R.drawable.btn_validate_no_ok_mic);
         }
         processFontColorAndPoints();
         mProcessGuessPosition=0;
@@ -166,7 +168,7 @@ public class ActivityRS01 extends ActivitiesMasterParent
         mCurrentGSP=new HashMap<String, String>(appData.getCurrentGroup_Section_Phase());
 
         if(mCorrect){
-            ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_ok);
+            ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_ok_mic);
             selectionArgs = new String[]{
                     "1",
                     "0",
@@ -199,7 +201,7 @@ public class ActivityRS01 extends ActivitiesMasterParent
 
         }else{
             mIncorrectInRound++;
-            ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_no_ok);
+            ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_no_ok_mic);
             selectionArgs = new String[]{
                     "0",
                     "1",
@@ -387,7 +389,7 @@ public class ActivityRS01 extends ActivitiesMasterParent
 
                         }
                     }else{
-                        ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_off);
+                        ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_off_mic);
                         mBeingValidated=false;
                         mValidateAvailable=false;
                     }
@@ -395,7 +397,7 @@ public class ActivityRS01 extends ActivitiesMasterParent
                     break;
                 }
                 case 3:{
-                    ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_off);
+                    ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_off_mic);
                     displayScreen();
                     guessHandler.removeCallbacks(processGuess);
                     break;
@@ -474,7 +476,7 @@ public class ActivityRS01 extends ActivitiesMasterParent
 
     private void setUpFrame(int frameNumber){
         clearFrames();
-        ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_on);
+        ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_on_mic);
         mValidateAvailable=true;
         //	validateFlashPosition=0;
         //	validateFlash.removeCallbacks(processValidateFlash);

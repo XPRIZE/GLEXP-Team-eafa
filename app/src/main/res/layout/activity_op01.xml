@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_op01">
@@ -424,7 +424,7 @@
                                     android:text="@string/number_2"
                                     android:id="@+id/guessNumber2"
                                     android:textColor="@color/normalBlack"
-                                    android:textSize="@dimen/op_number_set"
+                                    android:textSize="66sp"
                                     android:layout_weight="1"
                                     android:gravity="center_vertical|center_horizontal"
                                     android:background="@drawable/number_box_unselected"
@@ -443,7 +443,7 @@
                                     android:text="@string/number_3"
                                     android:id="@+id/guessNumber3"
                                     android:textColor="@color/normalBlack"
-                                    android:textSize="@dimen/op_number_set"
+                                    android:textSize="66sp"
                                     android:layout_weight="1"
                                     android:gravity="center_vertical|center_horizontal"
                                     android:background="@drawable/number_box_unselected"

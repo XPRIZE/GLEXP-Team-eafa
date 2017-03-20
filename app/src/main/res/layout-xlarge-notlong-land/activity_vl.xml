@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_bk03_side"
-    android:id="@+id/videoBackground">
+    android:id="@+id/videoBackground"
+    >
 
     <LinearLayout
         android:orientation="horizontal"

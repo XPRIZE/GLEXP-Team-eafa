@@ -494,34 +494,35 @@ public class ActivityVL extends ActivitiesMasterParent implements
             }
             mAdapter.notifyDataSetChanged();
             mPlayingVideo = false;
-            if(!mCurrentGSP.get("group_id").equals("5")) {
+
+            if (!mCurrentGSP.get("group_id").equals("5")) {
                 playGeneralAudio("let_us_practice");
                 mProceedPast = true;
                 mVideoView.setBackground(getResources().getDrawable(R.drawable.bg_learn_letters));
             }
-            if(mCurrentGSP.get("group_id").equals("2")){
-                if(mCurrentGSP.get("phase_id").equals("1")
+            if (mCurrentGSP.get("group_id").equals("2")) {
+                if (mCurrentGSP.get("phase_id").equals("1")
                         || mCurrentGSP.get("phase_id").equals("2")) {
                     mActivityIcon.setImageDrawable(
                             getResources().getDrawable(R.drawable.icon_letters_names_act));
-                }else if(mCurrentGSP.get("phase_id").equals("3")) {
+                } else if (mCurrentGSP.get("phase_id").equals("3")) {
                     mActivityIcon.setImageDrawable(
                             getResources().getDrawable(R.drawable.icon_letters_phonic_act));
                 }
-            }else if(mCurrentGSP.get("group_id").equals("3")){
+            } else if (mCurrentGSP.get("group_id").equals("3")) {
                 mActivityIcon.setImageDrawable(getResources()
                         .getDrawable(R.drawable.icon_syllab_practice));
-            }else if(mCurrentGSP.get("group_id").equals("4")){
+            } else if (mCurrentGSP.get("group_id").equals("4")) {
                 mActivityIcon.setImageDrawable(getResources()
                         .getDrawable(R.drawable.icon_words_act));
-            }else if(mCurrentGSP.get("group_id").equals("5")){
+            } else if (mCurrentGSP.get("group_id").equals("5")) {
 
-                for(int i=0; i<mCurrentVariables.size();i++){
+                for (int i = 0; i < mCurrentVariables.size(); i++) {
                     mCurrentVariables.get(i).put("level_color",
-                            mCurrentVariables.get(i).get("level_color").replace("a",""));
+                            mCurrentVariables.get(i).get("level_color").replace("a", ""));
                     mCurrentVariables.get(i).put("current_level",
                             String.valueOf(Integer.parseInt(
-                                    mCurrentVariables.get(i).get("current_level"))+1));
+                                    mCurrentVariables.get(i).get("current_level")) + 1));
                 }
                 mAdapter.notifyDataSetChanged();
                 getContentResolver()
@@ -530,17 +531,19 @@ public class ActivityVL extends ActivitiesMasterParent implements
 
                 mActivityIcon.setImageDrawable(getResources()
                         .getDrawable(R.drawable.icon_letters_names_act));
-            }else if(mCurrentGSP.get("group_id").equals("6")){
+            } else if (mCurrentGSP.get("group_id").equals("6")) {
                 mActivityIcon.setImageDrawable(getResources()
                         .getDrawable(R.drawable.icon_math_shape_act));
-            }else if(mCurrentGSP.get("group_id").equals("7")){
+            } else if (mCurrentGSP.get("group_id").equals("7")) {
                 mActivityIcon.setImageDrawable(getResources()
                         .getDrawable(R.drawable.icon_number_act));
-            }else if(mCurrentGSP.get("group_id").equals("8")){
+            } else if (mCurrentGSP.get("group_id").equals("8")) {
                 mActivityIcon.setImageDrawable(getResources()
                         .getDrawable(R.drawable.icon_math_operations_act));
             }
-            mActivityIcon.setVisibility(ImageView.VISIBLE);
+            if(appData.getCurrentVideoID()!=6) {
+                mActivityIcon.setVisibility(ImageView.VISIBLE);
+            }
 
         }
     };

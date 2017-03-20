@@ -88,7 +88,7 @@ public class Motoli_Application extends Application {
          * must remain in case it is ever in use.
          */
         mAssetManager = getAssets();
-        mModel = new Model(mAssetManager);
+        //mModel = new Model(mAssetManager);
 
         mCurrentFontType=Typeface.createFromAsset(getAssets(),
                 "fonts/Convergence-Regular.ttf");

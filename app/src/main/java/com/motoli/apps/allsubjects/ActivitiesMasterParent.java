@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -75,6 +76,7 @@ public abstract class ActivitiesMasterParent extends Master_Parent {
             appData.setActivityType(3);
         }
         getElapsedCpuTime();
+
     }
     
     ////////////////////////////////////////////////////////////////////////////////////////////

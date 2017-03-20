@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.KeyEvent;
+import android.view.WindowManager;
 
 
 public class Master_Parent extends Activity {
@@ -35,6 +36,7 @@ public class Master_Parent extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         appData=((Motoli_Application) getApplicationContext());
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
     }
 
@@ -136,9 +138,9 @@ public class Master_Parent extends Activity {
                 .setTitle(getResources().getString(R.string.strLeaveApp))
                 .setMessage(getResources().getString(R.string.strWouldYouLieToLeave))
                 .setPositiveButton(getResources().getString(R.string.strYes), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) { 
-                        
-                        finish();
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        finishAffinity();
                     }
                  })
                 .setNegativeButton(getResources().getString(R.string.strNo), new DialogInterface.OnClickListener() {

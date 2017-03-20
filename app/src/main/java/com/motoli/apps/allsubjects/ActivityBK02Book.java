@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -51,7 +52,6 @@ public class ActivityBK02Book extends Master_Parent implements
         appData.addToClassOrder(20);
 
         mBookInfo=new HashMap<>(appData.getCurrentBook());
-
 
 
         mBookPageText=((TextView) findViewById(R.id.bookPageText));

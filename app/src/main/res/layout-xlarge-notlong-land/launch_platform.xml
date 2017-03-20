@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     >
 
     <LinearLayout
@@ -274,7 +275,8 @@
                     <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:visibility="visible">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -360,7 +362,8 @@
                                     android:layout_centerInParent="true"
                                     android:layout_alignParentTop="true"
                                     android:onClick="updateLevels"
-                                    android:tag="1" />
+                                    android:tag="1"
+                                    android:textSize="14sp" />
 
                             </RelativeLayout>
 
@@ -434,7 +437,8 @@
                                 android:layout_centerInParent="true"
                                 android:layout_alignParentTop="true"
                                 android:onClick="updateLevels"
-                                android:tag="2" /></RelativeLayout>
+                                android:tag="2"
+                                android:textSize="14sp" /></RelativeLayout>
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
@@ -445,7 +449,7 @@
                                     android:text="reset"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/button2"
+                                    android:id="@+id/button10"
                                     android:layout_alignParentTop="true"
                                     android:layout_centerInParent="true"
                                     android:layout_centerHorizontal="true"
@@ -504,7 +508,8 @@
                                     android:layout_centerInParent="true"
                                     android:layout_alignParentTop="true"
                                     android:onClick="updateLevels"
-                                    android:tag="3" /></RelativeLayout>
+                                    android:tag="3"
+                                    android:textSize="14sp" /></RelativeLayout>
                                 <RelativeLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
@@ -515,7 +520,7 @@
                                         android:text="reset"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/button2"
+                                        android:id="@+id/button9"
                                         android:layout_alignParentTop="true"
                                         android:layout_centerInParent="true"
                                         android:layout_centerHorizontal="true"
@@ -571,7 +576,8 @@
                                     android:id="@+id/syllablesCountSubmit"
                                     android:layout_centerHorizontal="true"
                                     android:layout_centerInParent="true"
-                                    android:layout_alignParentTop="true" /></RelativeLayout>
+                                    android:layout_alignParentTop="true"
+                                    android:textSize="14sp" /></RelativeLayout>
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
@@ -582,7 +588,7 @@
                                     android:text="reset"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/button2"
+                                    android:id="@+id/button4"
                                     android:layout_alignParentTop="true"
                                     android:layout_centerInParent="true"
                                     android:layout_centerHorizontal="true" />
@@ -640,7 +646,8 @@
                                     android:layout_centerInParent="true"
                                     android:onClick="updateLevels"
                                     android:layout_alignParentTop="true"
-                                    android:tag="4" /></RelativeLayout>
+                                    android:tag="4"
+                                    android:textSize="14sp" /></RelativeLayout>
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
@@ -652,7 +659,7 @@
                                     android:text="reset"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/button2"
+                                    android:id="@+id/button5"
                                     android:layout_alignParentTop="true"
                                     android:layout_centerInParent="true"
                                     android:layout_centerHorizontal="true"
@@ -711,7 +718,8 @@
                                     android:layout_centerHorizontal="true"
                                     android:layout_centerInParent="true"
                                     android:layout_alignParentTop="true"
-                                    android:tag="5" /></RelativeLayout>
+                                    android:tag="5"
+                                    android:textSize="14sp" /></RelativeLayout>
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
@@ -723,7 +731,7 @@
                                     android:text="reset"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/button2"
+                                    android:id="@+id/button6"
                                     android:layout_alignParentTop="true"
                                     android:layout_centerInParent="true"
                                     android:layout_centerHorizontal="true"
@@ -781,7 +789,8 @@
                                         android:layout_centerHorizontal="true"
                                         android:layout_centerInParent="true"
                                         android:layout_alignParentTop="true"
-                                        android:tag="6" /></RelativeLayout>
+                                        android:tag="6"
+                                        android:textSize="14sp" /></RelativeLayout>
 
                                 <RelativeLayout
                                     android:layout_width="match_parent"
@@ -793,7 +802,7 @@
                                         android:text="reset"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/button2"
+                                        android:id="@+id/button7"
                                         android:layout_alignParentTop="true"
                                         android:layout_centerInParent="true"
                                         android:layout_centerHorizontal="true"
@@ -852,7 +861,8 @@
                                         android:layout_centerHorizontal="true"
                                         android:layout_centerInParent="true"
                                         android:layout_alignParentTop="true"
-                                        android:tag="7" />
+                                        android:tag="7"
+                                        android:textSize="14sp" />
                                 </RelativeLayout>
 
                                 <RelativeLayout
@@ -865,7 +875,7 @@
                                         android:text="reset"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:id="@+id/button2"
+                                        android:id="@+id/button8"
                                         android:layout_alignParentTop="true"
                                         android:layout_centerInParent="true"
                                         android:layout_centerHorizontal="true"
@@ -884,7 +894,7 @@
                                 android:layout_weight="1">
 
                                 <Button
-                                    android:text="reset"
+                                    android:text="@string/reset"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/button3"
@@ -903,7 +913,7 @@
                             android:orientation="vertical"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:visibility="invisible"
+                            android:visibility="visible"
                             android:id="@+id/spinnerPassword">
                             <LinearLayout
                                 android:orientation="horizontal"

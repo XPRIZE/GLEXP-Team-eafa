@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Motoli All Subjects English</string>
+    <string name="app_name">Motoli Swahili</string>
     <string name="strNone"/>
     <string name="none"/>
     <string name="smallRandomString">lego</string>
@@ -11,12 +11,15 @@
     <string name="strNewUser">New User</string>
     <string name="strGuestUser">Guest</string>
     <string name="activity_icon">Activity Icon</string>
-    <string name="strLeaveApp">Would You Like To Leave The App</string>
-    <string name="strWouldYouLieToLeave">You sure you would like to leave?</string>
+    <string name="strLeaveApp">You are about to leave the app</string>
+
+    <string name="strWouldYouLieToLeave">Would You Like To Leave?</string>
+
     <string name="strYes">Yes</string>
+
     <string name="strNo">No</string>
-    <string name="submit_admin_password">Submit Admin Password</string>
-    <string name="admin_password_incorrect">Incorrect Password</string>
+    <string name="submit_admin_password">Submit Password</string>
+    <string name="admin_password_incorrect">Password Incorrect</string>
 
     <string name="loading">loading</string>
     <string name="general_image">general imge</string>
@@ -38,8 +41,12 @@
     <string name="ninetyNine">99</string>
 
     <string name="coming_soon">password: xprize</string>
+
     <string name="submit">submit</string>
-    <string name="admin_password_below">Admin Password Below:</string>
+
+    <string name="admin_password_below">Enter Password Below:</string>
+
+    <string name="admin_password_is_incorrect">Password Is Incorrect</string>
 
 
     <string name="letter_1">a</string>
@@ -98,16 +105,24 @@
     <string name="phonic_26">z</string>
 
     <string name="reset">reset</string>
-    <string name="MathOperations">Math  Operations</string>
-    <string name="Shapes">Shapes</string>
-    <string name="Words">Words</string>
-    <string name="Syllables">Syllables</string>
-    <string name="SyllablesCount">Syllables Count</string>
-    <string name="Phonics">Phonics</string>
-    <string name="Uppercase">Uppercase</string>
-    <string name="Lowercase">Lowercase</string>
-    <string name="SubmitAdminPassword">Submit Password</string>
 
+    <string name="MathOperations">Math Operations</string>
+
+    <string name="Shapes">Shapes</string>
+
+    <string name="Words">Words</string>
+
+    <string name="Syllables">Syllables</string>
+
+    <string name="SyllablesCount">Syllables Count</string>
+
+    <string name="Phonics">Phonics</string>
+
+    <string name="Uppercase">Uppercase</string>
+
+    <string name="Lowercase">Lowercase</string>
+
+    <string name="SubmitAdminPassword">Submit Password</string>
 
 
     <string name="pref_title_system_sync_settings">System sync settings</string>

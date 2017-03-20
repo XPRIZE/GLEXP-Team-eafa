@@ -203,4 +203,12 @@
     <color name="doodle_black">#000000</color>
     <color name="doodle_white">#ffffff</color>
 
+    <color name="op8_background_purple">#795297</color>
+    <color name="op8_white_box">#ffffff</color>
+    <color name="op8_equal_box">#ffbfff</color>
+    <color name="op8_math_symbols_box">#e599ff</color>
+
+    <color name="calculator_numbers">#48c5f2</color>
+    <color name="calculator_actions">#aa5d17</color>
+
 </resources>
