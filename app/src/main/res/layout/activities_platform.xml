@@ -49,7 +49,7 @@
         android:contentDescription="@string/activity_icon"
         android:scaleType="fitCenter"
         android:src="@drawable/btn_act_lt04"
-        app:layout_constraintBottom_toTopOf="@id/activityIcon4"
+        app:layout_constraintBottom_toTopOf="@+id/activityIcon4"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -67,7 +67,7 @@
         android:src="@drawable/btn_act_lt04"
         app:layout_constraintBottom_toBottomOf="@id/activityIcon1"
 
-        app:layout_constraintBottom_toTopOf="@id/activityIcon5"
+        app:layout_constraintBottom_toTopOf="@+id/activityIcon5"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toRightOf="@+id/activityIcon1"
         app:layout_constraintRight_toLeftOf="@+id/activityIcon3"
@@ -82,7 +82,7 @@
         android:contentDescription="@string/activity_icon"
         android:scaleType="fitCenter"
         android:src="@drawable/btn_act_lt04"
-        app:layout_constraintBottom_toTopOf="@id/activityIcon6"
+        app:layout_constraintBottom_toTopOf="@+id/activityIcon6"
         app:layout_constraintHorizontal_weight="1"
 
 
