@@ -2,19 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.motoli.apps.allsubjects"
     android:installLocation="auto"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionCode="42"
+    android:versionName="1.31.043" >
 
     <uses-sdk
         android:minSdkVersion="17"
-        android:targetSdkVersion="22" />
+        android:targetSdkVersion="25" />
 
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-*/
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
+    <meta-data
+        android:name="android.support.VERSION"
+        android:value="25.3.1" />
 
     <application
         android:name="com.motoli.apps.allsubjects.Motoli_Application"
@@ -28,7 +31,7 @@
             android:name="com.motoli.apps.allsubjects.Motoli_Front"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
-            android:screenOrientation="landscape"
+            android:screenOrientation="sensorLandscape"
             android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,74 +41,335 @@
         </activity>
 
         <provider
-            android:name="com.motoli.apps.allsubjects.Motoli_ContentProvidor"
-            android:authorities="com.motoli.apps.allsubjects.Motoli_ContentProvidor"
-            android:exported="true"
+            android:name="com.motoli.apps.allsubjects.AppProvider"
+            android:authorities="com.motoli.apps.allsubjects.AppProvider"
+            android:exported="false"
             android:readPermission="true"
             android:writePermission="true" />
 
         <activity
             android:name="com.motoli.apps.allsubjects.UserSelect"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="landscape"
+            android:screenOrientation="sensorLandscape"
             android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
         <activity
             android:name="com.motoli.apps.allsubjects.Launch_Platform"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="landscape"
+            android:screenOrientation="sensorLandscape"
             android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
         <activity
             android:name="com.motoli.apps.allsubjects.Activities_Platform"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="landscape"
+            android:screenOrientation="sensorLandscape"
             android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
         <activity
-            android:name="com.motoli.apps.allsubjects.Activity_LE02"
+            android:name="com.motoli.apps.allsubjects.ActivityLT05"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:logo="@drawable/btn_le02_act"
-            android:screenOrientation="landscape"
+            android:logo="@drawable/btn_act_lt05"
+            android:screenOrientation="sensorLandscape"
             android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
         <activity
-            android:name="com.motoli.apps.allsubjects.Activity_TL01"
+            android:name="com.motoli.apps.allsubjects.ActivityLT01"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:logo="@drawable/btn_tl01_act"
-            android:screenOrientation="landscape"
+            android:logo="@drawable/btn_act_lt01"
+            android:screenOrientation="sensorLandscape"
             android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
         <activity
-            android:name="com.motoli.apps.allsubjects.Activity_WD07"
+            android:name="com.motoli.apps.allsubjects.ActivityLT03"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:logo="@drawable/btn_wd07_act"
-            android:screenOrientation="landscape"
+            android:logo="@drawable/btn_act_lt03"
+            android:screenOrientation="sensorLandscape"
             android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
         <activity
-            android:name="com.motoli.apps.allsubjects.Activity_WD01"
+            android:name="com.motoli.apps.allsubjects.ActivityLT02"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:logo="@drawable/btn_wd01_act"
-            android:screenOrientation="landscape"
+            android:logo="@drawable/btn_act_lt02"
+            android:screenOrientation="sensorLandscape"
             android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
         <activity
-            android:name="com.motoli.apps.allsubjects.Activity_WD04"
+            android:name="com.motoli.apps.allsubjects.ActivityLT06"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:logo="@drawable/btn_wd04_act"
-            android:screenOrientation="landscape"
+            android:logo="@drawable/btn_act_lt06"
+            android:screenOrientation="sensorLandscape"
             android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
         <activity
-            android:name="com.motoli.apps.allsubjects.Activity_LL01"
+            android:name="com.motoli.apps.allsubjects.ActivityVL"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:logo="@drawable/btn_wd04_act"
-            android:screenOrientation="landscape"
+            android:logo="@drawable/btn_act_lt06"
+            android:screenOrientation="sensorLandscape"
             android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
         <activity
-            android:name="com.motoli.apps.allsubjects.Activity_LL02"
+            android:name="com.motoli.apps.allsubjects.ActivityLT04"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:logo="@drawable/btn_wd04_act"
-            android:screenOrientation="landscape"
+            android:logo="@drawable/btn_act_lt06"
+            android:screenOrientation="sensorLandscape"
             android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
         <activity
-            android:name="com.motoli.apps.allsubjects.Activity_WD08"
+            android:name="com.motoli.apps.allsubjects.ActivitySD01"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:logo="@drawable/btn_wd04_act"
-            android:screenOrientation="landscape"
+            android:logo="@drawable/btn_act_sd01"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivitySD02"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_sd02"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivitySD03"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_sd03"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivitySD06"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_sd06"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivitySD07"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_sd07"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivitySD04"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_sd04"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityCS01"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_cs01"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityCS02"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_cs02"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityRS01"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_rs01"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityRS02"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_rs02"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityRS03"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_rs03"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityRS04"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_sd07"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityBK02BookList"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/icon_books_listen"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityBK02Book"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/icon_books_listen"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityBK03Books"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/icon_books_read"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityWD01"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_wd01"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityWD02"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_wd02"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityWD03"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_wd03"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityWD04"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_wd04"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityWD05"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_wd05"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityWD06"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_wd06"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityOP01"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_op01"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityOP02"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_op02"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityOP03"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_op03"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityOP04"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_op04"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityOP05"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_op05"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityOP06"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_op06"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityOP07"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_op07"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityQN01"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_qn01"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityQN02"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_qn02"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityQN03"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_qn03"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityQN04"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_qn04"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityQN05"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_qn05"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityQN06"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_qn06"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityQN07"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_qn07"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivitySH01"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_sh01"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivitySH02"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_sh02"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivitySH03"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_sh03"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivitySH04"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_sh04"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivitySH05"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_sh05"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivitySH06"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_sh06"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityTR01"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:logo="@drawable/btn_act_tr01"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityTR02"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_tr02"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.ActivityTRCanvas"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:logo="@drawable/btn_act_tr01"
+            android:screenOrientation="sensorLandscape"
             android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
     </application>
 
