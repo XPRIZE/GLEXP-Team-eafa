@@ -1,4 +1,4 @@
-#Version as of April 4th 2017
+# Version as of April 4th 2017
 1. Database issue in AppProvider.java was corrected
 2. AppProvider.java was shrunk somewhat into a couple of different classes/files. However more still needs to be done.
 3. NestedLayouts are currently being addressed and taken care of. All layouts are changing to ConstraintLayout. About 50% are done in this update.
