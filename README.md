@@ -1,3 +1,13 @@
+# Version as of April 4th 2017
+1. Database issue in AppProvider.java was corrected
+2. AppProvider.java was shrunk somewhat into a couple of different classes/files. However more still needs to be done.
+3. NestedLayouts are currently being addressed and taken care of. All layouts are changing to ConstraintLayout. About 50% are done in this update.
+4. More comming needs to still be address
+5. A few classes are still a little too large and most be reduced.
+6. Launch_Platform.Java into fragments still to be done
+7. In the Math section extra activity_op2.java has been hidden and not in use with activity_op8 being the first activity now. It is nothing more then a simple calculator. 
+8. Garbage Collection is going to be look at sometime next week to make sure there are no issues
+
 
 # Version as of January 17th 2017. 
 
