@@ -160,7 +160,6 @@ public class ActivityWD05 extends ActivitiesMasterParent
 
 
         if(!mCurrentWord.get(5).equals("")) {
-            findViewById(R.id.imageArea0).setVisibility(View.VISIBLE);
 
             try {
                 String imageName = mCurrentWord.get(5).replace(".jpg", "")
@@ -314,7 +313,7 @@ public class ActivityWD05 extends ActivitiesMasterParent
                                     mCurrentLetters.get(0).get(0)));
                     mChosenLetterLocation=0;
                     mCorrect=(mCurrentLetters.get(0).get(3).equals("1"));
-                    ((ImageView)findViewById(R.id.letterFrame1)).setImageResource(R.drawable.frm_wd05_on);
+                    ((ImageView)findViewById(R.id.frame1)).setImageResource(R.drawable.frm_wd05_on);
                     setUpFrame(0);
                 }
             }
@@ -329,7 +328,7 @@ public class ActivityWD05 extends ActivitiesMasterParent
 
                     mChosenLetterLocation=1;
                     mCorrect=(mCurrentLetters.get(1).get(3).equals("1"));
-                    ((ImageView)findViewById(R.id.letterFrame2))
+                    ((ImageView)findViewById(R.id.frame2))
                             .setImageResource(R.drawable.frm_wd05_on);
                     setUpFrame(1);
                 }
@@ -345,7 +344,7 @@ public class ActivityWD05 extends ActivitiesMasterParent
 
                     mChosenLetterLocation=2;
                     mCorrect=(mCurrentLetters.get(2).get(3).equals("1"));
-                    ((ImageView)findViewById(R.id.letterFrame3))
+                    ((ImageView)findViewById(R.id.frame3))
                             .setImageResource(R.drawable.frm_wd05_on);
                     setUpFrame(2);
                 }
@@ -361,7 +360,7 @@ public class ActivityWD05 extends ActivitiesMasterParent
 
                     mChosenLetterLocation=3;
                     mCorrect=(mCurrentLetters.get(3).get(3).equals("1"));
-                    ((ImageView)findViewById(R.id.letterFrame4))
+                    ((ImageView)findViewById(R.id.frame4))
                             .setImageResource(R.drawable.frm_wd05_on);
                     setUpFrame(3);
                 }
@@ -381,22 +380,22 @@ public class ActivityWD05 extends ActivitiesMasterParent
         switch(frameNumber) {
             default:
             case 0: {
-                ((ImageView) findViewById(R.id.letterFrame1))
+                ((ImageView) findViewById(R.id.frame1))
                         .setImageResource(R.drawable.frm_wd05_on);
                 break;
             }
             case 1: {
-                ((ImageView) findViewById(R.id.letterFrame2))
+                ((ImageView) findViewById(R.id.frame2))
                         .setImageResource(R.drawable.frm_wd05_on);
                 break;
             }
             case 2: {
-                ((ImageView) findViewById(R.id.letterFrame3))
+                ((ImageView) findViewById(R.id.frame3))
                         .setImageResource(R.drawable.frm_wd05_on);
                 break;
             }
             case 3: {
-                ((ImageView) findViewById(R.id.letterFrame4))
+                ((ImageView) findViewById(R.id.frame4))
                         .setImageResource(R.drawable.frm_wd05_on);
                 break;
             }
@@ -407,10 +406,10 @@ public class ActivityWD05 extends ActivitiesMasterParent
 
     private void clearFrames(){
         //clear frames
-        ((ImageView) findViewById(R.id.letterFrame1)).setImageResource(R.drawable.frm_wd05_off);
-        ((ImageView) findViewById(R.id.letterFrame2)).setImageResource(R.drawable.frm_wd05_off);
-        ((ImageView) findViewById(R.id.letterFrame3)).setImageResource(R.drawable.frm_wd05_off);
-        ((ImageView) findViewById(R.id.letterFrame4)).setImageResource(R.drawable.frm_wd05_off);
+        ((ImageView) findViewById(R.id.frame1)).setImageResource(R.drawable.frm_wd05_off);
+        ((ImageView) findViewById(R.id.frame2)).setImageResource(R.drawable.frm_wd05_off);
+        ((ImageView) findViewById(R.id.frame3)).setImageResource(R.drawable.frm_wd05_off);
+        ((ImageView) findViewById(R.id.frame4)).setImageResource(R.drawable.frm_wd05_off);
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////
 

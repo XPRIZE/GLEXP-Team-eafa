@@ -59,14 +59,20 @@ public class ActivityLT04 extends ActivitiesMasterParent
         clearActivity();
 
 
-        findViewById(R.id.wordsBox).setVisibility(TableLayout.INVISIBLE);
+        findViewById(R.id.frame0).setVisibility(ImageView.INVISIBLE);
+        findViewById(R.id.box1).setVisibility(RelativeLayout.INVISIBLE);
+        findViewById(R.id.box2).setVisibility(RelativeLayout.INVISIBLE);
+        findViewById(R.id.box3).setVisibility(RelativeLayout.INVISIBLE);
+        findViewById(R.id.box4).setVisibility(RelativeLayout.INVISIBLE);
+        findViewById(R.id.box5).setVisibility(RelativeLayout.INVISIBLE);
+        findViewById(R.id.box6).setVisibility(RelativeLayout.INVISIBLE);
 
-        ((TextView) findViewById(R.id.word1)).setTypeface(appData.getCurrentFontType());
-        ((TextView) findViewById(R.id.word2)).setTypeface(appData.getCurrentFontType());
-        ((TextView) findViewById(R.id.word3)).setTypeface(appData.getCurrentFontType());
-        ((TextView) findViewById(R.id.word4)).setTypeface(appData.getCurrentFontType());
-        ((TextView) findViewById(R.id.word5)).setTypeface(appData.getCurrentFontType());
-        ((TextView) findViewById(R.id.word6)).setTypeface(appData.getCurrentFontType());
+        ((TextView) findViewById(R.id.letter1)).setTypeface(appData.getCurrentFontType());
+        ((TextView) findViewById(R.id.letter2)).setTypeface(appData.getCurrentFontType());
+        ((TextView) findViewById(R.id.letter3)).setTypeface(appData.getCurrentFontType());
+        ((TextView) findViewById(R.id.letter4)).setTypeface(appData.getCurrentFontType());
+        ((TextView) findViewById(R.id.letter5)).setTypeface(appData.getCurrentFontType());
+        ((TextView) findViewById(R.id.letter6)).setTypeface(appData.getCurrentFontType());
 
         mCurrentGSP=new HashMap<>(appData.getCurrentGroup_Section_Phase());
 
@@ -77,12 +83,12 @@ public class ActivityLT04 extends ActivitiesMasterParent
             params.setMargins(params.leftMargin,
                     getResources().getDimensionPixelSize(R.dimen.wd03_text_ucase_top_margin),
                     params.rightMargin, 0);
-            findViewById(R.id.word1).setLayoutParams(params);
-            findViewById(R.id.word2).setLayoutParams(params);
-            findViewById(R.id.word3).setLayoutParams(params);
-            findViewById(R.id.word4).setLayoutParams(params);
-            findViewById(R.id.word5).setLayoutParams(params);
-            findViewById(R.id.word6).setLayoutParams(params);
+            findViewById(R.id.letter1).setLayoutParams(params);
+            findViewById(R.id.letter2).setLayoutParams(params);
+            findViewById(R.id.letter3).setLayoutParams(params);
+            findViewById(R.id.letter4).setLayoutParams(params);
+            findViewById(R.id.letter5).setLayoutParams(params);
+            findViewById(R.id.letter6).setLayoutParams(params);
 
         }
         mRoundNumber=0;
@@ -109,11 +115,15 @@ public class ActivityLT04 extends ActivitiesMasterParent
     ///////////////////////////////////////////////////////////////////////////////////////////////////
 
     protected void displayScreen(){
-        findViewById(R.id.wordsBox)
-                .setVisibility(LinearLayout.VISIBLE);
-        findViewById(R.id.wordsBox)
-                .setAnimation(AnimationUtils.loadAnimation(
-                        getApplicationContext(), R.anim.fade_in));
+        findViewById(R.id.frame0).setVisibility(ImageView.VISIBLE);
+        findViewById(R.id.box1).setVisibility(RelativeLayout.VISIBLE);
+        findViewById(R.id.box2).setVisibility(RelativeLayout.VISIBLE);
+        findViewById(R.id.box3).setVisibility(RelativeLayout.VISIBLE);
+        findViewById(R.id.box4).setVisibility(RelativeLayout.VISIBLE);
+        findViewById(R.id.box5).setVisibility(RelativeLayout.VISIBLE);
+        findViewById(R.id.box6).setVisibility(RelativeLayout.VISIBLE);
+
+
         wordStatus=new ArrayList<>();
         for(int i=0; i<6;i++){
             wordStatus.add("0");
@@ -125,23 +135,23 @@ public class ActivityLT04 extends ActivitiesMasterParent
 
         findViewById(R.id.micDude).setVisibility(ImageView.VISIBLE);
 
-        findViewById(R.id.word1).setTag(mCurrentText.get(0));
-        ((TextView) findViewById(R.id.word1)).setText(mCurrentText.get(0).get(1));
+        findViewById(R.id.letter1).setTag(mCurrentText.get(0));
+        ((TextView) findViewById(R.id.letter1)).setText(mCurrentText.get(0).get(1));
 
-        findViewById(R.id.word2).setTag(mCurrentText.get(1));
-        ((TextView) findViewById(R.id.word2)).setText(mCurrentText.get(1).get(1));
+        findViewById(R.id.letter2).setTag(mCurrentText.get(1));
+        ((TextView) findViewById(R.id.letter2)).setText(mCurrentText.get(1).get(1));
 
-        findViewById(R.id.word3).setTag(mCurrentText.get(2));
-        ((TextView) findViewById(R.id.word3)).setText(mCurrentText.get(2).get(1));
+        findViewById(R.id.letter3).setTag(mCurrentText.get(2));
+        ((TextView) findViewById(R.id.letter3)).setText(mCurrentText.get(2).get(1));
 
-        findViewById(R.id.word4).setTag(mCurrentText.get(3));
-        ((TextView) findViewById(R.id.word4)).setText(mCurrentText.get(3).get(1));
+        findViewById(R.id.letter4).setTag(mCurrentText.get(3));
+        ((TextView) findViewById(R.id.letter4)).setText(mCurrentText.get(3).get(1));
 
-        findViewById(R.id.word5).setTag(mCurrentText.get(4));
-        ((TextView) findViewById(R.id.word5)).setText(mCurrentText.get(4).get(1));
+        findViewById(R.id.letter5).setTag(mCurrentText.get(4));
+        ((TextView) findViewById(R.id.letter5)).setText(mCurrentText.get(4).get(1));
 
-        findViewById(R.id.word6).setTag(mCurrentText.get(5));
-        ((TextView) findViewById(R.id.word6)).setText(mCurrentText.get(5).get(1));
+        findViewById(R.id.letter6).setTag(mCurrentText.get(5));
+        ((TextView) findViewById(R.id.letter6)).setText(mCurrentText.get(5).get(1));
 
         Collections.shuffle(mCurrentText);
 
@@ -159,26 +169,26 @@ public class ActivityLT04 extends ActivitiesMasterParent
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private void clearActivity(){
-        ((TextView) findViewById(R.id.word1)).setText("");
-        ((TextView) findViewById(R.id.word2)).setText("");
-        ((TextView) findViewById(R.id.word3)).setText("");
-        ((TextView) findViewById(R.id.word4)).setText("");
-        ((TextView) findViewById(R.id.word5)).setText("");
-        ((TextView) findViewById(R.id.word6)).setText("");
+        ((TextView) findViewById(R.id.letter1)).setText("");
+        ((TextView) findViewById(R.id.letter2)).setText("");
+        ((TextView) findViewById(R.id.letter3)).setText("");
+        ((TextView) findViewById(R.id.letter4)).setText("");
+        ((TextView) findViewById(R.id.letter5)).setText("");
+        ((TextView) findViewById(R.id.letter6)).setText("");
 
         ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_off_mic);
 
-        ((TextView) findViewById(R.id.word1))
+        ((TextView) findViewById(R.id.letter1))
                 .setTextColor(getResources().getColor(R.color.normalBlack));
-        ((TextView) findViewById(R.id.word2))
+        ((TextView) findViewById(R.id.letter2))
                 .setTextColor(getResources().getColor(R.color.normalBlack));
-        ((TextView) findViewById(R.id.word3))
+        ((TextView) findViewById(R.id.letter3))
                 .setTextColor(getResources().getColor(R.color.normalBlack));
-        ((TextView) findViewById(R.id.word4))
+        ((TextView) findViewById(R.id.letter4))
                 .setTextColor(getResources().getColor(R.color.normalBlack));
-        ((TextView) findViewById(R.id.word5))
+        ((TextView) findViewById(R.id.letter5))
                 .setTextColor(getResources().getColor(R.color.normalBlack));
-        ((TextView) findViewById(R.id.word6))
+        ((TextView) findViewById(R.id.letter6))
                 .setTextColor(getResources().getColor(R.color.normalBlack));
 
         ((ImageView) findViewById(R.id.frame1))
@@ -194,17 +204,17 @@ public class ActivityLT04 extends ActivitiesMasterParent
         ((ImageView) findViewById(R.id.frame6))
                 .setImageResource(R.drawable.rounded_text_unselected);
 
-        ((TextView) findViewById(R.id.word1)).setPaintFlags(((TextView) findViewById(R.id.word1))
+        ((TextView) findViewById(R.id.letter1)).setPaintFlags(((TextView) findViewById(R.id.letter1))
                 .getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
-        ((TextView) findViewById(R.id.word2)).setPaintFlags(((TextView) findViewById(R.id.word2))
+        ((TextView) findViewById(R.id.letter2)).setPaintFlags(((TextView) findViewById(R.id.letter2))
                 .getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
-        ((TextView) findViewById(R.id.word3)).setPaintFlags(((TextView) findViewById(R.id.word3))
+        ((TextView) findViewById(R.id.letter3)).setPaintFlags(((TextView) findViewById(R.id.letter3))
                 .getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
-        ((TextView) findViewById(R.id.word4)).setPaintFlags(((TextView) findViewById(R.id.word4))
+        ((TextView) findViewById(R.id.letter4)).setPaintFlags(((TextView) findViewById(R.id.letter4))
                 .getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
-        ((TextView) findViewById(R.id.word5)).setPaintFlags(((TextView) findViewById(R.id.word5))
+        ((TextView) findViewById(R.id.letter5)).setPaintFlags(((TextView) findViewById(R.id.letter5))
                 .getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
-        ((TextView) findViewById(R.id.word6)).setPaintFlags(((TextView) findViewById(R.id.word6))
+        ((TextView) findViewById(R.id.letter6)).setPaintFlags(((TextView) findViewById(R.id.letter6))
                 .getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
 
     }//end private void clearActivity(){
@@ -221,10 +231,10 @@ public class ActivityLT04 extends ActivitiesMasterParent
 
 
     protected void setupFrameListens(){
-        findViewById(R.id.word1).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.letter1).setOnClickListener(new View.OnClickListener() {
             @SuppressWarnings("unchecked")
             public void onClick(View v) {
-                ArrayList<String> thisText= (ArrayList<String>) findViewById(R.id.word1).getTag();
+                ArrayList<String> thisText= (ArrayList<String>) findViewById(R.id.letter1).getTag();
                 mCurrentID=thisText.get(0);
                 matchingLtrWrdAudio=thisText.get(2);
                 if(wordStatus.get(0).equals("0") && !mBeingValidated){
@@ -235,10 +245,10 @@ public class ActivityLT04 extends ActivitiesMasterParent
             }
         });
 
-        findViewById(R.id.word2).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.letter2).setOnClickListener(new View.OnClickListener() {
             @SuppressWarnings("unchecked")
             public void onClick(View v) {
-                ArrayList<String> thisText=(ArrayList<String>) findViewById(R.id.word2).getTag();
+                ArrayList<String> thisText=(ArrayList<String>) findViewById(R.id.letter2).getTag();
                 mCurrentID=thisText.get(0);
                 matchingLtrWrdAudio=thisText.get(2);
                 if(wordStatus.get(1).equals("0") && !mBeingValidated){
@@ -249,10 +259,10 @@ public class ActivityLT04 extends ActivitiesMasterParent
             }
         });
 
-        findViewById(R.id.word3).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.letter3).setOnClickListener(new View.OnClickListener() {
             @SuppressWarnings("unchecked")
             public void onClick(View v) {
-                ArrayList<String> thisText=(ArrayList<String>) findViewById(R.id.word3).getTag();
+                ArrayList<String> thisText=(ArrayList<String>) findViewById(R.id.letter3).getTag();
                 mCurrentID=thisText.get(0);
                 matchingLtrWrdAudio=thisText.get(2);
                 if(wordStatus.get(2).equals("0") && !mBeingValidated){
@@ -263,10 +273,10 @@ public class ActivityLT04 extends ActivitiesMasterParent
             }
         });
 
-        findViewById(R.id.word4).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.letter4).setOnClickListener(new View.OnClickListener() {
             @SuppressWarnings("unchecked")
             public void onClick(View v) {
-                ArrayList<String> thisText=(ArrayList<String>) findViewById(R.id.word4).getTag();
+                ArrayList<String> thisText=(ArrayList<String>) findViewById(R.id.letter4).getTag();
                 mCurrentID=thisText.get(0);
                 matchingLtrWrdAudio=thisText.get(2);
                 if(wordStatus.get(3).equals("0") && !mBeingValidated){
@@ -277,10 +287,10 @@ public class ActivityLT04 extends ActivitiesMasterParent
             }
         });
 
-        findViewById(R.id.word5).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.letter5).setOnClickListener(new View.OnClickListener() {
             @SuppressWarnings("unchecked")
             public void onClick(View v) {
-                ArrayList<String> thisText=(ArrayList<String>) findViewById(R.id.word5).getTag();
+                ArrayList<String> thisText=(ArrayList<String>) findViewById(R.id.letter5).getTag();
                 mCurrentID=thisText.get(0);
                 matchingLtrWrdAudio=thisText.get(2);
                 if(wordStatus.get(4).equals("0") && !mBeingValidated){
@@ -291,10 +301,10 @@ public class ActivityLT04 extends ActivitiesMasterParent
             }
         });
 
-        findViewById(R.id.word6).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.letter6).setOnClickListener(new View.OnClickListener() {
             @SuppressWarnings("unchecked")
             public void onClick(View v) {
-                ArrayList<String> thisText=(ArrayList<String>) findViewById(R.id.word6).getTag();
+                ArrayList<String> thisText=(ArrayList<String>) findViewById(R.id.letter6).getTag();
                 mCurrentID=thisText.get(0);
                 matchingLtrWrdAudio=thisText.get(2);
                 if(wordStatus.get(5).equals("0") && !mBeingValidated){
@@ -439,16 +449,16 @@ public class ActivityLT04 extends ActivitiesMasterParent
             case 0:{
                 if(mCorrect){
                     wordStatus.set(0, "2");
-                    ((TextView) findViewById(R.id.word1)).
+                    ((TextView) findViewById(R.id.letter1)).
                             setTextColor(getResources().getColor(R.color.correct_green));
                     ((ImageView) findViewById(R.id.frame1))
                             .setImageResource(R.drawable.rounded_text_correct);
                 }else{
                     wordStatus.set(0, "1");
-                    ((TextView) findViewById(R.id.word1))
+                    ((TextView) findViewById(R.id.letter1))
                             .setTextColor(getResources().getColor(R.color.incorrect_red));
-                    ((TextView) findViewById(R.id.word1))
-                            .setPaintFlags(((TextView) findViewById(R.id.word1)).getPaintFlags()
+                    ((TextView) findViewById(R.id.letter1))
+                            .setPaintFlags(((TextView) findViewById(R.id.letter1)).getPaintFlags()
                                     | Paint.STRIKE_THRU_TEXT_FLAG);
                     ((ImageView) findViewById(R.id.frame1))
                             .setImageResource(R.drawable.rounded_text_incorrect);
@@ -458,16 +468,16 @@ public class ActivityLT04 extends ActivitiesMasterParent
             case 1:{
                 if(mCorrect){
                     wordStatus.set(1, "2");
-                    ((TextView) findViewById(R.id.word2))
+                    ((TextView) findViewById(R.id.letter2))
                             .setTextColor(getResources().getColor(R.color.correct_green));
                     ((ImageView) findViewById(R.id.frame2))
                             .setImageResource(R.drawable.rounded_text_correct);
                 }else{
                     wordStatus.set(1, "1");
-                    ((TextView) findViewById(R.id.word2))
+                    ((TextView) findViewById(R.id.letter2))
                             .setTextColor(getResources().getColor(R.color.incorrect_red));
-                    ((TextView) findViewById(R.id.word2))
-                            .setPaintFlags(((TextView) findViewById(R.id.word2)).getPaintFlags()
+                    ((TextView) findViewById(R.id.letter2))
+                            .setPaintFlags(((TextView) findViewById(R.id.letter2)).getPaintFlags()
                                     | Paint.STRIKE_THRU_TEXT_FLAG);
                     ((ImageView) findViewById(R.id.frame2))
                             .setImageResource(R.drawable.rounded_text_incorrect);
@@ -477,12 +487,12 @@ public class ActivityLT04 extends ActivitiesMasterParent
             case 2:{
                 if(mCorrect){
                     wordStatus.set(2, "2");
-                    ((TextView) findViewById(R.id.word3)).setTextColor(getResources().getColor(R.color.correct_green));
+                    ((TextView) findViewById(R.id.letter3)).setTextColor(getResources().getColor(R.color.correct_green));
                     ((ImageView) findViewById(R.id.frame3)).setImageResource(R.drawable.rounded_text_correct);
                 }else{
                     wordStatus.set(2, "1");
-                    ((TextView) findViewById(R.id.word3)).setTextColor(getResources().getColor(R.color.incorrect_red));
-                    ((TextView) findViewById(R.id.word3)).setPaintFlags(((TextView) findViewById(R.id.word3)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                    ((TextView) findViewById(R.id.letter3)).setTextColor(getResources().getColor(R.color.incorrect_red));
+                    ((TextView) findViewById(R.id.letter3)).setPaintFlags(((TextView) findViewById(R.id.letter3)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                     ((ImageView) findViewById(R.id.frame3)).setImageResource(R.drawable.rounded_text_incorrect);
                 }
                 break;
@@ -490,12 +500,12 @@ public class ActivityLT04 extends ActivitiesMasterParent
             case 3:{
                 if(mCorrect){
                     wordStatus.set(3, "2");
-                    ((TextView) findViewById(R.id.word4)).setTextColor(getResources().getColor(R.color.correct_green));
+                    ((TextView) findViewById(R.id.letter4)).setTextColor(getResources().getColor(R.color.correct_green));
                     ((ImageView) findViewById(R.id.frame4)).setImageResource(R.drawable.rounded_text_correct);
                 }else{
                     wordStatus.set(3, "1");
-                    ((TextView) findViewById(R.id.word4)).setTextColor(getResources().getColor(R.color.incorrect_red));
-                    ((TextView) findViewById(R.id.word4)).setPaintFlags(((TextView) findViewById(R.id.word4)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                    ((TextView) findViewById(R.id.letter4)).setTextColor(getResources().getColor(R.color.incorrect_red));
+                    ((TextView) findViewById(R.id.letter4)).setPaintFlags(((TextView) findViewById(R.id.letter4)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                     ((ImageView) findViewById(R.id.frame4)).setImageResource(R.drawable.rounded_text_incorrect);
                 }
                 break;
@@ -503,12 +513,12 @@ public class ActivityLT04 extends ActivitiesMasterParent
             case 4:{
                 if(mCorrect){
                     wordStatus.set(4, "2");
-                    ((TextView) findViewById(R.id.word5)).setTextColor(getResources().getColor(R.color.correct_green));
+                    ((TextView) findViewById(R.id.letter5)).setTextColor(getResources().getColor(R.color.correct_green));
                     ((ImageView) findViewById(R.id.frame5)).setImageResource(R.drawable.rounded_text_correct);
                 }else{
                     wordStatus.set(4, "1");
-                    ((TextView) findViewById(R.id.word5)).setTextColor(getResources().getColor(R.color.incorrect_red));
-                    ((TextView) findViewById(R.id.word5)).setPaintFlags(((TextView) findViewById(R.id.word5)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                    ((TextView) findViewById(R.id.letter5)).setTextColor(getResources().getColor(R.color.incorrect_red));
+                    ((TextView) findViewById(R.id.letter5)).setPaintFlags(((TextView) findViewById(R.id.letter5)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                     ((ImageView) findViewById(R.id.frame5)).setImageResource(R.drawable.rounded_text_incorrect);
                 }
                 break;
@@ -516,12 +526,12 @@ public class ActivityLT04 extends ActivitiesMasterParent
             case 5:{
                 if(mCorrect){
                     wordStatus.set(5, "2");
-                    ((TextView) findViewById(R.id.word6)).setTextColor(getResources().getColor(R.color.correct_green));
+                    ((TextView) findViewById(R.id.letter6)).setTextColor(getResources().getColor(R.color.correct_green));
                     ((ImageView) findViewById(R.id.frame6)).setImageResource(R.drawable.rounded_text_correct);
                 }else{
                     wordStatus.set(5, "1");
-                    ((TextView) findViewById(R.id.word6)).setTextColor(getResources().getColor(R.color.incorrect_red));
-                    ((TextView) findViewById(R.id.word6)).setPaintFlags(((TextView) findViewById(R.id.word6)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                    ((TextView) findViewById(R.id.letter6)).setTextColor(getResources().getColor(R.color.incorrect_red));
+                    ((TextView) findViewById(R.id.letter6)).setPaintFlags(((TextView) findViewById(R.id.letter6)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                     ((ImageView) findViewById(R.id.frame6)).setImageResource(R.drawable.rounded_text_incorrect);
                 }
                 break;
@@ -616,38 +626,38 @@ public class ActivityLT04 extends ActivitiesMasterParent
         if(wordStatus.get(0).equals("0") || wordStatus.get(0).equals("1")){
             wordStatus.set(0, "0");
             ((ImageView) findViewById(R.id.frame1)).setImageResource(R.drawable.rounded_text_unselected);
-            ((TextView) findViewById(R.id.word1)).setTextColor(getResources().getColor(R.color.normalBlack));
-            ((TextView) findViewById(R.id.word1)).setPaintFlags(((TextView) findViewById(R.id.word1)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+            ((TextView) findViewById(R.id.letter1)).setTextColor(getResources().getColor(R.color.normalBlack));
+            ((TextView) findViewById(R.id.letter1)).setPaintFlags(((TextView) findViewById(R.id.letter1)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
         }
         if(wordStatus.get(1).equals("0") || wordStatus.get(1).equals("1")){
             wordStatus.set(1, "0");
             ((ImageView) findViewById(R.id.frame2)).setImageResource(R.drawable.rounded_text_unselected);
-            ((TextView) findViewById(R.id.word2)).setTextColor(getResources().getColor(R.color.normalBlack));
-            ((TextView) findViewById(R.id.word2)).setPaintFlags(((TextView) findViewById(R.id.word2)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+            ((TextView) findViewById(R.id.letter2)).setTextColor(getResources().getColor(R.color.normalBlack));
+            ((TextView) findViewById(R.id.letter2)).setPaintFlags(((TextView) findViewById(R.id.letter2)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
         }
         if(wordStatus.get(2).equals("0") || wordStatus.get(2).equals("1")){
             wordStatus.set(2, "0");
             ((ImageView) findViewById(R.id.frame3)).setImageResource(R.drawable.rounded_text_unselected);
-            ((TextView) findViewById(R.id.word3)).setTextColor(getResources().getColor(R.color.normalBlack));
-            ((TextView) findViewById(R.id.word3)).setPaintFlags(((TextView) findViewById(R.id.word3)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+            ((TextView) findViewById(R.id.letter3)).setTextColor(getResources().getColor(R.color.normalBlack));
+            ((TextView) findViewById(R.id.letter3)).setPaintFlags(((TextView) findViewById(R.id.letter3)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
         }
         if(wordStatus.get(3).equals("0") || wordStatus.get(3).equals("1")){
             wordStatus.set(3, "0");
             ((ImageView) findViewById(R.id.frame4)).setImageResource(R.drawable.rounded_text_unselected);
-            ((TextView) findViewById(R.id.word4)).setTextColor(getResources().getColor(R.color.normalBlack));
-            ((TextView) findViewById(R.id.word4)).setPaintFlags(((TextView) findViewById(R.id.word4)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+            ((TextView) findViewById(R.id.letter4)).setTextColor(getResources().getColor(R.color.normalBlack));
+            ((TextView) findViewById(R.id.letter4)).setPaintFlags(((TextView) findViewById(R.id.letter4)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
         }
         if(wordStatus.get(4).equals("0") || wordStatus.get(4).equals("1")){
             wordStatus.set(4, "0");
             ((ImageView) findViewById(R.id.frame5)).setImageResource(R.drawable.rounded_text_unselected);
-            ((TextView) findViewById(R.id.word5)).setTextColor(getResources().getColor(R.color.normalBlack));
-            ((TextView) findViewById(R.id.word5)).setPaintFlags(((TextView) findViewById(R.id.word5)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+            ((TextView) findViewById(R.id.letter5)).setTextColor(getResources().getColor(R.color.normalBlack));
+            ((TextView) findViewById(R.id.letter5)).setPaintFlags(((TextView) findViewById(R.id.letter5)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
         }
         if(wordStatus.get(5).equals("0") || wordStatus.get(5).equals("1")){
             wordStatus.set(5, "0");
             ((ImageView) findViewById(R.id.frame6)).setImageResource(R.drawable.rounded_text_unselected);
-            ((TextView) findViewById(R.id.word6)).setTextColor(getResources().getColor(R.color.normalBlack));
-            ((TextView) findViewById(R.id.word6)).setPaintFlags(((TextView) findViewById(R.id.word6)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+            ((TextView) findViewById(R.id.letter6)).setTextColor(getResources().getColor(R.color.normalBlack));
+            ((TextView) findViewById(R.id.letter6)).setPaintFlags(((TextView) findViewById(R.id.letter6)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
         }
 
     }//end private void clearInCorrects(){

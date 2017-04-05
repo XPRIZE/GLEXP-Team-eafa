@@ -50,10 +50,10 @@ public class ActivityWD02New extends ActivitiesMasterParent
         mBeingValidated=true;
 
 
-        ((TextView) findViewById(R.id.activityText1)).setTypeface(appData.getCurrentFontType());
-        ((TextView) findViewById(R.id.activityText2)).setTypeface(appData.getCurrentFontType());
-        ((TextView) findViewById(R.id.activityText3)).setTypeface(appData.getCurrentFontType());
-        ((TextView) findViewById(R.id.activityText4)).setTypeface(appData.getCurrentFontType());
+        ((TextView) findViewById(R.id.word1)).setTypeface(appData.getCurrentFontType());
+        ((TextView) findViewById(R.id.word2)).setTypeface(appData.getCurrentFontType());
+        ((TextView) findViewById(R.id.word3)).setTypeface(appData.getCurrentFontType());
+        ((TextView) findViewById(R.id.word4)).setTypeface(appData.getCurrentFontType());
 
 
         clearActivity();
@@ -74,18 +74,18 @@ public class ActivityWD02New extends ActivitiesMasterParent
 
 
 
-        ((TextView) findViewById(R.id.activityText1)).setText("");
-        ((TextView) findViewById(R.id.activityText2)).setText("");
-        ((TextView) findViewById(R.id.activityText3)).setText("");
-        ((TextView) findViewById(R.id.activityText4)).setText("");
+        ((TextView) findViewById(R.id.word1)).setText("");
+        ((TextView) findViewById(R.id.word2)).setText("");
+        ((TextView) findViewById(R.id.word3)).setText("");
+        ((TextView) findViewById(R.id.word4)).setText("");
 
-        ((TextView) findViewById(R.id.activityText1)).setTextColor(getResources()
+        ((TextView) findViewById(R.id.word1)).setTextColor(getResources()
                 .getColor(R.color.normalBlack));
-        ((TextView) findViewById(R.id.activityText2)).setTextColor(getResources()
+        ((TextView) findViewById(R.id.word2)).setTextColor(getResources()
                 .getColor(R.color.normalBlack));
-        ((TextView) findViewById(R.id.activityText3)).setTextColor(getResources()
+        ((TextView) findViewById(R.id.word3)).setTextColor(getResources()
                 .getColor(R.color.normalBlack));
-        ((TextView) findViewById(R.id.activityText4)).setTextColor(getResources()
+        ((TextView) findViewById(R.id.word4)).setTextColor(getResources()
                 .getColor(R.color.normalBlack));
 
 

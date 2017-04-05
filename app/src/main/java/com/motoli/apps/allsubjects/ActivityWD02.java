@@ -64,10 +64,10 @@ public class ActivityWD02 extends ActivitiesMasterParent
         setUpListeners();
         setupFrameListens();
 
-        ((TextView) findViewById(R.id.activityText1)).setTypeface(appData.getCurrentFontType());
-        ((TextView) findViewById(R.id.activityText2)).setTypeface(appData.getCurrentFontType());
-        ((TextView) findViewById(R.id.activityText3)).setTypeface(appData.getCurrentFontType());
-        ((TextView) findViewById(R.id.activityText4)).setTypeface(appData.getCurrentFontType());
+        ((TextView) findViewById(R.id.word1)).setTypeface(appData.getCurrentFontType());
+        ((TextView) findViewById(R.id.word2)).setTypeface(appData.getCurrentFontType());
+        ((TextView) findViewById(R.id.word3)).setTypeface(appData.getCurrentFontType());
+        ((TextView) findViewById(R.id.word4)).setTypeface(appData.getCurrentFontType());
 
         getLoaderManager().initLoader(Constants.GUESS_WORDS, null, this);
         ///Uri todoUri = AppProvider.CONTENT_URI_SELECTED_ACTIVITIES;
@@ -125,15 +125,15 @@ public class ActivityWD02 extends ActivitiesMasterParent
 
 */
 
-        ((TextView) findViewById(R.id.activityText1)).setText("");
-        ((TextView) findViewById(R.id.activityText2)).setText("");
-        ((TextView) findViewById(R.id.activityText3)).setText("");
-        ((TextView) findViewById(R.id.activityText4)).setText("");
+        ((TextView) findViewById(R.id.word1)).setText("");
+        ((TextView) findViewById(R.id.word2)).setText("");
+        ((TextView) findViewById(R.id.word3)).setText("");
+        ((TextView) findViewById(R.id.word4)).setText("");
 
-        ((TextView) findViewById(R.id.activityText1)).setTextColor(getResources().getColor(R.color.normalBlack));
-        ((TextView) findViewById(R.id.activityText2)).setTextColor(getResources().getColor(R.color.normalBlack));
-        ((TextView) findViewById(R.id.activityText3)).setTextColor(getResources().getColor(R.color.normalBlack));
-        ((TextView) findViewById(R.id.activityText4)).setTextColor(getResources().getColor(R.color.normalBlack));
+        ((TextView) findViewById(R.id.word1)).setTextColor(getResources().getColor(R.color.normalBlack));
+        ((TextView) findViewById(R.id.word2)).setTextColor(getResources().getColor(R.color.normalBlack));
+        ((TextView) findViewById(R.id.word3)).setTextColor(getResources().getColor(R.color.normalBlack));
+        ((TextView) findViewById(R.id.word4)).setTextColor(getResources().getColor(R.color.normalBlack));
 
 
         ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_off);
@@ -157,55 +157,55 @@ public class ActivityWD02 extends ActivitiesMasterParent
         }
 
         if(mFontSize>=8) {
-            ((TextView) findViewById(R.id.activityText1))
+            ((TextView) findViewById(R.id.word1))
                     .setTextSize(getResources().getDimension(R.dimen.wdFifthFontSize));
-            ((TextView) findViewById(R.id.activityText2))
+            ((TextView) findViewById(R.id.word2))
                     .setTextSize(getResources().getDimension(R.dimen.wdFifthFontSize));
-            ((TextView) findViewById(R.id.activityText3))
+            ((TextView) findViewById(R.id.word3))
                     .setTextSize(getResources().getDimension(R.dimen.wdFifthFontSize));
-            ((TextView) findViewById(R.id.activityText4))
+            ((TextView) findViewById(R.id.word4))
                     .setTextSize(getResources().getDimension(R.dimen.wdFifthFontSize));
         }else if(mFontSize>=7){
-            ((TextView) findViewById(R.id.activityText1))
+            ((TextView) findViewById(R.id.word1))
                     .setTextSize(getResources().getDimension(R.dimen.wdForthFontSize));
-            ((TextView) findViewById(R.id.activityText2))
+            ((TextView) findViewById(R.id.word2))
                     .setTextSize(getResources().getDimension(R.dimen.wdForthFontSize));
-            ((TextView) findViewById(R.id.activityText3))
+            ((TextView) findViewById(R.id.word3))
                     .setTextSize(getResources().getDimension(R.dimen.wdForthFontSize));
-            ((TextView) findViewById(R.id.activityText4))
+            ((TextView) findViewById(R.id.word4))
                     .setTextSize(getResources().getDimension(R.dimen.wdForthFontSize));
         }else if(mFontSize>=6){
-            ((TextView) findViewById(R.id.activityText1))
+            ((TextView) findViewById(R.id.word1))
                     .setTextSize(getResources().getDimension(R.dimen.wdThirdFontSize));
-            ((TextView) findViewById(R.id.activityText2))
+            ((TextView) findViewById(R.id.word2))
                     .setTextSize(getResources().getDimension(R.dimen.wdThirdFontSize));
-            ((TextView) findViewById(R.id.activityText3))
+            ((TextView) findViewById(R.id.word3))
                     .setTextSize(getResources().getDimension(R.dimen.wdThirdFontSize));
-            ((TextView) findViewById(R.id.activityText4))
+            ((TextView) findViewById(R.id.word4))
                     .setTextSize(getResources().getDimension(R.dimen.wdThirdFontSize));
         }else if(mFontSize>=5){
-            ((TextView) findViewById(R.id.activityText1))
+            ((TextView) findViewById(R.id.word1))
                     .setTextSize(getResources().getDimension(R.dimen.wdSecondFontSize));
-            ((TextView) findViewById(R.id.activityText2))
+            ((TextView) findViewById(R.id.word2))
                     .setTextSize(getResources().getDimension(R.dimen.wdSecondFontSize));
-            ((TextView) findViewById(R.id.activityText3))
+            ((TextView) findViewById(R.id.word3))
                     .setTextSize(getResources().getDimension(R.dimen.wdSecondFontSize));
-            ((TextView) findViewById(R.id.activityText4))
+            ((TextView) findViewById(R.id.word4))
                     .setTextSize(getResources().getDimension(R.dimen.wdSecondFontSize));
         }else{
-            ((TextView) findViewById(R.id.activityText1))
+            ((TextView) findViewById(R.id.word1))
                     .setTextSize(getResources().getDimension(R.dimen.wdFirstFontSize));
-            ((TextView) findViewById(R.id.activityText2))
+            ((TextView) findViewById(R.id.word2))
                     .setTextSize(getResources().getDimension(R.dimen.wdFirstFontSize));
-            ((TextView) findViewById(R.id.activityText3))
+            ((TextView) findViewById(R.id.word3))
                     .setTextSize(getResources().getDimension(R.dimen.wdFirstFontSize));
-            ((TextView) findViewById(R.id.activityText4))
+            ((TextView) findViewById(R.id.word4))
                     .setTextSize(getResources().getDimension(R.dimen.wdFirstFontSize));
         }
 
 
 
-        ((TextView) findViewById(R.id.activityText1)).setText(mCurrentText.get(0).get(2));
+        ((TextView) findViewById(R.id.word1)).setText(mCurrentText.get(0).get(2));
         //
         
         if(mCurrentText.get(0).get(0).equals("1")){
@@ -216,7 +216,7 @@ public class ActivityWD02 extends ActivitiesMasterParent
         }
 
 
-        ((TextView) findViewById(R.id.activityText2)).setText(mCurrentText.get(1).get(2));
+        ((TextView) findViewById(R.id.word2)).setText(mCurrentText.get(1).get(2));
         //
         if(mCurrentText.get(1).get(0).equals("1")){
             mCorrectLocation=1;
@@ -225,7 +225,7 @@ public class ActivityWD02 extends ActivitiesMasterParent
             mCurrentCorrectAudio=mCurrentText.get(1).get(3);
         }
 
-        ((TextView) findViewById(R.id.activityText3)).setText(mCurrentText.get(2).get(2));
+        ((TextView) findViewById(R.id.word3)).setText(mCurrentText.get(2).get(2));
         //
         if(mCurrentText.get(2).get(0).equals("1")){
             mCorrectLocation=2;
@@ -234,7 +234,7 @@ public class ActivityWD02 extends ActivitiesMasterParent
             mCurrentCorrectAudio=mCurrentText.get(2).get(3);
         }
 
-        ((TextView) findViewById(R.id.activityText4)).setText(mCurrentText.get(3).get(2));
+        ((TextView) findViewById(R.id.word4)).setText(mCurrentText.get(3).get(2));
         //
         if(mCurrentText.get(3).get(0).equals("1")){
             mCorrectLocation=3;
@@ -289,7 +289,7 @@ public class ActivityWD02 extends ActivitiesMasterParent
 
 
     protected void setupFrameListens(){
-        findViewById(R.id.activityText1).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.word1).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if(mCurrentText.get(0).get(6).equals("0") && !mBeingValidated){
                     mCurrentTextLocation=0;
@@ -301,7 +301,7 @@ public class ActivityWD02 extends ActivitiesMasterParent
             }
         });
 
-        findViewById(R.id.activityText2).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.word2).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if(mCurrentText.get(1).get(6).equals("0") && !mBeingValidated){
                     mCurrentTextLocation=1;
@@ -313,7 +313,7 @@ public class ActivityWD02 extends ActivitiesMasterParent
             }
         });
 
-        findViewById(R.id.activityText3).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.word3).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if(mCurrentText.get(2).get(6).equals("0") && !mBeingValidated){
                     mCurrentTextLocation=2;
@@ -325,7 +325,7 @@ public class ActivityWD02 extends ActivitiesMasterParent
             }
         });
 
-        findViewById(R.id.activityText4).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.word4).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if(mCurrentText.get(3).get(6).equals("0") && !mBeingValidated){
                     mCurrentTextLocation=3;
@@ -422,22 +422,22 @@ public class ActivityWD02 extends ActivitiesMasterParent
                 default:
                 case 0:
                     mCurrentText.get(0).add(6, "1");
-                    ((TextView) findViewById(R.id.activityText1))
+                    ((TextView) findViewById(R.id.word1))
                             .setTextColor(getResources().getColor(R.color.correct_green));
                     break;
                 case 1:
                     mCurrentText.get(1).add(6, "1");
-                    ((TextView) findViewById(R.id.activityText2))
+                    ((TextView) findViewById(R.id.word2))
                             .setTextColor(getResources().getColor(R.color.correct_green));
                     break;
                 case 2:
                     mCurrentText.get(2).add(6, "1");
-                    ((TextView) findViewById(R.id.activityText3))
+                    ((TextView) findViewById(R.id.word3))
                             .setTextColor(getResources().getColor(R.color.correct_green));
                     break;
                 case 3:
                     mCurrentText.get(3).add(6, "1");
-                    ((TextView) findViewById(R.id.activityText4))
+                    ((TextView) findViewById(R.id.word4))
                             .setTextColor(getResources().getColor(R.color.correct_green));
                     break;
             }
@@ -488,22 +488,22 @@ public class ActivityWD02 extends ActivitiesMasterParent
                 default:
                 case 0:
                     mCurrentText.get(0).add(6, "1");
-                    ((TextView) findViewById(R.id.activityText1))
+                    ((TextView) findViewById(R.id.word1))
                             .setTextColor(getResources().getColor(R.color.incorrect_red));
                     break;
                 case 1:
                     mCurrentText.get(1).add(6, "1");
-                    ((TextView) findViewById(R.id.activityText2))
+                    ((TextView) findViewById(R.id.word2))
                             .setTextColor(getResources().getColor(R.color.incorrect_red));
                     break;
                 case 2:
                     mCurrentText.get(2).add(6, "1");
-                    ((TextView) findViewById(R.id.activityText3))
+                    ((TextView) findViewById(R.id.word3))
                             .setTextColor(getResources().getColor(R.color.incorrect_red));
                     break;
                 case 3:
                     mCurrentText.get(3).add(6, "1");
-                    ((TextView) findViewById(R.id.activityText4))
+                    ((TextView) findViewById(R.id.word4))
                             .setTextColor(getResources().getColor(R.color.incorrect_red));
                     break;
             }
@@ -522,24 +522,24 @@ public class ActivityWD02 extends ActivitiesMasterParent
             switch(mCurrentTextLocation){
                 default:
                 case 0:
-                    ((TextView) findViewById(R.id.activityText2)).setText("");
-                    ((TextView) findViewById(R.id.activityText3)).setText("");
-                    ((TextView) findViewById(R.id.activityText4)).setText("");
+                    ((TextView) findViewById(R.id.word2)).setText("");
+                    ((TextView) findViewById(R.id.word3)).setText("");
+                    ((TextView) findViewById(R.id.word4)).setText("");
                     break;
                 case 1:
-                    ((TextView) findViewById(R.id.activityText1)).setText("");
-                    ((TextView) findViewById(R.id.activityText3)).setText("");
-                    ((TextView) findViewById(R.id.activityText4)).setText("");
+                    ((TextView) findViewById(R.id.word1)).setText("");
+                    ((TextView) findViewById(R.id.word3)).setText("");
+                    ((TextView) findViewById(R.id.word4)).setText("");
                     break;
                 case 2:
-                    ((TextView) findViewById(R.id.activityText2)).setText("");
-                    ((TextView) findViewById(R.id.activityText1)).setText("");
-                    ((TextView) findViewById(R.id.activityText4)).setText("");
+                    ((TextView) findViewById(R.id.word2)).setText("");
+                    ((TextView) findViewById(R.id.word1)).setText("");
+                    ((TextView) findViewById(R.id.word4)).setText("");
                     break;
                 case 3:
-                    ((TextView) findViewById(R.id.activityText2)).setText("");
-                    ((TextView) findViewById(R.id.activityText3)).setText("");
-                    ((TextView) findViewById(R.id.activityText1)).setText("");
+                    ((TextView) findViewById(R.id.word2)).setText("");
+                    ((TextView) findViewById(R.id.word3)).setText("");
+                    ((TextView) findViewById(R.id.word1)).setText("");
                     break;
             }
 
@@ -549,40 +549,40 @@ public class ActivityWD02 extends ActivitiesMasterParent
                 switch(mCorrectLocation){
                     default:
                     case 0:
-                        ((TextView) findViewById(R.id.activityText2)).setText("");
-                        ((TextView) findViewById(R.id.activityText3)).setText("");
-                        ((TextView) findViewById(R.id.activityText4)).setText("");
+                        ((TextView) findViewById(R.id.word2)).setText("");
+                        ((TextView) findViewById(R.id.word3)).setText("");
+                        ((TextView) findViewById(R.id.word4)).setText("");
                         break;
                     case 1:
-                        ((TextView) findViewById(R.id.activityText1)).setText("");
-                        ((TextView) findViewById(R.id.activityText3)).setText("");
-                        ((TextView) findViewById(R.id.activityText4)).setText("");
+                        ((TextView) findViewById(R.id.word1)).setText("");
+                        ((TextView) findViewById(R.id.word3)).setText("");
+                        ((TextView) findViewById(R.id.word4)).setText("");
                         break;
                     case 2:
-                        ((TextView) findViewById(R.id.activityText1)).setText("");
-                        ((TextView) findViewById(R.id.activityText2)).setText("");
-                        ((TextView) findViewById(R.id.activityText4)).setText("");
+                        ((TextView) findViewById(R.id.word1)).setText("");
+                        ((TextView) findViewById(R.id.word2)).setText("");
+                        ((TextView) findViewById(R.id.word4)).setText("");
                         break;
                     case 3:
-                        ((TextView) findViewById(R.id.activityText1)).setText("");
-                        ((TextView) findViewById(R.id.activityText2)).setText("");
-                        ((TextView) findViewById(R.id.activityText3)).setText("");
+                        ((TextView) findViewById(R.id.word1)).setText("");
+                        ((TextView) findViewById(R.id.word2)).setText("");
+                        ((TextView) findViewById(R.id.word3)).setText("");
                         break;
                 }
             }else{
                 switch(mCurrentTextLocation){
                     default:
                     case 0:
-                        ((TextView) findViewById(R.id.activityText1)).setText("");
+                        ((TextView) findViewById(R.id.word1)).setText("");
                         break;
                     case 1:
-                        ((TextView) findViewById(R.id.activityText2)).setText("");
+                        ((TextView) findViewById(R.id.word2)).setText("");
                         break;
                     case 2:
-                        ((TextView) findViewById(R.id.activityText3)).setText("");
+                        ((TextView) findViewById(R.id.word3)).setText("");
                         break;
                     case 3:
-                        ((TextView) findViewById(R.id.activityText4)).setText("");
+                        ((TextView) findViewById(R.id.word4)).setText("");
                         break;
                 }
             }

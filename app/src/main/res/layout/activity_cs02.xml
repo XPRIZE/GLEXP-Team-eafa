@@ -1,225 +1,207 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:background="@drawable/bg_cs02"
-    >
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activityMainPart"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_cs02">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:id="@+id/activityMainPartSecond"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:padding="6dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/btnValidate"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight=".15">
 
         <include
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.23"
-            layout="@layout/activity_top_area" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.3"/>
+            layout="@layout/activity_top_area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
-    <LinearLayout
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/activityMainPart">
+        app:layout_constraintGuide_percent="0.05" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".15" />
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05" />
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.5"
-            android:visibility="visible" >
+    <RelativeLayout
+        android:id="@+id/frame0"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/rounded_box_selected_blue"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalMid"
+        app:layout_constraintLeft_toLeftOf="@+id/guidelineLeft"
+        app:layout_constraintRight_toLeftOf="@+id/guidelineVerticalMidLeft"
+        app:layout_constraintTop_toTopOf="@+id/guidelineTop">
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".4" />
+        <ImageView
+            android:id="@+id/syllableImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:layout_margin="25dp"
+            android:contentDescription="@string/none"
+            android:src="@drawable/random_image" />
 
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/rounded_box_selected_blue">
+    </RelativeLayout>
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/syllableImage"
-                    android:layout_centerInParent="true"
-                    android:src="@drawable/dummy_img_phonic_word"
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineVerticalMidLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.45" />
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineVerticalMidRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.55" />
+    <ImageButton
+        android:id="@+id/btnValidate"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/strNone"
+        android:scaleType="fitStart"
+        android:src="@drawable/btn_validate_off"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/guidelineVerticalMidRight"
+        app:layout_constraintRight_toLeftOf="@id/guidelineRight"
+        app:layout_constraintTop_toBottomOf="@+id/activityMainPartSecond"
+        app:layout_constraintVertical_weight="1" />
 
-                    android:layout_marginLeft="@dimen/cs02_syllable_image_sides"
-                    android:layout_marginRight="@dimen/cs02_syllable_image_sides"
-                    android:layout_marginTop="@dimen/cs02_syllable_image_top_bottom"
-                    android:layout_marginBottom="@dimen/cs02_syllable_image_top_bottom"
-                    android:visibility="visible"/>
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
 
-            </RelativeLayout>
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineHorizontalMid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.61" />
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".1" />
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical" >
+    <ImageView
+        android:id="@+id/syllableFrame1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/strNone"
+        android:src="@drawable/frm_cs02_off"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/syllableFrame2"
+        app:layout_constraintTop_toBottomOf="@id/guidelineHorizontalMid" />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight=".15" />
 
-                <ImageButton
-                    android:id="@+id/btnValidate"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:contentDescription="@string/strNone"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/btn_validate_off" />
+    <ImageView
+        android:id="@+id/syllableHand1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/btn_hand_1"
+        android:layout_margin="42dp"
+        android:contentDescription="@string/none"
+        app:layout_constraintBottom_toBottomOf="@+id/syllableFrame1"
+        app:layout_constraintLeft_toLeftOf="@+id/syllableFrame1"
+        app:layout_constraintRight_toRightOf="@+id/syllableFrame1"
+        app:layout_constraintTop_toTopOf="@+id/syllableFrame1" />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight=".1" />
+    <ImageView
+        android:id="@+id/syllableFrame2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/strNone"
+        android:src="@drawable/frm_cs02_off"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/syllableFrame1"
+        app:layout_constraintRight_toLeftOf="@+id/syllableFrame3"
+        app:layout_constraintTop_toBottomOf="@id/guidelineHorizontalMid" />
 
-            </LinearLayout>
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".4" />
-        </LinearLayout>
+    <ImageView
+        android:id="@+id/syllableHand2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/btn_hand_2"
+        android:layout_margin="42dp"
+        android:contentDescription="@string/none"
+        app:layout_constraintBottom_toBottomOf="@+id/syllableFrame2"
+        app:layout_constraintLeft_toLeftOf="@+id/syllableFrame2"
+        app:layout_constraintRight_toRightOf="@+id/syllableFrame2"
+        app:layout_constraintTop_toTopOf="@+id/syllableFrame2" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".1"/>
+    <ImageView
+        android:id="@+id/syllableFrame3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/strNone"
+        android:src="@drawable/frm_cs02_off"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/syllableFrame2"
+        app:layout_constraintRight_toLeftOf="@+id/syllableFrame4"
+        app:layout_constraintTop_toBottomOf="@id/guidelineHorizontalMid" />
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:baselineAligned="false">
 
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" >
+    <ImageView
+        android:id="@+id/syllableHand3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/btn_hand_3"
+        android:layout_margin="42dp"
+        android:contentDescription="@string/none"
+        app:layout_constraintBottom_toBottomOf="@+id/syllableFrame3"
+        app:layout_constraintLeft_toLeftOf="@+id/syllableFrame3"
+        app:layout_constraintRight_toRightOf="@+id/syllableFrame3"
+        app:layout_constraintTop_toTopOf="@+id/syllableFrame3" />
 
-                <ImageView
-                    android:id="@+id/syllableFrame1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:clickable="false"
-                    android:contentDescription="@string/strNone"
-                    android:src="@drawable/frm_cs02_off" />
+    <ImageView
+        android:id="@+id/syllableFrame4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/strNone"
+        android:src="@drawable/frm_cs02_off"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/syllableFrame3"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guidelineHorizontalMid" />
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/syllableHand1"
-                    android:src="@drawable/btn_hand_1"
-                    android:layout_marginLeft="@dimen/cs02_syllable_hand_sides"
-                    android:layout_marginRight="@dimen/cs02_syllable_hand_sides"
-                    android:layout_marginTop="@dimen/cs02_syllable_hand_top_bottom"
-                    android:layout_marginBottom="@dimen/cs02_syllable_hand_top_bottom"
-                    />
 
-            </RelativeLayout>
+    <ImageView
+        android:id="@+id/syllableHand4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/btn_hand_4"
+        android:layout_margin="42dp"
+        android:contentDescription="@string/none"
+        app:layout_constraintBottom_toBottomOf="@+id/syllableFrame4"
+        app:layout_constraintLeft_toLeftOf="@+id/syllableFrame4"
+        app:layout_constraintRight_toRightOf="@+id/syllableFrame4"
+        app:layout_constraintTop_toTopOf="@+id/syllableFrame4" />
 
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" >
-
-                <ImageView
-                    android:id="@+id/syllableFrame2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@string/strNone"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/frm_cs02_on" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/syllableHand2"
-                    android:src="@drawable/btn_hand_2"
-                    android:layout_marginLeft="@dimen/cs02_syllable_hand_sides"
-                    android:layout_marginRight="@dimen/cs02_syllable_hand_sides"
-                    android:layout_marginTop="@dimen/cs02_syllable_hand_top_bottom"
-                    android:layout_marginBottom="@dimen/cs02_syllable_hand_top_bottom"
-                    />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" >
-
-                <ImageView
-                    android:id="@+id/syllableFrame3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@string/strNone"
-                    android:src="@drawable/frm_cs02_off" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/syllableHand3"
-                    android:src="@drawable/btn_hand_3"
-                    android:layout_marginLeft="@dimen/cs02_syllable_hand_sides"
-                    android:layout_marginRight="@dimen/cs02_syllable_hand_sides"
-                    android:layout_marginTop="@dimen/cs02_syllable_hand_top_bottom"
-                    android:layout_marginBottom="@dimen/cs02_syllable_hand_top_bottom"/>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" >
-
-                <ImageView
-                    android:id="@+id/syllableFrame4"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:adjustViewBounds="false"
-                    android:contentDescription="@string/strNone"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/frm_cs02_off" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/syllableHand4"
-                    android:src="@drawable/btn_hand_4"
-                    android:layout_marginLeft="@dimen/cs02_syllable_hand_sides"
-                    android:layout_marginRight="@dimen/cs02_syllable_hand_sides"
-                    android:layout_marginTop="@dimen/cs02_syllable_hand_top_bottom"
-                    android:layout_marginBottom="@dimen/cs02_syllable_hand_top_bottom"/>
-
-            </RelativeLayout>
-        </LinearLayout>
-    </LinearLayout>
-
-</FrameLayout>
+</android.support.constraint.ConstraintLayout>

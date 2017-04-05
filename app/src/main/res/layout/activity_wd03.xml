@@ -1,347 +1,348 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
 
     android:id="@+id/Activity_BaseFrame"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_yellow_fish_in_sea" >
 
-    <LinearLayout
+
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <include
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.23"
-            layout="@layout/activity_top_area" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.3"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/activityMainPartSecond">
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".23"/>
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:id="@+id/activityMainPartSecond"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="1.2" >
+            android:orientation="horizontal"
+            android:padding="6dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/frame0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight=".15">
+
+            <include
+                layout="@layout/activity_top_area"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.08" />
+
+        <ImageView
+            android:id="@+id/frame0"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerHorizontal="true"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/none"
+            android:scaleType="fitXY"
+            android:src="@drawable/frm_lt04"
+            app:layout_constraintBottom_toTopOf="@id/guidelineBottom"
+            app:layout_constraintLeft_toLeftOf="@+id/guidelineLeft"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineRight"
+            app:layout_constraintTop_toBottomOf="@+id/activityMainPartSecond"
+            app:layout_constraintVertical_weight="1" />
+
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.92" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineBottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.98" />
+
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineTopBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.22" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineLeftInner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.12" />
+
+
+        <RelativeLayout
+            android:id="@+id/box1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/box4"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toLeftOf="@+id/guidelineLeftInner"
+            app:layout_constraintRight_toLeftOf="@+id/box2"
+            app:layout_constraintTop_toTopOf="@+id/guidelineTopBox"
+            app:layout_constraintVertical_weight="1">
+
+            <ImageView
+                android:id="@+id/frame1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/lt04_text_image_margin"
+                android:contentDescription="@string/none"
+                android:src="@drawable/rounded_image" />
+
+            <TextView
+                android:id="@+id/word1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="false"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/strRandomLetter"
+                android:textColor="@color/normalBlack"
+                android:textSize="@dimen/letterSetOf4Boxes" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/box2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/box5"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/box1"
+            app:layout_constraintRight_toLeftOf="@+id/box3"
+            app:layout_constraintTop_toTopOf="@+id/guidelineTopBox"
+            app:layout_constraintVertical_weight="1">
+
+            <ImageView
+                android:id="@+id/frame2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/lt04_text_image_margin"
+                android:contentDescription="@string/none"
+                android:src="@drawable/rounded_image" />
+
+            <TextView
+                android:id="@+id/word2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/strRandomLetter"
+                android:textColor="@color/normalBlack"
+                android:textSize="@dimen/letterSetOf4Boxes" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/box3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/box6"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/box2"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineRightInner"
+            app:layout_constraintTop_toTopOf="@+id/guidelineTopBox"
+            app:layout_constraintVertical_weight="1">
+
+            <ImageView
+                android:id="@+id/frame3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/lt04_text_image_margin"
+                android:contentDescription="@string/none"
+                android:src="@drawable/rounded_image" />
+
+            <TextView
+                android:id="@+id/word3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/strRandomLetter"
+                android:textColor="@color/normalBlack"
+                android:textSize="@dimen/letterSetOf4Boxes" />
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/box4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineBottomInner"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toLeftOf="@+id/guidelineLeftInner"
+            app:layout_constraintRight_toLeftOf="@+id/box5"
+            app:layout_constraintTop_toBottomOf="@+id/box1"
+            app:layout_constraintVertical_weight="1">
+
+            <ImageView
+                android:id="@+id/frame4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/lt04_text_image_margin"
+                android:contentDescription="@string/none"
+                android:src="@drawable/rounded_border_chosen" />
+
+            <TextView
+                android:id="@+id/word4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/strRandomLetter"
+                android:textColor="@color/normalBlack"
+                android:textSize="@dimen/letterSetOf4Boxes" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/box5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineBottomInner"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@id/box4"
+            app:layout_constraintRight_toLeftOf="@+id/box6"
+            app:layout_constraintTop_toBottomOf="@+id/box2"
+            app:layout_constraintVertical_weight="1">
+
+            <ImageView
+                android:id="@+id/frame5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/lt04_text_image_margin"
+                android:contentDescription="@string/none"
+                android:src="@drawable/rounded_border_chosen" />
+
+            <TextView
+                android:id="@+id/word5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/strRandomLetter"
+                android:textColor="@color/normalBlack"
+                android:textSize="@dimen/letterSetOf4Boxes" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/box6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineBottomInner"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/box5"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineRightInner"
+            app:layout_constraintTop_toBottomOf="@+id/box3"
+            app:layout_constraintVertical_weight="1">
+
+            <ImageView
+                android:id="@+id/frame6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/lt04_text_image_margin"
+                android:contentDescription="@string/none"
+                android:src="@drawable/rounded_image" />
+
+            <TextView
+                android:id="@+id/word6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/strRandomLetter"
+                android:textColor="@color/normalBlack"
+                android:textSize="@dimen/letterSetOf4Boxes" />
+
+
+        </RelativeLayout>
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineBottomInner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.88" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineRightInner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.88" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineTopIcons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.47" />
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/guidelineTopIcons">
+
+
+            <ImageView
+                android:id="@+id/micDude"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom|end"
+                android:layout_weight="1"
+                android:adjustViewBounds="false"
+                android:scaleType="fitStart"
+                android:baselineAlignBottom="false"
+                android:contentDescription="@string/none"
+                android:src="@drawable/btn_dude_underwater" />
 
             <Space
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight=".15"/>
+                android:layout_weight="2" />
 
-            <RelativeLayout
+
+            <ImageView
+                android:id="@+id/btnValidate"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:visibility="visible"
-                android:background="@drawable/frm_lt04"
-                android:id="@+id/lettersBox">
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="@dimen/lg04_side_margin"
-                    android:id="@+id/wordsBox">
-
-                    <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight=".1"/>
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:baselineAligned="false">
-
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight=".1"/>
-
-                        <RelativeLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1" >
-
-                            <ImageView
-                                android:id="@+id/frame1"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_margin="@dimen/lt04_text_image_margin"
-                                android:src="@drawable/rounded_image" />
-
-                            <TextView
-                                android:id="@+id/word1"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:contentDescription="@string/strRandomLetter"
-                                android:gravity="center_vertical|center_horizontal"
-                                android:text="@string/strRandomLetter"
-                                android:textColor="@color/normalBlack"
-                                android:textSize="@dimen/letterSetOf4Boxes"
-                                />
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1" >
-
-                            <ImageView
-                                android:id="@+id/frame2"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_margin="@dimen/lt04_text_image_margin"
-                                android:src="@drawable/rounded_border_unchosen" />
-
-                            <TextView
-                                android:id="@+id/word2"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:contentDescription="@string/strRandomLetter"
-                                android:gravity="center_vertical|center_horizontal"
-                                android:text="@string/strRandomLetter"
-                                android:textColor="@color/normalBlack"
-                                android:textSize="@dimen/letterSetOf4Boxes"
-                                />
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1" >
-
-                            <ImageView
-                                android:id="@+id/frame3"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_margin="@dimen/lt04_text_image_margin"
-                                android:src="@drawable/rounded_border_incorrect" />
-
-                            <TextView
-                                android:id="@+id/word3"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:contentDescription="@string/strRandomLetter"
-                                android:gravity="center_vertical|center_horizontal"
-                                android:text="@string/strRandomLetter"
-                                android:textColor="@color/normalBlack"
-                                android:textSize="@dimen/letterSetOf4Boxes"
-                                />
-
-                        </RelativeLayout>
-
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight=".1"/>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:baselineAligned="false">
-
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight=".1"/>
-
-                        <RelativeLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1" >
-
-                            <ImageView
-                                android:id="@+id/frame4"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_margin="@dimen/lt04_text_image_margin"
-                                android:src="@drawable/rounded_border_correct" />
-
-                            <TextView
-                                android:id="@+id/word4"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:contentDescription="@string/strRandomLetter"
-                                android:gravity="center_vertical|center_horizontal"
-                                android:text="@string/strRandomLetter"
-                                android:textColor="@color/normalBlack"
-                                android:textSize="@dimen/letterSetOf4Boxes"
-                                />
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1" >
-
-                            <ImageView
-                                android:id="@+id/frame5"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_margin="@dimen/lt04_text_image_margin"
-                                android:src="@drawable/rounded_border_chosen" />
-
-                            <TextView
-                                android:id="@+id/word5"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:contentDescription="@string/strRandomLetter"
-                                android:gravity="center_vertical|center_horizontal"
-                                android:text="@string/strRandomLetter"
-                                android:textColor="@color/normalBlack"
-                                android:textSize="@dimen/letterSetOf4Boxes"
-                                />
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1" >
-
-                            <ImageView
-                                android:id="@+id/frame6"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_margin="@dimen/lt04_text_image_margin"
-                                android:src="@drawable/rounded_border_unchosen" />
-
-                            <TextView
-                                android:id="@+id/word6"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:contentDescription="@string/strRandomLetter"
-                                android:gravity="center_vertical|center_horizontal"
-                                android:text="@string/strRandomLetter"
-                                android:textColor="@color/normalBlack"
-                                android:textSize="@dimen/letterSetOf4Boxes"
-                                />
-
-                        </RelativeLayout>
-
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight=".1"/>
-
-                    </LinearLayout>
-
-                    <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight=".1"/>
-
-                </LinearLayout>
-            </RelativeLayout>
-
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".15"/>
-        </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".1"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/activityMainPart">
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".7"/>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.1" >
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".05"/>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <ImageView
-                    android:id="@+id/micDude"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:contentDescription="@string/none"
-                    android:src="@drawable/btn_dude_underwater"
-                    android:scaleType="fitEnd"
-                    android:adjustViewBounds="true" />
-            </RelativeLayout>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"/>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <ImageView
-                    android:id="@+id/btnValidate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:contentDescription="@string/none"
-                    android:src="@drawable/btn_validate_off_bottom_space"
-                    android:layout_alignParentBottom="true"
-                    android:scaleType="fitEnd" />
-            </RelativeLayout>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".05"/>
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/none"
+                android:scaleType="fitEnd"
+                android:src="@drawable/btn_validate_no_ok_bottom_space" />
 
         </LinearLayout>
 
-    </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
 
 </FrameLayout>

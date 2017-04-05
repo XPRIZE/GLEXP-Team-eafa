@@ -1,163 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_cs01"
     >
-    <LinearLayout
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:background="@drawable/bg_cs01"
+        >
 
-        <include
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.23"
-            layout="@layout/activity_top_area" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.3"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/activityMainPartSecond">
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".2" />
 
         <LinearLayout
+            android:id="@+id/activityMainPartSecond"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.3">
+            android:visibility="visible"
+            android:padding="6dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btnMicDude"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintVertical_weight=".15">
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".05"/>
-
-            <ImageView
-                android:id="@+id/btnMicDude"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:adjustViewBounds="true"
-                android:contentDescription="@string/none"
-                android:scaleType="fitCenter"
-                android:src="@drawable/btn_dude_cs01"
-                android:layout_weight="1" />
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".06"/>
-
-            <ImageView
-                android:id="@+id/btnValidate"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentTop="true"
-                android:contentDescription="@string/strNone"
-                android:scaleType="fitStart"
-                android:src="@drawable/btn_validate_on_mic"
-                android:layout_weight="1" />
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".05"/>
-
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/activityMainPart">
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2.25" />
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:id="@+id/tableRow"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" >
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".1" />
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/syllables1"
-                    android:src="@drawable/rounded_cs01_unchosen" />
-            </RelativeLayout>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".1" />
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/syllables2"
-                    android:src="@drawable/rounded_cs01_unchosen" />
-            </RelativeLayout>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".1" />
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/syllables3"
-                    android:src="@drawable/rounded_cs01_unchosen" />
-            </RelativeLayout>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".1" />
+            <include
+                layout="@layout/activity_top_area"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".15" />
 
-    </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/btnMicDude"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            android:contentDescription="@string/none"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btn_dude_cs01"
+            app:layout_constraintTop_toBottomOf="@+id/activityMainPartSecond"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/guideline4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="1.0" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5"
+            tools:layout_editor_absoluteY="0dp"
+            tools:layout_editor_absoluteX="640dp" />
+
+        <ImageView
+            android:id="@+id/btnValidate"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/strNone"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btn_validate_on_mic"
+            app:layout_constraintTop_toBottomOf="@+id/activityMainPartSecond"
+            app:layout_constraintLeft_toRightOf="@+id/btnMicDude"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guidelineBottom"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.7" />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/syllables1"
+            android:layout_margin="16dp"
+            android:src="@drawable/rounded_cs01_unchosen"
+            app:layout_constraintTop_toBottomOf="@+id/guidelineBottom"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/syllables2"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/syllables2"
+            android:layout_margin="16dp"
+            android:src="@drawable/rounded_cs01_unchosen"
+            app:layout_constraintTop_toBottomOf="@+id/guidelineBottom"
+            app:layout_constraintLeft_toRightOf="@+id/syllables1"
+            app:layout_constraintRight_toLeftOf="@+id/syllables3"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/syllables3"
+            android:layout_margin="16dp"
+            android:src="@drawable/rounded_cs01_unchosen"
+            app:layout_constraintTop_toBottomOf="@+id/guidelineBottom"
+            app:layout_constraintLeft_toRightOf="@+id/syllables2"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </android.support.constraint.ConstraintLayout>
+
+
+
+
 
 </FrameLayout>

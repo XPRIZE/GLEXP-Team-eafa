@@ -12,7 +12,7 @@
     <string name="strGuestUser">Guest</string>
     <string name="activity_icon">Activity Icon</string>
     <string name="strLeaveApp">You are about to leave the app</string>
-
+    <string name="loadingCapital">LOADING</string>
     <string name="strWouldYouLieToLeave">Would You Like To Leave?</string>
 
     <string name="strYes">Yes</string>

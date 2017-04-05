@@ -17,6 +17,7 @@ import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -89,14 +90,6 @@ public class Activities_Platform extends ActivitiesMasterParent
 
        getLoaderManager().initLoader(Constants.UPDATE_LEVELS, null, this);
 
-        findViewById(R.id.activityIconArea1).setVisibility(ImageView.INVISIBLE);
-        findViewById(R.id.activityIconArea2).setVisibility(ImageView.INVISIBLE);
-        findViewById(R.id.activityIconArea3).setVisibility(ImageView.INVISIBLE);
-        findViewById(R.id.activityIconArea4).setVisibility(ImageView.INVISIBLE);
-        findViewById(R.id.activityIconArea5).setVisibility(ImageView.INVISIBLE);
-        findViewById(R.id.activityIconArea6).setVisibility(ImageView.INVISIBLE);
-        findViewById(R.id.activityIconArea7).setVisibility(ImageView.GONE);
-        findViewById(R.id.activityIconArea8).setVisibility(ImageView.GONE);
 
 
 
@@ -519,11 +512,10 @@ public class Activities_Platform extends ActivitiesMasterParent
             switch(i){
                 default:
                 case 0:{
-                     findViewById(R.id.activityIconArea1).setVisibility(ImageView.VISIBLE);
                     findViewById(R.id.activityIcon1).setTag(mCurrentActivities.get(i));
                     if(mCurrentActivities.get(i).get(3).equals("0")){
                         findViewById(R.id.activityIcon1).setAlpha(0.5f);
-                        findViewById(R.id.activityReward1).setVisibility(LinearLayout.INVISIBLE);
+                        findViewById(R.id.rewardCup1).setVisibility(ImageView.INVISIBLE);
                     }else{
                         findViewById(R.id.activityIcon1).setAlpha(1.0f);
                         if(((mCurrentGSP.get("group_id").equals("4") ||
@@ -540,15 +532,15 @@ public class Activities_Platform extends ActivitiesMasterParent
                             if(mCurrentGSP.get("section_id").equals("11") ||
                                     mCurrentGSP.get("section_id").equals("8") /* ||
                                     mCurrentGSP.get("section_id").equals("23")*/){
-                                findViewById(R.id.activityReward1)
-                                        .setVisibility(LinearLayout.VISIBLE);
+                                findViewById(R.id.rewardCup1)
+                                        .setVisibility(ImageView.VISIBLE);
                             }else {
-                                findViewById(R.id.activityReward1)
-                                        .setVisibility(LinearLayout.INVISIBLE);
+                                findViewById(R.id.rewardCup1)
+                                        .setVisibility(ImageView.INVISIBLE);
                             }
                         }else{
-                            findViewById(R.id.activityReward1)
-                                    .setVisibility(LinearLayout.INVISIBLE);
+                            findViewById(R.id.rewardCup1)
+                                    .setVisibility(ImageView.INVISIBLE);
                         }
                     }
 
@@ -563,11 +555,10 @@ public class Activities_Platform extends ActivitiesMasterParent
                     break;
                 }
                 case 1:{
-                     findViewById(R.id.activityIconArea2).setVisibility(ImageView.VISIBLE);
                      findViewById(R.id.activityIcon2).setTag(mCurrentActivities.get(i));
                     if(mCurrentActivities.get(i).get(3).equals("0")){
                         findViewById(R.id.activityIcon2).setAlpha(0.5f);
-                        findViewById(R.id.activityReward2).setVisibility(LinearLayout.INVISIBLE);
+                        findViewById(R.id.rewardCup2).setVisibility(ImageView.INVISIBLE);
                     }else{
                         findViewById(R.id.activityIcon2).setAlpha(1.0f);
                         if(((mCurrentGSP.get("group_id").equals("4")
@@ -581,9 +572,9 @@ public class Activities_Platform extends ActivitiesMasterParent
                                 || (Integer.parseInt(mCurrentActivities.get(i).get(5))
                                 >=Constants.INA_ROW_CORRECT)
                                 && !mCurrentGSP.get("group_id").equals("8")){
-                            findViewById(R.id.activityReward2).setVisibility(LinearLayout.VISIBLE);
+                            findViewById(R.id.rewardCup2).setVisibility(ImageView.VISIBLE);
                         }else{
-                            findViewById(R.id.activityReward2).setVisibility(LinearLayout.INVISIBLE);
+                            findViewById(R.id.rewardCup2).setVisibility(ImageView.INVISIBLE);
                         }
                     }
 
@@ -598,19 +589,18 @@ public class Activities_Platform extends ActivitiesMasterParent
                     break;
                 }
                 case 2:{
-                     findViewById(R.id.activityIconArea3).setVisibility(ImageView.VISIBLE);
                      findViewById(R.id.activityIcon3).setTag(mCurrentActivities.get(i));
                     if(mCurrentActivities.get(i).get(3).equals("0")){
                         findViewById(R.id.activityIcon3).setAlpha(0.5f);
-                        findViewById(R.id.activityReward3).setVisibility(LinearLayout.INVISIBLE);
+                        findViewById(R.id.rewardCup3).setVisibility(ImageView.INVISIBLE);
                     }else{
                         findViewById(R.id.activityIcon3).setAlpha(1.0f);
                         if(visibleReward(i)){
-                            findViewById(R.id.activityReward3)
-                                    .setVisibility(LinearLayout.VISIBLE);
+                            findViewById(R.id.rewardCup3)
+                                    .setVisibility(ImageView.VISIBLE);
                         }else{
-                            findViewById(R.id.activityReward3)
-                                    .setVisibility(LinearLayout.INVISIBLE);
+                            findViewById(R.id.rewardCup3)
+                                    .setVisibility(ImageView.INVISIBLE);
                         }
                     }
 
@@ -626,11 +616,10 @@ public class Activities_Platform extends ActivitiesMasterParent
                 }
                 case 3:{
 
-                     findViewById(R.id.activityIconArea4).setVisibility(ImageView.VISIBLE);
                      findViewById(R.id.activityIcon4).setTag(mCurrentActivities.get(i));
                     if(mCurrentActivities.get(i).get(3).equals("0")){
                         findViewById(R.id.activityIcon4).setAlpha(0.5f);
-                        findViewById(R.id.activityReward4).setVisibility(LinearLayout.INVISIBLE);
+                        findViewById(R.id.rewardCup4).setVisibility(ImageView.INVISIBLE);
                     }else{
                         findViewById(R.id.activityIcon4).setAlpha(1.0f);
                         if(((mCurrentGSP.get("group_id").equals("4") ||
@@ -644,11 +633,11 @@ public class Activities_Platform extends ActivitiesMasterParent
                                 || (Integer.parseInt(mCurrentActivities.get(i).get(5))
                                 >=Constants.INA_ROW_CORRECT)
                                 && !mCurrentGSP.get("group_id").equals("8")){
-                            findViewById(R.id.activityReward4)
-                                    .setVisibility(LinearLayout.VISIBLE);
+                            findViewById(R.id.rewardCup4)
+                                    .setVisibility(ImageView.VISIBLE);
                         }else{
-                            findViewById(R.id.activityReward4)
-                                    .setVisibility(LinearLayout.INVISIBLE);
+                            findViewById(R.id.rewardCup4)
+                                    .setVisibility(ImageView.INVISIBLE);
                         }
                     }
 
@@ -664,11 +653,10 @@ public class Activities_Platform extends ActivitiesMasterParent
                     break;
                 }
                 case 4:{
-                     findViewById(R.id.activityIconArea5).setVisibility(ImageView.VISIBLE);
                      findViewById(R.id.activityIcon5).setTag(mCurrentActivities.get(i));
                     if(mCurrentActivities.get(i).get(3).equals("0")){
                         findViewById(R.id.activityIcon5).setAlpha(0.5f);
-                        findViewById(R.id.activityReward5).setVisibility(LinearLayout.INVISIBLE);
+                        findViewById(R.id.rewardCup5).setVisibility(ImageView.INVISIBLE);
                     }else{
                         findViewById(R.id.activityIcon5).setAlpha(1.0f);
                         if(((mCurrentGSP.get("group_id").equals("4") ||
@@ -682,10 +670,10 @@ public class Activities_Platform extends ActivitiesMasterParent
                                 || (Integer.parseInt(mCurrentActivities.get(i).get(5))
                                 >=Constants.INA_ROW_CORRECT)
                                 && !mCurrentGSP.get("group_id").equals("8")){
-                            findViewById(R.id.activityReward5).setVisibility(LinearLayout.VISIBLE);
+                            findViewById(R.id.rewardCup5).setVisibility(ImageView.VISIBLE);
                         }else{
-                            findViewById(R.id.activityReward5)
-                                    .setVisibility(LinearLayout.INVISIBLE);
+                            findViewById(R.id.rewardCup5)
+                                    .setVisibility(ImageView.INVISIBLE);
                         }
                     }
 
@@ -700,7 +688,6 @@ public class Activities_Platform extends ActivitiesMasterParent
                     break;
                 }
                 case 5:{
-                     findViewById(R.id.activityIconArea6).setVisibility(ImageView.VISIBLE);
                     if(mCurrentActivities.get(5).get(0).equals("59")
                             && Integer.parseInt(mCurrentGSP.get("current_level"))<7){
                         mCurrentActivities.get(i).set(3,"0");
@@ -710,7 +697,7 @@ public class Activities_Platform extends ActivitiesMasterParent
                             || (mCurrentActivities.get(i).get(0).equals("59")
                             && Integer.parseInt(mCurrentGSP.get("current_level"))<7)){
                         findViewById(R.id.activityIcon6).setAlpha(0.5f);
-                        findViewById(R.id.activityReward6).setVisibility(LinearLayout.INVISIBLE);
+                        findViewById(R.id.rewardCup6).setVisibility(ImageView.INVISIBLE);
                     }else{
                         findViewById(R.id.activityIcon6).setAlpha(1.0f);
 
@@ -727,9 +714,9 @@ public class Activities_Platform extends ActivitiesMasterParent
                                 >=Constants.INA_ROW_CORRECT)
                                 && !mCurrentGSP.get("group_id").equals("8")){
 
-                            findViewById(R.id.activityReward6).setVisibility(LinearLayout.VISIBLE);
+                            findViewById(R.id.rewardCup6).setVisibility(ImageView.VISIBLE);
                         }else{
-                            findViewById(R.id.activityReward6).setVisibility(LinearLayout.INVISIBLE);
+                            findViewById(R.id.rewardCup6).setVisibility(ImageView.INVISIBLE);
                         }
                     }
 
@@ -744,47 +731,7 @@ public class Activities_Platform extends ActivitiesMasterParent
                     break;
                 }
 
-                case 6:{
-                    findViewById(R.id.activityIconArea7).setVisibility(ImageView.VISIBLE);
-                    findViewById(R.id.activityIconArea8).setVisibility(ImageView.INVISIBLE);
-                    findViewById(R.id.activityIcon8).setAlpha(0.0f);
-                    findViewById(R.id.activityIcon7).setTag(mCurrentActivities.get(i));
 
-                    findViewById(R.id.activityReward8).setVisibility(LinearLayout.INVISIBLE);
-
-                    if(mCurrentActivities.get(i).get(3).equals("0")){
-                        findViewById(R.id.activityIcon7).setAlpha(0.5f);
-                        findViewById(R.id.activityReward7).setVisibility(LinearLayout.INVISIBLE);
-                    }else{
-                        findViewById(R.id.activityIcon7).setAlpha(1.0f);
-                        if(((mCurrentGSP.get("group_id").equals("4") ||
-                                mCurrentGSP.get("group_id").equals("6")
-                                || mCurrentGSP.get("group_id").equals("3"))&&
-                                Integer.parseInt(mCurrentActivities.get(i).get(5))
-                                        >=Constants.INA_ROW_CORRECT_WORDS)
-                                || (mCurrentGSP.get("group_id").equals("8")
-                                && Integer.parseInt(mCurrentActivities.get(i).get(5))
-                                >=Constants.MATH_OPERATIONS_INA_ROW_CORRECT)
-                                || (Integer.parseInt(mCurrentActivities.get(i).get(5))
-                                >=Constants.INA_ROW_CORRECT)
-                                && !mCurrentGSP.get("group_id").equals("8")){
-                            findViewById(R.id.activityReward7).setVisibility(LinearLayout.VISIBLE);
-                        }else{
-                            findViewById(R.id.activityReward7)
-                                    .setVisibility(LinearLayout.INVISIBLE);
-                        }
-                    }
-
-                    try{
-                        field = res.getField(imageName);
-                        drawableId = field.getInt(null);
-                        ((ImageView) findViewById(R.id.activityIcon7)).setImageResource(drawableId);
-
-                    }catch (Exception e) {
-                        Log.e("MyTag", "Failure to get drawable id.", e);
-                    }
-                    break;
-                }
 
             }//end switch(i){
         }//end for(int i=0; i<mCurrentActivities.size(); i++){
@@ -867,14 +814,6 @@ public class Activities_Platform extends ActivitiesMasterParent
             }
         });
 
-        findViewById(R.id.activityIcon7).setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                ArrayList<String> mTempArray = new ArrayList<String>((ArrayList<String>) findViewById(R.id.activityIcon7).getTag());
-                if (mTempArray.get(3).equals("1")) {
-                    processActivityButton(mTempArray.get(0));
-                }
-            }
-        });
 
 
     }

@@ -1,183 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg_desert_with_cactus"
-    >
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
 
-    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:background="@drawable/bg_desert_with_cactus">
 
-        <include
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/topIcons"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="0.23"
-            layout="@layout/activity_top_area" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.3"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/activityMainPartSecond">
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".1"/>
-
-        <TableRow
             android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
+            android:padding="6dp"
+            android:visibility="visible"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight=".15"
+            app:layout_constraintBottom_toTopOf="@+id/iconSpace">
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
+            <include
+                layout="@layout/activity_top_area"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/btnValidate"
-                    android:src="@drawable/btn_validate_no_ok" />
-            </RelativeLayout>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
-
-        </TableRow>
+        </LinearLayout>
 
         <Space
-            android:layout_width="match_parent"
+            android:id="@+id/iconSpace"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="1.8"/>
+            app:layout_constraintTop_toBottomOf="@+id/topIcons"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintVertical_weight="1" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/activityMainPart">
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/btnValidate"
+            android:src="@drawable/btn_validate_no_ok"
+            android:layout_margin="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/validateSpace"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight="0.55"/>
 
         <Space
-            android:layout_width="match_parent"
+            android:id="@+id/validateSpace"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="1" />
+            app:layout_constraintTop_toBottomOf="@+id/btnValidate"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintVertical_weight="1" />
 
-        <TableRow
-            android:layout_width="match_parent"
+        <Space
+            android:id="@+id/boxSpace"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="2">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/numberBox1"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintVertical_weight=".3" />
 
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/frm_qn04_off"
+            android:id="@+id/numberBox1"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/boxSpace"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/innerSpace"
+            app:layout_constraintVertical_weight="1" />
+        <com.motoli.apps.allsubjects.MathOperationDots
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/shape1"
+            android:tag="99"
+            android:layout_margin="90dp"
+            app:layout_constraintLeft_toLeftOf="@+id/numberBox1"
+            app:layout_constraintBottom_toBottomOf="@+id/numberBox1"
+            app:layout_constraintTop_toTopOf="@+id/numberBox1"
+            app:layout_constraintRight_toRightOf="@+id/numberBox1"/>
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/frm_qn04_off"
-                    android:scaleType="fitCenter"
-                    android:id="@+id/numberBox1"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/number1"
+            android:text="@string/ninetyNine"
+            android:textColor="@color/normalBlack"
+            android:textStyle="normal"
+            android:gravity="center_vertical|center_horizontal"
+            android:textSize="@dimen/qn_massive_numbers"
+            app:layout_constraintLeft_toLeftOf="@+id/numberBox1"
+            app:layout_constraintBottom_toBottomOf="@+id/numberBox1"
+            app:layout_constraintTop_toTopOf="@+id/numberBox1"
+            app:layout_constraintRight_toRightOf="@+id/numberBox1"/>
 
-                <com.motoli.apps.allsubjects.MathOperationDots
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/shape1"
-                    android:tag="9"
-                    android:layout_marginLeft="@dimen/qn04_sides_dots_margin"
-                    android:layout_marginRight="@dimen/qn04_sides_dots_margin"
-                    android:layout_marginTop="@dimen/qn04_top_dots_margin"
-                    android:layout_marginBottom="@dimen/qn04_bottom_dots_margin"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/number1"
-                    android:text="@string/ninetyNine"
-                    android:textColor="@color/normalBlack"
-                    android:textStyle="normal"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:textSize="@dimen/qn_massive_numbers"
-                    />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/shapeSpace1"
+            android:layout_margin="@dimen/qn04_shape_space_margin"
+            app:layout_constraintLeft_toLeftOf="@+id/numberBox1"
+            app:layout_constraintBottom_toBottomOf="@+id/numberBox1"
+            app:layout_constraintTop_toTopOf="@+id/numberBox1"
+            app:layout_constraintRight_toRightOf="@+id/numberBox1"/>
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/shapeSpace1"
-                    android:layout_margin="@dimen/qn04_shape_space_margin"/>
-            </RelativeLayout>
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".3"
-                />
+        <Space
+            android:id="@+id/innerSpace"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintHorizontal_weight="0.2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/numberBox1"
+            app:layout_constraintRight_toLeftOf="@+id/numberBox2" />
 
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:src="@drawable/frm_qn04_on_right"
-                    android:scaleType="fitCenter"
-                    android:id="@+id/numberBox2"/>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/frm_qn04_off"
+            android:scaleType="fitCenter"
+            android:id="@+id/numberBox2"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/innerSpace"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/boxSpace"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_weight="1" />
 
-                <com.motoli.apps.allsubjects.MathOperationDots
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/shape2"
-                    android:tag="99"
-                    android:layout_marginLeft="@dimen/qn04_sides_dots_margin"
-                    android:layout_marginRight="@dimen/qn04_sides_dots_margin"
-                    android:layout_marginTop="@dimen/qn04_top_dots_margin"
-                    android:layout_marginBottom="@dimen/qn04_bottom_dots_margin"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/number2"
-                    android:text="@string/ninetyNine"
-                    android:textColor="@color/normalBlack"
-                    android:textStyle="normal"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:textSize="@dimen/qn_massive_numbers"
-                    />
+        <com.motoli.apps.allsubjects.MathOperationDots
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/shape2"
+            android:tag="9"
+            android:layout_margin="90dp"
+            app:layout_constraintLeft_toLeftOf="@+id/numberBox2"
+            app:layout_constraintBottom_toBottomOf="@+id/numberBox2"
+            app:layout_constraintTop_toTopOf="@+id/numberBox2"
+            app:layout_constraintRight_toRightOf="@+id/numberBox2"/>
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/shapeSpace2"
-                    android:layout_margin="@dimen/qn04_shape_space_margin"
-                    />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/number2"
+            android:text="@string/ninetyNine"
+            android:textColor="@color/normalBlack"
+            android:textStyle="normal"
+            android:gravity="center_vertical|center_horizontal"
+            android:textSize="@dimen/qn_massive_numbers"
+            app:layout_constraintLeft_toLeftOf="@+id/numberBox2"
+            app:layout_constraintBottom_toBottomOf="@+id/numberBox2"
+            app:layout_constraintTop_toTopOf="@+id/numberBox2"
+            app:layout_constraintRight_toRightOf="@+id/numberBox2"/>
 
-            </RelativeLayout>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/shapeSpace2"
+            android:layout_margin="@dimen/qn04_shape_space_margin"
+            app:layout_constraintLeft_toLeftOf="@+id/numberBox2"
+            app:layout_constraintBottom_toBottomOf="@+id/numberBox2"
+            app:layout_constraintTop_toTopOf="@+id/numberBox2"
+            app:layout_constraintRight_toRightOf="@+id/numberBox2"/>
 
-        </TableRow>
 
-    </LinearLayout>
-
-</FrameLayout>
+    </android.support.constraint.ConstraintLayout>

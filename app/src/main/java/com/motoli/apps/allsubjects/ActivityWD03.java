@@ -59,7 +59,13 @@ public class ActivityWD03 extends ActivitiesMasterParent
         clearActivity();
 
 
-        findViewById(R.id.wordsBox).setVisibility(TableLayout.INVISIBLE);
+        findViewById(R.id.frame0).setVisibility(ImageView.INVISIBLE);
+        findViewById(R.id.box1).setVisibility(RelativeLayout.INVISIBLE);
+        findViewById(R.id.box2).setVisibility(RelativeLayout.INVISIBLE);
+        findViewById(R.id.box3).setVisibility(RelativeLayout.INVISIBLE);
+        findViewById(R.id.box4).setVisibility(RelativeLayout.INVISIBLE);
+        findViewById(R.id.box5).setVisibility(RelativeLayout.INVISIBLE);
+        findViewById(R.id.box6).setVisibility(RelativeLayout.INVISIBLE);
 
         ((TextView) findViewById(R.id.word1)).setTypeface(appData.getCurrentFontType());
         ((TextView) findViewById(R.id.word2)).setTypeface(appData.getCurrentFontType());
@@ -109,11 +115,14 @@ public class ActivityWD03 extends ActivitiesMasterParent
     ///////////////////////////////////////////////////////////////////////////////////////////////////
 
     protected void displayScreen(){
-        findViewById(R.id.wordsBox)
-                .setVisibility(LinearLayout.VISIBLE);
-        findViewById(R.id.wordsBox)
-                .setAnimation(AnimationUtils.loadAnimation(
-                        getApplicationContext(), R.anim.fade_in));
+        findViewById(R.id.frame0).setVisibility(ImageView.VISIBLE);
+        findViewById(R.id.box1).setVisibility(RelativeLayout.VISIBLE);
+        findViewById(R.id.box2).setVisibility(RelativeLayout.VISIBLE);
+        findViewById(R.id.box3).setVisibility(RelativeLayout.VISIBLE);
+        findViewById(R.id.box4).setVisibility(RelativeLayout.VISIBLE);
+        findViewById(R.id.box5).setVisibility(RelativeLayout.VISIBLE);
+        findViewById(R.id.box6).setVisibility(RelativeLayout.VISIBLE);
+
         wordStatus=new ArrayList<String>();
         for(int i=0; i<6;i++){
             wordStatus.add("0");

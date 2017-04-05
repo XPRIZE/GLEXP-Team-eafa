@@ -26,7 +26,7 @@
     <color name="theme_color">@color/primary</color>
     <color name="black">@color/primary_text</color>
     <color name="ripple">#F06292</color>
-    <color name="accent_pressed">#C2185B</color>
+    <color name="accent_pressed">#c2185b</color>
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">

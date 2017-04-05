@@ -134,89 +134,89 @@ private ArrayList<ArrayList<String>> mCurrentText;
         }
 
         if(mFontSize>=8) {
-            ((TextView) findViewById(R.id.activityText1))
+            ((TextView) findViewById(R.id.word1))
                     .setTextSize(getResources().getDimension(R.dimen.wdFifthFontSize));
-            ((TextView) findViewById(R.id.activityText2))
+            ((TextView) findViewById(R.id.word2))
                     .setTextSize(getResources().getDimension(R.dimen.wdFifthFontSize));
-            ((TextView) findViewById(R.id.activityText3))
+            ((TextView) findViewById(R.id.word3))
                     .setTextSize(getResources().getDimension(R.dimen.wdFifthFontSize));
-            ((TextView) findViewById(R.id.activityText4))
+            ((TextView) findViewById(R.id.word4))
                     .setTextSize(getResources().getDimension(R.dimen.wdFifthFontSize));
-            ((TextView) findViewById(R.id.activityText5))
+            ((TextView) findViewById(R.id.word5))
                     .setTextSize(getResources().getDimension(R.dimen.wdFifthFontSize));
-            ((TextView) findViewById(R.id.activityText6))
+            ((TextView) findViewById(R.id.word6))
                     .setTextSize(getResources().getDimension(R.dimen.wdFifthFontSize));
         }else if(mFontSize>=7){
-            ((TextView) findViewById(R.id.activityText1))
+            ((TextView) findViewById(R.id.word1))
                     .setTextSize(getResources().getDimension(R.dimen.wdForthFontSize));
-            ((TextView) findViewById(R.id.activityText2))
+            ((TextView) findViewById(R.id.word2))
                     .setTextSize(getResources().getDimension(R.dimen.wdForthFontSize));
-            ((TextView) findViewById(R.id.activityText3))
+            ((TextView) findViewById(R.id.word3))
                     .setTextSize(getResources().getDimension(R.dimen.wdForthFontSize));
-            ((TextView) findViewById(R.id.activityText4))
+            ((TextView) findViewById(R.id.word4))
                     .setTextSize(getResources().getDimension(R.dimen.wdForthFontSize));
-            ((TextView) findViewById(R.id.activityText5))
+            ((TextView) findViewById(R.id.word5))
                     .setTextSize(getResources().getDimension(R.dimen.wdForthFontSize));
-            ((TextView) findViewById(R.id.activityText6))
+            ((TextView) findViewById(R.id.word6))
                     .setTextSize(getResources().getDimension(R.dimen.wdForthFontSize));
         }else if(mFontSize>=6){
-            ((TextView) findViewById(R.id.activityText1))
+            ((TextView) findViewById(R.id.word1))
                     .setTextSize(getResources().getDimension(R.dimen.wdThirdFontSize));
-            ((TextView) findViewById(R.id.activityText2))
+            ((TextView) findViewById(R.id.word2))
                     .setTextSize(getResources().getDimension(R.dimen.wdThirdFontSize));
-            ((TextView) findViewById(R.id.activityText3))
+            ((TextView) findViewById(R.id.word3))
                     .setTextSize(getResources().getDimension(R.dimen.wdThirdFontSize));
-            ((TextView) findViewById(R.id.activityText4))
+            ((TextView) findViewById(R.id.word4))
                     .setTextSize(getResources().getDimension(R.dimen.wdThirdFontSize));
-            ((TextView) findViewById(R.id.activityText5))
+            ((TextView) findViewById(R.id.word5))
                     .setTextSize(getResources().getDimension(R.dimen.wdThirdFontSize));
-            ((TextView) findViewById(R.id.activityText6))
+            ((TextView) findViewById(R.id.word6))
                     .setTextSize(getResources().getDimension(R.dimen.wdThirdFontSize));
         }else if(mFontSize>=5){
-            ((TextView) findViewById(R.id.activityText1))
+            ((TextView) findViewById(R.id.word1))
                     .setTextSize(getResources().getDimension(R.dimen.wdSecondFontSize));
-            ((TextView) findViewById(R.id.activityText2))
+            ((TextView) findViewById(R.id.word2))
                     .setTextSize(getResources().getDimension(R.dimen.wdSecondFontSize));
-            ((TextView) findViewById(R.id.activityText3))
+            ((TextView) findViewById(R.id.word3))
                     .setTextSize(getResources().getDimension(R.dimen.wdSecondFontSize));
-            ((TextView) findViewById(R.id.activityText4))
+            ((TextView) findViewById(R.id.word4))
                     .setTextSize(getResources().getDimension(R.dimen.wdSecondFontSize));
-            ((TextView) findViewById(R.id.activityText5))
+            ((TextView) findViewById(R.id.word5))
                     .setTextSize(getResources().getDimension(R.dimen.wdSecondFontSize));
-            ((TextView) findViewById(R.id.activityText6))
+            ((TextView) findViewById(R.id.word6))
                     .setTextSize(getResources().getDimension(R.dimen.wdSecondFontSize));
         }else{
-            ((TextView) findViewById(R.id.activityText1))
+            ((TextView) findViewById(R.id.word1))
                     .setTextSize(getResources().getDimension(R.dimen.wdFirstFontSize));
-            ((TextView) findViewById(R.id.activityText2))
+            ((TextView) findViewById(R.id.word2))
                     .setTextSize(getResources().getDimension(R.dimen.wdFirstFontSize));
-            ((TextView) findViewById(R.id.activityText3))
+            ((TextView) findViewById(R.id.word3))
                     .setTextSize(getResources().getDimension(R.dimen.wdFirstFontSize));
-            ((TextView) findViewById(R.id.activityText4))
+            ((TextView) findViewById(R.id.word4))
                     .setTextSize(getResources().getDimension(R.dimen.wdFirstFontSize));
-            ((TextView) findViewById(R.id.activityText5))
+            ((TextView) findViewById(R.id.word5))
                     .setTextSize(getResources().getDimension(R.dimen.wdFirstFontSize));
-            ((TextView) findViewById(R.id.activityText6))
+            ((TextView) findViewById(R.id.word6))
                     .setTextSize(getResources().getDimension(R.dimen.wdFirstFontSize));
         }
 
-        findViewById(R.id.activityText1).setTag(mCurrentText.get(0).get(0));
-        ((TextView)findViewById(R.id.activityText1)).setText(mCurrentText.get(0).get(1));
+        findViewById(R.id.word1).setTag(mCurrentText.get(0).get(0));
+        ((TextView)findViewById(R.id.word1)).setText(mCurrentText.get(0).get(1));
 
-        findViewById(R.id.activityText2).setTag(mCurrentText.get(1).get(0));
-        ((TextView)findViewById(R.id.activityText2)).setText(mCurrentText.get(1).get(1));
+        findViewById(R.id.word2).setTag(mCurrentText.get(1).get(0));
+        ((TextView)findViewById(R.id.word2)).setText(mCurrentText.get(1).get(1));
 
-        findViewById(R.id.activityText3).setTag(mCurrentText.get(2).get(0));
-        ((TextView)findViewById(R.id.activityText3)).setText(mCurrentText.get(2).get(1));
+        findViewById(R.id.word3).setTag(mCurrentText.get(2).get(0));
+        ((TextView)findViewById(R.id.word3)).setText(mCurrentText.get(2).get(1));
 
-        findViewById(R.id.activityText4).setTag(mCurrentText.get(3).get(0));
-        ((TextView)findViewById(R.id.activityText4)).setText(mCurrentText.get(3).get(1));
+        findViewById(R.id.word4).setTag(mCurrentText.get(3).get(0));
+        ((TextView)findViewById(R.id.word4)).setText(mCurrentText.get(3).get(1));
 
-        findViewById(R.id.activityText5).setTag(mCurrentText.get(4).get(0));
-        ((TextView)findViewById(R.id.activityText5)).setText(mCurrentText.get(4).get(1));
+        findViewById(R.id.word5).setTag(mCurrentText.get(4).get(0));
+        ((TextView)findViewById(R.id.word5)).setText(mCurrentText.get(4).get(1));
 
-        findViewById(R.id.activityText6).setTag(mCurrentText.get(5).get(0));
-        ((TextView)findViewById(R.id.activityText6)).setText(mCurrentText.get(5).get(1));
+        findViewById(R.id.word6).setTag(mCurrentText.get(5).get(0));
+        ((TextView)findViewById(R.id.word6)).setText(mCurrentText.get(5).get(1));
 
         mValidateAvailable=false;
         mBeingValidated=false;
@@ -262,19 +262,19 @@ private ArrayList<ArrayList<String>> mCurrentText;
     ////////////////////////////////////////////////////////////////////////////////////////////
 
     private void loadImagesAndHideText(){
-        findViewById(R.id.activityText1).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.activityText2).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.activityText3).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.activityText4).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.activityText5).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.activityText6).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.word1).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.word2).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.word3).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.word4).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.word5).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.word6).setVisibility(TextView.INVISIBLE);
 
-        findViewById(R.id.activityTextBox1).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.activityTextBox2).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.activityTextBox3).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.activityTextBox4).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.activityTextBox5).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.activityTextBox6).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.wordBox1).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.wordBox2).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.wordBox3).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.wordBox4).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.wordBox5).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.wordBox6).setVisibility(TextView.INVISIBLE);
 
 
         findViewById(R.id.image1).setVisibility(ImageButton.VISIBLE);
@@ -300,11 +300,11 @@ private ArrayList<ArrayList<String>> mCurrentText;
                     //mCurrentWordID=mCurrentText.get(0).get(0);
                     if(!mCurrentWordID.equals("")){
                         mChosenFrames.set(0, "0");
-                        mCorrect =findViewById(R.id.activityText1).getTag().equals(mCurrentWordID);
+                        mCorrect =findViewById(R.id.word1).getTag().equals(mCurrentWordID);
                         setUpFrame(0,true);
                     }else{
                         mChosenFrames.set(1, "0");
-                        mCurrentWordID=findViewById(R.id.activityText1).getTag().toString();
+                        mCurrentWordID=findViewById(R.id.word1).getTag().toString();
                         setUpFrame(0,false);
                     }
                 }
@@ -319,11 +319,11 @@ private ArrayList<ArrayList<String>> mCurrentText;
                     //mCurrentWordID=mCurrentText.get(1).get(0);
                     if(!mCurrentWordID.equals("")){
                         mChosenFrames.set(0, "1");
-                        mCorrect =findViewById(R.id.activityText2).getTag().equals(mCurrentWordID);
+                        mCorrect =findViewById(R.id.word2).getTag().equals(mCurrentWordID);
                         setUpFrame(1,true);
                     }else{
                         mChosenFrames.set(1, "1");
-                        mCurrentWordID=findViewById(R.id.activityText2).getTag().toString();
+                        mCurrentWordID=findViewById(R.id.word2).getTag().toString();
                         setUpFrame(1,false);
                     }
                 }
@@ -338,12 +338,12 @@ private ArrayList<ArrayList<String>> mCurrentText;
                     //mCurrentWordID=mCurrentText.get(2).get(0);
                     if(!mCurrentWordID.equals("")){
                         mChosenFrames.set(0, "2");
-                        mCorrect =findViewById(R.id.activityText3).getTag().equals(mCurrentWordID);
+                        mCorrect =findViewById(R.id.word3).getTag().equals(mCurrentWordID);
                         setUpFrame(2,true);
                     }else{
                         mChosenFrames.set(1, "2");
 
-                        mCurrentWordID=findViewById(R.id.activityText3).getTag().toString();
+                        mCurrentWordID=findViewById(R.id.word3).getTag().toString();
                         setUpFrame(2,false);
                     }
                 }
@@ -358,12 +358,12 @@ private ArrayList<ArrayList<String>> mCurrentText;
                     //mCurrentWordID=mCurrentText.get(3).get(0);
                     if(!mCurrentWordID.equals("")){
                         mChosenFrames.set(0, "3");
-                        mCorrect =findViewById(R.id.activityText4).getTag().equals(mCurrentWordID);
+                        mCorrect =findViewById(R.id.word4).getTag().equals(mCurrentWordID);
                         setUpFrame(3,true);
                     }else{
                         mChosenFrames.set(1, "3");
 
-                        mCurrentWordID=findViewById(R.id.activityText4).getTag().toString();
+                        mCurrentWordID=findViewById(R.id.word4).getTag().toString();
                         setUpFrame(3,false);
                     }
                 }
@@ -378,12 +378,12 @@ private ArrayList<ArrayList<String>> mCurrentText;
                     //mCurrentWordID=mCurrentText.get(4).get(0);
                     if(!mCurrentWordID.equals("")){
                         mChosenFrames.set(0, "4");
-                        mCorrect =findViewById(R.id.activityText5).getTag().equals(mCurrentWordID);
+                        mCorrect =findViewById(R.id.word5).getTag().equals(mCurrentWordID);
                         setUpFrame(4,true);
                     }else{
                         mChosenFrames.set(1, "4");
 
-                        mCurrentWordID=findViewById(R.id.activityText5).getTag().toString();
+                        mCurrentWordID=findViewById(R.id.word5).getTag().toString();
                         setUpFrame(4,false);
                     }
                 }
@@ -398,11 +398,11 @@ private ArrayList<ArrayList<String>> mCurrentText;
                     //mCurrentWordID=mCurrentText.get(5).get(0);
                     if(!mCurrentWordID.equals("")){
                         mChosenFrames.set(0, "5");
-                        mCorrect =findViewById(R.id.activityText6).getTag().equals(mCurrentWordID);
+                        mCorrect =findViewById(R.id.word6).getTag().equals(mCurrentWordID);
                         setUpFrame(5,true);
                     }else{
                         mChosenFrames.set(1, "5");
-                        mCurrentWordID=findViewById(R.id.activityText6).getTag().toString();
+                        mCurrentWordID=findViewById(R.id.word6).getTag().toString();
                         setUpFrame(5,false);
                     }
                 }
@@ -430,45 +430,45 @@ private ArrayList<ArrayList<String>> mCurrentText;
             default:
             case 0:{
                 findViewById(R.id.image1).setVisibility(ImageButton.INVISIBLE);
-                findViewById(R.id.activityText1).setVisibility(TextView.VISIBLE);
-                findViewById(R.id.activityTextBox1).setVisibility(TextView.VISIBLE);
+                findViewById(R.id.word1).setVisibility(TextView.VISIBLE);
+                findViewById(R.id.wordBox1).setVisibility(TextView.VISIBLE);
 
-                findViewById(R.id.activityTextBox1).setBackground(getResources().getDrawable(R.drawable.rounded_text_selected));
+                findViewById(R.id.wordBox1).setBackground(getResources().getDrawable(R.drawable.rounded_text_selected));
                 break;
             }
             case 1:{
                 findViewById(R.id.image2).setVisibility(ImageButton.INVISIBLE);
-                findViewById(R.id.activityText2).setVisibility(TextView.VISIBLE);
-                findViewById(R.id.activityTextBox2).setVisibility(TextView.VISIBLE);
-                findViewById(R.id.activityTextBox2).setBackground(getResources().getDrawable(R.drawable.rounded_text_selected));
+                findViewById(R.id.word2).setVisibility(TextView.VISIBLE);
+                findViewById(R.id.wordBox2).setVisibility(TextView.VISIBLE);
+                findViewById(R.id.wordBox2).setBackground(getResources().getDrawable(R.drawable.rounded_text_selected));
                 break;
             }
             case 2:{
                 findViewById(R.id.image3).setVisibility(ImageButton.INVISIBLE);
-                findViewById(R.id.activityText3).setVisibility(TextView.VISIBLE);
-                findViewById(R.id.activityTextBox3).setVisibility(TextView.VISIBLE);
-                findViewById(R.id.activityTextBox3).setBackground(getResources().getDrawable(R.drawable.rounded_text_selected));
+                findViewById(R.id.word3).setVisibility(TextView.VISIBLE);
+                findViewById(R.id.wordBox3).setVisibility(TextView.VISIBLE);
+                findViewById(R.id.wordBox3).setBackground(getResources().getDrawable(R.drawable.rounded_text_selected));
                 break;
             }
             case 3:{
                 findViewById(R.id.image4).setVisibility(ImageButton.INVISIBLE);
-                findViewById(R.id.activityText4).setVisibility(TextView.VISIBLE);
-                findViewById(R.id.activityTextBox4).setVisibility(TextView.VISIBLE);
-                findViewById(R.id.activityTextBox4).setBackground(getResources().getDrawable(R.drawable.rounded_text_selected));
+                findViewById(R.id.word4).setVisibility(TextView.VISIBLE);
+                findViewById(R.id.wordBox4).setVisibility(TextView.VISIBLE);
+                findViewById(R.id.wordBox4).setBackground(getResources().getDrawable(R.drawable.rounded_text_selected));
                 break;
             }
             case 4:{
                 findViewById(R.id.image5).setVisibility(ImageButton.INVISIBLE);
-                findViewById(R.id.activityText5).setVisibility(TextView.VISIBLE);
-                findViewById(R.id.activityTextBox5).setVisibility(TextView.VISIBLE);
-                findViewById(R.id.activityTextBox5).setBackground(getResources().getDrawable(R.drawable.rounded_text_selected));
+                findViewById(R.id.word5).setVisibility(TextView.VISIBLE);
+                findViewById(R.id.wordBox5).setVisibility(TextView.VISIBLE);
+                findViewById(R.id.wordBox5).setBackground(getResources().getDrawable(R.drawable.rounded_text_selected));
                 break;
             }
             case 5:{
                 findViewById(R.id.image6).setVisibility(ImageButton.INVISIBLE);
-                findViewById(R.id.activityText6).setVisibility(TextView.VISIBLE);
-                findViewById(R.id.activityTextBox6).setVisibility(TextView.VISIBLE);
-                findViewById(R.id.activityTextBox6).setBackground(getResources().getDrawable(R.drawable.rounded_text_selected));
+                findViewById(R.id.word6).setVisibility(TextView.VISIBLE);
+                findViewById(R.id.wordBox6).setVisibility(TextView.VISIBLE);
+                findViewById(R.id.wordBox6).setBackground(getResources().getDrawable(R.drawable.rounded_text_selected));
                 break;
             }
         }//end switch(frameNumber){
@@ -550,79 +550,79 @@ private ArrayList<ArrayList<String>> mCurrentText;
                 case 0:{
                     if(mCorrect){
                         mWordStatus.set(0, "2");
-                        ((TextView) findViewById(R.id.activityText1)).setTextColor(getResources().getColor(R.color.correct_green));
-                        ( findViewById(R.id.activityTextBox1)).setBackground(getResources().getDrawable(R.drawable.rounded_text_correct));
+                        ((TextView) findViewById(R.id.word1)).setTextColor(getResources().getColor(R.color.correct_green));
+                        ( findViewById(R.id.wordBox1)).setBackground(getResources().getDrawable(R.drawable.rounded_text_correct));
                     }else{
                         mWordStatus.set(0, "1");
-                        ((TextView) findViewById(R.id.activityText1)).setTextColor(getResources().getColor(R.color.incorrect_red));
-                        ((TextView) findViewById(R.id.activityText1)).setPaintFlags(((TextView) findViewById(R.id.activityText1)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-                        ( findViewById(R.id.activityTextBox1)).setBackground(getResources().getDrawable(R.drawable.rounded_text_incorrect));
+                        ((TextView) findViewById(R.id.word1)).setTextColor(getResources().getColor(R.color.incorrect_red));
+                        ((TextView) findViewById(R.id.word1)).setPaintFlags(((TextView) findViewById(R.id.word1)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                        ( findViewById(R.id.wordBox1)).setBackground(getResources().getDrawable(R.drawable.rounded_text_incorrect));
                     }
                     break;
                 }
                 case 1:{
                     if(mCorrect){
                         mWordStatus.set(1, "2");
-                        ((TextView) findViewById(R.id.activityText2)).setTextColor(getResources().getColor(R.color.correct_green));
-                        ( findViewById(R.id.activityTextBox2)).setBackground(getResources().getDrawable(R.drawable.rounded_text_correct));
+                        ((TextView) findViewById(R.id.word2)).setTextColor(getResources().getColor(R.color.correct_green));
+                        ( findViewById(R.id.wordBox2)).setBackground(getResources().getDrawable(R.drawable.rounded_text_correct));
                     }else{
                         mWordStatus.set(1, "1");
-                        ((TextView) findViewById(R.id.activityText2)).setTextColor(getResources().getColor(R.color.incorrect_red));
-                        ((TextView) findViewById(R.id.activityText2)).setPaintFlags(((TextView) findViewById(R.id.activityText2)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-                        ( findViewById(R.id.activityTextBox2)).setBackground(getResources().getDrawable(R.drawable.rounded_text_incorrect));
+                        ((TextView) findViewById(R.id.word2)).setTextColor(getResources().getColor(R.color.incorrect_red));
+                        ((TextView) findViewById(R.id.word2)).setPaintFlags(((TextView) findViewById(R.id.word2)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                        ( findViewById(R.id.wordBox2)).setBackground(getResources().getDrawable(R.drawable.rounded_text_incorrect));
                     }
                     break;
                 }
                 case 2:{
                     if(mCorrect){
                         mWordStatus.set(2, "2");
-                        ((TextView) findViewById(R.id.activityText3)).setTextColor(getResources().getColor(R.color.correct_green));
-                        ( findViewById(R.id.activityTextBox3)).setBackground(getResources().getDrawable(R.drawable.rounded_text_correct));
+                        ((TextView) findViewById(R.id.word3)).setTextColor(getResources().getColor(R.color.correct_green));
+                        ( findViewById(R.id.wordBox3)).setBackground(getResources().getDrawable(R.drawable.rounded_text_correct));
                     }else{
                         mWordStatus.set(2, "1");
-                        ((TextView) findViewById(R.id.activityText3)).setTextColor(getResources().getColor(R.color.incorrect_red));
-                        ((TextView) findViewById(R.id.activityText3)).setPaintFlags(((TextView) findViewById(R.id.activityText3)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-                        ( findViewById(R.id.activityTextBox3)).setBackground(getResources().getDrawable(R.drawable.rounded_text_incorrect));
+                        ((TextView) findViewById(R.id.word3)).setTextColor(getResources().getColor(R.color.incorrect_red));
+                        ((TextView) findViewById(R.id.word3)).setPaintFlags(((TextView) findViewById(R.id.word3)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                        ( findViewById(R.id.wordBox3)).setBackground(getResources().getDrawable(R.drawable.rounded_text_incorrect));
                     }
                     break;
                 }
                 case 3:{
                     if(mCorrect){
                         mWordStatus.set(3, "2");
-                        ((TextView) findViewById(R.id.activityText4)).setTextColor(getResources().getColor(R.color.correct_green));
-                        ( findViewById(R.id.activityTextBox4)).setBackground(getResources().getDrawable(R.drawable.rounded_text_correct));
+                        ((TextView) findViewById(R.id.word4)).setTextColor(getResources().getColor(R.color.correct_green));
+                        ( findViewById(R.id.wordBox4)).setBackground(getResources().getDrawable(R.drawable.rounded_text_correct));
                     }else{
                         mWordStatus.set(3, "1");
-                        ((TextView) findViewById(R.id.activityText4)).setTextColor(getResources().getColor(R.color.incorrect_red));
-                        ((TextView) findViewById(R.id.activityText4)).setPaintFlags(((TextView) findViewById(R.id.activityText4)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-                        ( findViewById(R.id.activityTextBox4)).setBackground(getResources().getDrawable(R.drawable.rounded_text_incorrect));
+                        ((TextView) findViewById(R.id.word4)).setTextColor(getResources().getColor(R.color.incorrect_red));
+                        ((TextView) findViewById(R.id.word4)).setPaintFlags(((TextView) findViewById(R.id.word4)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                        ( findViewById(R.id.wordBox4)).setBackground(getResources().getDrawable(R.drawable.rounded_text_incorrect));
                     }
                     break;
                 }
                 case 4:{
                     if(mCorrect){
                         mWordStatus.set(4, "2");
-                        ((TextView) findViewById(R.id.activityText5)).setTextColor(getResources().getColor(R.color.correct_green));
-                        ( findViewById(R.id.activityTextBox5)).setBackground(getResources().getDrawable(R.drawable.rounded_text_correct));
+                        ((TextView) findViewById(R.id.word5)).setTextColor(getResources().getColor(R.color.correct_green));
+                        ( findViewById(R.id.wordBox5)).setBackground(getResources().getDrawable(R.drawable.rounded_text_correct));
                     }else{
                         mWordStatus.set(4, "1");
-                        ((TextView) findViewById(R.id.activityText5)).setTextColor(getResources().getColor(R.color.incorrect_red));
-                        ((TextView) findViewById(R.id.activityText5)).setPaintFlags(((TextView) findViewById(R.id.activityText5)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-                        ( findViewById(R.id.activityTextBox5)).setBackground(getResources().getDrawable(R.drawable.rounded_text_incorrect));
+                        ((TextView) findViewById(R.id.word5)).setTextColor(getResources().getColor(R.color.incorrect_red));
+                        ((TextView) findViewById(R.id.word5)).setPaintFlags(((TextView) findViewById(R.id.word5)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                        ( findViewById(R.id.wordBox5)).setBackground(getResources().getDrawable(R.drawable.rounded_text_incorrect));
                     }
                     break;
                 }
                 case 5:{
                     if(mCorrect){
                         mWordStatus.set(5, "2");
-                        ((TextView) findViewById(R.id.activityText6)).setTextColor(getResources().getColor(R.color.correct_green));
-                        ( findViewById(R.id.activityTextBox6)).setBackground(getResources().getDrawable(R.drawable.rounded_text_correct));
+                        ((TextView) findViewById(R.id.word6)).setTextColor(getResources().getColor(R.color.correct_green));
+                        ( findViewById(R.id.wordBox6)).setBackground(getResources().getDrawable(R.drawable.rounded_text_correct));
                     }else{
                         mWordStatus.set(5, "1");
-                        ((TextView) findViewById(R.id.activityText6)).setTextColor(getResources().getColor(R.color.incorrect_red));
-                        ((TextView) findViewById(R.id.activityText6)).setPaintFlags(
-                                ((TextView) findViewById(R.id.activityText6)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-                        (findViewById(R.id.activityTextBox6)).setBackground(getResources().getDrawable(R.drawable.rounded_text_incorrect));
+                        ((TextView) findViewById(R.id.word6)).setTextColor(getResources().getColor(R.color.incorrect_red));
+                        ((TextView) findViewById(R.id.word6)).setPaintFlags(
+                                ((TextView) findViewById(R.id.word6)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                        (findViewById(R.id.wordBox6)).setBackground(getResources().getDrawable(R.drawable.rounded_text_incorrect));
                     }
                     break;
                 }
@@ -705,58 +705,58 @@ private ArrayList<ArrayList<String>> mCurrentText;
     private void clearInCorrects(){
         if(mWordStatus.get(0).equals("0") || mWordStatus.get(0).equals("1")){
             mWordStatus.set(0, "0");
-            findViewById(R.id.activityTextBox1).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
-            ((TextView) findViewById(R.id.activityText1)).setTextColor(getResources().getColor(R.color.normalBlack));
-            ((TextView) findViewById(R.id.activityText1)).setPaintFlags(
-                    ((TextView) findViewById(R.id.activityText1)).getPaintFlags()
+            findViewById(R.id.wordBox1).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
+            ((TextView) findViewById(R.id.word1)).setTextColor(getResources().getColor(R.color.normalBlack));
+            ((TextView) findViewById(R.id.word1)).setPaintFlags(
+                    ((TextView) findViewById(R.id.word1)).getPaintFlags()
                             & (~Paint.STRIKE_THRU_TEXT_FLAG));
-            findViewById(R.id.activityText1).setVisibility(TextView.INVISIBLE);
-            findViewById(R.id.activityTextBox1).setVisibility(TextView.INVISIBLE);
+            findViewById(R.id.word1).setVisibility(TextView.INVISIBLE);
+            findViewById(R.id.wordBox1).setVisibility(TextView.INVISIBLE);
             findViewById(R.id.image1).setVisibility(ImageButton.VISIBLE);
         }
         if(mWordStatus.get(1).equals("0") || mWordStatus.get(1).equals("1")){
             mWordStatus.set(1, "0");
-            findViewById(R.id.activityTextBox2).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
-            ((TextView) findViewById(R.id.activityText2)).setTextColor(getResources().getColor(R.color.normalBlack));
-            ((TextView) findViewById(R.id.activityText2)).setPaintFlags(((TextView) findViewById(R.id.activityText2)).getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
-            findViewById(R.id.activityText2).setVisibility(TextView.INVISIBLE);
-            findViewById(R.id.activityTextBox2).setVisibility(TextView.INVISIBLE);
+            findViewById(R.id.wordBox2).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
+            ((TextView) findViewById(R.id.word2)).setTextColor(getResources().getColor(R.color.normalBlack));
+            ((TextView) findViewById(R.id.word2)).setPaintFlags(((TextView) findViewById(R.id.word2)).getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
+            findViewById(R.id.word2).setVisibility(TextView.INVISIBLE);
+            findViewById(R.id.wordBox2).setVisibility(TextView.INVISIBLE);
             findViewById(R.id.image2).setVisibility(ImageButton.VISIBLE);
         }
         if(mWordStatus.get(2).equals("0") || mWordStatus.get(2).equals("1")){
             mWordStatus.set(2, "0");
-            findViewById(R.id.activityTextBox3).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
-            ((TextView) findViewById(R.id.activityText3)).setTextColor(getResources().getColor(R.color.normalBlack));
-            ((TextView) findViewById(R.id.activityText3)).setPaintFlags(((TextView) findViewById(R.id.activityText3)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
-            findViewById(R.id.activityText3).setVisibility(TextView.INVISIBLE);
-            findViewById(R.id.activityTextBox3).setVisibility(TextView.INVISIBLE);
+            findViewById(R.id.wordBox3).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
+            ((TextView) findViewById(R.id.word3)).setTextColor(getResources().getColor(R.color.normalBlack));
+            ((TextView) findViewById(R.id.word3)).setPaintFlags(((TextView) findViewById(R.id.word3)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+            findViewById(R.id.word3).setVisibility(TextView.INVISIBLE);
+            findViewById(R.id.wordBox3).setVisibility(TextView.INVISIBLE);
             findViewById(R.id.image3).setVisibility(ImageButton.VISIBLE);
         }
         if(mWordStatus.get(3).equals("0") || mWordStatus.get(3).equals("1")){
             mWordStatus.set(3, "0");
-            findViewById(R.id.activityTextBox4).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
-            ((TextView) findViewById(R.id.activityText4)).setTextColor(getResources().getColor(R.color.normalBlack));
-            ((TextView) findViewById(R.id.activityText4)).setPaintFlags(((TextView) findViewById(R.id.activityText4)).getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
-            findViewById(R.id.activityText4).setVisibility(TextView.INVISIBLE);
-            findViewById(R.id.activityTextBox4).setVisibility(TextView.INVISIBLE);
+            findViewById(R.id.wordBox4).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
+            ((TextView) findViewById(R.id.word4)).setTextColor(getResources().getColor(R.color.normalBlack));
+            ((TextView) findViewById(R.id.word4)).setPaintFlags(((TextView) findViewById(R.id.word4)).getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
+            findViewById(R.id.word4).setVisibility(TextView.INVISIBLE);
+            findViewById(R.id.wordBox4).setVisibility(TextView.INVISIBLE);
             findViewById(R.id.image4).setVisibility(ImageButton.VISIBLE);
         }
         if(mWordStatus.get(4).equals("0") || mWordStatus.get(4).equals("1")){
             mWordStatus.set(4, "0");
-            findViewById(R.id.activityTextBox5).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
-            ((TextView) findViewById(R.id.activityText5)).setTextColor(getResources().getColor(R.color.normalBlack));
-            ((TextView) findViewById(R.id.activityText5)).setPaintFlags(((TextView) findViewById(R.id.activityText5)).getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
-            findViewById(R.id.activityText5).setVisibility(TextView.INVISIBLE);
-            findViewById(R.id.activityTextBox5).setVisibility(TextView.INVISIBLE);
+            findViewById(R.id.wordBox5).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
+            ((TextView) findViewById(R.id.word5)).setTextColor(getResources().getColor(R.color.normalBlack));
+            ((TextView) findViewById(R.id.word5)).setPaintFlags(((TextView) findViewById(R.id.word5)).getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
+            findViewById(R.id.word5).setVisibility(TextView.INVISIBLE);
+            findViewById(R.id.wordBox5).setVisibility(TextView.INVISIBLE);
             findViewById(R.id.image5).setVisibility(ImageButton.VISIBLE);
         }
         if(mWordStatus.get(5).equals("0") || mWordStatus.get(5).equals("1")){
             mWordStatus.set(5, "0");
-            findViewById(R.id.activityTextBox6).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
-            ((TextView) findViewById(R.id.activityText6)).setTextColor(getResources().getColor(R.color.normalBlack));
-            ((TextView) findViewById(R.id.activityText6)).setPaintFlags(((TextView) findViewById(R.id.activityText6)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
-            findViewById(R.id.activityText6).setVisibility(TextView.INVISIBLE);
-            findViewById(R.id.activityTextBox6).setVisibility(TextView.INVISIBLE);
+            findViewById(R.id.wordBox6).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
+            ((TextView) findViewById(R.id.word6)).setTextColor(getResources().getColor(R.color.normalBlack));
+            ((TextView) findViewById(R.id.word6)).setPaintFlags(((TextView) findViewById(R.id.word6)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+            findViewById(R.id.word6).setVisibility(TextView.INVISIBLE);
+            findViewById(R.id.wordBox6).setVisibility(TextView.INVISIBLE);
             findViewById(R.id.image6).setVisibility(ImageButton.VISIBLE);
         }
 
@@ -778,35 +778,35 @@ private ArrayList<ArrayList<String>> mCurrentText;
     ////////////////////////////////////////////////////////////////////////////////////////////
 
     private void clearText(){
-        findViewById(R.id.activityText1).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.activityText2).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.activityText3).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.activityText4).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.activityText5).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.activityText6).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.word1).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.word2).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.word3).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.word4).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.word5).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.word6).setVisibility(TextView.INVISIBLE);
 
-        findViewById(R.id.activityTextBox1).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.activityTextBox2).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.activityTextBox3).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.activityTextBox4).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.activityTextBox5).setVisibility(TextView.INVISIBLE);
-        findViewById(R.id.activityTextBox6).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.wordBox1).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.wordBox2).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.wordBox3).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.wordBox4).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.wordBox5).setVisibility(TextView.INVISIBLE);
+        findViewById(R.id.wordBox6).setVisibility(TextView.INVISIBLE);
 
 
         //clear image
-        ((TextView)findViewById(R.id.activityText1)).setText("");
-        ((TextView)findViewById(R.id.activityText2)).setText("");
-        ((TextView)findViewById(R.id.activityText3)).setText("");
-        ((TextView)findViewById(R.id.activityText4)).setText("");
-        ((TextView)findViewById(R.id.activityText5)).setText("");
-        ((TextView)findViewById(R.id.activityText6)).setText("");
+        ((TextView)findViewById(R.id.word1)).setText("");
+        ((TextView)findViewById(R.id.word2)).setText("");
+        ((TextView)findViewById(R.id.word3)).setText("");
+        ((TextView)findViewById(R.id.word4)).setText("");
+        ((TextView)findViewById(R.id.word5)).setText("");
+        ((TextView)findViewById(R.id.word6)).setText("");
 
-        ((TextView)findViewById(R.id.activityText1)).setTypeface(appData.getCurrentFontType());
-        ((TextView)findViewById(R.id.activityText2)).setTypeface(appData.getCurrentFontType());
-        ((TextView)findViewById(R.id.activityText3)).setTypeface(appData.getCurrentFontType());
-        ((TextView)findViewById(R.id.activityText4)).setTypeface(appData.getCurrentFontType());
-        ((TextView)findViewById(R.id.activityText5)).setTypeface(appData.getCurrentFontType());
-        ((TextView)findViewById(R.id.activityText6)).setTypeface(appData.getCurrentFontType());
+        ((TextView)findViewById(R.id.word1)).setTypeface(appData.getCurrentFontType());
+        ((TextView)findViewById(R.id.word2)).setTypeface(appData.getCurrentFontType());
+        ((TextView)findViewById(R.id.word3)).setTypeface(appData.getCurrentFontType());
+        ((TextView)findViewById(R.id.word4)).setTypeface(appData.getCurrentFontType());
+        ((TextView)findViewById(R.id.word5)).setTypeface(appData.getCurrentFontType());
+        ((TextView)findViewById(R.id.word6)).setTypeface(appData.getCurrentFontType());
 
 
         if(mCurrentGSP.get("group_id").equals("2") && mCurrentGSP.get("phase_id").equals("2")){
@@ -816,38 +816,38 @@ private ArrayList<ArrayList<String>> mCurrentText;
             params.setMargins(params.leftMargin,
                     getResources().getDimensionPixelSize(R.dimen.wd04_text_ucase_top_margin),
                     params.rightMargin, 0);
-            ((TextView) findViewById(R.id.activityText1)).setGravity(Gravity.CENTER_HORIZONTAL);
-            findViewById(R.id.activityText1).setLayoutParams(params);
-            findViewById(R.id.activityText2).setLayoutParams(params);
-            findViewById(R.id.activityText3).setLayoutParams(params);
-            findViewById(R.id.activityText4).setLayoutParams(params);
-            findViewById(R.id.activityText5).setLayoutParams(params);
-            findViewById(R.id.activityText6).setLayoutParams(params);
-            //((TextView)findViewById(R.id.activityText1)).se
+            ((TextView) findViewById(R.id.word1)).setGravity(Gravity.CENTER_HORIZONTAL);
+            findViewById(R.id.word1).setLayoutParams(params);
+            findViewById(R.id.word2).setLayoutParams(params);
+            findViewById(R.id.word3).setLayoutParams(params);
+            findViewById(R.id.word4).setLayoutParams(params);
+            findViewById(R.id.word5).setLayoutParams(params);
+            findViewById(R.id.word6).setLayoutParams(params);
+            //((TextView)findViewById(R.id.word1)).se
         }
 
-        ((TextView) findViewById(R.id.activityText1)).setTextColor(getResources().getColor(R.color.normalBlack));
-        ((TextView) findViewById(R.id.activityText2)).setTextColor(getResources().getColor(R.color.normalBlack));
-        ((TextView) findViewById(R.id.activityText3)).setTextColor(getResources().getColor(R.color.normalBlack));
-        ((TextView) findViewById(R.id.activityText4)).setTextColor(getResources().getColor(R.color.normalBlack));
-        ((TextView) findViewById(R.id.activityText5)).setTextColor(getResources().getColor(R.color.normalBlack));
-        ((TextView) findViewById(R.id.activityText6)).setTextColor(getResources().getColor(R.color.normalBlack));
+        ((TextView) findViewById(R.id.word1)).setTextColor(getResources().getColor(R.color.normalBlack));
+        ((TextView) findViewById(R.id.word2)).setTextColor(getResources().getColor(R.color.normalBlack));
+        ((TextView) findViewById(R.id.word3)).setTextColor(getResources().getColor(R.color.normalBlack));
+        ((TextView) findViewById(R.id.word4)).setTextColor(getResources().getColor(R.color.normalBlack));
+        ((TextView) findViewById(R.id.word5)).setTextColor(getResources().getColor(R.color.normalBlack));
+        ((TextView) findViewById(R.id.word6)).setTextColor(getResources().getColor(R.color.normalBlack));
 
         //remove stricktrough
-        ((TextView) findViewById(R.id.activityText1)).setPaintFlags(((TextView) findViewById(R.id.activityText1)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
-        ((TextView) findViewById(R.id.activityText2)).setPaintFlags(((TextView) findViewById(R.id.activityText2)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
-        ((TextView) findViewById(R.id.activityText3)).setPaintFlags(((TextView) findViewById(R.id.activityText3)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
-        ((TextView) findViewById(R.id.activityText4)).setPaintFlags(((TextView) findViewById(R.id.activityText4)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
-        ((TextView) findViewById(R.id.activityText5)).setPaintFlags(((TextView) findViewById(R.id.activityText5)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
-        ((TextView) findViewById(R.id.activityText6)).setPaintFlags(((TextView) findViewById(R.id.activityText6)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+        ((TextView) findViewById(R.id.word1)).setPaintFlags(((TextView) findViewById(R.id.word1)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+        ((TextView) findViewById(R.id.word2)).setPaintFlags(((TextView) findViewById(R.id.word2)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+        ((TextView) findViewById(R.id.word3)).setPaintFlags(((TextView) findViewById(R.id.word3)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+        ((TextView) findViewById(R.id.word4)).setPaintFlags(((TextView) findViewById(R.id.word4)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+        ((TextView) findViewById(R.id.word5)).setPaintFlags(((TextView) findViewById(R.id.word5)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+        ((TextView) findViewById(R.id.word6)).setPaintFlags(((TextView) findViewById(R.id.word6)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
 
 
-        findViewById(R.id.activityTextBox1).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
-        findViewById(R.id.activityTextBox2).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
-        findViewById(R.id.activityTextBox3).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
-        findViewById(R.id.activityTextBox4).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
-        findViewById(R.id.activityTextBox5).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
-        findViewById(R.id.activityTextBox6).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
+        findViewById(R.id.wordBox1).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
+        findViewById(R.id.wordBox2).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
+        findViewById(R.id.wordBox3).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
+        findViewById(R.id.wordBox4).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
+        findViewById(R.id.wordBox5).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
+        findViewById(R.id.wordBox6).setBackground(getResources().getDrawable(R.drawable.rounded_text_unselected));
 
     }
 

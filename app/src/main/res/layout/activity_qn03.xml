@@ -1,401 +1,382 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bg_qn03"
-    >
+    android:id="@+id/Activity_BaseFrame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:id="@+id/activityMainPartSecond"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:padding="6dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/frame0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight=".15">
 
         <include
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.23"
-            layout="@layout/activity_top_area" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.3"/>
+            layout="@layout/activity_top_area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/activityMainPart">
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".23"/>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.1" >
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".15"/>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:visibility="visible" >
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_centerHorizontal="true"
-                    android:adjustViewBounds="true"
-                    android:baselineAlignBottom="false"
-                    android:contentDescription="@string/none"
-                    android:cropToPadding="false"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/frm_qn03" />
-
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/numberBoxes"
-                    android:layout_marginLeft="@dimen/mathcing_sides"
-                    android:layout_marginTop="@dimen/mathing_topbottom"
-                    android:layout_marginBottom="@dimen/mathing_topbottom"
-                    android:layout_marginRight="@dimen/mathcing_sides">
-
-                    <TableRow
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1" >
-
-                        <RelativeLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1" >
-
-                            <ImageView
-                                android:id="@+id/numberBox1"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_margin="@dimen/wd04_textbox_margins"
-                                android:src="@drawable/rounded_text_selected" />
-
-                            <TextView
-                                android:id="@+id/number1"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_centerHorizontal="true"
-                                android:contentDescription="@string/ninetyNine"
-                                android:gravity="center_vertical|center_horizontal"
-                                android:text="@string/ninetyNine"
-                                android:textColor="@color/normalBlack"
-                                android:textSize="@dimen/qn_numbers"
-                                />
-
-                            <com.motoli.apps.allsubjects.MathOperationDots
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/shape1"
-                                android:tag="2"
-                                android:layout_margin="@dimen/dots_margin_small"/>
-
-
-
-
-                            <ImageButton
-                                android:id="@+id/image1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignBottom="@+id/numberBox1"
-                                android:layout_alignLeft="@+id/numberBox1"
-                                android:layout_alignRight="@+id/numberBox1"
-                                android:layout_alignTop="@+id/numberBox1"
-                                android:adjustViewBounds="true"
-                                android:contentDescription="@string/ninetyNine"
-                                android:scaleType="fitCenter"
-                                android:src="@drawable/btn_saucer_3"
-                                android:visibility="invisible"
-                                android:background="@color/reg_white"/>
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1" >
-
-                            <ImageView
-                                android:id="@+id/numberBox2"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_margin="@dimen/wd04_textbox_margins"
-                                android:src="@drawable/rounded_text_selected"
-                                />
-
-                            <TextView
-                                android:id="@+id/number2"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_centerHorizontal="true"
-                                android:gravity="center_vertical|center_horizontal"
-                                android:text="@string/ninetyNine"
-                                android:textColor="@color/normalBlack"
-                                android:textSize="@dimen/qn_numbers"
-                                />
-
-
-                            <com.motoli.apps.allsubjects.MathOperationDots
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/shape2"
-                                android:tag="3"
-                                android:layout_margin="@dimen/dots_margin_small"/>
-
-                            <ImageButton
-                                android:id="@+id/image2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignBottom="@+id/numberBox2"
-                                android:layout_alignLeft="@+id/numberBox2"
-                                android:layout_alignRight="@+id/numberBox2"
-                                android:layout_alignTop="@id/numberBox2"
-                                android:adjustViewBounds="true"
-                                android:contentDescription="@string/ninetyNine"
-                                android:scaleType="fitCenter"
-                                android:src="@drawable/btn_saucer_4"
-                                android:visibility="visible"
-                                android:background="@color/reg_white"/>
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1" >
-
-                            <ImageView
-                                android:id="@+id/numberBox3"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_margin="@dimen/wd04_textbox_margins"
-                                android:src="@drawable/rounded_text_selected" />
-
-                            <TextView
-                                android:id="@+id/number3"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_centerHorizontal="true"
-                                android:gravity="center_vertical|center_horizontal"
-                                android:text="@string/ninetyNine"
-                                android:textColor="@color/normalBlack"
-                                android:textSize="@dimen/qn_numbers"
-                                />
-
-                            <com.motoli.apps.allsubjects.MathOperationDots
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/shape3"
-                                android:tag="4"
-                                android:layout_margin="@dimen/dots_margin_small"/>
-
-                            <ImageButton
-                                android:id="@+id/image3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignBottom="@+id/numberBox3"
-                                android:layout_alignLeft="@+id/numberBox3"
-                                android:layout_alignRight="@+id/numberBox3"
-                                android:layout_alignTop="@+id/numberBox3"
-                                android:adjustViewBounds="true"
-                                android:contentDescription="@string/ninetyNine"
-                                android:scaleType="fitCenter"
-                                android:src="@drawable/btn_saucer_3"
-                                android:visibility="invisible"
-                                android:background="@color/reg_white"/>
-
-                        </RelativeLayout>
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1" >
-
-                        <RelativeLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1" >
-
-                            <ImageView
-                                android:id="@+id/numberBox4"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_margin="@dimen/wd04_textbox_margins"
-                                android:src="@drawable/rounded_text_selected"
-                                android:visibility="visible"/>
-
-                            <TextView
-                                android:id="@+id/number4"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_centerHorizontal="true"
-                                android:contentDescription="@string/ninetyNine"
-                                android:gravity="center_vertical|center_horizontal"
-                                android:text="@string/ninetyNine"
-                                android:textColor="@color/normalBlack"
-                                android:textSize="@dimen/qn_numbers"
-                                />
-
-                            <com.motoli.apps.allsubjects.MathOperationDots
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/shape4"
-                                android:tag="5"
-                                android:layout_margin="@dimen/dots_margin_small"/>
-
-                            <ImageButton
-                                android:id="@+id/image4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignBottom="@+id/numberBox4"
-                                android:layout_alignLeft="@+id/numberBox4"
-                                android:layout_alignRight="@+id/numberBox4"
-                                android:layout_alignTop="@+id/numberBox4"
-                                android:adjustViewBounds="true"
-                                android:contentDescription="@string/ninetyNine"
-                                android:scaleType="fitCenter"
-                                android:src="@drawable/btn_saucer_4"
-                                android:visibility="invisible"
-                                android:background="@color/reg_white"/>
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1" >
-
-                            <ImageView
-                                android:id="@+id/numberBox5"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_margin="@dimen/wd04_textbox_margins"
-                                android:src="@drawable/rounded_text_selected" />
-
-                            <TextView
-                                android:id="@+id/number5"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_centerHorizontal="true"
-                                android:gravity="center_vertical|center_horizontal"
-                                android:text="@string/ninetyNine"
-                                android:textColor="@color/normalBlack"
-                                android:textSize="@dimen/qn_numbers"
-                                />
-
-                            <com.motoli.apps.allsubjects.MathOperationDots
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/shape5"
-                                android:tag="6"
-                                android:layout_margin="@dimen/dots_margin_small"/>
-
-                            <ImageButton
-                                android:id="@+id/image5"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignBottom="@+id/numberBox5"
-                                android:layout_alignLeft="@+id/numberBox5"
-                                android:layout_alignRight="@+id/numberBox5"
-                                android:layout_alignTop="@+id/numberBox5"
-                                android:adjustViewBounds="true"
-                                android:contentDescription="@string/ninetyNine"
-                                android:scaleType="fitCenter"
-                                android:src="@drawable/btn_saucer_3"
-                                android:visibility="invisible"
-                                android:background="@color/reg_white"/>
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1" >
-
-                            <ImageView
-                                android:id="@+id/numberBox6"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_margin="@dimen/wd04_textbox_margins"
-                                android:src="@drawable/rounded_text_selected" />
-
-                            <TextView
-                                android:id="@+id/number6"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_centerHorizontal="true"
-                                android:gravity="center_vertical|center_horizontal"
-                                android:text="@string/ninetyNine"
-                                android:textColor="@color/normalBlack"
-                                android:textSize="@dimen/qn_numbers"
-                                />
-
-                            <com.motoli.apps.allsubjects.MathOperationDots
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/shape6"
-                                android:tag="7"
-                                android:layout_margin="@dimen/dots_margin_small"/>
-
-
-                            <ImageButton
-                                android:id="@+id/image6"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignBottom="@+id/numberBox6"
-                                android:layout_alignLeft="@+id/numberBox6"
-                                android:layout_alignRight="@+id/numberBox6"
-                                android:layout_alignTop="@+id/numberBox6"
-                                android:adjustViewBounds="true"
-                                android:contentDescription="@string/ninetyNine"
-                                android:scaleType="fitCenter"
-                                android:src="@drawable/btn_saucer_4"
-                                android:visibility="invisible"
-                                android:background="@color/reg_white"/>
-
-                        </RelativeLayout>
-                    </TableRow>
-                </LinearLayout>
-            </RelativeLayout>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".15"/>
-
-        </TableRow>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".05"/>
-
-    </LinearLayout>
-
-    <TextView
-        android:text=".1"
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView10" />
-</FrameLayout>
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.02" />
 
+    <ImageView
+        android:id="@+id/frame0"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerHorizontal="true"
+        android:adjustViewBounds="true"
+        android:baselineAlignBottom="false"
+        android:contentDescription="@string/none"
+        android:cropToPadding="false"
+        android:scaleType="fitCenter"
+        android:src="@drawable/frm_qn03"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@+id/guidelineLeft"
+        app:layout_constraintRight_toLeftOf="@+id/guidelineRight"
+        app:layout_constraintTop_toBottomOf="@+id/activityMainPartSecond"
+        app:layout_constraintVertical_weight="1" />
+
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.98" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineTopBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.22" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineLeftInner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+
+    <RelativeLayout
+        android:id="@+id/box1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/box4"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toLeftOf="@+id/guidelineLeftInner"
+        app:layout_constraintRight_toLeftOf="@+id/box2"
+        app:layout_constraintTop_toTopOf="@+id/guidelineTopBox"
+        app:layout_constraintVertical_weight="1">
+
+        <ImageView
+            android:id="@+id/numberBox1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/lt03_textbox_margins"
+            android:background="@drawable/rounded_box_selected"
+            android:contentDescription="@string/none"
+            android:src="@drawable/rounded_text_selected" />
+
+        <TextView
+            android:id="@+id/number1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="false"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/smallRandomString"
+            android:textColor="@color/normalBlack"
+            android:textSize="@dimen/wdFirstFontSize"  />
+        <com.motoli.apps.allsubjects.MathOperationDots
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/shape1"
+            android:tag="2"
+            android:layout_margin="@dimen/dots_margin_small"/>
+        <ImageButton
+            android:id="@+id/image1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/numberBox1"
+            android:adjustViewBounds="false"
+            android:background="@android:color/white"
+            android:contentDescription="@string/strRandomLetter"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btn_saucer_3"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/box2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/box5"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@+id/box1"
+        app:layout_constraintRight_toLeftOf="@+id/box3"
+        app:layout_constraintTop_toTopOf="@+id/guidelineTopBox"
+        app:layout_constraintVertical_weight="1">
+
+        <ImageView
+            android:id="@+id/numberBox2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/lt03_textbox_margins"
+            android:contentDescription="@string/none"
+            android:src="@drawable/rounded_text_selected" />
+
+        <TextView
+            android:id="@+id/number2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/smallRandomString"
+            android:textColor="@color/normalBlack"
+            android:textSize="@dimen/wdFirstFontSize"  />
+        <com.motoli.apps.allsubjects.MathOperationDots
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/shape2"
+            android:tag="2"
+            android:layout_margin="@dimen/dots_margin_small"/>
+        <ImageButton
+            android:id="@+id/image2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="false"
+            android:background="@android:color/white"
+            android:contentDescription="@string/strRandomLetter"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btn_saucer_4"
+            android:visibility="visible" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/box3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/box6"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@+id/box2"
+        app:layout_constraintRight_toLeftOf="@+id/guidelineRightInner"
+        app:layout_constraintTop_toTopOf="@+id/guidelineTopBox"
+        app:layout_constraintVertical_weight="1">
+
+        <ImageView
+            android:id="@+id/numberBox3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/lt03_textbox_margins"
+            android:contentDescription="@string/none"
+            android:src="@drawable/rounded_text_selected" />
+
+        <TextView
+            android:id="@+id/number3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/smallRandomString"
+            android:textColor="@color/normalBlack"
+            android:textSize="@dimen/wdFirstFontSize"  />
+        <com.motoli.apps.allsubjects.MathOperationDots
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/shape3"
+            android:tag="2"
+            android:layout_margin="@dimen/dots_margin_small"/>
+        <ImageButton
+            android:id="@+id/image3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="false"
+            android:background="@android:color/white"
+            android:contentDescription="@string/strRandomLetter"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btn_saucer_3"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/box4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineBottom"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toLeftOf="@+id/guidelineLeftInner"
+        app:layout_constraintRight_toLeftOf="@+id/box5"
+        app:layout_constraintTop_toBottomOf="@+id/box1"
+        app:layout_constraintVertical_weight="1">
+
+        <ImageView
+            android:id="@+id/numberBox4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/lt03_textbox_margins"
+            android:contentDescription="@string/none"
+            android:src="@drawable/rounded_text_selected" />
+
+        <TextView
+            android:id="@+id/number4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/smallRandomString"
+            android:textColor="@color/normalBlack"
+            android:textSize="@dimen/wdFirstFontSize"  />
+        <com.motoli.apps.allsubjects.MathOperationDots
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/shape4"
+            android:tag="2"
+            android:layout_margin="@dimen/dots_margin_small"/>
+        <ImageButton
+            android:id="@+id/image4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="false"
+            android:background="@android:color/white"
+            android:contentDescription="@string/strRandomLetter"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btn_saucer_4"
+            android:visibility="invisible"
+            android:layout_alignTop="@+id/numberBox4"
+            android:layout_alignParentStart="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/box5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineBottom"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@id/box4"
+        app:layout_constraintRight_toLeftOf="@+id/box6"
+        app:layout_constraintTop_toBottomOf="@+id/box2"
+        app:layout_constraintVertical_weight="1">
+
+        <ImageView
+            android:id="@+id/numberBox5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/lt03_textbox_margins"
+            android:contentDescription="@string/none"
+            android:src="@drawable/rounded_text_selected" />
+
+        <TextView
+            android:id="@+id/number5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/smallRandomString"
+            android:textColor="@color/normalBlack"
+            android:textSize="@dimen/wdFirstFontSize"  />
+        <com.motoli.apps.allsubjects.MathOperationDots
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/shape5"
+            android:tag="2"
+            android:layout_margin="@dimen/dots_margin_small"/>
+        <ImageButton
+            android:id="@+id/image5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="false"
+            android:background="@android:color/white"
+            android:contentDescription="@string/strRandomLetter"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btn_saucer_3"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/box6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineBottom"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@+id/box5"
+        app:layout_constraintRight_toLeftOf="@+id/guidelineRightInner"
+        app:layout_constraintTop_toBottomOf="@+id/box3"
+        app:layout_constraintVertical_weight="1">
+
+        <ImageView
+            android:id="@+id/numberBox6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/lt03_textbox_margins"
+            android:contentDescription="@string/none"
+            android:src="@drawable/rounded_text_selected" />
+
+        <TextView
+            android:id="@+id/number6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/smallRandomString"
+            android:textColor="@color/normalBlack"
+            android:textSize="@dimen/wdFirstFontSize"  />
+        <com.motoli.apps.allsubjects.MathOperationDots
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/shape6"
+            android:tag="2"
+            android:layout_margin="@dimen/dots_margin_small"/>
+        <ImageButton
+            android:id="@+id/image6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="false"
+            android:background="@android:color/white"
+            android:contentDescription="@string/strRandomLetter"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btn_saucer_4"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineRightInner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9"/>
+
+
+</android.support.constraint.ConstraintLayout>
