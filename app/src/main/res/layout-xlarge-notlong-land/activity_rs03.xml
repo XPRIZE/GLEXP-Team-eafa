@@ -1,202 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_desert_with_cactus"
     >
-
-    <LinearLayout
-        android:orientation="vertical"
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/activityMainPart"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_desert_with_cactus">
+    <LinearLayout
+        android:id="@+id/topIcons"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:padding="6dp"
+        android:visibility="visible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight=".15"
+        app:layout_constraintBottom_toTopOf="@+id/iconSpace">
 
         <include
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
             layout="@layout/activity_top_area"
-            android:layout_weight=".23" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-        <Space
-            android:layout_width="match_parent"
+    </LinearLayout>
+
+    <Space
+        android:id="@+id/iconSpace"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/topIcons"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintVertical_weight="1" />
+
+
+        <ImageView
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="1.3" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/activityMainPartSecond">
-
-        <Space
+            android:id="@+id/btnCircleRS03"
+            android:src="@drawable/btn_circle"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/none"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintTop_toBottomOf="@+id/topIcons"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalMid"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/btnValidate"
+            android:layout_marginEnd="10dp" />
+        <ImageView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight=".05"/>
+            android:layout_height="0dp"
+            android:id="@+id/btnValidate"
+            android:src="@drawable/btn_validate_ok"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/none"
+            app:layout_constraintHorizontal_weight="1.4"
+            app:layout_constraintTop_toBottomOf="@+id/topIcons"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalMid"
+            app:layout_constraintLeft_toRightOf="@+id/btnCircleRS03"
+            app:layout_constraintRight_toLeftOf="@+id/btnStarRS03" />
 
-        <RelativeLayout
+        <ImageView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/btnCircleRS03"
-                android:src="@drawable/btn_circle"
-                android:scaleType="fitStart"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="@dimen/rs03_shape_top_margin" />
-        </RelativeLayout>
-
-        <Space
+            android:layout_height="0dp"
+            android:id="@+id/btnStarRS03"
+            android:src="@drawable/btn_star"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/none"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintTop_toBottomOf="@+id/topIcons"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalMid"
+            app:layout_constraintLeft_toRightOf="@+id/btnValidate"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginEnd="10dp" />
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guidelineHorizontalMid"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5"/>
+        <ImageView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1.8" />
+            android:layout_height="0dp"
+            android:id="@+id/line"
+            android:contentDescription="@string/none"
+            android:src="@drawable/rs03_line"
+            app:layout_constraintLeft_toRightOf="@+id/btnCircleRS03"
+            app:layout_constraintRight_toLeftOf="@+id/btnStarRS03"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalMidLower"
+            app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalMid" />
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guidelineHorizontalMidLower"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.55"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:id="@+id/frame1"
+            android:src="@drawable/frm_rs03"
+            android:scaleType="fitCenter"
+            android:layout_margin="10dp"
+            android:contentDescription="@string/none"
+            app:layout_constraintHorizontal_bias="0.9"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineVerticalMid"
+            app:layout_constraintTop_toBottomOf="@+id/line"/>
 
-        <RelativeLayout
+        <TextView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/btnStarRS03"
-                android:src="@drawable/btn_star"
-                android:scaleType="fitStart"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="@dimen/rs03_shape_top_margin" />
-        </RelativeLayout>
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight=".05"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/activityMainPart">
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
-        <LinearLayout
+            android:layout_height="0dp"
+            android:id="@+id/btnTextRS03"
+            android:text="@string/letter_13"
+            android:textColor="@color/normalBlack"
+            android:textStyle="normal"
+            android:textSize="@dimen/rs01_letterFontSize"
+            android:gravity="center_vertical|center_horizontal"
+            app:layout_constraintLeft_toLeftOf="@+id/frame1"
+            app:layout_constraintRight_toRightOf="@+id/frame1"
+            app:layout_constraintBottom_toBottomOf="@+id/frame1"
+            app:layout_constraintTop_toTopOf="@+id/frame1"
+            />
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guidelineVerticalMid"
             android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:id="@+id/frame2"
+            android:layout_weight="1"
+            android:src="@drawable/frm_rs03"
+            android:scaleType="fitCenter"
+            android:layout_margin="10dp"
+            android:contentDescription="@string/none"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/guidelineVerticalMid"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guidelineHorizontalMidLower"     />
+
+        <ImageView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2.1">
+            android:layout_height="0dp"
+            android:id="@+id/btnImageRS03"
+            android:contentDescription="@string/none"
+            android:src="@drawable/dummy_img_phonic_word"
+            android:layout_margin="30dp"
+            app:layout_constraintLeft_toLeftOf="@+id/frame2"
+            app:layout_constraintRight_toRightOf="@+id/frame2"
+            app:layout_constraintBottom_toBottomOf="@+id/frame2"
+            app:layout_constraintTop_toTopOf="@+id/frame2" />
+    </android.support.constraint.ConstraintLayout>
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".4" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2.1"
-                >
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/btnValidate"
-                    android:src="@drawable/btn_validate_ok"
-                    android:scaleType="fitCenter"/>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".4">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/imageView3"
-                    android:src="@drawable/rs03_line"
-                    android:layout_marginLeft="@dimen/rs03_line_padding"
-                    android:layout_marginRight="@dimen/rs03_line_padding"
-                    android:layout_marginTop="@dimen/rs03_line_top_margin" />
-            </RelativeLayout>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2">
-
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/imageView5"
-                        android:src="@drawable/frm_rs03"
-                        android:scaleType="fitCenter" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/btnTextRS03"
-                        android:text="@string/letter_13"
-                        android:textColor="@color/normalBlack"
-                        android:textStyle="normal"
-                        android:textSize="@dimen/rs01_letterFontSize"
-                        android:gravity="center_vertical|center_horizontal" />
-
-                </RelativeLayout>
-
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight=".2" />
-
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/imageView6"
-                        android:layout_weight="1"
-                        android:src="@drawable/frm_rs03"
-                        android:scaleType="fitCenter" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/btnImageRS03"
-                        android:src="@drawable/dummy_img_phonic_word"
-                        android:layout_marginRight="@dimen/rs03_innerframe_side_margins"
-                        android:layout_marginLeft="@dimen/rs03_innerframe_side_margins"
-                        android:layout_marginTop="@dimen/rs03_innerframe_top_margins"
-                        android:layout_marginBottom="@dimen/rs03_innerframe_top_margins" />
-
-                </RelativeLayout>
-
-            </TableRow>
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".1" />
-
-        </LinearLayout>
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-    </LinearLayout>
 </FrameLayout>

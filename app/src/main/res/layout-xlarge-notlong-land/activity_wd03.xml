@@ -2,15 +2,18 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
-    android:id="@+id/Activity_BaseFrame"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_yellow_fish_in_sea" >
 
 
     <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/activityMainFrame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_yellow_fish_in_sea" >
 
         <LinearLayout
             android:id="@+id/activityMainPartSecond"

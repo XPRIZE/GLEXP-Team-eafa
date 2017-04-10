@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -39,43 +40,44 @@ public class Activities_Platform extends ActivitiesMasterParent
         super.onCreate(savedInstanceState);
         overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out);
         setContentView(R.layout.activities_platform);
+        findViewById(R.id.activityMainPart)
+                .setVisibility(LinearLayout.INVISIBLE);
         appData = ((Motoli_Application) getApplicationContext());
 
         appData.setClassesForActivities();
 
         appData.setActivityType(2);
         mInstructionAudio = "choose_your_activity";
-        findViewById(R.id.progressFrame).setVisibility(View.INVISIBLE);
         findViewById(R.id.btnVideo).setVisibility(ImageView.VISIBLE);
 
         if(mCurrentGSP.get("group_id").equals("2")){
-            findViewById(R.id.activitiesMainFrame)
+            findViewById(R.id.activityMainFrame)
                     .setBackgroundResource(R.color.application_letters);
         }else if(mCurrentGSP.get("group_id").equals("3")){
-            findViewById(R.id.activitiesMainFrame)
+            findViewById(R.id.activityMainFrame)
                     .setBackgroundResource(R.color.application_syllables);
         }else if(mCurrentGSP.get("group_id").equals("4")){
-            findViewById(R.id.activitiesMainFrame)
+            findViewById(R.id.activityMainFrame)
                     .setBackgroundResource(R.color.application_words);
         }else if(mCurrentGSP.get("group_id").equals("5")){
-            findViewById(R.id.activitiesMainFrame)
+            findViewById(R.id.activityMainFrame)
                     .setBackgroundResource(R.color.application_books);
         }else if(mCurrentGSP.get("group_id").equals("6")){
-            findViewById(R.id.activitiesMainFrame)
+            findViewById(R.id.activityMainFrame)
                     .setBackgroundResource(R.color.application_math_shape);
             findViewById(R.id.btnVideo).setAlpha(0.5f);
         }else if(mCurrentGSP.get("group_id").equals("7")){
-            findViewById(R.id.activitiesMainFrame)
+            findViewById(R.id.activityMainFrame)
                     .setBackgroundResource(R.color.application_numbers);
            // findViewById(R.id.tablesButton).setVisibility(ImageView.VISIBLE);
 
         }else if(mCurrentGSP.get("group_id").equals("8")){
-            findViewById(R.id.activitiesMainFrame)
+            findViewById(R.id.activityMainFrame)
                     .setBackgroundResource(R.color.application_math_operations);
             //findViewById(R.id.tablesButton).setVisibility(ImageView.VISIBLE);
 
         }else if(mCurrentGSP.get("group_id").equals("9")){
-            findViewById(R.id.activitiesMainFrame)
+            findViewById(R.id.activityMainFrame)
                     .setBackgroundResource(R.color.application_write);
         }
 
@@ -357,7 +359,6 @@ public class Activities_Platform extends ActivitiesMasterParent
                      }
                  }
 
-                 findViewById(R.id.progressFrame).setVisibility(View.INVISIBLE);
 
                  displayScreen();
 
@@ -455,6 +456,12 @@ public class Activities_Platform extends ActivitiesMasterParent
 
     protected void displayScreen(){
 
+
+        findViewById(R.id.activityMainPart)
+                .setVisibility(LinearLayout.VISIBLE);
+        findViewById(R.id.activityMainPart)
+                .setAnimation(AnimationUtils.loadAnimation(
+                        getApplicationContext(), R.anim.fade_in));
         if(mCurrentActivities.get(0).get(3).equals("0")
                 && mCurrentGSP.get("group_id").equals("3")) {
             findViewById(R.id.btnVideo).setAlpha(0.5f);

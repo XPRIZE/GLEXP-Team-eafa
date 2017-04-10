@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:2:1-370:12
+ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:2:1-376:12
 	package
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:2:11-48
 		INJECTED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml
@@ -38,7 +38,7 @@ ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\A
 	android:name
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:13:22-77
 application
-ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:15:5-368:19
+ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:15:5-374:19
 MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\aborsay\.android\build-cache\bd08b6a74e29bbf45ab487b88e5e24b9989b08df\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\aborsay\.android\build-cache\2797547c658b7665986655734c1cfdb655227aa8\output\AndroidManifest.xml:26:5-20
 MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\aborsay\.android\build-cache\4ff5aa15ad434db2cc979e9f1f2fc5514e72b543\output\AndroidManifest.xml:26:5-20
@@ -551,7 +551,7 @@ ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\A
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:267:13-50
 	android:name
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:265:13-41
-activity#com.motoli.apps.allsubjects.ActivityQN01
+activity#com.motoli.apps.allsubjects.ActivityOP08
 ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:270:9-275:79
 	android:screenOrientation
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:274:13-56
@@ -563,7 +563,7 @@ ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\A
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:273:13-50
 	android:name
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:271:13-41
-activity#com.motoli.apps.allsubjects.ActivityQN02
+activity#com.motoli.apps.allsubjects.ActivityQN01
 ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:276:9-281:79
 	android:screenOrientation
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:280:13-56
@@ -575,7 +575,7 @@ ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\A
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:279:13-50
 	android:name
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:277:13-41
-activity#com.motoli.apps.allsubjects.ActivityQN03
+activity#com.motoli.apps.allsubjects.ActivityQN02
 ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:282:9-287:79
 	android:screenOrientation
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:286:13-56
@@ -587,7 +587,7 @@ ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\A
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:285:13-50
 	android:name
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:283:13-41
-activity#com.motoli.apps.allsubjects.ActivityQN04
+activity#com.motoli.apps.allsubjects.ActivityQN03
 ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:288:9-293:79
 	android:screenOrientation
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:292:13-56
@@ -599,7 +599,7 @@ ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\A
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:291:13-50
 	android:name
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:289:13-41
-activity#com.motoli.apps.allsubjects.ActivityQN05
+activity#com.motoli.apps.allsubjects.ActivityQN04
 ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:294:9-299:79
 	android:screenOrientation
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:298:13-56
@@ -611,7 +611,7 @@ ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\A
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:297:13-50
 	android:name
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:295:13-41
-activity#com.motoli.apps.allsubjects.ActivityQN06
+activity#com.motoli.apps.allsubjects.ActivityQN05
 ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:300:9-305:79
 	android:screenOrientation
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:304:13-56
@@ -623,7 +623,7 @@ ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\A
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:303:13-50
 	android:name
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:301:13-41
-activity#com.motoli.apps.allsubjects.ActivityQN07
+activity#com.motoli.apps.allsubjects.ActivityQN06
 ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:306:9-311:79
 	android:screenOrientation
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:310:13-56
@@ -635,7 +635,7 @@ ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\A
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:309:13-50
 	android:name
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:307:13-41
-activity#com.motoli.apps.allsubjects.ActivitySH01
+activity#com.motoli.apps.allsubjects.ActivityQN07
 ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:312:9-317:79
 	android:screenOrientation
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:316:13-56
@@ -647,7 +647,7 @@ ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\A
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:315:13-50
 	android:name
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:313:13-41
-activity#com.motoli.apps.allsubjects.ActivitySH02
+activity#com.motoli.apps.allsubjects.ActivitySH01
 ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:318:9-323:79
 	android:screenOrientation
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:322:13-56
@@ -659,7 +659,7 @@ ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\A
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:321:13-50
 	android:name
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:319:13-41
-activity#com.motoli.apps.allsubjects.ActivitySH03
+activity#com.motoli.apps.allsubjects.ActivitySH02
 ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:324:9-329:79
 	android:screenOrientation
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:328:13-56
@@ -671,7 +671,7 @@ ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\A
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:327:13-50
 	android:name
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:325:13-41
-activity#com.motoli.apps.allsubjects.ActivitySH04
+activity#com.motoli.apps.allsubjects.ActivitySH03
 ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:330:9-335:79
 	android:screenOrientation
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:334:13-56
@@ -683,7 +683,7 @@ ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\A
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:333:13-50
 	android:name
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:331:13-41
-activity#com.motoli.apps.allsubjects.ActivitySH05
+activity#com.motoli.apps.allsubjects.ActivitySH04
 ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:336:9-341:79
 	android:screenOrientation
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:340:13-56
@@ -695,7 +695,7 @@ ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\A
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:339:13-50
 	android:name
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:337:13-41
-activity#com.motoli.apps.allsubjects.ActivitySH06
+activity#com.motoli.apps.allsubjects.ActivitySH05
 ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:342:9-347:79
 	android:screenOrientation
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:346:13-56
@@ -707,46 +707,58 @@ ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\A
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:345:13-50
 	android:name
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:343:13-41
-activity#com.motoli.apps.allsubjects.ActivityTR01
-ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:348:9-354:79
+activity#com.motoli.apps.allsubjects.ActivitySH06
+ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:348:9-353:79
 	android:screenOrientation
-		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:353:13-56
-	android:launchMode
-		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:352:13-43
+		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:352:13-56
 	android:configChanges
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:350:13-74
 	android:theme
-		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:354:13-77
+		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:353:13-77
 	android:logo
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:351:13-50
 	android:name
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:349:13-41
-activity#com.motoli.apps.allsubjects.ActivityTR02
-ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:355:9-360:79
+activity#com.motoli.apps.allsubjects.ActivityTR01
+ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:354:9-360:79
 	android:screenOrientation
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:359:13-56
+	android:launchMode
+		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:358:13-43
 	android:configChanges
-		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:357:13-74
+		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:356:13-74
 	android:theme
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:360:13-77
 	android:logo
-		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:358:13-50
+		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:357:13-50
 	android:name
-		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:356:13-41
-activity#com.motoli.apps.allsubjects.ActivityTRCanvas
-ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:361:9-367:79
+		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:355:13-41
+activity#com.motoli.apps.allsubjects.ActivityTR02
+ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:361:9-366:79
 	android:screenOrientation
-		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:366:13-56
-	android:launchMode
-		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:365:13-43
+		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:365:13-56
 	android:configChanges
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:363:13-74
 	android:theme
-		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:367:13-77
+		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:366:13-77
 	android:logo
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:364:13-50
 	android:name
-		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:362:13-45
+		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:362:13-41
+activity#com.motoli.apps.allsubjects.ActivityTRCanvas
+ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:367:9-373:79
+	android:screenOrientation
+		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:372:13-56
+	android:launchMode
+		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:371:13-43
+	android:configChanges
+		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:369:13-74
+	android:theme
+		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:373:13-77
+	android:logo
+		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:370:13-50
+	android:name
+		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:368:13-45
 uses-sdk
 INJECTED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\aborsay\.android\build-cache\bd08b6a74e29bbf45ab487b88e5e24b9989b08df\output\AndroidManifest.xml:21:5-23:78

@@ -1,299 +1,267 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/launchpagbck"
     >
-
-    <LinearLayout
-        android:orientation="vertical"
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/activityMainPart"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/launchpagbck">
+    <LinearLayout
+        android:id="@+id/topIcons"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:padding="6dp"
+        android:visibility="visible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight=".15"
+        app:layout_constraintBottom_toTopOf="@+id/iconSpace">
 
         <include
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".23"
-            layout="@layout/activity_top_area" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.3"/>
+            layout="@layout/activity_top_area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <Space
+        android:id="@+id/iconSpace"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/topIcons"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintVertical_weight="1" />
 
-        <Space
-            android:layout_width="match_parent"
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guidelineVerticalLeft"
+            app:layout_constraintGuide_percent="0.01"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteY="0dp"
+            tools:layout_editor_absoluteX="13dp" />
+
+        <com.motoli.apps.allsubjects.CanvasView
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight=".02"/>
+            android:id="@+id/square"
+            android:tag="4"
+            android:layout_weight="1"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/star"
+            app:layout_constraintBottom_toTopOf="@+id/circle"
+            app:layout_constraintLeft_toLeftOf="@+id/guidelineVerticalLeft" />
 
-        <LinearLayout
+        <com.motoli.apps.allsubjects.CanvasView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/star"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintVertical_weight="1"
+            android:tag="6"
+            app:layout_constraintLeft_toRightOf="@+id/square"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineVerticalMidLeft"
+            app:layout_constraintBottom_toTopOf="@+id/line"/>
+        <com.motoli.apps.allsubjects.CanvasView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/circle"
+            android:tag="1"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintTop_toBottomOf="@+id/square"
+            app:layout_constraintRight_toLeftOf="@+id/line"
+            app:layout_constraintBottom_toTopOf="@+id/rectangle"
+            app:layout_constraintLeft_toLeftOf="@+id/guidelineVerticalLeft" />
+
+        <com.motoli.apps.allsubjects.CanvasView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/line"
+            android:tag="2"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintTop_toBottomOf="@+id/star"
+            app:layout_constraintLeft_toRightOf="@+id/circle"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineVerticalMidLeft"
+            app:layout_constraintBottom_toTopOf="@+id/triangle"/>
+        <com.motoli.apps.allsubjects.CanvasView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/rectangle"
+            android:tag="3"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintTop_toBottomOf="@+id/circle"
+            app:layout_constraintRight_toLeftOf="@+id/triangle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/guidelineVerticalLeft" />
+
+        <com.motoli.apps.allsubjects.CanvasView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/triangle"
+            android:tag="5"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintTop_toBottomOf="@+id/line"
+            app:layout_constraintLeft_toRightOf="@+id/rectangle"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineVerticalMidLeft"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guidelineVerticalMidLeft"
+            app:layout_constraintGuide_percent="0.4"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteY="0dp"
+            tools:layout_editor_absoluteX="512dp" />
+
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/greenColor"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintVertical_weight="1"
+            android:src="@drawable/btn_sh01_green"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/none"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/blueColor"
+            app:layout_constraintLeft_toLeftOf="@+id/guidelineVerticalMidLeft"
+            app:layout_constraintRight_toLeftOf="@+id/yellowColor"/>
+
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/yellowColor"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintVertical_weight="1"
+            android:src="@drawable/btn_sh01_yellow"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/none"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/pinkColor"
+            app:layout_constraintLeft_toRightOf="@+id/greenColor"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineVerticalMidRight" />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/blueColor"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintVertical_weight="1"
+            android:src="@drawable/btn_sh01_blue"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/none"
+            app:layout_constraintTop_toBottomOf="@+id/greenColor"
+            app:layout_constraintBottom_toTopOf="@+id/redColor"
+            app:layout_constraintLeft_toLeftOf="@+id/guidelineVerticalMidLeft"
+            app:layout_constraintRight_toLeftOf="@+id/pinkColor"/>
+
+
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/pinkColor"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintVertical_weight="1"
+            android:src="@drawable/btn_sh01_pink"
+            android:contentDescription="@string/none"
+            android:scaleType="fitCenter"
+            app:layout_constraintTop_toBottomOf="@+id/yellowColor"
+            app:layout_constraintBottom_toTopOf="@+id/orangeColor"
+            app:layout_constraintLeft_toRightOf="@+id/blueColor"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineVerticalMidRight"/>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/redColor"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintVertical_weight="1"
+            android:src="@drawable/btn_sh01_red"
+            android:contentDescription="@string/none"
+            android:scaleType="fitCenter"
+            app:layout_constraintTop_toBottomOf="@+id/blueColor"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/orangeColor"
+            app:layout_constraintLeft_toLeftOf="@+id/guidelineVerticalMidLeft" />
+
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/orangeColor"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintVertical_weight="1"
+            android:src="@drawable/btn_sh01_orange"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/none"
+            app:layout_constraintTop_toBottomOf="@+id/pinkColor"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/redColor"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineVerticalMidRight"/>
+
+
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guidelineVerticalMidRight"
+            app:layout_constraintGuide_percent="0.7"
+            android:orientation="vertical" />
+
+        <com.motoli.apps.allsubjects.CanvasView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:id="@+id/currentShape"
+            android:tag="5"
+            app:layout_constraintTop_toBottomOf="@+id/topIcons"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalBellowLarge"
+            app:layout_constraintLeft_toRightOf="@+id/guidelineVerticalMidRight"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guidelineHorizontalBellowLarge"
             android:orientation="horizontal"
-            android:layout_width="match_parent"
+            app:layout_constraintGuide_percent="0.58"/>
+
+        <com.motoli.apps.allsubjects.CanvasView
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="1">
+            android:id="@+id/currentShapeSmall"
+            android:tag="5"
+            android:layout_weight=".5"
+            app:layout_constraintTop_toBottomOf="@+id/guidelineHorizontalBellowLarge"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalBellowSmall"
+            app:layout_constraintLeft_toRightOf="@+id/guidelineVerticalMidRight"
+            app:layout_constraintRight_toRightOf="parent" />
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guidelineHorizontalBellowSmall"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.9"/>
+    </android.support.constraint.ConstraintLayout>
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".1"/>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1">
-
-                    <com.motoli.apps.allsubjects.CanvasView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:id="@+id/square"
-                        android:tag="4"
-                        android:layout_weight="1"/>
-
-                    <com.motoli.apps.allsubjects.CanvasView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:id="@+id/star"
-                        android:layout_weight="1"
-                        android:tag="6"/>
-
-                </LinearLayout>
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight=".4"
-                    android:id="@+id/space"/>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1">
-
-                    <com.motoli.apps.allsubjects.CanvasView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:id="@+id/circle"
-                        android:tag="1"
-                        android:layout_weight="1"/>
-
-                    <com.motoli.apps.allsubjects.CanvasView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:id="@+id/line"
-                        android:tag="2"
-                        android:layout_weight="1"
-                        />
-
-                </LinearLayout>
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight=".4"
-                    android:id="@+id/space2"/>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1">
-
-                    <com.motoli.apps.allsubjects.CanvasView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:id="@+id/rectangle"
-                        android:tag="3"
-                        android:layout_weight="1"
-                        />
-
-                    <com.motoli.apps.allsubjects.CanvasView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/triangle"
-                        android:layout_weight="1"
-                        android:tag="5"/>
-
-                </LinearLayout>
-            </LinearLayout>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".1"/>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1">
-
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:id="@+id/greenColor"
-                        android:layout_weight="1"
-                        android:src="@drawable/btn_sh01_green"
-                        android:scaleType="fitCenter"/>
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".1"/>
-
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:id="@+id/yellowColor"
-                        android:layout_weight="1"
-                        android:src="@drawable/btn_sh01_yellow"
-                        android:scaleType="fitCenter"/>
-
-                </LinearLayout>
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight=".1"
-                    android:id="@+id/space3"/>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1">
-
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:id="@+id/blueColor"
-                        android:layout_weight="1"
-                        android:src="@drawable/btn_sh01_blue"
-                        android:scaleType="fitCenter"/>
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".1"/>
-
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:id="@+id/pinkColor"
-                        android:layout_weight="1"
-                        android:src="@drawable/btn_sh01_pink"
-                        android:scaleType="fitCenter"/>
-                </LinearLayout>
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight=".1"
-                    android:id="@+id/space4"/>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1">
-
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:id="@+id/redColor"
-                        android:layout_weight="1"
-                        android:src="@drawable/btn_sh01_red"
-                        android:scaleType="fitCenter"/>
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".1"/>
-
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:id="@+id/orangeColor"
-                        android:layout_weight="1"
-                        android:src="@drawable/btn_sh01_orange"
-                        android:scaleType="fitCenter"/>
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".1"/>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight=".5"/>
-
-                <com.motoli.apps.allsubjects.CanvasView
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:id="@+id/currentShape"
-                    android:tag="5"
-                    android:layout_weight="1"/>
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight=".25" />
-
-                <com.motoli.apps.allsubjects.CanvasView
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:id="@+id/currentShapeSmall"
-                    android:tag="5"
-                    android:layout_weight=".5" />
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight=".5" />
-
-            </LinearLayout>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".1"/>
-        </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".02"/>
-    </LinearLayout>
 
 </FrameLayout>

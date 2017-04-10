@@ -2,19 +2,18 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activityMainFrame"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    >
-
-
-
-
+    android:background="@drawable/bg_wd06">
     <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/activityMainPart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_wd06">
+
 
         <LinearLayout
             android:id="@+id/topIcons"
@@ -51,9 +50,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/guidelineBottomIcons"
             app:layout_constraintVertical_weight="1"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteY="0dp"
-            tools:layout_editor_absoluteX="-1278dp" />
+            android:orientation="vertical" />
 
 
 
@@ -62,18 +59,14 @@
             android:layout_height="wrap_content"
             android:id="@+id/guidelineTopWord"
             app:layout_constraintGuide_percent="0.3"
-            android:orientation="horizontal"
-            tools:layout_editor_absoluteY="256dp"
-            tools:layout_editor_absoluteX="0dp" />
+            android:orientation="horizontal"/>
 
         <android.support.constraint.Guideline
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/guidelineRight"
             app:layout_constraintGuide_percent="0.02"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteY="0dp"
-            tools:layout_editor_absoluteX="26dp" />
+            android:orientation="vertical" />
         <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -137,6 +130,7 @@
             android:layout_height="0dp"
             android:layout_alignBottom="@+id/imageFrame0"
             android:layout_margin="20dp"
+            android:contentDescription="@string/none"
             app:layout_constraintRight_toRightOf="@+id/imageFrame0"
             app:layout_constraintLeft_toLeftOf="@+id/imageFrame0"
             app:layout_constraintTop_toTopOf="@+id/imageFrame0"
@@ -151,9 +145,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/guidelineTopValidate"
             app:layout_constraintGuide_percent="0.1"
-            android:orientation="horizontal"
-            tools:layout_editor_absoluteY="85dp"
-            tools:layout_editor_absoluteX="0dp" />
+            android:orientation="horizontal" />
 
 
         <ImageButton
@@ -175,9 +167,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/guidelineLeft"
             app:layout_constraintGuide_percent="0.98"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteY="0dp"
-            tools:layout_editor_absoluteX="1255dp" />
+            android:orientation="vertical" />
 
 
 
@@ -186,9 +176,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/guidelineHorizontalMid"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.7"
-            tools:layout_editor_absoluteY="597dp"
-            tools:layout_editor_absoluteX="0dp" />
+            app:layout_constraintGuide_percent="0.7"/>
 
         <LinearLayout
             android:orientation="horizontal"

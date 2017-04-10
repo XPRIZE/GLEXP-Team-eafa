@@ -5,22 +5,22 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
+        android:text="@string/none"
         android:id="@+id/activityName"
         android:layout_weight="6"
         android:textColor="@color/darkGray"
         android:textSize="@dimen/activity_name_font_size"
         android:gravity="top"
-        android:background="@color/application_numbers"
         />
 
     <ImageView
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:id="@+id/btnChangeCase"
+        android:contentDescription="@string/none"
         android:src="@drawable/btn_changecase"
         android:scaleType="fitCenter"
-        android:visibility="visible"
+        android:visibility="invisible"
         android:layout_weight="1" />
 
     <ImageView
@@ -29,18 +29,18 @@
         android:id="@+id/btnVideo"
         android:src="@drawable/btn_video"
         android:layout_weight="1"
-        android:visibility="visible"
+        android:visibility="invisible"
+        android:contentDescription="@string/none"
         android:onClick="tvButtonClicked" />
 
     <ImageButton
         android:id="@+id/btnInfo"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_marginRight="10dp"
         android:layout_weight="1"
         android:adjustViewBounds="true"
-        android:background="@android:color/transparent"
         android:contentDescription="@string/none"
+        android:background="@android:color/transparent"
         android:scaleType="fitCenter"
         android:onClick="infoButtonClicked"
         android:soundEffectsEnabled="false"
@@ -50,7 +50,6 @@
         android:id="@+id/btnBack"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_marginRight="20dp"
         android:layout_weight="1"
         android:adjustViewBounds="true"
         android:background="@android:color/transparent"

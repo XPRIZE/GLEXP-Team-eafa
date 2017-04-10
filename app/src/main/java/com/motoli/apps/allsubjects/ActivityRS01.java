@@ -48,11 +48,7 @@ public class ActivityRS01 extends ActivitiesMasterParent
         findViewById(R.id.activityMainPart)
                 .setAnimation(AnimationUtils.loadAnimation(
                         getApplicationContext(), R.anim.fade_in));
-        findViewById(R.id.activityMainPart)
-                .setVisibility(LinearLayout.VISIBLE);
-        findViewById(R.id.activityMainPartSecond)
-                .setAnimation(AnimationUtils.loadAnimation(
-                        getApplicationContext(), R.anim.fade_in));
+
         mInstructionAudio="info_rs01";
         mBeingValidated=true;
 
@@ -381,11 +377,6 @@ public class ActivityRS01 extends ActivitiesMasterParent
                             findViewById(R.id.activityMainPart)
                                     .setAnimation(AnimationUtils.loadAnimation(
                                             getApplicationContext(), R.anim.fade_out));
-                            findViewById(R.id.activityMainPart)
-                                    .setVisibility(LinearLayout.INVISIBLE);
-                            findViewById(R.id.activityMainPartSecond)
-                                    .setAnimation(AnimationUtils.loadAnimation(
-                                            getApplicationContext(), R.anim.fade_out));
 
                         }
                     }else{
@@ -411,10 +402,10 @@ public class ActivityRS01 extends ActivitiesMasterParent
 
     private void clearFrames(){
         //clear frames
-        ((ImageView)findViewById(R.id.syllableFrame1)).setImageResource(R.drawable.frm_rs01_off);
-        ((ImageView)findViewById(R.id.syllableFrame2)).setImageResource(R.drawable.frm_rs01_off);
-        ((ImageView)findViewById(R.id.syllableFrame3)).setImageResource(R.drawable.frm_rs01_off);
-        ((ImageView)findViewById(R.id.syllableFrame4)).setImageResource(R.drawable.frm_rs01_off);
+        ((ImageView)findViewById(R.id.frame1)).setImageResource(R.drawable.frm_rs01_off);
+        ((ImageView)findViewById(R.id.frame2)).setImageResource(R.drawable.frm_rs01_off);
+        ((ImageView)findViewById(R.id.frame3)).setImageResource(R.drawable.frm_rs01_off);
+        ((ImageView)findViewById(R.id.frame4)).setImageResource(R.drawable.frm_rs01_off);
 
 
     }
@@ -484,19 +475,19 @@ public class ActivityRS01 extends ActivitiesMasterParent
         switch(frameNumber){
             default:
             case 0:{
-                ((ImageView)findViewById(R.id.syllableFrame1)).setImageResource(R.drawable.frm_rs01_on);
+                ((ImageView)findViewById(R.id.frame1)).setImageResource(R.drawable.frm_rs01_on);
                 break;
             }
             case 1:{
-                ((ImageView)findViewById(R.id.syllableFrame2)).setImageResource(R.drawable.frm_rs01_on);
+                ((ImageView)findViewById(R.id.frame2)).setImageResource(R.drawable.frm_rs01_on);
                 break;
             }
             case 2:{
-                ((ImageView)findViewById(R.id.syllableFrame3)).setImageResource(R.drawable.frm_rs01_on);
+                ((ImageView)findViewById(R.id.frame3)).setImageResource(R.drawable.frm_rs01_on);
                 break;
             }
             case 3:{
-                ((ImageView)findViewById(R.id.syllableFrame4)).setImageResource(R.drawable.frm_rs01_on);
+                ((ImageView)findViewById(R.id.frame4)).setImageResource(R.drawable.frm_rs01_on);
                 break;
             }
         }

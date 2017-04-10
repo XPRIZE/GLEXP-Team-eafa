@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/application_math_operations"
+    android:id="@+id/activityMainFrame"
+    >
 
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/activityMainPart2"
+    android:id="@+id/activityMainPart"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -121,7 +127,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center_vertical|center_horizontal"
-        android:onClick="clickNumber7"
+        android:onClick="clickNumber8"
         android:text="@string/number_8"
         android:textColor="@color/calculator_numbers"
         android:textSize="@dimen/op8_number_box_font_size"
@@ -155,7 +161,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center_vertical|center_horizontal"
-        android:onClick="clickNumber7"
+        android:onClick="clickNumber9"
         android:text="@string/number_9"
         android:textColor="@color/calculator_numbers"
         android:textSize="@dimen/op8_number_box_font_size"
@@ -189,7 +195,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center_vertical|center_horizontal"
-        android:onClick="clickNumber7"
+        android:onClick="clickTimes"
         android:text="@string/stringMultiplication"
         android:textColor="@color/calculator_numbers"
         android:textSize="@dimen/op8_number_box_font_size"
@@ -221,16 +227,16 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center_vertical|center_horizontal"
-        android:onClick="clickNumber7"
+        android:onClick="clickNumber4"
         android:text="@string/number_4"
         android:textColor="@color/calculator_numbers"
         android:textSize="@dimen/op8_number_box_font_size"
         android:textStyle="normal|bold"
-        app:layout_constraintTop_toTopOf="@+id/numberBox4"
-        app:layout_constraintLeft_toLeftOf="@+id/numberBox4"
         app:layout_constraintBottom_toBottomOf="@+id/numberBox4"
-        app:layout_constraintRight_toRightOf="@+id/numberBox4"
         app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="@+id/numberBox4"
+        app:layout_constraintRight_toRightOf="@+id/numberBox4"
+        app:layout_constraintTop_toTopOf="@+id/numberBox4"
         app:layout_constraintVertical_bias="1.0" />
 
 
@@ -255,16 +261,16 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center_vertical|center_horizontal"
-        android:onClick="clickNumber7"
+        android:onClick="clickNumber5"
         android:text="@string/number_5"
         android:textColor="@color/calculator_numbers"
         android:textSize="@dimen/op8_number_box_font_size"
         android:textStyle="normal|bold"
-        app:layout_constraintTop_toTopOf="@+id/numberBox5"
-        app:layout_constraintLeft_toLeftOf="@+id/numberBox5"
         app:layout_constraintBottom_toBottomOf="@+id/numberBox5"
-        app:layout_constraintRight_toRightOf="@+id/numberBox5"
         app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@+id/numberBox5"
+        app:layout_constraintRight_toRightOf="@+id/numberBox5"
+        app:layout_constraintTop_toTopOf="@+id/numberBox5"
         app:layout_constraintVertical_bias="0.0" />
 
 
@@ -289,7 +295,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center_vertical|center_horizontal"
-        android:onClick="clickNumber7"
+        android:onClick="clickNumber6"
         android:text="@string/number_6"
         android:textColor="@color/calculator_numbers"
         android:textSize="@dimen/op8_number_box_font_size"
@@ -321,7 +327,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center_vertical|center_horizontal"
-        android:onClick="clickNumber7"
+        android:onClick="clickMinus"
         android:text="@string/stringMinus"
         android:textColor="@color/calculator_numbers"
         android:textSize="@dimen/op8_number_box_font_size"
@@ -354,15 +360,15 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center_vertical|center_horizontal"
-        android:onClick="clickNumber7"
+        android:onClick="clickNumber1"
         android:text="@string/number_1"
         android:textColor="@color/calculator_numbers"
         android:textSize="@dimen/op8_number_box_font_size"
         android:textStyle="normal|bold"
-        app:layout_constraintTop_toTopOf="@+id/numberBox1"
-        app:layout_constraintLeft_toLeftOf="@+id/numberBox1"
         app:layout_constraintBottom_toBottomOf="@+id/numberBox1"
-        app:layout_constraintRight_toRightOf="@+id/numberBox1"/>
+        app:layout_constraintLeft_toLeftOf="@+id/numberBox1"
+        app:layout_constraintRight_toRightOf="@+id/numberBox1"
+        app:layout_constraintTop_toTopOf="@+id/numberBox1" />
 
 
     <ImageView
@@ -387,16 +393,16 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center_vertical|center_horizontal"
-        android:onClick="clickNumber7"
+        android:onClick="clickNumber2"
         android:text="@string/number_2"
         android:textColor="@color/calculator_numbers"
         android:textSize="@dimen/op8_number_box_font_size"
         android:textStyle="normal|bold"
-        app:layout_constraintTop_toTopOf="@+id/numberBox2"
-        app:layout_constraintLeft_toLeftOf="@+id/numberBox2"
         app:layout_constraintBottom_toBottomOf="@+id/numberBox2"
-        app:layout_constraintRight_toRightOf="@+id/numberBox2"
         app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@+id/numberBox2"
+        app:layout_constraintRight_toRightOf="@+id/numberBox2"
+        app:layout_constraintTop_toTopOf="@+id/numberBox2"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
@@ -420,7 +426,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center_vertical|center_horizontal"
-        android:onClick="clickNumber7"
+        android:onClick="clickNumber3"
         android:text="@string/number_3"
         android:textColor="@color/calculator_numbers"
         android:textSize="@dimen/op8_number_box_font_size"
@@ -451,7 +457,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center_vertical|center_horizontal"
-        android:onClick="clickNumber7"
+        android:onClick="clickPlus"
         android:text="@string/stringPlus"
         android:textColor="@color/calculator_numbers"
         android:textSize="@dimen/op8_number_box_font_size"
@@ -484,7 +490,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center_vertical|center_horizontal"
-        android:onClick="clickNumber7"
+        android:onClick="clickNumber0"
         android:text="@string/number_0"
         android:textColor="@color/calculator_numbers"
         android:textSize="@dimen/op8_number_box_font_size"
@@ -526,17 +532,18 @@
         android:id="@+id/backspace"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
         android:contentDescription="@string/none"
+        android:onClick="clickBackspace"
         android:padding="@dimen/op8_numberpad"
         android:scaleType="fitCenter"
         android:src="@drawable/btn_calc_arrow"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toTopOf="@+id/guidelineBottomNumbers"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="@+id/backspacePadding"
         app:layout_constraintRight_toRightOf="@+id/backspacePaddingSecond"
         app:layout_constraintTop_toBottomOf="@+id/numberBox2"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
@@ -560,8 +567,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center_vertical|center_horizontal"
-        android:onClick="clickNumber7"
-        android:text="@string/stringPlus"
+        android:onClick="clickEqual"
+        android:text="@string/stringEqual"
         android:textColor="@color/calculator_numbers"
         android:textSize="@dimen/op8_number_box_font_size"
         android:textStyle="normal|bold"
@@ -571,20 +578,26 @@
         app:layout_constraintTop_toTopOf="@+id/equalBox" />
 
 
-
     <android.support.constraint.Guideline
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/guidelineVerticalLeftMid"
-        app:layout_constraintGuide_percent="0.48"
-        android:orientation="vertical"/>
-    <android.support.constraint.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/guidelineVerticaRightlMid"
-        app:layout_constraintGuide_percent="0.52"
-        android:orientation="vertical" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".44" />
 
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineVerticaRightlMid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".46" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineTopEquationBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".1" />
     <ImageView
         android:id="@+id/equationBox"
         android:layout_width="0dp"
@@ -593,23 +606,31 @@
         android:contentDescription="@string/none"
 
 
-        app:layout_constraintBottom_toTopOf="@+id/guidelineBottom"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineBottomEquationBox"
         app:layout_constraintLeft_toLeftOf="@+id/guidelineVerticaRightlMid"
         app:layout_constraintRight_toLeftOf="@+id/guidelineRight"
-        app:layout_constraintTop_toBottomOf="@+id/guidelineTop"
-        app:layout_constraintTop_toTopOf="@+id/guidelineTop" />
+        app:layout_constraintTop_toBottomOf="@+id/guidelineTopEquationBox"
+        app:layout_constraintTop_toTopOf="@+id/guidelineTopEquationBox" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineBottomEquationBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/guidelineEquationTop"
         app:layout_constraintGuide_percent="0.2"
         android:orientation="horizontal" />
+
     <android.support.constraint.Guideline
+        android:id="@+id/guidelineEquationLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/guidelineEquationLeft"
-        app:layout_constraintGuide_percent="0.6"
-        android:orientation="vertical" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.56" />
     <TextView
         android:id="@+id/firstNumber"
         android:layout_width="0dp"
@@ -702,11 +723,11 @@
 
 
     <android.support.constraint.Guideline
+        android:id="@+id/guidelineEquationRight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/guidelineEquationRight"
-        app:layout_constraintGuide_percent="0.88"
-        android:orientation="vertical" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.84" />
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -734,3 +755,4 @@
 
 
 </android.support.constraint.ConstraintLayout>
+    </FrameLayout>

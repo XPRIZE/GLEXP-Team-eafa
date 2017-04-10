@@ -10,8 +10,10 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -148,7 +150,14 @@ public class ActivityQN03 extends ActivitiesMasterParent
             }
         }
 
-        findViewById(R.id.numberBoxes).setVisibility(LinearLayout.VISIBLE);
+        findViewById(R.id.frame0).setVisibility(ImageView.VISIBLE);
+        findViewById(R.id.box1).setVisibility(RelativeLayout.VISIBLE);
+        findViewById(R.id.box2).setVisibility(RelativeLayout.VISIBLE);
+        findViewById(R.id.box3).setVisibility(RelativeLayout.VISIBLE);
+        findViewById(R.id.box4).setVisibility(RelativeLayout.VISIBLE);
+        findViewById(R.id.box5).setVisibility(RelativeLayout.VISIBLE);
+        findViewById(R.id.box6).setVisibility(RelativeLayout.VISIBLE);
+
 
         hideProgressBars();
 
@@ -216,12 +225,24 @@ public class ActivityQN03 extends ActivitiesMasterParent
     ////////////////////////////////////////////////////////////////////////////////////////////
 
     private void hideProgressBars(){
-        findViewById(R.id.numberBoxes).setVisibility(LinearLayout.VISIBLE);
+        findViewById(R.id.frame0).setVisibility(ImageView.VISIBLE);
+        findViewById(R.id.box1).setVisibility(RelativeLayout.VISIBLE);
+        findViewById(R.id.box2).setVisibility(RelativeLayout.VISIBLE);
+        findViewById(R.id.box3).setVisibility(RelativeLayout.VISIBLE);
+        findViewById(R.id.box4).setVisibility(RelativeLayout.VISIBLE);
+        findViewById(R.id.box5).setVisibility(RelativeLayout.VISIBLE);
+        findViewById(R.id.box6).setVisibility(RelativeLayout.VISIBLE);
 
     }
 
     private void viewProgressBars(){
-        findViewById(R.id.numberBoxes).setVisibility(LinearLayout.INVISIBLE);
+        findViewById(R.id.frame0).setVisibility(ImageView.INVISIBLE);
+        findViewById(R.id.box1).setVisibility(RelativeLayout.INVISIBLE);
+        findViewById(R.id.box2).setVisibility(RelativeLayout.INVISIBLE);
+        findViewById(R.id.box3).setVisibility(RelativeLayout.INVISIBLE);
+        findViewById(R.id.box4).setVisibility(RelativeLayout.INVISIBLE);
+        findViewById(R.id.box5).setVisibility(RelativeLayout.INVISIBLE);
+        findViewById(R.id.box6).setVisibility(RelativeLayout.INVISIBLE);
 
     }
 

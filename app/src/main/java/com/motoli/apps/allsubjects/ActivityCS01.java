@@ -47,11 +47,6 @@ public class ActivityCS01 extends ActivitiesMasterParent
         findViewById(R.id.activityMainPart)
                 .setAnimation(AnimationUtils.loadAnimation(
                         getApplicationContext(), R.anim.fade_in));
-        findViewById(R.id.activityMainPartSecond)
-                .setVisibility(LinearLayout.VISIBLE);
-        findViewById(R.id.activityMainPartSecond)
-                .setAnimation(AnimationUtils.loadAnimation(
-                        getApplicationContext(), R.anim.fade_in));
 
         mBeingValidated=true;
         setUpListeners();
@@ -430,11 +425,6 @@ public class ActivityCS01 extends ActivitiesMasterParent
                          }else{
                              mLastActivityData=0;
                              findViewById(R.id.activityMainPart)
-                                     .setVisibility(LinearLayout.INVISIBLE);
-                             findViewById(R.id.activityMainPart)
-                                     .setAnimation(AnimationUtils.loadAnimation(
-                                             getApplicationContext(), R.anim.fade_out));
-                             findViewById(R.id.activityMainPartSecond)
                                      .setVisibility(LinearLayout.INVISIBLE);
                              findViewById(R.id.activityMainPart)
                                      .setAnimation(AnimationUtils.loadAnimation(

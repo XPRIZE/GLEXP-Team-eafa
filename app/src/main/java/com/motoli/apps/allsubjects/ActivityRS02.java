@@ -296,19 +296,19 @@ public class ActivityRS02 extends ActivitiesMasterParent
         switch(frameNumber){
             default:
             case 0:{
-                ((ImageView)findViewById(R.id.syllableTextFrame1)).setImageResource(R.drawable.frm_rs02_on);
+                ((ImageView)findViewById(R.id.frame1)).setImageResource(R.drawable.frm_rs02_on);
                 break;
             }
             case 1:{
-                ((ImageView)findViewById(R.id.syllableTextFrame2)).setImageResource(R.drawable.frm_rs02_on);
+                ((ImageView)findViewById(R.id.frame2)).setImageResource(R.drawable.frm_rs02_on);
                 break;
             }
             case 2:{
-                ((ImageView)findViewById(R.id.syllableTextFrame3)).setImageResource(R.drawable.frm_rs02_on);
+                ((ImageView)findViewById(R.id.frame3)).setImageResource(R.drawable.frm_rs02_on);
                 break;
             }
             case 3:{
-                ((ImageView)findViewById(R.id.syllableTextFrame4)).setImageResource(R.drawable.frm_rs02_on);
+                ((ImageView)findViewById(R.id.frame4)).setImageResource(R.drawable.frm_rs02_on);
                 break;
             }
         }
@@ -318,10 +318,10 @@ public class ActivityRS02 extends ActivitiesMasterParent
 
     private void clearFrames(){
         //clear frames
-        ((ImageView)findViewById(R.id.syllableTextFrame1)).setImageResource(R.drawable.frm_rs02_off);
-        ((ImageView)findViewById(R.id.syllableTextFrame2)).setImageResource(R.drawable.frm_rs02_off);
-        ((ImageView)findViewById(R.id.syllableTextFrame3)).setImageResource(R.drawable.frm_rs02_off);
-        ((ImageView)findViewById(R.id.syllableTextFrame4)).setImageResource(R.drawable.frm_rs02_off);
+        ((ImageView)findViewById(R.id.frame1)).setImageResource(R.drawable.frm_rs02_off);
+        ((ImageView)findViewById(R.id.frame2)).setImageResource(R.drawable.frm_rs02_off);
+        ((ImageView)findViewById(R.id.frame3)).setImageResource(R.drawable.frm_rs02_off);
+        ((ImageView)findViewById(R.id.frame4)).setImageResource(R.drawable.frm_rs02_off);
 
 
     }

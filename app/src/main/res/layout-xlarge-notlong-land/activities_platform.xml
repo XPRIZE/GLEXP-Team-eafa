@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/activityMainFrame"
+    android:background="@color/application_letters"
+    >
 
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/activitiesMainFrame"
+    android:id="@+id/activityMainPart"
 
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-        android:background="@drawable/bg_wd06">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/topIcons"
@@ -224,3 +230,4 @@
 
 
 </android.support.constraint.ConstraintLayout>
+</FrameLayout>

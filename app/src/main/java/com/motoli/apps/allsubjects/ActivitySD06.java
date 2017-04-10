@@ -38,11 +38,6 @@ public class ActivitySD06 extends ActivitySDRoot
                 .setAnimation(AnimationUtils.loadAnimation(
                         getApplicationContext(), R.anim.fade_in));
 
-        findViewById(R.id.activityMainPartSecond)
-                .setVisibility(LinearLayout.VISIBLE);
-        findViewById(R.id.activityMainPart)
-                .setAnimation(AnimationUtils.loadAnimation(
-                        getApplicationContext(), R.anim.fade_in));
 
         mBeingValidated=true;
         mActivityNumber=6;
@@ -98,7 +93,6 @@ public class ActivitySD06 extends ActivitySDRoot
     private void afterEndOfActivity(){
         ((ImageView) findViewById(R.id.btnValidate))
                 .setImageResource(R.drawable.btn_validate_on);
-        findViewById(R.id.frameGroup).setVisibility(LinearLayout.INVISIBLE);
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////
@@ -242,11 +236,7 @@ public class ActivitySD06 extends ActivitySDRoot
                                     .setAnimation(AnimationUtils.loadAnimation(
                                             getApplicationContext(), R.anim.fade_out));
 
-                            findViewById(R.id.activityMainPartSecond)
-                                    .setVisibility(LinearLayout.INVISIBLE);
-                            findViewById(R.id.activityMainPart)
-                                    .setAnimation(AnimationUtils.loadAnimation(
-                                            getApplicationContext(), R.anim.fade_out));
+
                             lastActivityDataHandler.postDelayed(returnToActivities_Platorm,10);
                         }
                     }else{

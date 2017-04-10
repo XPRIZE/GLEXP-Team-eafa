@@ -60,11 +60,7 @@ public class ActivitySH05 extends ActivitiesMasterParent
         findViewById(R.id.activityMainPart)
                 .setAnimation(AnimationUtils.loadAnimation(
                         getApplicationContext(), R.anim.fade_in));
-        findViewById(R.id.activityMainPart)
-                .setVisibility(LinearLayout.VISIBLE);
-        findViewById(R.id.activityMainPartSecond)
-                .setAnimation(AnimationUtils.loadAnimation(
-                        getApplicationContext(), R.anim.fade_in));
+
         mInstructionAudio="info_sh05";
         mBeingValidated=true;
 
@@ -677,11 +673,7 @@ public class ActivitySH05 extends ActivitiesMasterParent
                             findViewById(R.id.activityMainPart)
                                     .setAnimation(AnimationUtils.loadAnimation(
                                             getApplicationContext(), R.anim.fade_out));
-                            findViewById(R.id.activityMainPartSecond)
-                                    .setVisibility(LinearLayout.INVISIBLE);
-                            findViewById(R.id.activityMainPart)
-                                    .setAnimation(AnimationUtils.loadAnimation(
-                                            getApplicationContext(), R.anim.fade_out));
+
                             lastActivityDataHandler.postDelayed(returnToActivities_Platorm,10);
                         }
                     }else{

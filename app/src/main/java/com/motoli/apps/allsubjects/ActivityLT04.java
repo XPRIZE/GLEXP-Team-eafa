@@ -52,8 +52,6 @@ public class ActivityLT04 extends ActivitiesMasterParent
         mAllActivityText = new ArrayList<>();
 
 
-        findViewById(R.id.activityMainPartSecond)
-                .setVisibility(LinearLayout.VISIBLE);
         mBeingValidated=true;
         mInstructionAudio="info_lt04";
         clearActivity();
@@ -584,11 +582,6 @@ public class ActivityLT04 extends ActivitiesMasterParent
                             findViewById(R.id.activityMainPart)
                                     .setVisibility(LinearLayout.INVISIBLE);
                             findViewById(R.id.activityMainPart)
-                                    .setAnimation(AnimationUtils.loadAnimation(
-                                            getApplicationContext(), R.anim.fade_out));
-                            findViewById(R.id.activityMainPartSecond)
-                                    .setVisibility(LinearLayout.INVISIBLE);
-                            findViewById(R.id.activityMainPartSecond)
                                     .setAnimation(AnimationUtils.loadAnimation(
                                             getApplicationContext(), R.anim.fade_out));
                             lastActivityDataHandler.postDelayed(returnToActivities_Platorm,2000);

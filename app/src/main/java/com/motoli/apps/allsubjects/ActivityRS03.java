@@ -62,11 +62,8 @@ public class ActivityRS03 extends ActivitiesMasterParent
         findViewById(R.id.activityMainPart)
                 .setAnimation(AnimationUtils.loadAnimation(
                         getApplicationContext(), R.anim.fade_in));
-        findViewById(R.id.activityMainPart)
-                .setVisibility(LinearLayout.VISIBLE);
-        findViewById(R.id.activityMainPartSecond)
-                .setAnimation(AnimationUtils.loadAnimation(
-                        getApplicationContext(), R.anim.fade_in));
+
+
         mInstructionAudio="info_rs03";
         setUpListeners();
         visibleProgress();
@@ -435,11 +432,7 @@ public class ActivityRS03 extends ActivitiesMasterParent
                             findViewById(R.id.activityMainPart)
                                     .setAnimation(AnimationUtils.loadAnimation(
                                             getApplicationContext(), R.anim.fade_out));
-                            findViewById(R.id.activityMainPart)
-                                    .setVisibility(LinearLayout.INVISIBLE);
-                            findViewById(R.id.activityMainPartSecond)
-                                    .setAnimation(AnimationUtils.loadAnimation(
-                                            getApplicationContext(), R.anim.fade_out));
+
                         }
                     }else{
                         ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_off);

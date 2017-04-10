@@ -1597,7 +1597,7 @@ public class AppProvider extends ContentProvider {
         }
         mCursor.close();
 
-        mDatabase.close();
+        //mDatabase.close();
 
         int mCurrentOne, mCurrentTwo, mPreviousTwo, mPreviousOne, mMaxResult;
 

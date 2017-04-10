@@ -41,11 +41,7 @@ public class ActivitySD03 extends ActivitySDRoot
                 .setAnimation(AnimationUtils.loadAnimation(
                         getApplicationContext(), R.anim.fade_in));
 
-        findViewById(R.id.activityMainPartSecond)
-                .setVisibility(LinearLayout.VISIBLE);
-        findViewById(R.id.activityMainPart)
-                .setAnimation(AnimationUtils.loadAnimation(
-                        getApplicationContext(), R.anim.fade_in));
+
         mBeingValidated=true;
         mActivityNumber=3;
         mInstructionAudio="info_sd03";
@@ -316,11 +312,7 @@ public class ActivitySD03 extends ActivitySDRoot
                                     .setAnimation(AnimationUtils.loadAnimation(
                                             getApplicationContext(), R.anim.fade_out));
 
-                            findViewById(R.id.activityMainPartSecond)
-                                    .setVisibility(LinearLayout.INVISIBLE);
-                            findViewById(R.id.activityMainPart)
-                                    .setAnimation(AnimationUtils.loadAnimation(
-                                            getApplicationContext(), R.anim.fade_out));
+
                             lastActivityDataHandler.postDelayed(returnToActivities_Platorm,10);
                         }
                     }else{

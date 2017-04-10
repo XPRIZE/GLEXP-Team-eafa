@@ -2,8 +2,8 @@
 <manifest package="com.motoli.apps.allsubjects"
           xmlns:android="http://schemas.android.com/apk/res/android"
           android:installLocation="auto"
-          android:versionCode="42"
-          android:versionName="1.31.043"
+          android:versionCode="44"
+          android:versionName="1.31.044"
     >
 
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
@@ -263,6 +263,12 @@
             android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"/>
         <activity
             android:name=".ActivityOP07"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:logo="@drawable/btn_act_op07"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"/>
+        <activity
+            android:name=".ActivityOP08"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:logo="@drawable/btn_act_op07"
             android:screenOrientation="sensorLandscape"

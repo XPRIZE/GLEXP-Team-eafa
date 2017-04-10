@@ -2,11 +2,157 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\abors\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
-        <dex dex="C:\Users\abors\StudioProjects\Motoli All Subjects\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-9248183d2312cd57a08992cae834ff74636e0081.jar" />
+        is-multidex="true"
+        jar="C:\Users\aborsay\.android\build-cache\80a14065fab92c4917e6b6816ab5bb50ab2bda7e\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_196d8341f3eab341d47aa54d2fcc5970efdb29ae\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\aborsay\.android\build-cache\e8cd3d4aab6837be36199bd9637cd1bd74ff539f\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b0cf7bf52165d44bc23c75ba4580bd116f7710fe\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\aborsay\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.3.1\support-annotations-25.3.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.3.1_94bc0ae5305665a706a8733309312b33c7c9ca34\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
+        <dex dex="C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_4da7b6516e05e99eed3404af1047ba12d6f3ea2c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\aborsay\.android\build-cache\3b4b451c15de1263079a806233ed1d86baf8def8\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2cd4b982617e544728de0782d718a58ce1b06e3f">
+        <dex dex="C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d96ece2a7fbeb61fe31b7bd574a19f0c1038bc1a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\aborsay\.android\build-cache\0e21c25d98491ca8ce6cf018db8fe82778812c78\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d29f0272d5b92ddae6fb47e550f9f756828fb05b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\aborsay\.android\build-cache\2797547c658b7665986655734c1cfdb655227aa8\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7aaf240886af591524ac09bd45de4c93a3fdbe51\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\aborsay\.android\build-cache\d54332cce69a46ecf663a16c34dbc4e84572ba08\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_8496c71562029d0bc2856cca598ea4c5fcc8cc32\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\aborsay\.android\build-cache\4ff5aa15ad434db2cc979e9f1f2fc5514e72b543\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c98f5b6b9afdb5279e60c926c0b929843766f593\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\aborsay\.android\build-cache\bd08b6a74e29bbf45ab487b88e5e24b9989b08df\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d331e025b06de64d811452b67ed946d574fe12a0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\aborsay\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-collections4\4.0\da217367fd25e88df52ba79e47658d4cf928b0d1\commons-collections4-4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="da217367fd25e88df52ba79e47658d4cf928b0d1">
+        <dex dex="C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\build\intermediates\transforms\dex\debug\folders\1000\10\commons-collections4-4.0_915c54cc4ba5798cb95a9076725e9743a773a494\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\aborsay\.android\build-cache\1dbbf41a9ebadf8874e82cb083be060ec54514d0\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3a1bac2cc31df44dbf1f9bbf2c675319503c9271">
+        <dex dex="C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b65fd6fd101b9dad567c19f5e1edcdf85291f551\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\aborsay\.android\build-cache\74b32b0f507ae873c01efca4c85b4b204e254a94\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_bb7138e17ec34753bc2a21110d2ade2ad5fdce46\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\aborsay\.android\build-cache\e5d9a1e4e6432c7c68156e8ab090aedbc47fc5da\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_92ce66927b94d46368697ca96d1cf80f54a163d0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\aborsay\AppData\Local\Android\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\build\intermediates\transforms\dex\debug\folders\1000\10\constraint-layout-solver-1.0.2_c7d4785f7b1841383f97a986169c9edff9ec90c6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ec21659ded4c9e7ac7e7c5ede395e0cb5bebb42e">
+        <dex dex="C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_4b59d6ec22ff89f4c5d26c81caa092d062ff5045\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\aborsay\.android\build-cache\54c6e80bab75d8e1681463512c5f98e9582a10b9\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_bc5801c77eb9d52efa9f92b721caa20ac581ab44\classes.dex" />
     </item>
 
 </items>

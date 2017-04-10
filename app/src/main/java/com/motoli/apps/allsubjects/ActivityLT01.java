@@ -45,11 +45,6 @@ public class ActivityLT01 extends ActivityLTRoot {
         findViewById(id.activityMainPart)
                 .setAnimation(AnimationUtils.loadAnimation(
                         getApplicationContext(), anim.fade_in));
-        findViewById(id.activityMainPartSecond)
-                .setVisibility(LinearLayout.VISIBLE);
-        findViewById(id.activityMainPartSecond)
-                .setAnimation(AnimationUtils.loadAnimation(
-                        getApplicationContext(), anim.fade_in));
         clearActivity();
         setUpListeners();
         setupFrameListens();
@@ -359,11 +354,6 @@ public class ActivityLT01 extends ActivityLTRoot {
                         findViewById(id.activityMainPart)
                                 .setVisibility(LinearLayout.INVISIBLE);
                         findViewById(id.activityMainPart)
-                                .setAnimation(AnimationUtils.loadAnimation(
-                                        getApplicationContext(), anim.fade_out));
-                        findViewById(id.activityMainPartSecond)
-                                .setVisibility(LinearLayout.INVISIBLE);
-                        findViewById(id.activityMainPartSecond)
                                 .setAnimation(AnimationUtils.loadAnimation(
                                         getApplicationContext(), anim.fade_out));
                         lastActivityDataHandler.postDelayed(returnToActivities_Platorm,10);

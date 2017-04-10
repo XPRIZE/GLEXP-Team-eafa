@@ -12,11 +12,16 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.23"
-            layout="@layout/activity_top_area" />
+            android:layout_weight="0.23">
+            <include
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0."
+                layout="@layout/activity_top_area" />
+        </LinearLayout>
 
         <Space
             android:layout_width="match_parent"

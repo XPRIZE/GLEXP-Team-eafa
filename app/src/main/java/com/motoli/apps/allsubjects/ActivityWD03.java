@@ -51,9 +51,6 @@ public class ActivityWD03 extends ActivitiesMasterParent
         appData.addToClassOrder(8);
         mAllActivityText = new ArrayList<>();
 
-
-        findViewById(R.id.activityMainPartSecond)
-                .setVisibility(LinearLayout.VISIBLE);
         mBeingValidated=true;
         mInstructionAudio="info_wd03";
         clearActivity();
@@ -705,11 +702,6 @@ public class ActivityWD03 extends ActivitiesMasterParent
                             findViewById(R.id.activityMainPart)
                                     .setVisibility(LinearLayout.INVISIBLE);
                             findViewById(R.id.activityMainPart)
-                                    .setAnimation(AnimationUtils.loadAnimation(
-                                            getApplicationContext(), R.anim.fade_out));
-                            findViewById(R.id.activityMainPartSecond)
-                                    .setVisibility(LinearLayout.INVISIBLE);
-                            findViewById(R.id.activityMainPartSecond)
                                     .setAnimation(AnimationUtils.loadAnimation(
                                             getApplicationContext(), R.anim.fade_out));
                             lastActivityDataHandler.postDelayed(returnToActivities_Platorm,2000);
