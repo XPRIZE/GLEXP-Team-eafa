@@ -17,6 +17,7 @@ import android.widget.CursorAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Space;
 import android.widget.VideoView;
 
@@ -69,9 +70,14 @@ public class ActivityVL extends ActivitiesMasterParent implements
                        getResources().getDrawable(R.drawable.a_rounded_boxa));
                findViewById(R.id.videoList)
                        .setBackgroundResource(R.color.video_page_letters_side);
-               findViewById(R.id.videoBackground)
+               findViewById(R.id.videoListBackground)
                        .setBackgroundResource(R.color.video_page_letters_side);
-               findViewById(R.id.videoArea)
+
+               findViewById(R.id.activityMainPart)
+                       .setBackgroundResource(R.color.video_page_letters_side);
+               findViewById(R.id.topIcons)
+                       .setBackgroundResource(R.color.video_page_letters_main);
+               findViewById(R.id.iconSpace)
                        .setBackgroundResource(R.color.video_page_letters_main);
                getLoaderManager().initLoader(Constants.ACTIVITY_CURRENT_LETTERS, null, this);
                break;
@@ -79,12 +85,15 @@ public class ActivityVL extends ActivitiesMasterParent implements
            case 3:{
                ((FrameLayout) findViewById(R.id.videoFrame)).setForeground(
                        getResources().getDrawable(R.drawable.a_rounded_boxa));
-               findViewById(R.id.videoArea)
+               findViewById(R.id.topIcons)
                        .setBackgroundResource(R.color.video_page_letters_main);
-
-               findViewById(R.id.videoBackground)
+               findViewById(R.id.iconSpace)
+                       .setBackgroundResource(R.color.video_page_letters_main);
+               findViewById(R.id.activityMainPart)
                        .setBackgroundResource(R.color.video_page_letters_side);
                findViewById(R.id.videoList)
+                       .setBackgroundResource(R.color.video_page_letters_side);
+               findViewById(R.id.videoListBackground)
                        .setBackgroundResource(R.color.video_page_letters_side);
                getLoaderManager().initLoader(Constants.CURRENT_PHONIC_LETTERS, null, this);
                break;
@@ -92,11 +101,15 @@ public class ActivityVL extends ActivitiesMasterParent implements
            case 4:{
                ((FrameLayout) findViewById(R.id.videoFrame)).setForeground(
                        getResources().getDrawable(R.drawable.a_rounded_boxa));
-               findViewById(R.id.videoBackground)
+               findViewById(R.id.activityMainPart)
                        .setBackgroundResource(R.color.video_page_letters_side);
                findViewById(R.id.videoList)
                        .setBackgroundResource(R.color.video_page_letters_side);
-               findViewById(R.id.videoArea)
+               findViewById(R.id.videoListBackground)
+                       .setBackgroundResource(R.color.video_page_letters_side);
+               findViewById(R.id.topIcons)
+                       .setBackgroundResource(R.color.video_page_letters_main);
+               findViewById(R.id.iconSpace)
                        .setBackgroundResource(R.color.video_page_letters_main);
                getLoaderManager().initLoader(Constants.ACTIVITY_CURRENT_SYLLABLES, null, this);
                break;
@@ -104,11 +117,15 @@ public class ActivityVL extends ActivitiesMasterParent implements
            case 5:{
                ((FrameLayout) findViewById(R.id.videoFrame)).setForeground(
                        getResources().getDrawable(R.drawable.a_rounded_box_words));
-               findViewById(R.id.videoArea)
-                      .setBackgroundResource(R.color.application_words_video);
+               findViewById(R.id.topIcons)
+                       .setBackgroundResource(R.color.application_words_video);
+               findViewById(R.id.iconSpace)
+                       .setBackgroundResource(R.color.application_words_video);
                findViewById(R.id.videoList)
                        .setBackgroundResource(R.color.application_words_video_side);
-               findViewById(R.id.videoBackground)
+               findViewById(R.id.videoListBackground)
+                       .setBackgroundResource(R.color.application_words_video_side);
+               findViewById(R.id.activityMainPart)
                        .setBackgroundResource(R.color.application_words_video_side);
                getLoaderManager().initLoader(Constants.CURRENT_WORDS, null, this);
                break;
@@ -120,11 +137,15 @@ public class ActivityVL extends ActivitiesMasterParent implements
             case 7:{
                 ((FrameLayout) findViewById(R.id.videoFrame)).setForeground(
                         getResources().getDrawable(R.drawable.a_rounded_boxa));
-                findViewById(R.id.videoBackground)
+                findViewById(R.id.activityMainPart)
                         .setBackgroundResource(R.color.video_page_letters_side);
                 findViewById(R.id.videoList)
                         .setBackgroundResource(R.color.video_page_letters_side);
-                findViewById(R.id.videoArea)
+                findViewById(R.id.videoListBackground)
+                        .setBackgroundResource(R.color.video_page_letters_side);
+                findViewById(R.id.topIcons)
+                        .setBackgroundResource(R.color.video_page_letters_main);
+                findViewById(R.id.iconSpace)
                         .setBackgroundResource(R.color.video_page_letters_main);
                 getLoaderManager().initLoader(Constants.MATH_SHAPES_SET, null, this);
                 break;
@@ -132,11 +153,15 @@ public class ActivityVL extends ActivitiesMasterParent implements
             case 8:{
                 ((FrameLayout) findViewById(R.id.videoFrame)).setForeground(
                         getResources().getDrawable(R.drawable.a_rounded_boxa));
-                findViewById(R.id.videoBackground)
+                findViewById(R.id.activityMainPart)
                         .setBackgroundResource(R.color.video_page_letters_side);
                 findViewById(R.id.videoList)
                         .setBackgroundResource(R.color.video_page_letters_side);
-                findViewById(R.id.videoArea)
+                findViewById(R.id.videoListBackground)
+                        .setBackgroundResource(R.color.video_page_letters_side);
+                findViewById(R.id.topIcons)
+                        .setBackgroundResource(R.color.video_page_letters_main);
+                findViewById(R.id.iconSpace)
                         .setBackgroundResource(R.color.video_page_letters_main);
                 getLoaderManager().initLoader(Constants.MATH_NUMBERS_SET, null, this);
                 break;
@@ -144,11 +169,15 @@ public class ActivityVL extends ActivitiesMasterParent implements
             case 9:{
                 ((FrameLayout) findViewById(R.id.videoFrame)).setForeground(
                         getResources().getDrawable(R.drawable.a_rounded_boxa));
-                findViewById(R.id.videoBackground)
+                findViewById(R.id.activityMainPart)
                         .setBackgroundResource(R.color.video_page_letters_side);
                 findViewById(R.id.videoList)
                         .setBackgroundResource(R.color.video_page_letters_side);
-                findViewById(R.id.videoArea)
+                findViewById(R.id.videoListBackground)
+                        .setBackgroundResource(R.color.video_page_letters_side);
+                findViewById(R.id.topIcons)
+                        .setBackgroundResource(R.color.video_page_letters_main);
+                findViewById(R.id.iconSpace)
                         .setBackgroundResource(R.color.video_page_letters_main);
                 getLoaderManager().initLoader(Constants.MATH_OPERATIONS, null, this);
                 break;

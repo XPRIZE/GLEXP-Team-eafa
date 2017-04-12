@@ -1,570 +1,563 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_op01">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.23">
-            <include
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0."
-                layout="@layout/activity_top_area" />
-        </LinearLayout>
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.3"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    android:background="@drawable/bg_op02">
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/activityMainPart"
-        android:visibility="visible">
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".01"/>
-
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_op02">
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:id="@+id/topIcons"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="1.5">
+            android:orientation="horizontal"
+            android:padding="6dp"
+            android:visibility="visible"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight=".15"
+            app:layout_constraintBottom_toTopOf="@+id/iconSpace">
+
+            <include
+                layout="@layout/activity_top_area"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".015"/>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight=".4"/>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight=".75">
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1.5">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:id="@+id/imageView25"
-                            android:src="@drawable/frm_op_green"
-                            android:contentDescription="@string/general_image"
-                            android:layout_alignParentBottom="false"
-                            />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="@string/number_1"
-                            android:id="@+id/equationNumber1"
-                            android:layout_centerHorizontal="true"
-                            android:textSize="@dimen/op_number_problem_font"
-                            android:textColor="@color/normalBlack"
-                            android:textStyle="bold"
-                            android:gravity="center_vertical|center_horizontal"/>
-                    </RelativeLayout>
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:text="@string/stringPlus"
-                        android:id="@+id/equationSymbol"
-                        android:textColor="@color/regularBlack"
-                        android:textSize="@dimen/op_symbol_large_font_size"
-                        android:layout_weight=".5"
-                        android:gravity="center_vertical|center_horizontal"
-                        android:textStyle="bold"
-                        />
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1.5">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:id="@+id/imageView28"
-                            android:src="@drawable/frm_op_green"
-                            android:contentDescription="@string/general_image"
-                            />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="@string/number_4"
-                            android:id="@+id/equationNumber2"
-                            android:layout_centerVertical="true"
-                            android:layout_centerHorizontal="true"
-                            android:textSize="@dimen/op_number_problem_font"
-                            android:textColor="@color/normalBlack"
-                            android:textStyle="bold"
-                            android:singleLine="true"
-                            android:gravity="center_vertical|center_horizontal"/>
-                    </RelativeLayout>
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:text="@string/stringEqual"
-                        android:id="@+id/equalSymbol"
-                        android:textColor="@color/regularBlack"
-                        android:textSize="@dimen/op_symbol_large_font_size"
-                        android:layout_weight=".5"
-                        android:gravity="center_vertical|center_horizontal"
-                        android:textStyle="bold"
-                        android:textIsSelectable="false"
-                        android:layout_gravity="center|bottom|left|right|top"
-                        android:singleLine="false"
-                        />
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1.5">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:id="@+id/imageView27"
-                            android:src="@drawable/frm_op_green"
-                            android:contentDescription="@string/general_image"
-                            />
-
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="100"
-                            android:id="@+id/equationResult"
-                            android:textSize="@dimen/op_number_problem_font"
-                            android:textColor="@color/normalBlack"
-                            android:gravity="center_vertical|center_horizontal"
-                            android:textStyle="bold"
-                            android:layout_centerInParent="true"/>
-
-                    </RelativeLayout>
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".02"/>
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:id="@+id/btnValidate"
-                            android:src="@drawable/btn_validate_ok_sm"
-                            android:contentDescription="@string/general_image" />
-                    </RelativeLayout>
-
-                </LinearLayout>
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight=".05"/>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1">
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1.8"
-                        android:background="@drawable/rounded_box_selected_green">
-
-                        <com.motoli.apps.allsubjects.MathOperationDots
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/equationDots1"
-                            android:tag="1"
-                            android:layout_margin="@dimen/qn_dots_all_margin"
-                            android:focusableInTouchMode="false"/>
-                    </RelativeLayout>
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".08"/>
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1.8"
-                        android:background="@drawable/rounded_box_selected_green">
-
-                        <com.motoli.apps.allsubjects.MathOperationDots
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/equationDots2"
-                            android:tag="7"
-                            android:layout_margin="@dimen/qn_dots_all_margin"/>
-
-                    </RelativeLayout>
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".08"/>
-
-                    <FrameLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2.3"
-                        android:background="@drawable/rounded_box_selected_green"
-                        android:focusable="false">
-
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:id="@+id/numberPad">
-
-                            <Space
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight=".2"/>
-
-                            <TableRow
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="1"
-                                android:orientation="vertical"
-                                >
-
-                                <Space
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight=".2"/>
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:text="@string/number_7"
-                                    android:id="@+id/guessNumber7"
-                                    android:textColor="@color/normalBlack"
-                                    android:textSize="@dimen/op_number_set"
-                                    android:layout_weight="1"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:background="@drawable/number_box_selected"
-                                    android:paddingTop="-15dp"/>
-
-                                <Space
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight=".02"/>
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:text="@string/number_8"
-                                    android:id="@+id/guessNumber8"
-                                    android:textColor="@color/normalBlack"
-                                    android:textSize="@dimen/op_number_set"
-                                    android:layout_weight="1"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:background="@drawable/number_box_unselected"/>
-
-                                <Space
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight=".02"/>
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:text="@string/number_9"
-                                    android:id="@+id/guessNumber9"
-                                    android:textColor="@color/normalBlack"
-                                    android:textSize="@dimen/op_number_set"
-                                    android:layout_weight="1"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:background="@drawable/number_box_unselected"
-                                    android:layout_margin="@dimen/number_box_margin"
-                                    />
-
-                                <Space
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight=".2"/>
-
-                            </TableRow>
-
-                            <TableRow
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="1">
-
-                                <Space
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight=".2"/>
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:text="@string/number_4"
-                                    android:id="@+id/guessNumber4"
-                                    android:textColor="@color/normalBlack"
-                                    android:textSize="@dimen/op_number_set"
-                                    android:layout_weight="1"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:background="@drawable/number_box_unselected"
-                                    android:layout_margin="@dimen/number_box_margin"
-                                    />
-
-                                <Space
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight=".02"/>
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:text="@string/number_5"
-                                    android:id="@+id/guessNumber5"
-                                    android:textColor="@color/normalBlack"
-                                    android:textSize="@dimen/op_number_set"
-                                    android:layout_weight="1"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:background="@drawable/number_box_unselected"
-                                    android:layout_margin="@dimen/number_box_margin"
-                                    />
-
-                                <Space
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight=".02"/>
-
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:text="@string/number_6"
-                                    android:id="@+id/guessNumber6"
-                                    android:textColor="@color/normalBlack"
-                                    android:textSize="@dimen/op_number_set"
-                                    android:layout_weight="1"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:background="@drawable/number_box_unselected"
-                                    android:layout_margin="@dimen/number_box_margin"
-                                    />
-
-                                <Space
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight=".2"/>
-                            </TableRow>
-
-                            <TableRow
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="1">
-
-                                <Space
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight=".2"/>
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:text="@string/number_1"
-                                    android:id="@+id/guessNumber1"
-                                    android:textColor="@color/normalBlack"
-                                    android:textSize="@dimen/op_number_set"
-                                    android:layout_weight="1"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:background="@drawable/number_box_unselected"
-                                    android:layout_margin="@dimen/number_box_margin"
-                                    />
-
-                                <Space
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight=".02"/>
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:text="@string/number_2"
-                                    android:id="@+id/guessNumber2"
-                                    android:textColor="@color/normalBlack"
-                                    android:textSize="@dimen/op_number_set"
-                                    android:layout_weight="1"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:background="@drawable/number_box_unselected"
-                                    android:layout_margin="@dimen/number_box_margin"
-                                    />
-
-                                <Space
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight=".02"
-                                    />
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:text="@string/number_3"
-                                    android:id="@+id/guessNumber3"
-                                    android:textColor="@color/normalBlack"
-                                    android:textSize="@dimen/op_number_set"
-                                    android:layout_weight="1"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:background="@drawable/number_box_unselected"
-                                    android:layout_margin="@dimen/number_box_margin"
-                                    />
-
-                                <Space
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight=".2"/>
-                            </TableRow>
-
-                            <TableRow
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="1">
-
-                                <Space
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight=".2"/>
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:text="@string/number_0"
-                                    android:id="@+id/guessNumber0"
-                                    android:textColor="@color/normalBlack"
-                                    android:textSize="@dimen/op_number_set"
-                                    android:layout_weight="2.1"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:layout_margin="@dimen/number_box_margin"
-                                    android:background="@drawable/number_box_unselected"
-                                    />
-
-                                <Space
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight=".02"/>
-
-                                <RelativeLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1">
-
-                                    <ImageView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:id="@+id/backspace"
-                                        android:src="@drawable/backspace"
-                                        android:contentDescription="@string/general_image"
-                                        android:scaleType="fitCenter"/>
-                                </RelativeLayout>
-
-                                <Space
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight=".2"/>
-
-                            </TableRow>
-
-                            <Space
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight=".2"/>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:id="@+id/answerDots">
-
-                            <Space
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight=".2" />
-
-                            <com.motoli.apps.allsubjects.MathOperationDots
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/finalDots"
-                                android:tag="18"
-                                android:layout_margin="@dimen/qn_dots_all_margin"
-                                android:visibility="visible"
-                                android:layout_weight="1" />
-
-                            <Space
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_weight=".2" />
-
-                        </LinearLayout>
-
-                    </FrameLayout>
-
-                </LinearLayout>
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight=".05"/>
-
-            </LinearLayout>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".015"/>
         </LinearLayout>
 
         <Space
-            android:layout_width="match_parent"
+            android:id="@+id/iconSpace"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight=".01"/>
+            app:layout_constraintTop_toBottomOf="@+id/topIcons"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintVertical_weight="1" />
 
-    </LinearLayout>
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guidelineHorizontalTop"
+            app:layout_constraintGuide_percent="0.1"
+            android:orientation="horizontal" />
+
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/frame1"
+            android:src="@drawable/frm_op_green"
+            android:contentDescription="@string/general_image"
+            android:layout_margin="16dp"
+            app:layout_constraintHorizontal_weight=".25"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalMid"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/plusSymbol"
+            app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalTop" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="@string/number_1"
+            android:id="@+id/equationNumber1"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/op_number_problem_font"
+            android:textColor="@color/normalBlack"
+            android:textStyle="bold"
+            android:gravity="center_vertical|center_horizontal"
+            app:layout_constraintRight_toRightOf="@+id/frame1"
+            app:layout_constraintBottom_toBottomOf="@+id/frame1"
+            app:layout_constraintTop_toTopOf="@+id/frame1"
+            app:layout_constraintLeft_toLeftOf="@+id/frame1"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="@string/stringPlus"
+            android:id="@+id/plusSymbol"
+            android:textColor="@color/regularBlack"
+            android:textSize="@dimen/op_symbol_large_font_size"
+            android:gravity="center_vertical|center_horizontal"
+            android:textStyle="bold"
+            app:layout_constraintHorizontal_weight=".05"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalMid"
+            app:layout_constraintLeft_toRightOf="@+id/frame1"
+            app:layout_constraintRight_toLeftOf="@+id/frame2"
+            app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalTop" />
+
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/frame2"
+            android:src="@drawable/frm_op_green"
+            android:layout_margin="16dp"
+            android:contentDescription="@string/general_image"
+            app:layout_constraintHorizontal_weight=".25"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalMid"
+            app:layout_constraintLeft_toRightOf="@+id/plusSymbol"
+            app:layout_constraintRight_toLeftOf="@+id/equalSymbol"
+            app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalTop" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="@string/number_4"
+            android:id="@+id/equationNumber2"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/op_number_problem_font"
+            android:textColor="@color/normalBlack"
+            android:textStyle="bold"
+            android:gravity="center_vertical|center_horizontal"
+            app:layout_constraintRight_toRightOf="@+id/frame2"
+            app:layout_constraintBottom_toBottomOf="@+id/frame2"
+            app:layout_constraintTop_toTopOf="@+id/frame2"
+            app:layout_constraintLeft_toLeftOf="@+id/frame2"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="@string/stringEqual"
+            android:id="@+id/equalSymbol"
+            android:textColor="@color/regularBlack"
+            android:textSize="@dimen/op_symbol_large_font_size"
+            android:gravity="center_vertical|center_horizontal"
+            android:textStyle="bold"
+            android:textIsSelectable="false"
+            android:layout_gravity="center|bottom|end|start|top"
+            app:layout_constraintHorizontal_weight=".05"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalMid"
+            app:layout_constraintLeft_toRightOf="@+id/frame2"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineVerticalMid"
+            app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalTop"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guidelineVerticalMid"
+            app:layout_constraintGuide_percent="0.6"
+            android:orientation="vertical" />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/frame3"
+            android:src="@drawable/frm_op_green"
+            android:layout_margin="16dp"
+            android:contentDescription="@string/general_image"
+            app:layout_constraintHorizontal_weight=".25"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalMid"
+            app:layout_constraintLeft_toRightOf="@+id/equalSymbol"
+            app:layout_constraintRight_toLeftOf="@+id/btnValidate"
+            app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalTop" />
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="@string/hundred"
+            android:id="@+id/equationResult"
+            android:textSize="@dimen/op_number_problem_font"
+            android:textColor="@color/normalBlack"
+            android:gravity="center_vertical|center_horizontal"
+            android:textStyle="bold"
+            app:layout_constraintRight_toRightOf="@+id/frame3"
+            app:layout_constraintBottom_toBottomOf="@+id/frame3"
+            app:layout_constraintTop_toTopOf="@+id/frame3"
+            app:layout_constraintLeft_toLeftOf="@+id/frame3"/>
+
+
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/btnValidate"
+            android:layout_margin="2dp"
+            android:src="@drawable/btn_validate_ok_sm"
+            android:contentDescription="@string/general_image"
+            app:layout_constraintHorizontal_weight=".15"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalMid"
+            app:layout_constraintLeft_toRightOf="@+id/frame3"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalTop" />
+
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guidelineHorizontalMid"
+            app:layout_constraintGuide_percent="0.55"
+            android:orientation="horizontal" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/frame4"
+            android:background="@drawable/rounded_box_selected_green"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="@string/none"
+            app:layout_constraintHorizontal_weight="1.25"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/frame5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalMid" />
+
+        <com.motoli.apps.allsubjects.MathOperationDots
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/equationDots1"
+            android:tag="47"
+            android:layout_margin="@dimen/qn_dots_all_margin"
+            android:focusableInTouchMode="false"
+            app:layout_constraintRight_toRightOf="@+id/frame4"
+            app:layout_constraintBottom_toBottomOf="@+id/frame4"
+            app:layout_constraintTop_toTopOf="@+id/frame4"
+            app:layout_constraintLeft_toLeftOf="@+id/frame4"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/frame5"
+            android:background="@drawable/rounded_box_selected_green"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="@string/none"
+            app:layout_constraintHorizontal_weight="1.25"
+            app:layout_constraintLeft_toRightOf="@+id/frame4"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineVerticalMid"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalMid" />
+
+        <com.motoli.apps.allsubjects.MathOperationDots
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/equationDots2"
+            android:tag="17"
+            android:layout_margin="@dimen/qn_dots_all_margin"
+            app:layout_constraintRight_toRightOf="@+id/frame5"
+            app:layout_constraintBottom_toBottomOf="@+id/frame5"
+            app:layout_constraintTop_toTopOf="@+id/frame5"
+            app:layout_constraintLeft_toLeftOf="@+id/frame5"
+            app:layout_constraintHorizontal_bias="0.433" />
+
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/frame6"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/none"
+            app:layout_constraintHorizontal_weight="2"
+            android:background="@drawable/rounded_box_selected_green"
+            app:layout_constraintLeft_toRightOf="@+id/frame5"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalMid" />
+
+
+
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guidelineVerticalNumberLeft"
+            app:layout_constraintGuide_percent="0.69"
+            android:orientation="vertical" />
+
+        <TextView
+            android:id="@+id/guessNumber7"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/number_box_unselected"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginEnd="2dp"
+            android:text="@string/number_7"
+            android:textColor="@color/normalBlack"
+            android:textSize="@dimen/op_number_set"
+            android:gravity="center_vertical|center_horizontal"
+            app:layout_constraintVertical_chainStyle="spread"
+            app:layout_constraintHorizontal_weight=".3"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/guidelineVerticalNumberLeft"
+            app:layout_constraintRight_toLeftOf="@+id/guessNumber8"
+            app:layout_constraintTop_toTopOf="@+id/frame6"
+            app:layout_constraintBottom_toTopOf="@+id/guessNumber4"/>
+
+        <TextView
+            android:id="@+id/guessNumber8"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/number_box_unselected"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginStart="2dp"
+            android:text="@string/number_8"
+            android:textColor="@color/normalBlack"
+            android:textSize="@dimen/op_number_set"
+            android:gravity="center_vertical|center_horizontal"
+            app:layout_constraintHorizontal_weight=".3"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/guessNumber7"
+            app:layout_constraintRight_toLeftOf="@+id/guessNumber9"
+            app:layout_constraintTop_toTopOf="@+id/frame6"
+            app:layout_constraintBottom_toTopOf="@+id/guessNumber5"/>
+
+        <TextView
+            android:id="@+id/guessNumber9"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/number_box_unselected"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginStart="2dp"
+            android:text="@string/number_9"
+            android:textColor="@color/normalBlack"
+            android:textSize="@dimen/op_number_set"
+            android:gravity="center_vertical|center_horizontal"
+            app:layout_constraintHorizontal_weight=".3"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/guessNumber8"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineVerticalNumberRight"
+            app:layout_constraintTop_toTopOf="@+id/frame6"
+            app:layout_constraintBottom_toTopOf="@+id/guessNumber6"/>
+
+
+        <TextView
+            android:id="@+id/guessNumber4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/number_box_unselected"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginEnd="2dp"
+            android:text="@string/number_4"
+            android:textColor="@color/normalBlack"
+            android:textSize="@dimen/op_number_set"
+            android:gravity="center_vertical|center_horizontal"
+            app:layout_constraintHorizontal_weight=".3"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/guidelineVerticalNumberLeft"
+            app:layout_constraintRight_toLeftOf="@+id/guessNumber5"
+            app:layout_constraintTop_toBottomOf="@+id/guessNumber7"
+            app:layout_constraintBottom_toTopOf="@+id/guessNumber1"/>
+
+        <TextView
+            android:id="@+id/guessNumber5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/number_box_unselected"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginStart="2dp"
+            android:text="@string/number_5"
+            android:textColor="@color/normalBlack"
+            android:textSize="@dimen/op_number_set"
+            android:gravity="center_vertical|center_horizontal"
+            app:layout_constraintHorizontal_weight=".3"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/guessNumber4"
+            app:layout_constraintRight_toLeftOf="@+id/guessNumber6"
+            app:layout_constraintTop_toBottomOf="@+id/guessNumber8"
+            app:layout_constraintBottom_toTopOf="@+id/guessNumber2"/>
+
+        <TextView
+            android:id="@+id/guessNumber6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/number_box_unselected"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginStart="2dp"
+            android:text="@string/number_6"
+            android:textColor="@color/normalBlack"
+            android:textSize="@dimen/op_number_set"
+            android:gravity="center_vertical|center_horizontal"
+            app:layout_constraintHorizontal_weight=".3"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/guessNumber5"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineVerticalNumberRight"
+            app:layout_constraintTop_toBottomOf="@+id/guessNumber9"
+            app:layout_constraintBottom_toTopOf="@+id/guessNumber3"/>
+
+        <TextView
+            android:id="@+id/guessNumber1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/number_box_unselected"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:text="@string/number_1"
+            android:textColor="@color/normalBlack"
+            android:textSize="@dimen/op_number_set"
+            android:gravity="center_vertical|center_horizontal"
+            app:layout_constraintHorizontal_weight=".3"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/guidelineVerticalNumberLeft"
+            app:layout_constraintRight_toLeftOf="@+id/guessNumber2"
+            app:layout_constraintTop_toBottomOf="@+id/guessNumber4"
+            app:layout_constraintBottom_toTopOf="@+id/number0Padding"/>
+
+        <TextView
+            android:id="@+id/guessNumber2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/number_box_unselected"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginStart="2dp"
+            android:text="@string/number_2"
+            android:textColor="@color/normalBlack"
+            android:textSize="@dimen/op_number_set"
+            android:gravity="center_vertical|center_horizontal"
+            app:layout_constraintHorizontal_weight=".3"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/guessNumber1"
+            app:layout_constraintRight_toLeftOf="@+id/guessNumber3"
+            app:layout_constraintTop_toBottomOf="@+id/guessNumber5"
+            app:layout_constraintBottom_toTopOf="@+id/number0PaddingSecond"/>
+
+        <TextView
+            android:id="@+id/guessNumber3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/number_box_unselected"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginStart="2dp"
+            android:text="@string/number_3"
+            android:textColor="@color/normalBlack"
+            android:textSize="@dimen/op_number_set"
+            android:gravity="center_vertical|center_horizontal"
+            app:layout_constraintHorizontal_weight=".3"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/guessNumber2"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineVerticalNumberRight"
+            app:layout_constraintTop_toBottomOf="@+id/guessNumber6"
+            app:layout_constraintBottom_toTopOf="@+id/backspace"/>
+
+
+
+
+        <Space
+            android:id="@+id/number0Padding"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="2dp"
+            app:layout_constraintHorizontal_weight=".3"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/guidelineVerticalNumberLeft"
+            app:layout_constraintRight_toLeftOf="@+id/number0PaddingSecond"
+            app:layout_constraintTop_toBottomOf="@+id/guessNumber1"
+            app:layout_constraintBottom_toBottomOf="@+id/frame6"/>
+        <Space
+            android:id="@+id/number0PaddingSecond"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="2dp"
+            app:layout_constraintHorizontal_weight=".3"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/number0Padding"
+            app:layout_constraintRight_toLeftOf="@+id/backspace"
+            app:layout_constraintTop_toBottomOf="@+id/guessNumber2"
+            app:layout_constraintBottom_toBottomOf="@+id/frame6"/>
+        <TextView
+            android:id="@+id/guessNumber0"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
+            android:text="@string/number_0"
+            android:textColor="@color/normalBlack"
+            android:textSize="@dimen/op_number_set"
+            android:gravity="center_vertical|center_horizontal"
+            android:background="@drawable/number_box_unselected"
+            app:layout_constraintLeft_toLeftOf="@+id/number0Padding"
+            app:layout_constraintRight_toRightOf="@+id/number0PaddingSecond"
+            app:layout_constraintTop_toBottomOf="@+id/guessNumber1"
+            app:layout_constraintBottom_toBottomOf="@+id/frame6"/>
+        <ImageView
+            android:id="@+id/backspace"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/backspace"
+            android:contentDescription="@string/none"
+            android:background="@drawable/number_box_unselected"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="2dp"
+            app:layout_constraintHorizontal_weight=".3"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/number0PaddingSecond"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineVerticalNumberRight"
+            app:layout_constraintTop_toBottomOf="@+id/guessNumber3"
+            app:layout_constraintBottom_toBottomOf="@+id/frame6"/>
+
+
+
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guidelineVerticalNumberRight"
+            app:layout_constraintGuide_percent="0.91"
+            android:orientation="vertical" />
+
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/spaceStart"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintHorizontal_weight=".25"
+            app:layout_constraintBottom_toBottomOf="@+id/frame6"
+            app:layout_constraintLeft_toLeftOf="@+id/frame6"
+            app:layout_constraintRight_toLeftOf="@+id/finalDots"
+            app:layout_constraintTop_toTopOf="@+id/frame6"/>
+        <com.motoli.apps.allsubjects.MathOperationDots
+            android:id="@+id/finalDots"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/qn_dots_all_margin"
+            android:tag="18"
+            android:visibility="visible"
+            app:layout_constraintHorizontal_weight=".9"
+            app:layout_constraintBottom_toBottomOf="@+id/frame6"
+            app:layout_constraintLeft_toRightOf="@+id/spaceStart"
+            app:layout_constraintTop_toTopOf="@+id/frame6"
+            app:layout_constraintRight_toLeftOf="@+id/spaceEnd"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/spaceEnd"
+            app:layout_constraintHorizontal_weight=".25"
+            app:layout_constraintBottom_toBottomOf="@+id/frame6"
+            app:layout_constraintLeft_toRightOf="@+id/finalDots"
+            app:layout_constraintRight_toRightOf="@+id/frame6"
+            app:layout_constraintTop_toTopOf="@+id/frame6"/>
+    </android.support.constraint.ConstraintLayout>
+
+
 
 
 </FrameLayout>

@@ -1,203 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_bk03_side"
     android:id="@+id/videoBackground"
+    android:background="@color/bg_bk03_side"
     >
 
-    <LinearLayout
-        android:orientation="horizontal"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/activityMainPart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:baselineAligned="true"
-        android:background="@color/transparent">
+        android:background="@color/bg_bk03_side">
 
-        <ListView
-            android:layout_width="0dp"
+
+        <android.support.constraint.Guideline
+
+            android:id="@+id/guidelineLeft"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/videoList"
-            android:layout_weight=".25"
-            android:layout_gravity="center"
-            android:paddingLeft="@dimen/bk03_leftright_list"
-            android:paddingRight="@dimen/bk03_leftright_list"
-            android:drawSelectorOnTop="false"
-            android:listSelector="@android:color/transparent"/>
-
-        <LinearLayout
             android:orientation="vertical"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:background="@color/application_words_video"
-            android:layout_weight="1"
-            android:id="@+id/videoArea">
+            app:layout_constraintGuide_percent="0.2" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".23"/>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight=".02"/>
-
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:foreground="@drawable/a_rounded_box_words"
-                    android:id="@+id/videoFrame"
-                    android:background="@color/darkGray">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        >
-
-                        <VideoView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:id="@+id/videoView"
-                            android:layout_gravity="bottom|left|right|top"
-                            android:layout_alignParentTop="true"
-                            android:layout_alignParentLeft="true"
-                            android:layout_alignParentBottom="true"
-                            android:layout_alignParentRight="true"
-                            android:background="@drawable/bg_learn_letters"/>
-                    </RelativeLayout>
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight=".25"/>
-
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1">
-
-                            <Space
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight=".4"/>
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:id="@+id/activityIcon"
-                                android:src="@drawable/icon_letters_names_act"
-                                android:layout_weight="1.25"
-                                android:visibility="invisible"/>
-
-                            <Space
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="1"/>
-                        </LinearLayout>
-
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1.4"/>
-                    </LinearLayout>
-
-                </FrameLayout>
-
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight=".02"/>
-            </TableRow>
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".06"/>
-
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
 
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:id="@+id/topIcons"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight=".23">
+            android:orientation="horizontal"
+            android:background="@color/application_words_video"
+            app:layout_constraintBottom_toTopOf="@+id/iconSpace"
+            app:layout_constraintLeft_toLeftOf="@+id/guidelineLeft"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight="0.15">
 
             <Space
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1" />
 
             <TextView
+                android:id="@+id/activityName"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Large Text"
-                android:id="@+id/activityName"
                 android:layout_weight="5"
+                android:gravity="top"
+                android:text="Large Text"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/darkGray"
-                android:textSize="@dimen/activity_name_font_size"
-                android:gravity="top"/>
+                android:textSize="@dimen/activity_name_font_size" />
 
             <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:id="@+id/noVideoSpace"
-                android:visibility="gone"/>
-
-            <ImageView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:id="@+id/letterVideo"
-                android:src="@drawable/btn_video_song"
-                android:scaleType="fitCenter"
-                android:visibility="gone"
-                android:layout_weight="1"/>
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:id="@+id/syllablesVideo"
-                android:src="@drawable/btn_video_countsyl"
                 android:layout_weight="1"
-                android:visibility="visible"/>
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/letterVideo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="@string/none"
+                android:scaleType="fitCenter"
+                android:src="@drawable/btn_video_song"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/syllablesVideo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="@string/none"
+                android:src="@drawable/btn_video_countsyl"
+                android:visibility="visible" />
 
             <ImageButton
                 android:id="@+id/btnInfo"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/none"
                 android:scaleType="fitCenter"
                 android:soundEffectsEnabled="false"
-                android:src="@drawable/btn_info"/>
+                android:src="@drawable/btn_info" />
 
             <ImageButton
                 android:id="@+id/btnBack"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:background="@android:color/transparent"
@@ -205,20 +100,95 @@
                 android:onClick="backButtonClicked"
                 android:scaleType="fitCenter"
                 android:soundEffectsEnabled="false"
-                android:src="@drawable/btn_move_blue"/>
+                android:src="@drawable/btn_move_blue" />
 
             <Space
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight=".2"/>
+                android:layout_weight=".2" />
         </LinearLayout>
 
-        <Space
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/iconSpace"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="1.3"/>
+            android:background="@color/application_words_video"
+            android:contentDescription="@string/none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/topIcons"
+            app:layout_constraintVertical_weight="1" />
 
-    </LinearLayout>
+        <FrameLayout
+            android:id="@+id/videoFrame"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="32dp"
+            android:foreground="@drawable/a_rounded_box_words"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/guidelineLeft"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/topIcons" >
+
+            <VideoView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/videoView"
+                android:layout_gravity="bottom|end|start|top"
+                android:background="@drawable/bg_learn_letters"/>
+        </FrameLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/activityIcon"
+            android:src="@drawable/icon_letters_names_act"
+            android:visibility="visible"
+            android:contentDescription="@string/none"
+            app:layout_constraintVertical_bias=".4"
+            app:layout_constraintLeft_toLeftOf="@+id/videoFrame"
+            app:layout_constraintRight_toLeftOf="@+id/videoBird"
+            app:layout_constraintTop_toTopOf="@+id/videoFrame"
+            app:layout_constraintBottom_toBottomOf="@+id/videoFrame"/>
+        <ImageView
+            android:id="@+id/videoBird"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_spound_closed"
+            android:contentDescription="@string/none"
+            app:layout_constraintVertical_bias=".9"
+            app:layout_constraintLeft_toRightOf="@+id/activityIcon"
+            app:layout_constraintRight_toRightOf="@+id/videoFrame"
+            app:layout_constraintTop_toTopOf="@+id/videoFrame"
+            app:layout_constraintBottom_toBottomOf="@+id/videoFrame"
+            />
+
+        <ImageView
+            android:id="@+id/videoListBackground"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/bg_bk03_side"
+            android:contentDescription="@string/none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineLeft"
+            app:layout_constraintTop_toTopOf="parent"/>
+        <ListView
+            android:id="@+id/videoList"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/bg_bk03_side"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineLeft"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.507" />
+
+
+    </android.support.constraint.ConstraintLayout>
 
 
 </FrameLayout>

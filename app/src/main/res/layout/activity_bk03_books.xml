@@ -1,158 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/activityMainFrame"
     android:background="@color/bg_bk03_side"
     >
-<android.support.constraint.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/activityMainPart"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/bg_bk03_side"
-        >
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/activityMainPart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg_bk03_side">
 
 
-    <android.support.constraint.Guideline
+        <android.support.constraint.Guideline
 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/guidelineLeft"
-            app:layout_constraintGuide_percent="0.2"
-            android:orientation="vertical" />
+                android:id="@+id/guidelineLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.2" />
 
 
-        <com.motoli.apps.allsubjects.RoundedImage
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:id="@+id/bookPageView"
-            android:src="@color/reg_white"
-            android:background="@color/bg_bk03"
-            android:padding="32dp"
-            app:layout_constraintTop_toBottomOf="@+id/topIcons"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/guidelineLeft"
-            app:layout_constraintRight_toRightOf="parent"/>
-
-        <TextView
-            android:id="@+id/bookPageText"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-
-            android:layout_margin="32dp"
-            android:gravity="center_vertical"
-            android:text="@string/largeRandomString"
-            android:textColor="@color/bk02_font_color"
-            android:textSize="@dimen/bk02_font_normal"
-            android:padding="@dimen/bk02_text_padding"
-            android:layout_centerVertical="true"
-            app:layout_constraintBottom_toBottomOf="@+id/bookPageView"
-            app:layout_constraintTop_toTopOf="@+id/bookPageView"
-            app:layout_constraintLeft_toLeftOf="@+id/bookPageView"
-            app:layout_constraintRight_toRightOf="@+id/bookPageView"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <LinearLayout
-            android:id="@+id/topIcons"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:orientation="horizontal"
-            android:background="@color/bg_bk03"
-            app:layout_constraintVertical_weight="0.15"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/iconSpace"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="@+id/guidelineLeft">
-
-            <Space
+            <com.motoli.apps.allsubjects.RoundedImage
+                android:id="@+id/bookPageView"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5" />
-
-            <ImageView
-                android:id="@+id/movePageLeft"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:contentDescription="@string/none"
-                android:scaleType="fitCenter"
-                android:src="@drawable/btn_move_bluelight_left"
-                android:visibility="visible" />
-
-            <ImageView
-                android:id="@+id/movePageRight"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                android:contentDescription="@string/none"
-                android:src="@drawable/btn_move_bluelight_right"
-                android:visibility="visible" />
+                android:layout_height="0dp"
+                android:background="@color/bg_bk03"
+                android:padding="32dp"
+                android:src="@color/reg_white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/guidelineLeft"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/topIcons" />
 
             <TextView
-                android:id="@+id/activityName"
+                android:id="@+id/bookPageText"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
+                android:layout_height="0dp"
+                android:layout_centerVertical="true"
+                android:layout_margin="32dp"
                 android:gravity="center_vertical"
-                android:text="@string/none"
-                android:textColor="@color/darkGray"
-                android:textSize="@dimen/activity_name_font_size" />
+                android:padding="@dimen/bk02_text_padding"
+                android:text="@string/largeRandomString"
+                android:textColor="@color/bk02_font_color"
+                android:textSize="@dimen/bk02_font_normal"
+                app:layout_constraintBottom_toBottomOf="@+id/bookPageView"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="@+id/bookPageView"
+                app:layout_constraintRight_toRightOf="@+id/bookPageView"
+                app:layout_constraintTop_toTopOf="@+id/bookPageView"
+                app:layout_constraintVertical_bias="0.0" />
 
-            <ImageButton
-                android:id="@+id/btnRepeat"
+            <LinearLayout
+                android:id="@+id/topIcons"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:contentDescription="@string/none"
-                android:scaleType="fitCenter"
-                android:src="@drawable/btn_repeat_bluelight" />
+                android:layout_height="0dp"
+                android:background="@color/bg_bk03"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/iconSpace"
+                app:layout_constraintLeft_toLeftOf="@+id/guidelineLeft"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_weight="0.15">
 
-            <ImageButton
-                android:id="@+id/btnBack"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:contentDescription="@string/none"
-                android:onClick="backButtonClicked"
-                android:scaleType="fitCenter"
-                android:src="@drawable/btn_move_bluelight" />
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5" />
+
+                <ImageView
+                    android:id="@+id/movePageLeft"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/none"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/btn_move_bluelight_left"
+                    android:visibility="visible" />
+
+                <ImageView
+                    android:id="@+id/movePageRight"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/none"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/btn_move_bluelight_right"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/activityName"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:text="@string/none"
+                    android:textColor="@color/darkGray"
+                    android:textSize="@dimen/activity_name_font_size" />
+
+                <ImageButton
+                    android:id="@+id/btnRepeat"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/none"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/btn_repeat_bluelight" />
+
+                <ImageButton
+                    android:id="@+id/btnBack"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/none"
+                    android:onClick="backButtonClicked"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/btn_move_bluelight" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5" />
+
+            </LinearLayout>
+
             <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5" />
+                android:id="@+id/iconSpace"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/topIcons"
+                app:layout_constraintVertical_weight="1" />
 
-        </LinearLayout>
-
-        <Space
-            android:id="@+id/iconSpace"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@+id/topIcons"
+        <ListView
+            android:id="@+id/bookList"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/bg_bk03_side"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintVertical_weight="1" />
-
-    <ListView
-        android:id="@+id/bookList"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@color/bg_bk03_side"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/guidelineLeft"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.506" />
+            app:layout_constraintRight_toLeftOf="@+id/guidelineLeft"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.507" />
 
 
-</android.support.constraint.ConstraintLayout>
-    </FrameLayout>
+    </android.support.constraint.ConstraintLayout>
+</FrameLayout>

@@ -1,299 +1,315 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityTR02"
     android:background="@color/application_tracing"
     android:id="@+id/parentLayout">
 
-    <LinearLayout
-        android:orientation="horizontal"
+
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/activityMainPart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/activityMainPart">
+        android:background="@color/transparent">
 
-        <Space
+
+        <ImageView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight=".01" />
+            android:layout_height="0dp"
+            android:src="@drawable/circle_color_black"
+            android:id="@+id/buttonBlack"
+            android:onClick="clickPaintColor"
+            android:contentDescription="@string/none"
+            app:layout_constraintVertical_weight="1"
+            android:layout_margin="10dp"
+            android:tag="9"
+            android:alpha="0.6"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineLeft"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/buttonWhite"/>
 
-        <LinearLayout
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/circle_color_white"
+            android:id="@+id/buttonWhite"
+            android:onClick="clickPaintColor"
+            android:contentDescription="@string/none"
+            app:layout_constraintVertical_weight="1"
+            android:layout_margin="10dp"
+            android:tag="10"
+            android:alpha="0.6"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineLeft"
+            app:layout_constraintBottom_toTopOf="@+id/buttonRed"
+            app:layout_constraintTop_toBottomOf="@+id/buttonBlack"/>
+
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/circle_color_red"
+            android:id="@+id/buttonRed"
+            android:onClick="clickPaintColor"
+            android:contentDescription="@string/none"
+            app:layout_constraintVertical_weight="1"
+            android:layout_margin="10dp"
+            android:tag="1"
+            android:alpha="0.6"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineLeft"
+            app:layout_constraintBottom_toTopOf="@+id/buttonOrange"
+            app:layout_constraintTop_toBottomOf="@+id/buttonWhite" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/circle_color_orange"
+            android:id="@+id/buttonOrange"
+            android:onClick="clickPaintColor"
+            android:contentDescription="@string/none"
+            app:layout_constraintVertical_weight="1"
+            android:layout_margin="10dp"
+            android:tag="2"
+            android:alpha="0.6"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineLeft"
+            app:layout_constraintBottom_toTopOf="@+id/buttonYellow"
+            app:layout_constraintTop_toBottomOf="@+id/buttonRed"/>
+
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/circle_color_yellow"
+            android:id="@+id/buttonYellow"
+            android:onClick="clickPaintColor"
+            android:contentDescription="@string/none"
+            app:layout_constraintVertical_weight="1"
+            android:layout_margin="10dp"
+            android:tag="3"
+            android:alpha="0.6"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineLeft"
+            app:layout_constraintBottom_toTopOf="@+id/buttonGreen"
+            app:layout_constraintTop_toBottomOf="@+id/buttonOrange"/>
+
+
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/circle_color_green"
+            android:id="@+id/buttonGreen"
+            android:onClick="clickPaintColor"
+            android:contentDescription="@string/none"
+            app:layout_constraintVertical_weight="1"
+            android:layout_margin="10dp"
+            android:tag="4"
+            android:alpha="0.6"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineLeft"
+            app:layout_constraintBottom_toTopOf="@+id/buttonLightBlue"
+            app:layout_constraintTop_toBottomOf="@+id/buttonYellow" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/circle_color_light_blue"
+            android:id="@+id/buttonLightBlue"
+            android:onClick="clickPaintColor"
+            android:contentDescription="@string/none"
+            app:layout_constraintVertical_weight="1"
+            android:layout_margin="10dp"
+            android:tag="5"
+            android:alpha="0.6"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineLeft"
+            app:layout_constraintBottom_toTopOf="@+id/buttonBlue"
+            app:layout_constraintTop_toBottomOf="@+id/buttonGreen"/>
+
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/circle_color_blue"
+            android:id="@+id/buttonBlue"
+            android:onClick="clickPaintColor"
+            android:contentDescription="@string/none"
+            app:layout_constraintVertical_weight="1"
+            android:layout_margin="10dp"
+            android:tag="6"
+            android:alpha="0.6"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineLeft"
+            app:layout_constraintBottom_toTopOf="@+id/buttonPurple"
+            app:layout_constraintTop_toBottomOf="@+id/buttonLightBlue" />
+
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/circle_color_purple"
+            android:id="@+id/buttonPurple"
+            android:onClick="clickPaintColor"
+            android:contentDescription="@string/none"
+            app:layout_constraintVertical_weight="1"
+            android:layout_margin="10dp"
+            android:tag="7"
+            android:alpha="0.6"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineLeft"
+            app:layout_constraintBottom_toTopOf="@+id/buttonPink"
+            app:layout_constraintTop_toBottomOf="@+id/buttonBlue"/>
+
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/circle_color_pink"
+            android:id="@+id/buttonPink"
+            android:onClick="clickPaintColor"
+            android:contentDescription="@string/none"
+            app:layout_constraintVertical_weight="1"
+            android:layout_margin="10dp"
+            android:tag="8"
+            android:alpha="0.6"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineLeft"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonPurple"/>
+
+
+        <android.support.constraint.Guideline
+
+            android:id="@+id/guidelineLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.14" />
+        <TextView
+            android:text="@string/largeRandomString"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight=".16">
+            android:layout_height="0dp"
+            android:id="@+id/activityName"
+            app:layout_constraintVertical_weight=".1"
+            android:gravity="start|center_vertical"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textColor="@color/rs04_letter_white"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineRight"
+            app:layout_constraintBottom_toTopOf="@+id/canvasArea"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/guidelineLeft" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".3" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:src="@drawable/circle_color_black"
-                android:id="@+id/buttonBlack"
-                android:onClick="clickPaintColor"
-                android:layout_weight="1"
-                android:tag="9" />
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".3" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:src="@drawable/circle_color_white"
-                android:id="@+id/buttonWhite"
-                android:onClick="clickPaintColor"
-                android:layout_weight="1"
-                android:tag="10" />
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".3" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:src="@drawable/circle_color_red"
-                android:id="@+id/buttonRed"
-                android:onClick="clickPaintColor"
-                android:layout_weight="1"
-                android:tag="1" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".3" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:src="@drawable/circle_color_orange"
-                android:id="@+id/buttonOrange"
-                android:onClick="clickPaintColor"
-                android:layout_weight="1"
-                android:tag="2" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".3" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:src="@drawable/circle_color_yellow"
-                android:id="@+id/buttonYellow"
-                android:onClick="clickPaintColor"
-                android:layout_weight="1"
-                android:tag="3" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".3" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:src="@drawable/circle_color_green"
-                android:id="@+id/buttonGreen"
-                android:onClick="clickPaintColor"
-                android:layout_weight="1"
-                android:tag="4" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_weight=".2"
-                android:layout_height="0dp" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:src="@drawable/circle_color_light_blue"
-                android:id="@+id/buttonLightBlue"
-                android:onClick="clickPaintColor"
-                android:layout_weight="1"
-                android:tag="5" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".3" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:src="@drawable/circle_color_blue"
-                android:id="@+id/buttonBlue"
-                android:onClick="clickPaintColor"
-                android:layout_weight="1"
-                android:tag="6" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".3" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:src="@drawable/circle_color_purple"
-                android:id="@+id/buttonPurple"
-                android:onClick="clickPaintColor"
-                android:layout_weight="1"
-                android:tag="7" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".3" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:src="@drawable/circle_color_pink"
-                android:id="@+id/buttonPink"
-                android:onClick="clickPaintColor"
-                android:layout_weight="1"
-                android:tag="8" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".3" />
-
-        </LinearLayout>
-
-        <Space
+        <com.motoli.apps.allsubjects.ActivityTR01DoodleCanvas
+            android:id="@+id/canvasArea"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight=".01" />
-        <LinearLayout
+            android:layout_height="0dp"
+            android:visibility="visible"
+            android:background="@drawable/round_square_white"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineRight"
+            app:layout_constraintTop_toBottomOf="@+id/activityName"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/guidelineLeft" />
+
+        <android.support.constraint.Guideline
+
+            android:id="@+id/guidelineRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.86" />
+
+
+        <ImageView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-            <TextView
-                android:text="TextView"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:id="@+id/activityName"
-                android:layout_weight=".1"
-                android:gravity="right|center_vertical"
-                android:paddingRight="10dp"
-                android:textColor="@color/rs04_letter_white" />
-
-            <com.motoli.apps.allsubjects.ActivityTR01DoodleCanvas
-                android:id="@+id/canvasArea"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:visibility="visible"
-                android:background="@drawable/round_square_white"
-                android:layout_weight="1" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".05" />
+            android:layout_height="0dp"
+            android:src="@drawable/btn_move_blue"
+            android:id="@+id/btnBack"
+            android:contentDescription="@string/none"
+            android:onClick="backButtonClicked"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/guidelineRight"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/reset"/>
 
 
-        </LinearLayout>
-        <Space
+
+        <ImageView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight=".01" />
-        <LinearLayout
-            android:orientation="vertical"
+            android:layout_height="0dp"
+            android:src="@drawable/btn_reset"
+            android:id="@+id/reset"
+            android:contentDescription="@string/none"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/guidelineRight"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnBack"
+            app:layout_constraintBottom_toTopOf="@+id/brushLarge"/>
+
+
+
+
+
+        <ImageView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight=".16">
+            android:layout_height="0dp"
+            android:src="@drawable/brush_1"
+            android:id="@+id/brushLarge"
+            app:layout_constraintVertical_weight="1"
+            android:tag="2"
+            android:onClick="changeBrush"
+            android:contentDescription="@string/none"
+            android:alpha="0.6"
+            app:layout_constraintLeft_toRightOf="@+id/guidelineRight"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/reset"
+            app:layout_constraintBottom_toTopOf="@+id/brushMedium"/>
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".1" />
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:src="@drawable/btn_move_blue"
-                android:id="@+id/btnBack"
-                android:onClick="backButtonClicked"
-                android:layout_weight="1" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".1" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:src="@drawable/btn_reset"
-                android:id="@+id/reset"
-                android:layout_weight="1"/>
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".1" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:src="@drawable/brush_1"
-                android:id="@+id/brushLarge"
-                android:layout_weight="1"
-                android:tag="2"
-                android:onClick="changeBrush" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".3" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:src="@drawable/brush_2"
-                android:id="@+id/brushMedium"
-                android:layout_weight="1"
-                android:tag="1"
-                android:onClick="changeBrush" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".3" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:src="@drawable/brush_3"
-                android:id="@+id/brushSmall"
-                android:layout_weight="1"
-                android:tag="0"
-                android:onClick="changeBrush" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".6" />
-
-        </LinearLayout>
-
-        <Space
+        <ImageView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight=".01" />
+            android:layout_height="0dp"
+            android:src="@drawable/brush_2"
+            android:id="@+id/brushMedium"
+            app:layout_constraintVertical_weight="1"
+            android:tag="1"
+            android:onClick="changeBrush"
+            android:contentDescription="@string/none"
+            android:alpha="0.6"
+            app:layout_constraintLeft_toRightOf="@+id/guidelineRight"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/brushLarge"
+            app:layout_constraintBottom_toTopOf="@+id/brushSmall"/>
 
-    </LinearLayout>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/brush_3"
+            android:id="@+id/brushSmall"
+            app:layout_constraintVertical_weight="1"
+            android:tag="0"
+            android:onClick="changeBrush"
+            android:contentDescription="@string/none"
+            android:alpha="0.6"
+            app:layout_constraintLeft_toRightOf="@+id/guidelineRight"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/brushMedium"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+
 
 </FrameLayout>
