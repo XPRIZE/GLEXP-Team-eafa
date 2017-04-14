@@ -2,26 +2,15 @@ package com.motoli.apps.allsubjects;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.support.v4.widget.ExploreByTouchHelper;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
-
-import com.android.volley.DefaultRetryPolicy;
-import com.motoli.apps.allsubjects.Model.Symbol;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,18 +22,17 @@ import java.util.List;
 public class ActivityTR01DoodleCanvas extends View   {
 
 
-    List<Point> mPoints;
-
     private Path drawPath;
     private Paint drawPaint, canvasPaint;
 
     private Canvas drawCanvas;
     private Bitmap canvasBitmap;
+    private Context mContext;
 
 
-    public ActivityTR01DoodleCanvas(Context context, AttributeSet attrs) {
-        super(context, attrs);
-//        mAppData=((Motoli_Application) context.getApplicationContext());
+    public ActivityTR01DoodleCanvas(Context mContext, AttributeSet attrs) {
+        super(mContext, attrs);
+        this.mContext=mContext;
         init();
     }
 
@@ -55,7 +43,7 @@ public class ActivityTR01DoodleCanvas extends View   {
         drawPath = new Path();
         drawPaint = new Paint();
 
-        drawPaint.setColor(getResources().getColor(R.color.doodle_black));
+        drawPaint.setColor(ContextCompat.getColor(mContext,R.color.doodle_black));
         drawPaint.setAntiAlias(true);
         drawPaint.setStrokeWidth(getResources().getInteger(R.integer.small_brush_size));
         drawPaint.setStyle(Paint.Style.STROKE);
@@ -120,34 +108,34 @@ public class ActivityTR01DoodleCanvas extends View   {
         switch(mColor){
             default:
             case 1:
-                drawPaint.setColor(getResources().getColor(R.color.doodle_red));
+                drawPaint.setColor(ContextCompat.getColor(mContext,R.color.doodle_red));
                 break;
             case 2:
-                drawPaint.setColor(getResources().getColor(R.color.doodle_orange));
+                drawPaint.setColor(ContextCompat.getColor(mContext,R.color.doodle_orange));
                 break;
             case 3:
-                drawPaint.setColor(getResources().getColor(R.color.doodle_yellow));
+                drawPaint.setColor(ContextCompat.getColor(mContext,R.color.doodle_yellow));
                 break;
             case 4:
-                drawPaint.setColor(getResources().getColor(R.color.doodle_green));
+                drawPaint.setColor(ContextCompat.getColor(mContext,R.color.doodle_green));
                 break;
             case 5:
-                drawPaint.setColor(getResources().getColor(R.color.doodle_light_blue));
+                drawPaint.setColor(ContextCompat.getColor(mContext,R.color.doodle_light_blue));
                 break;
             case 6:
-                drawPaint.setColor(getResources().getColor(R.color.doodle_blue));
+                drawPaint.setColor(ContextCompat.getColor(mContext,R.color.doodle_blue));
                 break;
             case 7:
-                drawPaint.setColor(getResources().getColor(R.color.doodle_purple));
+                drawPaint.setColor(ContextCompat.getColor(mContext,R.color.doodle_purple));
                 break;
             case 8:
-                drawPaint.setColor(getResources().getColor(R.color.doodle_pink));
+                drawPaint.setColor(ContextCompat.getColor(mContext,R.color.doodle_pink));
                 break;
             case 9:
-                drawPaint.setColor(getResources().getColor(R.color.doodle_black));
+                drawPaint.setColor(ContextCompat.getColor(mContext,R.color.doodle_black));
                 break;
             case 10:
-                drawPaint.setColor(getResources().getColor(R.color.doodle_white));
+                drawPaint.setColor(ContextCompat.getColor(mContext,R.color.doodle_white));
                 break;
         }
     }

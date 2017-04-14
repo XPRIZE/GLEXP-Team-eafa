@@ -60,7 +60,7 @@
             app:layout_constraintHorizontal_weight=".25"
             app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalMid"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/plusSymbol"
+            app:layout_constraintRight_toLeftOf="@+id/equationSymbol"
             app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalTop" />
 
         <TextView
@@ -84,7 +84,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:text="@string/stringPlus"
-            android:id="@+id/plusSymbol"
+            android:id="@+id/equationSymbol"
             android:textColor="@color/regularBlack"
             android:textSize="@dimen/op_symbol_large_font_size"
             android:gravity="center_vertical|center_horizontal"
@@ -105,7 +105,7 @@
             android:contentDescription="@string/general_image"
             app:layout_constraintHorizontal_weight=".25"
             app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalMid"
-            app:layout_constraintLeft_toRightOf="@+id/plusSymbol"
+            app:layout_constraintLeft_toRightOf="@+id/equationSymbol"
             app:layout_constraintRight_toLeftOf="@+id/equalSymbol"
             app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalTop" />
 

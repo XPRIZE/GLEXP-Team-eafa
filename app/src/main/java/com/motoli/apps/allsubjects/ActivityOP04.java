@@ -6,24 +6,33 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Random;
 
 /**
  * Part of Project Motoli All Subjects
  * for Education Technology For Development
  * created by Aaron D Michaelis Borsay
  * on 12/28/2015.
+ *
+ * last update 4/13/2017
+ *
+ * Does simple subtraction. It will have dots printed on screen representing the numbers for
+ * subtraction and if the correct answer is givn dots will appear where number pad is in order
+ * to show the new dots value.
+ * Data is pulled from ActivityProvider based upon current level of user.
+ * Activity is not available until all addition in same level have
+ * been finished ActivityOP01, ActivityOP03
+ *
+ * This class is using similar function found in other ActivityOP**
  */
 public class ActivityOP04 extends ActivityOPRoot
         implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -37,12 +46,10 @@ public class ActivityOP04 extends ActivityOPRoot
 
 
     private TextView mFinalNumber;
-    private TextView mEquationNumber1, mEquationNumber2;
     private MathOperationDots mEquationDots1, mEquationDots2, mFinalDots;
 
     private ArrayList<HashMap<String,String>> mMathOperations;
 
-    private int mCurrentLevel;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,19 +65,17 @@ public class ActivityOP04 extends ActivityOPRoot
 
         mCurrentGSP = new HashMap<>(appData.getCurrentGroup_Section_Phase());
 
-        mCurrentLevel=Integer.parseInt(mCurrentGSP.get("current_level"));
         mInstructionAudio="info_op04";
 
         ((ImageView) findViewById(R.id.btnValidate))
                 .setImageResource(R.drawable.btn_validate_off);
-        findViewById(R.id.answerDots).setAlpha(0f);
-        findViewById(R.id.numberPad).setAlpha(1.0f);
+        findViewById(R.id.finalDots).setAlpha(0f);
 
 
         mFinalNumber = ((TextView) findViewById(R.id.equationResult));
         mFinalNumber.setText("");
-        mEquationNumber1 = ((TextView) findViewById(R.id.equationNumber1));
-        mEquationNumber2 = ((TextView) findViewById(R.id.equationNumber2));
+        TextView mEquationNumber1 = ((TextView) findViewById(R.id.equationNumber1));
+        TextView mEquationNumber2 = ((TextView) findViewById(R.id.equationNumber2));
         mEquationDots1 = ((MathOperationDots) findViewById(R.id.equationDots1));
         mEquationDots2 = ((MathOperationDots) findViewById(R.id.equationDots2));
         mFinalDots = ((MathOperationDots) findViewById(R.id.finalDots));
@@ -117,7 +122,7 @@ public class ActivityOP04 extends ActivityOPRoot
         mIncorrectInRound=0;
         mValidateAvailable=false;
         mBeingValidated=false;
-        mFinalNumber.setTextColor(getResources().getColor(R.color.normalBlack));
+        mFinalNumber.setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
         mFinalNumber.setPaintFlags(mFinalNumber.getPaintFlags()
                 & (~ Paint.STRIKE_THRU_TEXT_FLAG));
 
@@ -151,7 +156,7 @@ public class ActivityOP04 extends ActivityOPRoot
 
     private void placingCurrentNumbersAsImages(int shapeID){
         MathOperationDots mCustomMathOperationDots;
-        int mNumber=0;
+        int mNumber;
         if(shapeID==0){
             mCustomMathOperationDots  = mEquationDots1;
             mNumber=mNumberOne;
@@ -256,24 +261,6 @@ public class ActivityOP04 extends ActivityOPRoot
 
         Collections.shuffle(mMathOperations);
 
-        /*
-        if(mMathOperations.size()<Constants.MATH_OPERATIONS_VARIABLES ) {
-            for (int i = 0; i < mMathOperations.size(); i++) {
-                if (!mMathOperations.get(mMathOperations.size() - 1).get("math_operations_id")
-                        .equals(mMathOperations.get(i).get("math_operations_id"))) {
-                    mMathOperations.add(new HashMap<String,String>(mMathOperations.get(i)));
-                    if (mMathOperations.size() >= Constants.NUMBER_VARIABLES) {
-                        break;
-                    }
-                    if(mMathOperations.size()<Constants.NUMBER_VARIABLES &&
-                            i==mMathOperations.size()-1){
-                        i=-1;
-                    }
-                }
-            }
-
-        }
-        */
 
         beginRound();
 
@@ -285,7 +272,6 @@ public class ActivityOP04 extends ActivityOPRoot
 
     public void setValidate(){
         mFinalNumber.setText(mUsersAnswer);
-        // mFinalNumber.setSelection(mFinalNumber.getText().length());
 
         if(mFinalNumber.length()>=1){
             ((ImageView) findViewById(R.id.btnValidate))
@@ -308,15 +294,14 @@ public class ActivityOP04 extends ActivityOPRoot
                     .setImageResource(R.drawable.btn_validate_ok);
             mCorrect=true;
             mCorrectInARow++;
-            mFinalNumber.setTextColor(getResources().getColor(R.color.correct_green));
-            findViewById(R.id.answerDots).setAlpha(1.0f);
-            findViewById(R.id.numberPad).setAlpha(0f);
+            mFinalNumber.setTextColor(ContextCompat.getColor(this,R.color.correct_green));
+            findViewById(R.id.finalDots).setAlpha(1.0f);
         }else{
             ((ImageView) findViewById(R.id.btnValidate))
                     .setImageResource(R.drawable.btn_validate_no_ok);
             mCorrect=false;
             mCorrectInARow=0;
-            mFinalNumber.setTextColor(getResources().getColor(R.color.incorrect_red));
+            mFinalNumber.setTextColor(ContextCompat.getColor(this,R.color.incorrect_red));
 
         }
 
@@ -378,7 +363,8 @@ public class ActivityOP04 extends ActivityOPRoot
                     }else{
                         mUsersAnswer="";
                         mFinalNumber.setText("");
-                        mFinalNumber.setTextColor(getResources().getColor(R.color.normalBlack));
+                        mFinalNumber.setTextColor(ContextCompat.getColor(ActivityOP04.this,
+                                R.color.normalBlack));
                         mFinalNumber.setPaintFlags(mFinalNumber.getPaintFlags()
                                 & (~ Paint.STRIKE_THRU_TEXT_FLAG));
                         ((ImageView) findViewById(R.id.btnValidate))
@@ -387,7 +373,6 @@ public class ActivityOP04 extends ActivityOPRoot
                         mValidateAvailable=false;
                         if(mIncorrectInRound>=3){
                             mAllowNumberPad=false;
-                            findViewById(R.id.numberPad).setAlpha(0.2f);
                             mProcessGuessPosition=4;
                             mUsersAnswer=String.valueOf(mAnswer);
                             mFinalNumber.setText(mUsersAnswer);
@@ -421,9 +406,8 @@ public class ActivityOP04 extends ActivityOPRoot
         if(mClear){
             mUsersAnswer="";
             mFinalNumber.setText("");
-            findViewById(R.id.answerDots).setAlpha(0f);
-            findViewById(R.id.numberPad).setAlpha(1.0f);
-            mFinalNumber.setTextColor(getResources().getColor(R.color.normalBlack));
+            findViewById(R.id.finalDots).setAlpha(0f);
+            mFinalNumber.setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
             mFinalNumber.setPaintFlags(mFinalNumber.getPaintFlags()
                     & (~ Paint.STRIKE_THRU_TEXT_FLAG));
             ((ImageView) findViewById(R.id.btnValidate))
@@ -441,11 +425,6 @@ public class ActivityOP04 extends ActivityOPRoot
     //////////////////////////////////////////////////////////////////////////////////////////
     protected void setUpListeners(){
 
-
-
-
-
-
         findViewById(R.id.btnValidate).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if(mValidateAvailable && !mBeingValidated){
@@ -462,8 +441,8 @@ public class ActivityOP04 extends ActivityOPRoot
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         String[] mData;
-        String mWhere="";
-        String mOrderBy="";
+        String mWhere;
+        String mOrderBy;
         CursorLoader cursorLoader;
         switch(id){
             default:

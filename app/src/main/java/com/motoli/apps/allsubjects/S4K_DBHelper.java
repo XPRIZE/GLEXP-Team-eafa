@@ -4,6 +4,13 @@ package com.motoli.apps.allsubjects;
  * for Education Technology For Development
  * created by Aaron D Michaelis Borsay
  * on 8/12/2015.
+ *
+ * This class handles the connection to the database, the create of the in app database
+ * and all updating of the database. It work with class Database to add required tables not included
+ * in general build.
+ * It tracks version of the database to update if needed without losing userdata
+ *
+ * Used and accessed only by AppProvider
  */
 import java.io.File;
 import java.io.FileOutputStream;
@@ -12,9 +19,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import android.content.Context;
-import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
@@ -59,8 +64,7 @@ public class S4K_DBHelper extends SQLiteOpenHelper {
      * Creates a empty database on the system and rewrites it with your own
      * database.
      * */
-    public void createDataBase() throws IOException {
-    }
+    public void createDataBase() throws IOException {}
 
 
     public int getDatabaseVersion(){
@@ -71,6 +75,15 @@ public class S4K_DBHelper extends SQLiteOpenHelper {
         this.mDatabaseVersion = mDatabaseVersion;
     }
 
+
+    /**
+     * getWritableDatabase()
+     * This is the most important function in this class as it is called by AppProvider
+     * whenever the application is started in order to connect to the database properly.
+     * It returns the connection to AppProvider so the application can access
+     * and use the writable database
+     * @return SQLiteDatabase
+     */
     @Override
     public SQLiteDatabase getWritableDatabase(){
         File dbFile = myContext.getDatabasePath(DB_NAME);
@@ -107,10 +120,10 @@ public class S4K_DBHelper extends SQLiteOpenHelper {
                 mDB.close();
                 if(getDatabaseVersion() < DB_VERSION) {
                     Log.d(Constants.LOGCAT, "needs to change");
-                    DB_PATH = "/data/data/" + myContext.getPackageName() + "/" + "databases/";
-                    File to = new File(DB_PATH, DB_NAME_OLD);
+                    DB_PATH = myContext.getFilesDir() + myContext.getPackageName() + "/" + "databases/";
+                    //File to = new File(DB_PATH, DB_NAME_OLD);
 
-                    dbFile.renameTo(to);
+                    //dbFile.renameTo(to);
                     dbFile = myContext.getDatabasePath(DB_NAME);
                     if (!dbFile.exists()) {
                         try {
@@ -135,14 +148,11 @@ public class S4K_DBHelper extends SQLiteOpenHelper {
                         }
                     }
 
-                    //to.delete();
                 }
 
             }
 
         }
-       /* */
-
         return SQLiteDatabase.openDatabase(dbFile.getPath(), null, SQLiteDatabase.OPEN_READWRITE);
     }
 

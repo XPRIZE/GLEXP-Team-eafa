@@ -17,8 +17,8 @@ import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
-import android.media.Image;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -218,13 +218,12 @@ public class Activities_Platform extends ActivitiesMasterParent
 
                 mCurrentActivities=new ArrayList<>();
                 int mActivityCount=0;
-                 boolean allowAddition,allowSubstitution,allowMultiplication;
-                 allowAddition=allowSubstitution=allowMultiplication=false;
+                 boolean allowSubstitution,allowMultiplication;
+                 allowSubstitution=allowMultiplication=false;
                  if(data.moveToFirst()){
 
                      if(mCurrentGSP.get("group_id").equals("8")){
-                         allowAddition
-                                 = (data.getInt(data.getColumnIndex("allow_addition"))>0);
+
                          allowSubstitution
                                  = (data.getInt(data.getColumnIndex("allow_substitution"))>0);
                          allowMultiplication
@@ -254,7 +253,7 @@ public class Activities_Platform extends ActivitiesMasterParent
                         mCurrentActivities.get(mActivityCount).add("1"); //6
 
 
-                        /**
+                        /*
                          * Will  not allow LT04|8 until at least 6 variables are available
                          */
                         if(mCurrentGSP.get("group_id").equals("2") &&
@@ -266,7 +265,7 @@ public class Activities_Platform extends ActivitiesMasterParent
                         }
 
 
-                        /**
+                        /*
                          * Will not allow SD03|17 or SD06|24 to be available until at least level 3
                          * of phonics is reached
                          */
@@ -279,7 +278,7 @@ public class Activities_Platform extends ActivitiesMasterParent
                             mCurrentActivities.get(mActivityCount).set(3, "0"); //3
                         }
 
-                        /**
+                        /*
                          * Will not allow SH03 and SH05 to appear until level 2
                          */
                         if(mCurrentGSP.get("group_id").equals("6") &&
@@ -290,7 +289,7 @@ public class Activities_Platform extends ActivitiesMasterParent
                             mCurrentActivities.get(mActivityCount).set(3,"0"); //3
                         }
 
-                        /**
+                        /*
                          * below takes care of the RS activities alone and hides them until after
                          * level 1 in phonics has been completed.
                          */
@@ -320,7 +319,7 @@ public class Activities_Platform extends ActivitiesMasterParent
                      }while(data.moveToNext());
                  }
 
-                 /**
+                 /*
                   * Takes into consideration that for each level user must finish in this
                   * order OP1, OP3, OP2
                   * And OP4, OP5
@@ -439,14 +438,10 @@ public class Activities_Platform extends ActivitiesMasterParent
                 || (Integer.parseInt(mCurrentActivities.get(mPosition).get(5))
                 >=Constants.INA_ROW_CORRECT)
                 && !mCurrentGSP.get("group_id").equals("8")){
-            if(mPosition>0
+            return (mPosition>0
                     || mCurrentGSP.get("section_id").equals("11")
                     || mCurrentGSP.get("section_id").equals("8")
-                    || mCurrentGSP.get("section_id").equals("23")) {
-                return true;
-            }else{
-                return false;
-            }
+                    || mCurrentGSP.get("section_id").equals("23"));
         }else{
             return false;
         }
@@ -478,43 +473,43 @@ public class Activities_Platform extends ActivitiesMasterParent
             Field field;
             if(mCurrentGSP.get("group_id").equals("2")){
                 ((ImageView) findViewById(R.id.rewardCup1)).setImageDrawable(
-                        getResources().getDrawable(drawable.btn_award_red));
+                        ContextCompat.getDrawable(this,drawable.btn_award_red));
                 ((ImageView) findViewById(R.id.rewardCup2)).setImageDrawable(
-                        getResources().getDrawable(drawable.btn_award_red));
+                        ContextCompat.getDrawable(this,drawable.btn_award_red));
                 ((ImageView) findViewById(R.id.rewardCup3)).setImageDrawable(
-                        getResources().getDrawable(drawable.btn_award_red));
+                        ContextCompat.getDrawable(this,drawable.btn_award_red));
                 ((ImageView) findViewById(R.id.rewardCup4)).setImageDrawable(
-                        getResources().getDrawable(drawable.btn_award_red));
+                        ContextCompat.getDrawable(this,drawable.btn_award_red));
                 ((ImageView) findViewById(R.id.rewardCup5)).setImageDrawable(
-                        getResources().getDrawable(drawable.btn_award_red));
+                        ContextCompat.getDrawable(this,drawable.btn_award_red));
                 ((ImageView) findViewById(R.id.rewardCup6)).setImageDrawable(
-                        getResources().getDrawable(drawable.btn_award_red));
+                        ContextCompat.getDrawable(this,drawable.btn_award_red));
             }else if(mCurrentGSP.get("group_id").equals("3")) {
                 ((ImageView) findViewById(R.id.rewardCup1)).setImageDrawable(
-                        getResources().getDrawable(drawable.btn_award_blue));
+                        ContextCompat.getDrawable(this,drawable.btn_award_blue));
                 ((ImageView) findViewById(R.id.rewardCup2)).setImageDrawable(
-                        getResources().getDrawable(drawable.btn_award_blue));
+                        ContextCompat.getDrawable(this,drawable.btn_award_blue));
                 ((ImageView) findViewById(R.id.rewardCup3)).setImageDrawable(
-                        getResources().getDrawable(drawable.btn_award_blue));
+                        ContextCompat.getDrawable(this,drawable.btn_award_blue));
                 ((ImageView) findViewById(R.id.rewardCup4)).setImageDrawable(
-                        getResources().getDrawable(drawable.btn_award_blue));
+                        ContextCompat.getDrawable(this,drawable.btn_award_blue));
                 ((ImageView) findViewById(R.id.rewardCup5)).setImageDrawable(
-                        getResources().getDrawable(drawable.btn_award_blue));
+                        ContextCompat.getDrawable(this,drawable.btn_award_blue));
                 ((ImageView) findViewById(R.id.rewardCup6)).setImageDrawable(
-                        getResources().getDrawable(drawable.btn_award_blue));
+                        ContextCompat.getDrawable(this,drawable.btn_award_blue));
             }else{
                 ((ImageView) findViewById(R.id.rewardCup1)).setImageDrawable(
-                        getResources().getDrawable(drawable.btn_award_orange));
+                        ContextCompat.getDrawable(this,drawable.btn_award_orange));
                 ((ImageView) findViewById(R.id.rewardCup2)).setImageDrawable(
-                        getResources().getDrawable(drawable.btn_award_orange));
+                        ContextCompat.getDrawable(this,drawable.btn_award_orange));
                 ((ImageView) findViewById(R.id.rewardCup3)).setImageDrawable(
-                        getResources().getDrawable(drawable.btn_award_orange));
+                        ContextCompat.getDrawable(this,drawable.btn_award_orange));
                 ((ImageView) findViewById(R.id.rewardCup4)).setImageDrawable(
-                        getResources().getDrawable(drawable.btn_award_orange));
+                        ContextCompat.getDrawable(this,drawable.btn_award_orange));
                 ((ImageView) findViewById(R.id.rewardCup5)).setImageDrawable(
-                        getResources().getDrawable(drawable.btn_award_orange));
+                        ContextCompat.getDrawable(this,drawable.btn_award_orange));
                 ((ImageView) findViewById(R.id.rewardCup6)).setImageDrawable(
-                        getResources().getDrawable(drawable.btn_award_orange));
+                        ContextCompat.getDrawable(this,drawable.btn_award_orange));
             }
             switch(i){
                 default:
@@ -761,11 +756,15 @@ public class Activities_Platform extends ActivitiesMasterParent
             }
         });
 
+        /*
+            Originally was ArrayList<String> mTempArray = new ArrayList<>(
+                            (ArrayList<String>) findViewById(R.id.activityIcon1).getTag());
+         */
         findViewById(R.id.activityIcon1).setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 if (findViewById(R.id.activityIcon1).getTag() instanceof ArrayList) {
-                    ArrayList<String> mTempArray = new ArrayList<>(
-                            (ArrayList<String>) findViewById(R.id.activityIcon1).getTag());
+                    ArrayList<?> mTempArray = new ArrayList<>(
+                            (ArrayList<?>) findViewById(R.id.activityIcon1).getTag());
                     if (mTempArray.get(3).equals("1")) {
                         processActivityButton(mTempArray.get(0));
                     }
@@ -775,8 +774,9 @@ public class Activities_Platform extends ActivitiesMasterParent
 
         findViewById(R.id.activityIcon2).setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                ArrayList<String> mTempArray=new ArrayList<>(
-                        (ArrayList<String>) findViewById(R.id.activityIcon2).getTag());
+
+                ArrayList<?> mTempArray=new ArrayList<>(
+                        (ArrayList<?>) findViewById(R.id.activityIcon2).getTag());
                 if(mTempArray.get(3).equals("1")) {
                     processActivityButton(mTempArray.get(0));
                 }
@@ -785,8 +785,8 @@ public class Activities_Platform extends ActivitiesMasterParent
 
         findViewById(R.id.activityIcon3).setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                ArrayList<String> mTempArray=new ArrayList<>(
-                        (ArrayList<String>) findViewById(R.id.activityIcon3).getTag());
+                ArrayList<?> mTempArray=new ArrayList<>(
+                        (ArrayList<?>) findViewById(R.id.activityIcon3).getTag());
                 if(mTempArray.get(3).equals("1")) {
                     processActivityButton(mTempArray.get(0));
                 }
@@ -795,8 +795,8 @@ public class Activities_Platform extends ActivitiesMasterParent
 
         findViewById(R.id.activityIcon4).setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                ArrayList<String> mTempArray=new ArrayList<>(
-                        (ArrayList<String>) findViewById(R.id.activityIcon4).getTag());
+                ArrayList<?> mTempArray=new ArrayList<>(
+                        (ArrayList<?>) findViewById(R.id.activityIcon4).getTag());
                 if(mTempArray.get(3).equals("1")) {
                     processActivityButton(mTempArray.get(0));
                 }
@@ -805,7 +805,8 @@ public class Activities_Platform extends ActivitiesMasterParent
 
         findViewById(R.id.activityIcon5).setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                ArrayList<String> mTempArray=new ArrayList<String>((ArrayList<String>) findViewById(R.id.activityIcon5).getTag());
+                ArrayList<?> mTempArray=new ArrayList<>(
+                        (ArrayList<?>) findViewById(R.id.activityIcon5).getTag());
                 if(mTempArray.get(3).equals("1")) {
                     processActivityButton(mTempArray.get(0));
                 }
@@ -814,7 +815,8 @@ public class Activities_Platform extends ActivitiesMasterParent
 
         findViewById(R.id.activityIcon6).setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                ArrayList<String> mTempArray = new ArrayList<String>((ArrayList<String>) findViewById(R.id.activityIcon6).getTag());
+                ArrayList<?> mTempArray = new ArrayList<>(
+                        (ArrayList<?>) findViewById(R.id.activityIcon6).getTag());
                 if(mTempArray.get(3).equals("1")) {
                     processActivityButton(mTempArray.get(0));
                 }
@@ -830,7 +832,7 @@ public class Activities_Platform extends ActivitiesMasterParent
     private void processActivityButton(Object imageTag){
         int clickedActivityID= Integer.parseInt(imageTag.toString());
 
-        ArrayList<String> currentActivity=new ArrayList<String>();
+        ArrayList<String> currentActivity=new ArrayList<>();
 
         currentActivity.add(String.valueOf(clickedActivityID));
 

@@ -1,19 +1,22 @@
+/**
+ * Part of Project Motoli All Subjects
+ * for Education Technology For Development
+ * created by Aaron D Michaelis Borsay
+ * on 1/30/2016
+ *
+ */
 package com.motoli.apps.allsubjects;
 
-import android.app.LoaderManager;
-import android.database.Cursor;
+
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 
-/**
- * Created by aborsay on 1/30/2017.
- */
 
 public class ActivityOP08 extends ActivityOPRoot {
 
@@ -47,10 +50,10 @@ public class ActivityOP08 extends ActivityOPRoot {
         if(mAllowAction) {
             mAllowAction = false;
             replaceFirstZero();
-            if (mCreateFirstNumber && mFirstNumber.length() <= 3) {
+            if (mCreateFirstNumber && mFirstNumber.length() <= 2) {
                 mFirstNumber += "1";
                 setFirstNumber();
-            } else if (mSecondNumber.length() <= 3) {
+            } else if (!mCreateFirstNumber && mSecondNumber.length() <= 2) {
                 mSecondNumber += "1";
                 setSecondNumber();
             }
@@ -62,10 +65,10 @@ public class ActivityOP08 extends ActivityOPRoot {
         if(mAllowAction) {
             mAllowAction = false;
             replaceFirstZero();
-            if (mCreateFirstNumber && mFirstNumber.length() <= 3) {
+            if (mCreateFirstNumber && mFirstNumber.length() <= 2) {
                 mFirstNumber += "2";
                 setFirstNumber();
-            } else if (mSecondNumber.length() <= 3) {
+            } else if (!mCreateFirstNumber && mSecondNumber.length() <= 2) {
                 mSecondNumber += "2";
                 setSecondNumber();
             }
@@ -77,10 +80,10 @@ public class ActivityOP08 extends ActivityOPRoot {
         if(mAllowAction) {
             mAllowAction = false;
             replaceFirstZero();
-            if (mCreateFirstNumber && mFirstNumber.length() <= 3) {
+            if (mCreateFirstNumber && mFirstNumber.length() <= 2) {
                 mFirstNumber += "3";
                 setFirstNumber();
-            } else if (mSecondNumber.length() <= 3) {
+            } else if (!mCreateFirstNumber && mSecondNumber.length() <= 2) {
                 mSecondNumber += "3";
                 setSecondNumber();
             }
@@ -92,10 +95,10 @@ public class ActivityOP08 extends ActivityOPRoot {
         if(mAllowAction) {
             mAllowAction = false;
             replaceFirstZero();
-            if (mCreateFirstNumber && mFirstNumber.length() <= 3) {
+            if (mCreateFirstNumber && mFirstNumber.length() <= 2) {
                 mFirstNumber += "4";
                 setFirstNumber();
-            } else if (mSecondNumber.length() <= 3) {
+            } else if (!mCreateFirstNumber && mSecondNumber.length() <= 2) {
                 mSecondNumber += "4";
                 setSecondNumber();
             }
@@ -107,10 +110,10 @@ public class ActivityOP08 extends ActivityOPRoot {
         if(mAllowAction) {
             mAllowAction = false;
             replaceFirstZero();
-            if (mCreateFirstNumber && mFirstNumber.length() <= 3) {
+            if (mCreateFirstNumber && mFirstNumber.length() <= 2) {
                 mFirstNumber += "5";
                 setFirstNumber();
-            } else if (mSecondNumber.length() <= 3) {
+            } else if (!mCreateFirstNumber && mSecondNumber.length() <= 2) {
                 mSecondNumber += "5";
                 setSecondNumber();
             }
@@ -125,7 +128,7 @@ public class ActivityOP08 extends ActivityOPRoot {
             if (mCreateFirstNumber && mFirstNumber.length() <= 3) {
                 mFirstNumber += "6";
                 setFirstNumber();
-            } else if (mSecondNumber.length() <= 3) {
+            } else if (!mCreateFirstNumber && mSecondNumber.length() <= 2) {
                 mSecondNumber += "6";
                 setSecondNumber();
             }
@@ -137,10 +140,10 @@ public class ActivityOP08 extends ActivityOPRoot {
         if(mAllowAction) {
             mAllowAction = false;
             replaceFirstZero();
-            if (mCreateFirstNumber && mFirstNumber.length() <= 3) {
+            if (mCreateFirstNumber && mFirstNumber.length() <= 2) {
                 mFirstNumber += "7";
                 setFirstNumber();
-            } else if (mSecondNumber.length() <= 3) {
+            } else if( !mCreateFirstNumber && mSecondNumber.length() <= 2) {
                 mSecondNumber += "7";
                 setSecondNumber();
             }
@@ -152,10 +155,10 @@ public class ActivityOP08 extends ActivityOPRoot {
         if(mAllowAction) {
             mAllowAction = false;
             replaceFirstZero();
-            if (mCreateFirstNumber && mFirstNumber.length() <= 3) {
+            if (mCreateFirstNumber && mFirstNumber.length() <= 2) {
                 mFirstNumber += "8";
                 setFirstNumber();
-            } else if (mSecondNumber.length() <= 3) {
+            } else if (!mCreateFirstNumber && mSecondNumber.length() <= 2) {
                 mSecondNumber += "8";
                 setSecondNumber();
             }
@@ -167,10 +170,10 @@ public class ActivityOP08 extends ActivityOPRoot {
         if(mAllowAction) {
             mAllowAction = false;
             replaceFirstZero();
-            if (mCreateFirstNumber && mFirstNumber.length() <= 3) {
+            if (mCreateFirstNumber && mFirstNumber.length() <= 2) {
                 mFirstNumber += "9";
                 setFirstNumber();
-            } else if (mSecondNumber.length() <= 3) {
+            } else if (!mCreateFirstNumber && mSecondNumber.length() <= 2) {
                 mSecondNumber += "9";
                 setSecondNumber();
             }
@@ -181,7 +184,7 @@ public class ActivityOP08 extends ActivityOPRoot {
     public void clickBackspace(View view){
         if(mAllowAction) {
             mAllowAction = false;
-            if (mCreateFirstNumber && mFirstNumber.length() <= 3) {
+            if (mCreateFirstNumber && mFirstNumber.length() <= 2) {
                 if(mFirstNumber.length()>=1) {
                     mFirstNumber=mFirstNumber.substring(0,mFirstNumber.length()-1);
                     if(mFirstNumber.length()==0){
@@ -189,7 +192,7 @@ public class ActivityOP08 extends ActivityOPRoot {
                     }
                 }
                 setFirstNumber();
-            } else if (mSecondNumber.length() <= 3) {
+            } else if (mSecondNumber.length() <= 2) {
                 if(mSecondNumber.length()>=1) {
                     mSecondNumber=mSecondNumber.substring(0,mSecondNumber.length()-1);
                     if(mSecondNumber.length()==0){
@@ -205,11 +208,11 @@ public class ActivityOP08 extends ActivityOPRoot {
     public void clickNumber0(View view){
 
         replaceFirstZero();
-        if(mAllowAction && mCreateFirstNumber){
+        if(mAllowAction && mCreateFirstNumber && mFirstNumber.length() <= 2){
             mAllowAction=false;
             mFirstNumber+="0";
             setFirstNumber();
-        }else{
+        }else if(!mCreateFirstNumber && mSecondNumber.length() <= 2){
             mSecondNumber+="0";
             setSecondNumber();
         }
@@ -322,21 +325,24 @@ public class ActivityOP08 extends ActivityOPRoot {
             mAllowAction=false;
             findViewById(R.id.equal).setAlpha(0.3f);
 
+            int mResult;
+
             switch(mMathType){
                 default:
                 case 0:
-                    mResultNumber=String.valueOf(
-                            Integer.parseInt(mFirstNumber)+Integer.parseInt(mSecondNumber));
+                    mResult= Integer.parseInt(mFirstNumber)+Integer.parseInt(mSecondNumber);
                     break;
                 case 1:
-                    mResultNumber=String.valueOf(
-                            Integer.parseInt(mFirstNumber)-Integer.parseInt(mSecondNumber));
+                    mResult= Integer.parseInt(mFirstNumber)-Integer.parseInt(mSecondNumber);
                     break;
                 case 2:
-                    mResultNumber=String.valueOf(
-                            Integer.parseInt(mFirstNumber)*Integer.parseInt(mSecondNumber));
+                    mResult= Integer.parseInt(mFirstNumber)*Integer.parseInt(mSecondNumber);
                     break;
             }
+
+            DecimalFormat formatter = new DecimalFormat("#,###,###");
+            mResultNumber = formatter.format(mResult);
+
            findViewById(R.id.equalSymbol).setAlpha(1.0f);
             ((TextView) findViewById(R.id.resultNumber)).setText(mResultNumber);
 

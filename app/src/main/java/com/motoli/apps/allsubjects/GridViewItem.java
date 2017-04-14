@@ -4,6 +4,8 @@ package com.motoli.apps.allsubjects;
  * for Education Technology For Development
  * created by Aaron D Michaelis Borsay
  * on 8/12/2015.
+ *
+ * This class take and ImageView and squares it.
  */
 
 import android.content.Context;

@@ -1,7 +1,16 @@
+/**
+ * Part of Project Motoli All Subjects
+ * for Education Technology For Development
+ * created by Aaron D Michaelis Borsay
+ * on 5/14/2016.
+ *
+ * Plays all of the different videos based upon what section user is coming from and returns
+ * to the same section if desired
+ * @author Aaron Borsay
+ */
 package com.motoli.apps.allsubjects;
 
 import android.app.LoaderManager;
-import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
@@ -10,26 +19,20 @@ import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.CursorAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.Space;
 import android.widget.VideoView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/**
- * Part of Project Motoli All Subjects
- * for Education Technology For Development
- * created by Aaron D Michaelis Borsay
- * on 5/14/2016.
- */
+
 public class ActivityVL extends ActivitiesMasterParent implements
         LoaderManager.LoaderCallbacks<Cursor>{
 
@@ -44,7 +47,7 @@ public class ActivityVL extends ActivitiesMasterParent implements
 
     private VideoView mVideoView;
     private ImageView mActivityIcon;
-
+    private ImageView mVideoBird;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out);
@@ -61,13 +64,13 @@ public class ActivityVL extends ActivitiesMasterParent implements
 
         mActivityIcon = (ImageView) findViewById(R.id.activityIcon);
         mActivityIcon.setVisibility(ImageView.INVISIBLE);
-
-
+        mVideoBird = (ImageView) findViewById(R.id.videoBird);
+        mVideoBird.setVisibility(ImageView.INVISIBLE);
+        FrameLayout mFrame =((FrameLayout) findViewById(R.id.videoFrame));
         switch(appData.getCurrentVideoID()){
            default:
            case 2:{
-               ((FrameLayout) findViewById(R.id.videoFrame)).setForeground(
-                       getResources().getDrawable(R.drawable.a_rounded_boxa));
+               mFrame.setForeground(ContextCompat.getDrawable(this,R.drawable.a_rounded_boxa));
                findViewById(R.id.videoList)
                        .setBackgroundResource(R.color.video_page_letters_side);
                findViewById(R.id.videoListBackground)
@@ -83,8 +86,7 @@ public class ActivityVL extends ActivitiesMasterParent implements
                break;
            }
            case 3:{
-               ((FrameLayout) findViewById(R.id.videoFrame)).setForeground(
-                       getResources().getDrawable(R.drawable.a_rounded_boxa));
+               mFrame.setForeground(ContextCompat.getDrawable(this,R.drawable.a_rounded_boxa));
                findViewById(R.id.topIcons)
                        .setBackgroundResource(R.color.video_page_letters_main);
                findViewById(R.id.iconSpace)
@@ -99,8 +101,8 @@ public class ActivityVL extends ActivitiesMasterParent implements
                break;
            }
            case 4:{
-               ((FrameLayout) findViewById(R.id.videoFrame)).setForeground(
-                       getResources().getDrawable(R.drawable.a_rounded_boxa));
+
+               mFrame.setForeground(ContextCompat.getDrawable(this,R.drawable.a_rounded_boxa));
                findViewById(R.id.activityMainPart)
                        .setBackgroundResource(R.color.video_page_letters_side);
                findViewById(R.id.videoList)
@@ -115,8 +117,7 @@ public class ActivityVL extends ActivitiesMasterParent implements
                break;
            }
            case 5:{
-               ((FrameLayout) findViewById(R.id.videoFrame)).setForeground(
-                       getResources().getDrawable(R.drawable.a_rounded_box_words));
+               mFrame.setForeground(ContextCompat.getDrawable(this,R.drawable.a_rounded_box_words));
                findViewById(R.id.topIcons)
                        .setBackgroundResource(R.color.application_words_video);
                findViewById(R.id.iconSpace)
@@ -135,8 +136,7 @@ public class ActivityVL extends ActivitiesMasterParent implements
                break;
            }
             case 7:{
-                ((FrameLayout) findViewById(R.id.videoFrame)).setForeground(
-                        getResources().getDrawable(R.drawable.a_rounded_boxa));
+                mFrame.setForeground(ContextCompat.getDrawable(this,R.drawable.a_rounded_boxa));
                 findViewById(R.id.activityMainPart)
                         .setBackgroundResource(R.color.video_page_letters_side);
                 findViewById(R.id.videoList)
@@ -151,8 +151,7 @@ public class ActivityVL extends ActivitiesMasterParent implements
                 break;
             }
             case 8:{
-                ((FrameLayout) findViewById(R.id.videoFrame)).setForeground(
-                        getResources().getDrawable(R.drawable.a_rounded_boxa));
+                mFrame.setForeground(ContextCompat.getDrawable(this,R.drawable.a_rounded_boxa));
                 findViewById(R.id.activityMainPart)
                         .setBackgroundResource(R.color.video_page_letters_side);
                 findViewById(R.id.videoList)
@@ -167,8 +166,7 @@ public class ActivityVL extends ActivitiesMasterParent implements
                 break;
             }
             case 9:{
-                ((FrameLayout) findViewById(R.id.videoFrame)).setForeground(
-                        getResources().getDrawable(R.drawable.a_rounded_boxa));
+                mFrame.setForeground(ContextCompat.getDrawable(this,R.drawable.a_rounded_boxa));
                 findViewById(R.id.activityMainPart)
                         .setBackgroundResource(R.color.video_page_letters_side);
                 findViewById(R.id.videoList)
@@ -204,6 +202,7 @@ public class ActivityVL extends ActivitiesMasterParent implements
 
                        if(!mPlayingVideo) {
                             mActivityIcon.setVisibility(ImageView.INVISIBLE);
+                           mVideoBird.setVisibility(ImageView.INVISIBLE);
 
                             Uri mVideoUri= Uri.parse("android.resource://" + getPackageName() + "/"
                                     + R.raw.group_video_letters);
@@ -241,6 +240,7 @@ public class ActivityVL extends ActivitiesMasterParent implements
                        if (!mPlayingVideo) {
 
                             mActivityIcon.setVisibility(ImageView.INVISIBLE);
+                           mVideoBird.setVisibility(ImageView.INVISIBLE);
 
 
                             Uri mVideoUri = Uri.parse("android.resource://" + getPackageName() + "/"
@@ -483,6 +483,8 @@ public class ActivityVL extends ActivitiesMasterParent implements
     private void playLetterVideo(String mVideo ){
 
         mActivityIcon.setVisibility(ImageView.INVISIBLE);
+        mVideoBird.setVisibility(ImageView.INVISIBLE);
+
         mVideo = mVideo.replace(".mp4", "");
         int mCheckExistence = getResources().getIdentifier(mVideo, "raw", getPackageName());
         if(mCheckExistence!=0) {
@@ -501,7 +503,8 @@ public class ActivityVL extends ActivitiesMasterParent implements
                 public void onPrepared(MediaPlayer mp) {
                     mVideoView.setZOrderOnTop(false);
                     mVideoView.setBackgroundColor(Color.TRANSPARENT);
-                    mVideoView.setBackgroundColor(getResources().getColor(R.color.transparent));
+                    mVideoView.setBackgroundColor(ContextCompat.getColor(
+                            ActivityVL.this,R.color.transparent));
                     mAudioDuration=mp.getDuration();
                     mAudioHandler.postDelayed(runAfterVideo, mAudioDuration+2000);
                 }
@@ -527,23 +530,26 @@ public class ActivityVL extends ActivitiesMasterParent implements
             if (!mCurrentGSP.get("group_id").equals("5")) {
                 playGeneralAudio("let_us_practice");
                 mProceedPast = true;
-                mVideoView.setBackground(getResources().getDrawable(R.drawable.bg_learn_letters));
+                mVideoView.setBackground(ContextCompat.getDrawable(
+                        ActivityVL.this,R.drawable.bg_learn_letters));
             }
             if (mCurrentGSP.get("group_id").equals("2")) {
                 if (mCurrentGSP.get("phase_id").equals("1")
                         || mCurrentGSP.get("phase_id").equals("2")) {
                     mActivityIcon.setImageDrawable(
-                            getResources().getDrawable(R.drawable.icon_letters_names_act));
+                            ContextCompat.getDrawable(
+                                    ActivityVL.this,R.drawable.icon_letters_names_act));
                 } else if (mCurrentGSP.get("phase_id").equals("3")) {
                     mActivityIcon.setImageDrawable(
-                            getResources().getDrawable(R.drawable.icon_letters_phonic_act));
+                            ContextCompat.getDrawable(
+                                    ActivityVL.this,R.drawable.icon_letters_phonic_act));
                 }
             } else if (mCurrentGSP.get("group_id").equals("3")) {
-                mActivityIcon.setImageDrawable(getResources()
-                        .getDrawable(R.drawable.icon_syllab_practice));
+                mActivityIcon.setImageDrawable(ContextCompat.getDrawable(
+                        ActivityVL.this,R.drawable.icon_syllab_practice));
             } else if (mCurrentGSP.get("group_id").equals("4")) {
-                mActivityIcon.setImageDrawable(getResources()
-                        .getDrawable(R.drawable.icon_words_act));
+                mActivityIcon.setImageDrawable(ContextCompat.getDrawable(
+                        ActivityVL.this,R.drawable.icon_words_act));
             } else if (mCurrentGSP.get("group_id").equals("5")) {
 
                 for (int i = 0; i < mCurrentVariables.size(); i++) {
@@ -558,20 +564,21 @@ public class ActivityVL extends ActivitiesMasterParent implements
                         .update(AppProvider.CONTENT_URI_UPDATE_BOOK_LEVEL, null, null, null);
                 mPlayingVideo = false;
 
-                mActivityIcon.setImageDrawable(getResources()
-                        .getDrawable(R.drawable.icon_letters_names_act));
+                mActivityIcon.setImageDrawable(ContextCompat.getDrawable(
+                        ActivityVL.this,R.drawable.icon_letters_names_act));
             } else if (mCurrentGSP.get("group_id").equals("6")) {
-                mActivityIcon.setImageDrawable(getResources()
-                        .getDrawable(R.drawable.icon_math_shape_act));
+                mActivityIcon.setImageDrawable(ContextCompat.getDrawable(
+                        ActivityVL.this,R.drawable.icon_math_shape_act));
             } else if (mCurrentGSP.get("group_id").equals("7")) {
-                mActivityIcon.setImageDrawable(getResources()
-                        .getDrawable(R.drawable.icon_number_act));
+                mActivityIcon.setImageDrawable(ContextCompat.getDrawable(
+                        ActivityVL.this,R.drawable.icon_number_act));
             } else if (mCurrentGSP.get("group_id").equals("8")) {
-                mActivityIcon.setImageDrawable(getResources()
-                        .getDrawable(R.drawable.icon_math_operations_act));
+                mActivityIcon.setImageDrawable(ContextCompat.getDrawable(
+                        ActivityVL.this,R.drawable.icon_math_operations_act));
             }
             if(appData.getCurrentVideoID()!=6) {
                 mActivityIcon.setVisibility(ImageView.VISIBLE);
+                mVideoBird.setVisibility(ImageView.VISIBLE);
             }
 
         }
@@ -584,7 +591,8 @@ public class ActivityVL extends ActivitiesMasterParent implements
         public void run(){
 
             mPlayingVideo = false;
-            mVideoView.setBackground(getResources().getDrawable(R.drawable.bg_learn_letters));
+            mVideoView.setBackground(ContextCompat.getDrawable(
+                    ActivityVL.this,R.drawable.bg_learn_letters));
 
         }
     };

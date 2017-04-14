@@ -4,15 +4,18 @@ package com.motoli.apps.allsubjects;
  * for Education Technology For Development
  * created by Aaron D Michaelis Borsay
  * on 8/12/2015.
+ *
+ * This class handles the creation of the database tables that are different for each device
+ * and that are used throughout the program.
+ * It pulls at first from a sqlite database in the asset folder.
+ * It is able to update the database when the the version number in the sqlite file is higher
+ * also in S$K_DBHelper the verion number is set higher then what is currently in the
+ * Application it will call the update functions.
+ * It only holds on to the user data so the user does not have to begin again.
  */
 
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.io.File;
 
 import android.content.ContentValues;
@@ -27,12 +30,7 @@ public final class Database {
 
 
 
-    public Database() {
-        //  Auto-generated constructor stub
-        // ((Motoli_Application) getApplicationContext());
-
-
-    }
+    public Database() {    }
 
 
     ////////////////////////////////////////////////////////////////////////
@@ -43,11 +41,8 @@ public final class Database {
 
         Log.d(Constants.LOGCAT, "App_Users.onCreate(db)");
 
-
         Settings.onCreate(db);
         Log.d(Constants.LOGCAT, "Settings.onCreate(db)");
-
-
 
         App_Users_Current_GPL.onCreate(db);
         Log.d(Constants.LOGCAT, "App_Users_Current_GPL.onCreate(db)");
@@ -87,54 +82,10 @@ public final class Database {
         App_Users_Current_GPL.setNewUserCurrentGPL(db, 0);
         Log.d(Constants.LOGCAT, "App_Users_Current_GPL.doUpDate(db, mMyDataBase);");
 
-/*
-        db.execSQL("CREATE INDEX vpl_index ON variable_phase_levels(group_id);");
-        db.execSQL("CREATE INDEX activities_index ON activities(activity_type);");
-        db.execSQL("CREATE INDEX books_index1 ON books(book_type);");
-        db.execSQL("CREATE INDEX books_index2 ON books(difficulty_level);");
 
-        db.execSQL("CREATE INDEX groups_phase_levels_index1 ON groups_phase_levels(group_id);");
-        db.execSQL("CREATE INDEX groups_phase_levels_index2 ON groups_phase_levels(level_number);");
-
-        db.execSQL("CREATE INDEX syllables_index ON syllables(phonic_id);");
-
-        db.execSQL("CREATE INDEX variable_type_relations_index ON variable_type_relations(variable_type_id);");
-        db.execSQL("CREATE INDEX words_index ON words(word_first_letter);");
-        db.execSQL("CREATE INDEX auc_index ON app_users_current_gpl(group_id);");
-
-
-        db.execSQL("CREATE INDEX auvv_index ON app_users_activity_variable_values(activity_id)");
-        db.execSQL("CREATE INDEX phsa_index ON groups_phase_sections_activities(group_id)");
-        db.execSQL("CREATE INDEX gps_index ON groups_phase_sections(phase_id)");
-        */
     }
 
-    ////////////////////////////////////////////////////////////////////////////////
-/*
-    public static void copyFile(File sourceFile, File destFile) throws IOException {
-        if(!destFile.exists()) {
-            destFile.createNewFile();
-        }
 
-        FileChannel source = null;
-        FileChannel destination = null;
-
-        try {
-            source = new FileInputStream(sourceFile).getChannel();
-            destination = new FileOutputStream(destFile).getChannel();
-            destination.transferFrom(source, 0, source.size());
-        }
-        finally {
-            if(source != null) {
-                source.close();
-            }
-            if(destination != null) {
-                destination.close();
-            }
-        }
-    }
-
-    */
 
     public static void updateDB(SQLiteDatabase mDatabase, Context mContext, String mDBOldName){
 

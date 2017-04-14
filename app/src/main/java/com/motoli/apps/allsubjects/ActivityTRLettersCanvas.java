@@ -15,7 +15,6 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.android.volley.DefaultRetryPolicy;
-import com.motoli.apps.allsubjects.Model.Symbol;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,59 +24,35 @@ import java.util.List;
  * for Education Technology For Development
  * created by Aaron D Michaelis Borsay
  * on 7/13/2016.
+ *
+ * Handlers letter tracing.
+ * Needs some attentive work to clean up code.
+ * Uses canvas and ideas from other project to map location of finger to a diagram of the letter
+ * the user is attempting to write. if it matches it remains green. if it is wrong or too far
+ * outside of bounds the response is red. the user can reattempt many times.
+ * There are no levels for this activity.
  */
 public class ActivityTRLettersCanvas extends View   {
 
-    //drawing path
     private Path mPath;
-    private Path mTextPath;
     List<Point> mPoints;
     public static final int BAD = 1;
-    public static final int GOOD = 2;
 
-    Symbol symbol;
-    SymbolMask symbolMask;
     private int mainViewDesiredHeight;
     private int mainViewDesiredWidth;
     private boolean mClear=false;
     private boolean mCorrect;
-    //defines what to draw
-    private Paint canvasPaint;
 
-    //defines how to draw
-    private Paint mPaint;
-    private Paint mTextPaint;
-    Paint mLinePaintIn;
-    Paint mLinePaintOut;
 
-    //initial color
-    private int paintColor = 0xFF660000;
+    private Paint mLinePaintIn;
+    private Paint mLinePaintOut;
 
-    //canvas - holding pen, holds your drawings
-    //and transfers them to the view
-    private Canvas mCanvas;
 
-    //canvas bitmap
     private Bitmap mBitmap;
-    private Bitmap myCanvasBitmap;
 
-    Canvas myCanvas = null;
-
-    Matrix identityMatrix;
-
-
-    private boolean mFirstDraw=true;
-    private boolean userInteraction;
-    //brush size
-    private float currentBrushSize, lastBrushSize;
     private float mX, mY;
 
     private static final float TOLERANCE = 8;
-
-    public float touchX;
-    public float touchY;
-
-    private Motoli_Application mAppData;
 
     float x1, x2, x3, y1, y2, y3;
 
@@ -89,27 +64,18 @@ public class ActivityTRLettersCanvas extends View   {
     }
     public ActivityTRLettersCanvas(Context context, AttributeSet attrs) {
         super(context, attrs);
-//        mAppData=((Motoli_Application) context.getApplicationContext());
         init();
-
-
     }
     public ActivityTRLettersCanvas(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
     /////////////////////////////////////////////////////////////////////////////////////////
-    public Bitmap getCanvasBitmap(){
-
-        return myCanvasBitmap;
-
-    }
 
 
     private void init(){
         mPath = new Path();
         this.mPoints = new ArrayList();
 
-        mTextPath = new Path();
 
         mLinePaintIn = new Paint();
         mLinePaintIn.setAntiAlias(true);
@@ -127,7 +93,7 @@ public class ActivityTRLettersCanvas extends View   {
         mLinePaintOut.setStrokeCap(Paint.Cap.ROUND);
         mLinePaintOut.setStrokeWidth(150f);
 
-        mPaint = new Paint();
+        Paint mPaint = new Paint();
         mPaint.setAntiAlias(true);
         mPaint.setColor(Color.rgb(8,101,177));
         mPaint.setStyle(Paint.Style.STROKE);
@@ -135,7 +101,7 @@ public class ActivityTRLettersCanvas extends View   {
         mPaint.setStrokeCap(Paint.Cap.ROUND);
         mPaint.setStrokeWidth(10f);
 
-        mTextPaint = new Paint();
+        Paint mTextPaint = new Paint();
         mTextPaint.setColor(Color.BLUE);
         mTextPaint.setStyle(Paint.Style.STROKE);
         mTextPaint.setStrokeWidth(10f);
@@ -144,28 +110,21 @@ public class ActivityTRLettersCanvas extends View   {
 
     }
 
-    public interface OnChildSizeChanged {
-        void onChildSizeChanged(int i, int i2);
+    private interface OnChildSizeChanged {
 
-        void onLetterCompleted();
-    }
-    public void setFragment(OnChildSizeChanged fragment) {
-        this.fragment = fragment;
     }
 
     public boolean drawTrace(Canvas canvas) {
         canvas.getWidth();
         boolean mIsIn=true;
         for (int i = 0; i < this.mPoints.size() - 1; i += BAD) {
-            Point a = (Point) this.mPoints.get(i);
-            Point b = (Point) this.mPoints.get(i + BAD);
+            Point a =  this.mPoints.get(i);
+            Point b = this.mPoints.get(i + BAD);
             if(a.start){
                 mPath.moveTo(a.f10x, a.f11y);
                 mX = a.f10x;
                 mY = a.f11y;
             }else if ( !a.end) {
-
-            //}else if (!a.start && !a.end) {
 
                 float dx = Math.abs(a.f10x - mX);
                 float dy = Math.abs(a.f11y - mY);
@@ -175,7 +134,6 @@ public class ActivityTRLettersCanvas extends View   {
                     mY = a.f11y;
                 }
 
-/* */
                 Paint paint;
                 float f = a.f10x;
                 float f2 = a.f11y;
@@ -217,26 +175,7 @@ public class ActivityTRLettersCanvas extends View   {
             drawTrace(canvas);
             Log.d(Constants.LOGCAT, "paint mask");
         }
-        /*
-        Paint paint;
-        if(drawTrace(canvas)){
-            paint = this.mLinePaintIn;
-        }else {
-            paint = this.mLinePaintOut;
-        }
-        canvas.drawPath(mPath,paint);
 
-        mFirstDraw=false;
-        Log.d(Constants.LOGCAT, "paint mask");
-        if(symbolMask!=null) {
-
-        }
-        canvas.drawPath(mPath, paint);
-
-
-        drawTrace(canvas);
-        canvas.drawBitmap(myCanvasBitmap, identityMatrix, null);
-        */
     }
 
 
@@ -246,42 +185,11 @@ public class ActivityTRLettersCanvas extends View   {
 
         mBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
 
-        mCanvas = new Canvas(mBitmap);
-
-
-
-    }
-
-    public void setSymbol(Symbol sym) {
-        this.mPoints.clear();
-        this.symbol = sym;
-        invalidate();
-    }
-
-    private void startTouch(float x, float y) {
-        mPath.moveTo(x, y);
-        mX = x;
-        mY = y;
-    }
-
-    private void moveTouch(float x, float y) {
-        float dx = Math.abs(x - mX);
-        float dy = Math.abs(y - mY);
-        if (dx >= TOLERANCE || dy >= TOLERANCE) {
-            mPath.quadTo(mX, mY, (x + mX) / 2, (y + mY) / 2);
-            mX = x;
-            mY = y;
-        }
     }
 
     public void clearCanvas() {
         mClear=true;
         invalidate();
-    }
-
-    // when ACTION_UP stop touch
-    private void upTouch() {
-        mPath.lineTo(mX, mY);
     }
 
 
@@ -297,46 +205,35 @@ public class ActivityTRLettersCanvas extends View   {
         }else{
             mHotSpotReturn = hotspots.getPixel(x, y);
         }
-        // return hotspots.getPixel(x, y);
 
         return mHotSpotReturn;
     }
 
     public boolean matchToBlack (int mTouchColor) {
-        if(mTouchColor!=Color.BLACK){
-            return false;
-        }
-        return true;
+        return mTouchColor!=Color.BLACK;
     } // end match
 
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        //    public boolean onTouch(View view, MotionEvent event){
 
         float touchX = event.getX();
 
         float touchY = event.getY();
 
-        boolean ret = this.userInteraction;
-        boolean symbolContainsPoint = true;
+        boolean symbolContainsPoint;
         int mTouchColor;
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 this.x1 = touchX;
                 this.y1 = touchY;
-               //mTouchColor = getHotspotColor (Math.round(x1), Math.round(y1));
-                //int tolerance = 25;
 
-               //if (matchToBlack (mTouchColor)) {
                 if(mCorrect){
 
                     mTouchColor = getHotspotColor (Math.round(x1), Math.round(y1));
 
                     mCorrect=matchToBlack (mTouchColor);
-                    // Do the action associated with the RED region
                     symbolContainsPoint=mCorrect; //true
-                    // nextImage = R.drawable.p2_ship_alien;
                 } else {
                     symbolContainsPoint=false;
                 }
@@ -351,7 +248,7 @@ public class ActivityTRLettersCanvas extends View   {
                     mTouchColor = getHotspotColor (Math.round(x2), Math.round(y2));
                     mCorrect=matchToBlack (mTouchColor);
 
-                    symbolContainsPoint=mCorrect; //true
+                    symbolContainsPoint=mCorrect;
                 } else {
                     symbolContainsPoint=false;
                 }
@@ -366,16 +263,9 @@ public class ActivityTRLettersCanvas extends View   {
                     this.x3 += DefaultRetryPolicy.DEFAULT_BACKOFF_MULT;
                 }
 
-                if(mCorrect){
-                    mTouchColor = getHotspotColor (Math.round(x3), Math.round(y3));
 
-                    symbolContainsPoint=mCorrect; //true
-                    // nextImage = R.drawable.p2_ship_alien;
-                } else {
-                    symbolContainsPoint=false;
-                }
 
-                this.mPoints.add(new Point(this.x3, this.y3, false, true, symbolContainsPoint));
+                this.mPoints.add(new Point(this.x3, this.y3, false, true, true));
 
                 invalidate();
                 break;
@@ -385,15 +275,6 @@ public class ActivityTRLettersCanvas extends View   {
         return true;
     }
 
-
-
-    void setDesiredHeight(float desiredHeight) {
-        this.mainViewDesiredHeight = (int) desiredHeight;
-    }
-
-    void setDesiredWidth(float desiredWidth) {
-        this.mainViewDesiredWidth = (int) desiredWidth;
-    }
 
 
 
@@ -421,21 +302,10 @@ public class ActivityTRLettersCanvas extends View   {
 
 
 
-        if(width>0) {
-            myCanvasBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-            myCanvas = new Canvas();
-            myCanvas.setBitmap(myCanvasBitmap);
 
-            identityMatrix = new Matrix();
-        }
         setMeasuredDimension(width, height);
     }
 
-
-    public void setSymbolMask(SymbolMask symbolMask) {
-
-        this.symbolMask = symbolMask;
-    }
 
     public void clear() {
         this.mPoints.clear();
@@ -443,10 +313,6 @@ public class ActivityTRLettersCanvas extends View   {
     }
 
 
-    public boolean checkResult() {
 
-        throw new UnsupportedOperationException("Method not decompiled: " +
-                "com.motoli.apps.allsubjects.ActivityTRShapesCanvas.checkResult():boolean");
-    }
 
 }

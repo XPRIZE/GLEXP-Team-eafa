@@ -13,11 +13,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.WindowManager;
 
 
-public class Master_Parent extends Activity {
+public class Master_Parent extends AppCompatActivity {
     protected  Motoli_Application appData;
 
     protected boolean allowSound=true;
@@ -150,14 +151,7 @@ public class Master_Parent extends Activity {
                  })
                  .show();
                 break;
-            /*
-            case 1://USER SELECT
-                appData.setCurrentActivityName("UserSelect");
-                main = new Intent(getApplicationContext(),UserSelect.class);
 
-                startActivity(main);
-                finish();break;
-                */
             case 2://Goto LAUNCH PLATFORM
             case 4:
                 appData.setCurrentActivityName("Launch_Platform");

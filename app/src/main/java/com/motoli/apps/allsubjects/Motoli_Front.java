@@ -17,57 +17,24 @@ import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.content.Intent;
+
 
 
 public class  Motoli_Front extends Master_Parent
         implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    protected Handler generalHandler = new Handler();
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.motoli_front);
-
         appData.addToClassOrder(0);
         appData.setCurrentSection(2);
-
         Log.d(Constants.LOGCAT, "Motoli_Front onCreate");
-
         getLoaderManager().initLoader(0, null, this);
-
-
-
     }
 
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-    protected Runnable processUserSelect = new Runnable(){
-        @Override
-        public void run(){
-            goToUserSelect();
-        }
-    };
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    private void goToUserSelect(){
-        appData.setCurrentUserID("0");
-        appData.addToClassOrder(1);
-        Intent main = new Intent(this,UserSelect.class);
-        startActivity(main);
-        finish();
-        //startActivityForResult(main, Constants.ACTIVITY_USERSELECT);
-        //finish();
-    }
-
-/**/
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
           return new CursorLoader(this,
@@ -82,7 +49,6 @@ public class  Motoli_Front extends Master_Parent
         Intent main = new Intent(this,Launch_Platform.class);
         startActivity(main);
         finish();
-//        generalHandler.postDelayed(processUserSelect, (long)500);
     }
 
     @Override

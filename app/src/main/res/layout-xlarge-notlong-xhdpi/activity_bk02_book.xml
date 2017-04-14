@@ -1,140 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:id="@+id/activityMainFrame"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/activityMainFrame"
     android:background="@drawable/bg_bk02"
-    >
-<android.support.constraint.ConstraintLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/activityMainPart"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="@drawable/bg_bk02">
+    android:orientation="vertical">
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/activityMainPart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_bk02">
 
 
-    <Space
-        android:id="@+id/iconSpace"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomIcons"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_weight=".75" />
+        <Space
+            android:id="@+id/iconSpace"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/bottomIcons"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight=".75" />
 
 
-    <com.motoli.apps.allsubjects.RoundedImage
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="32dp"
-        android:id="@+id/bookPageImage"
-        android:src="@drawable/bg_blue_sky_snow_white_ground"
-        android:scaleType="fitXY"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintVertical_weight="0.75"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/bottomIcons"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/bookPageText" />
-
-    <TextView
-        android:id="@+id/bookPageText"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="32dp"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintVertical_weight="0.75"
-        android:background="@drawable/round_square_white"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/bookPageImage"
-        app:layout_constraintBottom_toTopOf="@+id/bottomIcons"
-        android:gravity="center_vertical|start"
-        android:padding="@dimen/bk02_text_padding"
-        android:text="@string/largeRandomString"
-        android:textColor="@color/normalBlack"
-        android:textSize="@dimen/bk02_font_normal" />
-
-
-    <LinearLayout
-        android:id="@+id/bottomIcons"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:padding="6dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iconSpace"
-        app:layout_constraintVertical_weight=".25">
-
-
-        <ImageView
-            android:id="@+id/movePageLeft"
+        <com.motoli.apps.allsubjects.RoundedImage
+            android:id="@+id/bookPageImage"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-
-            android:scaleType="fitCenter"
-            android:src="@drawable/btn_move_brown_left"
-            android:visibility="visible" />
-
-        <ImageView
-            android:id="@+id/movePageRight"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="fitCenter"
-            android:src="@drawable/btn_move_brown_right"
-            android:visibility="visible" />
+            android:layout_height="0dp"
+            android:layout_margin="32dp"
+            android:background="@drawable/bg_bk02"
+            android:scaleType="fitXY"
+            android:src="@drawable/bg_blue_sky_snow_white_ground"
+            app:layout_constraintBottom_toTopOf="@+id/bottomIcons"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/bookPageText"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight="0.75" />
 
         <TextView
-            android:id="@+id/activityName"
+            android:id="@+id/bookPageText"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:gravity="top"
-            android:text="Large Text"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/darkGray"
-            android:textSize="@dimen/activity_name_font_size" />
+            android:layout_height="0dp"
+            android:layout_margin="32dp"
+            android:background="@drawable/round_square_white"
+            android:gravity="center_vertical|start"
+            android:padding="@dimen/bk02_text_padding"
+            android:text="@string/largeRandomString"
+            android:textColor="@color/normalBlack"
+            android:textSize="@dimen/bk02_font_normal"
+            app:layout_constraintBottom_toTopOf="@+id/bottomIcons"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@id/bookPageImage"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight="0.75" />
 
-        <ImageButton
-            android:id="@+id/btnRepeat"
+
+        <LinearLayout
+            android:id="@+id/bottomIcons"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/none"
-            android:scaleType="fitCenter"
-            android:soundEffectsEnabled="false"
-            android:src="@drawable/btn_repeat_brown" />
-
-        <ImageButton
-            android:id="@+id/btnBack"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="20dp"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/none"
-            android:onClick="backButtonClicked"
-            android:scaleType="fitCenter"
-            android:soundEffectsEnabled="false"
-            android:src="@drawable/btn_move_brown" />
-    </LinearLayout>
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:padding="6dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iconSpace"
+            app:layout_constraintVertical_weight=".25">
 
 
+            <ImageView
+                android:id="@+id/movePageLeft"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="@string/none"
+
+                android:scaleType="fitCenter"
+                android:src="@drawable/btn_move_brown_left"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/movePageRight"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="@string/none"
+                android:scaleType="fitCenter"
+                android:src="@drawable/btn_move_brown_right"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/activityName"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:gravity="top"
+                android:text="Large Text"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/darkGray"
+                android:textSize="@dimen/activity_name_font_size" />
+
+            <ImageButton
+                android:id="@+id/btnRepeat"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/none"
+                android:scaleType="fitCenter"
+                android:soundEffectsEnabled="false"
+                android:src="@drawable/btn_repeat_brown" />
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/none"
+                android:onClick="backButtonClicked"
+                android:scaleType="fitCenter"
+                android:soundEffectsEnabled="false"
+                android:src="@drawable/btn_move_brown" />
+        </LinearLayout>
 
 
-</android.support.constraint.ConstraintLayout>
-    </FrameLayout>
+    </android.support.constraint.ConstraintLayout>
+</FrameLayout>

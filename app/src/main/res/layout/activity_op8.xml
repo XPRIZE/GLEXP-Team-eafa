@@ -621,19 +621,21 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.9" />
+
         <android.support.constraint.Guideline
+            android:id="@+id/guidelineEquationTop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/guidelineEquationTop"
-            app:layout_constraintGuide_percent="0.2"
-            android:orientation="horizontal" />
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.25" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guidelineEquationLeft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.56" />
+            app:layout_constraintGuide_percent=".52" />
+
         <TextView
             android:id="@+id/firstNumber"
             android:layout_width="0dp"
@@ -642,12 +644,12 @@
             android:text="@string/number_1"
             android:textColor="@color/normalBlack"
             android:textSize="@dimen/op8_large_number_font_size"
-            app:layout_constraintVertical_chainStyle="spread"
-            app:layout_constraintVertical_weight="1"
-            app:layout_constraintRight_toLeftOf="@+id/guidelineEquationRight"
             app:layout_constraintBottom_toTopOf="@+id/secondNumberBox"
             app:layout_constraintLeft_toLeftOf="@+id/guidelineEquationLeft"
-            app:layout_constraintTop_toBottomOf="@+id/guidelineEquationTop" />
+            app:layout_constraintRight_toLeftOf="@+id/guidelineEquationRight"
+            app:layout_constraintTop_toBottomOf="@+id/guidelineEquationTop"
+            app:layout_constraintVertical_chainStyle="spread"
+            app:layout_constraintVertical_weight="1" />
         <ImageView
             android:id="@+id/secondNumberBox"
             android:layout_width="0dp"
@@ -670,12 +672,12 @@
             android:text="@string/stringPlus"
             android:textColor="@color/normalBlack"
             android:textSize="@dimen/op8_large_number_font_size"
+            app:layout_constraintBottom_toBottomOf="@+id/secondNumberBox"
             app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintHorizontal_weight=".2"
             app:layout_constraintLeft_toLeftOf="@+id/secondNumberBox"
             app:layout_constraintRight_toLeftOf="@+id/secondNumber"
-            app:layout_constraintTop_toTopOf="@+id/secondNumberBox"
-            app:layout_constraintBottom_toBottomOf="@+id/secondNumberBox"
-            app:layout_constraintHorizontal_weight="1"/>
+            app:layout_constraintTop_toTopOf="@+id/secondNumberBox" />
 
         <TextView
             android:id="@+id/secondNumber"
@@ -700,12 +702,13 @@
             android:text="@string/stringEqual"
             android:textColor="@color/normalBlack"
             android:textSize="@dimen/op8_large_number_font_size"
-            app:layout_constraintVertical_weight="1"
-
-            app:layout_constraintRight_toLeftOf="@+id/resultNumber"
             app:layout_constraintBottom_toTopOf="@+id/guidelineEquationBottom"
+
+            app:layout_constraintHorizontal_weight=".2"
             app:layout_constraintLeft_toLeftOf="@+id/guidelineEquationLeft"
-            app:layout_constraintTop_toBottomOf="@+id/secondNumberBox"/>
+            app:layout_constraintRight_toLeftOf="@+id/resultNumber"
+            app:layout_constraintTop_toBottomOf="@+id/secondNumberBox"
+            app:layout_constraintVertical_weight="1" />
 
         <TextView
             android:id="@+id/resultNumber"
@@ -718,11 +721,11 @@
             android:text="@string/number_4"
             android:textColor="@color/normalBlack"
             android:textSize="@dimen/op8_large_number_font_size"
-            app:layout_constraintLeft_toRightOf="@+id/equalSymbol"
             app:layout_constraintBottom_toTopOf="@+id/guidelineEquationBottom"
-            app:layout_constraintTop_toBottomOf="@+id/secondNumberBox"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/equalSymbol"
             app:layout_constraintRight_toLeftOf="@+id/guidelineEquationRight"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/secondNumberBox" />
 
 
         <android.support.constraint.Guideline
@@ -730,13 +733,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.84" />
+            app:layout_constraintGuide_percent="0.86" />
+
         <android.support.constraint.Guideline
+            android:id="@+id/guidelineEquationBottom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/guidelineEquationBottom"
-            app:layout_constraintGuide_percent="0.8"
-            android:orientation="horizontal"/>
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.75" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guidelineRight"

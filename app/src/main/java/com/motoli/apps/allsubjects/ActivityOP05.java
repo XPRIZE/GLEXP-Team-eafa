@@ -6,12 +6,13 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
+
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,8 +27,7 @@ import java.util.HashMap;
 public class ActivityOP05 extends ActivityOPRoot
         implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    private int mNumberOne=0;
-    private int mNumberTwo=0;
+
     private String mCurrentMathOperationsId;
 
 
@@ -36,11 +36,9 @@ public class ActivityOP05 extends ActivityOPRoot
 
 
     private TextView mFinalNumber;
-    private TextView mEquationNumber1, mEquationNumber2;
 
     private ArrayList<HashMap<String,String>> mMathOperations;
 
-    private int mCurrentLevel;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,17 +55,16 @@ public class ActivityOP05 extends ActivityOPRoot
         mCurrentGSP = new HashMap<>(appData.getCurrentGroup_Section_Phase());
         mInstructionAudio="info_op05";
 
-        mCurrentLevel=Integer.parseInt(mCurrentGSP.get("current_level"));
         ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_off);
 
 
         mFinalNumber = ((TextView) findViewById(R.id.equationResult));
         mFinalNumber.setText("");
         mFinalNumber.setTypeface(appData.getNumberFontTypeface());
-        mEquationNumber1 = ((TextView) findViewById(R.id.equationNumber1));
+        TextView mEquationNumber1 = ((TextView) findViewById(R.id.equationNumber1));
         mEquationNumber1.setText("");
         mEquationNumber1.setTypeface(appData.getNumberFontTypeface());
-        mEquationNumber2 = ((TextView) findViewById(R.id.equationNumber2));
+        TextView mEquationNumber2 = ((TextView) findViewById(R.id.equationNumber2));
         mEquationNumber2.setText("");
         mEquationNumber2.setTypeface(appData.getNumberFontTypeface());
 
@@ -103,7 +100,7 @@ public class ActivityOP05 extends ActivityOPRoot
         mIncorrectInRound=0;
         mValidateAvailable=false;
         mBeingValidated=false;
-        mFinalNumber.setTextColor(getResources().getColor(R.color.normalBlack));
+        mFinalNumber.setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
 
 
         displayScreen();
@@ -117,8 +114,8 @@ public class ActivityOP05 extends ActivityOPRoot
     protected void displayScreen(){
         mCurrentMathOperationsId=mMathOperations.get(mRoundNumber).get("math_operations_id");
 
-        mNumberOne=Integer.parseInt(mMathOperations.get(mRoundNumber).get("number_one"));
-        mNumberTwo=Integer.parseInt(mMathOperations.get(mRoundNumber).get("number_two"));
+        int mNumberOne=Integer.parseInt(mMathOperations.get(mRoundNumber).get("number_one"));
+        int mNumberTwo=Integer.parseInt(mMathOperations.get(mRoundNumber).get("number_two"));
 
 
         mAnswer=mNumberOne-mNumberTwo;
@@ -134,7 +131,7 @@ public class ActivityOP05 extends ActivityOPRoot
     //////////////////////////////////////////////////////////////////////////////////////////
 
     protected void processData(Cursor mCursor){
-        mMathOperations=new ArrayList<HashMap<String,String>>();
+        mMathOperations=new ArrayList<>();
         int mNumber=0;
         boolean mFirstOperation=true;
         if(mCursor.moveToFirst()) {
@@ -185,15 +182,14 @@ public class ActivityOP05 extends ActivityOPRoot
                     .setImageResource(R.drawable.btn_validate_ok);
             mCorrect=true;
             mCorrectInARow++;
-            mFinalNumber.setTextColor(getResources().getColor(R.color.correct_green));
+            mFinalNumber.setTextColor(ContextCompat.getColor(this,R.color.correct_green));
         }else{
             ((ImageView) findViewById(R.id.btnValidate))
                     .setImageResource(R.drawable.btn_validate_no_ok);
             mCorrect=false;
             mCorrectInARow=0;
-            mFinalNumber.setTextColor(getResources().getColor(R.color.incorrect_red));
+            mFinalNumber.setTextColor(ContextCompat.getColor(this,R.color.incorrect_red));
 
-          //  mFinalNumber.setPaintFlags(mFinalNumber.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         }
 
 
@@ -290,7 +286,8 @@ public class ActivityOP05 extends ActivityOPRoot
                     }else{
                         mUsersAnswer="";
                         mFinalNumber.setText("");
-                        mFinalNumber.setTextColor(getResources().getColor(R.color.normalBlack));
+                        mFinalNumber.setTextColor(ContextCompat.getColor(
+                                ActivityOP05.this,R.color.normalBlack));
                         mFinalNumber.setPaintFlags(mFinalNumber.getPaintFlags()
                                 & (~ Paint.STRIKE_THRU_TEXT_FLAG));
                         ((ImageView) findViewById(R.id.btnValidate))
@@ -299,7 +296,7 @@ public class ActivityOP05 extends ActivityOPRoot
                         mValidateAvailable=false;
                         if(mIncorrectInRound>=3){
                             mAllowNumberPad=false;
-                            findViewById(R.id.numberPad).setAlpha(0.2f);
+                            //findViewById(R.id.numberPad).setAlpha(0.2f);
                             mProcessGuessPosition=4;
                             mAudioHandler.postDelayed(processGuess, 100);
                         }
@@ -332,8 +329,7 @@ public class ActivityOP05 extends ActivityOPRoot
             mUsersAnswer="";
             mFinalNumber.setText("");
 
-            findViewById(R.id.numberPad).setAlpha(1.0f);
-            mFinalNumber.setTextColor(getResources().getColor(R.color.normalBlack));
+            mFinalNumber.setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
             mFinalNumber.setPaintFlags(mFinalNumber.getPaintFlags()
                     & (~ Paint.STRIKE_THRU_TEXT_FLAG));
             ((ImageView) findViewById(R.id.btnValidate))
@@ -387,8 +383,8 @@ public class ActivityOP05 extends ActivityOPRoot
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         String[] mData;
-        String mWhere="";
-        String mOrderBy="";
+        String mWhere;
+        String mOrderBy;
         CursorLoader cursorLoader;
         switch(id){
             default:

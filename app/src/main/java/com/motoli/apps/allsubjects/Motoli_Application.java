@@ -10,6 +10,8 @@ package com.motoli.apps.allsubjects;
  * due to various calls to AppProvider
  * that were not need in anyway. This could have been causing some delay in the app
  * and was loading useless global variables wasting memory. ADMB
+ *
+ * @author Aaron Borsay
  */
 
 import java.util.ArrayList;
@@ -18,7 +20,6 @@ import java.util.HashMap;
 import android.app.Application;
 import android.content.Context;
 import android.content.res.AssetManager;
-import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.util.Log;
 
@@ -32,7 +33,6 @@ public class Motoli_Application extends Application {
 
     private  Typeface mCurrentFontType;
     private  Typeface mCurrentFontTypeBold;
-    private static Model mModel;
 
     private boolean mIsAdminEnabled=false;
 
@@ -63,6 +63,8 @@ public class Motoli_Application extends Application {
     private int mActivityType=0;
 
     private HashMap<String,String> mCanvasList;
+    private  Context mContext;
+
 
 
     static{
@@ -79,16 +81,15 @@ public class Motoli_Application extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        mClassOrder=new ArrayList<Integer>();
+        mClassOrder=new ArrayList<>();
         mCurrentActivityName="SplashPage";
 
-        /**
+        /*
          * The fonts are statically set here. Currently the Italic and the Italic Bold are 
          * set but never used in the app. Even despite that being unused data it 
          * must remain in case it is ever in use.
          */
         mAssetManager = getAssets();
-        //mModel = new Model(mAssetManager);
 
         mCurrentFontType=Typeface.createFromAsset(getAssets(),
                 "fonts/Convergence-Regular.ttf");
@@ -102,6 +103,17 @@ public class Motoli_Application extends Application {
         mCurrentSection=0;
         Log.d(Constants.LOGCAT, "Creating Motoli Application");
     }
+
+
+    public  Context getContext() {
+        return mContext;
+    }
+
+    public  void setContext(Context mContext) {
+        this.mContext = mContext;
+    }
+
+
 
     public boolean inputAdminPassword(String mPassword){
         if(mPassword.equals(ADMIN_PASSWORD)){
@@ -187,7 +199,7 @@ public class Motoli_Application extends Application {
      * setCurrentSection(int mSection)
      * is used to help Activities_Platform set the section so the screen in Launch_Platform will
      * go back to previous location
-     * @param mSection
+     * @param   mSection    Current section app is in
      */
     public void setCurrentSection(int mSection){
         mCurrentSection=mSection;
@@ -216,7 +228,7 @@ public class Motoli_Application extends Application {
      * setCurrentActivityName(String mActivityName)
      * This is used for debug person alone to set activity name to be used by a function
      * in ActivitiesMasterParent
-     * @param mActivityName
+     * @param   mActivityName   Sets the activity name used for debugging purposes
      */
     public void setCurrentActivityName(String mActivityName){
         mCurrentActivityName=mActivityName;
@@ -255,7 +267,7 @@ public class Motoli_Application extends Application {
     /****************************************************************************
      * Typeface getCurrentFontTypeBold()
      * This is set in static but the font is needed throughout the app
-     * @return
+     * @return mCurrentFontTypeBold
      */
     public Typeface getCurrentFontTypeBold(){
         return this.mCurrentFontTypeBold;
@@ -265,10 +277,8 @@ public class Motoli_Application extends Application {
     /****************************************************************************
      * Typeface getCurrentFontTypeQuivira()
      * This is set in static but the font is needed for UNICODE reasons
-     * @return
+     * @return mNumberFontTypeface
      */
-
-
     public Typeface getNumberFontTypeface(){
         return this.mNumberFontTypeface;
     }
@@ -280,10 +290,7 @@ public class Motoli_Application extends Application {
      * @return
      */
 
-    public static Model getModel() {
 
-        return mModel;
-    }
 /* */
     /****************************************************************************
      * addToClassOrder(Integer classNumber)

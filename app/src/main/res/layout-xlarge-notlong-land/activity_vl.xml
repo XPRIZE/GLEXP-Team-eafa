@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/videoBackground"
@@ -20,7 +21,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.2" />
+            app:layout_constraintGuide_percent="0.2"
+            tools:layout_editor_absoluteY="0dp"
+            tools:layout_editor_absoluteX="256dp" />
 
 
         <LinearLayout
@@ -131,12 +134,22 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/topIcons" >
 
-            <VideoView
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/videoView"
-                android:layout_gravity="bottom|end|start|top"
-                android:background="@drawable/bg_learn_letters"/>
+                >
+
+                <VideoView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:id="@+id/videoView"
+                    android:layout_gravity="bottom|end|start|top"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"
+                    android:background="@drawable/bg_learn_letters" />
+            </RelativeLayout>
         </FrameLayout>
 
         <ImageView
@@ -146,7 +159,7 @@
             android:src="@drawable/icon_letters_names_act"
             android:visibility="visible"
             android:contentDescription="@string/none"
-            app:layout_constraintVertical_bias=".4"
+            app:layout_constraintVertical_bias="0.4"
             app:layout_constraintLeft_toLeftOf="@+id/videoFrame"
             app:layout_constraintRight_toLeftOf="@+id/videoBird"
             app:layout_constraintTop_toTopOf="@+id/videoFrame"
@@ -157,7 +170,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/btn_spound_closed"
             android:contentDescription="@string/none"
-            app:layout_constraintVertical_bias=".9"
+            app:layout_constraintVertical_bias="0.9"
             app:layout_constraintLeft_toRightOf="@+id/activityIcon"
             app:layout_constraintRight_toRightOf="@+id/videoFrame"
             app:layout_constraintTop_toTopOf="@+id/videoFrame"

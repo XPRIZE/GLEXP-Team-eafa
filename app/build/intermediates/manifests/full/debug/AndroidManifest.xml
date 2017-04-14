@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.motoli.apps.allsubjects"
     android:installLocation="auto"
-    android:versionCode="44"
-    android:versionName="1.31.044" >
+    android:versionCode="46"
+    android:versionName="1.31.046" >
 
     <uses-sdk
         android:minSdkVersion="17"
@@ -47,11 +47,6 @@
             android:readPermission="true"
             android:writePermission="true" />
 
-        <activity
-            android:name="com.motoli.apps.allsubjects.UserSelect"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="sensorLandscape"
-            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
         <activity
             android:name="com.motoli.apps.allsubjects.Launch_Platform"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -265,12 +260,6 @@
             android:name="com.motoli.apps.allsubjects.ActivityOP06"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:logo="@drawable/btn_act_op06"
-            android:screenOrientation="sensorLandscape"
-            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
-        <activity
-            android:name="com.motoli.apps.allsubjects.ActivityOP07"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:logo="@drawable/btn_act_op07"
             android:screenOrientation="sensorLandscape"
             android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
         <activity

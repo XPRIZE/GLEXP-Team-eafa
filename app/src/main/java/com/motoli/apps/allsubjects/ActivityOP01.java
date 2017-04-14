@@ -53,8 +53,7 @@ public class  ActivityOP01 extends ActivityOPRoot
                 .setAnimation(AnimationUtils.loadAnimation(
                         getApplicationContext(), R.anim.fade_in));
         mInstructionAudio="info_op01";
-        findViewById(R.id.answerDots).setAlpha(0f);
-        findViewById(R.id.numberPad).setAlpha(1.0f);
+        findViewById(R.id.finalDots).setAlpha(0f);
         mCurrentGSP = new HashMap<>(appData.getCurrentGroup_Section_Phase());
         TextView mEquationNumber1, mEquationNumber2;
 
@@ -72,9 +71,7 @@ public class  ActivityOP01 extends ActivityOPRoot
         mFinalDots = ((MathOperationDots) findViewById(R.id.finalDots));
 
 
-        findViewById(R.id.numberPad).setVisibility(LinearLayout.VISIBLE);
-        findViewById(R.id.numberPad).setAnimation(AnimationUtils.loadAnimation(
-                getApplicationContext(), R.anim.fade_in));
+
         mFinalDots.setVisibility(MathOperationDots.GONE);
 
         mEquationNumber1.setText("");
@@ -113,7 +110,6 @@ public class  ActivityOP01 extends ActivityOPRoot
 
 
     protected void beginRound(){
-        findViewById(R.id.numberPad).setAlpha(1.0f);
         mAllowNumberPad=true;
 
         mIncorrectInRound=0;
@@ -326,8 +322,7 @@ public class  ActivityOP01 extends ActivityOPRoot
         if(Integer.parseInt(mFinalNumber.getText().toString())==mAnswer){
             ((ImageView) findViewById(R.id.btnValidate))
                     .setImageResource(R.drawable.btn_validate_ok_sm);
-            findViewById(R.id.answerDots).setAlpha(1.0f);
-            findViewById(R.id.numberPad).setAlpha(0f);
+            findViewById(R.id.finalDots).setAlpha(1.0f);
             //.setVisibility(LinearLayout.GONE);
             mCorrect=true;
             mCorrectInARow++;
@@ -411,7 +406,6 @@ public class  ActivityOP01 extends ActivityOPRoot
                         mValidateAvailable=false;
                         if(mIncorrectInRound>=3){
                             mAllowNumberPad=false;
-                            findViewById(R.id.numberPad).setAlpha(0.2f);
                             mProcessGuessPosition=4;
                             mAudioHandler.postDelayed(processGuess, 100);
                         }
@@ -443,8 +437,7 @@ public class  ActivityOP01 extends ActivityOPRoot
         if(mClear){
             mUsersAnswer="";
             mFinalNumber.setText("");
-            findViewById(R.id.answerDots).setAlpha(0f);
-            findViewById(R.id.numberPad).setAlpha(1.0f);
+            findViewById(R.id.finalDots).setAlpha(0f);
             mFinalNumber.setTextColor(ContextCompat.getColor(this, R.color.normalBlack));
             mFinalNumber.setPaintFlags(mFinalNumber.getPaintFlags()
                     & (~ Paint.STRIKE_THRU_TEXT_FLAG));
