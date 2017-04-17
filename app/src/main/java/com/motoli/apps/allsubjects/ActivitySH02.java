@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
@@ -39,7 +38,6 @@ public class ActivitySH02 extends ActivitiesMasterParent
     
     private String mCurrentCorrectId;
     private String mCurrentTypeId;
-    private String mCorrectShapeSize;
     private String mCorrectShapeColorID;
 
 
@@ -100,7 +98,6 @@ public class ActivitySH02 extends ActivitiesMasterParent
         mCurrentShapeRound=new ArrayList<>();
         mCurrentShapeRound.add(mCurrentShapeSet.get(mRoundNumber));
         mCurrentCorrectId=mCurrentShapeRound.get(0).get("math_shape_id");
-        mCorrectShapeSize=mCurrentShapeRound.get(0).get("math_shape_size");
         mCorrectShapeColorID=mCurrentShapeRound.get(0).get("math_shape_color_id");
         mCorrectShapeAudio=mCurrentShapeRound.get(0).get("math_shape_audio");
         mCurrentTypeId=mCurrentShapeRound.get(0).get("math_shape_type_id");
@@ -146,9 +143,7 @@ public class ActivitySH02 extends ActivitiesMasterParent
             }while(mCursor.moveToNext());
         }
         
-        if(mExtraCount<3){
-            //issue not enough
-        }
+
         displayScreen();
         
     }
@@ -205,17 +200,17 @@ public class ActivitySH02 extends ActivitiesMasterParent
         /**/
         mCustomCanvas.clearCanvas();
         RelativeLayout.LayoutParams mParams
-                =new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT);
+                =new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,
+                RelativeLayout.LayoutParams.MATCH_PARENT);
 
-        int mShapeMargin=getResources().getDimensionPixelSize(R.dimen.sh02_shape_margin_small);
+        int mShapeMargin=getResources().getDimensionPixelSize(R.dimen.shape_margin_small);
 
         if(mCurrentShapeRound.get(shapeID).get("math_shape_size").equals("4")){
-            mShapeMargin=getResources().getDimensionPixelSize(R.dimen.sh02_shape_margin_large);
+            mShapeMargin=getResources().getDimensionPixelSize(R.dimen.shape_margin_large);
         }
         mParams.setMargins(mShapeMargin, mShapeMargin,mShapeMargin,mShapeMargin);
 
-        mCustomCanvas.setLayoutParams(mParams);
+       mCustomCanvas.setLayoutParams(mParams);
 
         mCustomCanvas.setType(Integer.parseInt(mCurrentShapeRound.get(shapeID)
                 .get("math_shape_type_id")));
@@ -302,6 +297,7 @@ public class ActivitySH02 extends ActivitiesMasterParent
             }
         });
 
+        /*
         findViewById(R.id.shapeSpace1).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if(mCurrentShapeRound.get(0).get("guessed_yet").equals("0")
@@ -353,7 +349,7 @@ public class ActivitySH02 extends ActivitiesMasterParent
                 }
             }
         });
-
+*/
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -697,8 +693,8 @@ public class ActivitySH02 extends ActivitiesMasterParent
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         String[] mData;
-        String mWhere="";
-        String mOrderBy="";
+        String mWhere;
+        String mOrderBy;
         CursorLoader cursorLoader;
         switch(id){
             default:
@@ -739,6 +735,7 @@ public class ActivitySH02 extends ActivitiesMasterParent
                         "AND (math_shapes.math_shape_id!="+mCurrentCorrectId+" " +
                         "OR (math_shapes.math_shape_type_id!="+mCurrentTypeId + " " +
                         "AND math_shapes.math_shape_color_id!="+mCorrectShapeColorID+"))";
+                mOrderBy="";
                 cursorLoader = new CursorLoader(this,
                         AppProvider.CONTENT_URI_MATH_SHAPES, mData, mWhere, null, mOrderBy);
                 break;
@@ -777,7 +774,7 @@ public class ActivitySH02 extends ActivitiesMasterParent
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     protected void processData(Cursor mCursor){
-        mCurrentShapeSet=new ArrayList<HashMap<String, String>>();
+        mCurrentShapeSet=new ArrayList<>();
         int mNumber=0;
         int mNumberCorrectInARow=Constants.INA_ROW_CORRECT;
         if(mCursor.moveToFirst()) {

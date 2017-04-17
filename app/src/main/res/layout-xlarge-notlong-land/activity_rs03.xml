@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_desert_with_cactus"
@@ -116,7 +115,7 @@
             app:layout_constraintHorizontal_bias="0.9"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/guidelineVerticalMid"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineVerticalMidRight"
             app:layout_constraintTop_toBottomOf="@+id/line"/>
 
         <TextView
@@ -136,7 +135,7 @@
         <android.support.constraint.Guideline
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/guidelineVerticalMid"
+            android:id="@+id/guidelineVerticalMidRight"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5"/>
         <ImageView
@@ -150,7 +149,7 @@
             android:contentDescription="@string/none"
             app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/guidelineVerticalMid"
+            app:layout_constraintLeft_toRightOf="@+id/guidelineVerticalMidRight"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/guidelineHorizontalMidLower"     />
 

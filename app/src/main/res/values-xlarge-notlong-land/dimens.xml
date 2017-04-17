@@ -203,11 +203,8 @@
     <dimen name="lt03_box_top_bottom_margin">60dp</dimen>
     <dimen name="lg04_side_margin">34dp</dimen>
     <dimen name="qn07_backarrow">20dp</dimen>
-    <dimen name="sh02_shape_margin_large">75dp</dimen>
-    <dimen name="sh02_shape_margin_small">110dp</dimen>
-
-    <dimen name="shape_margin_large">85dp</dimen>
-    <dimen name="shape_margin_small">120dp</dimen>
+    <dimen name="shape_margin_large">45dp</dimen>
+    <dimen name="shape_margin_small">75dp</dimen>
     <dimen name="number_line_sides">20dp</dimen>
     <dimen name="wd06_image">24dp</dimen>
     <dimen name="sh06_top_tops_margins">46dp</dimen>

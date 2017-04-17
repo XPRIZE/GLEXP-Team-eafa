@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_beach_with_palm_trees"
     >
 
     <android.support.constraint.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/activityMainPart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -54,7 +54,7 @@
             android:background="@drawable/rounded_box_selected_blue"
             app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalMid"
             app:layout_constraintLeft_toLeftOf="@+id/guidelineLeft"
-            app:layout_constraintRight_toLeftOf="@+id/guidelineVerticalMid"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineVerticalMidRight"
             app:layout_constraintTop_toTopOf="@+id/guidelineTop">
 
             <ImageView
@@ -73,7 +73,7 @@
         </RelativeLayout>
 
         <android.support.constraint.Guideline
-            android:id="@+id/guidelineVerticalMid"
+            android:id="@+id/guidelineVerticalMidRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -88,7 +88,7 @@
             android:scaleType="fitStart"
             android:src="@drawable/btn_validate_off"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/guidelineVerticalMid"
+            app:layout_constraintLeft_toRightOf="@id/guidelineVerticalMidRight"
             app:layout_constraintRight_toLeftOf="@id/guidelineRight"
             app:layout_constraintTop_toBottomOf="@+id/activityMainPartSecond"
             app:layout_constraintVertical_weight="1" />
@@ -108,99 +108,114 @@
             app:layout_constraintGuide_percent="0.6" />
 
 
-        <ImageView
-            android:id="@+id/frame1"
+
+        <RelativeLayout
+            android:id="@+id/frameArea1"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:contentDescription="@string/strNone"
-            android:src="@drawable/frm_sh05_off"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/frame2"
-            app:layout_constraintTop_toBottomOf="@id/guidelineHorizontalMid" />
-
-
-        <com.motoli.apps.allsubjects.CanvasView
-            android:id="@+id/shape1"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_margin="@dimen/shape_margin_small"
-            android:tag="2"
-            app:layout_constraintBottom_toBottomOf="@+id/frame1"
-            app:layout_constraintLeft_toLeftOf="@+id/frame1"
-            app:layout_constraintRight_toRightOf="@+id/frame1"
-            app:layout_constraintTop_toTopOf="@+id/frame1" />
-
-        <ImageView
-            android:id="@+id/frame2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:contentDescription="@string/strNone"
-            android:src="@drawable/frm_sh05_off"
+            app:layout_constraintRight_toLeftOf="@+id/frameArea2"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/frame1"
-            app:layout_constraintRight_toLeftOf="@+id/frame3"
-            app:layout_constraintTop_toBottomOf="@id/guidelineHorizontalMid" />
+            app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalMid"
+            app:layout_constraintVertical_bias="0.0">
+            <ImageView
+                android:id="@+id/frame1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/strNone"
+                android:src="@drawable/frm_sh04_off" />
 
 
-        <com.motoli.apps.allsubjects.CanvasView
-            android:id="@+id/shape2"
+
+            <com.motoli.apps.allsubjects.CanvasView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/shape1"
+                android:tag="6"
+                android:layout_margin="@dimen/shape_margin_large" />
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:id="@+id/frameArea2"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="@dimen/shape_margin_small"
-            android:tag="2"
-            app:layout_constraintBottom_toBottomOf="@+id/frame2"
-            app:layout_constraintLeft_toLeftOf="@+id/frame2"
-            app:layout_constraintRight_toRightOf="@+id/frame2"
-            app:layout_constraintTop_toTopOf="@+id/frame2" />
-
-        <ImageView
-            android:id="@+id/frame3"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:contentDescription="@string/strNone"
-            android:src="@drawable/frm_sh05_off"
+            app:layout_constraintLeft_toRightOf="@+id/frameArea1"
+            app:layout_constraintRight_toLeftOf="@+id/frameArea3"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/frame2"
-            app:layout_constraintRight_toLeftOf="@+id/frame4"
-            app:layout_constraintTop_toBottomOf="@id/guidelineHorizontalMid" />
+            app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalMid">
+            <ImageView
+                android:id="@+id/frame2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/strNone"
+                android:src="@drawable/frm_sh04_on"/>
 
 
-        <com.motoli.apps.allsubjects.CanvasView
-            android:id="@+id/shape3"
+
+            <com.motoli.apps.allsubjects.CanvasView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/shape2"
+                android:tag="5"
+                android:layout_margin="@dimen/shape_margin_large" />
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:id="@+id/frameArea3"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="@dimen/shape_margin_small"
-            android:tag="2"
-            app:layout_constraintBottom_toBottomOf="@+id/frame3"
-            app:layout_constraintLeft_toLeftOf="@+id/frame3"
-            app:layout_constraintRight_toRightOf="@+id/frame3"
-            app:layout_constraintTop_toTopOf="@+id/frame3" />
-
-        <ImageView
-            android:id="@+id/frame4"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:clickable="false"
-            android:contentDescription="@string/strNone"
-            android:src="@drawable/frm_sh05_off"
+            app:layout_constraintLeft_toRightOf="@+id/frameArea2"
+            app:layout_constraintRight_toLeftOf="@+id/frameArea4"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/frame3"
+            app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalMid">
+
+            <ImageView
+                android:id="@+id/frame3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/strNone"
+                android:src="@drawable/frm_sh04_off"/>
+
+
+
+
+            <com.motoli.apps.allsubjects.CanvasView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/shape3"
+                android:tag="1"
+                android:layout_margin="@dimen/shape_margin_small"/>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/frameArea4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintLeft_toRightOf="@+id/frameArea3"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/guidelineHorizontalMid" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalMid">
+            <ImageView
+                android:id="@+id/frame4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:contentDescription="@string/strNone"
+                android:src="@drawable/frm_sh04_off"/>
 
+            <com.motoli.apps.allsubjects.CanvasView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/shape4"
+                android:tag="2"
 
-        <com.motoli.apps.allsubjects.CanvasView
-            android:id="@+id/shape4"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_margin="@dimen/shape_margin_small"
-            android:tag="2"
-            app:layout_constraintBottom_toBottomOf="@+id/frame4"
-            app:layout_constraintLeft_toLeftOf="@+id/frame4"
-            app:layout_constraintRight_toRightOf="@+id/frame4"
-            app:layout_constraintTop_toTopOf="@+id/frame4" />
-
+                android:layout_margin="@dimen/shape_margin_large"/>
+        </RelativeLayout>
     </android.support.constraint.ConstraintLayout>
 
 

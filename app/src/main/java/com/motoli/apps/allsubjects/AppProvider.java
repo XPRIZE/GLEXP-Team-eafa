@@ -2475,7 +2475,7 @@ public class AppProvider extends ContentProvider {
                 "INNER JOIN app_users_current_gpl AS aucgpl " +
                 "ON aucgpl.group_id=gpl.group_id " +
                 "AND aucgpl.phase_id=gpl.phase_id " +
-                "WHERE gpl.level_number<=aucgpl.app_user_current_level " +
+                "WHERE gpl.level_number<(aucgpl.app_user_current_level-1) " +
                 "AND bk2.book_type=0  " +
                 "AND book_pages.book_page_order=0 ) as book_count," +
                 "gpl.group_id, " +
@@ -2489,7 +2489,7 @@ public class AppProvider extends ContentProvider {
                 "INNER JOIN app_users_current_gpl AS aucgpl " +
                 "ON aucgpl.group_id=gpl.group_id " +
                 "AND aucgpl.phase_id=gpl.phase_id " +
-                "WHERE gpl.level_number<=aucgpl.app_user_current_level  " +
+                "WHERE gpl.level_number<(aucgpl.app_user_current_level-1)  " +
                 "AND books.book_type=0 " +
                 "AND book_pages.book_page_order=0" +
                 " ORDER BY books.difficulty_level ASC, " +

@@ -195,10 +195,8 @@
     <dimen name="lg04_side_margin">34dp</dimen>
     <dimen name="qn07_backarrow">20dp</dimen>
 
-    <dimen name="sh02_shape_margin_large">44dp</dimen>
-    <dimen name="sh02_shape_margin_small">75dp</dimen>
-    <dimen name="shape_margin_large">55dp</dimen>
-    <dimen name="shape_margin_small">85dp</dimen>
+    <dimen name="shape_margin_large">35dp</dimen>
+    <dimen name="shape_margin_small">65dp</dimen>
     <dimen name="top_shape_margin_large">30dp</dimen>
     <dimen name="top_shape_margin_small">80dp</dimen>
     <dimen name="sh06_shape_margin_large">12dp</dimen>

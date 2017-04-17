@@ -541,7 +541,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/guidelineVerticalMid"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineVerticalMidRight"
             />
 
 
@@ -666,7 +666,7 @@
         <android.support.constraint.Guideline
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/guidelineVerticalMid"
+            android:id="@+id/guidelineVerticalMidRight"
             app:layout_constraintGuide_percent="0.5"
             android:orientation="vertical" />
 
@@ -680,7 +680,7 @@
             android:src="@drawable/btn_validate_off"
             app:layout_constraintTop_toBottomOf="@+id/topIconsVertical"
             app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalMidExtra"
-            app:layout_constraintLeft_toRightOf="@+id/guidelineVerticalMid"
+            app:layout_constraintLeft_toRightOf="@+id/guidelineVerticalMidRight"
             app:layout_constraintRight_toRightOf="parent"/>
         <android.support.constraint.Guideline
             android:layout_width="wrap_content"
@@ -698,7 +698,7 @@
             android:contentDescription="@string/none"
             app:layout_constraintHorizontal_weight="2"
             android:background="@drawable/rounded_box_selected_blue"
-            app:layout_constraintLeft_toRightOf="@+id/guidelineVerticalMid"
+            app:layout_constraintLeft_toRightOf="@+id/guidelineVerticalMidRight"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalMidExtra" />

@@ -13,6 +13,7 @@
         android:id="@+id/activityMainPart">
 
         <LinearLayout
+            android:id="@+id/topIcons"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="horizontal"
@@ -32,16 +33,16 @@
         </LinearLayout>
 
         <GridView
+            android:id="@+id/phonicsGrid"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:id="@+id/phonicsGrid"
-            android:numColumns="7"
             android:listSelector="@android:color/transparent"
-            app:layout_constraintVertical_weight="1"
+            android:numColumns="7"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/activityMainPartSecond"/>
+            app:layout_constraintTop_toBottomOf="@+id/topIcons"
+            app:layout_constraintVertical_weight="1" />
 
 
     </android.support.constraint.ConstraintLayout>

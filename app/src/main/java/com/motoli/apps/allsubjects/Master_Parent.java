@@ -18,7 +18,7 @@ import android.view.KeyEvent;
 import android.view.WindowManager;
 
 
-public class Master_Parent extends AppCompatActivity {
+public class Master_Parent extends Activity {
     protected  Motoli_Application appData;
 
     protected boolean allowSound=true;

@@ -312,7 +312,7 @@ public class ActivitySH05 extends ActivitiesMasterParent
             }
         });
 
-        findViewById(R.id.shapeSpace1).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.frame1).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if(mCurrentShapeRound.get(0).get("guessed_yet").equals("0")
                         && !mBeingValidated){
@@ -325,7 +325,7 @@ public class ActivitySH05 extends ActivitiesMasterParent
             }
         });
 
-        findViewById(R.id.shapeSpace2).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.frame2).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (mCurrentShapeRound.get(1).get("guessed_yet").equals("0")
                         && !mBeingValidated) {
@@ -338,7 +338,7 @@ public class ActivitySH05 extends ActivitiesMasterParent
             }
         });
 
-        findViewById(R.id.shapeSpace3).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.frame3).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if(mCurrentShapeRound.get(2).get("guessed_yet").equals("0")
                         && !mBeingValidated){
@@ -351,7 +351,7 @@ public class ActivitySH05 extends ActivitiesMasterParent
             }
         });
 
-        findViewById(R.id.shapeSpace4).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.frame4).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (mCurrentShapeRound.get(3).get("guessed_yet").equals("0")
                         && !mBeingValidated) {
