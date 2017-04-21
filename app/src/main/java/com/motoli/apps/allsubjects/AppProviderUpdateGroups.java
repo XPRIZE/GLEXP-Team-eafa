@@ -9,20 +9,21 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/**
- * Created by aborsay on 2/6/2017.
- */
 
+/**
+ * Part of Project Motoli All Subjects
+ * for Education Technology For Development
+ * created by Aaron D Michaelis Borsay
+ * on 2/6/2017.
+ */
 public class AppProviderUpdateGroups {
 
-    private Context mContext;
     private  ArrayList<HashMap<String,String>> mUserGPL;
     private SQLiteDatabase mDatabase;
 
     public AppProviderUpdateGroups(Context mContext,
                                 ArrayList<HashMap<String,String>> mUserGPL,
                                 SQLiteDatabase mDatabase){
-        this.mContext = mContext;
         this.mUserGPL = mUserGPL;
         this.mDatabase = mDatabase;
     }
@@ -273,7 +274,7 @@ public class AppProviderUpdateGroups {
                         cursorThird.close();
 
 
-                        /**
+                        /*
                          * THIS NEEDS TO BE CHANGED BACK
                          */
                         if(mMaxCorrect==7){
@@ -375,7 +376,7 @@ public class AppProviderUpdateGroups {
                     if ((mActivityID.equals("56") || mActivityID.equals("57")
                             || mActivityID.equals("58") ) &&
                             Integer.parseInt(mInfo[5])<=1) {
-                        /**
+                        /*
                          * activity_sh03 and activity_sh05 cannot be used
                          * until at the very least level 2
                          */
@@ -384,7 +385,7 @@ public class AppProviderUpdateGroups {
                         values.put("number_correct_in_a_row", "2");
 
                     }else if(mActivityID.equals("54")) {
-                        /**
+                        /*
                          * activity_sh01 will not require anything to move to next level
                          * as it is the piano activity
                          */
@@ -774,7 +775,7 @@ public class AppProviderUpdateGroups {
         int mFirstWordCount=0;
         int mSecondWordCount=0;
 
-        /**
+        /*
          * if word count for level bellow current phonics level is 4
          * or higher and word count for second level bellow current
          * phonic level is not 4 or higher then

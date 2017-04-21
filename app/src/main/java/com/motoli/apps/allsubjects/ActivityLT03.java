@@ -1,10 +1,5 @@
 package com.motoli.apps.allsubjects;
-/**
- * Part of Project Motoli All Subjects
- * for Education Technology For Development
- * created by Aaron D Michaelis Borsay
- * on 8/12/2015.
- */
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -14,21 +9,22 @@ import android.app.LoaderManager;
 import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
-import android.graphics.Paint;
 
 import android.os.Bundle;
 
 import android.support.v4.content.ContextCompat;
-import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-
+/**
+ * Part of Project Motoli All Subjects
+ * for Education Technology For Development
+ * created by Aaron D Michaelis Borsay
+ * on 8/12/2015.
+ */
 public class ActivityLT03 extends ActivityLTRoot
         implements LoaderManager.LoaderCallbacks<Cursor>{
 

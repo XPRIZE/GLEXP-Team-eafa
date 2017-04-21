@@ -1,12 +1,8 @@
 package com.motoli.apps.allsubjects;
-/**
- * Part of Project Motoli All Subjects
- * for Education Technology For Development
- * created by Aaron D Michaelis Borsay
- * on 8/12/2015.
- */
+
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +13,14 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
+/**
+ * Part of Project Motoli All Subjects
+ * for Education Technology For Development
+ * created by Aaron D Michaelis Borsay
+ * on 8/12/2015.
+ */
 public class LaunchPlatformAwards extends BaseAdapter {
-        private Context context;
+        private Context mContext;
         private ArrayList<HashMap<String,String>> mSectionData;
 
         static class ViewHolder {
@@ -28,14 +29,14 @@ public class LaunchPlatformAwards extends BaseAdapter {
             ProgressBar progress;
             }
 
-        public LaunchPlatformAwards(Context context, ArrayList<HashMap<String,String>> mSectionData) {
-            this.context = context;
+        public LaunchPlatformAwards(Context mContext, ArrayList<HashMap<String,String>> mSectionData) {
+            this.mContext = mContext;
             this.mSectionData=mSectionData;
         }
 
         public View getView(int mPosition, View convertView, ViewGroup parent) {
             LayoutInflater mInflater = (LayoutInflater)
-                    context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                    mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
 
             ViewHolder holder;
@@ -71,8 +72,7 @@ public class LaunchPlatformAwards extends BaseAdapter {
 
                     mVariableNumber=mMaxLevel;
                     mCurrentNumber=mCurrentLevel;
-                    holder.progress.setProgressDrawable(
-                            context.getResources().getDrawable(R.drawable.progress_letter_phonics));
+                    holder.progress.setProgressDrawable(ContextCompat.getDrawable(mContext,R.drawable.progress_letter_phonics));
 
                     break;
                 }
@@ -82,27 +82,27 @@ public class LaunchPlatformAwards extends BaseAdapter {
                     mCurrentNumber=mCurrentLevel;
 
                     holder.progress.setProgressDrawable(
-                            context.getResources().getDrawable(R.drawable.progress_syllables));
+                            ContextCompat.getDrawable(mContext,R.drawable.progress_syllables));
                     break;
                 }
                 case 4:{
                     mVariableNumber=mVariableNumber*5;
                     holder.progress.setProgressDrawable(
-                            context.getResources().getDrawable(R.drawable.progress_words));
+                            ContextCompat.getDrawable(mContext,R.drawable.progress_words));
                     break;
                 }
                 case 6:{
                     mVariableNumber=mMaxLevel;
                     mCurrentNumber=mCurrentLevel;
                     holder.progress.setProgressDrawable(
-                            context.getResources().getDrawable(R.drawable.progress_shapes));
+                            ContextCompat.getDrawable(mContext,R.drawable.progress_shapes));
                     break;
                 }
                 case 7:{
                     mVariableNumber=mMaxLevel;
                     mCurrentNumber=mCurrentLevel;
                     holder.progress.setProgressDrawable(
-                            context.getResources().getDrawable(R.drawable.progress_numbers));
+                            ContextCompat.getDrawable(mContext,R.drawable.progress_numbers));
                     break;
                 }
                 case 8:{
@@ -110,7 +110,7 @@ public class LaunchPlatformAwards extends BaseAdapter {
                     mCurrentNumber=mCurrentLevel;
 
                     holder.progress.setProgressDrawable(
-                            context.getResources().getDrawable(R.drawable.progress_math));
+                            ContextCompat.getDrawable(mContext,R.drawable.progress_math));
                     break;
                 }
             }
@@ -129,9 +129,9 @@ public class LaunchPlatformAwards extends BaseAdapter {
 
             holder.icon.setAlpha(1.0f);
 
-            holder.icon.setImageResource(context.getResources().getIdentifier(
+            holder.icon.setImageResource(mContext.getResources().getIdentifier(
                     mSectionData.get(mPosition).get("groups_phase_awards_image")
-                            .replace(".png", ""), "drawable", context.getPackageName()));
+                            .replace(".png", ""), "drawable", mContext.getPackageName()));
             holder.icon.setTag(mSectionData.get(mPosition));
 
             holder.icon.setScaleType(ImageView.ScaleType.FIT_CENTER);

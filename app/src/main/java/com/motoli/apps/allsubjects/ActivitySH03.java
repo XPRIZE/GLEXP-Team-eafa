@@ -132,7 +132,7 @@ public class ActivitySH03 extends ActivitiesMasterParent
                     mCurrentShapeRound.get(mExtraCount).put("number_correct",
                             mCursor.getString(mCursor.getColumnIndex("number_correct"))); //8
                     mCurrentShapeRound.get(mExtraCount).put("number_correct_in_a_row",
-                            mCursor.getString(mCursor.getColumnIndex("number_correct_in_a_row"))); //9
+                            mCursor.getString(mCursor.getColumnIndex("number_correct_in_a_row")));
                     mCurrentShapeRound.get(mExtraCount).put("number_incorrect",
                             mCursor.getString(mCursor.getColumnIndex("number_incorrect"))); //10
                     mCurrentShapeRound.get(mExtraCount).put("math_shape_type_audio",
@@ -179,7 +179,7 @@ public class ActivitySH03 extends ActivitiesMasterParent
 
     }//end private void displayScreen(Cursor currentWordsCursor){
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////
 
     private void placingCurrentShapes(int shapeID){
         CanvasView mCustomCanvas;
@@ -250,9 +250,6 @@ public class ActivitySH03 extends ActivitiesMasterParent
                 playGeneralAudio(mCorrectShapeAudio);
         }
     };
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    //end private void displayScreen(Cursor currentWordsCursor){
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////
@@ -368,7 +365,7 @@ public class ActivitySH03 extends ActivitiesMasterParent
 
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////
 
     private void setUpFrame(int frameNumber){
         clearFrames();
@@ -396,7 +393,7 @@ public class ActivitySH03 extends ActivitiesMasterParent
         }
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////
 
     private void hideShapes(){
         findViewById(R.id.shape1).setVisibility(CanvasView.INVISIBLE);
@@ -413,7 +410,7 @@ public class ActivitySH03 extends ActivitiesMasterParent
 
 
     }
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////
 
     protected void validate(){
         mBeingValidated=true;
@@ -447,7 +444,8 @@ public class ActivitySH03 extends ActivitiesMasterParent
         String[] selectionArgs;
 
         if(mCorrect){
-            ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_ok);
+            ((ImageView) findViewById(R.id.btnValidate))
+                    .setImageResource(R.drawable.btn_validate_ok);
             selectionArgs = new String[]{
                     "1",
                     "0",
@@ -458,7 +456,8 @@ public class ActivitySH03 extends ActivitiesMasterParent
                     appData.getCurrentUserID()};
 
 
-            getContentResolver().update(AppProvider.CONTENT_URI_ACTIVITY_USER_RW_UPDATE, null, where, selectionArgs);
+            getContentResolver().update(AppProvider.CONTENT_URI_ACTIVITY_USER_RW_UPDATE,
+                    null, where, selectionArgs);
             switch(mCurrentLocation){
                 default:
                 case 0:
@@ -489,7 +488,8 @@ public class ActivitySH03 extends ActivitiesMasterParent
                     appData.getCurrentActivity().get(0), //5
                     appData.getCurrentUserID()}; //6
 
-            getContentResolver().update(AppProvider.CONTENT_URI_ACTIVITY_USER_RW_UPDATE, null, where, selectionArgs);
+            getContentResolver().update(AppProvider.CONTENT_URI_ACTIVITY_USER_RW_UPDATE,
+                    null, where, selectionArgs);
             if(mIncorrectInRound>=2){
                 switch(mCorrectLocation){
                     default:
@@ -682,7 +682,8 @@ public class ActivitySH03 extends ActivitiesMasterParent
                             lastActivityDataHandler.postDelayed(returnToActivities_Platorm,10);
                         }
                     }else{
-                        ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_off);
+                        ((ImageView) findViewById(R.id.btnValidate))
+                                .setImageResource(R.drawable.btn_validate_off);
                         mBeingValidated=false;
                         mValidateAvailable=false;
                     }
@@ -690,7 +691,8 @@ public class ActivitySH03 extends ActivitiesMasterParent
                     break;
                 }
                 case 3:{
-                    ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_off);
+                    ((ImageView) findViewById(R.id.btnValidate))
+                            .setImageResource(R.drawable.btn_validate_off);
                     beginRound();
                     guessHandler.removeCallbacks(processGuess);
                     break;
@@ -701,7 +703,7 @@ public class ActivitySH03 extends ActivitiesMasterParent
 
 
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -741,7 +743,8 @@ public class ActivitySH03 extends ActivitiesMasterParent
                         mCurrentGSP.get("section_id"), //4
                         mCurrentGSP.get("current_level"),//5
                         "0"}; //6
-                mWhere="AND math_shapes.math_shape_type_id<="+mCurrentGSP.get("current_level")+" " +
+                mWhere="AND math_shapes.math_shape_type_id<="+
+                        mCurrentGSP.get("current_level")+" " +
                         "AND math_shapes.math_shape_type_id!="+mCurrentCorrectTypeId;
                 mOrderBy="";
                 cursorLoader = new CursorLoader(this,
@@ -753,7 +756,7 @@ public class ActivitySH03 extends ActivitiesMasterParent
         return cursorLoader;
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
@@ -779,7 +782,7 @@ public class ActivitySH03 extends ActivitiesMasterParent
 
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////
 
     protected void processData(Cursor mCursor){
         mCurrentShapeSet=new ArrayList<>();
@@ -856,9 +859,6 @@ public class ActivitySH03 extends ActivitiesMasterParent
 
     protected void setUpListeners(){
 
-
-
-
         findViewById(R.id.btnValidate).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if(mValidateAvailable && !mBeingValidated){
@@ -870,6 +870,5 @@ public class ActivitySH03 extends ActivitiesMasterParent
 
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }

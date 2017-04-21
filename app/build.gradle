@@ -29,6 +29,11 @@ dependencies {
     compile 'com.android.volley:volley:1.0.0'
     compile 'com.android.support:support-v4:25.3.1'
 
+
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+
     //compile 'com.rmtheis:tess-two:6.0.4'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }

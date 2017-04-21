@@ -1,16 +1,11 @@
 package com.motoli.apps.allsubjects;
-/**
- * Part of Project Motoli All Subjects
- * for Education Technology For Development
- * created by Aaron D Michaelis Borsay
- * on 8/12/2015.
- */
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 
 import android.app.LoaderManager;
+import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
@@ -22,12 +17,15 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -36,9 +34,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.TextView;
 import android.widget.VideoView;
 
+
+/**
+ * Part of Project Motoli All Subjects
+ * for Education Technology For Development
+ * created by Aaron D Michaelis Borsay
+ * on 8/12/2015.
+ */
 public class Launch_Platform extends Master_Parent implements
 LoaderManager.LoaderCallbacks<Cursor>{
 
@@ -50,17 +55,12 @@ LoaderManager.LoaderCallbacks<Cursor>{
     private int mUpdatingLevel;
 
     private VideoView mVideoView;
-    private ArrayList<HashMap<String,String>> mLevelList;
 
-    GridView sectionGrid;
-    GridView mAwardsGrid;
+
 
     private HashMap<String,String> mAllMaxLevels;
     private HashMap<String,String> mAllCurrentLevels;
 
-    ArrayList<HashMap<String, String>> mAwards;
-    ArrayList<HashMap<String,String>> allSections;
-    ArrayList<ArrayList<String>> allUserGroupPhaseInfo;
     private Handler waitHandler = new Handler();
     private HashMap list;
     
@@ -149,7 +149,7 @@ LoaderManager.LoaderCallbacks<Cursor>{
     private void groupVideos(){
 
 
-        /**
+        /*
          * videos for intro
          */
 
@@ -365,8 +365,7 @@ LoaderManager.LoaderCallbacks<Cursor>{
             findViewById(R.id.sectionsPage).setVisibility(View.VISIBLE);
         }
         Log.d(Constants.LOGCAT, "start displayScreen");
-
-        allSections=new ArrayList<>();
+        ArrayList<HashMap<String,String>> allSections=new ArrayList<>();
 
         int currentGroup=0;
         int groupCount=0;
@@ -447,10 +446,12 @@ LoaderManager.LoaderCallbacks<Cursor>{
             allSections.get(8).put("usable_section","1");
         }
 
+        //Syllable videos are always available
+        allSections.get(4).put("usable_section","1");
 
-        sectionGrid = (GridView) findViewById(R.id.SectionGrid);
+        GridView mSectionGrid = (GridView) findViewById(R.id.SectionGrid);
 
-        sectionGrid.setAdapter(new Launch_Platform_Section(this, allSections));
+        mSectionGrid.setAdapter(new Launch_Platform_Section(this, allSections));
         int mRow;
         switch (appData.getCurrentSection()){
             default:
@@ -513,11 +514,11 @@ LoaderManager.LoaderCallbacks<Cursor>{
                 break;
             }
         }
-        sectionGrid.setSmoothScrollbarEnabled(true);
-        sectionGrid.smoothScrollToPosition(mRow);
+        mSectionGrid.setSmoothScrollbarEnabled(true);
+        mSectionGrid.smoothScrollToPosition(mRow);
         Log.d(Constants.LOGCAT, "end displayScreen Launch_Platform");
         mLoaded=true;
-        sectionGrid.setOnItemClickListener(new OnItemClickListener() {
+        mSectionGrid.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
                 list = (HashMap) v.findViewById(R.id.tracingImage).getTag();
@@ -564,7 +565,7 @@ LoaderManager.LoaderCallbacks<Cursor>{
        findViewById(R.id.sectionsPage).setVisibility(LinearLayout.INVISIBLE);
 
        Log.d(Constants.LOGCAT, "start displayAwards");
-       mAwards=new ArrayList<>();
+       ArrayList<HashMap<String, String>> mAwards =new ArrayList<>();
        if (mCursor.moveToFirst()) {
            int mNumber=0;
            do{
@@ -604,7 +605,7 @@ LoaderManager.LoaderCallbacks<Cursor>{
        }
 
 
-       mAwardsGrid = (GridView) findViewById(R.id.awardsGrid);
+      GridView mAwardsGrid = (GridView) findViewById(R.id.awardsGrid);
 
 
        mAwardsGrid.setAdapter(new LaunchPlatformAwards(this, mAwards));
@@ -658,7 +659,7 @@ LoaderManager.LoaderCallbacks<Cursor>{
 
         int clickedActivityID = Integer.parseInt(activity_id);
 
-        ArrayList<String> currentActivity = new ArrayList<String>();
+        ArrayList<String> currentActivity = new ArrayList<>();
 
         currentActivity.add(String.valueOf(clickedActivityID));
 
@@ -952,7 +953,7 @@ LoaderManager.LoaderCallbacks<Cursor>{
         if(
         appData.inputAdminPassword(
                 ((EditText)findViewById(R.id.adminPassword)).getText().toString())){
-            InputMethodManager imm = (InputMethodManager)getSystemService(this.INPUT_METHOD_SERVICE);
+            InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
             findViewById(R.id.spinnerPassword).setVisibility(LinearLayout.INVISIBLE);
             findViewById(R.id.allSpinners).setVisibility(LinearLayout.VISIBLE);
@@ -965,6 +966,7 @@ LoaderManager.LoaderCallbacks<Cursor>{
     }
 
     private void processSettings(Cursor mCursor){
+        ArrayList<HashMap<String,String>> mLevelList = new ArrayList<>();
         if(appData.isAdminEnabled()){
             findViewById(R.id.spinnerPassword).setVisibility(LinearLayout.INVISIBLE);
             findViewById(R.id.allSpinners).setVisibility(LinearLayout.VISIBLE);
@@ -976,7 +978,6 @@ LoaderManager.LoaderCallbacks<Cursor>{
         mAllMaxLevels=new HashMap<>();
         mAllCurrentLevels=new HashMap<>();
         mInSettings=true;
-        mLevelList = new ArrayList<>();
         if(mCursor.moveToFirst()){
             int mCount=0;
             do{
@@ -1528,7 +1529,7 @@ LoaderManager.LoaderCallbacks<Cursor>{
                  break;
              }
              case Constants.UPDATE_LEVELS:{
-                 allUserGroupPhaseInfo=new ArrayList<>();
+                 ArrayList<ArrayList<String>> allUserGroupPhaseInfo=new ArrayList<>();
                  if(data.moveToFirst()) {
                      do{
                          allUserGroupPhaseInfo.add(new ArrayList<String>());
@@ -1556,6 +1557,111 @@ LoaderManager.LoaderCallbacks<Cursor>{
     }
 
 
-
-
+    /**
+     * Part of Project Motoli All Subjects
+     * for Education Technology For Development
+     * created by Aaron D Michaelis Borsay
+     * on 8/12/2015.
+     */
+    private static class Launch_Platform_Section extends BaseAdapter {
+            private Context context;
+            private ArrayList<HashMap<String,String>> mSectionData;
+    
+            static class ViewHolder {
+                 TextView text;
+                 ImageView icon;
+                }
+    
+            private Launch_Platform_Section(Context context,
+                                           ArrayList<HashMap<String,String>> mSectionData) {
+                this.context = context;
+                this.mSectionData=mSectionData;
+    
+            }
+    
+            public View getView(int mPosition, View convertView, ViewGroup parent) {
+                LayoutInflater mInflater = (LayoutInflater) 
+                        context.getSystemService(LAYOUT_INFLATER_SERVICE);
+    
+                ViewHolder holder;
+    
+                if (convertView == null) {
+                    convertView = mInflater.inflate(R.layout.launch_platform_section,parent, false);
+                    holder = new ViewHolder();
+                    holder.icon = (ImageView) convertView.findViewById(R.id.tracingImage);
+                    convertView.setTag(holder);
+                } else {
+                    holder = (ViewHolder) convertView.getTag();
+                }
+                Log.d(Constants.LOGCAT, mSectionData.get(mPosition).get("section_id"));
+    
+                if(mSectionData.get(mPosition).get("group_id").equals("2")
+                        && Integer.parseInt(mSectionData.get(mPosition).get("variable_count"))>0){
+                    holder.icon.setAlpha(1.0f);
+                }else if(mSectionData.get(mPosition).get("activity_count").equals("0") ||
+                       mSectionData.get(mPosition).get("app_user_current_level").equals("0")){
+                    holder.icon.setAlpha(0.5f);
+                }else if(mSectionData.get(mPosition).get("section_id").equals("8")){
+                    holder.icon.setAlpha(1.0f);
+                }else if (mSectionData.get(mPosition).get("usable_section").equals("0")) {
+                    holder.icon.setAlpha(0.5f);
+    
+                }else if(mSectionData.get(mPosition).get("activity_count").equals("1") &&
+                        mSectionData.get(mPosition).get("variable_count").equals("0")) {
+                    holder.icon.setAlpha(1.0f);
+    
+                //number and math section
+                }else if(mSectionData.get(mPosition).get("section_id").equals("17") ||
+                        mSectionData.get(mPosition).get("section_id").equals("20") ||
+                        mSectionData.get(mPosition).get("section_id").equals("23")){
+                    holder.icon.setAlpha(1.0f);
+                }else if(Integer.parseInt(mSectionData.get(mPosition).get("activity_count"))>1 &&
+                        Integer.parseInt(mSectionData.get(mPosition).get("variable_count"))>=4){
+                    holder.icon.setAlpha(1.0f);
+                }else{
+                    holder.icon.setAlpha(0.5f);
+                }
+    
+    
+                holder.icon.setImageResource(context.getResources()
+                        .getIdentifier(mSectionData.get(mPosition).get("section_image")
+                                .replace(".png","") , "drawable", context.getPackageName()));
+                holder.icon.setTag(mSectionData.get(mPosition));
+    
+                holder.icon.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                holder.icon.setPadding(8, 8, 8, 8);
+                
+                holder.icon.destroyDrawingCache();
+    
+    
+    
+    
+    
+                return convertView;
+            }
+    
+    
+    
+    
+    
+    
+            @Override
+            public int getCount() {
+                return mSectionData.size();
+            }
+    
+            @Override
+            public Object getItem(int mPosition) {
+                return null;
+            }
+    
+            @Override
+            public long getItemId(int mPosition) {
+                return 0;
+            }
+    
+    
+    
+    
+        }
 }

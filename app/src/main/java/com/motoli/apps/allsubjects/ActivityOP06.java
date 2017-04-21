@@ -299,7 +299,8 @@ public class ActivityOP06 extends ActivityOPRoot
                     }else{
                         mUsersAnswer="";
                         mFinalNumber.setText("");
-                        mFinalNumber.setTextColor(ContextCompat.getColor(ActivityOP06.this,R.color.normalBlack));
+                        mFinalNumber.setTextColor(
+                                ContextCompat.getColor(ActivityOP06.this,R.color.normalBlack));
                         mFinalNumber.setPaintFlags(mFinalNumber.getPaintFlags()
                                 & (~ Paint.STRIKE_THRU_TEXT_FLAG));
                         ((ImageView) findViewById(R.id.btnValidate))

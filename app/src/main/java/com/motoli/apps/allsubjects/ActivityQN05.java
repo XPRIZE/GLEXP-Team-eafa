@@ -4,19 +4,14 @@ import android.app.LoaderManager;
 import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
-import android.graphics.Paint;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Random;
@@ -78,14 +73,14 @@ public class ActivityQN05 extends ActivityQNRoot
     ////////////////////////////////////////////////////////////////////////////////////////
 
     private void cleanText(){
-        ((TextView) findViewById(R.id.number1)).setTextColor(getResources()
-                .getColor(R.color.regularBlack));
-        ((TextView) findViewById(R.id.number2)).setTextColor(getResources()
-                .getColor(R.color.regularBlack));
-        ((TextView) findViewById(R.id.number3)).setTextColor(getResources()
-                .getColor(R.color.regularBlack));
-        ((TextView) findViewById(R.id.number4)).setTextColor(getResources()
-                .getColor(R.color.regularBlack));
+        ((TextView) findViewById(R.id.number1)).setTextColor(
+                ContextCompat.getColor(this,R.color.regularBlack));
+        ((TextView) findViewById(R.id.number2)).setTextColor(
+                ContextCompat.getColor(this,R.color.regularBlack));
+        ((TextView) findViewById(R.id.number3)).setTextColor(
+                ContextCompat.getColor(this,R.color.regularBlack));
+        ((TextView) findViewById(R.id.number4)).setTextColor(
+                ContextCompat.getColor(this,R.color.regularBlack));
 
 
     }
@@ -115,11 +110,7 @@ public class ActivityQN05 extends ActivityQNRoot
         if( mNumberMain){
             findViewById(R.id.number0).setVisibility(TextView.INVISIBLE);
             findViewById(R.id.shape0).setVisibility(MathOperationDots.VISIBLE);
-            if(Integer.parseInt(mCorrectNumberSet.get("math_number"))>=10) {
-                mMathOperationsDots.setAllowTens(true);
-            }else{
-                mMathOperationsDots.setAllowTens(false);
-            }
+
             findViewById(R.id.number1).setVisibility(TextView.VISIBLE);
             findViewById(R.id.shape1).setVisibility(MathOperationDots.INVISIBLE);
             findViewById(R.id.number2).setVisibility(TextView.VISIBLE);
@@ -132,7 +123,6 @@ public class ActivityQN05 extends ActivityQNRoot
         }else{
             findViewById(R.id.number0).setVisibility(TextView.VISIBLE);
             findViewById(R.id.shape0).setVisibility(MathOperationDots.INVISIBLE);
-            mMathOperationsDots.setAllowTens(false);
             findViewById(R.id.number1).setVisibility(TextView.INVISIBLE);
             findViewById(R.id.shape1).setVisibility(MathOperationDots.VISIBLE);
             findViewById(R.id.number2).setVisibility(TextView.INVISIBLE);
@@ -321,7 +311,7 @@ public class ActivityQN05 extends ActivityQNRoot
                 if (mRoundNumberSet.get(0).get("guessed_yet").equals("0")
                         &&!mBeingValidated) {
                     mCurrentLocation = 0;
-                    playGeneralAudio(mRoundNumberSet.get(0).get("math_numbers_audio"));;
+                    playGeneralAudio(mRoundNumberSet.get(0).get("math_numbers_audio"));
                     clearShapeBoxes();
                     ((ImageView) findViewById(R.id.frame1))
                             .setImageResource(R.drawable.frm_qn05_on);

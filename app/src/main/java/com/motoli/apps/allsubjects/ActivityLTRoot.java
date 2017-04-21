@@ -3,7 +3,6 @@ package com.motoli.apps.allsubjects;
 import android.app.LoaderManager;
 import android.content.Loader;
 import android.database.Cursor;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -78,8 +77,7 @@ public class ActivityLTRoot extends ActivitiesMasterParent
                             mCursor.getString(mCursor.getColumnIndex("image_url")));
                     mAllowed++;
                     mCount++;
-                }while(mAllowed<Constants.INA_ROW_CORRECT
-                        && (mActivityNumber!=3 || mActivityNumber!=4) );
+                }while(mAllowed<Constants.INA_ROW_CORRECT );
                 if (mCount >= Constants.NUMBER_VARIABLES) {
                     break;
                 }else if(mCursor.isLast()){
@@ -92,9 +90,7 @@ public class ActivityLTRoot extends ActivitiesMasterParent
 
         ArrayList<HashMap<String, String>> mTempLetters = new ArrayList<>();
         String mPreviousID = "0";
-        /**
-         *
-         */
+
         switch(mActivityNumber) {
             default:
             case 1:
@@ -273,7 +269,6 @@ public class ActivityLTRoot extends ActivitiesMasterParent
                             }
                         }
                     }
-                    mLetterCount=(mLetterCount>=2) ? 0 : mLetterCount;
 
                 }while(mDividedLetters.get(0).size()<3 || mDividedLetters.get(1).size()<3);
 

@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.motoli.apps.allsubjects"
     android:installLocation="auto"
-    android:versionCode="46"
-    android:versionName="1.31.046" >
+    android:versionCode="48"
+    android:versionName="1.31.048" >
 
     <uses-sdk
         android:minSdkVersion="17"
@@ -17,14 +17,15 @@
 
     <meta-data
         android:name="android.support.VERSION"
-        android:value="25.3.1" />
+        android:value="25.3.1" /> <!-- To store the heap dumps and leak analysis results. -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name="com.motoli.apps.allsubjects.Motoli_Application"
         android:allowBackup="true"
         android:icon="@drawable/applogo"
         android:label="@string/app_name"
-        android:largeHeap="true"
         android:logo="@drawable/applogo"
         android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" >
         <activity
@@ -366,6 +367,35 @@
             android:logo="@drawable/btn_act_tr01"
             android:screenOrientation="sensorLandscape"
             android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+
+        <service
+            android:name="com.squareup.leakcanary.internal.HeapAnalyzerService"
+            android:enabled="false"
+            android:process=":leakcanary" />
+        <service
+            android:name="com.squareup.leakcanary.DisplayLeakService"
+            android:enabled="false" />
+
+        <activity
+            android:name="com.squareup.leakcanary.internal.DisplayLeakActivity"
+            android:enabled="false"
+            android:icon="@drawable/leak_canary_icon"
+            android:label="@string/leak_canary_display_activity_label"
+            android:taskAffinity="com.squareup.leakcanary"
+            android:theme="@style/leak_canary_LeakCanary.Base" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.squareup.leakcanary.internal.RequestStoragePermissionActivity"
+            android:enabled="false"
+            android:icon="@drawable/leak_canary_icon"
+            android:label="@string/leak_canary_storage_permission_activity_label"
+            android:taskAffinity="com.squareup.leakcanary"
+            android:theme="@style/leak_canary_Theme.Transparent" />
     </application>
 
 </manifest>

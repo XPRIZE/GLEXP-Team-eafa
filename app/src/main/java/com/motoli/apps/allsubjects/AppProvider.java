@@ -1,10 +1,5 @@
 package com.motoli.apps.allsubjects;
-/**
- * Part of Project Motoli All Subjects
- * for Education Technology For Development
- * created by Aaron D Michaelis Borsay
- * on 8/12/2015.
- */
+
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
@@ -23,9 +18,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
-//import org.apache.http.auth.AUTH;
 
-
+/**
+ * Part of Project Motoli All Subjects
+ * for Education Technology For Development
+ * created by Aaron D Michaelis Borsay
+ * on 8/12/2015.
+ */
 public class AppProvider extends ContentProvider {
 
 
@@ -33,13 +32,11 @@ public class AppProvider extends ContentProvider {
     private boolean mSetAll;
 
 
-    private int mDatabaseVersion=0;
 
     private AppProviderProcesses mAppProcesses;
 
 
     private SQLiteDatabase mDatabase;
-    private S4K_DBHelper dbHelper;
 
 
     private static final int ALL_USERS = 1; //0
@@ -248,7 +245,7 @@ public class AppProvider extends ContentProvider {
         mSetAll=false;
         mContext = getContext();
 
-        dbHelper = new S4K_DBHelper(getContext());
+        S4K_DBHelper dbHelper = new S4K_DBHelper(getContext());
         mDatabase = dbHelper.getWritableDatabase();
        // mAppProcesses = new AppProviderProcesses();
         return false;
@@ -265,12 +262,12 @@ public class AppProvider extends ContentProvider {
     }
 
     @Override
-    public Uri insert(Uri uri, ContentValues values) {
+    public Uri insert(@NonNull  Uri uri, ContentValues values) {
         return null;
     }
 
     @Override
-    public int delete(Uri uri, String selection, String[] selectionArgs) {
+    public int delete(@NonNull  Uri uri, String selection, String[] selectionArgs) {
         return 0;
     }
 
@@ -284,7 +281,6 @@ public class AppProvider extends ContentProvider {
         }
         */
 
-        //SQLiteDatabase db = dbHelper.getWritableDatabase();
         Log.d(Constants.LOGCAT, " public Cursor query");
         SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
 
@@ -299,7 +295,7 @@ public class AppProvider extends ContentProvider {
                 break;
             }
             case ALL_USERS: {
-                /********************************************************************
+                /*
                  * ALL_USERS
                  * is called as a default in case more users are added
                  * at a later date
@@ -406,7 +402,7 @@ public class AppProvider extends ContentProvider {
                 mCursor = mDatabase.rawQuery(mRawSQL, null);
                 break;
             case INDIVIDUAL_USER:{
-                /****************************************************************************
+                /*
                  * INDIVIDUAL_USER
                  * currently only calls the one default user, again users are enabled
                  * in case the desire to add more then one user is brought up
@@ -419,7 +415,7 @@ public class AppProvider extends ContentProvider {
                 break;
             }
             case BOOKS_DECODABLE: {
-                /******************************************************************************
+                /*
                  * BOOKS_DECODABLE
                  * to gather all books decodable within availability defined
                  * in db thus no needed variables
@@ -428,7 +424,7 @@ public class AppProvider extends ContentProvider {
                 break;
             }
             case BOOKS_READ_ALOUD: {
-                /******************************************************************************
+                /*
                  * BOOKS_READ_ALOUD
                  * to gather all books read aloud within availability defined
                  * in db thus no needed variables
@@ -437,7 +433,7 @@ public class AppProvider extends ContentProvider {
                 break;
             }
             case BOOK_PAGES_READ_ALOUD: {
-                /******************************************************************************
+                /*
                  * BOOK_PAGES_READ_ALOUD
                  * to gather all books read aloud pages within availability
                  * defined by variable selection coming from associated activity.
@@ -446,7 +442,7 @@ public class AppProvider extends ContentProvider {
                 break;
             }
             case GROUPS_PHASE_LEVELS_UPDATE: {
-                /******************************************************************************
+                /*
                  * GROUPS_PHASE_LEVELS_UPDATE
                  * This is used to update appData.setAppUserCurrentGPL not the actual DB
                  * the data is pulled to update the global variable in order to make sure
@@ -502,7 +498,7 @@ public class AppProvider extends ContentProvider {
                 break;
             }
             case INDIVIDUAL_GROUP_PHASE_SECTIONS: {
-                /**************************************************************************
+                /*
                  * INDIVIDUAL_GROUP_PHASE_SECTIONS
                  * This is used in Launch_Platform in order to pull and create
                  * the correct section to place on the page
@@ -559,7 +555,23 @@ public class AppProvider extends ContentProvider {
 
                         "WHEN groups_phase_sections.group_id=5 " +
                         "AND groups_phase_sections.section_id=14 " +
-                        "THEN  ( SELECT COUNT(books.book_id)  " +
+                        "THEN  ( SELECT COUNT(*) " +
+                        "FROM groups_phase_levels " +
+                        "INNER JOIN app_users_current_gpl " +
+                        "ON app_users_current_gpl.group_id = groups_phase_levels.group_id " +
+                        "WHERE ( groups_phase_levels.group_id = 2 " +
+                        "AND  groups_phase_levels.phase_id = 1 " +
+                        "AND  app_users_current_gpl.app_user_current_level  > 4 " +
+                        "AND groups_phase_levels.level_number " +
+                        "< app_users_current_gpl.app_user_current_level) " +
+                        "OR ((groups_phase_levels.group_id != 2 " +
+                        "AND  groups_phase_levels.phase_id != 1) " +
+                        "AND groups_phase_levels.group_id = app_users_current_gpl.group_id " +
+                        "AND groups_phase_levels.phase_id = app_users_current_gpl.phase_id " +
+                        "AND groups_phase_levels.level_number " +
+                        "< app_users_current_gpl.app_user_current_level) )" +
+                        /* +
+                        "SELECT COUNT(books.book_id)  " +
                         "FROM books  " +
                         "INNER JOIN groups_phase_levels " +
                         "ON groups_phase_levels.gpl_id=books.associated_levels " +
@@ -571,7 +583,7 @@ public class AppProvider extends ContentProvider {
                         "<=app_users_current_gpl.app_user_current_level " +
                         "ORDER BY groups_phase_levels.group_id ASC, " +
                         "groups_phase_levels.phase_id ASC, " +
-                        "books.book_title ASC   )   " +
+                        "books.book_title ASC   )   " + */
 
                         "WHEN groups_phase_sections.group_id=5 " +
                         "AND groups_phase_sections.section_id=13 " +
@@ -624,7 +636,7 @@ public class AppProvider extends ContentProvider {
                 break;
             }
             case ALL_LOWERCASE_LETTERS: {
-                /***************************************************************************
+                /*
                  * ALL_LOWERCASE_LETTERS
                  * This is used in all the two different WD activities (WD05, WD06)
                  * This is used because I need all of the possible letters for
@@ -641,7 +653,7 @@ public class AppProvider extends ContentProvider {
                 break;
             }
             case SELECTED_ACTIVITIES: {
-                /*************************************************************************
+                /*
                  * SELECTED_ACTIVITIES
                  * used in Activities_Platform and Launch_Platform
                  * It is used to get correct activities for each section
@@ -692,7 +704,7 @@ public class AppProvider extends ContentProvider {
                 break;
             }
             case ACTIVITY_GROUP_SECTION_LEVEL_COMPLETE: {
-                /************************************************************************
+                /*
                  * ACTIVITY_GROUP_SECTION_LEVEL_COMPLETE
                  * This is used in Activities_Platform
                  * It is used to get list of completion of levels for all groups and sections
@@ -721,7 +733,7 @@ public class AppProvider extends ContentProvider {
             }
             case GUESS_WORDS:
             case CURRENT_WORDS_BY_LEVEL: {
-                /*********************************************************************
+                /*
                  * CURRENT_WORDS_BY_LEVEL
                  * This is used in all of the WD activities in order to get the
                  * words for that activity based on current level in words
@@ -731,7 +743,7 @@ public class AppProvider extends ContentProvider {
                 break;
             }
             case ACTIVITY_CURRENT_LETTERS: {
-                /*************************************************************************
+                /*
                  * ACTIVITY_CURRENT_LETTERS
                  * This is used in LT05 and VL02
                  * It is used for videos in VL02
@@ -773,7 +785,7 @@ public class AppProvider extends ContentProvider {
                 break;
             }
             case CURRENT_SYLLABLES_FOR_VIDEOS: {
-                /***********************************************************************
+                /*
                  * CURRENT_SYLLABLES_FOR_VIDEOS
                  * Used is VL04 for organizing videos for syllables based on current level
                  */
@@ -800,7 +812,7 @@ public class AppProvider extends ContentProvider {
                 break;
             }
             case CURRENT_PHONICS_FOR_VIDEOS: {
-                /***********************************************************************
+                /*
                  * CURRENT_PHONICS_FOR_VIDEOS
                  * Used is VL03 for organizing videos for phonics based on current level
                  */
@@ -822,7 +834,7 @@ public class AppProvider extends ContentProvider {
                 break;
             }
             case CURRENT_WORDS_FOR_VIDEOS: {
-                /***********************************************************************
+                /*
                  * CURRENT_WORDS_FOR_VIDEOS
                  * Used is VL05 for organizing videos for words based on current level
                  */
@@ -847,7 +859,7 @@ public class AppProvider extends ContentProvider {
                 break;
             }
             case CURRENT_PHONIC_LETTERS: {
-                /**********************************************************************
+                /*
                  * CURRENT_PHONIC_LETTERS
                  * Is used in SD01,SD04, SD05,SD06,SD07
                  *
@@ -896,7 +908,7 @@ public class AppProvider extends ContentProvider {
                 break;
             }
             case CURRENT_PHONIC_LETTERS_FIRST: {
-                /*****************************************************************
+                /*
                  * CURRENT_PHONIC_LETTERS_FIRST
                  * This is used in SD02 to gather phonics and phonic words that have related
                  * first letters in words
@@ -948,7 +960,7 @@ public class AppProvider extends ContentProvider {
                 break;
             }
             case CURRENT_PHONIC_LETTERS_LAST: {
-                /*****************************************************************
+                /*
                  * CURRENT_PHONIC_LETTERS_LAST
                  * This is used in SD03 to gather phonics and phonic words that have related
                  * last letters in words
@@ -1001,7 +1013,7 @@ public class AppProvider extends ContentProvider {
                 break;
             }
             case ORDERED_PHONICS: {
-                /***********************************************************************
+                /*
                  * ORDERED_PHONICS
                  * This is used in SD01 and WD05
                  * It is used to match phonic with word in WD
@@ -1023,7 +1035,7 @@ public class AppProvider extends ContentProvider {
                 break;
             }
             case SECTION_AWARDS: {
-                /***********************************************************************
+                /*
                  * SECTION_AWARDS
                  * This is used in Launch_Platform
                  * to help set up the awards section
@@ -1125,7 +1137,7 @@ public class AppProvider extends ContentProvider {
                 break;
             }
             case MATCHING_PHONIC_LETTERS_WORDS: {
-                /***********************************************************************
+                /*
                  * MATCHING_PHONIC_LETTERS_WORDS
                  * This is used in SD06
                  * Used to find associated phonic words
@@ -1141,7 +1153,7 @@ public class AppProvider extends ContentProvider {
                 break;
             }
             case CURRENT_PHONIC_LETTERS_WORDS_FIRST_LETTER: {
-                /***********************************************************************
+                /*
                  * CURRENT_PHONIC_LETTERS_WORDS_FIRST_LETTER
                  * Used in SD02
                  * Used to get phonic_word first phonic in first part of word
@@ -1160,7 +1172,7 @@ public class AppProvider extends ContentProvider {
                 break;
             }
             case CURRENT_PHONIC_LETTERS_WORDS_LAST_LETTER: {
-                /***********************************************************************
+                /*
                  * CURRENT_PHONIC_LETTERS_WORDS_LAST_LETTER
                  * Used in SD03
                  * Used to get phonic_word last phonic in first part of word
@@ -1178,7 +1190,7 @@ public class AppProvider extends ContentProvider {
                 break;
             }
             case CURRENT_SYLLABLE_WORDS: {
-                /**************************************************************************
+                /*
                  * CURRENT_SYLLABLE_WORDS
                  * This is used in all of the RS activities to get
                  * the current syllable_words based upon their level
@@ -1189,7 +1201,7 @@ public class AppProvider extends ContentProvider {
                 break;
             }
             case CURRENT_ALL_SYLLABLES: {
-                /**************************************************************************
+                /*
                  * CURRENT_ALL_SYLLABLES
                  * This is used in RS04 to get current syllables associated
                  * the piano uses this based upon current level
@@ -1231,7 +1243,7 @@ public class AppProvider extends ContentProvider {
                 break;
             }
             case CURRENT_SYLLABLES: {
-                /**************************************************************************
+                /*
                  * CURRENT_SYLLABLES
                  * This is used in RS01, RS02, RS03
                  * It is used to gather current syllables based upon current level for
@@ -1279,7 +1291,7 @@ public class AppProvider extends ContentProvider {
                 break;
             }
             case ACTIVITY_CURRENT_LETTERS_WRW: {
-                /************************************************************************
+                /*
                  * ACTIVITY_CURRENT_LETTERS_WRW
                  * Is used in LT01, LT02, LT03, LT04, LT06
                  * This gathers the current letters used for rounds
@@ -1290,7 +1302,7 @@ public class AppProvider extends ContentProvider {
                 break;
             }
             case CURRENT_WORD_SYLLABLE_VALUES: {
-                /***************************************************************************
+                /*
                  * CURRENT_WORD_SYLLABLE_VALUES
                  * Used in CS01, CS02, and CS03
                  * This gathers the current words with syllable values
@@ -1302,7 +1314,7 @@ public class AppProvider extends ContentProvider {
                 break;
             }
             case CURRENT_WORDS_BY_LEVEL_WITH_PHONICS: {
-                /****************************************************************************
+                /*
                  * CURRENT_WORDS_BY_LEVEL_WITH_PHONICS
                  * Is used in WD05
                  * Used to get words based uponAppProvider
@@ -1362,7 +1374,7 @@ public class AppProvider extends ContentProvider {
                 break;
             }
             case CURRENT_SHAPES_FOR_VIDEOS:{
-                /***********************************************************************
+                /*
                  * CURRENT_SHAPES_FOR_VIDEOS
                  * Used is VL07 for organizing videos for shapes based on current level
                  */
@@ -1377,7 +1389,7 @@ public class AppProvider extends ContentProvider {
                 break;
             }
             case CURRENT_NUMBERS_FOR_VIDEOS:{
-                /***********************************************************************
+                /*
                  * CURRENT_NUMBERS_FOR_VIDEOS
                  * Used is VL08 for organizing videos for numbers based on current level
                  */
@@ -1392,7 +1404,7 @@ public class AppProvider extends ContentProvider {
                 break;
             }
             case CURRENT_OPERATIONS_FOR_VIDEOS:{
-                /***********************************************************************
+                /*
                  * CURRENT_OPERATIONS_FOR_VIDEOS
                  * Used is VL09 for organizing videos for math operations based on current level
                  */
@@ -1671,7 +1683,7 @@ public class AppProvider extends ContentProvider {
                     Log.d(Constants.LOGCAT, "leaving operations do while");
                 }else{
                     int mEquationCount=0;
-                    /**
+                    /*
                      * This section is for the current variable choices only
                      */
                     do{
@@ -1720,7 +1732,7 @@ public class AppProvider extends ContentProvider {
 
                     }while(mEquationCount<=Constants.MATH_OPERATIONS_UPPER_VARIABLES);
 
-                    /**
+                    /*
                      * Below is only for the lesser amount of variable bellow the current round
                      */
 
@@ -2465,6 +2477,35 @@ public class AppProvider extends ContentProvider {
 
     private Cursor booksReadAloud(String mSort) {
         Log.d(Constants.LOGCAT, "booksReadAloud");
+        String mRawSQL="SELECT books.*," +
+                "book_pages.book_page_image, " +
+                "groups_phase_levels.gpl_id, " +
+                "groups_phase_levels.level_number, " +
+                "app_users_current_gpl.app_user_current_level, " +
+                "app_users_current_gpl.group_id, " +
+                "app_users_current_gpl.phase_id  " +
+                "FROM groups_phase_levels " +
+                "INNER JOIN app_users_current_gpl " +
+                "INNER JOIN books " +
+                "ON books.associated_levels = groups_phase_levels.gpl_id  " +
+                "INNER JOIN book_pages ON book_pages.book_id=books.book_id  " +
+                "WHERE ( groups_phase_levels.group_id = 2 " +
+                "AND  groups_phase_levels.phase_id = 1 " +
+                "AND  app_users_current_gpl.app_user_current_level  > 4 " +
+                "AND groups_phase_levels.level_number " +
+                "< app_users_current_gpl.app_user_current_level) " +
+                "OR ((groups_phase_levels.group_id != 2 " +
+                "AND  groups_phase_levels.phase_id != 1) " +
+                "AND groups_phase_levels.group_id = app_users_current_gpl.group_id " +
+                "AND groups_phase_levels.phase_id = app_users_current_gpl.phase_id " +
+                "AND groups_phase_levels.level_number " +
+                "< app_users_current_gpl.app_user_current_level)" +
+                "GROUP BY books.book_id " +
+                "ORDER BY books.difficulty_level ASC, " +
+                "books.book_title ASC ";
+        /*
+            OLDER VERSION
+
         String mRawSQL="SELECT " +
                 "(SELECT COUNT(bk2.book_id)  " +
                 "FROM groups_phase_levels AS gpl " +
@@ -2494,6 +2535,7 @@ public class AppProvider extends ContentProvider {
                 "AND book_pages.book_page_order=0" +
                 " ORDER BY books.difficulty_level ASC, " +
                 "books.book_title ASC ";
+        */
         if(mSort!=null){
             mRawSQL+=mSort;
         }
@@ -2554,7 +2596,7 @@ public class AppProvider extends ContentProvider {
                         mCursor.getColumnIndex("app_user_current_level"))); //4
                 mUserGPL.get(mUserGPL.size()-1).put("type_id","0"); //5
 
-                /**
+                /*
                  * This below is getting the type_id for the group_id/phase_id relation
                  * I might be able to change this later to have a separate related table with type_id
                  * as primary and group_id and phase_id as relations

@@ -1,3 +1,33 @@
+
+package com.motoli.apps.allsubjects;
+
+import android.app.LoaderManager;
+import android.content.Context;
+import android.content.CursorLoader;
+import android.content.Intent;
+import android.content.Loader;
+import android.database.Cursor;
+import android.graphics.Color;
+import android.media.MediaPlayer;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.Space;
+import android.widget.TextView;
+import android.widget.VideoView;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  * Part of Project Motoli All Subjects
  * for Education Technology For Development
@@ -8,31 +38,6 @@
  * to the same section if desired
  * @author Aaron Borsay
  */
-package com.motoli.apps.allsubjects;
-
-import android.app.LoaderManager;
-import android.content.CursorLoader;
-import android.content.Intent;
-import android.content.Loader;
-import android.database.Cursor;
-import android.graphics.Color;
-import android.media.MediaPlayer;
-import android.net.Uri;
-import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.Space;
-import android.widget.VideoView;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-
-
 public class ActivityVL extends ActivitiesMasterParent implements
         LoaderManager.LoaderCallbacks<Cursor>{
 
@@ -237,33 +242,7 @@ public class ActivityVL extends ActivitiesMasterParent implements
                 findViewById(R.id.syllablesVideo).setVisibility(ImageView.VISIBLE);
                 findViewById(R.id.syllablesVideo).setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
-                       if (!mPlayingVideo) {
-
-                            mActivityIcon.setVisibility(ImageView.INVISIBLE);
-                           mVideoBird.setVisibility(ImageView.INVISIBLE);
-
-
-                            Uri mVideoUri = Uri.parse("android.resource://" + getPackageName() + "/"
-                                    + R.raw.group_video_syllables);
-
-                            mVideoView.setMediaController(null);
-                            mVideoView.setVideoURI(mVideoUri);
-                            mVideoView.requestFocus();
-                            mVideoView.setZOrderOnTop(true);
-                            mVideoView.seekTo(10);
-                            mVideoView.start();
-                            mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-
-                                @Override
-                                public void onPrepared(MediaPlayer mp) {
-                                    mVideoView.setZOrderOnTop(false);
-                                    mVideoView.setBackgroundColor(Color.TRANSPARENT);
-                                    mAudioDuration = mp.getDuration();
-                                    mAudioHandler.postDelayed(runAfterVideoLetter, mAudioDuration + 500);
-                                }
-                            });
-                       /*       */
-                        }
+                        playSyllableCountVideo();
                     }
                 });
 
@@ -287,6 +266,38 @@ public class ActivityVL extends ActivitiesMasterParent implements
 
     }
 
+    public void syllabelVideoClicked(View view) {
+        playSyllableCountVideo();
+    }
+    public void playSyllableCountVideo(){
+        if (!mPlayingVideo) {
+
+            mActivityIcon.setVisibility(ImageView.INVISIBLE);
+            mVideoBird.setVisibility(ImageView.INVISIBLE);
+
+
+            Uri mVideoUri = Uri.parse("android.resource://" + getPackageName() + "/"
+                    + R.raw.group_video_syllables);
+
+            mVideoView.setMediaController(null);
+            mVideoView.setVideoURI(mVideoUri);
+            mVideoView.requestFocus();
+            mVideoView.setZOrderOnTop(true);
+            mVideoView.seekTo(10);
+            mVideoView.start();
+            mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+
+                @Override
+                public void onPrepared(MediaPlayer mp) {
+                    mVideoView.setZOrderOnTop(false);
+                    mVideoView.setBackgroundColor(Color.TRANSPARENT);
+                    mAudioDuration = mp.getDuration();
+                    mAudioHandler.postDelayed(runAfterVideoLetter, mAudioDuration + 500);
+                }
+            });
+                       /*       */
+        }
+    }
     //////////////////////////////////////////////////////////////////////////////////////////////
 
     private void moveToActivities(){
@@ -434,6 +445,13 @@ public class ActivityVL extends ActivitiesMasterParent implements
 
         mVideoList.setAdapter(mAdapter);
         mPlayingVideo=false;
+
+        if(appData.getCurrentVideoID()==4){
+            if(mCurrentVariables.size()<=0){
+                playSyllableCountVideo();
+            }
+        }
+
         mVideoList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
@@ -453,13 +471,9 @@ public class ActivityVL extends ActivitiesMasterParent implements
 
                     }
                 }
-
             }
         });
-
-
     }
-
 
     private void playVideo(){
 
@@ -697,4 +711,87 @@ public class ActivityVL extends ActivitiesMasterParent implements
 
     }
 
+    /**
+     * Part of Project Motoli All Subjects
+     * for Education Technology For Development
+     * created by Aaron D Michaelis Borsay
+     * on 12/11/2015.
+     */
+    private static class ActivityVLIcon extends BaseAdapter {
+            private Context mContext;
+            private ArrayList<HashMap<String,String>> mVideoData;
+
+            static class ViewHolder {
+                 TextView text;
+                 ImageView icon;
+            }
+
+            private ViewHolder holder;
+
+            private ActivityVLIcon(Context mContext, ArrayList<HashMap<String,String>> mVideoData) {
+                this.mContext = mContext;
+                this.mVideoData=mVideoData;
+            }
+
+            public View getView(int position, View convertView, ViewGroup parent) {
+                LayoutInflater mInflater = (LayoutInflater) mContext
+                        .getSystemService(LAYOUT_INFLATER_SERVICE);
+
+                final Motoli_Application appData
+                        = ((Motoli_Application) mContext.getApplicationContext());
+
+                if (convertView == null) {
+                    convertView = mInflater.inflate(R.layout.activity_vl_icon,parent, false);
+                    holder = new ViewHolder();
+                    holder.icon = (ImageView) convertView.findViewById(R.id.tracingImage);
+                    holder.text =( TextView) convertView.findViewById(R.id.grid_item_text);
+
+                    holder.text.setTypeface(appData.getCurrentFontType());
+                    convertView.setTag(holder);
+                } else {
+                    holder = (ViewHolder) convertView.getTag();
+                }
+
+                if(Integer.parseInt(mVideoData.get(position).get("level_number"))
+                        <=Integer.parseInt(mVideoData.get(position).get("current_level"))) {
+                    holder.icon.setAlpha(1.0f);
+                    if(mVideoData.get(position).get("variable_text").matches("-?\\d+(\\.\\d+)?")){
+                        holder.text.setTypeface(appData.getNumberFontTypeface());
+                    }else{
+                        holder.text.setTypeface(appData.getCurrentFontType());
+                    }
+                    holder.text.setText(mVideoData.get(position).get("variable_text"));
+                }else {
+                    holder.icon.setAlpha(0.1f);
+                    holder.text.setText("");
+                }
+                holder.text.setTag(mVideoData.get(position));
+
+                holder.icon.setImageResource(mContext.getResources()
+                        .getIdentifier("round_square_"+mVideoData.get(position).get("level_color"),
+                                "drawable",
+                                mContext.getPackageName()));
+                holder.icon.setTag(mVideoData.get(position));
+                holder.icon.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                holder.icon.setPadding(8, 8, 8, 8);
+                holder.icon.destroyDrawingCache();
+                return convertView;
+            }
+
+            @Override
+            public int getCount() {
+                return mVideoData.size();
+            }
+
+            @Override
+            public Object getItem(int position) {
+                return null;
+            }
+
+            @Override
+            public long getItemId(int position) {
+                return 0;
+            }
+
+        }
 }

@@ -626,14 +626,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".27" />
+        app:layout_constraintGuide_percent=".2" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guidelineEquationLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent=".52" />
+        app:layout_constraintGuide_percent=".55" />
 
     <TextView
         android:id="@+id/firstNumber"
@@ -738,14 +738,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent=".92" />
+        app:layout_constraintGuide_percent=".88" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guidelineEquationBottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.73" />
+        app:layout_constraintGuide_percent="0.75" />
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -1,4 +1,15 @@
 package com.motoli.apps.allsubjects;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 /**
  * Part of Project Motoli All Subjects
  * for Education Technology For Development
@@ -12,17 +23,6 @@ package com.motoli.apps.allsubjects;
  *
  * Used and accessed only by AppProvider
  */
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
-
 public class S4K_DBHelper extends SQLiteOpenHelper {
 
     private static final int DB_VERSION=11;
@@ -92,7 +92,7 @@ public class S4K_DBHelper extends SQLiteOpenHelper {
         if (!dbFile.exists()) {
             try {
                 SQLiteDatabase checkDB = myContext.openOrCreateDatabase(DB_NAME,
-                        myContext.MODE_PRIVATE, null);
+                        Context.MODE_PRIVATE, null);
                 if(checkDB != null){
                     checkDB.close();
                 }
@@ -128,7 +128,7 @@ public class S4K_DBHelper extends SQLiteOpenHelper {
                     if (!dbFile.exists()) {
                         try {
                             SQLiteDatabase checkDB = myContext.openOrCreateDatabase(DB_NAME,
-                                    myContext.MODE_PRIVATE, null);
+                                    Context.MODE_PRIVATE, null);
                             if (checkDB != null) {
                                 checkDB.close();
                             }

@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
@@ -31,15 +30,11 @@ public class ActivitySH05 extends ActivitiesMasterParent
 
     private boolean mCorrect=false;
 
-    private String mCurrentMathShapeId;
 
-    private String mCurrentShapeAudio;
     private String mCorrectShapeAudio;
     private String mCurrentMathShapeTypeId;
-    private String mCurrentMathShapeSize;
 
     private String mCurrentCorrectId;
-    private String mCurrentMathShapeImageAudio;
     private String mLanguage;
 
     private ArrayList<HashMap<String,String>> mCurrentShapeSet;
@@ -74,9 +69,6 @@ public class ActivitySH05 extends ActivitiesMasterParent
 
     }//end public void onCreate(Bundle savedInstanceState) {
 
-
-
-
     //////////////////////////////////////////////////////////////////////////////////////
 
     private void clearActivity(){
@@ -92,10 +84,8 @@ public class ActivitySH05 extends ActivitiesMasterParent
     protected void beginRound(){
         mBeingValidated=false;
         mIncorrectInRound=0;
-        //mCurrentShapeRound.clear();
         mCurrentShapeRound=new ArrayList<>();
         mCurrentShapeRound.add(mCurrentShapeSet.get(mRoundNumber));
-        mCurrentMathShapeSize=mCurrentShapeRound.get(0).get("math_shape_size");
         mCurrentMathShapeTypeId=mCurrentShapeRound.get(0).get("math_shape_type_id");
         mCurrentCorrectId=mCurrentShapeRound.get(0).get("math_shape_id");
         mCorrectShapeAudio=mCurrentShapeRound.get(0).get("math_shape_type_audio");
@@ -174,7 +164,6 @@ public class ActivitySH05 extends ActivitiesMasterParent
     /////////////////////////////////////////////////////////////////////////////////////////
 
     private void placeShapeImage(){
-        mCurrentMathShapeImageAudio=mCurrentShapeImage.get("math_shape_audio");
 
         try {
             String imageName = mCurrentShapeImage.get("math_shape_image")
@@ -248,16 +237,6 @@ public class ActivitySH05 extends ActivitiesMasterParent
 
     ////////////////////////////////////////////////////////////////////////////////////////////
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    //end private void displayScreen(Cursor currentWordsCursor){
-
-
-    ////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
     protected void setupFrameListens(){
 
         findViewById(R.id.frame1).setOnClickListener(new View.OnClickListener() {
@@ -265,8 +244,6 @@ public class ActivitySH05 extends ActivitiesMasterParent
                 if(mCurrentShapeRound.get(0).get("guessed_yet").equals("0")
                         && !mBeingValidated){
                     mCurrentLocation=0;
-                    mCurrentShapeAudio=mCurrentShapeRound.get(0).get("math_shape_audio");
-                    mCurrentMathShapeId=mCurrentShapeRound.get(0).get("math_shape_id");
                     mCorrect=(mCurrentShapeRound.get(0).get("correct_guess").equals("1"));
                     setUpFrame(0);
                 }
@@ -278,8 +255,6 @@ public class ActivitySH05 extends ActivitiesMasterParent
                 if (mCurrentShapeRound.get(1).get("guessed_yet").equals("0")
                         && !mBeingValidated) {
                     mCurrentLocation = 1;
-                    mCurrentShapeAudio = mCurrentShapeRound.get(1).get("math_shape_audio");
-                    mCurrentMathShapeId = mCurrentShapeRound.get(1).get("math_shape_id");
                     mCorrect = (mCurrentShapeRound.get(1).get("correct_guess").equals("1"));
                     setUpFrame(1);
                 }
@@ -291,8 +266,6 @@ public class ActivitySH05 extends ActivitiesMasterParent
                 if(mCurrentShapeRound.get(2).get("guessed_yet").equals("0")
                         && !mBeingValidated){
                     mCurrentLocation=2;
-                    mCurrentShapeAudio=mCurrentShapeRound.get(2).get("math_shape_audio");
-                    mCurrentMathShapeId=mCurrentShapeRound.get(2).get("math_shape_id");
                     mCorrect=(mCurrentShapeRound.get(2).get("correct_guess").equals("1"));
                     setUpFrame(2);
                 }
@@ -304,8 +277,6 @@ public class ActivitySH05 extends ActivitiesMasterParent
                 if (mCurrentShapeRound.get(3).get("guessed_yet").equals("0")
                         && !mBeingValidated) {
                     mCurrentLocation = 3;
-                    mCurrentShapeAudio = mCurrentShapeRound.get(3).get("math_shape_audio");
-                    mCurrentMathShapeId = mCurrentShapeRound.get(3).get("math_shape_id");
                     mCorrect = (mCurrentShapeRound.get(3).get("correct_guess").equals("1"));
                     setUpFrame(3);
                 }
@@ -317,8 +288,6 @@ public class ActivitySH05 extends ActivitiesMasterParent
                 if(mCurrentShapeRound.get(0).get("guessed_yet").equals("0")
                         && !mBeingValidated){
                     mCurrentLocation=0;
-                    mCurrentShapeAudio=mCurrentShapeRound.get(0).get("math_shape_audio");
-                    mCurrentMathShapeId=mCurrentShapeRound.get(0).get("math_shape_id");
                     mCorrect=(mCurrentShapeRound.get(0).get("correct_guess").equals("1"));
                     setUpFrame(0);
                 }
@@ -330,8 +299,6 @@ public class ActivitySH05 extends ActivitiesMasterParent
                 if (mCurrentShapeRound.get(1).get("guessed_yet").equals("0")
                         && !mBeingValidated) {
                     mCurrentLocation = 1;
-                    mCurrentShapeAudio = mCurrentShapeRound.get(1).get("math_shape_audio");
-                    mCurrentMathShapeId = mCurrentShapeRound.get(1).get("math_shape_id");
                     mCorrect = (mCurrentShapeRound.get(1).get("correct_guess").equals("1"));
                     setUpFrame(1);
                 }
@@ -343,8 +310,6 @@ public class ActivitySH05 extends ActivitiesMasterParent
                 if(mCurrentShapeRound.get(2).get("guessed_yet").equals("0")
                         && !mBeingValidated){
                     mCurrentLocation=2;
-                    mCurrentShapeAudio=mCurrentShapeRound.get(2).get("math_shape_audio");
-                    mCurrentMathShapeId=mCurrentShapeRound.get(2).get("math_shape_id");
                     mCorrect=(mCurrentShapeRound.get(2).get("correct_guess").equals("1"));
                     setUpFrame(2);
                 }
@@ -356,8 +321,6 @@ public class ActivitySH05 extends ActivitiesMasterParent
                 if (mCurrentShapeRound.get(3).get("guessed_yet").equals("0")
                         && !mBeingValidated) {
                     mCurrentLocation = 3;
-                    mCurrentShapeAudio = mCurrentShapeRound.get(3).get("math_shape_audio");
-                    mCurrentMathShapeId = mCurrentShapeRound.get(3).get("math_shape_id");
                     mCorrect = (mCurrentShapeRound.get(3).get("correct_guess").equals("1"));
                     setUpFrame(3);
                 }

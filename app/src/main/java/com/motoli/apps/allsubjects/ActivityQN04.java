@@ -6,11 +6,11 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -46,9 +46,9 @@ public class ActivityQN04 extends ActivitiesMasterParent
         setContentView(R.layout.activity_qn04);
 
         appData.addToClassOrder(6);
-        mCurrentGSP=new HashMap<String,String>(appData.getCurrentGroup_Section_Phase());
+        mCurrentGSP=new HashMap<>(appData.getCurrentGroup_Section_Phase());
 
-        mGreaterThen=new ArrayList<Boolean>();
+        mGreaterThen=new ArrayList<>();
         mGreaterThen.add(false);
         mGreaterThen.add(false);
 
@@ -88,20 +88,19 @@ public class ActivityQN04 extends ActivitiesMasterParent
 
     protected void beginRound(){
         hideStars();
-        hideProgressBars();
         numbersOrDots();
         mColor=0;
-        ((TextView) findViewById(R.id.number1)).setTextColor(getResources()
-                .getColor(R.color.regularBlack));
-        ((TextView) findViewById(R.id.number2)).setTextColor(getResources()
-                .getColor(R.color.regularBlack));
+        ((TextView) findViewById(R.id.number1)).setTextColor(
+                ContextCompat.getColor(this,R.color.regularBlack));
+        ((TextView) findViewById(R.id.number2)).setTextColor(
+                ContextCompat.getColor(this,R.color.regularBlack));
         ((TextView) findViewById(R.id.number1)).setPaintFlags(
                 ((TextView) findViewById(R.id.number1)).getPaintFlags()
                         &  (~Paint.STRIKE_THRU_TEXT_FLAG));
         ((TextView) findViewById(R.id.number2)).setPaintFlags(
                 ((TextView) findViewById(R.id.number2)).getPaintFlags()
                         &  (~Paint.STRIKE_THRU_TEXT_FLAG));
-        mLocationChosen=new ArrayList<Boolean>();
+        mLocationChosen=new ArrayList<>();
         mLocationChosen.add(false);
         mLocationChosen.add(false);
 
@@ -336,7 +335,7 @@ public class ActivityQN04 extends ActivitiesMasterParent
                 +" AND variable_id="+mCorrectMathNumberId
                 +" AND activity_id="+appData.getCurrentActivity().get(0);
         String[] selectionArgs;
-        mCurrentGSP=new HashMap<String,String>(appData.getCurrentGroup_Section_Phase());
+        mCurrentGSP=new HashMap<>(appData.getCurrentGroup_Section_Phase());
 
         if(mCorrect){
             ((ImageView) findViewById(R.id.btnValidate))
@@ -376,16 +375,16 @@ public class ActivityQN04 extends ActivitiesMasterParent
         }
         if(mCurrentLocation==0 && mCorrect){
             if(!mShowDots){
-                ((TextView) findViewById(R.id.number1)).setTextColor(getResources()
-                        .getColor(R.color.correct_green));
+                ((TextView) findViewById(R.id.number1)).setTextColor(
+                        ContextCompat.getColor(this,R.color.correct_green));
             }else{
                 mColor=1;
                 placingCurrentNumbersAsDots(0);
             }
         }else if(mCurrentLocation==0 && !mCorrect){
             if(!mShowDots){
-                ((TextView) findViewById(R.id.number1)).setTextColor(getResources()
-                        .getColor(R.color.incorrect_red));
+                ((TextView) findViewById(R.id.number1)).setTextColor(
+                        ContextCompat.getColor(this,R.color.incorrect_red));
 
             }else{
                 mColor=2;
@@ -393,16 +392,16 @@ public class ActivityQN04 extends ActivitiesMasterParent
             }
         }else if(mCurrentLocation==1 && mCorrect){
             if(!mShowDots){
-                ((TextView) findViewById(R.id.number2)).setTextColor(getResources()
-                        .getColor(R.color.correct_green));
+                ((TextView) findViewById(R.id.number2)).setTextColor(
+                        ContextCompat.getColor(this,R.color.correct_green));
             }else{
                 mColor=1;
                 placingCurrentNumbersAsDots(1);
             }
         }else if(mCurrentLocation==1 && !mCorrect){
             if(!mShowDots){
-                ((TextView) findViewById(R.id.number2)).setTextColor(getResources()
-                        .getColor(R.color.incorrect_red));
+                ((TextView) findViewById(R.id.number2)).setTextColor(
+                        ContextCompat.getColor(this,R.color.incorrect_red));
 
             }else{
                 mColor=2;
@@ -420,7 +419,7 @@ public class ActivityQN04 extends ActivitiesMasterParent
             default:
             case 0:{
                 findViewById(R.id.number1).setVisibility(MathOperationDots.VISIBLE);
-                ((TextView) findViewById(R.id.number1)).setTextColor(getResources().getColor(R.color.regularBlack));
+                ((TextView) findViewById(R.id.number1)).setTextColor(ContextCompat.getColor(this,R.color.regularBlack));
                 ((TextView) findViewById(R.id.number1)).setPaintFlags(
                         ((TextView) findViewById(R.id.number1)).getPaintFlags()
                                 &  (~Paint.STRIKE_THRU_TEXT_FLAG));
@@ -430,7 +429,7 @@ public class ActivityQN04 extends ActivitiesMasterParent
             }
             case 1:{
                 findViewById(R.id.number2).setVisibility(MathOperationDots.VISIBLE);
-                ((TextView) findViewById(R.id.number2)).setTextColor(getResources().getColor(R.color.regularBlack));
+                ((TextView) findViewById(R.id.number2)).setTextColor(ContextCompat.getColor(this,R.color.regularBlack));
                 ((TextView) findViewById(R.id.number2)).setPaintFlags(
                         ((TextView) findViewById(R.id.number2)).getPaintFlags()
                                 &  (~Paint.STRIKE_THRU_TEXT_FLAG));
@@ -503,7 +502,7 @@ public class ActivityQN04 extends ActivitiesMasterParent
     //////////////////////////////////////////////////////////////////////////////////////
 
     protected void processData(Cursor mCursor){
-        mRoundsNumberSet=new ArrayList<HashMap<String,String>>();
+        mRoundsNumberSet=new ArrayList<>();
         int mNumber=0;
         int mNumberCorrectInARow=Constants.INA_ROW_CORRECT;
         if(mCursor.moveToFirst()) {
@@ -548,7 +547,7 @@ public class ActivityQN04 extends ActivitiesMasterParent
 
         mNumber=0;
         while(mRoundsNumberSet.size()<8){
-            mRoundsNumberSet.add(new HashMap<String, String>(mRoundsNumberSet.get(mNumber)));
+            mRoundsNumberSet.add(new HashMap<>(mRoundsNumberSet.get(mNumber)));
             mNumber++;
         }
 
@@ -579,7 +578,7 @@ public class ActivityQN04 extends ActivitiesMasterParent
     //////////////////////////////////////////////////////////////////////////////////////////
 
     private void processExtraData(Cursor mCursor){
-        mExtraNumberSet=new ArrayList<HashMap<String,String>>();
+        mExtraNumberSet=new ArrayList<>();
         int mNumber=0;
         int mNumberCorrectInARow=Constants.INA_ROW_CORRECT;
         if(mCursor.moveToFirst()) {
@@ -616,8 +615,6 @@ public class ActivityQN04 extends ActivitiesMasterParent
             moveBackwords();
         }
 
-
-
         Collections.shuffle(mExtraNumberSet);
 
         
@@ -628,9 +625,6 @@ public class ActivityQN04 extends ActivitiesMasterParent
 
     private void viewProgressBars(){
 
-
-
-
         findViewById(R.id.number1).setVisibility(TextView.INVISIBLE);
         findViewById(R.id.number2).setVisibility(TextView.INVISIBLE);
 
@@ -639,14 +633,8 @@ public class ActivityQN04 extends ActivitiesMasterParent
 
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////////
-
-    private void hideProgressBars(){
 
 
-
-
-    }
     //////////////////////////////////////////////////////////////////////////////////////////
 
     @Override

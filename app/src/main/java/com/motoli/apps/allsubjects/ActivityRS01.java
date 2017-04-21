@@ -5,12 +5,12 @@ import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -29,7 +29,6 @@ public class ActivityRS01 extends ActivitiesMasterParent
     private int mIncorrectInRound=0;
     private int mCurrentSyllableLocation=0;
 
-    private ArrayList<ArrayList<String>> mAllSyllabeWords;
     private ArrayList<ArrayList<String>> mCurrentSyllables;
     private ArrayList<ArrayList<String>> mAllSyllables;
 
@@ -70,7 +69,7 @@ public class ActivityRS01 extends ActivitiesMasterParent
         getLoaderManager().initLoader(Constants.CURRENT_SYLLABLE, null, this);
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////
 
     protected void displayScreen(){
 
@@ -127,13 +126,18 @@ public class ActivityRS01 extends ActivitiesMasterParent
         ((TextView) findViewById(R.id.syllableText3)).setText("");
         ((TextView) findViewById(R.id.syllableText4)).setText("");
 
-        ((TextView) findViewById(R.id.syllableText1)).setTextColor(getResources().getColor(R.color.normalBlack));
-        ((TextView) findViewById(R.id.syllableText2)).setTextColor(getResources().getColor(R.color.normalBlack));
-        ((TextView) findViewById(R.id.syllableText3)).setTextColor(getResources().getColor(R.color.normalBlack));
-        ((TextView) findViewById(R.id.syllableText4)).setTextColor(getResources().getColor(R.color.normalBlack));
+        ((TextView) findViewById(R.id.syllableText1)).setTextColor(
+                ContextCompat.getColor(this,R.color.normalBlack));
+        ((TextView) findViewById(R.id.syllableText2)).setTextColor(
+                ContextCompat.getColor(this,R.color.normalBlack));
+        ((TextView) findViewById(R.id.syllableText3)).setTextColor(
+                ContextCompat.getColor(this,R.color.normalBlack));
+        ((TextView) findViewById(R.id.syllableText4)).setTextColor(
+                ContextCompat.getColor(this,R.color.normalBlack));
 
 
-        ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_off_mic);
+        ((ImageView) findViewById(R.id.btnValidate))
+                .setImageResource(R.drawable.btn_validate_off_mic);
 
         clearFrames();
 
@@ -161,10 +165,11 @@ public class ActivityRS01 extends ActivitiesMasterParent
                 +" AND variable_id="+mCurrentID
                 +" AND activity_id="+appData.getCurrentActivity().get(0);
         String[] selectionArgs;
-        mCurrentGSP=new HashMap<String, String>(appData.getCurrentGroup_Section_Phase());
+        mCurrentGSP=new HashMap<>(appData.getCurrentGroup_Section_Phase());
 
         if(mCorrect){
-            ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_ok_mic);
+            ((ImageView) findViewById(R.id.btnValidate))
+                    .setImageResource(R.drawable.btn_validate_ok_mic);
             selectionArgs = new String[]{
                     "1",
                     "0",
@@ -173,31 +178,37 @@ public class ActivityRS01 extends ActivitiesMasterParent
                     String.valueOf(mIncorrectInRound)};
 
 
-            getContentResolver().update(AppProvider.CONTENT_URI_ACTIVITY_USER_RW_UPDATE, null, where, selectionArgs);
+            getContentResolver().update(AppProvider.CONTENT_URI_ACTIVITY_USER_RW_UPDATE,
+                    null, where, selectionArgs);
             switch(mCurrentSyllableLocation){
                 default:
                 case 0:
                     mCurrentSyllables.get(0).add(6, "1");
-                    ((TextView) findViewById(R.id.syllableText1)).setTextColor(getResources().getColor(R.color.correct_green));
+                    ((TextView) findViewById(R.id.syllableText1)).setTextColor(
+                            ContextCompat.getColor(this,R.color.correct_green));
                     break;
                 case 1:
                     mCurrentSyllables.get(1).add(6, "1");
-                    ((TextView) findViewById(R.id.syllableText2)).setTextColor(getResources().getColor(R.color.correct_green));
+                    ((TextView) findViewById(R.id.syllableText2)).setTextColor(
+                            ContextCompat.getColor(this,R.color.correct_green));
                     break;
                 case 2:
                     mCurrentSyllables.get(2).add(6, "1");
-                    ((TextView) findViewById(R.id.syllableText3)).setTextColor(getResources().getColor(R.color.correct_green));
+                    ((TextView) findViewById(R.id.syllableText3)).setTextColor(
+                            ContextCompat.getColor(this,R.color.correct_green));
                     break;
                 case 3:
                     mCurrentSyllables.get(3).add(6, "1");
-                    ((TextView) findViewById(R.id.syllableText4)).setTextColor(getResources().getColor(R.color.correct_green));
+                    ((TextView) findViewById(R.id.syllableText4)).setTextColor(
+                            ContextCompat.getColor(this,R.color.correct_green));
                     break;
             }
 
 
         }else{
             mIncorrectInRound++;
-            ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_no_ok_mic);
+            ((ImageView) findViewById(R.id.btnValidate))
+                    .setImageResource(R.drawable.btn_validate_no_ok_mic);
             selectionArgs = new String[]{
                     "0",
                     "1",
@@ -235,19 +246,23 @@ public class ActivityRS01 extends ActivitiesMasterParent
                 default:
                 case 0:
                     mCurrentSyllables.get(0).add(6, "1");
-                    ((TextView) findViewById(R.id.syllableText1)).setTextColor(getResources().getColor(R.color.incorrect_red));
+                    ((TextView) findViewById(R.id.syllableText1)).setTextColor(
+                            ContextCompat.getColor(this,R.color.incorrect_red));
                     break;
                 case 1:
                     mCurrentSyllables.get(1).add(6, "1");
-                    ((TextView) findViewById(R.id.syllableText2)).setTextColor(getResources().getColor(R.color.incorrect_red));
+                    ((TextView) findViewById(R.id.syllableText2)).setTextColor(
+                            ContextCompat.getColor(this,R.color.incorrect_red));
                     break;
                 case 2:
                     mCurrentSyllables.get(2).add(6, "1");
-                    ((TextView) findViewById(R.id.syllableText3)).setTextColor(getResources().getColor(R.color.incorrect_red));
+                    ((TextView) findViewById(R.id.syllableText3)).setTextColor(
+                            ContextCompat.getColor(this,R.color.incorrect_red));
                     break;
                 case 3:
                     mCurrentSyllables.get(3).add(6, "1");
-                    ((TextView) findViewById(R.id.syllableText4)).setTextColor(getResources().getColor(R.color.incorrect_red));
+                    ((TextView) findViewById(R.id.syllableText4)).setTextColor(
+                            ContextCompat.getColor(this,R.color.incorrect_red));
                     break;
             }
 
@@ -380,7 +395,8 @@ public class ActivityRS01 extends ActivitiesMasterParent
 
                         }
                     }else{
-                        ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_off_mic);
+                        ((ImageView) findViewById(R.id.btnValidate))
+                                .setImageResource(R.drawable.btn_validate_off_mic);
                         mBeingValidated=false;
                         mValidateAvailable=false;
                     }
@@ -388,7 +404,8 @@ public class ActivityRS01 extends ActivitiesMasterParent
                     break;
                 }
                 case 3:{
-                    ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_off_mic);
+                    ((ImageView) findViewById(R.id.btnValidate))
+                             .setImageResource(R.drawable.btn_validate_off_mic);
                     displayScreen();
                     guessHandler.removeCallbacks(processGuess);
                     break;
@@ -398,7 +415,7 @@ public class ActivityRS01 extends ActivitiesMasterParent
     };
 
     
-    ///////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////
 
     private void clearFrames(){
         //clear frames
@@ -463,15 +480,13 @@ public class ActivityRS01 extends ActivitiesMasterParent
 
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////
 
     private void setUpFrame(int frameNumber){
         clearFrames();
-        ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_on_mic);
+        ((ImageView) findViewById(R.id.btnValidate))
+                .setImageResource(R.drawable.btn_validate_on_mic);
         mValidateAvailable=true;
-        //	validateFlashPosition=0;
-        //	validateFlash.removeCallbacks(processValidateFlash);
-        //	validateFlash.postDelayed(processValidateFlash, (long)50);
         switch(frameNumber){
             default:
             case 0:{
@@ -527,7 +542,8 @@ public class ActivityRS01 extends ActivitiesMasterParent
                         "AND variable_type_relations.variable_type_id=4";
 
                 cursorLoader = new CursorLoader(this,
-                        AppProvider.CONTENT_URI_CURRENT_SYLLABLE_WORDS,null,null,null,mSyllableWordSelection);
+                        AppProvider.CONTENT_URI_CURRENT_SYLLABLE_WORDS,
+                        null,null,null,mSyllableWordSelection);
                 break;
             }
             case Constants.CURRENT_SYLLABLE:{
@@ -546,26 +562,32 @@ public class ActivityRS01 extends ActivitiesMasterParent
         return cursorLoader;
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-
+        ArrayList<ArrayList<String>>  mAllSyllableWords;
         switch(loader.getId()) {
             default:
                 break;
             case Constants.CURRENT_SYLLABLE_WRDS:{
-                mAllSyllabeWords=new ArrayList<ArrayList<String>>();
+                mAllSyllableWords=new ArrayList<>();
                 int currentPhonicWordNumber=0;
 
                 for (data.moveToFirst(); !data.isAfterLast();data.moveToNext()){
-                    mAllSyllabeWords.add(new ArrayList<String>());
-                    mAllSyllabeWords.get(currentPhonicWordNumber).add(data.getString(data.getColumnIndex("syllabe_word_id")));
-                    mAllSyllabeWords.get(currentPhonicWordNumber).add(data.getString(data.getColumnIndex("syllabe_word_text")));
-                    mAllSyllabeWords.get(currentPhonicWordNumber).add(data.getString(data.getColumnIndex("syllabe_word_audio")));
-                    mAllSyllabeWords.get(currentPhonicWordNumber).add(data.getString(data.getColumnIndex("syllabe_word_image")));
-                    mAllSyllabeWords.get(currentPhonicWordNumber).add(data.getString(data.getColumnIndex("syllabe_word_first_id")));
-                    mAllSyllabeWords.get(currentPhonicWordNumber).add(data.getString(data.getColumnIndex("syllabe_word_last_id")));
+                    mAllSyllableWords.add(new ArrayList<String>());
+                    mAllSyllableWords.get(currentPhonicWordNumber).add(
+                            data.getString(data.getColumnIndex("syllabe_word_id")));
+                    mAllSyllableWords.get(currentPhonicWordNumber).add(
+                            data.getString(data.getColumnIndex("syllabe_word_text")));
+                    mAllSyllableWords.get(currentPhonicWordNumber).add(
+                            data.getString(data.getColumnIndex("syllabe_word_audio")));
+                    mAllSyllableWords.get(currentPhonicWordNumber).add(
+                            data.getString(data.getColumnIndex("syllabe_word_image")));
+                    mAllSyllableWords.get(currentPhonicWordNumber).add(
+                            data.getString(data.getColumnIndex("syllabe_word_first_id")));
+                    mAllSyllableWords.get(currentPhonicWordNumber).add(
+                            data.getString(data.getColumnIndex("syllabe_word_last_id")));
                     currentPhonicWordNumber++;
                 }
                 getLoaderManager().restartLoader(Constants.CURRENT_SYLLABLE, null, this);
@@ -579,11 +601,11 @@ public class ActivityRS01 extends ActivitiesMasterParent
         }//end switch
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
 
     protected void processData(Cursor mCursor){
-        int mNumberOfPhonicVariables=(mCursor.getCount()*2>Constants.NUMBER_PHONIC_VARIABLES) ?
-                Constants.NUMBER_PHONIC_VARIABLES : mCursor.getCount()*2;
+        int mNumberOfPhonicVariables=(mCursor.getCount()*2>Constants.NUMBER_PHONIC_VARIABLES)
+                ? Constants.NUMBER_PHONIC_VARIABLES : mCursor.getCount()*2;
 
         mCurrentSyllables=new ArrayList<>();
         int mSyllableNumber=0;
@@ -592,14 +614,22 @@ public class ActivityRS01 extends ActivitiesMasterParent
             mCurrentGSP.put("current_level",
                     mCursor.getString(mCursor.getColumnIndex("app_user_current_level")));
             mCurrentSyllables.add(new ArrayList<String>());
-            mCurrentSyllables.get(mSyllableNumber).add(mCursor.getString(mCursor.getColumnIndex("syllables_id"))); //0
-            mCurrentSyllables.get(mSyllableNumber).add(mCursor.getString(mCursor.getColumnIndex("syllables_text"))); //1
-            mCurrentSyllables.get(mSyllableNumber).add(mCursor.getString(mCursor.getColumnIndex("syllables_audio"))); //2
-            mCurrentSyllables.get(mSyllableNumber).add(mCursor.getString(mCursor.getColumnIndex("number_correct"))); //3
-            mCurrentSyllables.get(mSyllableNumber).add(mCursor.getString(mCursor.getColumnIndex("number_incorrect"))); //4
-            mCurrentSyllables.get(mSyllableNumber).add(mCursor.getString(mCursor.getColumnIndex("number_correct_in_a_row"))); //5
-            mCurrentSyllables.get(mSyllableNumber).add(mCursor.getString(mCursor.getColumnIndex("level_number"))); //6
-            mCurrentSyllables.get(mSyllableNumber).add(mCursor.getString(mCursor.getColumnIndex("syllable_sister_id"))); //7
+            mCurrentSyllables.get(mSyllableNumber).add(mCursor.getString(
+                    mCursor.getColumnIndex("syllables_id"))); //0
+            mCurrentSyllables.get(mSyllableNumber).add(mCursor.getString(
+                    mCursor.getColumnIndex("syllables_text"))); //1
+            mCurrentSyllables.get(mSyllableNumber).add(mCursor.getString(
+                    mCursor.getColumnIndex("syllables_audio"))); //2
+            mCurrentSyllables.get(mSyllableNumber).add(mCursor.getString(
+                    mCursor.getColumnIndex("number_correct"))); //3
+            mCurrentSyllables.get(mSyllableNumber).add(mCursor.getString(
+                    mCursor.getColumnIndex("number_incorrect"))); //4
+            mCurrentSyllables.get(mSyllableNumber).add(mCursor.getString(
+                    mCursor.getColumnIndex("number_correct_in_a_row"))); //5
+            mCurrentSyllables.get(mSyllableNumber).add(mCursor.getString(
+                    mCursor.getColumnIndex("level_number"))); //6
+            mCurrentSyllables.get(mSyllableNumber).add(mCursor.getString(
+                    mCursor.getColumnIndex("syllable_sister_id"))); //7
 
             mSyllableNumber++;
             if (mSyllableNumber >=mNumberOfPhonicVariables) {
@@ -614,44 +644,54 @@ public class ActivityRS01 extends ActivitiesMasterParent
 
         Collections.shuffle(mCurrentSyllables);
 
-        ArrayList<ArrayList<String>> mTempCurrentWords=new ArrayList<ArrayList<String>>();
+        ArrayList<ArrayList<String>> mTempCurrentWords=new ArrayList<>();
 
         String mPreviousWordId="0";
         for(int i=0; i<mNumberOfPhonicVariables; i++){
             if(!mCurrentSyllables.get(i).get(0).equals(mPreviousWordId)){
-                mTempCurrentWords.add(new ArrayList<String>(mCurrentSyllables.get(i)));
+                mTempCurrentWords.add(new ArrayList<>(mCurrentSyllables.get(i)));
             }else{
                 if((i+1)<mNumberOfPhonicVariables){
-                    mTempCurrentWords.add(new ArrayList<String>(mCurrentSyllables.get(i+1)));
-                    mTempCurrentWords.add(new ArrayList<String>(mCurrentSyllables.get(i)));
+                    mTempCurrentWords.add(new ArrayList<>(mCurrentSyllables.get(i+1)));
+                    mTempCurrentWords.add(new ArrayList<>(mCurrentSyllables.get(i)));
                     i++;
                 }else{
-                    mTempCurrentWords.add(new ArrayList<String>(mTempCurrentWords.get(0)));
+                    mTempCurrentWords.add(new ArrayList<>(mTempCurrentWords.get(0)));
                     mTempCurrentWords.set(0,mCurrentSyllables.get(i));
                 }
             }
             mPreviousWordId=mCurrentSyllables.get(i).get(0);
         }
 
-        mCurrentSyllables=new ArrayList<ArrayList<String>>(mTempCurrentWords);
+        mCurrentSyllables=new ArrayList<>(mTempCurrentWords);
 
-        mAllSyllables=new ArrayList<ArrayList<String>>();
+        mAllSyllables=new ArrayList<>();
         mSyllableNumber=0;
         int mNumberCorrectInARow=Constants.INA_ROW_CORRECT;
         if(mCursor.moveToFirst()){
             do {
                 mAllSyllables.add(new ArrayList<String>());
-                mAllSyllables.get(mSyllableNumber).add(mCursor.getString(mCursor.getColumnIndex("syllables_id"))); //0
-                mAllSyllables.get(mSyllableNumber).add(mCursor.getString(mCursor.getColumnIndex("syllables_text"))); //1
-                mAllSyllables.get(mSyllableNumber).add(mCursor.getString(mCursor.getColumnIndex("syllables_audio"))); //2
-                mAllSyllables.get(mSyllableNumber).add(mCursor.getString(mCursor.getColumnIndex("number_correct"))); //3
-                mAllSyllables.get(mSyllableNumber).add(mCursor.getString(mCursor.getColumnIndex("number_incorrect"))); //4
-                mAllSyllables.get(mSyllableNumber).add(mCursor.getString(mCursor.getColumnIndex("number_correct_in_a_row"))); //5
-                mAllSyllables.get(mSyllableNumber).add(mCursor.getString(mCursor.getColumnIndex("level_number"))); //6
-                mAllSyllables.get(mSyllableNumber).add(mCursor.getString(mCursor.getColumnIndex("syllable_sister_id"))); //7
+                mAllSyllables.get(mSyllableNumber).add(mCursor.getString(
+                        mCursor.getColumnIndex("syllables_id"))); //0
+                mAllSyllables.get(mSyllableNumber).add(mCursor.getString(
+                        mCursor.getColumnIndex("syllables_text"))); //1
+                mAllSyllables.get(mSyllableNumber).add(mCursor.getString(
+                        mCursor.getColumnIndex("syllables_audio"))); //2
+                mAllSyllables.get(mSyllableNumber).add(mCursor.getString(
+                        mCursor.getColumnIndex("number_correct"))); //3
+                mAllSyllables.get(mSyllableNumber).add(mCursor.getString(
+                        mCursor.getColumnIndex("number_incorrect"))); //4
+                mAllSyllables.get(mSyllableNumber).add(mCursor.getString(
+                        mCursor.getColumnIndex("number_correct_in_a_row"))); //5
+                mAllSyllables.get(mSyllableNumber).add(mCursor.getString(
+                        mCursor.getColumnIndex("level_number"))); //6
+                mAllSyllables.get(mSyllableNumber).add(mCursor.getString(
+                        mCursor.getColumnIndex("syllable_sister_id"))); //7
 
-                mNumberCorrectInARow=(mNumberCorrectInARow>Integer.parseInt(mAllSyllables.get(mSyllableNumber).get(5)))
-                        ? Integer.parseInt(mAllSyllables.get(mSyllableNumber).get(5)):mNumberCorrectInARow;
+                mNumberCorrectInARow=(mNumberCorrectInARow>Integer.parseInt(
+                        mAllSyllables.get(mSyllableNumber).get(5)))
+                        ? Integer.parseInt(mAllSyllables.get(mSyllableNumber).get(5))
+                        :mNumberCorrectInARow;
                 mSyllableNumber++;
             }while(mCursor.moveToNext());
         }
@@ -698,7 +738,7 @@ public class ActivityRS01 extends ActivitiesMasterParent
 
     private void shuffleGameData(){
         mAllActivityText.clear();
-        ArrayList<ArrayList<String>> mTempSyllables=new ArrayList<ArrayList<String>>(mCurrentSyllables);
+        ArrayList<ArrayList<String>> mTempSyllables=new ArrayList<>(mCurrentSyllables);
 
         for(int mCount=0; mCount<mCurrentSyllables.size();mCount++){
             mAllActivityText.add(new ArrayList<ArrayList<String>>());
@@ -756,13 +796,19 @@ public class ActivityRS01 extends ActivitiesMasterParent
                         mAllActivityText.get(mCount).add(new ArrayList<String>());
                         mAllActivityText.get(mCount).get(mSubCount).add("0");
 
-                        mAllActivityText.get(mCount).get(mSubCount).add(mAllSyllables.get(mDistCount).get(0)); //syllables_id
-                        mAllActivityText.get(mCount).get(mSubCount).add(mAllSyllables.get(mDistCount).get(1)); //syllables_text
-                        mAllActivityText.get(mCount).get(mSubCount).add(mAllSyllables.get(mDistCount).get(2)); //syllables_audio
-                        mAllActivityText.get(mCount).get(mSubCount).add(mAllSyllables.get(mDistCount).get(3)); //number correct
-                        mAllActivityText.get(mCount).get(mSubCount).add(mAllSyllables.get(mDistCount).get(4)); //number incorrect
+                        mAllActivityText.get(mCount).get(mSubCount).add(
+                                mAllSyllables.get(mDistCount).get(0)); //syllables_id
+                        mAllActivityText.get(mCount).get(mSubCount).add(
+                                mAllSyllables.get(mDistCount).get(1)); //syllables_text
+                        mAllActivityText.get(mCount).get(mSubCount).add(
+                                mAllSyllables.get(mDistCount).get(2)); //syllables_audio
+                        mAllActivityText.get(mCount).get(mSubCount).add(
+                                mAllSyllables.get(mDistCount).get(3)); //number correct
+                        mAllActivityText.get(mCount).get(mSubCount).add(
+                                mAllSyllables.get(mDistCount).get(4)); //number incorrect
                         mAllActivityText.get(mCount).get(mSubCount).add("0"); //guessed yet
-                        mAllActivityText.get(mCount).get(mSubCount).add(mAllSyllables.get(mDistCount).get(7)); //syllables_sister_id
+                        mAllActivityText.get(mCount).get(mSubCount).add(
+                                mAllSyllables.get(mDistCount).get(7)); //syllables_sister_id
 
                         mSubCount++;
                     }

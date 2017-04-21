@@ -1,6 +1,7 @@
 package com.motoli.apps.allsubjects;
 
 import android.app.LoaderManager;
+import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
@@ -8,9 +9,14 @@ import android.database.Cursor;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,15 +30,12 @@ import java.util.HashMap;
 public class ActivityTR02 extends ActivitiesMasterParent
         implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    private ActivityTRGridArea mAdapter;
     private GridView mIconGrid;
 
 
-    private boolean mPlayingAudio=false;
 
     private int mTracingType=0;
 
-    private ArrayList<HashMap<String,String>> mCurrentTracingList;
     private ArrayList<ArrayList<HashMap<String,String>>> mEntireTracingList;
 
 
@@ -55,41 +58,7 @@ public class ActivityTR02 extends ActivitiesMasterParent
         setUpListeners();
     }
 
-
-
-
-
-    ///////////////////////////////////////////////////////////////////
-
-
-    private void chooseLoader(){
-        Log.d(Constants.LOGCAT, "Start chooseLoader");
-
-        switch (mTracingType){
-            default:
-            case 1:{
-                getLoaderManager().initLoader(Constants.TRACING_SHAPES, null, this);
-                break;
-            }
-            case 2:{
-                getLoaderManager().initLoader(Constants.TRACING_NUMBERS, null, this);
-                break;
-            }
-            case 3:{
-                getLoaderManager().initLoader(Constants.TRACING_LOWER, null, this);
-                break;
-            }
-            case 4:{
-                getLoaderManager().initLoader(Constants.TRACING_UPPER, null, this);
-                break;
-            }
-        }
-
-
-    }
-
     ///////////////////////////////////////////////////////////////////////////////////////////
-
 
     @Override
     protected void displayScreen() {
@@ -97,18 +66,16 @@ public class ActivityTR02 extends ActivitiesMasterParent
 
 
         if( mEntireTracingList.size()  > mTracingType) {
-            mAdapter = new ActivityTRGridArea(this, mEntireTracingList.get(mTracingType));
-
+            ActivityTRGridArea mAdapter = new ActivityTRGridArea(
+                    this, mEntireTracingList.get(mTracingType));
 
             mIconGrid.setAdapter(mAdapter);
             mAdapter.notifyDataSetChanged();
             mIconGrid.setVisibility(GridView.VISIBLE);
 
-            mPlayingAudio = false;
             mIconGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 public void onItemClick(AdapterView<?> parent, View v,
                                         int position, long id) {
-                  //  mList = (HashMap<String, String>) v.findViewById(R.id.tracingImage).getTag();
 
                     appData.placeCanvasList((HashMap<String, String>)
                             v.findViewById(R.id.tracingImage).getTag());
@@ -133,12 +100,6 @@ public class ActivityTR02 extends ActivitiesMasterParent
         main.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(main);
         finish();
-        //System.exit(0);
-
-       // mBaseImage.setImageDrawable(getResources().getDrawable(R.drawable.xpswa_img_tracing_id9_base));
-
-        //mDesignImage.setImageDrawable(getResources().getDrawable(R.drawable.xpswa_img_tracing_id9_design));
-
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -189,7 +150,7 @@ public class ActivityTR02 extends ActivitiesMasterParent
     onCreateLoader(int id, Bundle bundle) {
         String[] mData;
         String mWhere="";
-        String mOrderBy="";
+        String mOrderBy;
         CursorLoader cursorLoader;
         switch(id) {
             default:
@@ -323,10 +284,95 @@ public class ActivityTR02 extends ActivitiesMasterParent
 
     }
 
+    /**
+     * Part of Project Motoli All Subjects
+     * for Education Technology For Development
+     * created by Aaron D Michaelis Borsay
+     * on 8/12/2015.
+     */
+    private static class ActivityTRGridArea extends BaseAdapter {
+            private Context context;
+        //	private final String[] mobileValues;
+            private ArrayList<HashMap<String,String>> mTracingData;
 
-    ////////////////////////////////////////////////////////////////////////////////////////
+            static class ViewHolder {
+                 TextView text;
+                 ImageView icon;
+                }
 
-    /////////////////////////////////////////////////////////////////////////////////////////////
 
 
+
+            private ActivityTRGridArea(Context context, ArrayList<HashMap<String, String>> mTracingData) {
+                this.context = context;
+                //this.mobileValues = mobileValues;
+                this.mTracingData=mTracingData;
+
+            }
+
+            public View getView(int mPosition, View convertView, ViewGroup parent) {
+                LayoutInflater mInflater = (LayoutInflater) context.getSystemService(LAYOUT_INFLATER_SERVICE);
+
+
+                ViewHolder holder;
+
+                if (convertView == null) {
+                    convertView = mInflater.inflate(R.layout.activity_tr_grid_area,null);
+                    holder = new ViewHolder();
+                    //holder.text = (TextView) convertView.findViewById(R.id.text);
+                    holder.icon = (ImageView) convertView.findViewById(R.id.tracingImage);
+
+                    convertView.setTag(holder);
+                } else {
+                    holder = (ViewHolder) convertView.getTag();
+                }
+                Log.d(Constants.LOGCAT, mTracingData.get(mPosition).get("tracing_value"));
+
+
+                holder.icon.setImageResource(context.getResources()
+                        .getIdentifier(mTracingData.get(mPosition).get("icon_image")
+                                .replace(".png","").replace(".jpg","") ,
+                                "drawable", context.getPackageName()));
+
+                /*
+                ArrayList mTempArray = new ArrayList();
+                mTempArray.add(mTracingData.get(mPosition).get("tracing_id"));
+                mTempArray.add(mTracingData.get(mPosition).get("tracing_value"));
+                mTempArray.add(mTracingData.get(mPosition).get("base_image"));
+                mTempArray.add(mTracingData.get(mPosition).get("design_image"));
+                */
+                holder.icon.setTag(mTracingData.get(mPosition));
+
+                holder.icon.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                //holder.icon.setPadding(20, 20, 20, 20);
+
+                holder.icon.destroyDrawingCache();
+
+                return convertView;
+            }
+
+
+
+
+
+
+            @Override
+            public int getCount() {
+                return mTracingData.size();
+            }
+
+            @Override
+            public Object getItem(int mPosition) {
+                return null;
+            }
+
+            @Override
+            public long getItemId(int mPosition) {
+                return 0;
+            }
+
+
+
+
+        }
 }

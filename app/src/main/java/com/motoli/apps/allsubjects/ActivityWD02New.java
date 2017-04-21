@@ -1,19 +1,13 @@
 package com.motoli.apps.allsubjects;
 
 import android.app.LoaderManager;
-import android.content.Context;
-import android.content.CursorLoader;
 import android.content.Loader;
-import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.animation.AnimationUtils;
-import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -26,10 +20,6 @@ import java.util.HashMap;
 public class ActivityWD02New extends ActivitiesMasterParent
         implements LoaderManager.LoaderCallbacks {
 
-    private ArrayList<HashMap<String, String>> mAllWords;
-    private ArrayList<HashMap<String,String>> mDistractorWords;
-    private ArrayList<HashMap<String, String>> mCurrentWords;
-
 
 
     @Override
@@ -38,7 +28,6 @@ public class ActivityWD02New extends ActivitiesMasterParent
         overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out);
         setContentView(R.layout.activity_wd02);
         appData.addToClassOrder(5);
-        mAllWords = new ArrayList<>();
 
         mCurrentGSP=new HashMap<>(appData.getCurrentGroup_Section_Phase());
 
@@ -79,14 +68,10 @@ public class ActivityWD02New extends ActivitiesMasterParent
         ((TextView) findViewById(R.id.word3)).setText("");
         ((TextView) findViewById(R.id.word4)).setText("");
 
-        ((TextView) findViewById(R.id.word1)).setTextColor(getResources()
-                .getColor(R.color.normalBlack));
-        ((TextView) findViewById(R.id.word2)).setTextColor(getResources()
-                .getColor(R.color.normalBlack));
-        ((TextView) findViewById(R.id.word3)).setTextColor(getResources()
-                .getColor(R.color.normalBlack));
-        ((TextView) findViewById(R.id.word4)).setTextColor(getResources()
-                .getColor(R.color.normalBlack));
+        ((TextView) findViewById(R.id.word1)).setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
+        ((TextView) findViewById(R.id.word2)).setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
+        ((TextView) findViewById(R.id.word3)).setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
+        ((TextView) findViewById(R.id.word4)).setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
 
 
         ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_off);

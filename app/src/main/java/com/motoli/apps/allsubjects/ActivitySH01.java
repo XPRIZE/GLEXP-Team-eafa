@@ -25,7 +25,6 @@ public class ActivitySH01 extends ActivitiesMasterParent
 
     private String mShapeAudio="";
     private String mShapeAudioSmall="";
-    private String mColorAudio="";
     private ArrayList<String> mTypeAudio;
     private int mMathShapeColorID;
     private int mMathShapeTypeId;
@@ -73,30 +72,24 @@ public class ActivitySH01 extends ActivitiesMasterParent
             if(i!=mMathShapeColorID) {
                 switch (i) {
                     default:
-                    case 1: {
+                    case 1:
                         findViewById(R.id.greenColor).setAlpha(mAlpha);
                         break;
-                    }
-                    case 2: {
+                    case 2:
                         findViewById(R.id.blueColor).setAlpha(mAlpha);
                         break;
-                    }
-                    case 3: {
+                    case 3:
                         findViewById(R.id.redColor).setAlpha(mAlpha);
                         break;
-                    }
-                    case 4: {
+                    case 4:
                         findViewById(R.id.yellowColor).setAlpha(mAlpha);
                         break;
-                    }
-                    case 5: {
+                    case 5:
                         findViewById(R.id.pinkColor).setAlpha(mAlpha);
                         break;
-                    }
-                    case 6: {
+                    case 6:
                         findViewById(R.id.orangeColor).setAlpha(mAlpha);
                         break;
-                    }
                 }
             }
         }
@@ -111,30 +104,24 @@ public class ActivitySH01 extends ActivitiesMasterParent
             if(i!=mMathShapeTypeId) {
                 switch (i) {
                     default:
-                    case 1: {
+                    case 1:
                         findViewById(R.id.circle).setAlpha(mAlpha);
                         break;
-                    }
-                    case 2: {
+                    case 2:
                         findViewById(R.id.square).setAlpha(mAlpha);
                         break;
-                    }
-                    case 3: {
+                    case 3:
                         findViewById(R.id.triangle).setAlpha(mAlpha);
                         break;
-                    }
-                    case 4: {
+                    case 4:
                         findViewById(R.id.line).setAlpha(mAlpha);
                         break;
-                    }
-                    case 5: {
+                    case 5:
                         findViewById(R.id.star).setAlpha(mAlpha);
                         break;
-                    }
-                    case 6: {
+                    case 6:
                         findViewById(R.id.rectangle).setAlpha(mAlpha);
                         break;
-                    }
                 }
             }
         }
@@ -445,13 +432,11 @@ public class ActivitySH01 extends ActivitiesMasterParent
     ///////////////////////////////////////////////////////////////////////////////////////
 
     private void playShapeAudio(int mType){
-        long mAudioDuration=0;
         if(!mShapeAudioSmall.equals("") && mType==1) {
-            mAudioDuration = playGeneralAudio(mShapeAudioSmall);
+            playGeneralAudio(mShapeAudioSmall);
         }else if(!mShapeAudio.equals("") && mType==0) {
-            mAudioDuration = playGeneralAudio(mShapeAudio);
+            playGeneralAudio(mShapeAudio);
         }
-       // mAudioHandler.postDelayed(returnToNoValidate, mAudioDuration + 20);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////
@@ -470,7 +455,7 @@ public class ActivitySH01 extends ActivitiesMasterParent
     //////////////////////////////////////////////////////////////////////////////////////
 
     protected void processData(Cursor mCursor){
-        mTypeAudio=new ArrayList<String>();
+        mTypeAudio=new ArrayList<>();
         for(int i=0;i<6;i++){
             mTypeAudio.add("");
         }
@@ -484,31 +469,24 @@ public class ActivitySH01 extends ActivitiesMasterParent
 
                 switch(mShape){
                     default:
-                    case 1: {
-
+                    case 1:
                         findViewById(R.id.circle).setVisibility(CanvasView.VISIBLE);
                         break;
-                    }
-                    case 2: {
+                    case 2:
                         findViewById(R.id.line).setVisibility(CanvasView.VISIBLE);
                         break;
-                    }
-                    case 3: {
+                    case 3:
                         findViewById(R.id.rectangle).setVisibility(CanvasView.VISIBLE);
                         break;
-                    }
-                    case 4: {
+                    case 4:
                         findViewById(R.id.square).setVisibility(CanvasView.VISIBLE);
                         break;
-                    }
-                    case 5: {
+                    case 5:
                         findViewById(R.id.triangle).setVisibility(CanvasView.VISIBLE);
                         break;
-                    }
-                    case 6:{
+                    case 6:
                         findViewById(R.id.star).setVisibility(CanvasView.VISIBLE);
                         break;
-                    }
                 }
             }while(mCursor.moveToNext());
         }
@@ -576,7 +554,6 @@ public class ActivitySH01 extends ActivitiesMasterParent
             case Constants.EXTRA_MATH_SHAPES:{
                 mShapeAudio="";
                 mShapeAudioSmall="";
-                mColorAudio="";
                 int mSize=0;
                 if(data.moveToFirst()){
                     do {

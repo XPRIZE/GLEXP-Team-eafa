@@ -1,11 +1,5 @@
 package com.motoli.apps.allsubjects;
 
-/**
- * Part of Project Motoli All Subjects
- * for Education Technology For Development
- * created by Aaron D Michaelis Borsay
- * on 8/12/2015.
- */
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -27,6 +21,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 
+/**
+ * Part of Project Motoli All Subjects
+ * for Education Technology For Development
+ * created by Aaron D Michaelis Borsay
+ * on 8/12/2015.
+ */
 
 public class Activities_Platform extends ActivitiesMasterParent
         implements LoaderManager.LoaderCallbacks<Cursor> {

@@ -2,15 +2,11 @@ package com.motoli.apps.allsubjects;
 
 import android.app.LoaderManager;
 import android.content.CursorLoader;
-import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Paint;
-import android.media.AudioManager;
 import android.os.Bundle;
-import android.speech.tts.TextToSpeech;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -175,11 +171,7 @@ public class  ActivityOP01 extends ActivityOPRoot
             mNumber=mNumberOne+mNumberTwo;
 
         }
-        if(mNumberTwo>mNumberOne){
-            mCustomMathOperationDots.setMaxDots(mNumberTwo);
-        }else{
-            mCustomMathOperationDots.setMaxDots(mNumberOne);
-        }
+
 
             mCustomMathOperationDots.setVisibility(MathOperationDots.VISIBLE);
 

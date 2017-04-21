@@ -8,7 +8,6 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,10 +23,9 @@ import java.util.HashMap;
 public class ActivityBK02BookList extends ActivitiesMasterParent
         implements LoaderManager.LoaderCallbacks<Cursor>{
 
-    private ArrayList<HashMap<String,String>> mAllBooks;
 
-private int mSection;
-    private ArrayList list;
+
+    private int mSection;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,7 +43,7 @@ private int mSection;
     ///////////////////////////////////////////////////////////////////////////////////////////////////
 
     private void displayScreen(Cursor cursor){
-        mAllBooks=new ArrayList<>();
+        ArrayList<HashMap<String,String>> mAllBooks = new ArrayList<>();
 
         int mBookCount=0;
         if (cursor.moveToFirst()) {
@@ -72,7 +70,7 @@ private int mSection;
                         cursor.getString(cursor.getColumnIndex("book_read")));		        //8
                 mAllBooks.get(mStoryOrder).put("group_id",
                         cursor.getString(cursor.getColumnIndex("group_id")));		        //9
-                mBookCount=cursor.getInt(cursor.getColumnIndex("book_count"));
+                mBookCount=cursor.getCount();//.getInt(cursor.getColumnIndex("book_count"));
                 mStoryOrder++;
                 cursor.moveToNext();
             }

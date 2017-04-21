@@ -1,7 +1,5 @@
 package com.motoli.apps.allsubjects;
 
-import android.content.ContentProvider;
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -71,7 +69,7 @@ public class AppProviderProcesses {
             mCursor.moveToFirst();
             int mMinNumberCorrect;
             if(mCursor.isNull(mCursor.getColumnIndex("minNumberCorrect"))){
-                /**
+                /*
                  * puts variables in if nothing is created yet
                  */
                 switch(Integer.parseInt(mUserGPL.get(i).get("group_id"))){
@@ -143,7 +141,7 @@ public class AppProviderProcesses {
                     switch (Integer.parseInt(mUserGPL.get(i).get("group_id"))) {
                         default:
                             break;
-                        case 2: {   //group for letters/phonics
+                        case 2:    //group for letters/phonics
                             switch (Integer.parseInt(mUserGPL.get(i).get("phase_id"))) {
                                 default:
                                     break;
@@ -159,35 +157,28 @@ public class AppProviderProcesses {
                             }//end switch(Integer.parseInt(mUserGPL.get(i).get(3))){
 
                             break;
-                        }
-                        case 3: {    //group for syllables
+                        case 3:    //group for syllables
                             if(mUserGPL.get(i).get("phase_id").equals("1")){
                                 processGroup3Phase1(mAppUserId, mUserGPL.get(i));
                             }else {
                                 processGroup3Phase2(mAppUserId, mUserGPL.get(i));
                             }
                             break;
-                        }
-                        case 4: {     //group for words
+                        case 4:   //group for words
                             processGroup4(mAppUserId, mUserGPL.get(i));
                             break;
-                        }
-                        case 5: {
+                        case 5:
                             processGroup5();
                             break;
-                        }
-                        case 6:{
+                        case 6:
                             processGroup6(mAppUserId, mUserGPL.get(i));
                             break;
-                        }
-                        case 7:{
+                        case 7:
                             processGroup7( mAppUserId, mUserGPL.get(i));
                             break;
-                        }
-                        case 8:{
+                        case 8:
                             processGroup8( mAppUserId, mUserGPL.get(i));
                             break;
-                        }
                     }//end switch(Integer.parseInt(mUserGPL.get(i).get(2))){
                 }//end  if ((mMinNumberCorrect >= Constants.INA_ROW_CORRECT)
             }
@@ -247,7 +238,7 @@ public class AppProviderProcesses {
             mCursor.moveToFirst();
             int mMinNumberCorrect;
             if(mCursor.isNull(mCursor.getColumnIndex("minNumberCorrect"))){
-                /**
+                /*
                  * puts variables in if nothing is created yet
                  */
                 switch(Integer.parseInt(mUserGPL.get(i).get("group_id"))){
@@ -293,7 +284,7 @@ public class AppProviderProcesses {
                         break;
                 }//end switch(Integer.parseInt(mUserGPL.get(i).get(2))){
             }else{
-                /**
+                /*
                  * Take care of updating variables is needed
                  */
                 int mInARowCorrect=Constants.INA_ROW_CORRECT;
@@ -392,7 +383,7 @@ public class AppProviderProcesses {
         String mCurrentLevel=mInfo[4];
         String mDesiredLevel=mInfo[3];
 
-        /**
+        /*
          * Pattern for:
          * advanceGroupPhasesToNewLevel(mDatabase,group_id,phase_id,desired_level,app_user_id);
          *
@@ -427,8 +418,6 @@ public class AppProviderProcesses {
                         groupPhaseLevelsUpdateAll( mAppUserID);
                         break;
                     case 2:
-
-
                         for(int i=(Integer.parseInt(mCurrentLevel)+1);
                             i<=Integer.parseInt(mDesiredLevel);
                             i++){
@@ -754,8 +743,6 @@ public class AppProviderProcesses {
             mCountCursor.close();
 
 
-
-
             if( mSecondWordCount>=4){
                 mRawSQL="UPDATE app_users_current_gpl " +
                         "SET app_user_current_level=1 " +
@@ -848,7 +835,7 @@ public class AppProviderProcesses {
             mUpdateGroups.updatePhonicsProcessOLD(mLetterProjection,mPhonicSelection);
 
 
-            /**
+            /*
              * THE FOLLOWING MUST BE REMOVED LATER
              */
             mRawSQL="UPDATE app_users_activity_variable_values " +
@@ -857,7 +844,7 @@ public class AppProviderProcesses {
                     "WHERE group_id=2 " +
                     "AND phase_id=3";
             mDatabase.execSQL(mRawSQL);
-            /**
+            /*
              * PART BEFORE MUST ALSO BE REMOVED
              */
 
@@ -1003,9 +990,9 @@ public class AppProviderProcesses {
                                    HashMap<String,String> mUserGPLCurrent) {
         AppProviderUpdateGroups mUpdateGroups = new AppProviderUpdateGroups(mContext,
                 mUserGPL,
-                mDatabase);;
+                mDatabase);
         String mRawSQL;
-        /**
+        /*
          * Group for Words based upon levels in phonics
          * Ignore until phonics level has 1 and at least 4 words are avaialble
          */
@@ -1058,7 +1045,7 @@ public class AppProviderProcesses {
             mUpdateGroups.updateWordsProcessNEW(mWordProjection);
 
 
-            /**
+            /*
              * THE FOLLOWING MUST BE REMOVED LATER
              */
             mRawSQL="UPDATE app_users_activity_variable_values " +

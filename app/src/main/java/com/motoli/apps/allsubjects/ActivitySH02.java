@@ -73,7 +73,7 @@ public class ActivitySH02 extends ActivitiesMasterParent
     }//end public void onCreate(Bundle savedInstanceState) {
 
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////
 
     protected long playInstructionAudio(){
         long mAudioDuration=super.playInstructionAudio();
@@ -85,7 +85,8 @@ public class ActivitySH02 extends ActivitiesMasterParent
 
     private void clearActivity(){
 
-        ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_off_mic);
+        ((ImageView) findViewById(R.id.btnValidate))
+                .setImageResource(R.drawable.btn_validate_off_mic);
 
         clearFrames();
 
@@ -168,7 +169,7 @@ public class ActivitySH02 extends ActivitiesMasterParent
 
     }//end private void displayScreen(Cursor currentWordsCursor){
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////
 
     private void placingCurrentShapes(int shapeID){
         CanvasView mCustomCanvas;
@@ -352,7 +353,7 @@ public class ActivitySH02 extends ActivitiesMasterParent
 */
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////
 
     private void setUpFrame(int frameNumber){
         clearFrames();
@@ -380,7 +381,7 @@ public class ActivitySH02 extends ActivitiesMasterParent
         }
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////
 
     private void hideShapes(){
         findViewById(R.id.shape1).setVisibility(CanvasView.INVISIBLE);
@@ -397,14 +398,16 @@ public class ActivitySH02 extends ActivitiesMasterParent
 
 
     }
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////
 
     protected void validate(){
         mBeingValidated=true;
         if(mCorrect) {
-            ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_ok_mic);
+            ((ImageView) findViewById(R.id.btnValidate))
+                    .setImageResource(R.drawable.btn_validate_ok_mic);
         }else{
-            ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_no_ok_mic);
+            ((ImageView) findViewById(R.id.btnValidate))
+                    .setImageResource(R.drawable.btn_validate_no_ok_mic);
         }
         processFontColorAndPoints();
         processChoiceView();
@@ -433,7 +436,8 @@ public class ActivitySH02 extends ActivitiesMasterParent
         String[] selectionArgs;
 
         if(mCorrect){
-            ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_ok_mic);
+            ((ImageView) findViewById(R.id.btnValidate))
+                    .setImageResource(R.drawable.btn_validate_ok_mic);
             selectionArgs = new String[]{
                     "1",
                     "0",
@@ -444,7 +448,8 @@ public class ActivitySH02 extends ActivitiesMasterParent
                     appData.getCurrentUserID()};
 
 
-            getContentResolver().update(AppProvider.CONTENT_URI_ACTIVITY_USER_RW_UPDATE, null, where, selectionArgs);
+            getContentResolver().update(AppProvider.CONTENT_URI_ACTIVITY_USER_RW_UPDATE,
+                    null, where, selectionArgs);
             switch(mCurrentLocation){
                 default:
                 case 0:
@@ -465,7 +470,8 @@ public class ActivitySH02 extends ActivitiesMasterParent
         }else{
             mIncorrectInRound++;
             mIncorrectInActivity++;
-            ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_no_ok_mic);
+            ((ImageView) findViewById(R.id.btnValidate))
+                    .setImageResource(R.drawable.btn_validate_no_ok_mic);
             selectionArgs = new String[]{
                     "0",
                     "1",
@@ -476,7 +482,8 @@ public class ActivitySH02 extends ActivitiesMasterParent
                     appData.getCurrentUserID()};
 
 
-            getContentResolver().update(AppProvider.CONTENT_URI_ACTIVITY_USER_RW_UPDATE, null, where, selectionArgs);
+            getContentResolver().update(AppProvider.CONTENT_URI_ACTIVITY_USER_RW_UPDATE,
+                    null, where, selectionArgs);
             if(mIncorrectInRound>=2){
                 switch(mCorrectLocation){
                     default:
@@ -667,7 +674,8 @@ public class ActivitySH02 extends ActivitiesMasterParent
                             lastActivityDataHandler.postDelayed(returnToActivities_Platorm,10);
                         }
                     }else{
-                        ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_off_mic);
+                        ((ImageView) findViewById(R.id.btnValidate))
+                                .setImageResource(R.drawable.btn_validate_off_mic);
                         mBeingValidated=false;
                         mValidateAvailable=false;
                     }
@@ -675,7 +683,8 @@ public class ActivitySH02 extends ActivitiesMasterParent
                     break;
                 }
                 case 3:{
-                    ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_off_mic);
+                    ((ImageView) findViewById(R.id.btnValidate))
+                            .setImageResource(R.drawable.btn_validate_off_mic);
                     beginRound();
                     guessHandler.removeCallbacks(processGuess);
                     break;
@@ -686,7 +695,7 @@ public class ActivitySH02 extends ActivitiesMasterParent
 
 
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -726,8 +735,6 @@ public class ActivitySH02 extends ActivitiesMasterParent
                         mCurrentGSP.get("current_level"),//5
                         "11"}; //6
 
-               // (math_shapes.math_shape_kind==0 AND math_shapes.math_shape_type_id<=2 AND (math_shapes.math_shape_id!=236
-               //         or (math_shapes.math_shape_type_id!=1 AND math_shapes.math_shape_color_id!=4 ) )
 
                 mWhere="math_shapes.math_shape_kind==0 " +
                         "AND math_shapes.math_shape_type_id" +
@@ -745,7 +752,7 @@ public class ActivitySH02 extends ActivitiesMasterParent
         return cursorLoader;
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
@@ -763,7 +770,7 @@ public class ActivitySH02 extends ActivitiesMasterParent
         }
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
@@ -771,7 +778,7 @@ public class ActivitySH02 extends ActivitiesMasterParent
 
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////
 
     protected void processData(Cursor mCursor){
         mCurrentShapeSet=new ArrayList<>();
@@ -867,6 +874,5 @@ public class ActivitySH02 extends ActivitiesMasterParent
 
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }

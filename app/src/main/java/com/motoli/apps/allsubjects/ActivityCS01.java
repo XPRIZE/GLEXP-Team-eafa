@@ -1,3 +1,4 @@
+
 package com.motoli.apps.allsubjects;
 
 import android.app.LoaderManager;
@@ -15,9 +16,8 @@ import java.util.Collections;
 import java.util.HashMap;
 
 /**
- * Part of Project Motoli All Subjects
- * for Education Technology For Development
- * created by Aaron D Michaelis Borsay
+ * Part of Project Motoli All Subjects for Education Technology For Development
+ * author Aaron D Michaelis Borsay
  * on 8/31/2015.
  */
 public class ActivityCS01 extends ActivitiesMasterParent
@@ -26,8 +26,6 @@ public class ActivityCS01 extends ActivitiesMasterParent
 
     private String mCurrentWordAudio;
 
-    private int mIncorrectInRound=0;
-    private int mNumberOfSyllables;
 
     private ArrayList<String> mChosenSyllables;
 
@@ -53,7 +51,7 @@ public class ActivityCS01 extends ActivitiesMasterParent
         clearFrames();
         setupFrameListens();
 
-        mChosenSyllables=new ArrayList<String>();
+        mChosenSyllables=new ArrayList<>();
         mChosenSyllables.add("0");
         mChosenSyllables.add("0");
         mChosenSyllables.add("0");
@@ -76,9 +74,8 @@ public class ActivityCS01 extends ActivitiesMasterParent
     /////////////////////////////////////////////////////////////////////////////////////////////
 
     protected void processData(Cursor mCursor){
-        mSyllableWords=new ArrayList<ArrayList<String>>();
+        mSyllableWords=new ArrayList<>();
         int currentWordNumber=0;
-        int mNumberOfWords=0;
 
         mCursor.moveToFirst();
         while (!mCursor.isAfterLast()) {
@@ -105,7 +102,6 @@ public class ActivityCS01 extends ActivitiesMasterParent
                         mCursor.getString(mCursor.getColumnIndex("number_of_syllables"))); //7
             }
 
-            mNumberOfWords++;
 
             currentWordNumber++;
 
@@ -125,7 +121,7 @@ public class ActivityCS01 extends ActivitiesMasterParent
             for (int i = 0; i < mSyllableWords.size(); i++) {
                 if (!mSyllableWords.get(mSyllableWords.size() - 1)
                         .get(0).equals(mSyllableWords.get(i).get(0))) {
-                    mSyllableWords.add(new ArrayList<String>(mSyllableWords.get(i)));
+                    mSyllableWords.add(new ArrayList<>(mSyllableWords.get(i)));
                     if (mSyllableWords.size() >= Constants.NUMBER_VARIABLES) {
                         break;
                     }
@@ -178,7 +174,7 @@ public class ActivityCS01 extends ActivitiesMasterParent
 
     protected void validate(){
         mBeingValidated=true;
-        mNumberOfSyllables=0;
+        int mNumberOfSyllables=0;
         for(int i=0;i<mChosenSyllables.size(); i++){
             if(mChosenSyllables.get(i).equals("1")){
                 mNumberOfSyllables++;

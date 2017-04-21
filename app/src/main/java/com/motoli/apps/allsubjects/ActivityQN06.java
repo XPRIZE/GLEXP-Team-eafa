@@ -5,11 +5,11 @@ import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import java.util.HashMap;
 
@@ -89,7 +89,7 @@ public class ActivityQN06 extends ActivitiesMasterParent
         mCurrentMathNumberId=mRoundsNumberSet.get(mRound).get("math_numbers_id");
 
         int mSpot=0;
-        mCurrentNumberSet = new ArrayList<HashMap<String,String>>();
+        mCurrentNumberSet = new ArrayList<>();
 
         do{
             if(!mExtraNumberSet.get(mSpot).get("math_numbers_id")
@@ -124,7 +124,7 @@ public class ActivityQN06 extends ActivitiesMasterParent
                     findViewById(R.id.number1).setTag(mCurrentNumberSet.get(i));
                     findViewById(R.id.number1).setVisibility(TextView.VISIBLE);
                     ((TextView) findViewById(R.id.number1))
-                            .setTextColor(getResources().getColor(R.color.regularBlack));
+                            .setTextColor(ContextCompat.getColor(this,R.color.regularBlack));
                     break;
                 }
                 case 1:{
@@ -133,7 +133,7 @@ public class ActivityQN06 extends ActivitiesMasterParent
                     findViewById(R.id.number2).setTag(mCurrentNumberSet.get(i));
                     findViewById(R.id.number2).setVisibility(TextView.VISIBLE);
                     ((TextView) findViewById(R.id.number2))
-                            .setTextColor(getResources().getColor(R.color.regularBlack));
+                            .setTextColor(ContextCompat.getColor(this,R.color.regularBlack));
                     break;
                 }
                 case 2:{
@@ -142,7 +142,7 @@ public class ActivityQN06 extends ActivitiesMasterParent
                     findViewById(R.id.number3).setTag(mCurrentNumberSet.get(i));
                     findViewById(R.id.number3).setVisibility(TextView.VISIBLE);
                     ((TextView) findViewById(R.id.number3))
-                            .setTextColor(getResources().getColor(R.color.regularBlack));
+                            .setTextColor(ContextCompat.getColor(this,R.color.regularBlack));
                     break;
                 }
                 case 3:{
@@ -151,7 +151,7 @@ public class ActivityQN06 extends ActivitiesMasterParent
                     findViewById(R.id.number4).setTag(mCurrentNumberSet.get(i));
                     findViewById(R.id.number4).setVisibility(TextView.VISIBLE);
                     ((TextView) findViewById(R.id.number4))
-                            .setTextColor(getResources().getColor(R.color.regularBlack));
+                            .setTextColor(ContextCompat.getColor(this,R.color.regularBlack));
                     break;
                 }
             }
@@ -428,37 +428,37 @@ public class ActivityQN06 extends ActivitiesMasterParent
             case 0:
                 if (mCorrect) {
                     ((TextView) findViewById(R.id.number1))
-                            .setTextColor(getResources().getColor(R.color.correct_green));
+                            .setTextColor(ContextCompat.getColor(this,R.color.correct_green));
                 }else{
                     ((TextView) findViewById(R.id.number1))
-                            .setTextColor(getResources().getColor(R.color.incorrect_red));
+                            .setTextColor(ContextCompat.getColor(this,R.color.incorrect_red));
                 }
                 break;
             case 1:
                 if (mCorrect) {
                     ((TextView) findViewById(R.id.number2))
-                            .setTextColor(getResources().getColor(R.color.correct_green));
+                            .setTextColor(ContextCompat.getColor(this,R.color.correct_green));
                 }else{
                     ((TextView) findViewById(R.id.number2))
-                            .setTextColor(getResources().getColor(R.color.incorrect_red));
+                            .setTextColor(ContextCompat.getColor(this,R.color.incorrect_red));
                 }
                 break;
             case 2:
                 if (mCorrect) {
                     ((TextView) findViewById(R.id.number3))
-                            .setTextColor(getResources().getColor(R.color.correct_green));
+                            .setTextColor(ContextCompat.getColor(this,R.color.correct_green));
                 }else{
                     ((TextView) findViewById(R.id.number3))
-                            .setTextColor(getResources().getColor(R.color.incorrect_red));
+                            .setTextColor(ContextCompat.getColor(this,R.color.incorrect_red));
                 }
                 break;
             case 3:
                 if (mCorrect) {
                     ((TextView) findViewById(R.id.number4))
-                            .setTextColor(getResources().getColor(R.color.correct_green));
+                            .setTextColor(ContextCompat.getColor(this,R.color.correct_green));
                 }else{
                     ((TextView) findViewById(R.id.number5))
-                            .setTextColor(getResources().getColor(R.color.incorrect_red));
+                            .setTextColor(ContextCompat.getColor(this,R.color.incorrect_red));
                 }
                 break;
         }
@@ -470,7 +470,7 @@ public class ActivityQN06 extends ActivitiesMasterParent
     //////////////////////////////////////////////////////////////////////////////////////
 
     private void processExtraData(Cursor mCursor){
-        mExtraNumberSet=new ArrayList<HashMap<String,String>>();
+        mExtraNumberSet=new ArrayList<>();
         int mNumber=0;
         int mNumberCorrectInARow=Constants.INA_ROW_CORRECT;
         if(mCursor.moveToFirst()) {
@@ -520,7 +520,7 @@ public class ActivityQN06 extends ActivitiesMasterParent
     //////////////////////////////////////////////////////////////////////////////////////
 
     protected void processData(Cursor mCursor){
-        mRoundsNumberSet=new ArrayList<HashMap<String,String>>();
+        mRoundsNumberSet=new ArrayList<>();
         int mNumber=0;
         int mNumberCorrectInARow=Constants.INA_ROW_CORRECT;
         if(mCursor.moveToFirst()) {
@@ -564,7 +564,7 @@ public class ActivityQN06 extends ActivitiesMasterParent
 
         mNumber=0;
         while(mRoundsNumberSet.size()<8){
-            mRoundsNumberSet.add(new HashMap<String, String>(mRoundsNumberSet.get(mNumber)));
+            mRoundsNumberSet.add(new HashMap<>(mRoundsNumberSet.get(mNumber)));
             mNumber++;
         }
         Collections.shuffle(mRoundsNumberSet);

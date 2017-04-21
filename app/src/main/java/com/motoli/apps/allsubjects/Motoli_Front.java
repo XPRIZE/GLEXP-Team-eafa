@@ -1,4 +1,14 @@
 package com.motoli.apps.allsubjects;
+
+import android.app.LoaderManager;
+import android.content.CursorLoader;
+import android.content.Loader;
+import android.database.Cursor;
+import android.os.Bundle;
+import android.util.Log;
+import android.content.Intent;
+
+
 /**
  * Part of Project Motoli All Subjects
  * for Education Technology For Development
@@ -11,16 +21,6 @@ package com.motoli.apps.allsubjects;
  * that were not need in anyway. This could have been causing some delay in the app
  * and was loading useless global variables wasting memory. ADMB
  */
-
-import android.app.LoaderManager;
-import android.content.CursorLoader;
-import android.content.Loader;
-import android.database.Cursor;
-import android.os.Bundle;
-import android.util.Log;
-import android.content.Intent;
-
-
 
 public class  Motoli_Front extends Master_Parent
         implements LoaderManager.LoaderCallbacks<Cursor> {

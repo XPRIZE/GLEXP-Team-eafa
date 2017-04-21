@@ -74,6 +74,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="@string/none"
+                android:onClick="syllabelVideoClicked"
                 android:src="@drawable/btn_video_countsyl"
                 android:visibility="visible" />
 
@@ -151,18 +152,19 @@
             app:layout_constraintRight_toLeftOf="@+id/videoBird"
             app:layout_constraintTop_toTopOf="@+id/videoFrame"
             app:layout_constraintBottom_toBottomOf="@+id/videoFrame"/>
+
         <ImageView
             android:id="@+id/videoBird"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/btn_spound_closed"
             android:contentDescription="@string/none"
-            app:layout_constraintVertical_bias=".9"
+            android:scaleType="fitEnd"
+            android:src="@drawable/btn_spound_closed"
+            app:layout_constraintBottom_toBottomOf="@+id/videoFrame"
             app:layout_constraintLeft_toRightOf="@+id/activityIcon"
             app:layout_constraintRight_toRightOf="@+id/videoFrame"
             app:layout_constraintTop_toTopOf="@+id/videoFrame"
-            app:layout_constraintBottom_toBottomOf="@+id/videoFrame"
-            />
+            app:layout_constraintVertical_bias=".9" />
 
         <ImageView
             android:id="@+id/videoListBackground"

@@ -1,10 +1,4 @@
-/**
- * Part of Project Motoli All Subjects
- * for Education Technology For Development
- * created by Aaron D Michaelis Borsay
- * on 1/30/2016
- *
- */
+
 package com.motoli.apps.allsubjects;
 
 
@@ -17,7 +11,13 @@ import android.widget.TextView;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 
-
+/**
+ * Part of Project Motoli All Subjects
+ * for Education Technology For Development
+ * created by Aaron D Michaelis Borsay
+ * on 1/30/2016
+ *
+ */
 public class ActivityOP08 extends ActivityOPRoot {
 
     private boolean mCreateFirstNumber;

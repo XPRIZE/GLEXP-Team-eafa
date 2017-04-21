@@ -1,30 +1,28 @@
 package com.motoli.apps.allsubjects;
-/**
- * Part of Project Motoli All Subjects
- * for Education Technology For Development
- * created by Aaron D Michaelis Borsay
- * on 8/12/2015.
- */
+
 
 import android.app.LoaderManager;
 import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
 
-
+/**
+ * Part of Project Motoli All Subjects
+ * for Education Technology For Development
+ * created by Aaron D Michaelis Borsay
+ * on 8/12/2015.
+ */
 public class ActivitySD01 extends ActivitySDRoot 
         implements LoaderManager.LoaderCallbacks<Cursor>{
 
@@ -57,9 +55,6 @@ public class ActivitySD01 extends ActivitySDRoot
 
 
         startActivityHandler.postDelayed(startActivity, 200);
-
-
-
     }//end public void onCreate(Bundle savedInstanceState) {
 
     //////////////////////////////////////////////////////////////////////////////////////////
@@ -81,26 +76,23 @@ public class ActivitySD01 extends ActivitySDRoot
 
     private void clearActivity(){
 
-
-
-
-
         ((TextView) findViewById(R.id.phonic1)).setText("");
         ((TextView) findViewById(R.id.phonic2)).setText("");
         ((TextView) findViewById(R.id.phonic3)).setText("");
         ((TextView) findViewById(R.id.phonic4)).setText("");
 
         ((TextView) findViewById(R.id.phonic1))
-                .setTextColor(getResources().getColor(R.color.normalBlack));
+                .setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
         ((TextView) findViewById(R.id.phonic2))
-                .setTextColor(getResources().getColor(R.color.normalBlack));
+                .setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
         ((TextView) findViewById(R.id.phonic3))
-                .setTextColor(getResources().getColor(R.color.normalBlack));
+                .setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
         ((TextView) findViewById(R.id.phonic4))
-                .setTextColor(getResources().getColor(R.color.normalBlack));
+                .setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
 
 
-        ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_off_mic);
+        ((ImageView) findViewById(R.id.btnValidate))
+                .setImageResource(R.drawable.btn_validate_off_mic);
 
         clearFrames();
 
@@ -164,7 +156,8 @@ public class ActivitySD01 extends ActivitySDRoot
 
     private void setUpFrame(int frameNumber){
         clearFrames();
-        ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_on_mic);
+        ((ImageView) findViewById(R.id.btnValidate))
+                .setImageResource(R.drawable.btn_validate_on_mic);
         mValidateAvailable=true;
         switch(frameNumber){
             default:
@@ -312,72 +305,72 @@ public class ActivitySD01 extends ActivitySDRoot
             }
             case Constants.CURRENT_EXTRA_PHONICS:{
 
-                ArrayList<String> mGrammarArray = new ArrayList<String>(
-                        Arrays.asList(args.getString("phonic_grammar").split(";")));
-                ArrayList<String> mGrammarArrayTwo = new ArrayList<String>(
-                        Arrays.asList(args.getString("phonic_grammar_last").split(";")));
-                mGrammarArray.addAll(mGrammarArrayTwo);
+                    ArrayList<String> mGrammarArray = new ArrayList<>(
+                            Arrays.asList(args.getString("phonic_grammar").split(";")));
+                    ArrayList<String> mGrammarArrayTwo = new ArrayList<>(
+                            Arrays.asList(args.getString("phonic_grammar_last").split(";")));
+                    mGrammarArray.addAll(mGrammarArrayTwo);
 
-                String mSelection="variable_phase_levels.level_number" +
-                        "<=" +mCurrentGSP.get("current_level")+ " " +
-                        "AND phonics.phonic_id!="+args.getString("phonic_id")+" ";
-
-
-                for(int i=0; i<mGrammarArray.size(); i++){
-                    if(i==0){
-                        mSelection+="AND ( phonics.phonic_text!=\""+mGrammarArray.get(i)+"\" ";
-                    }else{
-                        mSelection+="AND phonics.phonic_text!=\""+mGrammarArray.get(i)+"\" ";
-                    }
-                    if(i==mGrammarArray.size()-1){
-                        mSelection+=") ";
-                    }
-
-                }
-                switch(Integer.parseInt(args.getString("phonic_is_vowel"))){
-                    default:
-                    case 0:{
-                        mSelection+="AND phonic_is_vowel <=1 ";
-                        break;
-                    }
-                    case 2:{
-                        mSelection+="AND (phonic_is_vowel <=0 " +
-                                "OR phonic_is_vowel==2 OR phonic_is_vowel ==4) ";
-                        break;
-                    }
-                    case 3:{
-                        mSelection+="AND (phonic_is_vowel <=1 " +
-                                "OR phonic_is_vowel==3 OR phonic_is_vowel ==5) ";
-                        break;
-                    }
-                    case 4:{
-                        mSelection+="AND (phonic_is_vowel <=0 " +
-                                "OR phonic_is_vowel==2 OR phonic_is_vowel ==4) ";
-                        break;
-                    }
-                    case 5:{
-                        mSelection+="AND (phonic_is_vowel <=1 " +
-                                "OR phonic_is_vowel==3 OR phonic_is_vowel ==5) ";
-                        break;
-                    }
-                    case 6:{
-                        mSelection+="AND (phonic_is_vowel <=0 OR phonic_is_vowel==2 " +
-                                "OR phonic_is_vowel ==4 OR phonic_is_vowel ==6) ";
-                        break;
-                    }
-                }//end switch
+                    String mSelection = "variable_phase_levels.level_number" +
+                            "<=" + mCurrentGSP.get("current_level") + " " +
+                            "AND phonics.phonic_id!=" + args.getString("phonic_id") + " ";
 
 
-                String mOrder="";
-                if(args.getString("phonic_is_vowel").equals("0")){
-                    mOrder="phonics.phonic_is_vowel ASC";
-                }else{
-                    mOrder="phonics.phonic_is_vowel DESC";
-                }
+                    for (int i = 0; i < mGrammarArray.size(); i++) {
+                        if (i == 0) {
+                            mSelection += "AND ( phonics.phonic_text!=\"" + mGrammarArray.get(i) + "\" ";
+                        } else {
+                            mSelection += "AND phonics.phonic_text!=\"" + mGrammarArray.get(i) + "\" ";
+                        }
+                        if (i == mGrammarArray.size() - 1) {
+                            mSelection += ") ";
+                        }
 
-                cursorLoader = new CursorLoader(this,
-                        AppProvider.CONTENT_URI_ORDERED_PHONICS,
-                        null, mSelection, null, mOrder);
+                    }
+                    switch (Integer.parseInt(args.getString("phonic_is_vowel"))) {
+                        default:
+                        case 0: {
+                            mSelection += "AND phonic_is_vowel <=1 ";
+                            break;
+                        }
+                        case 2: {
+                            mSelection += "AND (phonic_is_vowel <=0 " +
+                                    "OR phonic_is_vowel==2 OR phonic_is_vowel ==4) ";
+                            break;
+                        }
+                        case 3: {
+                            mSelection += "AND (phonic_is_vowel <=1 " +
+                                    "OR phonic_is_vowel==3 OR phonic_is_vowel ==5) ";
+                            break;
+                        }
+                        case 4: {
+                            mSelection += "AND (phonic_is_vowel <=0 " +
+                                    "OR phonic_is_vowel==2 OR phonic_is_vowel ==4) ";
+                            break;
+                        }
+                        case 5: {
+                            mSelection += "AND (phonic_is_vowel <=1 " +
+                                    "OR phonic_is_vowel==3 OR phonic_is_vowel ==5) ";
+                            break;
+                        }
+                        case 6: {
+                            mSelection += "AND (phonic_is_vowel <=0 OR phonic_is_vowel==2 " +
+                                    "OR phonic_is_vowel ==4 OR phonic_is_vowel ==6) ";
+                            break;
+                        }
+                    }//end switch
+
+
+                    String mOrder;
+                    if (args.getString("phonic_is_vowel").equals("0")) {
+                        mOrder = "phonics.phonic_is_vowel ASC";
+                    } else {
+                        mOrder = "phonics.phonic_is_vowel DESC";
+                    }
+
+                    cursorLoader = new CursorLoader(this,
+                            AppProvider.CONTENT_URI_ORDERED_PHONICS,
+                            null, mSelection, null, mOrder);
 
                 break;
             }
@@ -420,7 +413,8 @@ public class ActivitySD01 extends ActivitySDRoot
         for(int i=0; i<4; i++){
             mRoundPhonics.get(i).put("guessed_yet","0");
         }
-        ((TextView) findViewById(R.id.phonic1)).setText(mRoundPhonics.get(0).get("phonic_text").replace("&quot;","'"));
+        ((TextView) findViewById(R.id.phonic1)).setText(
+                mRoundPhonics.get(0).get("phonic_text").replace("&quot;","'"));
 
         if(mRoundPhonics.get(0).get("is_correct").equals("1")){
             mCorrectLocation=0;
@@ -428,21 +422,24 @@ public class ActivitySD01 extends ActivitySDRoot
         }
 
 
-        ((TextView) findViewById(R.id.phonic2)).setText(mRoundPhonics.get(1).get("phonic_text").replace("&quot;","'"));
+        ((TextView) findViewById(R.id.phonic2)).setText(
+                mRoundPhonics.get(1).get("phonic_text").replace("&quot;","'"));
 
         if(mRoundPhonics.get(1).get("is_correct").equals("1")){
             mCorrectLocation=1;
             mCorrectAudio=mRoundPhonics.get(1).get("phonic_audio");
         }
 
-        ((TextView) findViewById(R.id.phonic3)).setText(mRoundPhonics.get(2).get("phonic_text").replace("&quot;","'"));
+        ((TextView) findViewById(R.id.phonic3)).setText(
+                mRoundPhonics.get(2).get("phonic_text").replace("&quot;","'"));
 
         if(mRoundPhonics.get(2).get("is_correct").equals("1")){
             mCorrectLocation=2;
             mCorrectAudio=mRoundPhonics.get(2).get("phonic_audio");
         }
 
-        ((TextView) findViewById(R.id.phonic4)).setText(mRoundPhonics.get(3).get("phonic_text").replace("&quot;","'"));
+        ((TextView) findViewById(R.id.phonic4)).setText(
+                mRoundPhonics.get(3).get("phonic_text").replace("&quot;","'"));
 
         if(mRoundPhonics.get(3).get("is_correct").equals("1")){
             mCorrectLocation=3;

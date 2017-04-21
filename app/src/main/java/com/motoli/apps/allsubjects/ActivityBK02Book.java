@@ -5,13 +5,11 @@ import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Color;
-import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -152,18 +150,25 @@ public class ActivityBK02Book extends Master_Parent implements
     /////////////////////////////////////////////////////////////////////////////////////////
 
     protected void processData(Cursor mCursor){
-        mBookPages=new ArrayList<ArrayList<String>>();
+        mBookPages=new ArrayList<>();
         int mPageNumber=0;
         mCursor.moveToFirst();
         while (!mCursor.isAfterLast()) {
             mBookPages.add(new ArrayList<String>());
-            mBookPages.get(mPageNumber).add(mCursor.getString(mCursor.getColumnIndex("book_pages_id")));    //0
-            mBookPages.get(mPageNumber).add(mCursor.getString(mCursor.getColumnIndex("book_id")));          //1
-            mBookPages.get(mPageNumber).add(mCursor.getString(mCursor.getColumnIndex("book_page_order")));  //2
-            mBookPages.get(mPageNumber).add(mCursor.getString(mCursor.getColumnIndex("book_page_image")));  //3
-            mBookPages.get(mPageNumber).add(mCursor.getString(mCursor.getColumnIndex("book_page_audio")));  //4
-            mBookPages.get(mPageNumber).add(mCursor.getString(mCursor.getColumnIndex("book_page_text")));   //5
-            mBookPages.get(mPageNumber).add(mCursor.getString(mCursor.getColumnIndex("book_page_time")));   //6
+            mBookPages.get(mPageNumber).add(mCursor.getString
+                    (mCursor.getColumnIndex("book_pages_id")));    //0
+            mBookPages.get(mPageNumber).add(mCursor.getString(
+                    mCursor.getColumnIndex("book_id")));          //1
+            mBookPages.get(mPageNumber).add(mCursor.getString(
+                    mCursor.getColumnIndex("book_page_order")));  //2
+            mBookPages.get(mPageNumber).add(mCursor.getString(
+                    mCursor.getColumnIndex("book_page_image")));  //3
+            mBookPages.get(mPageNumber).add(mCursor.getString(
+                    mCursor.getColumnIndex("book_page_audio")));  //4
+            mBookPages.get(mPageNumber).add(mCursor.getString(
+                    mCursor.getColumnIndex("book_page_text")));   //5
+            mBookPages.get(mPageNumber).add(mCursor.getString(
+                    mCursor.getColumnIndex("book_page_time")));   //6
             mPageNumber++;
             mCursor.moveToNext();
         }
@@ -207,11 +212,13 @@ public class ActivityBK02Book extends Master_Parent implements
 
         if(!mBookPages.get(mCurrentPage).get(3).equals("prev")) {
             try {
-                String imageName = mBookPages.get(mCurrentPage).get(3).replace(".jpg", "").replace(".png", "").trim();
+                String imageName = mBookPages.get(mCurrentPage).get(3)
+                        .replace(".jpg", "").replace(".png", "").trim();
                 int resID = getResources().getIdentifier(imageName, "drawable", getPackageName());
                 ((ImageView) findViewById(R.id.bookPageImage)).setImageResource(resID);
             } catch (Exception e) {
-                ((ImageView) findViewById(R.id.bookPageImage)).setImageResource(R.drawable.blank_image);
+                ((ImageView) findViewById(R.id.bookPageImage))
+                        .setImageResource(R.drawable.blank_image);
                 Log.e("MyTag", "Failure to get drawable id.", e);
             }
         }
@@ -227,20 +234,17 @@ public class ActivityBK02Book extends Master_Parent implements
 
             String strCurrentText = "";
             String allWords = mBookPages.get(mCurrentPage).get(5);
-            String allHighlightTimes = mBookPages.get(mCurrentPage).get(6);
-            String mHighlightColor="#cc3333";//+ Integer.toHexString(getResources().getColor(R.color.bk02_highlight));
-                    //getResources().getString(R.color.bk02_highlight);
+            String mHighlightColor="#cc3333";
 
-            ArrayList<String> wordArray = new ArrayList<String>(Arrays.asList(allWords.split(";")));
+            ArrayList<String> wordArray = new ArrayList<>(Arrays.asList(allWords.split(";")));
             for(int i=0;i<wordArray.size(); i++) {
                 wordArray.set(i, wordArray.get(i).replace("&br", "<br/>").replace("&bt", "<br/>")
                         .replace("&dq:", "&quot;").replace("&sq:", "&rsquo;").replace("\t", "")
                         .replace("\r", "").replace("\n", ""));
             }
             int mWordCount=wordArray.size();
-//            long mAudioDuration=getAudioDuration(mBookPages.get(mCurrentPage).get(4));
             double mWordHighlightTime=(double)(mAudioDuration/mWordCount)/1000;
-            ArrayList<String> mHighlightArray = new ArrayList<String>();
+            ArrayList<String> mHighlightArray = new ArrayList<>();
 
             mHighlightArray.add("0");
             for(int i=1;i<mWordCount;i++){
@@ -249,7 +253,6 @@ public class ActivityBK02Book extends Master_Parent implements
                 mHighlightArray.add(String.valueOf(mHighlight));
             }
 
-            //  Arrays.asList(allHighlightTimes.split(";")));
 
             if (wordArray.size() > mHighlightArray.size()) {
                 int hlCount = wordArray.size() - mHighlightArray.size();
@@ -265,7 +268,8 @@ public class ActivityBK02Book extends Master_Parent implements
                     strCurrentText += wordArray.get(i) + " ";
                 } else {
                     if (i == mHighlightCount)
-                        strCurrentText += "<font color='"+mHighlightColor+"'>"+ wordArray.get(i) + "</font> ";
+                        strCurrentText += "<font color='"+mHighlightColor+"'>"+
+                                wordArray.get(i) + "</font> ";
                     else
                         strCurrentText += wordArray.get(i) + " ";
 
@@ -318,8 +322,7 @@ public class ActivityBK02Book extends Master_Parent implements
             readPage();
         }
     }
-    ////////////////////////////////////////////////////////////////////////////////////////
-    
+
     ////////////////////////////////////////////////////////////////////////////////////////
 
     private Runnable audioRunnable = new Runnable() {
@@ -331,7 +334,8 @@ public class ActivityBK02Book extends Master_Parent implements
                 case 0:
                 default: {
                     mAllowNextPage = false;
-                    mAudioDurationSub = playGeneralAudio(mBookPages.get(mCurrentPage).get(4).replace(".mp3",""));
+                    mAudioDurationSub = playGeneralAudio(
+                            mBookPages.get(mCurrentPage).get(4).replace(".mp3",""));
                     mAudioPlayPosition++;
                     mAudioHandler.postDelayed(audioRunnable, mAudioDurationSub + 10);
 
@@ -397,7 +401,6 @@ public class ActivityBK02Book extends Master_Parent implements
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        String[] projection;
         CursorLoader cursorLoader;
         HashMap<String,String> mCurrentBook=new HashMap<>(appData.getCurrentBook());
         switch(id){

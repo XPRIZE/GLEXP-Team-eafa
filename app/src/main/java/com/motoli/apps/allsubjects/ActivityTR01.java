@@ -3,8 +3,8 @@ package com.motoli.apps.allsubjects;
 import android.app.LoaderManager;
 import android.content.Loader;
 import android.database.Cursor;
-import android.media.Image;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -41,28 +41,28 @@ public class ActivityTR01 extends ActivitiesMasterParent
         findViewById(R.id.brushMedium).setAlpha(1.0f);
 
         ((ImageView) findViewById(R.id.buttonBlack)).setImageDrawable(
-                getResources().getDrawable(R.drawable.circle_color_black));
+                ContextCompat.getDrawable(this,R.drawable.circle_color_black));
         ((ImageView) findViewById(R.id.buttonWhite)).setImageDrawable(
-                getResources().getDrawable(R.drawable.circle_color_white));
+                ContextCompat.getDrawable(this,R.drawable.circle_color_white));
         ((ImageView) findViewById(R.id.buttonBlue)).setImageDrawable(
-                getResources().getDrawable(R.drawable.circle_color_blue));
+                ContextCompat.getDrawable(this,R.drawable.circle_color_blue));
         ((ImageView) findViewById(R.id.buttonLightBlue)).setImageDrawable(
-                getResources().getDrawable(R.drawable.circle_color_light_blue));
+                ContextCompat.getDrawable(this,R.drawable.circle_color_light_blue));
         ((ImageView) findViewById(R.id.buttonRed)).setImageDrawable(
-                getResources().getDrawable(R.drawable.circle_color_red));
+                ContextCompat.getDrawable(this,R.drawable.circle_color_red));
         ((ImageView) findViewById(R.id.buttonOrange)).setImageDrawable(
-                getResources().getDrawable(R.drawable.circle_color_orange));
+                ContextCompat.getDrawable(this,R.drawable.circle_color_orange));
         ((ImageView) findViewById(R.id.buttonYellow)).setImageDrawable(
-                getResources().getDrawable(R.drawable.circle_color_yellow));
+                ContextCompat.getDrawable(this,R.drawable.circle_color_yellow));
         ((ImageView) findViewById(R.id.buttonGreen)).setImageDrawable(
-                getResources().getDrawable(R.drawable.circle_color_green));
+                ContextCompat.getDrawable(this,R.drawable.circle_color_green));
         ((ImageView) findViewById(R.id.buttonPurple)).setImageDrawable(
-                getResources().getDrawable(R.drawable.circle_color_purple));
+                ContextCompat.getDrawable(this,R.drawable.circle_color_purple));
         ((ImageView) findViewById(R.id.buttonPink)).setImageDrawable(
-                getResources().getDrawable(R.drawable.circle_color_pink));
+                ContextCompat.getDrawable(this,R.drawable.circle_color_pink));
 
         ((ImageView) findViewById(R.id.buttonGreen)).setImageDrawable(
-                getResources().getDrawable(R.drawable.circle_color_green_selected));
+                ContextCompat.getDrawable(this,R.drawable.circle_color_green_selected));
         findViewById(R.id.buttonGreen).setAlpha(1.0f);
         setUpListeners();
 
@@ -85,77 +85,77 @@ public class ActivityTR01 extends ActivitiesMasterParent
 
 
         ((ImageView) findViewById(R.id.buttonBlack)).setImageDrawable(
-                getResources().getDrawable(R.drawable.circle_color_black));
+                ContextCompat.getDrawable(this,R.drawable.circle_color_black));
         ((ImageView) findViewById(R.id.buttonWhite)).setImageDrawable(
-                getResources().getDrawable(R.drawable.circle_color_white));
+                ContextCompat.getDrawable(this,R.drawable.circle_color_white));
         ((ImageView) findViewById(R.id.buttonBlue)).setImageDrawable(
-                getResources().getDrawable(R.drawable.circle_color_blue));
+                ContextCompat.getDrawable(this,R.drawable.circle_color_blue));
         ((ImageView) findViewById(R.id.buttonLightBlue)).setImageDrawable(
-                getResources().getDrawable(R.drawable.circle_color_light_blue));
+                ContextCompat.getDrawable(this,R.drawable.circle_color_light_blue));
         ((ImageView) findViewById(R.id.buttonRed)).setImageDrawable(
-                getResources().getDrawable(R.drawable.circle_color_red));
+                ContextCompat.getDrawable(this,R.drawable.circle_color_red));
         ((ImageView) findViewById(R.id.buttonOrange)).setImageDrawable(
-                getResources().getDrawable(R.drawable.circle_color_orange));
+                ContextCompat.getDrawable(this,R.drawable.circle_color_orange));
         ((ImageView) findViewById(R.id.buttonYellow)).setImageDrawable(
-                getResources().getDrawable(R.drawable.circle_color_yellow));
+                ContextCompat.getDrawable(this,R.drawable.circle_color_yellow));
         ((ImageView) findViewById(R.id.buttonGreen)).setImageDrawable(
-                getResources().getDrawable(R.drawable.circle_color_green));
+                ContextCompat.getDrawable(this,R.drawable.circle_color_green));
         ((ImageView) findViewById(R.id.buttonPurple)).setImageDrawable(
-                getResources().getDrawable(R.drawable.circle_color_purple));
+                ContextCompat.getDrawable(this,R.drawable.circle_color_purple));
         ((ImageView) findViewById(R.id.buttonPink)).setImageDrawable(
-                getResources().getDrawable(R.drawable.circle_color_pink));
+                ContextCompat.getDrawable(this,R.drawable.circle_color_pink));
 
         switch(Integer.parseInt(view.getTag().toString())){
             default:
             case 1:
                 findViewById(R.id.buttonRed).setAlpha(1.0f);
                 ((ImageView) findViewById(R.id.buttonRed)).setImageDrawable(
-                        getResources().getDrawable(R.drawable.circle_color_red_selected));
+                        ContextCompat.getDrawable(this,R.drawable.circle_color_red_selected));
                 break;
             case 2:
                 findViewById(R.id.buttonOrange).setAlpha(1.0f);
                 ((ImageView) findViewById(R.id.buttonOrange)).setImageDrawable(
-                        getResources().getDrawable(R.drawable.circle_color_orange_selected));
+                        ContextCompat.getDrawable(this,R.drawable.circle_color_orange_selected));
                 break;
             case 3:
                 findViewById(R.id.buttonYellow).setAlpha(1.0f);
                 ((ImageView) findViewById(R.id.buttonYellow)).setImageDrawable(
-                        getResources().getDrawable(R.drawable.circle_color_yellow_selected));
+                        ContextCompat.getDrawable(this,R.drawable.circle_color_yellow_selected));
                 break;
             case 4:
                 findViewById(R.id.buttonGreen).setAlpha(1.0f);
                 ((ImageView) findViewById(R.id.buttonGreen)).setImageDrawable(
-                        getResources().getDrawable(R.drawable.circle_color_green_selected));
+                        ContextCompat.getDrawable(this,R.drawable.circle_color_green_selected));
                 break;
             case 5:
                 findViewById(R.id.buttonLightBlue).setAlpha(1.0f);
                 ((ImageView) findViewById(R.id.buttonLightBlue)).setImageDrawable(
-                        getResources().getDrawable(R.drawable.circle_color_light_blue_selected));
+                        ContextCompat.getDrawable(this,R.drawable.circle_color_light_blue_selected));
                 break;
             case 6:
                 findViewById(R.id.buttonBlue).setAlpha(1.0f);
                 ((ImageView) findViewById(R.id.buttonBlue)).setImageDrawable(
-                        getResources().getDrawable(R.drawable.circle_color_blue_selected));
+                        ContextCompat.getDrawable(this,R.drawable.circle_color_blue_selected));
                 break;
             case 7:
                 findViewById(R.id.buttonPurple).setAlpha(1.0f);
                 ((ImageView) findViewById(R.id.buttonPurple)).setImageDrawable(
-                        getResources().getDrawable(R.drawable.circle_color_purple_selected));
+                        ContextCompat.getDrawable(this,R.drawable.circle_color_purple_selected));
                 break;
             case 8:
                 findViewById(R.id.buttonPink).setAlpha(1.0f);
                 ((ImageView) findViewById(R.id.buttonPink)).setImageDrawable(
-                        getResources().getDrawable(R.drawable.circle_color_pink_selected));
+                        ContextCompat.getDrawable(this,R.drawable.circle_color_pink_selected));
                 break;
             case 9:
                 findViewById(R.id.buttonBlack).setAlpha(1.0f);
                 ((ImageView) findViewById(R.id.buttonBlack)).setImageDrawable(
-                        getResources().getDrawable(R.drawable.circle_color_black_selected));
+                        ContextCompat.getDrawable(this,R.drawable.circle_color_black_selected));
                 break;
             case 10:
                 findViewById(R.id.buttonWhite).setAlpha(1.0f);
                 ((ImageView) findViewById(R.id.buttonWhite)).setImageDrawable(
-                        getResources().getDrawable(R.drawable.circle_color_white_selected));
+                        ContextCompat.getDrawable(this,R.drawable.circle_color_white_selected));
                 break;
         }
     }

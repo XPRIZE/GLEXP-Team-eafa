@@ -167,11 +167,7 @@ public class ActivityOP04 extends ActivityOPRoot
             mCustomMathOperationDots  = mFinalDots;
             mNumber=mAnswer;
         }
-        if(mNumberTwo>mNumberOne){
-            mCustomMathOperationDots.setMaxDots(mNumberTwo);
-        }else{
-            mCustomMathOperationDots.setMaxDots(mNumberOne);
-        }
+
 
         mCustomMathOperationDots.setVisibility(MathOperationDots.VISIBLE);
         mCustomMathOperationDots.clearCanvas();

@@ -4,9 +4,9 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Path;
 import android.graphics.RectF;
+import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.ImageView;
 
 /**
  * Part of Project Motoli All Subjects
@@ -14,7 +14,7 @@ import android.widget.ImageView;
  * created by Aaron D Michaelis Borsay
  * on 10/13/2015.
  */
-public class RoundedImage extends ImageView {
+public class RoundedImage extends AppCompatImageView {
 
     private Path roundedPath;
     private int rounded;
@@ -49,9 +49,6 @@ public class RoundedImage extends ImageView {
         }
     }
 
-    public int getRounded() {
-        return rounded;
-    }
 
     public void setRounded(int rounded) {
         this.rounded = rounded;

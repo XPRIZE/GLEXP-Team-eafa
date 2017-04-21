@@ -1,23 +1,25 @@
 package com.motoli.apps.allsubjects;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
 import android.view.View;
 
-import java.util.ArrayList;
-
+/**
+ * Part of Project Motoli All Subjects
+ * for Education Technology For Development
+ * created by Aaron D Michaelis Borsay
+ * on 6/29/2016.
+ */
 public class CanvasView extends View {
 
     public int width;
-    private Bitmap mBitmap;
     private Path mPath;
-    Context context;
+    Context mContext;
     private Paint mPaint;
     private int mType=0;
 
@@ -26,16 +28,14 @@ public class CanvasView extends View {
 
     public CanvasView(Context c, AttributeSet attrs) {
         super(c, attrs);
-        context = c;
+        mContext = c;
 
         mColor=0;
 
         mPath = new Path();
 
-        String id= attrs.getIdAttribute();
         mType=Integer.parseInt((String)getTag());
 
-        //mType=
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
 
@@ -50,8 +50,6 @@ public class CanvasView extends View {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
 
-        // your Canvas will draw onto the defined Bitmap
-        mBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
     }
 
     // override onDraw
@@ -67,32 +65,32 @@ public class CanvasView extends View {
                     if(i==0) {
                         mPaint.setColor(Color.WHITE);
                     }else{
-                        mPaint.setColor(getResources().getColor(R.color.darkGray));
+                        mPaint.setColor(ContextCompat.getColor(mContext,R.color.darkGray));
                     }
                     break;
                 }
                 case 1: {
-                    mPaint.setColor(getResources().getColor(R.color.shape_color_green));
+                    mPaint.setColor(ContextCompat.getColor(mContext,R.color.shape_color_green));
                     break;
                 }
                 case 2: {
-                    mPaint.setColor(getResources().getColor(R.color.shape_color_blue));
+                    mPaint.setColor(ContextCompat.getColor(mContext,R.color.shape_color_blue));
                     break;
                 }
                 case 3: {
-                    mPaint.setColor(getResources().getColor(R.color.shape_color_red));
+                    mPaint.setColor(ContextCompat.getColor(mContext,R.color.shape_color_red));
                     break;
                 }
                 case 4: {
-                    mPaint.setColor(getResources().getColor(R.color.shape_color_yellow));
+                    mPaint.setColor(ContextCompat.getColor(mContext,R.color.shape_color_yellow));
                     break;
                 }
                 case 5: {
-                    mPaint.setColor(getResources().getColor(R.color.shape_color_pink));
+                    mPaint.setColor(ContextCompat.getColor(mContext,R.color.shape_color_pink));
                     break;
                 }
                 case 6: {
-                    mPaint.setColor(getResources().getColor(R.color.shape_color_orange));
+                    mPaint.setColor(ContextCompat.getColor(mContext,R.color.shape_color_orange));
                     break;
                 }
             }
@@ -118,7 +116,7 @@ public class CanvasView extends View {
                     Rectangle
                  */
 
-                    float mViewSize = 110f;
+                    float mViewSize;
                     if (getHeight() < getWidth()) {
                         mViewSize = (getHeight() / 2.5f);
                     } else {
@@ -143,7 +141,7 @@ public class CanvasView extends View {
                 /*
                     square
                  */
-                    float mViewSize = 110f;
+                    float mViewSize ;
                     if (getHeight() < getWidth()) {
                         mViewSize = (getHeight() / 2.5f);
                     } else {
@@ -160,7 +158,7 @@ public class CanvasView extends View {
                 /*
                     Circle
                  */
-                    float mViewSize = 0;
+                    float mViewSize ;
                     if (getHeight() < getWidth()) {
                         mViewSize = getHeight() / 2.2f;
                     } else {
@@ -174,7 +172,7 @@ public class CanvasView extends View {
                     Star
                  */
 
-                    int mViewSize = 0;
+                    int mViewSize ;
                     if (getHeight() < getWidth()) {
                         mViewSize = getHeight();
                     } else {
@@ -191,7 +189,7 @@ public class CanvasView extends View {
                 /*
                     Triangle
                  */
-                    float mViewSize = 110f;
+                    float mViewSize;
                     if (getHeight() < getWidth()) {
                         mViewSize = (getHeight() / 2.5f);
                     } else {
@@ -212,18 +210,19 @@ public class CanvasView extends View {
 
 
     private Path createStarBySyze(float width, int steps) {
-        float halfWidth = width / 2.0F;
-        float bigRadius = halfWidth;
-        float radius = halfWidth / 2.7F;
+        float y = width / 2.0F;
+        float radius = y / 2.7F;
         float degreesPerStep = (float) Math.toRadians(360.0F / (float) steps);
         float halfDegreesPerStep = degreesPerStep / 2.0F;
         Path ret = new Path();
         //ret.setFillType(Path.FillType.EVEN_ODD);
         float max = (float) (2.0F* Math.PI);
-        ret.moveTo(width,halfWidth);
+        ret.moveTo(width,y);
         for (double step = 0; step < max; step += degreesPerStep) {
-            ret.lineTo((float)(halfWidth + bigRadius * Math.cos(step)), (float)(halfWidth + bigRadius * Math.sin(step)));
-            ret.lineTo((float)(halfWidth + radius * Math.cos(step + halfDegreesPerStep)), (float)(halfWidth + radius * Math.sin(step + halfDegreesPerStep)));
+            ret.lineTo((float)(y + y * Math.cos(step)),
+                    (float)(y + y * Math.sin(step)));
+            ret.lineTo((float)(y + radius * Math.cos(step + halfDegreesPerStep)),
+                    (float)(y + radius * Math.sin(step + halfDegreesPerStep)));
         }
 
         ret.close();

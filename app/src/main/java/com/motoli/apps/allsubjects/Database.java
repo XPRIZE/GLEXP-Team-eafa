@@ -1,4 +1,16 @@
 package com.motoli.apps.allsubjects;
+
+
+import java.io.File;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
+import android.provider.BaseColumns;
+import android.util.Log;
+
 /**
  * Part of Project Motoli All Subjects
  * for Education Technology For Development
@@ -14,19 +26,7 @@ package com.motoli.apps.allsubjects;
  * It only holds on to the user data so the user does not have to begin again.
  */
 
-
-
-import java.io.File;
-
-import android.content.ContentValues;
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-
-import android.provider.BaseColumns;
-import android.util.Log;
-
-public final class Database {
+final class Database {
 
 
 
@@ -59,7 +59,7 @@ public final class Database {
     }
 
 
-    public static void addNew(SQLiteDatabase db){
+    static void addNew(SQLiteDatabase db){
         App_Users.onCreate(db);
         Log.d(Constants.LOGCAT, "App_Users.onCreate(db)");
 
@@ -87,7 +87,7 @@ public final class Database {
 
 
 
-    public static void updateDB(SQLiteDatabase mDatabase, Context mContext, String mDBOldName){
+    static void updateDB(SQLiteDatabase mDatabase, Context mContext, String mDBOldName){
 
         SQLiteDatabase mDatabaseOld;
 
@@ -278,6 +278,7 @@ public final class Database {
                             mDatabase.execSQL(updateSQL);
                         }
                     }
+                    mCursorDuplicate.close();
                 }while(mCursor.moveToNext());
             }
             mCursor.close();

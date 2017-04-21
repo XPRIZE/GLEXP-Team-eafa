@@ -1,4 +1,15 @@
 package com.motoli.apps.allsubjects;
+
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import android.app.Application;
+import android.graphics.Typeface;
+import android.util.Log;
+
+import com.squareup.leakcanary.LeakCanary;
+
 /**
  * Part of Project Motoli All Subjects
  * for Education Technology For Development
@@ -13,16 +24,6 @@ package com.motoli.apps.allsubjects;
  *
  * @author Aaron Borsay
  */
-
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import android.app.Application;
-import android.content.Context;
-import android.content.res.AssetManager;
-import android.graphics.Typeface;
-import android.util.Log;
-
 public class Motoli_Application extends Application {
 
     private static final String ADMIN_PASSWORD="xprize";
@@ -32,14 +33,9 @@ public class Motoli_Application extends Application {
     private int mTracingType=0;
 
     private  Typeface mCurrentFontType;
-    private  Typeface mCurrentFontTypeBold;
 
     private boolean mIsAdminEnabled=false;
-
-    private int mDatabaseVersion=0;
-
-    private boolean mAllowActivityText=true;
-
+    private ArrayList<Integer> mClassOrder;
     private String mCurrentUserID;
 
     private String mCurrentActivityName;
@@ -52,24 +48,17 @@ public class Motoli_Application extends Application {
     private HashMap<String, String> mCurrentGroupSectionPhase;
     private ArrayList<String>  mCurrentActivity;
 
-    private ArrayList<Integer> mClassOrder;
 
     private int mCurrentSection=0;
 
     private int mCurrentVideoID=0;
-    private static AssetManager mAssetManager;
 
 
     private int mActivityType=0;
 
     private HashMap<String,String> mCanvasList;
-    private  Context mContext;
 
 
-
-    static{
-        mAssetManager = null;
-    }
 
 
     public Motoli_Application() {
@@ -81,6 +70,16 @@ public class Motoli_Application extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            // This process is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this process.
+            return;
+        }
+        LeakCanary.install(this);
+
+
         mClassOrder=new ArrayList<>();
         mCurrentActivityName="SplashPage";
 
@@ -89,13 +88,11 @@ public class Motoli_Application extends Application {
          * set but never used in the app. Even despite that being unused data it 
          * must remain in case it is ever in use.
          */
-        mAssetManager = getAssets();
 
         mCurrentFontType=Typeface.createFromAsset(getAssets(),
                 "fonts/Convergence-Regular.ttf");
 //               "fonts/Viga-Regular.ttf");/* "fonts/AndikaNewBasic.ttf");*/
-        mCurrentFontTypeBold=Typeface.createFromAsset(getAssets(), 
-                "fonts/AndikaNewBasic-B.ttf");
+
         mNumberFontTypeface=Typeface.createFromAsset(getAssets(),
                 "fonts/primer_print_bold.ttf"); //this is for the numbers
 
@@ -105,16 +102,11 @@ public class Motoli_Application extends Application {
     }
 
 
-    public  Context getContext() {
-        return mContext;
-    }
-
-    public  void setContext(Context mContext) {
-        this.mContext = mContext;
-    }
-
-
-
+    /**
+     * Tests is password inputted by user is valid for Admin abilities
+     * @param mPassword password typed by use
+     * @return boolean is password correct
+     */
     public boolean inputAdminPassword(String mPassword){
         if(mPassword.equals(ADMIN_PASSWORD)){
             mIsAdminEnabled=true;
@@ -125,49 +117,74 @@ public class Motoli_Application extends Application {
         }
     }
 
+    /**
+     * Responds to Launch_Platform is Admin is available
+     * @return true is admin is available
+     */
     public boolean isAdminEnabled(){
         return mIsAdminEnabled;
     }
+
+    /**
+     * Returns type of tracing for use in ActivityTR02 to allow the if to return to that type
+     * auto after tracing done
+     * @return mTracingType int
+     */
     public int getTracingType(){
         return mTracingType;
     }
 
+    /**
+     * Sets tracing type for use @see getTracingType()
+     * @param mTracingType type set in ActivityTR02 when related icon is clicked
+     */
     public void setTracingType(int mTracingType){
         this.mTracingType=mTracingType;
     }
 
+    /**
+     * Stores list data for simple return when tracing is done from ActivityTR02
+     * @param mCanvasList Is set list based upon current mTracingType
+     */
     public void placeCanvasList(HashMap<String,String> mCanvasList){
         this.mCanvasList=mCanvasList;
     }
 
-    public boolean getAllowActivityText(){
-        return mAllowActivityText;
-    }
-
-
-    public void setAllowActivityText(boolean mAllowActivityText){
-        this.mAllowActivityText=mAllowActivityText;
-    }
-
-
+    /**
+     * Return stored list from ActivityTR
+     * @return HashMap of current tracing list data
+     */
     public HashMap<String,String> getCanvasList(){
         return mCanvasList;
     }
 
-    public int getDatabaseVersion(){
-        return mDatabaseVersion;
+    /**
+     * This is for debugging to allow activity text to appear in each activity for test purposes.
+     * This is set statically by Motoli_Application
+     * @return      True if allowed, otherwise false
+     */
+    public boolean getAllowActivityText(){
+        /* boolean mAllowActivityText=true;*/
+        return true;
     }
 
-    public void setDatabaseVersion(int mDatabaseVersion){
-        this.mDatabaseVersion = mDatabaseVersion;
-    }
-
+    /**
+     * @see AppProvider Cursor query(@NonNull Uri uri,  String[] projection, String selection,
+     *                     String[] selectionArgs, String sortOrder)
+     *                     Case GROUPS_PHASE_LEVELS_UPDATE
+     * Used to speed up Updating of data in DB
+     * @param mUpdateType   1 is to do an update for all group phase levels
+     *                      2 is only for certain groups.
+     */
     public void setUpdateType(int mUpdateType){
         this.mUpdateType=mUpdateType;
     }
 
-
-
+    /**
+     * @link setUpdateType(int mUpdateType)
+     * @return boolean  1 is to do an update for all group phase levels
+     *                  2 is only for certain groups.
+     */
     public int getUpdateType(){
         return this.mUpdateType;
     }
@@ -249,7 +266,7 @@ public class Motoli_Application extends Application {
      * setCurrentVideoID(int mCurrentVideoID)
      * Set video in Launch_Platform before user goes to Activities_Platform to allow user to go 
      * to correct video associated with current group.
-     * @param mCurrentVideoID
+     * @param mCurrentVideoID current ID video is one
      */
     public void setCurrentVideoID(int mCurrentVideoID){
         this.mCurrentVideoID=mCurrentVideoID;
@@ -264,14 +281,7 @@ public class Motoli_Application extends Application {
         return this.mCurrentFontType;
     }
 
-    /****************************************************************************
-     * Typeface getCurrentFontTypeBold()
-     * This is set in static but the font is needed throughout the app
-     * @return mCurrentFontTypeBold
-     */
-    public Typeface getCurrentFontTypeBold(){
-        return this.mCurrentFontTypeBold;
-    }
+
 
 
     /****************************************************************************
@@ -285,32 +295,17 @@ public class Motoli_Application extends Application {
 
 
 
-    /***************************************************************************
-     *
-     * @return
-     */
-
-
-/* */
     /****************************************************************************
      * addToClassOrder(Integer classNumber)
      * This is used to help the app move to correct activities.
      * Each activity sets this to a stack list
-     * @param classNumber
+     * @param classNumber Sets stack number. Usually is 5 for most general activities
      */
      public void addToClassOrder(Integer classNumber){
-
         mClassOrder.add(classNumber);
     }
 
-    /****************************************************************************
-     * void removeLastClassOrder()
-     * This is used to make sure the video activities move to the correct location when the
-     * back button is pressed
-     */
-     public void removeLastClassOrder(){
-        mClassOrder.remove(mClassOrder.size() - 1);
-    }
+
 
     /****************************************************************************
      * void  setClassesForLaunch()
@@ -319,7 +314,7 @@ public class Motoli_Application extends Application {
      */
     public void setClassesForLaunch(){
         mClassOrder.clear();
-        mClassOrder=new ArrayList<Integer>();
+        mClassOrder=new ArrayList<>();
         mClassOrder.add(0);
         mClassOrder.add(1);
         mClassOrder.add(2);
@@ -333,45 +328,20 @@ public class Motoli_Application extends Application {
     public void setClassesForActivities(){
 
         mClassOrder.clear();
-        mClassOrder=new ArrayList<Integer>();
+        mClassOrder=new ArrayList<>();
         mClassOrder.add(0);
         mClassOrder.add(1);
         mClassOrder.add(2);
         mClassOrder.add(3);
     }
 
-    /****************************************************************************
-     * int getPreviousClass()
-     * Returns previous class order from stack in order to ensure that the core 0-3
-     * is set based on other activities. Again this makes sure that movement
-     * between activities and leaving of the app is correct.
-     * @return
-     */
-    public int getPreviousClass(){
-        int mClassOrderSize=mClassOrder.size();
-        int mPreviousClassNumber=0;
-        if(mClassOrderSize-2<0){
-            mClassOrder=new ArrayList<Integer>();
-            mClassOrder.add(0);
-            mClassOrder.add(1);
-            mClassOrder.add(2);
-            mPreviousClassNumber = mClassOrder.get(0);
-        }else {
-            mPreviousClassNumber = mClassOrder.get(mClassOrderSize - 2);
-            mClassOrder.remove(mClassOrderSize-1);
-        }
-
-        mClassOrderSize=mClassOrder.size();
-        mClassOrder.remove(mClassOrderSize - 1);
-        return mPreviousClassNumber;
-    }
 
 
     /****************************************************************************
      * ArrayList<String> getCurrentActivity()
      * Used in almost every game type activity to help with adding the points
      * to the database based upon the users guesses
-     * @return
+     * @return  ArrayList of current activity data
      */
     public ArrayList<String> getCurrentActivity(){
         return mCurrentActivity;
@@ -381,7 +351,7 @@ public class Motoli_Application extends Application {
      * void setCurrentActivity(ArrayList<String> mCurrentActivity){
      * This is set in Launch_Platform in goto_activity(String activity_id).
      * This is used by the gaming activates to ad points based upon users guesses
-     * @param mCurrentActivity
+     * @param mCurrentActivity  sets ArrayList of activity data for use in activity
      */
      public void setCurrentActivity(ArrayList<String> mCurrentActivity){
         this.mCurrentActivity=mCurrentActivity;
@@ -391,7 +361,7 @@ public class Motoli_Application extends Application {
      * ArrayList<String> getCurrentBook(){
      * Used in ActivityBK02Book to get which current book was chosen in
      * ActivityBK02BookList
-     * @return
+     * @return  nCurrentBook HashMap of data of current book
      */
      public HashMap<String, String> getCurrentBook(){
         return mCurrentBook;
@@ -401,7 +371,7 @@ public class Motoli_Application extends Application {
      *  void setCurrentBook(ArrayList<String> mCurrentBook)
      *  This is used in ActivityBK02BookList to set the mCurrentBook
      *  to be used in ActivityBK02Book
-     * @param mCurrentBook
+     * @param mCurrentBook  Set data of current book
      */
      public void setCurrentBook(HashMap<String,String> mCurrentBook){
         this.mCurrentBook=new HashMap<>(mCurrentBook);
@@ -413,7 +383,7 @@ public class Motoli_Application extends Application {
      * This is to set the mCurrentUserID to be used throughout the app.
      * The default is current 0 but in case we ever decide to add the ability
      * to chose between different users this user id must remain
-     * @param mCurrentUserID
+     * @param mCurrentUserID sets current ID (0)
      */
     public void setCurrentUserID(String mCurrentUserID){
         this.mCurrentUserID=mCurrentUserID;
@@ -426,7 +396,7 @@ public class Motoli_Application extends Application {
      * Used throughout the app to get mCurrentUserID
      * The default user id is set at 0, but in case we ever decide to add the ability
      * to chose between different users this user id must remain
-     * @return
+     * @return current ID (0)
      */
     public String getCurrentUserID(){
         return this.mCurrentUserID;
@@ -437,10 +407,10 @@ public class Motoli_Application extends Application {
      * setCurrentGroup_Section_Phase(String group_id, String phase_id,
      * String section_id, String current_level){
      * is very important for the app must stay
-     * @param group_id
-     * @param phase_id
-     * @param section_id
-     * @param current_level
+     * @param group_id group user is current in
+     * @param phase_id phase user is current in
+     * @param section_id section user is current in. referring to icon in Launch_Platform
+     * @param current_level current level of user associated with group and phase
      */
     public void setCurrentGroup_Section_Phase(String group_id, String phase_id,
                                               String section_id, String current_level){
@@ -454,8 +424,9 @@ public class Motoli_Application extends Application {
     }
     
     /**
-     /****************************************************************************
-     * @return
+     * @link void setCurrentGroup_Section_Phase(String group_id, String phase_id,
+     *                              String section_id, String current_level)
+     * @return data of current group, phase, section and related level
      */
     public HashMap<String,String> getCurrentGroup_Section_Phase(){
         return this.mCurrentGroupSectionPhase;
@@ -464,11 +435,11 @@ public class Motoli_Application extends Application {
 
     /****************************************************************************
      * void setAppUserCurrentGPL(ArrayList<ArrayList<String>> appUserCurrentGPL)
-     * This is used in Activities_Platform to set a seperate location of the GPL
+     * This is used in Activities_Platform to set a separate location of the GPL
      * While ever time and update is done this is called the purpose for use
      * in CS01,CS02 alone  as while those are syllable activities they are 
      * different phases then the RS
-     * @param appUserCurrentGPL
+     * @param appUserCurrentGPL data set ofr current user GPL (group, phase, level)
      */
     public void setAppUserCurrentGPL(ArrayList<HashMap<String,String>> appUserCurrentGPL){
         mAppUserCurrentGPL=new ArrayList<>(appUserCurrentGPL);
@@ -478,7 +449,7 @@ public class Motoli_Application extends Application {
      *  ArrayList<ArrayList<String>> getAppUserCurrentGPL()
      *  This is used only in ActivityCS01 and ActivityCS02 as while they have the same group
      *  as the RS syllable activities they are using different phases
-     * @return
+     * @return users current GPL (group, phase, level)
      */
      public ArrayList<HashMap<String,String>> getAppUserCurrentGPL(){
             return  mAppUserCurrentGPL;

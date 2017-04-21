@@ -1,37 +1,37 @@
 package com.motoli.apps.allsubjects;
+
+
+
+import android.app.LoaderManager;
+import android.content.Context;
+import android.content.CursorLoader;
+import android.content.Loader;
+import android.database.Cursor;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 /**
  * Part of Project Motoli All Subjects
  * for Education Technology For Development
  * created by Aaron D Michaelis Borsay
  * on 12/11/2015.
  */
-
-
-import android.app.LoaderManager;
-import android.content.CursorLoader;
-import android.content.Loader;
-import android.database.Cursor;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.GridView;
-import android.widget.ImageView;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-
 public class ActivityRS04 extends ActivitiesMasterParent
         implements LoaderManager.LoaderCallbacks<Cursor>{
 
-    private long mAudioDuration=0;
-
-
-    private ArrayList<ArrayList<String>> mAllSyllables;
     private ArrayList<ArrayList<String>> mCurrentSyllables;
 
     private ArrayList<String> mSyllableInfo;
 
-    private GridView mSyllableGrid;
     private ActivityRS04Icon mAdapter;
     private boolean mPlayingAudio=false;
 
@@ -58,31 +58,29 @@ public class ActivityRS04 extends ActivitiesMasterParent
         getLoaderManager().initLoader(Constants.CURRENT_SYLLABLE, null, this);
     }
 
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
     ////////////////////////////////////////////////////////////////////////////////////////////
 
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
-
     private void displayScreen(Cursor mCursor){
-        mCurrentSyllables=new ArrayList<ArrayList<String>>();
-        mCurrentGSP=new HashMap<String, String>(appData.getCurrentGroup_Section_Phase());
+        mCurrentSyllables=new ArrayList<>();
+        mCurrentGSP=new HashMap<>(appData.getCurrentGroup_Section_Phase());
         int phonicCount=0;
         if (mCursor.moveToFirst()) {
             do {
                 mCurrentGSP.put("current_level",
                         mCursor.getString(mCursor.getColumnIndex("app_user_current_level")));
                 mCurrentSyllables.add(new ArrayList<String>());
-                mCurrentSyllables.get(phonicCount).add(mCursor.getString(mCursor.getColumnIndex("syllables_id")));       //0
-                mCurrentSyllables.get(phonicCount).add(mCursor.getString(mCursor.getColumnIndex("syllables_text")));     //1
-                mCurrentSyllables.get(phonicCount).add(mCursor.getString(mCursor.getColumnIndex("syllables_audio")));    //2
-                mCurrentSyllables.get(phonicCount).add(mCursor.getString(mCursor.getColumnIndex("syllable_color")));    //3
-                mCurrentSyllables.get(phonicCount).add(mCursor.getString(mCursor.getColumnIndex("level_number")));    //4
-                mCurrentSyllables.get(phonicCount).add(mCursor.getString(mCursor.getColumnIndex("app_user_current_level")));    //5
+                mCurrentSyllables.get(phonicCount).add(
+                        mCursor.getString(mCursor.getColumnIndex("syllables_id")));       //0
+                mCurrentSyllables.get(phonicCount).add(
+                        mCursor.getString(mCursor.getColumnIndex("syllables_text")));     //1
+                mCurrentSyllables.get(phonicCount).add(
+                        mCursor.getString(mCursor.getColumnIndex("syllables_audio")));    //2
+                mCurrentSyllables.get(phonicCount).add(
+                        mCursor.getString(mCursor.getColumnIndex("syllable_color")));    //3
+                mCurrentSyllables.get(phonicCount).add(
+                        mCursor.getString(mCursor.getColumnIndex("level_number")));    //4
+                mCurrentSyllables.get(phonicCount).add(
+                        mCursor.getString(mCursor.getColumnIndex("app_user_current_level")));//5
 
                 phonicCount++;
             } while (mCursor.moveToNext());
@@ -91,7 +89,7 @@ public class ActivityRS04 extends ActivitiesMasterParent
 
 
 
-        mSyllableGrid = (GridView) findViewById(R.id.syllablesGrid);
+        GridView mSyllableGrid = (GridView) findViewById(R.id.syllablesGrid);
 
         mAdapter=new ActivityRS04Icon(this, mCurrentSyllables);
         mSyllableGrid.setAdapter(mAdapter);
@@ -102,8 +100,8 @@ public class ActivityRS04 extends ActivitiesMasterParent
                                     int position, long id) {
 
                 if(!mPlayingAudio) {
-                    mSyllableInfo = new ArrayList<String>((ArrayList) v.findViewById(R.id.grid_item_text).getTag());
-
+                    mSyllableInfo = new ArrayList<>((ArrayList)
+                            v.findViewById(R.id.grid_item_text).getTag());
 
                     String mLevelNumber = mSyllableInfo.get(4);
                     String mCurrentLevelNumber = mSyllableInfo.get(5);
@@ -114,15 +112,12 @@ public class ActivityRS04 extends ActivitiesMasterParent
                         playPhonic();
                     }
                 }
-
             }
         });
-
-
     }
 
-
     /////////////////////////////////////////////////////////////////////////////////////////////
+
     private void playPhonic(){
 
         for(int i=0; i<mCurrentSyllables.size();i++){
@@ -140,10 +135,10 @@ public class ActivityRS04 extends ActivitiesMasterParent
     /////////////////////////////////////////////////////////////////////////////////////////////
 
     private void playAudio(String mAudio ){
-        mAudioDuration=playGeneralAudio(mAudio);
-        mAudioHandler.postDelayed(runRestFontTypeFace, mAudioDuration+500);
+        mAudioHandler.postDelayed(runRestFontTypeFace, playGeneralAudio(mAudio)+500);
     }
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////
+
     private Runnable runRestFontTypeFace = new Runnable(){
         @Override
         public void run(){
@@ -152,12 +147,10 @@ public class ActivityRS04 extends ActivitiesMasterParent
             }
             mAdapter.notifyDataSetChanged();
             mPlayingAudio=false;
-            //mCurrentPhonicText.setTypeface(appData.getCurrentFontType());
         }
     };
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
-
+    /////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
@@ -166,7 +159,7 @@ public class ActivityRS04 extends ActivitiesMasterParent
             default:
             case Constants.CURRENT_SYLLABLE:{
 
-                mCurrentGSP=new HashMap<String,String>(appData.getCurrentGroup_Section_Phase());
+                mCurrentGSP=new HashMap<>(appData.getCurrentGroup_Section_Phase());
                 String[] projection = new String[]{
                         appData.getCurrentActivity().get(0),
                         appData.getCurrentUserID(),
@@ -214,6 +207,92 @@ public class ActivityRS04 extends ActivitiesMasterParent
     ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+    /**
+     * Part of Project Motoli All Subjects
+     * for Education Technology For Development
+     * created by Aaron D Michaelis Borsay
+     * on 12/11/2015.
+     */
+    private static class ActivityRS04Icon extends BaseAdapter {
+            private Context mContext;
+            private ArrayList<ArrayList<String>> mSyllableData;
+
+            static class ViewHolder {
+                 TextView text;
+                 ImageView icon;
+                }
+
+            private ViewHolder holder;
 
 
+            private ActivityRS04Icon(Context mContext, ArrayList<ArrayList<String>> mSyllableData) {
+                this.mContext = mContext;
+                //this.mobileValues = mobileValues;
+                this.mSyllableData=mSyllableData;
+
+            }
+
+            public View getView(int position, View convertView, ViewGroup parent) {
+                LayoutInflater mInflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
+
+               final Motoli_Application appData = ((Motoli_Application) mContext.getApplicationContext());
+
+
+
+                if (convertView == null) {
+                    convertView = mInflater.inflate(R.layout.activity_rs04_icon,parent, false);
+                    holder = new ViewHolder();
+                    holder.icon = (ImageView) convertView.findViewById(R.id.tracingImage);
+                    holder.text =( TextView) convertView.findViewById(R.id.grid_item_text);
+
+                    holder.text.setTypeface(appData.getCurrentFontType());
+                    convertView.setTag(holder);
+                } else {
+                    holder = (ViewHolder) convertView.getTag();
+                }
+
+
+                if(Integer.parseInt(mSyllableData.get(position).get(4))
+                        <=Integer.parseInt(mSyllableData.get(position).get(5))) {
+                    holder.icon.setAlpha(1.0f);
+                    holder.text.setText(mSyllableData.get(position).get(1));
+
+                }else {
+                    holder.icon.setAlpha(0.1f);
+                    holder.text.setText("");
+
+                }
+                holder.text.setTag(mSyllableData.get(position));
+
+                holder.icon.setImageResource(mContext.getResources()
+                        .getIdentifier("round_square_" + mSyllableData.get(position).get(3)
+                                , "drawable", mContext.getPackageName()));
+
+                holder.icon.setTag(mSyllableData.get(position));
+
+                holder.icon.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                holder.icon.setPadding(8, 8, 8, 8);
+
+                holder.icon.destroyDrawingCache();
+
+
+                return convertView;
+            }
+
+            @Override
+            public int getCount() {
+                return mSyllableData.size();
+            }
+
+            @Override
+            public Object getItem(int position) {
+                return null;
+            }
+
+            @Override
+            public long getItemId(int position) {
+                return 0;
+            }
+
+        }
 }

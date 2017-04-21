@@ -1,28 +1,26 @@
 package com.motoli.apps.allsubjects;
-/**
- * Part of Project Motoli All Subjects
- * for Education Technology For Development
- * created by Aaron D Michaelis Borsay
- * on 8/12/2015.
- */
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import static android.os.Process.getElapsedCpuTime;
 
-
+/**
+ * Part of Project Motoli All Subjects
+ * for Education Technology For Development
+ * created by Aaron D Michaelis Borsay
+ * on 8/12/2015.
+ */
 public abstract class ActivitiesMasterParent extends Master_Parent {
 
     protected String mCurrentVariable;
@@ -95,7 +93,8 @@ public abstract class ActivitiesMasterParent extends Master_Parent {
         if(findViewById(R.id.activityName)!=null) {
             findViewById(R.id.activityName).setVisibility(TextView.INVISIBLE);
             if (appData.getAllowActivityText()) {
-                ((TextView) findViewById(R.id.activityName)).setText(appData.getActivityName() + " ("
+                ((TextView) findViewById(R.id.activityName))
+                        .setText(appData.getActivityName() + " ("
                         + mCurrentGSP.get("group_id") + "|"
                         + mCurrentGSP.get("phase_id") + "|"
                         + mCurrentGSP.get("section_id") + "|"
@@ -210,6 +209,7 @@ public abstract class ActivitiesMasterParent extends Master_Parent {
                     default:
                     case 1:
                         mType="1";
+                        break;
                     case 2:
                         mType="2";
                         break;
@@ -327,20 +327,18 @@ public abstract class ActivitiesMasterParent extends Master_Parent {
         public void run() {
             switch(endAudioLocation){
                 default:
-                case 0:{
+                case 0:
                     Log.d(Constants.LOGCAT,"app_audio_finished_level");
                     long mAudioDuration=playFeedBackAudio("app_audio_finished_level");
                     endAudioLocation++;
                     lastActivityDataHandler.postDelayed(playExtraEndAudio, mAudioDuration+40);
 
                     break;
-                }
-                case 1:{
+                case 1:
                     Log.d(Constants.LOGCAT,"app_audio_next_level");
                     playFeedBackAudio("app_audio_next_level");
                     lastActivityDataHandler.removeCallbacks(playExtraEndAudio);
                     break;
-                }
             }
         }
     };
@@ -351,8 +349,7 @@ public abstract class ActivitiesMasterParent extends Master_Parent {
     protected void beginRound(){  }
     protected void displayScreen(){  }
     protected long playInstructionAudio(){
-        long mAudioDuration=playGeneralAudio(mInstructionAudio);
-        return mAudioDuration;
+        return playGeneralAudio(mInstructionAudio);
     }
     protected void processData(Cursor mCursor){    }
     protected void processTheGuess(long mAudioDuration){ }
@@ -458,7 +455,7 @@ public abstract class ActivitiesMasterParent extends Master_Parent {
                     Cursor mCursor =getContentResolver().query(
                             AppProvider.CONTENT_GET_MAX_LEVEL,null,null,mInfo,null);
                     int mMaxLevel=1;
-                    if(mCursor.moveToFirst()){
+                    if(mCursor != null && mCursor.moveToFirst()){
                         mMaxLevel=mCursor.getInt(mCursor.getColumnIndex("max_level_number"));
                     }
 
@@ -489,8 +486,10 @@ public abstract class ActivitiesMasterParent extends Master_Parent {
                                     mCursor.getColumnIndex("number_correct_in_level"));
                             String mGroupID = mCurrentGSP.get("group_id");
                             int mCurrentLevel = Integer.parseInt(mCurrentGSP.get("current_level"));
-                            if (mCursor.getString(mCursor.getColumnIndex("variable_count")) != null) {
-                                mVariableCount = mCursor.getInt(mCursor.getColumnIndex("variable_count"));
+                            if (mCursor.getString(
+                            mCursor.getColumnIndex("variable_count")) != null) {
+                                mVariableCount = mCursor.getInt(
+                                        mCursor.getColumnIndex("variable_count"));
                             }
 
                             int mNumberCorrectInARow = 0;
@@ -507,7 +506,8 @@ public abstract class ActivitiesMasterParent extends Master_Parent {
                                         mCursor.getColumnIndex("attempts")));
                             }
 
-                            if (mAttempts >= Math.ceil(((double) (mVariableCount * mInARowCorrect + 2)) / 8)
+                            if (mAttempts >= Math.ceil(
+                                    ((double) (mVariableCount * mInARowCorrect + 2)) / 8)
                                     && mNumberCorrectInARow < mInARowCorrect) {
                                 Log.d(Constants.LOGCAT, "app_audio_many_mistakes");
                                 mAudioDuration = playFeedBackAudio("app_audio_many_mistakes");
@@ -532,8 +532,10 @@ public abstract class ActivitiesMasterParent extends Master_Parent {
                                         endAudioLocation = 0;
                                         lastActivityDataHandler.postDelayed(playExtraEndAudio,
                                                 mAudioDuration + 20);
-                                        mAudioDuration += getAudioDuration("app_audio_finished_level") + 20;
-                                        mAudioDuration += getAudioDuration("app_audio_next_level") + 20;
+                                        mAudioDuration +=
+                                                getAudioDuration("app_audio_finished_level") + 20;
+                                        mAudioDuration +=
+                                                getAudioDuration("app_audio_next_level") + 20;
                                     }
                                     playFeedBackAudio("app_audio_get_medal");
                                 }
@@ -546,7 +548,9 @@ public abstract class ActivitiesMasterParent extends Master_Parent {
                         mAudioDuration=playFeedBackAudio("app_audio_get_medal");
                     }
                     lastActivityDataHandler.postDelayed(returnToActivities_Platorm, mAudioDuration);
-
+                    if(mCursor != null ) {
+                        mCursor.close();
+                    }
                     break;
                 case 1:
                     Log.d(Constants.LOGCAT,"before ");
@@ -555,9 +559,5 @@ public abstract class ActivitiesMasterParent extends Master_Parent {
             }//end switch(lastPagePosition){
         }
     };//end private Runnable returnToActivitiesPage = new Runnable(){
-
-
-
-    /////////////////////////////////////////////////////////////////////////////////////////////
 
 }

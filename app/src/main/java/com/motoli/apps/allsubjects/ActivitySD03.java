@@ -1,11 +1,5 @@
 package com.motoli.apps.allsubjects;
 
-/**
- * Part of Project Motoli All Subjects
- * for Education Technology For Development
- * created by Aaron D Michaelis Borsay
- * on 8/22/2015.
- */
 
 import android.app.LoaderManager;
 import android.content.CursorLoader;
@@ -17,14 +11,18 @@ import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 
 
+/**
+ * Part of Project Motoli All Subjects
+ * for Education Technology For Development
+ * created by Aaron D Michaelis Borsay
+ * on 8/22/2015.
+ */
 public class ActivitySD03 extends ActivitySDRoot
         implements LoaderManager.LoaderCallbacks<Cursor>{
 
@@ -380,7 +378,7 @@ public class ActivitySD03 extends ActivitySDRoot
         switch(id){
             default:
             case Constants.CURRENT_PHONIC_LETTERS_WORDS:{
-                ArrayList<String> mGrammarArray = new ArrayList<String>(
+                ArrayList<String> mGrammarArray = new ArrayList<>(
                         Arrays.asList(mRoundPhonics.get(0).get("phonic_grammar").split(";")));
                 String selection=" phonics.phonic_id=phonic_words.phonic_word_last_id  ";
                 if(mGrammarArray.size()>0) {

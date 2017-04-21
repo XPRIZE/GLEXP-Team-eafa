@@ -4,6 +4,7 @@ import android.app.LoaderManager;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -64,7 +65,7 @@ public class ActivityWDRoot  extends ActivitiesMasterParent
     @Override
     protected void processData(Cursor mCursor) {
         super.processData(mCursor);
-        mCurrentWords=new ArrayList<HashMap<String, String>>();
+        mCurrentWords=new ArrayList<>();
         int mCount=0;
         if(mCursor.moveToFirst()) {
             do{
@@ -135,22 +136,22 @@ public class ActivityWDRoot  extends ActivitiesMasterParent
                         case 0:
                             mRoundWords.get(0).put("guessed_yet", "1");
                             ((TextView) findViewById(R.id.word1)).setTextColor(
-                                    getResources().getColor(R.color.correct_green));
+                                    ContextCompat.getColor(this,R.color.correct_green));
                             break;
                         case 1:
                             mRoundWords.get(1).put("guessed_yet", "1");
                             ((TextView) findViewById(R.id.word2)).setTextColor(
-                                    getResources().getColor(R.color.correct_green));
+                                    ContextCompat.getColor(this,R.color.correct_green));
                             break;
                         case 2:
                             mRoundWords.get(2).put("guessed_yet", "1");
                             ((TextView) findViewById(R.id.word3)).setTextColor(
-                                    getResources().getColor(R.color.correct_green));
+                                    ContextCompat.getColor(this,R.color.correct_green));
                             break;
                         case 3:
                             mRoundWords.get(3).put("guessed_yet", "1");
                             ((TextView) findViewById(R.id.word4)).setTextColor(
-                                    getResources().getColor(R.color.correct_green));
+                                    ContextCompat.getColor(this,R.color.correct_green));
                             break;
                     }
 
@@ -187,22 +188,22 @@ public class ActivityWDRoot  extends ActivitiesMasterParent
                         case 0:
                             mRoundWords.get(0).put("guessed_yet", "1");
                             ((TextView) findViewById(R.id.word1)).setTextColor(
-                                    getResources().getColor(R.color.incorrect_red));
+                                    ContextCompat.getColor(this,R.color.incorrect_red));
                             break;
                         case 1:
                             mRoundWords.get(1).put("guessed_yet", "1");
                             ((TextView) findViewById(R.id.word2)).setTextColor(
-                                    getResources().getColor(R.color.incorrect_red));
+                                    ContextCompat.getColor(this,R.color.incorrect_red));
                             break;
                         case 2:
                             mRoundWords.get(2).put("guessed_yet", "1");
                             ((TextView) findViewById(R.id.word3)).setTextColor(
-                                    getResources().getColor(R.color.incorrect_red));
+                                    ContextCompat.getColor(this,R.color.incorrect_red));
                             break;
                         case 3:
                             mRoundWords.get(3).put("guessed_yet", "1");
                             ((TextView) findViewById(R.id.word4)).setTextColor(
-                                    getResources().getColor(R.color.incorrect_red));
+                                    ContextCompat.getColor(this,R.color.incorrect_red));
                             break;
                     }
 

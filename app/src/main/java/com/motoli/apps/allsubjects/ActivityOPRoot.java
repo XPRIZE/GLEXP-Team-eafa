@@ -2,7 +2,6 @@ package com.motoli.apps.allsubjects;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 
 /**
  * Part of Project Motoli All Subjects

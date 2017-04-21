@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
@@ -28,23 +27,19 @@ public class ActivitySH06 extends ActivitiesMasterParent
         implements LoaderManager.LoaderCallbacks<Cursor> {
     private int mCurrentLocation=0;
     private int mIncorrectInRound=0;
-    private int mIncorrectInActivity=0;
 
     private int mRoundNumber=0;
 
     private boolean mCorrect=false;
 
-    private String mCurrentMathShapeId;
     private String mLevelMathShapeId;
 
     private String mCurrentShapeAudio;
     private String mCorrectShapeAudio;
 
 
-    private boolean mThreeDigitSet;
 
     private String mCurrentCorrectId;
-    private String mCurrentCorrectTypeId;
 
     private ArrayList<HashMap<String,String>> mCurrentShapeSet;
     private ArrayList<HashMap<String,String>> mCurrentShapeRound;
@@ -66,10 +61,9 @@ public class ActivitySH06 extends ActivitiesMasterParent
         mInstructionAudio="info_sh06";
         appData.addToClassOrder(5);
 
-        mCurrentGSP=new HashMap<String, String>(appData.getCurrentGroup_Section_Phase());
+        mCurrentGSP=new HashMap<>(appData.getCurrentGroup_Section_Phase());
 
         mBeingValidated=true;
-        mIncorrectInActivity=0;
         clearActivity();
         hideShapes();
         setUpListeners();
@@ -80,12 +74,10 @@ public class ActivitySH06 extends ActivitiesMasterParent
     }//end public void onCreate(Bundle savedInstanceState) {
 
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////
 
     protected long playInstructionAudio(){
-        long mAudioDuration = super.playInstructionAudio();
-       // mAudioHandler.postDelayed(playShapeAudio, mAudioDuration+20);
-        return mAudioDuration;
+        return super.playInstructionAudio();
     }
 
     //////////////////////////////////////////////////////////////////////////////////////
@@ -109,14 +101,12 @@ public class ActivitySH06 extends ActivitiesMasterParent
 
         mIncorrectInRound=0;
 
-        //mCurrentShapeRound.clear();
-        mCurrentShapeRound=new ArrayList<HashMap<String, String>>();
+        mCurrentShapeRound=new ArrayList<>();
         mCurrentShapeRound.add(mCurrentShapeSet.get(mRoundNumber));
         mCurrentCorrectId=mCurrentShapeRound.get(0).get("math_shape_id");
-        mCurrentCorrectTypeId=mCurrentShapeRound.get(0).get("math_shape_type_id");
         mCorrectShapeAudio=mCurrentShapeRound.get(0).get("math_shape_audio");
 
-        mShapeSet=new ArrayList<HashMap<String, String>>();
+        mShapeSet=new ArrayList<>();
 
         final Random rand = new Random();
         int mRandomNumber=2;
@@ -335,9 +325,6 @@ public class ActivitySH06 extends ActivitiesMasterParent
             }while(mCursor.moveToNext());
         }
 
-        if(mExtraCount<3){
-            //issue not enough
-        }
         displayScreen();
 
     }
@@ -549,15 +536,8 @@ public class ActivitySH06 extends ActivitiesMasterParent
                 playGeneralAudio(mCorrectShapeAudio);
         }
     };
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    //end private void displayScreen(Cursor currentWordsCursor){
-
 
     ////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
 
     protected void setupFrameListens(){
 
@@ -567,7 +547,6 @@ public class ActivitySH06 extends ActivitiesMasterParent
                         && !mBeingValidated){
                     mCurrentLocation=0;
                     mCurrentShapeAudio=mCurrentShapeRound.get(0).get("math_shape_audio");
-                    mCurrentMathShapeId=mCurrentShapeRound.get(0).get("math_shape_id");
                     mCorrect=(mCurrentShapeRound.get(0).get("correct_guess").equals("1"));
                     playGeneralAudio(mCurrentShapeAudio);
                     setUpFrame(0);
@@ -583,7 +562,6 @@ public class ActivitySH06 extends ActivitiesMasterParent
                         && !mBeingValidated) {
                     mCurrentLocation = 1;
                     mCurrentShapeAudio = mCurrentShapeRound.get(1).get("math_shape_audio");
-                    mCurrentMathShapeId = mCurrentShapeRound.get(1).get("math_shape_id");
                     mCorrect = (mCurrentShapeRound.get(1).get("correct_guess").equals("1"));
                     playGeneralAudio(mCurrentShapeAudio);
                     setUpFrame(1);
@@ -599,7 +577,6 @@ public class ActivitySH06 extends ActivitiesMasterParent
                         && !mBeingValidated){
                     mCurrentLocation=2;
                     mCurrentShapeAudio=mCurrentShapeRound.get(2).get("math_shape_audio");
-                    mCurrentMathShapeId=mCurrentShapeRound.get(2).get("math_shape_id");
                     mCorrect=(mCurrentShapeRound.get(2).get("correct_guess").equals("1"));
                     playGeneralAudio(mCurrentShapeAudio);
                     setUpFrame(2);
@@ -615,7 +592,6 @@ public class ActivitySH06 extends ActivitiesMasterParent
                         && !mBeingValidated) {
                     mCurrentLocation = 3;
                     mCurrentShapeAudio = mCurrentShapeRound.get(3).get("math_shape_audio");
-                    mCurrentMathShapeId = mCurrentShapeRound.get(3).get("math_shape_id");
                     mCorrect = (mCurrentShapeRound.get(3).get("correct_guess").equals("1"));
                     playGeneralAudio(mCurrentShapeAudio);
                     setUpFrame(3);
@@ -631,7 +607,6 @@ public class ActivitySH06 extends ActivitiesMasterParent
                         && !mBeingValidated){
                     mCurrentLocation=0;
                     mCurrentShapeAudio=mCurrentShapeRound.get(0).get("math_shape_audio");
-                    mCurrentMathShapeId=mCurrentShapeRound.get(0).get("math_shape_id");
                     mCorrect=(mCurrentShapeRound.get(0).get("correct_guess").equals("1"));
                     playGeneralAudio(mCurrentShapeAudio);
                     setUpFrame(0);
@@ -647,7 +622,6 @@ public class ActivitySH06 extends ActivitiesMasterParent
                         && !mBeingValidated) {
                     mCurrentLocation = 1;
                     mCurrentShapeAudio = mCurrentShapeRound.get(1).get("math_shape_audio");
-                    mCurrentMathShapeId = mCurrentShapeRound.get(1).get("math_shape_id");
                     mCorrect = (mCurrentShapeRound.get(1).get("correct_guess").equals("1"));
                     setUpFrame(1);
                     placingGuessShape();
@@ -662,7 +636,6 @@ public class ActivitySH06 extends ActivitiesMasterParent
                         && !mBeingValidated){
                     mCurrentLocation=2;
                     mCurrentShapeAudio=mCurrentShapeRound.get(2).get("math_shape_audio");
-                    mCurrentMathShapeId=mCurrentShapeRound.get(2).get("math_shape_id");
                     mCorrect=(mCurrentShapeRound.get(2).get("correct_guess").equals("1"));
                     setUpFrame(2);
                     placingGuessShape();
@@ -677,7 +650,6 @@ public class ActivitySH06 extends ActivitiesMasterParent
                         && !mBeingValidated) {
                     mCurrentLocation = 3;
                     mCurrentShapeAudio = mCurrentShapeRound.get(3).get("math_shape_audio");
-                    mCurrentMathShapeId = mCurrentShapeRound.get(3).get("math_shape_id");
                     mCorrect = (mCurrentShapeRound.get(3).get("correct_guess").equals("1"));
                     setUpFrame(3);
                     placingGuessShape();
@@ -688,7 +660,7 @@ public class ActivitySH06 extends ActivitiesMasterParent
 
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////
 
     private void setUpFrame(int frameNumber){
         clearFrames();
@@ -716,7 +688,7 @@ public class ActivitySH06 extends ActivitiesMasterParent
         }
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
 
     private void hideShapes(){
         findViewById(R.id.shape1).setVisibility(CanvasView.INVISIBLE);
@@ -733,14 +705,16 @@ public class ActivitySH06 extends ActivitiesMasterParent
 
 
     }
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////
 
     protected void validate(){
         mBeingValidated=true;
         if(mCorrect) {
-            ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_ok);
+            ((ImageView) findViewById(R.id.btnValidate))
+                    .setImageResource(R.drawable.btn_validate_ok);
         }else{
-            ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_no_ok);
+            ((ImageView) findViewById(R.id.btnValidate))
+                    .setImageResource(R.drawable.btn_validate_no_ok);
         }
         placingGuessShape();
         processFontColorAndPoints();
@@ -759,7 +733,8 @@ public class ActivitySH06 extends ActivitiesMasterParent
         mValues.put("level_number",mLevelMathShapeId);
         mValues.put("activity_id",appData.getCurrentActivity().get(0));
         if(mCorrect) {
-            ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_ok);
+            ((ImageView) findViewById(R.id.btnValidate))
+                    .setImageResource(R.drawable.btn_validate_ok);
             selectionArgs = new String[]{
                     "1",
                     "0",
@@ -769,7 +744,8 @@ public class ActivitySH06 extends ActivitiesMasterParent
 
 
             if (!mCurrentGSP.get("current_level").equals("9")){
-                getContentResolver().update(AppProvider.CONTENT_URI_ACTIVITY_USER_RW_UPDATE, mValues, where, selectionArgs);
+                getContentResolver().update(AppProvider.CONTENT_URI_ACTIVITY_USER_RW_UPDATE,
+                        mValues, where, selectionArgs);
             }
             switch(mCurrentLocation){
                 default:
@@ -790,8 +766,8 @@ public class ActivitySH06 extends ActivitiesMasterParent
 
         }else{
             mIncorrectInRound++;
-            mIncorrectInActivity++;
-            ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_no_ok);
+            ((ImageView) findViewById(R.id.btnValidate))
+                    .setImageResource(R.drawable.btn_validate_no_ok);
             selectionArgs = new String[]{
                     "0",
                     "1",
@@ -799,7 +775,8 @@ public class ActivitySH06 extends ActivitiesMasterParent
                     mLevelMathShapeId,
                     String.valueOf(mIncorrectInRound)};
 
-            getContentResolver().update(AppProvider.CONTENT_URI_ACTIVITY_USER_RW_UPDATE, null, where, selectionArgs);
+            getContentResolver().update(AppProvider.CONTENT_URI_ACTIVITY_USER_RW_UPDATE,
+                    null, where, selectionArgs);
             if(mIncorrectInRound>=2){
                 switch(mCorrectLocation){
                     default:
@@ -936,20 +913,7 @@ public class ActivitySH06 extends ActivitiesMasterParent
         }
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////
-
-
-    protected void addPointToAllAvailable(){
-        String where=" WHERE app_user_id="+appData.getCurrentUserID() +" " +
-                "AND level_number="+mCurrentGSP.get("current_level") +" " +
-                "AND activity_id="+appData.getCurrentActivity().get(0);
-
-       // getContentResolver().update(AppProvider.CONTENT_URI_ACTIVITY_USER_RW_ALL_UPDATE,
-        //        null, where, null);
-    }
-    
     ////////////////////////////////////////////////////////////////////////////////////////////
-
 
     private Runnable processGuess = new Runnable(){
 
@@ -993,9 +957,7 @@ public class ActivitySH06 extends ActivitiesMasterParent
                             mProcessGuessPosition++;
                             guessHandler.postDelayed(processGuess, 500);
                         }else{
-                            //if(mIncorrectInActivity==0){
-                            //    addPointToAllAvailable();
-                           // }
+
                             mLastActivityData=0;
 
                             findViewById(R.id.activityMainPart)
@@ -1162,7 +1124,7 @@ public class ActivitySH06 extends ActivitiesMasterParent
         return cursorLoader;
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor mCursor) {
@@ -1192,7 +1154,7 @@ public class ActivitySH06 extends ActivitiesMasterParent
         }
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
@@ -1200,12 +1162,11 @@ public class ActivitySH06 extends ActivitiesMasterParent
 
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
 
     protected void processData(Cursor mCursor){
         mCurrentShapeSet=new ArrayList<>();
         int mNumber=0;
-        int mNumberCorrectInARow=Constants.INA_ROW_CORRECT;
         if(mCursor.moveToFirst()) {
             do{
                 mCurrentShapeSet.add(new HashMap<String, String>());
@@ -1261,10 +1222,6 @@ public class ActivitySH06 extends ActivitiesMasterParent
 
 
     protected void setUpListeners(){
-
-
-
-
         findViewById(R.id.btnValidate).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if(mValidateAvailable && !mBeingValidated){
@@ -1276,6 +1233,5 @@ public class ActivitySH06 extends ActivitiesMasterParent
 
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }

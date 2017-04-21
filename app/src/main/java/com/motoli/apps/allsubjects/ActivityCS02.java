@@ -7,7 +7,6 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -31,7 +30,6 @@ public class ActivityCS02 extends ActivitiesMasterParent implements LoaderManage
     private int mCorrectSyllables;
     private int mNumberOfSyllables;
 
-    private ArrayList<String> mCurrentText;
 
     private ArrayList<ArrayList<String>> mSyllableWords;
 
@@ -75,9 +73,8 @@ public class ActivityCS02 extends ActivitiesMasterParent implements LoaderManage
 
 
     protected void processData(Cursor mCursor){
-        mSyllableWords=new ArrayList<ArrayList<String>>();
+        mSyllableWords=new ArrayList<>();
         int currentWordNumber=0;
-        int mNumberOfWords=0;
         mCursor.moveToFirst();
         while (!mCursor.isAfterLast()) {
             mSyllableWords.add(new ArrayList<String>());
@@ -98,7 +95,6 @@ public class ActivityCS02 extends ActivitiesMasterParent implements LoaderManage
             mSyllableWords.get(currentWordNumber).add("0"); //9-2
             mSyllableWords.get(currentWordNumber).add("0"); //10-3
             mSyllableWords.get(currentWordNumber).add("0"); //11-4
-            mNumberOfWords++;
 
 
             currentWordNumber++;
@@ -115,7 +111,7 @@ public class ActivityCS02 extends ActivitiesMasterParent implements LoaderManage
         if(mSyllableWords.size()<Constants.NUMBER_VARIABLES ) {
             for (int i = 0; i < mSyllableWords.size(); i++) {
                 if (!mSyllableWords.get(mSyllableWords.size() - 1).get(0).equals(mSyllableWords.get(i).get(0))) {
-                    mSyllableWords.add(new ArrayList<String>(mSyllableWords.get(i)));
+                    mSyllableWords.add(new ArrayList<>(mSyllableWords.get(i)));
                     if (mSyllableWords.size() >= Constants.NUMBER_VARIABLES) {
                         break;
                     }
@@ -133,7 +129,6 @@ public class ActivityCS02 extends ActivitiesMasterParent implements LoaderManage
 
         mIncorrectInRound=0;
         mBeingValidated=true;
-        mCurrentText = new ArrayList<String>(mSyllableWords.get(roundNumber));
         mCorrectSyllables=Integer.parseInt(mSyllableWords.get(roundNumber).get(7));
         mCurrentWordAudio=mSyllableWords.get(roundNumber).get(2);
         mCurrentID=mSyllableWords.get(roundNumber).get(0);

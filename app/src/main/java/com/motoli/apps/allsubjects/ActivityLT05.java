@@ -1,10 +1,5 @@
 package com.motoli.apps.allsubjects;
-/**
- * Part of Project Motoli All Subjects
- * for Education Technology For Development
- * created by Aaron D Michaelis Borsay
- * on 8/12/2015.
- */
+
 
 
 import java.util.ArrayList;
@@ -22,15 +17,19 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+/**
+ * Part of Project Motoli All Subjects
+ * for Education Technology For Development
+ * created by Aaron D Michaelis Borsay
+ * on 8/12/2015.
+ */
 public class ActivityLT05 extends ActivitiesMasterParent  implements
         LoaderManager.LoaderCallbacks<Cursor>{
 
-    private long mAudioDuration=0;
 
     private boolean mRunningGather=true;
     private int mLowerCase=1;
     private ActivityLT05GridArea mAdapter;
-    private GridView mLetterGrid;
     private HashMap<String,String> mLetterInfo;
     private ArrayList<HashMap<String,String>> mCurrentLetters;
     private boolean mPlayingAudio=false;
@@ -122,7 +121,7 @@ public class ActivityLT05 extends ActivitiesMasterParent  implements
 
         mAdapter= new  ActivityLT05GridArea(this, mCurrentLetters);
 
-        mLetterGrid = (GridView) findViewById(R.id.lettersGrid);
+        GridView mLetterGrid = (GridView) findViewById(R.id.lettersGrid);
 
         mLetterGrid.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
@@ -168,7 +167,7 @@ public class ActivityLT05 extends ActivitiesMasterParent  implements
     /////////////////////////////////////////////////////////////////////////////////////////////
 
     private void playAudio(String mAudio ){
-        mAudioDuration=playGeneralAudio(mAudio);
+        long mAudioDuration=playGeneralAudio(mAudio);
         mAudioHandler.postDelayed(runRestFontTypeFace, mAudioDuration+500);
     }
     ////////////////////////////////////////////////////////////////////////////////////////////

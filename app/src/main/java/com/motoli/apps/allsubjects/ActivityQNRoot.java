@@ -3,9 +3,10 @@ package com.motoli.apps.allsubjects;
 import android.app.LoaderManager;
 import android.content.Loader;
 import android.database.Cursor;
-import android.graphics.Paint;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.util.SparseIntArray;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,13 +25,11 @@ import java.util.Random;
 public class ActivityQNRoot extends ActivitiesMasterParent
         implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    protected ArrayList<HashMap<String,String>> mExtraNumberSet;
     protected ArrayList<HashMap<String,String>> mRoundNumberSet;
     protected ArrayList<HashMap<String,String>> mCurrentNumberSet;
     protected HashMap<String,String> mCorrectNumberSet;
 
-    protected HashMap<Integer,Integer>  mCurrentNumbers;
-    protected int mCorrectLetterCount=0;
+    protected SparseIntArray  mCurrentNumbers;
     protected int mNumberGuessed=0;
     protected int mNumberTotalIncorrect=0;
     protected int mNumberCorrectInRow=0;
@@ -42,10 +41,10 @@ public class ActivityQNRoot extends ActivitiesMasterParent
     protected void beginRound() {
         super.beginRound();
         mNumberGuessed=0;
-        Bundle mCountData = new Bundle();
+        Bundle mCountData;
 
         mIncorrectInRound=0;
-        mRoundNumberSet = new ArrayList<HashMap<String, String>>();
+        mRoundNumberSet = new ArrayList<>();
         mRoundNumberSet.add(mCurrentNumberSet.get(mRoundNumber));
         mCurrentVariable=mRoundNumberSet.get(0).get("math_number");
         mCorrectNumberSet=mRoundNumberSet.get(0);
@@ -59,9 +58,9 @@ public class ActivityQNRoot extends ActivitiesMasterParent
                 break;
             }
             case 7:
-                mCurrentNumbers=new HashMap<Integer, Integer>();
+                mCurrentNumbers=new SparseIntArray();
                 final Random mRandom = new Random();
-                int mRandomNumber=0;
+                int mRandomNumber;
 
                 boolean mLastPart;
 
@@ -111,10 +110,10 @@ public class ActivityQNRoot extends ActivitiesMasterParent
 
 
                 if(Integer.parseInt(mCorrectNumberSet.get("max_number"))>19){
-                    int mFirstNumber=0;
-                    int mSecondNumber=1;
-                    int mThirdNumber=2;
-                    int mFourthNumber=3;
+                    int mFirstNumber;
+                    int mSecondNumber;
+                    int mThirdNumber;
+                    int mFourthNumber;
 
                     switch(mRandomNumber){
                         default:
@@ -122,16 +121,22 @@ public class ActivityQNRoot extends ActivitiesMasterParent
                             Log.d(Constants.LOGCAT,"case 0 | mLastPart="+mLastPart);
                             if(mLastPart){
                                 mFirstNumber=mRandom.nextInt(Integer.parseInt(mCurrentVariable)-3);
-                                mSecondNumber=mFirstNumber + mRandom.nextInt(Integer.parseInt(mCurrentVariable)-2 - mFirstNumber) + 1;
-                                mThirdNumber=mSecondNumber + mRandom.nextInt(Integer.parseInt(mCurrentVariable)-1 - mSecondNumber) + 1;
+                                mSecondNumber=mFirstNumber + mRandom.nextInt(
+                                        Integer.parseInt(mCurrentVariable)-2 - mFirstNumber) + 1;
+                                mThirdNumber=mSecondNumber + mRandom.nextInt(
+                                        Integer.parseInt(mCurrentVariable)-1 - mSecondNumber) + 1;
                                 mFourthNumber=Integer.parseInt(mCurrentVariable);
                             }else{
                                 mFourthNumber=Integer.parseInt(mCurrentVariable)
-                                        +mRandom.nextInt(Integer.parseInt(mCorrectNumberSet.get("max_number"))-Integer.parseInt(mCurrentVariable)-4)+3;
+                                        +mRandom.nextInt(Integer.parseInt(
+                                                mCorrectNumberSet.get("max_number"))
+                                        -Integer.parseInt(mCurrentVariable)-4)+3;
                                 mThirdNumber=Integer.parseInt(mCurrentVariable)
-                                        + mRandom.nextInt(mFourthNumber - Integer.parseInt(mCurrentVariable) -3) + 2;
+                                        + mRandom.nextInt(mFourthNumber
+                                        - Integer.parseInt(mCurrentVariable) -3) + 2;
                                 mSecondNumber=Integer.parseInt(mCurrentVariable)
-                                        + mRandom.nextInt(mThirdNumber - Integer.parseInt(mCurrentVariable)- 2) + 1;
+                                        + mRandom.nextInt(mThirdNumber
+                                        - Integer.parseInt(mCurrentVariable)- 2) + 1;
                                 mFirstNumber=Integer.parseInt(mCurrentVariable);
 
                             }
@@ -154,7 +159,7 @@ public class ActivityQNRoot extends ActivitiesMasterParent
                                 mSecondNumber=Integer.parseInt(mCurrentVariable);
                                 if((Integer.parseInt(mCorrectNumberSet.get("max_number"))
                                         -Integer.parseInt(mCurrentVariable)-3)<=0){
-                                    mFourthNumber = Integer.parseInt(mCurrentVariable) + 0 +2;
+                                    mFourthNumber = Integer.parseInt(mCurrentVariable)  +2;
                                 }else{
                                     mFourthNumber = Integer.parseInt(mCurrentVariable)
                                             + mRandom.nextInt(Integer.parseInt(
@@ -174,13 +179,14 @@ public class ActivityQNRoot extends ActivitiesMasterParent
                             break;
                         }
                         case 2:{
+                            mFourthNumber =4;
                             Log.d(Constants.LOGCAT,"case 2 | mLastPart="+mLastPart);
                             if(mLastPart){
                                 mFirstNumber=mRandom.nextInt(Integer.parseInt(mCurrentVariable)-1);
                                 mSecondNumber=Integer.parseInt(mCurrentVariable);
                                 if((Integer.parseInt(mCorrectNumberSet.get("max_number"))
                                         -Integer.parseInt(mCurrentVariable)-3)<=0){
-                                    mFourthNumber = Integer.parseInt(mCurrentVariable) + 0 +2;
+                                    mFourthNumber = Integer.parseInt(mCurrentVariable) +2;
                                 }else{
                                     mFourthNumber = Integer.parseInt(mCurrentVariable)
                                             + mRandom.nextInt(Integer.parseInt(
@@ -217,16 +223,22 @@ public class ActivityQNRoot extends ActivitiesMasterParent
                             Log.d(Constants.LOGCAT,"case 3 | mLastPart="+mLastPart);
                             if(mLastPart){
                                 mFourthNumber=Integer.parseInt(mCurrentVariable)
-                                        +mRandom.nextInt(Integer.parseInt(mCorrectNumberSet.get("max_number"))-Integer.parseInt(mCurrentVariable)-4)+3;
+                                        +mRandom.nextInt(Integer.parseInt(
+                                                mCorrectNumberSet.get("max_number"))
+                                        -Integer.parseInt(mCurrentVariable)-4)+3;
                                 mThirdNumber=Integer.parseInt(mCurrentVariable)
-                                        + mRandom.nextInt(mFourthNumber - Integer.parseInt(mCurrentVariable) -3) + 2;
+                                        + mRandom.nextInt(mFourthNumber
+                                        - Integer.parseInt(mCurrentVariable) -3) + 2;
                                 mSecondNumber=Integer.parseInt(mCurrentVariable)
-                                        + mRandom.nextInt(mThirdNumber - Integer.parseInt(mCurrentVariable)- 2) + 1;
+                                        + mRandom.nextInt(mThirdNumber
+                                        - Integer.parseInt(mCurrentVariable)- 2) + 1;
                                 mFirstNumber=Integer.parseInt(mCurrentVariable);
                             }else{
                                 mFirstNumber=mRandom.nextInt(Integer.parseInt(mCurrentVariable)-3);
-                                mSecondNumber=mFirstNumber + mRandom.nextInt(Integer.parseInt(mCurrentVariable)-2 - mFirstNumber) + 1;
-                                mThirdNumber=mSecondNumber + mRandom.nextInt(Integer.parseInt(mCurrentVariable)-1 - mSecondNumber) + 1;
+                                mSecondNumber=mFirstNumber + mRandom.nextInt(
+                                        Integer.parseInt(mCurrentVariable)-2 - mFirstNumber) + 1;
+                                mThirdNumber=mSecondNumber + mRandom.nextInt(
+                                        Integer.parseInt(mCurrentVariable)-1 - mSecondNumber) + 1;
                                 mFourthNumber=Integer.parseInt(mCurrentVariable);
                             }
 
@@ -366,7 +378,7 @@ public class ActivityQNRoot extends ActivitiesMasterParent
 
     @Override
     protected void processData(Cursor mCursor) {
-        mCurrentNumberSet=new ArrayList<HashMap<String,String>>();
+        mCurrentNumberSet=new ArrayList<>();
         int mCount=0;
         int mNumberVariables=Constants.NUMBER_QN_VARIABLES;
         if(mActivityNumber==7
@@ -403,7 +415,7 @@ public class ActivityQNRoot extends ActivitiesMasterParent
         mCount=0;
 
         while( mCurrentNumberSet.size()<mNumberVariables){
-            mCurrentNumberSet.add(new HashMap<String, String>(mCurrentNumberSet.get(mCount)));
+            mCurrentNumberSet.add(new HashMap<>(mCurrentNumberSet.get(mCount)));
             mCount++;
         }
 
@@ -489,53 +501,6 @@ public class ActivityQNRoot extends ActivitiesMasterParent
     @Override
     protected void processTheGuess(long mAudioDuration){ }
 
-    ////////////////////////////////////////////////////////////////////////////////////////
-
-    private void colorNumbersIfCorrect(){
-        switch(mCurrentLocation){
-            default:
-            case 0:
-                if (mCorrect) {
-                    ((TextView) findViewById(R.id.number1)).setTextColor(getResources()
-                            .getColor(R.color.correct_green));
-                }else{
-                    ((TextView) findViewById(R.id.number1)).setTextColor(getResources()
-                            .getColor(R.color.incorrect_red));
-                }
-                break;
-            case 1:
-                if (mCorrect) {
-                    ((TextView) findViewById(R.id.number2)).setTextColor(getResources()
-                            .getColor(R.color.correct_green));
-                }else{
-                    ((TextView) findViewById(R.id.number2)).setTextColor(getResources()
-                            .getColor(R.color.incorrect_red));
-                }
-                break;
-            case 2:
-                if (mCorrect) {
-                    ((TextView) findViewById(R.id.number3)).setTextColor(getResources()
-                            .getColor(R.color.correct_green));
-                }else{
-                    ((TextView) findViewById(R.id.number3)).setTextColor(getResources()
-                            .getColor(R.color.incorrect_red));
-                }
-                break;
-            case 3:
-                if (mCorrect) {
-                    ((TextView) findViewById(R.id.number4)).setTextColor(getResources()
-                            .getColor(R.color.correct_green));
-                }else{
-                    ((TextView) findViewById(R.id.number4)).setTextColor(getResources()
-                            .getColor(R.color.incorrect_red));
-                }
-                break;
-        }
-    }
-
-    //////////////////////////////////////////////////////////////////////////////////////
-
-
     ///////////////////////////////////////////////////////////////////////////////////////////
 
     protected void placeNumbers(int mShapeID){
@@ -596,14 +561,9 @@ public class ActivityQNRoot extends ActivitiesMasterParent
         }
 
         customCanvasDots.clearCanvas();
-        if(Integer.parseInt(mRoundNumberSet.get(mShapeID).get("math_number"))>=10) {
-            customCanvasDots.setAllowTens(true);
-        }else{
-            customCanvasDots.setAllowTens(false);
-        }
+
         customCanvasDots.setNumberOfDots(
                 Integer.parseInt(mRoundNumberSet.get(mShapeID).get("math_number")));
-       // mColor=0;
         customCanvasDots.setColor(mColor);
         customCanvasDots.invalidate();
 
@@ -688,7 +648,7 @@ public class ActivityQNRoot extends ActivitiesMasterParent
 
 
     protected void processChoiceView(){
-        if(mCorrect || (!mCorrect && (mIncorrectInRound>=2))) {
+        if(mCorrect || mIncorrectInRound>=2) {
             switch (mCorrectLocation) {
                 default:
                 case 0:
@@ -735,11 +695,11 @@ public class ActivityQNRoot extends ActivitiesMasterParent
                 }
                 findViewById(R.id.number1).setVisibility(TextView.VISIBLE);
                 if(mCorrect){
-                    ((TextView) findViewById(R.id.number1)).setTextColor(getResources()
-                            .getColor(R.color.correct_green));
+                    ((TextView) findViewById(R.id.number1)).setTextColor(
+                            ContextCompat.getColor(this,R.color.correct_green));
                 }else{
-                    ((TextView) findViewById(R.id.number1)).setTextColor(getResources()
-                            .getColor(R.color.incorrect_red));
+                    ((TextView) findViewById(R.id.number1)).setTextColor(
+                            ContextCompat.getColor(this,R.color.incorrect_red));
 
                 }
                 break;
@@ -749,11 +709,11 @@ public class ActivityQNRoot extends ActivitiesMasterParent
                 }
                 findViewById(R.id.number2).setVisibility(TextView.VISIBLE);
                 if(mCorrect){
-                    ((TextView) findViewById(R.id.number2)).setTextColor(getResources()
-                            .getColor(R.color.correct_green));
+                    ((TextView) findViewById(R.id.number2)).setTextColor(
+                            ContextCompat.getColor(this,R.color.correct_green));
                 }else{
-                    ((TextView) findViewById(R.id.number2)).setTextColor(getResources()
-                            .getColor(R.color.incorrect_red));
+                    ((TextView) findViewById(R.id.number2)).setTextColor(
+                            ContextCompat.getColor(this,R.color.incorrect_red));
 
                 }
                 break;
@@ -763,11 +723,11 @@ public class ActivityQNRoot extends ActivitiesMasterParent
                 }
                 findViewById(R.id.number3).setVisibility(TextView.VISIBLE);
                 if(mCorrect){
-                    ((TextView) findViewById(R.id.number3)).setTextColor(getResources()
-                            .getColor(R.color.correct_green));
+                    ((TextView) findViewById(R.id.number3)).setTextColor(
+                            ContextCompat.getColor(this,R.color.correct_green));
                 }else{
-                    ((TextView) findViewById(R.id.number3)).setTextColor(getResources()
-                            .getColor(R.color.incorrect_red));
+                    ((TextView) findViewById(R.id.number3)).setTextColor(
+                            ContextCompat.getColor(this,R.color.incorrect_red));
 
                 }
                 break;
@@ -777,11 +737,11 @@ public class ActivityQNRoot extends ActivitiesMasterParent
                 }
                 findViewById(R.id.number4).setVisibility(TextView.VISIBLE);
                 if(mCorrect){
-                    ((TextView) findViewById(R.id.number4)).setTextColor(getResources()
-                            .getColor(R.color.correct_green));
+                    ((TextView) findViewById(R.id.number4)).setTextColor(
+                            ContextCompat.getColor(this,R.color.correct_green));
                 }else{
-                    ((TextView) findViewById(R.id.number4)).setTextColor(getResources()
-                            .getColor(R.color.incorrect_red));
+                    ((TextView) findViewById(R.id.number4)).setTextColor(
+                            ContextCompat.getColor(this,R.color.incorrect_red));
 
                 }
                 break;

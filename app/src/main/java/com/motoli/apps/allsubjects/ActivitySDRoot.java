@@ -4,6 +4,7 @@ import android.app.LoaderManager;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -53,7 +54,7 @@ public class ActivitySDRoot extends ActivitiesMasterParent
     @Override
     protected void beginRound() {
         super.beginRound();
-        mRoundPhonics = new ArrayList<HashMap<String, String>>();
+        mRoundPhonics = new ArrayList<>();
         mRoundPhonics.add(mCurrentPhonics.get(mRoundNumber));
 
         mCorrectID="0";
@@ -103,7 +104,7 @@ public class ActivitySDRoot extends ActivitiesMasterParent
     protected void processExtraPhonicWords(Cursor mCursor){
 
         int mCount=0;
-        mCurrentPhonicWords=new ArrayList<HashMap<String, String>>();
+        mCurrentPhonicWords=new ArrayList<>();
 
         for (mCursor.moveToFirst(); !mCursor.isAfterLast();mCursor.moveToNext()) {
             mCurrentPhonicWords.add(new HashMap<String, String>());
@@ -144,7 +145,7 @@ public class ActivitySDRoot extends ActivitiesMasterParent
     protected void processSinglePhonicWord(Cursor mCursor){
 
         if (mCursor.moveToFirst()){
-            mCorrectPhonicWord=new HashMap<String, String>();
+            mCorrectPhonicWord=new HashMap<>();
 
             mCorrectPhonicWord.put("phonic_word_id",
                     mCursor.getString(mCursor.getColumnIndex("phonic_word_id")));
@@ -273,7 +274,7 @@ public class ActivitySDRoot extends ActivitiesMasterParent
         }
 
         for(HashMap<String,String> mTempArray : mExtraPhonics){
-            boolean mPlaceExtraPhonic=false;
+            boolean mPlaceExtraPhonic;
             if(mTempArray.get("phonic_is_vowel").equals(mFirstPhonicIsVowel) && mTwoCount!=2 ){
                 mPlaceExtraPhonic=true;
                 mTwoCount++;
@@ -281,11 +282,7 @@ public class ActivitySDRoot extends ActivitiesMasterParent
                 mPlaceExtraPhonic=true;
             }else if (mTempArray.get("phonic_is_vowel").equals(mThirdPhonicIsVowel) && i < 4) {
                 mPlaceExtraPhonic=true;
-            }else if(i < 4){
-                mPlaceExtraPhonic=true;
-            }else{
-                mPlaceExtraPhonic=false;
-            }
+            }else mPlaceExtraPhonic = i < 4;
             
             if(mPlaceExtraPhonic){
                 mRoundPhonics.add(new HashMap<String, String>());
@@ -322,9 +319,9 @@ public class ActivitySDRoot extends ActivitiesMasterParent
     protected void processPhonicWords() {
 
 
-        mRoundPhonicWords = new ArrayList<HashMap<String, String>>();
+        mRoundPhonicWords = new ArrayList<>();
 
-        mRoundPhonicWords.add(new HashMap<String, String>(mCorrectPhonicWord));
+        mRoundPhonicWords.add(new HashMap<>(mCorrectPhonicWord));
 
 
         Collections.shuffle(mRoundPhonicWords);
@@ -388,7 +385,7 @@ public class ActivitySDRoot extends ActivitiesMasterParent
     @Override
     protected void processData(Cursor mCursor) {
         super.processData(mCursor);
-        ArrayList<HashMap<String, String>> mTempPhonics = new ArrayList<HashMap<String, String>>();
+        ArrayList<HashMap<String, String>> mTempPhonics = new ArrayList<>();
 
 
         mCurrentPhonics= new ArrayList<>();
@@ -638,7 +635,7 @@ public class ActivitySDRoot extends ActivitiesMasterParent
                             //mCurrentPhonics.get(0).put("guessed_yet", "1");
 
                             ((TextView) findViewById(R.id.phonic1))
-                                    .setTextColor(getResources().getColor(R.color.correct_green));
+                                    .setTextColor(ContextCompat.getColor(this,R.color.correct_green));
                             ((TextView) findViewById(R.id.phonic2)).setText("");
                             ((TextView) findViewById(R.id.phonic3)).setText("");
                             ((TextView) findViewById(R.id.phonic4)).setText("");
@@ -646,7 +643,7 @@ public class ActivitySDRoot extends ActivitiesMasterParent
                         case 1:
                             //mCurrentPhonics.get(1).put("guessed_yet", "1");
                             ((TextView) findViewById(R.id.phonic2))
-                                    .setTextColor(getResources().getColor(R.color.correct_green));
+                                    .setTextColor(ContextCompat.getColor(this,R.color.correct_green));
                             ((TextView) findViewById(R.id.phonic1)).setText("");
                             ((TextView) findViewById(R.id.phonic3)).setText("");
                             ((TextView) findViewById(R.id.phonic4)).setText("");
@@ -654,7 +651,7 @@ public class ActivitySDRoot extends ActivitiesMasterParent
                         case 2:
                            /// mCurrentPhonics.get(2).put("guessed_yet", "1");
                             ((TextView) findViewById(R.id.phonic3))
-                                    .setTextColor(getResources().getColor(R.color.correct_green));
+                                    .setTextColor(ContextCompat.getColor(this,R.color.correct_green));
                             ((TextView) findViewById(R.id.phonic2)).setText("");
                             ((TextView) findViewById(R.id.phonic1)).setText("");
                             ((TextView) findViewById(R.id.phonic4)).setText("");
@@ -662,7 +659,7 @@ public class ActivitySDRoot extends ActivitiesMasterParent
                         case 3:
                             //mCurrentPhonics.get(3).put("guessed_yet", "1");
                             ((TextView) findViewById(R.id.phonic4))
-                                    .setTextColor(getResources().getColor(R.color.correct_green));
+                                    .setTextColor(ContextCompat.getColor(this,R.color.correct_green));
                             ((TextView) findViewById(R.id.phonic2)).setText("");
                             ((TextView) findViewById(R.id.phonic3)).setText("");
                             ((TextView) findViewById(R.id.phonic1)).setText("");
@@ -686,22 +683,22 @@ public class ActivitySDRoot extends ActivitiesMasterParent
                             case 0:
                                 mRoundPhonics.get(0).put("guessed_yet", "1");
                                 ((TextView) findViewById(R.id.phonic1)).setTextColor(
-                                        getResources().getColor(R.color.incorrect_red));
+                                        ContextCompat.getColor(this,R.color.incorrect_red));
                                 break;
                             case 1:
                                 mRoundPhonics.get(1).put("guessed_yet", "1");
                                 ((TextView) findViewById(R.id.phonic2)).setTextColor(
-                                        getResources().getColor(R.color.incorrect_red));
+                                        ContextCompat.getColor(this,R.color.incorrect_red));
                                 break;
                             case 2:
                                 mRoundPhonics.get(2).put("guessed_yet", "1");
                                 ((TextView) findViewById(R.id.phonic3)).setTextColor(
-                                        getResources().getColor(R.color.incorrect_red));
+                                        ContextCompat.getColor(this,R.color.incorrect_red));
                                 break;
                             case 3:
                                 mRoundPhonics.get(3).put("guessed_yet", "1");
                                 ((TextView) findViewById(R.id.phonic4)).setTextColor(
-                                        getResources().getColor(R.color.incorrect_red));
+                                        ContextCompat.getColor(this,R.color.incorrect_red));
                                 break;
                         }
                         switch (mCorrectLocation) {
@@ -733,22 +730,22 @@ public class ActivitySDRoot extends ActivitiesMasterParent
                             case 0:
                                 mRoundPhonics.get(0).put("guessed_yet", "1");
                                 ((TextView) findViewById(R.id.phonic1)).setTextColor(
-                                        getResources().getColor(R.color.incorrect_red));
+                                        ContextCompat.getColor(this,R.color.incorrect_red));
                                 break;
                             case 1:
                                 mRoundPhonics.get(1).put("guessed_yet", "1");
                                 ((TextView) findViewById(R.id.phonic2)).setTextColor(
-                                        getResources().getColor(R.color.incorrect_red));
+                                        ContextCompat.getColor(this,R.color.incorrect_red));
                                 break;
                             case 2:
                                 mRoundPhonics.get(2).put("guessed_yet", "1");
                                 ((TextView) findViewById(R.id.phonic3)).setTextColor(
-                                        getResources().getColor(R.color.incorrect_red));
+                                        ContextCompat.getColor(this,R.color.incorrect_red));
                                 break;
                             case 3:
                                 mRoundPhonics.get(3).put("guessed_yet", "1");
                                 ((TextView) findViewById(R.id.phonic4)).setTextColor(
-                                        getResources().getColor(R.color.incorrect_red));
+                                        ContextCompat.getColor(this,R.color.incorrect_red));
                                 break;
                         }
                     }
@@ -822,11 +819,11 @@ public class ActivitySDRoot extends ActivitiesMasterParent
                         default:
                         case 0:
                             ((TextView) findViewById(R.id.phonic0))
-                                    .setTextColor(getResources().getColor(R.color.correct_green));
+                                    .setTextColor(ContextCompat.getColor(this,R.color.correct_green));
                             break;
                         case 1:
                             ((TextView) findViewById(R.id.phonic1))
-                                    .setTextColor(getResources().getColor(R.color.correct_green));
+                                    .setTextColor(ContextCompat.getColor(this,R.color.correct_green));
                             break;
                     }
                 }else{
@@ -836,16 +833,16 @@ public class ActivitySDRoot extends ActivitiesMasterParent
                             default:
                             case 0:
                                 ((TextView) findViewById(R.id.phonic0)).setTextColor(
-                                        getResources().getColor(R.color.correct_green));
+                                        ContextCompat.getColor(this,R.color.correct_green));
                                 ((TextView) findViewById(R.id.phonic1)).setTextColor(
-                                        getResources().getColor(R.color.incorrect_red));
+                                        ContextCompat.getColor(this,R.color.incorrect_red));
 
                                 break;
                             case 1:
                                 ((TextView) findViewById(R.id.phonic0)).setTextColor(
-                                        getResources().getColor(R.color.incorrect_red));
+                                        ContextCompat.getColor(this,R.color.incorrect_red));
                                 ((TextView) findViewById(R.id.phonic1)).setTextColor(
-                                        getResources().getColor(R.color.correct_green));
+                                        ContextCompat.getColor(this,R.color.correct_green));
                                 break;
                         }
                     }else{
@@ -853,11 +850,11 @@ public class ActivitySDRoot extends ActivitiesMasterParent
                             default:
                             case 0:
                                 ((TextView) findViewById(R.id.phonic0)).setTextColor(
-                                        getResources().getColor(R.color.incorrect_red));
+                                        ContextCompat.getColor(this,R.color.incorrect_red));
                                 break;
                             case 1:
                                 ((TextView) findViewById(R.id.phonic1)).setTextColor(
-                                        getResources().getColor(R.color.incorrect_red));
+                                        ContextCompat.getColor(this,R.color.incorrect_red));
                                 break;
                         }
                     }

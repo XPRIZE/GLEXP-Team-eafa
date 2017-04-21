@@ -70,7 +70,7 @@ public class ActivitySH04 extends ActivitiesMasterParent
     }//end public void onCreate(Bundle savedInstanceState) {
 
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////
 
     protected long playInstructionAudio(){
         long mAudioDuration=super.playInstructionAudio();
@@ -268,14 +268,8 @@ public class ActivitySH04 extends ActivitiesMasterParent
             mBeingValidated = false;
         }
     };
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    //end private void displayScreen(Cursor currentWordsCursor){
-
 
     ////////////////////////////////////////////////////////////////////////////////////////////
-
-
 
 
     protected void setupFrameListens(){
@@ -370,7 +364,7 @@ public class ActivitySH04 extends ActivitiesMasterParent
 
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////
 
     private void setUpFrame(int frameNumber){
         clearFrames();
@@ -402,7 +396,7 @@ public class ActivitySH04 extends ActivitiesMasterParent
         }
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////
 
     private void hideShapes(){
         findViewById(R.id.shape1).setVisibility(CanvasView.INVISIBLE);
@@ -419,7 +413,7 @@ public class ActivitySH04 extends ActivitiesMasterParent
 
 
     }
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////
 
     protected void validate(){
         mBeingValidated=true;
@@ -478,7 +472,8 @@ public class ActivitySH04 extends ActivitiesMasterParent
 
         }else{
             mIncorrectInRound++;
-            ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_no_ok);
+            ((ImageView) findViewById(R.id.btnValidate))
+                    .setImageResource(R.drawable.btn_validate_no_ok);
             selectionArgs = new String[]{
                     "0",
                     "1",
@@ -711,7 +706,7 @@ public class ActivitySH04 extends ActivitiesMasterParent
 
 
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -769,7 +764,8 @@ public class ActivitySH04 extends ActivitiesMasterParent
                         mCurrentGSP.get("current_level"),//5
                         "0"}; //6
                 mWhere="AND math_shapes.math_shape_type_id!="+mCurrentMathShapeTypeId+" "+
-                        "AND math_shapes.math_shape_type_id<="+mCurrentGSP.get("current_level")+" "+
+                        "AND math_shapes.math_shape_type_id<="+
+                        mCurrentGSP.get("current_level")+" "+
                         "AND math_shapes.math_shape_id!="+mCurrentCorrectId;
                 mOrderBy="";
                 cursorLoader = new CursorLoader(this,
@@ -781,7 +777,7 @@ public class ActivitySH04 extends ActivitiesMasterParent
         return cursorLoader;
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor mCursor) {
@@ -805,9 +801,11 @@ public class ActivitySH04 extends ActivitiesMasterParent
                         mGuessingShapes.get(mExtraCount).put("math_shape_code",
                                 mCursor.getString(mCursor.getColumnIndex("math_shape_code"))); //1
                         mGuessingShapes.get(mExtraCount).put("math_shape_type_id",
-                                mCursor.getString(mCursor.getColumnIndex("math_shape_type_id"))); //2
+                                mCursor.getString(
+                                        mCursor.getColumnIndex("math_shape_type_id"))); //2
                         mGuessingShapes.get(mExtraCount).put("math_shape_color_id",
-                                mCursor.getString(mCursor.getColumnIndex("math_shape_color_id"))); //3
+                                mCursor.getString(
+                                        mCursor.getColumnIndex("math_shape_color_id"))); //3
                         mGuessingShapes.get(mExtraCount).put("math_shape_size",
                                 mCursor.getString(mCursor.getColumnIndex("math_shape_size"))); //4
                         mGuessingShapes.get(mExtraCount).put("math_shape_kind",
@@ -819,11 +817,14 @@ public class ActivitySH04 extends ActivitiesMasterParent
                         mGuessingShapes.get(mExtraCount).put("number_correct",
                                 mCursor.getString(mCursor.getColumnIndex("number_correct"))); //8
                         mGuessingShapes.get(mExtraCount).put("number_correct_in_a_row",
-                                mCursor.getString(mCursor.getColumnIndex("number_correct_in_a_row"))); //9
+                                mCursor.getString(
+                                        mCursor.getColumnIndex("number_correct_in_a_row"))); //9
                         mGuessingShapes.get(mExtraCount).put("number_incorrect",
-                                mCursor.getString(mCursor.getColumnIndex("number_incorrect"))); //10
+                                mCursor.getString(
+                                        mCursor.getColumnIndex("number_incorrect"))); //10
                         mGuessingShapes.get(mExtraCount).put("math_shape_type_audio",
-                                mCursor.getString(mCursor.getColumnIndex("math_shape_type_audio")));
+                                mCursor.getString(
+                                        mCursor.getColumnIndex("math_shape_type_audio")));
                         mExtraCount++;
                         if(mExtraCount>=1){
                             break;
@@ -840,7 +841,7 @@ public class ActivitySH04 extends ActivitiesMasterParent
         }
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
@@ -848,7 +849,7 @@ public class ActivitySH04 extends ActivitiesMasterParent
 
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////
 
     protected void processData(Cursor mCursor){
         mCurrentShapeSet=new ArrayList<>();
@@ -954,6 +955,5 @@ public class ActivitySH04 extends ActivitiesMasterParent
 
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }

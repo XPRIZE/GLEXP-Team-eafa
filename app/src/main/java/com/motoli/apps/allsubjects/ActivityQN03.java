@@ -6,13 +6,13 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -43,18 +43,13 @@ public class ActivityQN03 extends ActivitiesMasterParent
 
 
     private ArrayList<String> mChosenFrames;
-    //Handlers
 
     private ArrayList<String> mNumberStatus;
 
     private ArrayList<HashMap<String,String>> mCurrentNumbers;
-
-
-
+    
     private ArrayList<ArrayList<HashMap<String,String>>> mRoundsNumberSet;
-
-
-
+    
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out);
@@ -67,7 +62,7 @@ public class ActivityQN03 extends ActivitiesMasterParent
                         getApplicationContext(), R.anim.fade_in));
         mInstructionAudio="info_qn03";
         appData.addToClassOrder(6);
-        mCurrentGSP=new HashMap<String,String>(appData.getCurrentGroup_Section_Phase());
+        mCurrentGSP=new HashMap<>(appData.getCurrentGroup_Section_Phase());
 
 
         ((TextView)findViewById(R.id.number1)).setTypeface(appData.getNumberFontTypeface());
@@ -82,7 +77,7 @@ public class ActivityQN03 extends ActivitiesMasterParent
 
         mRound=0;
 
-        mChosenFrames=new ArrayList<String>();
+        mChosenFrames=new ArrayList<>();
         mChosenFrames.add("");
         mChosenFrames.add("");
 
@@ -104,7 +99,7 @@ public class ActivityQN03 extends ActivitiesMasterParent
 
         mColor=0;
 
-        mNumberStatus=new ArrayList<String>();
+        mNumberStatus=new ArrayList<>();
         for(int i=0; i<6;i++){
             mNumberStatus.add("0");
         }
@@ -113,12 +108,12 @@ public class ActivityQN03 extends ActivitiesMasterParent
         mCorrectNumberCount=0;
 
         
-        mCurrentNumbers = new ArrayList<HashMap<String, String>>(mRoundsNumberSet.get(mRound));
+        mCurrentNumbers = new ArrayList<>(mRoundsNumberSet.get(mRound));
         //for(int j=0;j<2;j++) {
         Random mRandom=new Random();
             for (int i = 0; i < 3; i++) {
                 HashMap<String,String> mTempData=
-                        new HashMap<String, String>(mCurrentNumbers.get(i));
+                        new HashMap<>(mCurrentNumbers.get(i));
                 if(Integer.parseInt(mCurrentGSP.get("current_level"))<=2) {
                     mTempData.put("is_number", "0");
                 }else{
@@ -246,16 +241,6 @@ public class ActivityQN03 extends ActivitiesMasterParent
 
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////
-
-    protected void setUpListeners(){
-
-
-
-    }
-
-
-
     /////////////////////////////////////////////////////////////////////////////////////////
 
     private void numbersOrDots(){
@@ -347,18 +332,12 @@ public class ActivityQN03 extends ActivitiesMasterParent
         customCanvasDots.clearCanvas();
         if (Integer.parseInt(mCurrentNumbers.get(shapeID).get("math_number")) >= 10) {
             customCanvasDots.setAllowTextNumbers(true);
-            customCanvasDots.setAllowTens(true);
-        } else {
-            customCanvasDots.setAllowTens(false);
-        }
+            //customCanvasDots.setAllowTens(true);
+        } /*else {
+           // customCanvasDots.setAllowTens(false);
+        }*/
 
-        //if (shapeID==mCurrentLocation) {
-
-        //} else {
-        //    customCanvasDots.setAllowTextNumbers(false);
-        //}
-
-
+     
         customCanvasDots.setNumberOfDots(
                 Integer.parseInt(mCurrentNumbers.get(shapeID).get("math_number")));
         mColor = 0;
@@ -515,7 +494,7 @@ public class ActivityQN03 extends ActivitiesMasterParent
 
     }//protected void setupFrameListens(){
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////
 
     private void setUpFrame(int frameNumber, boolean secondGuess){
         if(secondGuess){
@@ -532,38 +511,38 @@ public class ActivityQN03 extends ActivitiesMasterParent
                 findViewById(R.id.image1).setVisibility(ImageButton.INVISIBLE);
                 
 
-                findViewById(R.id.numberBox1).setBackground(getResources()
-                        .getDrawable(R.drawable.rounded_text_selected));
+                findViewById(R.id.numberBox1).setBackground(
+                        ContextCompat.getDrawable(this,R.drawable.rounded_text_selected));
                 break;
             }
             case 1:{
                 findViewById(R.id.image2).setVisibility(ImageButton.INVISIBLE);
-                findViewById(R.id.numberBox2).setBackground(getResources()
-                        .getDrawable(R.drawable.rounded_text_selected));
+                findViewById(R.id.numberBox2).setBackground(
+                        ContextCompat.getDrawable(this,R.drawable.rounded_text_selected));
                 break;
             }
             case 2:{
                 findViewById(R.id.image3).setVisibility(ImageButton.INVISIBLE);
-                findViewById(R.id.numberBox3).setBackground(getResources()
-                        .getDrawable(R.drawable.rounded_text_selected));
+                findViewById(R.id.numberBox3).setBackground(
+                        ContextCompat.getDrawable(this,R.drawable.rounded_text_selected));
                 break;
             }
             case 3:{
                 findViewById(R.id.image4).setVisibility(ImageButton.INVISIBLE);
-                findViewById(R.id.numberBox4).setBackground(getResources()
-                        .getDrawable(R.drawable.rounded_text_selected));
+                findViewById(R.id.numberBox4).setBackground(
+                        ContextCompat.getDrawable(this,R.drawable.rounded_text_selected));
                 break;
             }
             case 4:{
                 findViewById(R.id.image5).setVisibility(ImageButton.INVISIBLE);
-                findViewById(R.id.numberBox5).setBackground(getResources()
-                        .getDrawable(R.drawable.rounded_text_selected));
+                findViewById(R.id.numberBox5).setBackground(
+                        ContextCompat.getDrawable(this,R.drawable.rounded_text_selected));
                 break;
             }
             case 5:{
                 findViewById(R.id.image6).setVisibility(ImageButton.INVISIBLE);
-                findViewById(R.id.numberBox6).setBackground(getResources()
-                        .getDrawable(R.drawable.rounded_text_selected));
+                findViewById(R.id.numberBox6).setBackground(
+                        ContextCompat.getDrawable(this,R.drawable.rounded_text_selected));
                 break;
             }
         }//end switch(frameNumber){
@@ -579,6 +558,7 @@ public class ActivityQN03 extends ActivitiesMasterParent
         }
 
     };
+    
     ////////////////////////////////////////////////////////////////////////////////////////////
 
     protected void validate(){
@@ -620,10 +600,10 @@ public class ActivityQN03 extends ActivitiesMasterParent
                         mNumberStatus.set(0, "2");
                         if(((HashMap) findViewById(R.id.image1).getTag())
                                 .get("is_number").equals("1")) {
-                            ((TextView) findViewById(R.id.number1)).setTextColor(getResources()
-                                    .getColor(R.color.correct_green));
-                            findViewById(R.id.numberBox1).setBackground(getResources()
-                                    .getDrawable(R.drawable.rounded_text_correct));
+                            ((TextView) findViewById(R.id.number1)).setTextColor(
+                                    ContextCompat.getColor(this,R.color.correct_green));
+                            findViewById(R.id.numberBox1).setBackground(ContextCompat
+                                    .getDrawable(this,R.drawable.rounded_text_correct));
                         }else{
                             mColor=1;
                             placingCurrentNumbersAsDots(0);
@@ -632,11 +612,11 @@ public class ActivityQN03 extends ActivitiesMasterParent
                         mNumberStatus.set(0, "1");
                         if(((HashMap) findViewById(R.id.image1).getTag())
                                 .get("is_number").equals("1")) {
-                            ((TextView) findViewById(R.id.number1)).setTextColor(getResources()
-                                    .getColor(R.color.incorrect_red));
+                            ((TextView) findViewById(R.id.number1)).setTextColor(
+                                    ContextCompat.getColor(this,R.color.incorrect_red));
 
-                            (findViewById(R.id.numberBox1)).setBackground(getResources()
-                                    .getDrawable(R.drawable.rounded_text_incorrect));
+                            (findViewById(R.id.numberBox1)).setBackground(ContextCompat
+                                    .getDrawable(this,R.drawable.rounded_text_incorrect));
                         }else{
                             mColor=2;
                             placingCurrentNumbersAsDots(0);
@@ -649,10 +629,10 @@ public class ActivityQN03 extends ActivitiesMasterParent
                         mNumberStatus.set(1, "2");
                         if(((HashMap) findViewById(R.id.image2).getTag())
                                 .get("is_number").equals("1")) {
-                            ((TextView) findViewById(R.id.number2)).setTextColor(getResources()
-                                    .getColor(R.color.correct_green));
-                            (findViewById(R.id.numberBox2)).setBackground(getResources()
-                                    .getDrawable(R.drawable.rounded_text_correct));
+                            ((TextView) findViewById(R.id.number2)).setTextColor(
+                                    ContextCompat.getColor(this,R.color.correct_green));
+                            (findViewById(R.id.numberBox2)).setBackground(ContextCompat
+                                    .getDrawable(this,R.drawable.rounded_text_correct));
                         }else{
                             mColor=1;
                             placingCurrentNumbersAsDots(1);
@@ -661,11 +641,11 @@ public class ActivityQN03 extends ActivitiesMasterParent
                         mNumberStatus.set(1, "1");
                         if(((HashMap) findViewById(R.id.image2).getTag())
                                 .get("is_number").equals("1")) {
-                            ((TextView) findViewById(R.id.number2)).setTextColor(getResources()
-                                    .getColor(R.color.incorrect_red));
+                            ((TextView) findViewById(R.id.number2)).setTextColor(
+                                    ContextCompat.getColor(this,R.color.incorrect_red));
 
-                            (findViewById(R.id.numberBox2)).setBackground(getResources()
-                                    .getDrawable(R.drawable.rounded_text_incorrect));
+                            (findViewById(R.id.numberBox2)).setBackground(ContextCompat
+                                    .getDrawable(this,R.drawable.rounded_text_incorrect));
                         }else{
                             mColor=2;
                             placingCurrentNumbersAsDots(1);
@@ -678,10 +658,10 @@ public class ActivityQN03 extends ActivitiesMasterParent
                         mNumberStatus.set(2, "2");
                         if(((HashMap) findViewById(R.id.image3).getTag())
                                 .get("is_number").equals("1")) {
-                            ((TextView) findViewById(R.id.number3))
-                                    .setTextColor(getResources().getColor(R.color.correct_green));
-                            (findViewById(R.id.numberBox3)).setBackground(getResources()
-                                    .getDrawable(R.drawable.rounded_text_correct));
+                            ((TextView) findViewById(R.id.number3)).setTextColor(
+                                    ContextCompat.getColor(this,R.color.correct_green));
+                            (findViewById(R.id.numberBox3)).setBackground(ContextCompat
+                                    .getDrawable(this,R.drawable.rounded_text_correct));
                         }else{
                             mColor=1;
                             placingCurrentNumbersAsDots(2);
@@ -690,11 +670,11 @@ public class ActivityQN03 extends ActivitiesMasterParent
                         mNumberStatus.set(2, "1");
                         if(((HashMap) findViewById(R.id.image3).getTag())
                                 .get("is_number").equals("1")) {
-                            ((TextView) findViewById(R.id.number3))
-                                    .setTextColor(getResources().getColor(R.color.incorrect_red));
+                            ((TextView) findViewById(R.id.number3)).setTextColor(
+                                    ContextCompat.getColor(this,R.color.incorrect_red));
 
-                            (findViewById(R.id.numberBox3)).setBackground(getResources()
-                                    .getDrawable(R.drawable.rounded_text_incorrect));
+                            (findViewById(R.id.numberBox3)).setBackground(ContextCompat
+                                    .getDrawable(this,R.drawable.rounded_text_incorrect));
                         }else{
                             mColor=2;
                             placingCurrentNumbersAsDots(2);
@@ -707,10 +687,10 @@ public class ActivityQN03 extends ActivitiesMasterParent
                         mNumberStatus.set(3, "2");
                         if(((HashMap) findViewById(R.id.image4).getTag())
                                 .get("is_number").equals("1")) {
-                            ((TextView) findViewById(R.id.number4)).setTextColor(getResources()
-                                    .getColor(R.color.correct_green));
-                            (findViewById(R.id.numberBox4)).setBackground(getResources()
-                                    .getDrawable(R.drawable.rounded_text_correct));
+                            ((TextView) findViewById(R.id.number4)).setTextColor(
+                                    ContextCompat.getColor(this,R.color.correct_green));
+                            (findViewById(R.id.numberBox4)).setBackground(ContextCompat
+                                    .getDrawable(this,R.drawable.rounded_text_correct));
                         }else{
                             mColor=1;
                             placingCurrentNumbersAsDots(3);
@@ -719,11 +699,11 @@ public class ActivityQN03 extends ActivitiesMasterParent
                         mNumberStatus.set(3, "1");
                         if(((HashMap) findViewById(R.id.image4).getTag())
                                 .get("is_number").equals("1")) {
-                            ((TextView) findViewById(R.id.number4)).setTextColor(getResources()
-                                    .getColor(R.color.incorrect_red));
+                            ((TextView) findViewById(R.id.number4)).setTextColor(
+                                    ContextCompat.getColor(this,R.color.incorrect_red));
 
-                            (findViewById(R.id.numberBox4)).setBackground(getResources()
-                                    .getDrawable(R.drawable.rounded_text_incorrect));
+                            (findViewById(R.id.numberBox4)).setBackground(ContextCompat
+                                    .getDrawable(this,R.drawable.rounded_text_incorrect));
                         }else{
                             mColor=2;
                             placingCurrentNumbersAsDots(3);
@@ -736,10 +716,10 @@ public class ActivityQN03 extends ActivitiesMasterParent
                         mNumberStatus.set(4, "2");
                         if(((HashMap) findViewById(R.id.image5).getTag())
                                 .get("is_number").equals("1")) {
-                            ((TextView) findViewById(R.id.number5)).setTextColor(getResources()
-                                    .getColor(R.color.correct_green));
-                            (findViewById(R.id.numberBox5)).setBackground(getResources()
-                                    .getDrawable(R.drawable.rounded_text_correct));
+                            ((TextView) findViewById(R.id.number5)).setTextColor(
+                                    ContextCompat.getColor(this,R.color.correct_green));
+                            (findViewById(R.id.numberBox5)).setBackground(ContextCompat
+                                    .getDrawable(this,R.drawable.rounded_text_correct));
                         }else{
                             mColor=1;
                             placingCurrentNumbersAsDots(4);
@@ -748,11 +728,11 @@ public class ActivityQN03 extends ActivitiesMasterParent
                         mNumberStatus.set(4, "1");
                         if(((HashMap) findViewById(R.id.image5).getTag())
                                 .get("is_number").equals("1")) {
-                            ((TextView) findViewById(R.id.number5))
-                                    .setTextColor(getResources().getColor(R.color.incorrect_red));
+                            ((TextView) findViewById(R.id.number5)).setTextColor(
+                                    ContextCompat.getColor(this,R.color.incorrect_red));
 
-                            (findViewById(R.id.numberBox5)).setBackground(getResources()
-                                    .getDrawable(R.drawable.rounded_text_incorrect));
+                            (findViewById(R.id.numberBox5)).setBackground(ContextCompat
+                                    .getDrawable(this,R.drawable.rounded_text_incorrect));
                         }else{
                             mColor=2;
                             placingCurrentNumbersAsDots(4);
@@ -765,10 +745,10 @@ public class ActivityQN03 extends ActivitiesMasterParent
                         mNumberStatus.set(5, "2");
                         if(((HashMap) findViewById(R.id.image6).getTag())
                                 .get("is_number").equals("1")) {
-                            ((TextView) findViewById(R.id.number6)).setTextColor(getResources()
-                                    .getColor(R.color.correct_green));
-                            (findViewById(R.id.numberBox6)).setBackground(getResources()
-                                    .getDrawable(R.drawable.rounded_text_correct));
+                            ((TextView) findViewById(R.id.number6)).setTextColor(
+                                    ContextCompat.getColor(this,R.color.correct_green));
+                            (findViewById(R.id.numberBox6)).setBackground(ContextCompat
+                                    .getDrawable(this,R.drawable.rounded_text_correct));
                         }else{
                             mColor=1;
                             placingCurrentNumbersAsDots(5);
@@ -777,11 +757,11 @@ public class ActivityQN03 extends ActivitiesMasterParent
                         mNumberStatus.set(5, "1");
                         if(((HashMap) findViewById(R.id.image6).getTag())
                                 .get("is_number").equals("1")) {
-                            ((TextView) findViewById(R.id.number6))
-                                    .setTextColor(getResources().getColor(R.color.incorrect_red));
+                            ((TextView) findViewById(R.id.number6)).setTextColor(
+                                    ContextCompat.getColor(this,R.color.incorrect_red));
 
-                            (findViewById(R.id.numberBox6)).setBackground(getResources()
-                                    .getDrawable(R.drawable.rounded_text_incorrect));
+                            (findViewById(R.id.numberBox6)).setBackground(ContextCompat
+                                    .getDrawable(this,R.drawable.rounded_text_incorrect));
                         }else{
                             mColor=2;
                             placingCurrentNumbersAsDots(5);
@@ -872,12 +852,11 @@ public class ActivityQN03 extends ActivitiesMasterParent
     private void clearWrongMatches(){
         if(mNumberStatus.get(0).equals("0") || mNumberStatus.get(0).equals("1")){
             mNumberStatus.set(0, "0");
-            findViewById(R.id.numberBox1).setBackground(getResources()
-                    .getDrawable(R.drawable.rounded_text_unselected));
+            findViewById(R.id.numberBox1).setBackground(ContextCompat.getDrawable(this,R.drawable.rounded_text_unselected));
             if(((HashMap) findViewById(R.id.image1).getTag())
                     .get("is_number").equals("1")) {
                 ((TextView) findViewById(R.id.number1))
-                        .setTextColor(getResources().getColor(R.color.normalBlack));
+                        .setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
                 ((TextView) findViewById(R.id.number1))
                         .setPaintFlags(((TextView) findViewById(R.id.number1))
                                 .getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
@@ -890,12 +869,11 @@ public class ActivityQN03 extends ActivitiesMasterParent
         }
         if(mNumberStatus.get(1).equals("0") || mNumberStatus.get(1).equals("1")){
             mNumberStatus.set(1, "0");
-            findViewById(R.id.numberBox2).setBackground(getResources()
-                    .getDrawable(R.drawable.rounded_text_unselected));
+            findViewById(R.id.numberBox2).setBackground(ContextCompat.getDrawable(this,R.drawable.rounded_text_unselected));
             if(((HashMap) findViewById(R.id.image2).getTag())
                     .get("is_number").equals("1")) {
                 ((TextView) findViewById(R.id.number2))
-                        .setTextColor(getResources().getColor(R.color.normalBlack));
+                        .setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
                 ((TextView) findViewById(R.id.number2))
                         .setPaintFlags(((TextView) findViewById(R.id.number2))
                                 .getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
@@ -907,12 +885,11 @@ public class ActivityQN03 extends ActivitiesMasterParent
         }
         if(mNumberStatus.get(2).equals("0") || mNumberStatus.get(2).equals("1")){
             mNumberStatus.set(2, "0");
-            findViewById(R.id.numberBox3).setBackground(getResources()
-                    .getDrawable(R.drawable.rounded_text_unselected));
+            findViewById(R.id.numberBox3).setBackground(ContextCompat.getDrawable(this,R.drawable.rounded_text_unselected));
             if(((HashMap) findViewById(R.id.image3).getTag())
                     .get("is_number").equals("1")) {
                 ((TextView) findViewById(R.id.number3))
-                        .setTextColor(getResources().getColor(R.color.normalBlack));
+                        .setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
                 ((TextView) findViewById(R.id.number3))
                         .setPaintFlags(((TextView) findViewById(R.id.number3))
                                 .getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
@@ -925,12 +902,11 @@ public class ActivityQN03 extends ActivitiesMasterParent
         }
         if(mNumberStatus.get(3).equals("0") || mNumberStatus.get(3).equals("1")){
             mNumberStatus.set(3, "0");
-            findViewById(R.id.numberBox4).setBackground(getResources()
-                    .getDrawable(R.drawable.rounded_text_unselected));
+            findViewById(R.id.numberBox4).setBackground(ContextCompat.getDrawable(this,R.drawable.rounded_text_unselected));
             if(((HashMap) findViewById(R.id.image4).getTag())
                     .get("is_number").equals("1")) {
                 ((TextView) findViewById(R.id.number4))
-                        .setTextColor(getResources().getColor(R.color.normalBlack));
+                        .setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
                 ((TextView) findViewById(R.id.number4))
                         .setPaintFlags(((TextView) findViewById(R.id.number4))
                                 .getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
@@ -943,12 +919,11 @@ public class ActivityQN03 extends ActivitiesMasterParent
         }
         if(mNumberStatus.get(4).equals("0") || mNumberStatus.get(4).equals("1")){
             mNumberStatus.set(4, "0");
-            findViewById(R.id.numberBox5).setBackground(getResources()
-                    .getDrawable(R.drawable.rounded_text_unselected));
+            findViewById(R.id.numberBox5).setBackground(ContextCompat.getDrawable(this,R.drawable.rounded_text_unselected));
             if(((HashMap) findViewById(R.id.image5).getTag())
                     .get("is_number").equals("1")) {
                 ((TextView) findViewById(R.id.number5))
-                        .setTextColor(getResources().getColor(R.color.normalBlack));
+                        .setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
                 ((TextView) findViewById(R.id.number5))
                         .setPaintFlags(((TextView) findViewById(R.id.number5))
                                 .getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
@@ -961,12 +936,11 @@ public class ActivityQN03 extends ActivitiesMasterParent
         }
         if(mNumberStatus.get(5).equals("0") || mNumberStatus.get(5).equals("1")){
             mNumberStatus.set(5, "0");
-            findViewById(R.id.numberBox6).setBackground(getResources()
-                    .getDrawable(R.drawable.rounded_text_unselected));
+            findViewById(R.id.numberBox6).setBackground(ContextCompat.getDrawable(this,R.drawable.rounded_text_unselected));
             if(((HashMap) findViewById(R.id.image6).getTag())
                     .get("is_number").equals("1")) {
                 ((TextView) findViewById(R.id.number6))
-                        .setTextColor(getResources().getColor(R.color.normalBlack));
+                        .setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
                 ((TextView) findViewById(R.id.number6))
                         .setPaintFlags(((TextView) findViewById(R.id.number6))
                                 .getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
@@ -996,17 +970,17 @@ public class ActivityQN03 extends ActivitiesMasterParent
     private void resetNumbers(){
 
         ((TextView) findViewById(R.id.number1)).setTextColor(
-                getResources().getColor(R.color.normalBlack));
+                ContextCompat.getColor(this,R.color.normalBlack));
         ((TextView) findViewById(R.id.number2)).setTextColor(
-                getResources().getColor(R.color.normalBlack));
+                ContextCompat.getColor(this,R.color.normalBlack));
         ((TextView) findViewById(R.id.number3)).setTextColor(
-                getResources().getColor(R.color.normalBlack));
+                ContextCompat.getColor(this,R.color.normalBlack));
         ((TextView) findViewById(R.id.number4)).setTextColor(
-                getResources().getColor(R.color.normalBlack));
+                ContextCompat.getColor(this,R.color.normalBlack));
         ((TextView) findViewById(R.id.number5)).setTextColor(
-                getResources().getColor(R.color.normalBlack));
+                ContextCompat.getColor(this,R.color.normalBlack));
         ((TextView) findViewById(R.id.number6)).setTextColor(
-                getResources().getColor(R.color.normalBlack));
+                ContextCompat.getColor(this,R.color.normalBlack));
 
 
     }
@@ -1018,17 +992,17 @@ public class ActivityQN03 extends ActivitiesMasterParent
 
 
         findViewById(R.id.numberBox1).setBackground(
-                getResources().getDrawable(R.drawable.rounded_text_unselected));
+                ContextCompat.getDrawable(this,R.drawable.rounded_text_unselected));
         findViewById(R.id.numberBox2).setBackground(
-                getResources().getDrawable(R.drawable.rounded_text_unselected));
+                ContextCompat.getDrawable(this,R.drawable.rounded_text_unselected));
         findViewById(R.id.numberBox3).setBackground(
-                getResources().getDrawable(R.drawable.rounded_text_unselected));
+                ContextCompat.getDrawable(this,R.drawable.rounded_text_unselected));
         findViewById(R.id.numberBox4).setBackground(
-                getResources().getDrawable(R.drawable.rounded_text_unselected));
+                ContextCompat.getDrawable(this,R.drawable.rounded_text_unselected));
         findViewById(R.id.numberBox5).setBackground(
-                getResources().getDrawable(R.drawable.rounded_text_unselected));
+                ContextCompat.getDrawable(this,R.drawable.rounded_text_unselected));
         findViewById(R.id.numberBox6).setBackground(
-                getResources().getDrawable(R.drawable.rounded_text_unselected));
+                ContextCompat.getDrawable(this,R.drawable.rounded_text_unselected));
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////
@@ -1091,7 +1065,7 @@ public class ActivityQN03 extends ActivitiesMasterParent
     ///////////////////////////////////////////////////////////////////////////////////////
 
     protected void processData(Cursor mCursor){
-        ArrayList<HashMap<String,String>> mCurrentNumberSet=new ArrayList<HashMap<String, String>>();
+        ArrayList<HashMap<String,String>> mCurrentNumberSet=new ArrayList<>();
         int mNumber=0;
         int mNumberCorrectInARow=Constants.INA_ROW_CORRECT;
         if(mCursor.moveToFirst()) {
@@ -1145,7 +1119,7 @@ public class ActivityQN03 extends ActivitiesMasterParent
 
 
         mNumber=0;
-        mRoundsNumberSet= new ArrayList<ArrayList<HashMap<String,String>>>();
+        mRoundsNumberSet= new ArrayList<>();
         for(int i=0; i<2; i++){
             mRoundsNumberSet.add(new ArrayList<HashMap<String, String>>());
             for(int j=0;j<3;j++){

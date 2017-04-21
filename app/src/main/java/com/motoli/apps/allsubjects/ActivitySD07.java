@@ -1,10 +1,5 @@
 package com.motoli.apps.allsubjects;
-/**
- * Part of Project Motoli All Subjects
- * for Education Technology For Development
- * created by Aaron D Michaelis Borsay
- * on 12/11/2015.
- */
+
 
 
 import java.util.ArrayList;
@@ -12,25 +7,33 @@ import java.util.HashMap;
 
 
 import android.app.LoaderManager;
+import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+/**
+ * Part of Project Motoli All Subjects
+ * for Education Technology For Development
+ * created by Aaron D Michaelis Borsay
+ * on 12/11/2015.
+ */
 public class ActivitySD07 extends ActivitiesMasterParent
         implements LoaderManager.LoaderCallbacks<Cursor>{
 
-    private long mAudioDuration=0;
 
     private ActivitySD07GridArea mAdapter;
-    private GridView mPhonicGrid;
     private ArrayList<String> mPhonicInfo;
-    private ArrayList<ArrayList<String>> mAllPhonics;
     private ArrayList<ArrayList<String>> mCurrentPhonics;
     private boolean mPlayingAudio=false;
 
@@ -52,19 +55,26 @@ public class ActivitySD07 extends ActivitiesMasterParent
     ////////////////////////////////////////////////////////////////////////////////////////////
 
     private void displayScreen(Cursor mCursor){
-        mCurrentPhonics=new ArrayList<ArrayList<String>>();
-        mCurrentGSP=new HashMap<String,String>(appData.getCurrentGroup_Section_Phase());
+        mCurrentPhonics=new ArrayList<>();
+        mCurrentGSP=new HashMap<>(appData.getCurrentGroup_Section_Phase());
         int phonicCount=0;
         if (mCursor.moveToFirst()) {
             do {
                 mCurrentPhonics.add(new ArrayList<String>());
-                mCurrentPhonics.get(phonicCount).add(mCursor.getString(mCursor.getColumnIndex("phonic_id")));       //0
-                mCurrentPhonics.get(phonicCount).add(mCursor.getString(mCursor.getColumnIndex("phonic_text")));     //1
-                mCurrentPhonics.get(phonicCount).add(mCursor.getString(mCursor.getColumnIndex("phonic_grammar")));  //2
-                mCurrentPhonics.get(phonicCount).add(mCursor.getString(mCursor.getColumnIndex("phonic_audio")));    //3
-                mCurrentPhonics.get(phonicCount).add(mCursor.getString(mCursor.getColumnIndex("phonic_color")));    //4
-                mCurrentPhonics.get(phonicCount).add(mCursor.getString(mCursor.getColumnIndex("level_number")));    //5
-                mCurrentPhonics.get(phonicCount).add(mCurrentGSP.get("current_level"));    //6
+                mCurrentPhonics.get(phonicCount).add(
+                        mCursor.getString(mCursor.getColumnIndex("phonic_id")));       //0
+                mCurrentPhonics.get(phonicCount).add(
+                mCursor.getString(mCursor.getColumnIndex("phonic_text")));     //1
+                mCurrentPhonics.get(phonicCount).add(
+                        mCursor.getString(mCursor.getColumnIndex("phonic_grammar")));  //2
+                mCurrentPhonics.get(phonicCount).add(
+                        mCursor.getString(mCursor.getColumnIndex("phonic_audio")));    //3
+                mCurrentPhonics.get(phonicCount).add(
+                        mCursor.getString(mCursor.getColumnIndex("phonic_color")));    //4
+                mCurrentPhonics.get(phonicCount).add(
+                        mCursor.getString(mCursor.getColumnIndex("level_number")));    //5
+                mCurrentPhonics.get(phonicCount).add(
+                        mCurrentGSP.get("current_level"));    //6
 
                 phonicCount++;
             } while (mCursor.moveToNext());
@@ -72,7 +82,7 @@ public class ActivitySD07 extends ActivitiesMasterParent
 
         mAdapter= new  ActivitySD07GridArea(this, mCurrentPhonics);
 
-        mPhonicGrid = (GridView) findViewById(R.id.phonicsGrid);
+        GridView mPhonicGrid = (GridView) findViewById(R.id.phonicsGrid);
 
 
         mPhonicGrid.setAdapter(mAdapter);
@@ -122,10 +132,9 @@ public class ActivitySD07 extends ActivitiesMasterParent
     /////////////////////////////////////////////////////////////////////////////////////////////
 
     private void playAudio(String mAudio ){
-        mAudioDuration=playGeneralAudio(mAudio);
-        mAudioHandler.postDelayed(runRestFontTypeFace, mAudioDuration+500);
+        mAudioHandler.postDelayed(runRestFontTypeFace, playGeneralAudio(mAudio)+500);
     }
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////
     private Runnable runRestFontTypeFace = new Runnable(){
         @Override
         public void run(){
@@ -134,7 +143,6 @@ public class ActivitySD07 extends ActivitiesMasterParent
             }
             mAdapter.notifyDataSetChanged();
             mPlayingAudio=false;
-            //mCurrentPhonicText.setTypeface(appData.getCurrentFontType());
         }
     };
 
@@ -146,7 +154,7 @@ public class ActivitySD07 extends ActivitiesMasterParent
             default:
             case Constants.CURRENT_PHONIC_LETTERS:{
 
-                mCurrentGSP=new HashMap<String,String>(appData.getCurrentGroup_Section_Phase());
+                mCurrentGSP=new HashMap<>(appData.getCurrentGroup_Section_Phase());
                 String[] projection = new String[]{
                         appData.getCurrentActivity().get(0),
                         appData.getCurrentUserID(),
@@ -162,7 +170,8 @@ public class ActivitySD07 extends ActivitiesMasterParent
 
                 String sortOrder="variable_phase_levels.level_number ASC, phonics.phonic_text ASC";
                 cursorLoader = new CursorLoader(this,
-                        AppProvider.CONTENT_URI_CURRENT_PHONIC_LETTERS, projection, selection, null, sortOrder);
+                        AppProvider.CONTENT_URI_CURRENT_PHONIC_LETTERS,
+                        projection, selection, null, sortOrder);
                 break;
             }
         }
@@ -188,9 +197,73 @@ public class ActivitySD07 extends ActivitiesMasterParent
 
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+    private static class ActivitySD07GridArea extends BaseAdapter {
+        private Context mContext;
+        private ArrayList<ArrayList<String>> mPhonicData;
+        private ViewHolder holder;
+        static class ViewHolder {
+             TextView text;
+             ImageView icon;
+        }
 
 
 
+        private ActivitySD07GridArea(Context mContext, ArrayList<ArrayList<String>> mPhonicData) {
+            this.mContext = mContext;
+            this.mPhonicData=mPhonicData;
+        }
 
+        public View getView(int position, View convertView, ViewGroup parent) {
+            LayoutInflater mInflater
+                    = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
+            final Motoli_Application appData
+                   = ((Motoli_Application) mContext.getApplicationContext());
+            if (convertView == null) {
+                convertView = mInflater.inflate(R.layout.activity_sd07_grid_area,parent, false);
+                holder = new ViewHolder();
+                holder.text =( TextView) convertView.findViewById(R.id.grid_item_text);
+                holder.icon = (ImageView) convertView.findViewById(R.id.tracingImage);
+                holder.text.setTypeface(appData.getCurrentFontType());
+                convertView.setTag(holder);
+            } else {
+                holder = (ViewHolder) convertView.getTag();
+            }
+
+            if(Integer.parseInt(mPhonicData.get(position).get(5))
+                    <=Integer.parseInt(mPhonicData.get(position).get(6))) {
+                holder.icon.setAlpha(1.0f);
+                String mPhonicText=mPhonicData.get(position).get(1).replace("&quot;","'");
+                holder.text.setText(mPhonicText);
+            }else {
+                holder.icon.setAlpha(0.1f);
+                holder.text.setText("");
+            }
+            holder.text.setTag(mPhonicData.get(position));
+            holder.icon.setImageResource(mContext.getResources()
+                    .getIdentifier("round_square_"+mPhonicData.get(position).get(4)
+                            , "drawable", mContext.getPackageName()));
+            holder.icon.setTag(mPhonicData.get(position));
+            holder.icon.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            holder.icon.setPadding(8, 8, 8, 8);
+            holder.icon.destroyDrawingCache();
+            return convertView;
+        }
+
+        @Override
+        public int getCount() {
+            return mPhonicData.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+                return 0;
+            }
+
+        }
 }

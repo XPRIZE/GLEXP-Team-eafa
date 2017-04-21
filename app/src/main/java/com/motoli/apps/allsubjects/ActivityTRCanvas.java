@@ -1,18 +1,18 @@
 package com.motoli.apps.allsubjects;
 
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import java.util.HashMap;
 
 /**
- * Created by abors on 11/23/2016.
- */
-
+* Part of Project Motoli All Subjects
+* for Education Technology For Development
+* created by Aaron D Michaelis Borsay
+* on 11/13/2016.
+*/
 public class ActivityTRCanvas extends ActivitiesMasterParent {
 
     private ImageView mBaseImage;

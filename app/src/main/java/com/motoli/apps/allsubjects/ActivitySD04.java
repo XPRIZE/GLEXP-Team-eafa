@@ -1,16 +1,12 @@
 package com.motoli.apps.allsubjects;
 
-/**
- * Part of Project Motoli All Subjects
- * for Education Technology For Development
- * created by Aaron D Michaelis Borsay
- * on 8/24/2015.
- */
+
 import android.app.LoaderManager;
 import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
@@ -24,7 +20,12 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 
-
+/**
+ * Part of Project Motoli All Subjects
+ * for Education Technology For Development
+ * created by Aaron D Michaelis Borsay
+ * on 8/24/2015.
+ */
 public class ActivitySD04 extends ActivitySDRoot 
         implements LoaderManager.LoaderCallbacks<Cursor>{
 
@@ -89,9 +90,9 @@ public class ActivitySD04 extends ActivitySDRoot
         ((TextView) findViewById(R.id.phonic0)).setText("");
         ((TextView) findViewById(R.id.phonic1)).setText("");
         ((TextView) findViewById(R.id.phonic0)).setTextColor(
-                getResources().getColor(R.color.darkGray));
+                ContextCompat.getColor(this,R.color.darkGray));
         ((TextView) findViewById(R.id.phonic1)).setTextColor(
-                getResources().getColor(R.color.darkGray));
+                ContextCompat.getColor(this,R.color.darkGray));
 
 
         ((ImageView) findViewById(R.id.btnMicDude1))
@@ -166,9 +167,9 @@ public class ActivitySD04 extends ActivitySDRoot
 
 
                     ((TextView) findViewById(R.id.phonic0))
-                            .setTextColor(getResources().getColor(R.color.normalBlack));
+                            .setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
                     ((TextView) findViewById(R.id.phonic1))
-                            .setTextColor(getResources().getColor(R.color.darkGray));
+                            .setTextColor(ContextCompat.getColor(this,R.color.darkGray));
 
 
                     playGeneralAudio(mRoundPhonics.get(0).get("phonic_audio"));
@@ -188,9 +189,9 @@ public class ActivitySD04 extends ActivitySDRoot
                     ((ImageView) findViewById(R.id.btnMicDude2))
                             .setImageResource(R.drawable.btn_dude_right_on);
                     ((TextView) findViewById(R.id.phonic0))
-                            .setTextColor(getResources().getColor(R.color.darkGray));
+                            .setTextColor(ContextCompat.getColor(this,R.color.darkGray));
                     ((TextView) findViewById(R.id.phonic1))
-                            .setTextColor(getResources().getColor(R.color.normalBlack));
+                            .setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
 
                     playGeneralAudio(mRoundPhonics.get(1).get("phonic_audio"));
                     mCorrect=mRoundPhonics.get(1).get("is_correct").equals("1");
@@ -355,7 +356,7 @@ public class ActivitySD04 extends ActivitySDRoot
                 break;
             }
             case Constants.CURRENT_EXTRA_PHONICS:{
-                ArrayList<String> mGrammarArray = new ArrayList<String>(
+                ArrayList<String> mGrammarArray = new ArrayList<>(
                         Arrays.asList(args.getString("phonic_grammar").split(";")));
                 String mWhere="variable_phase_levels.level_number" +
                         "<=" +mCurrentGSP.get("current_level")+ " " +

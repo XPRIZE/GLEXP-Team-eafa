@@ -1,34 +1,26 @@
 package com.motoli.apps.allsubjects;
+
+
+import android.content.Context;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+
 /**
  * Part of Project Motoli All Subjects
  * for Education Technology For Development
  * created by Aaron D Michaelis Borsay
  * on 8/12/2015.
  */
-
-import com.motoli.apps.allsubjects.R.raw;
-import android.app.Service;
-import android.content.Context;
-import android.content.Intent;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.os.IBinder;
-import android.util.Log;
-
-import java.lang.reflect.Field;
-
-
-public class Audio_Functions extends MediaPlayer{
+ class Audio_Functions extends MediaPlayer{
 
         private boolean allowSFX=true;
         private float maxVolume=0;
         private String mSecondAudioOutside;
-        MediaPlayer mp;
+        private MediaPlayer mp;
         Context context;
 
 
-        public Audio_Functions(Context ct, boolean allowSFX, float maxVolume){
+        Audio_Functions(Context ct, boolean allowSFX, float maxVolume){
             this.context = ct;
 
             this.allowSFX=allowSFX;
@@ -40,7 +32,7 @@ public class Audio_Functions extends MediaPlayer{
 
         /////////////////////////////////////////////////////////////////////////
 
-        public void stopAudio(){
+        void stopAudio(){
 
             if(mp!=null){
                 mp.release();
@@ -51,7 +43,7 @@ public class Audio_Functions extends MediaPlayer{
 
         /////////////////////////////////////////////////////////////////////////
 
-        protected long playFeedBackAudio(String sfxAudio){
+        long playFeedBackAudio(String sfxAudio){
 
             long mAudioDuration=0;
             if(allowSFX){
@@ -79,10 +71,7 @@ public class Audio_Functions extends MediaPlayer{
                             @Override
                             public void onCompletion(MediaPlayer mp) {
                                 mp.stop();
-                                if (mp != null) {
-                                    mp.release();
-                                    mp=null;
-                                }
+
                             }
                         });
                     }
@@ -95,7 +84,7 @@ public class Audio_Functions extends MediaPlayer{
 
         /////////////////////////////////////////////////////////////////////////
 
-        public long getAudioDuration(String mAudio){
+         long getAudioDuration(String mAudio){
 
             long mAudioDuration=0;
 
@@ -157,10 +146,7 @@ public class Audio_Functions extends MediaPlayer{
                         @Override
                         public void onCompletion(MediaPlayer mp) {
                             mp.stop();
-                            if (mp != null) {
-                                mp.release();
-                                mp = null;
-                            }
+
                         }
                     });
                 }
@@ -172,7 +158,7 @@ public class Audio_Functions extends MediaPlayer{
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        protected long playSplitAudio(String mFirstAudio, String mSecondAudio){
+        long playSplitAudio(String mFirstAudio, String mSecondAudio){
             long mAudioDuration=0;
             mFirstAudio = mFirstAudio.replace(".mp3", "");
             int checkExistence = context.getResources().getIdentifier(mFirstAudio,
@@ -201,10 +187,7 @@ public class Audio_Functions extends MediaPlayer{
                     @Override
                     public void onCompletion(MediaPlayer mp) {
                         mp.stop();
-                        if(mp!=null){
-                            mp.release();
-                            mp = null;
-                        }
+
 
                         if(!mSecondAudioOutside.equals("")){
                             mSecondAudioOutside=mSecondAudioOutside.replace(".mp3", "");

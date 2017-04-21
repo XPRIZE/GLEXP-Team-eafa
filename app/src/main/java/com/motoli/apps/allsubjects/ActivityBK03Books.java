@@ -1,6 +1,7 @@
 package com.motoli.apps.allsubjects;
 
 import android.app.LoaderManager;
+import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
@@ -9,9 +10,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.Html;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ListView;
@@ -110,8 +113,7 @@ public class ActivityBK03Books extends ActivitiesMasterParent  implements
                 mBookInfo = new ArrayList<>
                         ((ArrayList) v.findViewById(R.id.tracingImage).getTag());
 
-                String mBookTitle = (String) mBookInfo.get(1);
-                mBookId = (String) mBookInfo.get(0);
+                mBookId = mBookInfo.get(0);
 
                 beginBook(v);
             }
@@ -140,7 +142,7 @@ public class ActivityBK03Books extends ActivitiesMasterParent  implements
     //////////////////////////////////////////////////////////////////////////////////////////////
 
     private void processBook(Cursor mCursor){
-        mBookPages=new ArrayList<ArrayList<String>>();
+        mBookPages=new ArrayList<>();
         int mPageNumber=0;
         mCursor.moveToFirst();
         while (!mCursor.isAfterLast()) {
@@ -292,11 +294,11 @@ public class ActivityBK03Books extends ActivitiesMasterParent  implements
         setMoveButtons();
         mAllowNextPage=true;
         placePageWords();
-       // readPage();
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////
-
+    
+    @SuppressWarnings("deprecation")
     private void placePageWords(){
         String strCurrentText = mBookPages.get(mCurrentPage).get(5);
 
@@ -305,7 +307,13 @@ public class ActivityBK03Books extends ActivitiesMasterParent  implements
         strCurrentText = strCurrentText.replace("\r", "")
                 .replace("&bt", "<br/>").replace("\n", "").trim();
         strCurrentText="<font color='#000000'>"+strCurrentText+"</font> ";
-        mBookPageText.setText(Html.fromHtml(strCurrentText));
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            mBookPageText.setText(Html.fromHtml(strCurrentText,Html.FROM_HTML_MODE_LEGACY));
+        } else {
+            
+            mBookPageText.setText(Html.fromHtml(strCurrentText));
+        }
+
 
 
     }
@@ -365,7 +373,7 @@ public class ActivityBK03Books extends ActivitiesMasterParent  implements
     };
 
     ////////////////////////////////////////////////////////////////////////////////////////
-
+    @SuppressWarnings("deprecation")
     private Runnable wordHighlight = new Runnable() {
         @Override
         public void run() {
@@ -373,16 +381,16 @@ public class ActivityBK03Books extends ActivitiesMasterParent  implements
 
             String strCurrentText = "";
             String allWords = mBookPages.get(mCurrentPage).get(5);
-            String allHiglightTimes = mBookPages.get(mCurrentPage).get(6);
+            String allHighlightTimes = mBookPages.get(mCurrentPage).get(6);
             String mHighlightColor="#cc3333";
 
-            ArrayList<String> wordArray = new ArrayList<String>(Arrays.asList(allWords.split(";")));
+            ArrayList<String> wordArray = new ArrayList<>(Arrays.asList(allWords.split(";")));
             for(int i=0;i<wordArray.size();i++){
                 wordArray.set(i, wordArray.get(i).replace("&br", "<br/>").replace("\t","")
                         .replace("\r", "").replace("\n", "").replace(" ",""));
             }
-            ArrayList<String> highlightArray = new ArrayList<String>(
-                    Arrays.asList(allHiglightTimes.split(";")));
+            ArrayList<String> highlightArray = new ArrayList<>(
+                    Arrays.asList(allHighlightTimes.split(";")));
 
 
 
@@ -409,8 +417,12 @@ public class ActivityBK03Books extends ActivitiesMasterParent  implements
 
                 }
             }//end for (int i = 0; i < wordArray.size(); i++) {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                mBookPageText.setText(Html.fromHtml(strCurrentText,Html.FROM_HTML_MODE_LEGACY));
+            } else {
 
-            mBookPageText.setText(Html.fromHtml(strCurrentText));
+                mBookPageText.setText(Html.fromHtml(strCurrentText));
+            }
             mBookPageText.setTextColor(Color.BLACK);
 
             mHighlightCount++;
@@ -485,4 +497,80 @@ public class ActivityBK03Books extends ActivitiesMasterParent  implements
     /////////////////////////////////////////////////////////////////////////////////////////////
 
 
+    /**
+     * Part of Project Motoli All Subjects
+     * for Education Technology For Development
+     * created by Aaron D Michaelis Borsay
+     * on 8/12/2015.
+     */
+    private static class ActivityBK03BookIcon extends BaseAdapter {
+
+        private ArrayList<ArrayList<String>> mBooksData;
+
+        private Context mContext;
+
+        private static class ViewHolder {
+            TextView text;
+            GridViewItem icon;
+        }
+
+
+
+        private ActivityBK03BookIcon(Context context, ArrayList<ArrayList<String>> books ) {
+            this.mBooksData=books;
+            this.mContext=context;
+
+        }
+
+        public int getCount() {
+            return mBooksData.size();
+        }
+
+
+
+        public Object getItem(int position) {
+            return position;
+        }
+
+        public long getItemId(int position) {
+            return position;
+        }
+
+        public View getView(int position, View convertView, ViewGroup parent) {
+            Motoli_Application appData = ((Motoli_Application) mContext.getApplicationContext());
+            LayoutInflater mInflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
+
+
+            ViewHolder holder;
+            if (convertView == null) {
+                convertView = mInflater.inflate(R.layout.activity_rs04_icon,parent, false);
+                holder = new ViewHolder();
+                holder.icon = (GridViewItem) convertView.findViewById(R.id.tracingImage);
+                holder.text =( TextView) convertView.findViewById(R.id.grid_item_text);
+
+                holder.text.setTypeface(appData.getCurrentFontType());
+                convertView.setTag(holder);
+            } else {
+                holder = (ViewHolder) convertView.getTag();
+            }
+
+            holder.icon.setImageResource(mContext.getResources()
+                    .getIdentifier("round_square_"+mBooksData.get(position).get(2)
+                            , "drawable", mContext.getPackageName()));
+
+            holder.icon.setTag(mBooksData.get(position));
+
+            holder.icon.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            holder.icon.setPadding(8, 8, 8, 8);
+
+            holder.icon.destroyDrawingCache();
+
+
+            holder.text.setText(mBooksData.get(position).get(4));
+
+            return convertView;
+
+
+        }
+    }
 }

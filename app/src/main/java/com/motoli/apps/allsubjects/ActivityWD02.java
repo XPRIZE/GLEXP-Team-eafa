@@ -5,12 +5,12 @@ import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -33,7 +33,6 @@ public class ActivityWD02 extends ActivitiesMasterParent
 
     private String mCorrectID;
 
-    private String mCurrentImage="";
     private String mCurrentCorrectAudio="";
     private String mClickedAudio="";
 
@@ -50,8 +49,8 @@ public class ActivityWD02 extends ActivitiesMasterParent
         overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out);
         setContentView(R.layout.activity_wd02);
         appData.addToClassOrder(5);
-        mAllActivityText = new ArrayList<ArrayList<ArrayList<String>>>();
-        mCurrentGSP=new HashMap<String,String>(appData.getCurrentGroup_Section_Phase());
+        mAllActivityText = new ArrayList<>();
+        mCurrentGSP=new HashMap<>(appData.getCurrentGroup_Section_Phase());
 
         findViewById(R.id.activityMainPart)
                 .setVisibility(LinearLayout.VISIBLE);
@@ -70,17 +69,11 @@ public class ActivityWD02 extends ActivitiesMasterParent
         ((TextView) findViewById(R.id.word4)).setTypeface(appData.getCurrentFontType());
 
         getLoaderManager().initLoader(Constants.GUESS_WORDS, null, this);
-        ///Uri todoUri = AppProvider.CONTENT_URI_SELECTED_ACTIVITIES;
         startActivityHandler.postDelayed(startActivity, 200);
     }//end public void onCreate(Bundle savedInstanceState) {
 
     //////////////////////////////////////////////////////////////////////////////////////////
-    private Runnable playInstructions = new Runnable() {
-        @Override
-        public void run() {
-            playInstructionAudio();
-        }
-    };
+
     private Runnable startActivity = new Runnable() {
         @Override
         public void run() {
@@ -105,7 +98,7 @@ public class ActivityWD02 extends ActivitiesMasterParent
         getLoaderManager().restartLoader(Constants.ACTIVITY_CURRENT_WRDS_LTRS, null, this);
 
     }
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////
 
     protected long playInstructionAudio(){
         long mAudioDuration = super.playInstructionAudio();
@@ -113,7 +106,7 @@ public class ActivityWD02 extends ActivitiesMasterParent
         return mAudioDuration;
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -130,10 +123,14 @@ public class ActivityWD02 extends ActivitiesMasterParent
         ((TextView) findViewById(R.id.word3)).setText("");
         ((TextView) findViewById(R.id.word4)).setText("");
 
-        ((TextView) findViewById(R.id.word1)).setTextColor(getResources().getColor(R.color.normalBlack));
-        ((TextView) findViewById(R.id.word2)).setTextColor(getResources().getColor(R.color.normalBlack));
-        ((TextView) findViewById(R.id.word3)).setTextColor(getResources().getColor(R.color.normalBlack));
-        ((TextView) findViewById(R.id.word4)).setTextColor(getResources().getColor(R.color.normalBlack));
+        ((TextView) findViewById(R.id.word1)).setTextColor(
+                ContextCompat.getColor(this,R.color.normalBlack));
+        ((TextView) findViewById(R.id.word2)).setTextColor(
+                ContextCompat.getColor(this,R.color.normalBlack));
+        ((TextView) findViewById(R.id.word3)).setTextColor(
+                ContextCompat.getColor(this,R.color.normalBlack));
+        ((TextView) findViewById(R.id.word4)).setTextColor(
+                ContextCompat.getColor(this,R.color.normalBlack));
 
 
         ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_off);
@@ -142,11 +139,11 @@ public class ActivityWD02 extends ActivitiesMasterParent
 
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
 
     protected void displayScreen(){
+        String mCurrentImage="";
         mIncorrectInRound=0;
-        mCurrentImage="";
         mCurrentText = new ArrayList<>(mAllActivityText.get(roundNumber));
         Collections.shuffle(mCurrentText);
 
@@ -278,16 +275,9 @@ public class ActivityWD02 extends ActivitiesMasterParent
                 playGeneralAudio(mCurrentCorrectAudio);
         }
     };
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    //end private void displayScreen(Cursor currentWordsCursor){
-
 
     ////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
+    
     protected void setupFrameListens(){
         findViewById(R.id.word1).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -340,15 +330,12 @@ public class ActivityWD02 extends ActivitiesMasterParent
 
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////
 
     private void setUpFrame(int frameNumber){
         clearFrames();
         ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_on);
         mValidateAvailable=true;
-        //	validateFlashPosition=0;
-        //	validateFlash.removeCallbacks(processValidateFlash);
-        //	validateFlash.postDelayed(processValidateFlash, (long)50);
         switch(frameNumber){
             default:
             case 0:{
@@ -370,27 +357,26 @@ public class ActivityWD02 extends ActivitiesMasterParent
         }
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    ///////////////////////////////////////////////////////////////////////////////////
+    
     private void clearFrames(){
-        //clear frames
         ((ImageView)findViewById(R.id.frame1)).setImageResource(R.drawable.frm_wd02_off);
         ((ImageView)findViewById(R.id.frame2)).setImageResource(R.drawable.frm_wd02_off);
         ((ImageView)findViewById(R.id.frame3)).setImageResource(R.drawable.frm_wd02_off);
         ((ImageView)findViewById(R.id.frame4)).setImageResource(R.drawable.frm_wd02_off);
-
-
     }
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    ///////////////////////////////////////////////////////////////////////////////////
 
     protected void validate(){
         mBeingValidated=true;
         if(mCorrect) {
-            ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_ok);
+            ((ImageView) findViewById(R.id.btnValidate))
+                    .setImageResource(R.drawable.btn_validate_ok);
         }else{
-            ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_no_ok);
+            ((ImageView) findViewById(R.id.btnValidate))
+                    .setImageResource(R.drawable.btn_validate_no_ok);
         }
-        //addActivityPoints();
         processFontColorAndPoints();
         mProcessGuessPosition=0;
         guessHandler.postDelayed(processGuess, 10);
@@ -423,22 +409,22 @@ public class ActivityWD02 extends ActivitiesMasterParent
                 case 0:
                     mCurrentText.get(0).add(6, "1");
                     ((TextView) findViewById(R.id.word1))
-                            .setTextColor(getResources().getColor(R.color.correct_green));
+                            .setTextColor(ContextCompat.getColor(this,R.color.correct_green));
                     break;
                 case 1:
                     mCurrentText.get(1).add(6, "1");
                     ((TextView) findViewById(R.id.word2))
-                            .setTextColor(getResources().getColor(R.color.correct_green));
+                            .setTextColor(ContextCompat.getColor(this,R.color.correct_green));
                     break;
                 case 2:
                     mCurrentText.get(2).add(6, "1");
                     ((TextView) findViewById(R.id.word3))
-                            .setTextColor(getResources().getColor(R.color.correct_green));
+                            .setTextColor(ContextCompat.getColor(this,R.color.correct_green));
                     break;
                 case 3:
                     mCurrentText.get(3).add(6, "1");
                     ((TextView) findViewById(R.id.word4))
-                            .setTextColor(getResources().getColor(R.color.correct_green));
+                            .setTextColor(ContextCompat.getColor(this,R.color.correct_green));
                     break;
             }
 
@@ -489,22 +475,22 @@ public class ActivityWD02 extends ActivitiesMasterParent
                 case 0:
                     mCurrentText.get(0).add(6, "1");
                     ((TextView) findViewById(R.id.word1))
-                            .setTextColor(getResources().getColor(R.color.incorrect_red));
+                            .setTextColor(ContextCompat.getColor(this,R.color.incorrect_red));
                     break;
                 case 1:
                     mCurrentText.get(1).add(6, "1");
                     ((TextView) findViewById(R.id.word2))
-                            .setTextColor(getResources().getColor(R.color.incorrect_red));
+                            .setTextColor(ContextCompat.getColor(this,R.color.incorrect_red));
                     break;
                 case 2:
                     mCurrentText.get(2).add(6, "1");
                     ((TextView) findViewById(R.id.word3))
-                            .setTextColor(getResources().getColor(R.color.incorrect_red));
+                            .setTextColor(ContextCompat.getColor(this,R.color.incorrect_red));
                     break;
                 case 3:
                     mCurrentText.get(3).add(6, "1");
                     ((TextView) findViewById(R.id.word4))
-                            .setTextColor(getResources().getColor(R.color.incorrect_red));
+                            .setTextColor(ContextCompat.getColor(this,R.color.incorrect_red));
                     break;
             }
 
@@ -650,7 +636,8 @@ public class ActivityWD02 extends ActivitiesMasterParent
                     break;
                 }
                 case 3:{
-                    ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_off);
+                    ((ImageView) findViewById(R.id.btnValidate))
+                            .setImageResource(R.drawable.btn_validate_off);
                     displayScreen();
                     guessHandler.removeCallbacks(processGuess);
                     break;
@@ -661,7 +648,7 @@ public class ActivityWD02 extends ActivitiesMasterParent
 
 
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -729,7 +716,8 @@ public class ActivityWD02 extends ActivitiesMasterParent
                         "AND words.image_url!=''";
 
                 cursorLoader = new CursorLoader(this,
-                        AppProvider.CONTENT_URI_CURRENT_WORDS_BY_LEVEL, projection, selection, null, null);
+                        AppProvider.CONTENT_URI_CURRENT_WORDS_BY_LEVEL, 
+                        projection, selection, null, null);
                 break;
             }
         }
@@ -737,44 +725,49 @@ public class ActivityWD02 extends ActivitiesMasterParent
         return cursorLoader;
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+    public void onLoadFinished(Loader<Cursor> loader, Cursor mCursor) {
 
         switch(loader.getId()) {
             default:
                 break;
             case Constants.GUESS_WORDS:{
-                mAllText=new ArrayList<ArrayList<String>>();
+                mAllText=new ArrayList<>();
                 int mGuessWordNumber=0;
-                data.moveToFirst();
-                while (!data.isAfterLast()) {
+                mCursor.moveToFirst();
+                while (!mCursor.isAfterLast()) {
                     mAllText.add(new ArrayList<String>());
-                    mAllText.get(mGuessWordNumber).add(data.getString(data.getColumnIndex("word_id"))); //0
-                    mAllText.get(mGuessWordNumber).add(data.getString(data.getColumnIndex("word_text"))); //1
-                    mAllText.get(mGuessWordNumber).add(data.getString(data.getColumnIndex("audio_url"))); //2
+                    mAllText.get(mGuessWordNumber).add(
+                            mCursor.getString(mCursor.getColumnIndex("word_id"))); //0
+                    mAllText.get(mGuessWordNumber).add(
+                            mCursor.getString(mCursor.getColumnIndex("word_text"))); //1
+                    mAllText.get(mGuessWordNumber).add(
+                            mCursor.getString(mCursor.getColumnIndex("audio_url"))); //2
                     mAllText.get(mGuessWordNumber).add("0"); //3
                     mAllText.get(mGuessWordNumber).add("0"); //4
-                    mAllText.get(mGuessWordNumber).add(data.getString(data.getColumnIndex("image_url"))); //5
+                    mAllText.get(mGuessWordNumber).add(
+                            mCursor.getString(mCursor.getColumnIndex("image_url"))); //5
                     mAllText.get(mGuessWordNumber).add("0"); //6
-                    mAllText.get(mGuessWordNumber).add(data.getString(data.getColumnIndex("level_number"))); //7
+                    mAllText.get(mGuessWordNumber).add(
+                            mCursor.getString(mCursor.getColumnIndex("level_number"))); //7
 
                     mGuessWordNumber++;
-                    data.moveToNext();
+                    mCursor.moveToNext();
                 }
                 Collections.shuffle(mAllText);
                 getLoaderManager().restartLoader(Constants.CURRENT_WORDS, null, this);
                 break;
             }
             case Constants.CURRENT_WORDS:{
-                processData(data);
+                processData(mCursor);
                 break;
             }
         }
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
@@ -782,7 +775,7 @@ public class ActivityWD02 extends ActivitiesMasterParent
 
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////
 
     protected void processData(Cursor mCursor){
         mCurrentWords=new ArrayList<>();
@@ -791,14 +784,19 @@ public class ActivityWD02 extends ActivitiesMasterParent
             do{
 
                 mCurrentWords.add(new ArrayList<String>());
-                mCurrentWords.get(currentWordNumber).add(mCursor.getString(mCursor.getColumnIndex("word_id"))); //0
-                mCurrentWords.get(currentWordNumber).add(mCursor.getString(mCursor.getColumnIndex("word_text"))); //1
-                mCurrentWords.get(currentWordNumber).add(mCursor.getString(mCursor.getColumnIndex("audio_url"))); //2
+                mCurrentWords.get(currentWordNumber).add
+                        (mCursor.getString(mCursor.getColumnIndex("word_id"))); //0
+                mCurrentWords.get(currentWordNumber).add(
+                        mCursor.getString(mCursor.getColumnIndex("word_text"))); //1
+                mCurrentWords.get(currentWordNumber).add(
+                        mCursor.getString(mCursor.getColumnIndex("audio_url"))); //2
                 mCurrentWords.get(currentWordNumber).add("0"); //3
                 mCurrentWords.get(currentWordNumber).add("0"); //4
-                mCurrentWords.get(currentWordNumber).add(mCursor.getString(mCursor.getColumnIndex("image_url"))); //5
+                mCurrentWords.get(currentWordNumber).add(
+                        mCursor.getString(mCursor.getColumnIndex("image_url"))); //5
                 mCurrentWords.get(currentWordNumber).add("0"); //6
-                mCurrentWords.get(currentWordNumber).add(mCursor.getString(mCursor.getColumnIndex("level_number"))); //7
+                mCurrentWords.get(currentWordNumber).add(
+                        mCursor.getString(mCursor.getColumnIndex("level_number"))); //7
 
                 currentWordNumber++;
                 if (currentWordNumber >= Constants.NUMBER_VARIABLES ||
@@ -808,17 +806,13 @@ public class ActivityWD02 extends ActivitiesMasterParent
             }while(mCursor.moveToNext());
         }
 
-
-
         Collections.shuffle(mCurrentWords);
-
-
-
 
         if(mCurrentWords.size()<Constants.NUMBER_VARIABLES ) {
             for (int i = 0; i < mCurrentWords.size(); i++) {
-                if (!mCurrentWords.get(mCurrentWords.size() - 1).get(0).equals(mCurrentWords.get(i).get(0))) {
-                    mCurrentWords.add(new ArrayList<String>(mCurrentWords.get(i)));
+                if (!mCurrentWords.get(mCurrentWords.size() - 1).get(0)
+                        .equals(mCurrentWords.get(i).get(0))) {
+                    mCurrentWords.add(new ArrayList<>(mCurrentWords.get(i)));
                     if (mCurrentWords.size() >= Constants.NUMBER_VARIABLES) {
                         break;
                     }
@@ -826,23 +820,18 @@ public class ActivityWD02 extends ActivitiesMasterParent
             }
         }
 
-
-
         shuffleGameData();
         displayScreen();
 
     }
     ////////////////////////////////////////////////////////////////////////////////////////////
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
     private void shuffleGameData(){
 
-        ArrayList<ArrayList<String>> mTempWords=new ArrayList<ArrayList<String>>(mCurrentWords);
+        ArrayList<ArrayList<String>> mTempWords=new ArrayList<>(mCurrentWords);
 
-        ArrayList<ArrayList<String>> mSortedWords=new ArrayList<ArrayList<String>>(mAllText);
-        String word_id;
+        ArrayList<ArrayList<String>> mSortedWords=new ArrayList<>(mAllText);
         mAllActivityText.clear();
 
         for(int mCount=0; mCount<mCurrentWords.size();mCount++){
@@ -850,15 +839,20 @@ public class ActivityWD02 extends ActivitiesMasterParent
             mAllActivityText.get(mCount).add(new ArrayList<String>());
             mAllActivityText.get(mCount).get(0).add("1"); //0
 
-            word_id=mCurrentWords.get(mCount).get(0);
-
-            mAllActivityText.get(mCount).get(0).add(mCurrentWords.get(mCount).get(0)); //word_id 1
-            mAllActivityText.get(mCount).get(0).add(mCurrentWords.get(mCount).get(1)); //word_text 2
-            mAllActivityText.get(mCount).get(0).add(mCurrentWords.get(mCount).get(2)); //audio_url 3
-            mAllActivityText.get(mCount).get(0).add(mCurrentWords.get(mCount).get(3)); //number correct 4
-            mAllActivityText.get(mCount).get(0).add(mCurrentWords.get(mCount).get(4)); //number incorrect 5
-            mAllActivityText.get(mCount).get(0).add("0"); //guess yet 6
-            mAllActivityText.get(mCount).get(0).add(mCurrentWords.get(mCount).get(5)); //image_url 7
+            mAllActivityText.get(mCount).get(0)
+                    .add(mCurrentWords.get(mCount).get(0)); //word_id 1
+            mAllActivityText.get(mCount).get(0)
+                    .add(mCurrentWords.get(mCount).get(1)); //word_text 2
+            mAllActivityText.get(mCount).get(0)
+                    .add(mCurrentWords.get(mCount).get(2)); //audio_url 3
+            mAllActivityText.get(mCount).get(0)
+                    .add(mCurrentWords.get(mCount).get(3)); //number correct 4
+            mAllActivityText.get(mCount).get(0)
+                    .add(mCurrentWords.get(mCount).get(4)); //number incorrect 5
+            mAllActivityText.get(mCount).get(0)
+                    .add("0"); //guess yet 6
+            mAllActivityText.get(mCount).get(0)
+                    .add(mCurrentWords.get(mCount).get(5)); //image_url 7
 
             Collections.shuffle(mTempWords);
             int mSubCount=1;
@@ -875,15 +869,23 @@ public class ActivityWD02 extends ActivitiesMasterParent
                     mAllActivityText.get(mCount).get(mSubCount).add("0"); //0
 
 
-                    mAllActivityText.get(mCount).get(mSubCount).add(mTempWords.get(i).get(0)); //word_id 1
-                    mAllActivityText.get(mCount).get(mSubCount).add(mTempWords.get(i).get(1)); //word_text 2
-                    mAllActivityText.get(mCount).get(mSubCount).add(mTempWords.get(i).get(2)); //audio_url 3
-                    mAllActivityText.get(mCount).get(mSubCount).add(mTempWords.get(i).get(3)); //number correct 4
-                    mAllActivityText.get(mCount).get(mSubCount).add(mTempWords.get(i).get(4)); //number incorrect 5
-                    mAllActivityText.get(mCount).get(mSubCount).add("0"); //guess yet 6
-                    mAllActivityText.get(mCount).get(mSubCount).add(mTempWords.get(i).get(5)); //image_url 7
+                    mAllActivityText.get(mCount).get(mSubCount)
+                            .add(mTempWords.get(i).get(0)); //word_id 1
+                    mAllActivityText.get(mCount).get(mSubCount)
+                            .add(mTempWords.get(i).get(1)); //word_text 2
+                    mAllActivityText.get(mCount).get(mSubCount)
+                            .add(mTempWords.get(i).get(2)); //audio_url 3
+                    mAllActivityText.get(mCount).get(mSubCount)
+                            .add(mTempWords.get(i).get(3)); //number correct 4
+                    mAllActivityText.get(mCount).get(mSubCount)
+                            .add(mTempWords.get(i).get(4)); //number incorrect 5
+                    mAllActivityText.get(mCount).get(mSubCount)
+                            .add("0"); //guess yet 6
+                    mAllActivityText.get(mCount).get(mSubCount)
+                            .add(mTempWords.get(i).get(5)); //image_url 7
                     mSubCount++;
-                    if((mSubCount==3 && mCurrentWords.size()>=12) ||(mSubCount==2 && mCurrentWords.size()<12)) {
+                    if((mSubCount==3 && mCurrentWords.size()>=12)
+                            ||(mSubCount==2 && mCurrentWords.size()<12)) {
                         break;
                     }
                 }

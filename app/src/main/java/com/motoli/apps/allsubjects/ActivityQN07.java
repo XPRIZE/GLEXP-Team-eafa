@@ -5,17 +5,17 @@ import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.util.SparseIntArray;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
 
 import java.util.Collections;
-import java.util.HashMap;
 
 /**
  * Part of Project Motoli All Subjects
@@ -26,7 +26,7 @@ import java.util.HashMap;
 public class ActivityQN07 extends ActivityQNRoot
         implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    private  HashMap<Integer,Integer>  mGuessedOrderedNumbers;
+    private  SparseIntArray  mGuessedOrderedNumbers;
     
 
     public void onCreate(Bundle savedInstanceState) {
@@ -81,6 +81,7 @@ public class ActivityQN07 extends ActivityQNRoot
     private void start(){
         getLoaderManager().initLoader(Constants.MATH_NUMBERS_SET, null, this);
     }
+
     ////////////////////////////////////////////////////////////////////////////////////////
 
     private void clearNumbers(){
@@ -102,14 +103,14 @@ public class ActivityQN07 extends ActivityQNRoot
     }
 
     private void blackText(){
-        ((TextView) findViewById(R.id.orderedNumber1)).setTextColor(getResources()
-                .getColor(R.color.regularBlack));
-        ((TextView) findViewById(R.id.orderedNumber2)).setTextColor(getResources()
-                .getColor(R.color.regularBlack));
-        ((TextView) findViewById(R.id.orderedNumber3)).setTextColor(getResources()
-                .getColor(R.color.regularBlack));
-        ((TextView) findViewById(R.id.orderedNumber4)).setTextColor(getResources()
-                .getColor(R.color.regularBlack));
+        ((TextView) findViewById(R.id.orderedNumber1)).setTextColor(
+                ContextCompat.getColor(this,R.color.regularBlack));
+        ((TextView) findViewById(R.id.orderedNumber2)).setTextColor(
+                ContextCompat.getColor(this,R.color.regularBlack));
+        ((TextView) findViewById(R.id.orderedNumber3)).setTextColor(
+                ContextCompat.getColor(this,R.color.regularBlack));
+        ((TextView) findViewById(R.id.orderedNumber4)).setTextColor(
+                ContextCompat.getColor(this,R.color.regularBlack));
     }
     //////////////////////////////////////////////////////////////////////////////////////////
 
@@ -123,7 +124,7 @@ public class ActivityQN07 extends ActivityQNRoot
 
     protected void displayScreen(){
 
-        mGuessedOrderedNumbers=new  HashMap<>();
+        mGuessedOrderedNumbers=new SparseIntArray();
         mGuessedOrderedNumbers.put(0,-1);
         mGuessedOrderedNumbers.put(1,-1);
         mGuessedOrderedNumbers.put(2,-1);
@@ -160,24 +161,24 @@ public class ActivityQN07 extends ActivityQNRoot
 
     private void colorLetters(){
         if(mCorrect){
-            ((TextView) findViewById(R.id.orderedNumber1)).setTextColor(getResources()
-                    .getColor(R.color.correct_green));
-            ((TextView) findViewById(R.id.orderedNumber2)).setTextColor(getResources()
-                    .getColor(R.color.correct_green));
-            ((TextView) findViewById(R.id.orderedNumber3)).setTextColor(getResources()
-                    .getColor(R.color.correct_green));
-            ((TextView) findViewById(R.id.orderedNumber4)).setTextColor(getResources()
-                    .getColor(R.color.correct_green));
+            ((TextView) findViewById(R.id.orderedNumber1)).setTextColor(
+                    ContextCompat.getColor(this,R.color.correct_green));
+            ((TextView) findViewById(R.id.orderedNumber2)).setTextColor(
+                    ContextCompat.getColor(this,R.color.correct_green));
+            ((TextView) findViewById(R.id.orderedNumber3)).setTextColor(
+                    ContextCompat.getColor(this,R.color.correct_green));
+            ((TextView) findViewById(R.id.orderedNumber4)).setTextColor(
+                    ContextCompat.getColor(this,R.color.correct_green));
 
         }else {
-            ((TextView) findViewById(R.id.orderedNumber1)).setTextColor(getResources()
-                    .getColor(R.color.incorrect_red));
-            ((TextView) findViewById(R.id.orderedNumber2)).setTextColor(getResources()
-                    .getColor(R.color.incorrect_red));
-            ((TextView) findViewById(R.id.orderedNumber3)).setTextColor(getResources()
-                    .getColor(R.color.incorrect_red));
-            ((TextView) findViewById(R.id.orderedNumber4)).setTextColor(getResources()
-                    .getColor(R.color.incorrect_red));
+            ((TextView) findViewById(R.id.orderedNumber1)).setTextColor(
+                    ContextCompat.getColor(this,R.color.incorrect_red));
+            ((TextView) findViewById(R.id.orderedNumber2)).setTextColor(
+                    ContextCompat.getColor(this,R.color.incorrect_red));
+            ((TextView) findViewById(R.id.orderedNumber3)).setTextColor(
+                    ContextCompat.getColor(this,R.color.incorrect_red));
+            ((TextView) findViewById(R.id.orderedNumber4)).setTextColor(
+                    ContextCompat.getColor(this,R.color.incorrect_red));
         }
     }
 
@@ -187,7 +188,7 @@ public class ActivityQN07 extends ActivityQNRoot
     protected void validate() {
         mCorrect=false;
         for(int i=0; i<4;i++) {
-            if(mCurrentNumbers.get(i).equals(mGuessedOrderedNumbers.get(i))){
+            if(mCurrentNumbers.get(i) == mGuessedOrderedNumbers.get(i)){
                 mCorrect=true;
             }else{
                 mNumberTotalIncorrect++;
@@ -195,13 +196,8 @@ public class ActivityQN07 extends ActivityQNRoot
                 break;
             }
         }
-
         colorLetters();
-
-
-
         super.validate();
-
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////
@@ -368,7 +364,7 @@ public class ActivityQN07 extends ActivityQNRoot
                         &&!mBeingValidated) {
                     mBeingValidated=true;
                     mCurrentLocation = 0;
-                    playGeneralAudio(mRoundNumberSet.get(0).get("math_numbers_audio"));;
+                    playGeneralAudio(mRoundNumberSet.get(0).get("math_numbers_audio"));
                     clearShapeBoxes();
                     ((ImageView) findViewById(R.id.frame1))
                             .setImageResource(R.drawable.frm_qn06_on);

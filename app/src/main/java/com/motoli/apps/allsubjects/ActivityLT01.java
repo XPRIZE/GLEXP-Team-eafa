@@ -1,10 +1,5 @@
 package com.motoli.apps.allsubjects;
-/**
- * Part of Project Motoli All Subjects
- * for Education Technology For Development
- * created by Aaron D Michaelis Borsay
- * on 8/12/2015.
- */
+
 import java.util.Collections;
 
 
@@ -15,16 +10,19 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.ImageView;
 
 import static com.motoli.apps.allsubjects.R.*;
 
-
+/**
+ * Part of Project Motoli All Subjects
+ * for Education Technology For Development
+ * created by Aaron D Michaelis Borsay
+ * on 8/12/2015.
+ */
 public class ActivityLT01 extends ActivityLTRoot {
 
     public void onCreate(Bundle savedInstanceState) {
@@ -124,7 +122,7 @@ public class ActivityLT01 extends ActivityLTRoot {
         mValidateAvailable=false;
         mBeingValidated=false;
 
-        if(mRoundNumber==0 && mCorrectAudio!="") {
+        if(mRoundNumber==0 && !mCorrectAudio.equals("")) {
             startActivityHandler.postDelayed(playInstructions, 900);
         }else{
             playGeneralAudio(mCorrectAudio);

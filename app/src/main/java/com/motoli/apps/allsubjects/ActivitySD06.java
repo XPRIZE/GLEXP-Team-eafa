@@ -1,11 +1,6 @@
 package com.motoli.apps.allsubjects;
 
-/**
- * Part of Project Motoli All Subjects
- * for Education Technology For Development
- * created by Aaron D Michaelis Borsay
- * on 8/24/2015.
- */
+
 import android.app.LoaderManager;
 import android.content.CursorLoader;
 import android.content.Loader;
@@ -16,13 +11,15 @@ import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.Collections;
 
-
+/**
+ * Part of Project Motoli All Subjects
+ * for Education Technology For Development
+ * created by Aaron D Michaelis Borsay
+ * on 8/24/2015.
+ */
 public class ActivitySD06 extends ActivitySDRoot
         implements LoaderManager.LoaderCallbacks<Cursor>{
 

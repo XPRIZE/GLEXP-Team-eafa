@@ -6,6 +6,7 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -177,17 +178,17 @@ public class ActivityLT04 extends ActivitiesMasterParent
         ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_off_mic);
 
         ((TextView) findViewById(R.id.letter1))
-                .setTextColor(getResources().getColor(R.color.normalBlack));
+                .setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
         ((TextView) findViewById(R.id.letter2))
-                .setTextColor(getResources().getColor(R.color.normalBlack));
+                .setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
         ((TextView) findViewById(R.id.letter3))
-                .setTextColor(getResources().getColor(R.color.normalBlack));
+                .setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
         ((TextView) findViewById(R.id.letter4))
-                .setTextColor(getResources().getColor(R.color.normalBlack));
+                .setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
         ((TextView) findViewById(R.id.letter5))
-                .setTextColor(getResources().getColor(R.color.normalBlack));
+                .setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
         ((TextView) findViewById(R.id.letter6))
-                .setTextColor(getResources().getColor(R.color.normalBlack));
+                .setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
 
         ((ImageView) findViewById(R.id.frame1))
                 .setImageResource(R.drawable.rounded_text_unselected);
@@ -448,13 +449,13 @@ public class ActivityLT04 extends ActivitiesMasterParent
                 if(mCorrect){
                     wordStatus.set(0, "2");
                     ((TextView) findViewById(R.id.letter1)).
-                            setTextColor(getResources().getColor(R.color.correct_green));
+                            setTextColor(ContextCompat.getColor(this,R.color.correct_green));
                     ((ImageView) findViewById(R.id.frame1))
                             .setImageResource(R.drawable.rounded_text_correct);
                 }else{
                     wordStatus.set(0, "1");
                     ((TextView) findViewById(R.id.letter1))
-                            .setTextColor(getResources().getColor(R.color.incorrect_red));
+                            .setTextColor(ContextCompat.getColor(this,R.color.incorrect_red));
                     ((TextView) findViewById(R.id.letter1))
                             .setPaintFlags(((TextView) findViewById(R.id.letter1)).getPaintFlags()
                                     | Paint.STRIKE_THRU_TEXT_FLAG);
@@ -467,13 +468,13 @@ public class ActivityLT04 extends ActivitiesMasterParent
                 if(mCorrect){
                     wordStatus.set(1, "2");
                     ((TextView) findViewById(R.id.letter2))
-                            .setTextColor(getResources().getColor(R.color.correct_green));
+                            .setTextColor(ContextCompat.getColor(this,R.color.correct_green));
                     ((ImageView) findViewById(R.id.frame2))
                             .setImageResource(R.drawable.rounded_text_correct);
                 }else{
                     wordStatus.set(1, "1");
                     ((TextView) findViewById(R.id.letter2))
-                            .setTextColor(getResources().getColor(R.color.incorrect_red));
+                            .setTextColor(ContextCompat.getColor(this,R.color.incorrect_red));
                     ((TextView) findViewById(R.id.letter2))
                             .setPaintFlags(((TextView) findViewById(R.id.letter2)).getPaintFlags()
                                     | Paint.STRIKE_THRU_TEXT_FLAG);
@@ -485,11 +486,11 @@ public class ActivityLT04 extends ActivitiesMasterParent
             case 2:{
                 if(mCorrect){
                     wordStatus.set(2, "2");
-                    ((TextView) findViewById(R.id.letter3)).setTextColor(getResources().getColor(R.color.correct_green));
+                    ((TextView) findViewById(R.id.letter3)).setTextColor(ContextCompat.getColor(this,R.color.correct_green));
                     ((ImageView) findViewById(R.id.frame3)).setImageResource(R.drawable.rounded_text_correct);
                 }else{
                     wordStatus.set(2, "1");
-                    ((TextView) findViewById(R.id.letter3)).setTextColor(getResources().getColor(R.color.incorrect_red));
+                    ((TextView) findViewById(R.id.letter3)).setTextColor(ContextCompat.getColor(this,R.color.incorrect_red));
                     ((TextView) findViewById(R.id.letter3)).setPaintFlags(((TextView) findViewById(R.id.letter3)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                     ((ImageView) findViewById(R.id.frame3)).setImageResource(R.drawable.rounded_text_incorrect);
                 }
@@ -498,11 +499,11 @@ public class ActivityLT04 extends ActivitiesMasterParent
             case 3:{
                 if(mCorrect){
                     wordStatus.set(3, "2");
-                    ((TextView) findViewById(R.id.letter4)).setTextColor(getResources().getColor(R.color.correct_green));
+                    ((TextView) findViewById(R.id.letter4)).setTextColor(ContextCompat.getColor(this,R.color.correct_green));
                     ((ImageView) findViewById(R.id.frame4)).setImageResource(R.drawable.rounded_text_correct);
                 }else{
                     wordStatus.set(3, "1");
-                    ((TextView) findViewById(R.id.letter4)).setTextColor(getResources().getColor(R.color.incorrect_red));
+                    ((TextView) findViewById(R.id.letter4)).setTextColor(ContextCompat.getColor(this,R.color.incorrect_red));
                     ((TextView) findViewById(R.id.letter4)).setPaintFlags(((TextView) findViewById(R.id.letter4)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                     ((ImageView) findViewById(R.id.frame4)).setImageResource(R.drawable.rounded_text_incorrect);
                 }
@@ -511,11 +512,11 @@ public class ActivityLT04 extends ActivitiesMasterParent
             case 4:{
                 if(mCorrect){
                     wordStatus.set(4, "2");
-                    ((TextView) findViewById(R.id.letter5)).setTextColor(getResources().getColor(R.color.correct_green));
+                    ((TextView) findViewById(R.id.letter5)).setTextColor(ContextCompat.getColor(this,R.color.correct_green));
                     ((ImageView) findViewById(R.id.frame5)).setImageResource(R.drawable.rounded_text_correct);
                 }else{
                     wordStatus.set(4, "1");
-                    ((TextView) findViewById(R.id.letter5)).setTextColor(getResources().getColor(R.color.incorrect_red));
+                    ((TextView) findViewById(R.id.letter5)).setTextColor(ContextCompat.getColor(this,R.color.incorrect_red));
                     ((TextView) findViewById(R.id.letter5)).setPaintFlags(((TextView) findViewById(R.id.letter5)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                     ((ImageView) findViewById(R.id.frame5)).setImageResource(R.drawable.rounded_text_incorrect);
                 }
@@ -524,11 +525,11 @@ public class ActivityLT04 extends ActivitiesMasterParent
             case 5:{
                 if(mCorrect){
                     wordStatus.set(5, "2");
-                    ((TextView) findViewById(R.id.letter6)).setTextColor(getResources().getColor(R.color.correct_green));
+                    ((TextView) findViewById(R.id.letter6)).setTextColor(ContextCompat.getColor(this,R.color.correct_green));
                     ((ImageView) findViewById(R.id.frame6)).setImageResource(R.drawable.rounded_text_correct);
                 }else{
                     wordStatus.set(5, "1");
-                    ((TextView) findViewById(R.id.letter6)).setTextColor(getResources().getColor(R.color.incorrect_red));
+                    ((TextView) findViewById(R.id.letter6)).setTextColor(ContextCompat.getColor(this,R.color.incorrect_red));
                     ((TextView) findViewById(R.id.letter6)).setPaintFlags(((TextView) findViewById(R.id.letter6)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                     ((ImageView) findViewById(R.id.frame6)).setImageResource(R.drawable.rounded_text_incorrect);
                 }
@@ -619,37 +620,37 @@ public class ActivityLT04 extends ActivitiesMasterParent
         if(wordStatus.get(0).equals("0") || wordStatus.get(0).equals("1")){
             wordStatus.set(0, "0");
             ((ImageView) findViewById(R.id.frame1)).setImageResource(R.drawable.rounded_text_unselected);
-            ((TextView) findViewById(R.id.letter1)).setTextColor(getResources().getColor(R.color.normalBlack));
+            ((TextView) findViewById(R.id.letter1)).setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
             ((TextView) findViewById(R.id.letter1)).setPaintFlags(((TextView) findViewById(R.id.letter1)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
         }
         if(wordStatus.get(1).equals("0") || wordStatus.get(1).equals("1")){
             wordStatus.set(1, "0");
             ((ImageView) findViewById(R.id.frame2)).setImageResource(R.drawable.rounded_text_unselected);
-            ((TextView) findViewById(R.id.letter2)).setTextColor(getResources().getColor(R.color.normalBlack));
+            ((TextView) findViewById(R.id.letter2)).setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
             ((TextView) findViewById(R.id.letter2)).setPaintFlags(((TextView) findViewById(R.id.letter2)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
         }
         if(wordStatus.get(2).equals("0") || wordStatus.get(2).equals("1")){
             wordStatus.set(2, "0");
             ((ImageView) findViewById(R.id.frame3)).setImageResource(R.drawable.rounded_text_unselected);
-            ((TextView) findViewById(R.id.letter3)).setTextColor(getResources().getColor(R.color.normalBlack));
+            ((TextView) findViewById(R.id.letter3)).setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
             ((TextView) findViewById(R.id.letter3)).setPaintFlags(((TextView) findViewById(R.id.letter3)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
         }
         if(wordStatus.get(3).equals("0") || wordStatus.get(3).equals("1")){
             wordStatus.set(3, "0");
             ((ImageView) findViewById(R.id.frame4)).setImageResource(R.drawable.rounded_text_unselected);
-            ((TextView) findViewById(R.id.letter4)).setTextColor(getResources().getColor(R.color.normalBlack));
+            ((TextView) findViewById(R.id.letter4)).setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
             ((TextView) findViewById(R.id.letter4)).setPaintFlags(((TextView) findViewById(R.id.letter4)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
         }
         if(wordStatus.get(4).equals("0") || wordStatus.get(4).equals("1")){
             wordStatus.set(4, "0");
             ((ImageView) findViewById(R.id.frame5)).setImageResource(R.drawable.rounded_text_unselected);
-            ((TextView) findViewById(R.id.letter5)).setTextColor(getResources().getColor(R.color.normalBlack));
+            ((TextView) findViewById(R.id.letter5)).setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
             ((TextView) findViewById(R.id.letter5)).setPaintFlags(((TextView) findViewById(R.id.letter5)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
         }
         if(wordStatus.get(5).equals("0") || wordStatus.get(5).equals("1")){
             wordStatus.set(5, "0");
             ((ImageView) findViewById(R.id.frame6)).setImageResource(R.drawable.rounded_text_unselected);
-            ((TextView) findViewById(R.id.letter6)).setTextColor(getResources().getColor(R.color.normalBlack));
+            ((TextView) findViewById(R.id.letter6)).setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
             ((TextView) findViewById(R.id.letter6)).setPaintFlags(((TextView) findViewById(R.id.letter6)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
         }
 
