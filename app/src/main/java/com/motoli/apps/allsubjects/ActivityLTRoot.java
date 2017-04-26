@@ -24,6 +24,8 @@ import java.util.HashMap;
  * This CANNOT run by itself. It must be the parent for only the activities ending with LT
  * It is basically a class used to streamline similar function found in the LT activities
  *
+ * In this parent activity all needed data is gathered and processed.
+ *
  */
 public class ActivityLTRoot extends ActivitiesMasterParent
         implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -274,13 +276,13 @@ public class ActivityLTRoot extends ActivitiesMasterParent
 
                 mCurrentLetters = new ArrayList<>(mDividedLetters.get(0));
                 mCurrentLetters.addAll(mDividedLetters.get(1));
-                
+
                 break;
             }
         }//end switch(mActivityNumber)
         beginRound();
     }
-    
+
     ///////////////////////////////////////////////////////////////////////////////////////
 
     protected Runnable playLetterAudio = new Runnable(){
@@ -760,6 +762,81 @@ public class ActivityLTRoot extends ActivitiesMasterParent
 
     }
 
+    /**
+     * adjustLettersToChoice()
+     * Removes all letters except correct one if correct one chosen
+     * OR Removes all letters except correct one if incorrect one chosen twice
+     * OR Removes incorrect letter chosen
+     */
+    protected void adjustLettersToChoice(){
+        if(mCorrect){
+            switch(mCurrentLocation){
+                default:
+                case 0:
+                    ((TextView) findViewById(R.id.letter2)).setText("");
+                    ((TextView) findViewById(R.id.letter3)).setText("");
+                    ((TextView) findViewById(R.id.letter4)).setText("");
+                    break;
+                case 1:
+                    ((TextView) findViewById(R.id.letter1)).setText("");
+                    ((TextView) findViewById(R.id.letter3)).setText("");
+                    ((TextView) findViewById(R.id.letter4)).setText("");
+                    break;
+                case 2:
+                    ((TextView) findViewById(R.id.letter2)).setText("");
+                    ((TextView) findViewById(R.id.letter1)).setText("");
+                    ((TextView) findViewById(R.id.letter4)).setText("");
+                    break;
+                case 3:
+                    ((TextView) findViewById(R.id.letter2)).setText("");
+                    ((TextView) findViewById(R.id.letter3)).setText("");
+                    ((TextView) findViewById(R.id.letter1)).setText("");
+                    break;
+            }
+        }else{
+            if(mIncorrectInRound>=2){
+                switch(mCorrectLocation){
+                    default:
+                    case 0:
+                        ((TextView) findViewById(R.id.letter2)).setText("");
+                        ((TextView) findViewById(R.id.letter3)).setText("");
+                        ((TextView) findViewById(R.id.letter4)).setText("");
+                        break;
+                    case 1:
+                        ((TextView) findViewById(R.id.letter1)).setText("");
+                        ((TextView) findViewById(R.id.letter3)).setText("");
+                        ((TextView) findViewById(R.id.letter4)).setText("");
+                        break;
+                    case 2:
+                        ((TextView) findViewById(R.id.letter1)).setText("");
+                        ((TextView) findViewById(R.id.letter2)).setText("");
+                        ((TextView) findViewById(R.id.letter4)).setText("");
+                        break;
+                    case 3:
+                        ((TextView) findViewById(R.id.letter1)).setText("");
+                        ((TextView) findViewById(R.id.letter2)).setText("");
+                        ((TextView) findViewById(R.id.letter3)).setText("");
+                        break;
+                }
+            }else{
+                switch(mCurrentLocation){
+                    default:
+                    case 0:
+                        ((TextView) findViewById(R.id.letter1)).setText("");
+                        break;
+                    case 1:
+                        ((TextView) findViewById(R.id.letter2)).setText("");
+                        break;
+                    case 2:
+                        ((TextView) findViewById(R.id.letter3)).setText("");
+                        break;
+                    case 3:
+                        ((TextView) findViewById(R.id.letter4)).setText("");
+                        break;
+                }
+            }
+        }
+    }
     /////////////////////////////////////////////////////////////////////////////////////////
 
     @Override

@@ -676,11 +676,11 @@ public class AppProviderUpdateGroups {
         projection[3]="1";
         projection[4]="8";
         int blankCount=0;
-        String mRawSQL="SELECT * FROM groups_phase_sections_activities "
-                +" WHERE group_id="+projection[2]
-                +" AND phase_id="+projection[3]
-                +" AND section_id="+projection[4]
-                +" AND activity_id>=32 AND activity_id<=34";
+        String mRawSQL="SELECT * FROM groups_phase_sections_activities " +
+                "WHERE group_id=3 " +
+                "AND phase_id= 2 " +
+                "AND section_id=8 " +
+                "AND activity_id>=32 AND activity_id<=34";
 
         Cursor mCursor = mDatabase.rawQuery(mRawSQL, null);
         while(mCursor.moveToNext()){
@@ -719,7 +719,7 @@ public class AppProviderUpdateGroups {
                     values.put("type_id",
                             mCursor2.getString(mCursor2.getColumnIndex("variable_type_id")));
                     values.put("group_id", "3");
-                    values.put("phase_id", "1");
+                    values.put("phase_id", "2");
                     values.put("activity_id", mActivityID);
                     values.put("app_user_id", projection[1]);
                     values.put("level_number", projection[5]);
@@ -856,15 +856,18 @@ public class AppProviderUpdateGroups {
 
         String mAUAVVTable="app_users_activity_variable_values";
 
-        mRawSQL="SELECT * FROM groups_phase_sections_activities "
-                +" WHERE group_id=3 "
-                +" AND phase_id=2 "
-                +" AND section_id="+projection[4];
+        mRawSQL="SELECT * FROM groups_phase_sections_activities " +
+                "WHERE group_id=3 " +
+                "AND phase_id=1 " +
+                "AND section_id=8 " +
+                "AND activity_id>=29 " +
+                "AND activity_id<=31";//+projection[4];
 
+        /*
         if(projection[2].equals("3") && projection[3].equals("1")){
             mRawSQL+=" AND activity_id>=29 AND activity_id<=31";
         }
-
+        */
         Cursor mCursor = mDatabase.rawQuery(mRawSQL, null);
         while(mCursor.moveToNext()){
             String mActivityID=mCursor.getString(mCursor.getColumnIndex("activity_id"));
@@ -897,7 +900,7 @@ public class AppProviderUpdateGroups {
                         values.put("type_id",
                                 mCursor2.getString(mCursor2.getColumnIndex("variable_type_id")));
                         values.put("group_id", "3");
-                        values.put("phase_id", "2");
+                        values.put("phase_id", "1");
                         values.put("activity_id", mActivityID);
                         values.put("app_user_id", projection[1]);
                         values.put("level_number", projection[5]);

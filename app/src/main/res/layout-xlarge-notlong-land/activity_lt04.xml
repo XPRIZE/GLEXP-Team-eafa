@@ -8,12 +8,10 @@
     android:background="@drawable/bg_yellow_fish_in_sea" >
 
 
-
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/activityMainPart"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bg_yellow_fish_in_sea"
-        android:id="@+id/activityMainPart">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:id="@+id/activityMainPartSecond"
@@ -65,12 +63,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.92" />
+
         <android.support.constraint.Guideline
+            android:id="@+id/guidelineBottom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/guidelineBottom"
-            app:layout_constraintGuide_percent="0.98"
-            android:orientation="horizontal" />
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.98" />
 
 
         <android.support.constraint.Guideline
@@ -106,7 +105,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/lt04_text_image_margin"
                 android:contentDescription="@string/none"
-                android:src="@drawable/rounded_image" />
+                android:src="@drawable/rounded_text_incorrect" />
 
             <TextView
                 android:id="@+id/letter1"
@@ -139,7 +138,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/lt04_text_image_margin"
                 android:contentDescription="@string/none"
-                android:src="@drawable/rounded_image"  />
+                android:src="@drawable/rounded_image" />
 
             <TextView
                 android:id="@+id/letter2"
@@ -181,7 +180,6 @@
                 android:text="@string/strRandomLetter"
                 android:textColor="@color/normalBlack"
                 android:textSize="@dimen/letterSetOf4Boxes" />
-
 
 
         </RelativeLayout>
@@ -249,7 +247,6 @@
                 android:textSize="@dimen/letterSetOf4Boxes" />
 
 
-
         </RelativeLayout>
 
         <RelativeLayout
@@ -282,7 +279,6 @@
                 android:textSize="@dimen/letterSetOf4Boxes" />
 
 
-
         </RelativeLayout>
 
         <android.support.constraint.Guideline
@@ -311,11 +307,10 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/guidelineTopIcons">
-
 
 
             <ImageView
@@ -338,14 +333,13 @@
                 android:id="@+id/btnValidate"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:adjustViewBounds="true"
                 android:layout_weight="1"
+                android:adjustViewBounds="true"
                 android:contentDescription="@string/none"
                 android:scaleType="fitEnd"
                 android:src="@drawable/btn_validate_no_ok_bottom_space" />
 
         </LinearLayout>
-
 
 
     </android.support.constraint.ConstraintLayout>

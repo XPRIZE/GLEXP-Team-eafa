@@ -108,7 +108,7 @@ public class Motoli_Application extends Application {
      * @return boolean is password correct
      */
     public boolean inputAdminPassword(String mPassword){
-        if(mPassword.equals(ADMIN_PASSWORD)){
+        if(mPassword.toLowerCase().equals(ADMIN_PASSWORD)){
             mIsAdminEnabled=true;
             return true;
         }else{

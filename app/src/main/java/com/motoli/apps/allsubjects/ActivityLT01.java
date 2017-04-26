@@ -22,6 +22,10 @@ import static com.motoli.apps.allsubjects.R.*;
  * for Education Technology For Development
  * created by Aaron D Michaelis Borsay
  * on 8/12/2015.
+ *
+ * Audio plays find the letter *. There are four letters displayed one of which is correct.
+ * User then choose correct or incorrect letter and activity responds likewise. Answer and
+ * time is tracked. Data is gathered here as well.
  */
 public class ActivityLT01 extends ActivityLTRoot {
 
@@ -38,11 +42,7 @@ public class ActivityLT01 extends ActivityLTRoot {
         mPlayLetterAudio=true;
 
 
-        findViewById(id.activityMainPart)
-                .setVisibility(LinearLayout.VISIBLE);
-        findViewById(id.activityMainPart)
-                .setAnimation(AnimationUtils.loadAnimation(
-                        getApplicationContext(), anim.fade_in));
+        fadeInOrOutScreenInActivity(true);
         clearActivity();
         setUpListeners();
         setupFrameListens();
@@ -67,8 +67,10 @@ public class ActivityLT01 extends ActivityLTRoot {
         getLoaderManager().initLoader(Constants.ACTIVITY_CURRENT_LETTERS, null, this);
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////
-
+    /**
+     * clearActivity()
+     * clears all letters and changed their color to black. Also turns off validation icon.
+     */
     private void clearActivity(){
         ((TextView) findViewById(id.letter1)).setText("");
         ((TextView) findViewById(id.letter2)).setText("");
@@ -84,15 +86,17 @@ public class ActivityLT01 extends ActivityLTRoot {
         ((TextView) findViewById(id.letter4)).setTextColor(ContextCompat
                 .getColor(this, color.normalBlack));
 
-
         ((ImageView) findViewById(id.btnValidate)).setImageResource(drawable.btn_validate_off_mic);
 
         clearFrames();
-
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////////////
-
+    /**
+     * displayScreen()
+     * PLaces shuffled letters in the four different locations. For correct letter ID and Audio
+     * is globally stored. Plays instruction audio if first round and no matter plays current
+     * letter
+     */
     @Override
     protected void displayScreen(){
         mIncorrectInRound=0;
@@ -109,13 +113,10 @@ public class ActivityLT01 extends ActivityLTRoot {
 
         ((TextView) findViewById(id.letter1))
                 .setText(mRoundLetters.get(0).get("letter_text"));
-
         ((TextView) findViewById(id.letter2))
                 .setText(mRoundLetters.get(1).get("letter_text"));
-
         ((TextView) findViewById(id.letter3))
                 .setText(mRoundLetters.get(2).get("letter_text"));
-
         ((TextView) findViewById(id.letter4))
                 .setText(mRoundLetters.get(3).get("letter_text"));
 
@@ -137,8 +138,12 @@ public class ActivityLT01 extends ActivityLTRoot {
         }
     };
 
-    /////////////////////////////////////////////////////////////////////////////////////
-    
+    /**
+     * setupFrameListens()
+     * Called from onCreate. Sets response of activity when letter is chosen. If correct letter
+     * mCorrect = true else false. Sets variables of current letter chosen for validation and
+     * tracking purposes
+     */
     protected void setupFrameListens(){
         findViewById(id.frame1).setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
@@ -195,13 +200,17 @@ public class ActivityLT01 extends ActivityLTRoot {
 
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////
-
-    private void setUpFrame(int frameNumber){
+    /**
+     * setUpFrame(int mFrameNumber)
+     * Set frame indicator to chosen and changes btnValidate icon to on and allow user to now
+     * validate chose of syllables
+     * @param mFrameNumber represents the frame chosen to change
+     */
+    private void setUpFrame(int mFrameNumber){
         clearFrames();
         ((ImageView) findViewById(id.btnValidate)).setImageResource(drawable.btn_validate_on_mic);
         mValidateAvailable=true;
-        switch(frameNumber){
+        switch(mFrameNumber){
             default:
             case 0:
                 ((ImageView)findViewById(id.frame1))
@@ -222,8 +231,9 @@ public class ActivityLT01 extends ActivityLTRoot {
         }
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////
-
+    /**
+     * clearFrames all to not chosen
+     */
     private void clearFrames(){
         ((ImageView)findViewById(id.frame1)).setImageResource(drawable.frm_lt01_off);
         ((ImageView)findViewById(id.frame2)).setImageResource(drawable.frm_lt01_off);
@@ -231,90 +241,24 @@ public class ActivityLT01 extends ActivityLTRoot {
         ((ImageView)findViewById(id.frame4)).setImageResource(drawable.frm_lt01_off);
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////
 
-    private void displayScreenAfterGeneralProcess(){
-        if(mCorrect){
-            switch(mCurrentLocation){
-                default:
-                case 0:
-                    ((TextView) findViewById(id.letter2)).setText("");
-                    ((TextView) findViewById(id.letter3)).setText("");
-                    ((TextView) findViewById(id.letter4)).setText("");
-                    break;
-                case 1:
-                    ((TextView) findViewById(id.letter1)).setText("");
-                    ((TextView) findViewById(id.letter3)).setText("");
-                    ((TextView) findViewById(id.letter4)).setText("");
-                    break;
-                case 2:
-                    ((TextView) findViewById(id.letter2)).setText("");
-                    ((TextView) findViewById(id.letter1)).setText("");
-                    ((TextView) findViewById(id.letter4)).setText("");
-                    break;
-                case 3:
-                    ((TextView) findViewById(id.letter2)).setText("");
-                    ((TextView) findViewById(id.letter3)).setText("");
-                    ((TextView) findViewById(id.letter1)).setText("");
-                    break;
-            }
-        }else{
-            if(mIncorrectInRound>=2){
-                switch(mCorrectLocation){
-                    default:
-                    case 0:
-                        ((TextView) findViewById(id.letter2)).setText("");
-                        ((TextView) findViewById(id.letter3)).setText("");
-                        ((TextView) findViewById(id.letter4)).setText("");
-                        break;
-                    case 1:
-                        ((TextView) findViewById(id.letter1)).setText("");
-                        ((TextView) findViewById(id.letter3)).setText("");
-                        ((TextView) findViewById(id.letter4)).setText("");
-                        break;
-                    case 2:
-                        ((TextView) findViewById(id.letter1)).setText("");
-                        ((TextView) findViewById(id.letter2)).setText("");
-                        ((TextView) findViewById(id.letter4)).setText("");
-                        break;
-                    case 3:
-                        ((TextView) findViewById(id.letter1)).setText("");
-                        ((TextView) findViewById(id.letter2)).setText("");
-                        ((TextView) findViewById(id.letter3)).setText("");
-                        break;
-                }
-            }else{
-                switch(mCurrentLocation){
-                    default:
-                    case 0:
-                        ((TextView) findViewById(id.letter1)).setText("");
-                        break;
-                    case 1:
-                        ((TextView) findViewById(id.letter2)).setText("");
-                        break;
-                    case 2:
-                        ((TextView) findViewById(id.letter3)).setText("");
-                        break;
-                    case 3:
-                        ((TextView) findViewById(id.letter4)).setText("");
-                        break;
-                }
-            }
-            //processLayoutAfterGuess(false);
 
-        }
-    }
-
-    /////////////////////////////////////////////////////////////////////////////////////////
-
+    /**
+     * called from ActivityLTRoot to run processGuess after set time
+     * @param mAudioDuration time till call processGuess
+     */
     @Override
     protected void processTheGuess(long mAudioDuration){
         guessHandler.postDelayed(processGuess, mAudioDuration);
-
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////////
-
+    /**
+     * processGuess called by validate()->processTheGuess from ActivityLTRoot.
+     * Play right or wrong sound then in time will play word if
+     * incorrect number of syllables chosen.  In time then clears all current round data and
+     * decides is activity completed of move to next round. It will then return to
+     * activities_platform or beginRound depending on conclusion.
+     */
     protected Runnable processGuess = new Runnable(){
         @Override
         public void run(){
@@ -337,7 +281,7 @@ public class ActivityLT01 extends ActivityLTRoot {
                 mAudioHandler.postDelayed(processGuess, mAudioDuration+10);
                 break;
             case 2:
-                displayScreenAfterGeneralProcess();
+                adjustLettersToChoice();
                 guessHandler.removeCallbacks(processGuess);
                 clearFrames();
                 if(mCorrect){
@@ -349,11 +293,7 @@ public class ActivityLT01 extends ActivityLTRoot {
                         guessHandler.postDelayed(processGuess, 10);
                     }else{
                         mLastActivityData=0;
-                        findViewById(id.activityMainPart)
-                                .setVisibility(LinearLayout.INVISIBLE);
-                        findViewById(id.activityMainPart)
-                                .setAnimation(AnimationUtils.loadAnimation(
-                                        getApplicationContext(), anim.fade_out));
+                        fadeInOrOutScreenInActivity(false);
                         lastActivityDataHandler.postDelayed(returnToActivities_Platorm,10);
                     }
                 }else{
@@ -362,7 +302,6 @@ public class ActivityLT01 extends ActivityLTRoot {
                     mBeingValidated=false;
                     mValidateAvailable=false;
                 }
-
                 break;
             case 3:
                 ((ImageView) findViewById(id.btnValidate))
@@ -374,8 +313,14 @@ public class ActivityLT01 extends ActivityLTRoot {
     }//public void run(){
 };
 
-    ////////////////////////////////////////////////////////////////////////////////////////////
-
+    /**
+     * onCreateLoader
+     * sends request to  AppProvider for needed word list to use in activity based up current
+     * group_id, phase_id, and users current level in related group and phase
+     * @param id which data is it processing
+     * @param args extra data to help process database if needed
+     * @return Loader<Cursor> data grabed from AppProvider for use in activity
+     */
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         String[] projection;
@@ -414,8 +359,11 @@ public class ActivityLT01 extends ActivityLTRoot {
         return cursorLoader;
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////////
-
+    /**
+     * Takes data from last loader and then send it to processData to organize
+     * @param loader current loader
+     * @param data data from AppProvider to be processed
+     */
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
 
@@ -429,16 +377,20 @@ public class ActivityLT01 extends ActivityLTRoot {
          }
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////
-
+    /**
+     * Not used
+     * @param loader  current loader
+     */
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
         // TODO Auto-generated method stub
 
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////
-
+    /**
+     * setUpListners()
+     * called in onCreate. If btnMicDude clicked plays current word.
+     */
     protected void setUpListeners(){
         super.setUpListeners();
         findViewById(id.btnMicDude).setOnClickListener(new OnClickListener() {
@@ -450,5 +402,4 @@ public class ActivityLT01 extends ActivityLTRoot {
 
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////
 }

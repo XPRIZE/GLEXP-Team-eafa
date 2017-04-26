@@ -10,7 +10,6 @@
         android:id="@+id/activityMainPart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_beach_with_palm_trees"
         android:orientation="vertical">
 
         <LinearLayout

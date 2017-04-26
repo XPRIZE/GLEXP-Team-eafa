@@ -8,13 +8,8 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -26,6 +21,12 @@ import java.util.HashMap;
  * for Education Technology For Development
  * created by Aaron D Michaelis Borsay
  * on 10/31/2015.
+ *
+ * There are 6 different letter each round. They are randomly placed in the 6 spots. There is a
+ * separate random order of called letter. The audio of the current letter is played and replayed
+ * from the orange mic man. The user selected the correct or incorrect letter and the presses
+ * the validate icon. will not move forward until all six are acuretly chosen. tracks correct and
+ * incorrect answer and time.
  */
 public class ActivityLT04 extends ActivitiesMasterParent
         implements LoaderManager.LoaderCallbacks<Cursor>{
@@ -34,12 +35,10 @@ public class ActivityLT04 extends ActivitiesMasterParent
     private int correctWordCount=0;
     private int mRoundNumber=0;
 
-    private int mIncorrectInRound=0;
     private boolean mCorrect=false;
 
     protected ArrayList<ArrayList<String>> mCurrentText;
     private ArrayList<String> wordStatus;
-    private ArrayList<ArrayList<String>> mAllText;
 
     private ArrayList<ArrayList<String>> mCurrentWords;
 
@@ -111,8 +110,11 @@ public class ActivityLT04 extends ActivitiesMasterParent
         getLoaderManager().initLoader(Constants.ACTIVITY_CURRENT_LETTERS, null, this);
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
-
+    /**
+     * displayScreen()
+     * displays the 6 letters from a shuffle and tags them for choice. plays instruction audio if
+     * in first round and first letter otherwise plays letter audio
+     */
     protected void displayScreen(){
         findViewById(R.id.frame0).setVisibility(ImageView.VISIBLE);
         findViewById(R.id.box1).setVisibility(RelativeLayout.VISIBLE);
@@ -157,7 +159,7 @@ public class ActivityLT04 extends ActivitiesMasterParent
         setAudio();
         long mAudioDuration=(correctWordCount==0 && mRoundNumber<1)? playInstructionAudio():0;
 
-        mAudioHandler.postDelayed(playCurrentWord, mAudioDuration+10);
+        mAudioHandler.postDelayed(playWordAudioTimed, mAudioDuration+10);
 
         mValidateAvailable=false;
         mBeingValidated=false;
@@ -165,8 +167,10 @@ public class ActivityLT04 extends ActivitiesMasterParent
         setUpListeners();
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    /**
+     * clearActivity()
+     * clears all letters and makes the text all black for beginning of each round
+     */
     private void clearActivity(){
         ((TextView) findViewById(R.id.letter1)).setText("");
         ((TextView) findViewById(R.id.letter2)).setText("");
@@ -190,17 +194,17 @@ public class ActivityLT04 extends ActivitiesMasterParent
         ((TextView) findViewById(R.id.letter6))
                 .setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
 
-        ((ImageView) findViewById(R.id.frame1))
+        ( (ImageView) findViewById(R.id.letterBox1))
                 .setImageResource(R.drawable.rounded_text_unselected);
-        ((ImageView) findViewById(R.id.frame2))
+        ((ImageView) findViewById(R.id.letterBox2))
                 .setImageResource(R.drawable.rounded_text_unselected);
-        ((ImageView) findViewById(R.id.frame3))
+        ((ImageView) findViewById(R.id.letterBox3))
                 .setImageResource(R.drawable.rounded_text_unselected);
-        ((ImageView) findViewById(R.id.frame4))
+        ((ImageView) findViewById(R.id.letterBox4))
                 .setImageResource(R.drawable.rounded_text_unselected);
-        ((ImageView) findViewById(R.id.frame5))
+        ((ImageView) findViewById(R.id.letterBox5))
                 .setImageResource(R.drawable.rounded_text_unselected);
-        ((ImageView) findViewById(R.id.frame6))
+        ((ImageView) findViewById(R.id.letterBox6))
                 .setImageResource(R.drawable.rounded_text_unselected);
 
         ((TextView) findViewById(R.id.letter1)).setPaintFlags(((TextView) findViewById(R.id.letter1))
@@ -218,27 +222,29 @@ public class ActivityLT04 extends ActivitiesMasterParent
 
     }//end private void clearActivity(){
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    /**
+     * setAudio()
+     * sets the current letter Audio
+     */
     private void setAudio(){
-        currentLtrWrdAudio=mCurrentText.get(correctWordCount).get(2);
+        mCurrentAudio=mCurrentText.get(correctWordCount).get(2);
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
+    /**
+     * setupFrameListens()
+     * Called from onCreate. Sets response of activity when letter is chosen. If correct letter
+     * mCorrect = true else false. Get audio of current letter and ID of letter chosen
+     */
     protected void setupFrameListens(){
         findViewById(R.id.letter1).setOnClickListener(new View.OnClickListener() {
             @SuppressWarnings("unchecked")
             public void onClick(View v) {
-                ArrayList<String> thisText= (ArrayList<String>) findViewById(R.id.letter1).getTag();
-                mCurrentID=thisText.get(0);
-                matchingLtrWrdAudio=thisText.get(2);
                 if(wordStatus.get(0).equals("0") && !mBeingValidated){
+                    ArrayList<String> mLetter= (ArrayList<String>) findViewById(R.id.letter1).getTag();
+                    mCurrentID=mLetter.get(0);
+                    matchingLtrWrdAudio=mLetter.get(2);
                     mCurrentTextLocation=0;
-                    mCorrect =thisText.get(0).equals(mCurrentText.get(correctWordCount).get(0));
+                    mCorrect =mLetter.get(0).equals(mCurrentText.get(correctWordCount).get(0));
                     setUpFrame(0);
                 }
             }
@@ -247,12 +253,12 @@ public class ActivityLT04 extends ActivitiesMasterParent
         findViewById(R.id.letter2).setOnClickListener(new View.OnClickListener() {
             @SuppressWarnings("unchecked")
             public void onClick(View v) {
-                ArrayList<String> thisText=(ArrayList<String>) findViewById(R.id.letter2).getTag();
-                mCurrentID=thisText.get(0);
-                matchingLtrWrdAudio=thisText.get(2);
+                ArrayList<String> mLetter=(ArrayList<String>) findViewById(R.id.letter2).getTag();
+                mCurrentID=mLetter.get(0);
+                matchingLtrWrdAudio=mLetter.get(2);
                 if(wordStatus.get(1).equals("0") && !mBeingValidated){
                     mCurrentTextLocation=1;
-                    mCorrect =thisText.get(0).equals(mCurrentText.get(correctWordCount).get(0));
+                    mCorrect =mLetter.get(0).equals(mCurrentText.get(correctWordCount).get(0));
                     setUpFrame(1);
                 }
             }
@@ -261,12 +267,12 @@ public class ActivityLT04 extends ActivitiesMasterParent
         findViewById(R.id.letter3).setOnClickListener(new View.OnClickListener() {
             @SuppressWarnings("unchecked")
             public void onClick(View v) {
-                ArrayList<String> thisText=(ArrayList<String>) findViewById(R.id.letter3).getTag();
-                mCurrentID=thisText.get(0);
-                matchingLtrWrdAudio=thisText.get(2);
+                ArrayList<String> mLetter=(ArrayList<String>) findViewById(R.id.letter3).getTag();
+                mCurrentID=mLetter.get(0);
+                matchingLtrWrdAudio=mLetter.get(2);
                 if(wordStatus.get(2).equals("0") && !mBeingValidated){
                     mCurrentTextLocation=2;
-                    mCorrect =thisText.get(0).equals(mCurrentText.get(correctWordCount).get(0));
+                    mCorrect =mLetter.get(0).equals(mCurrentText.get(correctWordCount).get(0));
                     setUpFrame(2);
                 }
             }
@@ -275,12 +281,12 @@ public class ActivityLT04 extends ActivitiesMasterParent
         findViewById(R.id.letter4).setOnClickListener(new View.OnClickListener() {
             @SuppressWarnings("unchecked")
             public void onClick(View v) {
-                ArrayList<String> thisText=(ArrayList<String>) findViewById(R.id.letter4).getTag();
-                mCurrentID=thisText.get(0);
-                matchingLtrWrdAudio=thisText.get(2);
+                ArrayList<String> mLetter=(ArrayList<String>) findViewById(R.id.letter4).getTag();
+                mCurrentID=mLetter.get(0);
+                matchingLtrWrdAudio=mLetter.get(2);
                 if(wordStatus.get(3).equals("0") && !mBeingValidated){
                     mCurrentTextLocation=3;
-                    mCorrect =thisText.get(0).equals(mCurrentText.get(correctWordCount).get(0));
+                    mCorrect =mLetter.get(0).equals(mCurrentText.get(correctWordCount).get(0));
                     setUpFrame(3);
                 }
             }
@@ -289,12 +295,12 @@ public class ActivityLT04 extends ActivitiesMasterParent
         findViewById(R.id.letter5).setOnClickListener(new View.OnClickListener() {
             @SuppressWarnings("unchecked")
             public void onClick(View v) {
-                ArrayList<String> thisText=(ArrayList<String>) findViewById(R.id.letter5).getTag();
-                mCurrentID=thisText.get(0);
-                matchingLtrWrdAudio=thisText.get(2);
+                ArrayList<String> mLetter=(ArrayList<String>) findViewById(R.id.letter5).getTag();
+                mCurrentID=mLetter.get(0);
+                matchingLtrWrdAudio=mLetter.get(2);
                 if(wordStatus.get(4).equals("0") && !mBeingValidated){
                     mCurrentTextLocation=4;
-                    mCorrect =thisText.get(0).equals(mCurrentText.get(correctWordCount).get(0));
+                    mCorrect =mLetter.get(0).equals(mCurrentText.get(correctWordCount).get(0));
                     setUpFrame(4);
                 }
             }
@@ -303,12 +309,12 @@ public class ActivityLT04 extends ActivitiesMasterParent
         findViewById(R.id.letter6).setOnClickListener(new View.OnClickListener() {
             @SuppressWarnings("unchecked")
             public void onClick(View v) {
-                ArrayList<String> thisText=(ArrayList<String>) findViewById(R.id.letter6).getTag();
-                mCurrentID=thisText.get(0);
-                matchingLtrWrdAudio=thisText.get(2);
+                ArrayList<String> mLetter=(ArrayList<String>) findViewById(R.id.letter6).getTag();
+                mCurrentID=mLetter.get(0);
+                matchingLtrWrdAudio=mLetter.get(2);
                 if(wordStatus.get(5).equals("0") && !mBeingValidated){
                     mCurrentTextLocation=5;
-                    mCorrect =thisText.get(0).equals(mCurrentText.get(correctWordCount).get(0));
+                    mCorrect =mLetter.get(0).equals(mCurrentText.get(correctWordCount).get(0));
                     setUpFrame(5);
                 }
             }
@@ -316,74 +322,80 @@ public class ActivityLT04 extends ActivitiesMasterParent
 
     }//protected void setupFrameListens(){
 
-    ////////////////////////////////////////////////////////////////////////////////////
-
-    private void setUpFrame(int frameNumber){
+    /**
+     * setUpFrame(int mFrameNumber)
+     * Makes frame selected when letter is chosen and allows validate icon to bne clicked
+     * @param mFrameNumber represents the frame chosen to change
+     */
+    private void setUpFrame(int mFrameNumber){
         clearFrames();
         ((ImageView) findViewById(R.id.btnValidate))
                 .setImageResource(R.drawable.btn_validate_on_mic);
         mValidateAvailable=true;
 
-        switch(frameNumber){
+        switch(mFrameNumber){
             default:
-            case 0:{
-                ((ImageView) findViewById(R.id.frame1))
+            case 0:
+                ((ImageView) findViewById(R.id.letterBox1))
                         .setImageResource(R.drawable.rounded_text_selected);
                 break;
-            }
-            case 1:{
-                ((ImageView) findViewById(R.id.frame2))
+            case 1:
+                ((ImageView) findViewById(R.id.letterBox1))
                         .setImageResource(R.drawable.rounded_text_selected);
                 break;
-            }
-            case 2:{
-                ((ImageView) findViewById(R.id.frame3))
+            case 2:
+                ((ImageView) findViewById(R.id.letterBox1))
                         .setImageResource(R.drawable.rounded_text_selected);
                 break;
-            }
-            case 3:{
-                ((ImageView) findViewById(R.id.frame4))
+            case 3:
+                ((ImageView) findViewById(R.id.letterBox1))
                         .setImageResource(R.drawable.rounded_text_selected);
                 break;
-            }
-            case 4:{
-                ((ImageView) findViewById(R.id.frame5))
+            case 4:
+                ((ImageView) findViewById(R.id.letterBox1))
                         .setImageResource(R.drawable.rounded_text_selected);
                 break;
-            }
-            case 5:{
-                ((ImageView) findViewById(R.id.frame6))
+            case 5:
+                ((ImageView) findViewById(R.id.letterBox1))
                         .setImageResource(R.drawable.rounded_text_selected);
                 break;
-            }
         }//end switch(frameNumber){
     }//end private void setUpFrame(int frameNumber){
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    /**
+     * clearFrames() to be all unselected so long as they have not already been chosen/processed
+     */
     private void clearFrames(){
-        if(wordStatus.get(0).equals("0"))
-            ((ImageView) findViewById(R.id.frame1))
+        if(wordStatus.get(0).equals("0")) {
+            ((ImageView) findViewById(R.id.letterBox1))
                     .setImageResource(R.drawable.rounded_text_unselected);
-        if(wordStatus.get(1).equals("0"))
-            ((ImageView) findViewById(R.id.frame2))
+        }
+        if(wordStatus.get(1).equals("0")) {
+            ((ImageView) findViewById(R.id.letterBox1))
                     .setImageResource(R.drawable.rounded_text_unselected);
-        if(wordStatus.get(2).equals("0"))
-            ((ImageView) findViewById(R.id.frame3))
+        }
+        if(wordStatus.get(2).equals("0")) {
+            ((ImageView) findViewById(R.id.letterBox1))
                     .setImageResource(R.drawable.rounded_text_unselected);
-        if(wordStatus.get(3).equals("0"))
-            ((ImageView) findViewById(R.id.frame4))
+        }
+        if(wordStatus.get(3).equals("0")) {
+            ((ImageView) findViewById(R.id.letterBox1))
                     .setImageResource(R.drawable.rounded_text_unselected);
-        if(wordStatus.get(4).equals("0"))
-            ((ImageView) findViewById(R.id.frame5))
+        }
+        if(wordStatus.get(4).equals("0")) {
+            ((ImageView) findViewById(R.id.letterBox1))
                     .setImageResource(R.drawable.rounded_text_unselected);
-        if(wordStatus.get(5).equals("0"))
-            ((ImageView) findViewById(R.id.frame6))
+        }
+        if(wordStatus.get(5).equals("0")) {
+            ((ImageView) findViewById(R.id.letterBox1))
                     .setImageResource(R.drawable.rounded_text_unselected);
+        }
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////
-
+    /**
+     * setUpListners() called in onCreate.
+     * If btnValidate clicked run validation. If micDude clicked play current audio
+     */
     protected void setUpListeners(){
         findViewById(R.id.btnValidate).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -395,31 +407,18 @@ public class ActivityLT04 extends ActivitiesMasterParent
         });
         findViewById(R.id.micDude).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if(!currentLtrWrdAudio.equals(""))
-                    playGeneralAudio(currentLtrWrdAudio);
+                if(!mCurrentAudio.equals(""))
+                    playGeneralAudio(mCurrentAudio);
             }
         });
     }//end protected void setUpListeners(){
 
-    ///////////////////////////////////////////////////////////////////////////////////////////
 
-    protected long playInstructionAudio(){
-        long mAudioDuration = super.playInstructionAudio();
-        mAudioHandler.postDelayed(playCurrentWord, mAudioDuration+10);
-        return mAudioDuration;
-    }
-
-    ////////////////////////////////////////////////////////////////////////////////////////////
-
-    private Runnable playCurrentWord = new Runnable(){
-        @Override
-        public void run(){
-            playGeneralAudio(currentLtrWrdAudio);
-        }
-    };
-
-    ////////////////////////////////////////////////////////////////////////////////////////////
-
+    /**
+     * validate()
+     * adjusts validate icon accordingly to correct or not. Do not allow validate to be clicked
+     * again. Add points for right or wrong process. Then call to recolor screen
+     */
     protected void validate(){
         mBeingValidated=true;
         if(mCorrect){
@@ -439,8 +438,10 @@ public class ActivityLT04 extends ActivitiesMasterParent
         guessHandler.postDelayed(processGuess, 10);
     }//end protected void validate(){
 
-    ////////////////////////////////////////////////////////////////////////////////////////////
-
+    /**
+     * processLayoutAfterGuess()
+     * redraws screen is correct or incorrect choice. if Correct block use of letter box again
+     */
     private void processLayoutAfterGuess(){
 
         switch(mCurrentTextLocation){
@@ -450,7 +451,7 @@ public class ActivityLT04 extends ActivitiesMasterParent
                     wordStatus.set(0, "2");
                     ((TextView) findViewById(R.id.letter1)).
                             setTextColor(ContextCompat.getColor(this,R.color.correct_green));
-                    ((ImageView) findViewById(R.id.frame1))
+                    ((ImageView) findViewById(R.id.letterBox1))
                             .setImageResource(R.drawable.rounded_text_correct);
                 }else{
                     wordStatus.set(0, "1");
@@ -459,7 +460,7 @@ public class ActivityLT04 extends ActivitiesMasterParent
                     ((TextView) findViewById(R.id.letter1))
                             .setPaintFlags(((TextView) findViewById(R.id.letter1)).getPaintFlags()
                                     | Paint.STRIKE_THRU_TEXT_FLAG);
-                    ((ImageView) findViewById(R.id.frame1))
+                    ((ImageView) findViewById(R.id.letterBox1))
                             .setImageResource(R.drawable.rounded_text_incorrect);
                 }
                 break;
@@ -469,7 +470,7 @@ public class ActivityLT04 extends ActivitiesMasterParent
                     wordStatus.set(1, "2");
                     ((TextView) findViewById(R.id.letter2))
                             .setTextColor(ContextCompat.getColor(this,R.color.correct_green));
-                    ((ImageView) findViewById(R.id.frame2))
+                    ((ImageView) findViewById(R.id.letterBox2))
                             .setImageResource(R.drawable.rounded_text_correct);
                 }else{
                     wordStatus.set(1, "1");
@@ -478,7 +479,7 @@ public class ActivityLT04 extends ActivitiesMasterParent
                     ((TextView) findViewById(R.id.letter2))
                             .setPaintFlags(((TextView) findViewById(R.id.letter2)).getPaintFlags()
                                     | Paint.STRIKE_THRU_TEXT_FLAG);
-                    ((ImageView) findViewById(R.id.frame2))
+                    ((ImageView) findViewById(R.id.letterBox2))
                             .setImageResource(R.drawable.rounded_text_incorrect);
                 }
                 break;
@@ -487,59 +488,85 @@ public class ActivityLT04 extends ActivitiesMasterParent
                 if(mCorrect){
                     wordStatus.set(2, "2");
                     ((TextView) findViewById(R.id.letter3)).setTextColor(ContextCompat.getColor(this,R.color.correct_green));
-                    ((ImageView) findViewById(R.id.frame3)).setImageResource(R.drawable.rounded_text_correct);
+                    ((ImageView) findViewById(R.id.letterBox3)).setImageResource(R.drawable.rounded_text_correct);
                 }else{
                     wordStatus.set(2, "1");
-                    ((TextView) findViewById(R.id.letter3)).setTextColor(ContextCompat.getColor(this,R.color.incorrect_red));
-                    ((TextView) findViewById(R.id.letter3)).setPaintFlags(((TextView) findViewById(R.id.letter3)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-                    ((ImageView) findViewById(R.id.frame3)).setImageResource(R.drawable.rounded_text_incorrect);
+                    ((TextView) findViewById(R.id.letter3))
+                            .setTextColor(ContextCompat.getColor(this,R.color.incorrect_red));
+                    ((TextView) findViewById(R.id.letter3))
+                            .setPaintFlags(((TextView) findViewById(R.id.letter3)).getPaintFlags()
+                                    | Paint.STRIKE_THRU_TEXT_FLAG);
+                    ((ImageView) findViewById(R.id.letterBox3))
+                            .setImageResource(R.drawable.rounded_text_incorrect);
                 }
                 break;
             }
             case 3:{
                 if(mCorrect){
                     wordStatus.set(3, "2");
-                    ((TextView) findViewById(R.id.letter4)).setTextColor(ContextCompat.getColor(this,R.color.correct_green));
-                    ((ImageView) findViewById(R.id.frame4)).setImageResource(R.drawable.rounded_text_correct);
+                    ((TextView) findViewById(R.id.letter4))
+                            .setTextColor(ContextCompat.getColor(this,R.color.correct_green));
+                    ((ImageView) findViewById(R.id.letterBox4))
+                            .setImageResource(R.drawable.rounded_text_correct);
                 }else{
                     wordStatus.set(3, "1");
-                    ((TextView) findViewById(R.id.letter4)).setTextColor(ContextCompat.getColor(this,R.color.incorrect_red));
-                    ((TextView) findViewById(R.id.letter4)).setPaintFlags(((TextView) findViewById(R.id.letter4)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-                    ((ImageView) findViewById(R.id.frame4)).setImageResource(R.drawable.rounded_text_incorrect);
+                    ((TextView) findViewById(R.id.letter4))
+                            .setTextColor(ContextCompat.getColor(this,R.color.incorrect_red));
+                    ((TextView) findViewById(R.id.letter4))
+                            .setPaintFlags(((TextView) findViewById(R.id.letter4)).getPaintFlags()
+                                    | Paint.STRIKE_THRU_TEXT_FLAG);
+                    ((ImageView) findViewById(R.id.letterBox4))
+                            .setImageResource(R.drawable.rounded_text_incorrect);
                 }
                 break;
             }
             case 4:{
                 if(mCorrect){
                     wordStatus.set(4, "2");
-                    ((TextView) findViewById(R.id.letter5)).setTextColor(ContextCompat.getColor(this,R.color.correct_green));
-                    ((ImageView) findViewById(R.id.frame5)).setImageResource(R.drawable.rounded_text_correct);
+                    ((TextView) findViewById(R.id.letter5))
+                            .setTextColor(ContextCompat.getColor(this,R.color.correct_green));
+                    ((ImageView) findViewById(R.id.letterBox5))
+                            .setImageResource(R.drawable.rounded_text_correct);
                 }else{
                     wordStatus.set(4, "1");
-                    ((TextView) findViewById(R.id.letter5)).setTextColor(ContextCompat.getColor(this,R.color.incorrect_red));
-                    ((TextView) findViewById(R.id.letter5)).setPaintFlags(((TextView) findViewById(R.id.letter5)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-                    ((ImageView) findViewById(R.id.frame5)).setImageResource(R.drawable.rounded_text_incorrect);
+                    ((TextView) findViewById(R.id.letter5))
+                            .setTextColor(ContextCompat.getColor(this,R.color.incorrect_red));
+                    ((TextView) findViewById(R.id.letter5))
+                            .setPaintFlags(((TextView) findViewById(R.id.letter5)).getPaintFlags()
+                                    | Paint.STRIKE_THRU_TEXT_FLAG);
+                    ((ImageView) findViewById(R.id.letterBox5))
+                            .setImageResource(R.drawable.rounded_text_incorrect);
                 }
                 break;
             }
             case 5:{
                 if(mCorrect){
                     wordStatus.set(5, "2");
-                    ((TextView) findViewById(R.id.letter6)).setTextColor(ContextCompat.getColor(this,R.color.correct_green));
-                    ((ImageView) findViewById(R.id.frame6)).setImageResource(R.drawable.rounded_text_correct);
+                    ((TextView) findViewById(R.id.letter6))
+                            .setTextColor(ContextCompat.getColor(this,R.color.correct_green));
+                    ((ImageView) findViewById(R.id.letterBox6))
+                            .setImageResource(R.drawable.rounded_text_correct);
                 }else{
                     wordStatus.set(5, "1");
-                    ((TextView) findViewById(R.id.letter6)).setTextColor(ContextCompat.getColor(this,R.color.incorrect_red));
-                    ((TextView) findViewById(R.id.letter6)).setPaintFlags(((TextView) findViewById(R.id.letter6)).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-                    ((ImageView) findViewById(R.id.frame6)).setImageResource(R.drawable.rounded_text_incorrect);
+                    ((TextView) findViewById(R.id.letter6))
+                            .setTextColor(ContextCompat.getColor(this,R.color.incorrect_red));
+                    ((TextView) findViewById(R.id.letter6))
+                            .setPaintFlags(((TextView) findViewById(R.id.letter6)).getPaintFlags()
+                            | Paint.STRIKE_THRU_TEXT_FLAG);
+                    ((ImageView) findViewById(R.id.letterBox6))
+                            .setImageResource(R.drawable.rounded_text_incorrect);
                 }
                 break;
             }
         }//end switch
     }//end private void processLayoutAfterGuess(boolean correctWord){
 
-    ////////////////////////////////////////////////////////////////////////////////////////////
-
+    /**
+     * Play right or wrong sound then in time will play word if
+     * incorrect number of syllables chosen.  In time then clears all current round data and
+     * decides is activity completed of move to next round. It will then return to
+     * activities_platform or beginRound depending on conclusion.
+     */
     private Runnable processGuess = new Runnable(){
         @Override
         public void run(){
@@ -547,7 +574,7 @@ public class ActivityLT04 extends ActivitiesMasterParent
 
             switch(mProcessGuessPosition){
                 case 0:
-                default:{
+                default:
                     if(mCorrect){
                         mAudioDuration=playGeneralAudio("sfx_right");
                     }else{
@@ -556,18 +583,16 @@ public class ActivityLT04 extends ActivitiesMasterParent
                     mProcessGuessPosition++;
                     mAudioHandler.postDelayed(processGuess, mAudioDuration+10);
                     break;
-                }
-                case 1:{
+                case 1:
                     if(mCorrect){
-                        mAudioDuration=playGeneralAudio(currentLtrWrdAudio);
+                        mAudioDuration=playGeneralAudio(mCurrentAudio);
                     }else{
                         mAudioDuration=playGeneralAudio(matchingLtrWrdAudio);
                     }
                     mProcessGuessPosition++;
                     mAudioHandler.postDelayed(processGuess, mAudioDuration+10);
                     break;
-                }
-                case 2:{
+                case 2:
 
                     guessHandler.removeCallbacks(processGuess);
                     if(correctWordCount==6){
@@ -579,23 +604,15 @@ public class ActivityLT04 extends ActivitiesMasterParent
                             guessHandler.postDelayed(processGuess, 500);
                         }else{
                             mLastActivityData=0;
-
-                            findViewById(R.id.activityMainPart)
-                                    .setVisibility(LinearLayout.INVISIBLE);
-                            findViewById(R.id.activityMainPart)
-                                    .setAnimation(AnimationUtils.loadAnimation(
-                                            getApplicationContext(), R.anim.fade_out));
+                            fadeInOrOutScreenInActivity(false);
                             lastActivityDataHandler.postDelayed(returnToActivities_Platorm,2000);
                         }
                     }else{
                         if(mCorrect){
                             clearInCorrects();
                             setAudio();
-
                             mAudioDuration=(correctWordCount==0)? playInstructionAudio():0;
-
-                            mAudioHandler.postDelayed(playCurrentWord, mAudioDuration+10);
-
+                            mAudioHandler.postDelayed(playWordAudioTimed, mAudioDuration+10);
                         }
                         ((ImageView) findViewById(R.id.btnValidate))
                                 .setImageResource(R.drawable.btn_validate_off_mic);
@@ -603,72 +620,97 @@ public class ActivityLT04 extends ActivitiesMasterParent
                         mValidateAvailable=false;
                     }
                     break;
-                }
-                case 3:{
+                case 3:
                     inBetweenRounds(1);
                     displayScreen();
                     guessHandler.removeCallbacks(processGuess);
                     break;
-                }
             }//switch(mProcessGuessPosition){
         }//public void run(){
     };//end private Runnable processGuess = new Runnable(){
 
-    ////////////////////////////////////////////////////////////////////////////////////////////
-
+    /**
+     * clearInCorrects() clears only letter if they have not already chosen correct or they were
+     * just chosen incorrect
+     */
     private void clearInCorrects(){
         if(wordStatus.get(0).equals("0") || wordStatus.get(0).equals("1")){
             wordStatus.set(0, "0");
-            ((ImageView) findViewById(R.id.frame1)).setImageResource(R.drawable.rounded_text_unselected);
-            ((TextView) findViewById(R.id.letter1)).setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
-            ((TextView) findViewById(R.id.letter1)).setPaintFlags(((TextView) findViewById(R.id.letter1)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+            ((ImageView) findViewById(R.id.letterBox1))
+                    .setImageResource(R.drawable.rounded_text_unselected);
+            ((TextView) findViewById(R.id.letter1))
+                    .setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
+            ((TextView) findViewById(R.id.letter1))
+                    .setPaintFlags(((TextView) findViewById(R.id.letter1)).getPaintFlags()
+                            & (~ Paint.STRIKE_THRU_TEXT_FLAG));
         }
         if(wordStatus.get(1).equals("0") || wordStatus.get(1).equals("1")){
             wordStatus.set(1, "0");
-            ((ImageView) findViewById(R.id.frame2)).setImageResource(R.drawable.rounded_text_unselected);
-            ((TextView) findViewById(R.id.letter2)).setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
-            ((TextView) findViewById(R.id.letter2)).setPaintFlags(((TextView) findViewById(R.id.letter2)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+            ((ImageView) findViewById(R.id.letterBox2))
+                    .setImageResource(R.drawable.rounded_text_unselected);
+            ((TextView) findViewById(R.id.letter2))
+                    .setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
+            ((TextView) findViewById(R.id.letter2))
+                    .setPaintFlags(((TextView) findViewById(R.id.letter2)).getPaintFlags()
+                            & (~ Paint.STRIKE_THRU_TEXT_FLAG));
         }
         if(wordStatus.get(2).equals("0") || wordStatus.get(2).equals("1")){
             wordStatus.set(2, "0");
-            ((ImageView) findViewById(R.id.frame3)).setImageResource(R.drawable.rounded_text_unselected);
-            ((TextView) findViewById(R.id.letter3)).setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
-            ((TextView) findViewById(R.id.letter3)).setPaintFlags(((TextView) findViewById(R.id.letter3)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+            ((ImageView) findViewById(R.id.letterBox3))
+                    .setImageResource(R.drawable.rounded_text_unselected);
+            ((TextView) findViewById(R.id.letter3))
+                    .setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
+            ((TextView) findViewById(R.id.letter3))
+                    .setPaintFlags(((TextView) findViewById(R.id.letter3)).getPaintFlags()
+                            & (~ Paint.STRIKE_THRU_TEXT_FLAG));
         }
         if(wordStatus.get(3).equals("0") || wordStatus.get(3).equals("1")){
             wordStatus.set(3, "0");
-            ((ImageView) findViewById(R.id.frame4)).setImageResource(R.drawable.rounded_text_unselected);
-            ((TextView) findViewById(R.id.letter4)).setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
-            ((TextView) findViewById(R.id.letter4)).setPaintFlags(((TextView) findViewById(R.id.letter4)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+            ((ImageView) findViewById(R.id.letterBox4))
+                    .setImageResource(R.drawable.rounded_text_unselected);
+            ((TextView) findViewById(R.id.letter4))
+                    .setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
+            ((TextView) findViewById(R.id.letter4))
+                    .setPaintFlags(((TextView) findViewById(R.id.letter4)).getPaintFlags()
+                            & (~ Paint.STRIKE_THRU_TEXT_FLAG));
         }
         if(wordStatus.get(4).equals("0") || wordStatus.get(4).equals("1")){
             wordStatus.set(4, "0");
-            ((ImageView) findViewById(R.id.frame5)).setImageResource(R.drawable.rounded_text_unselected);
-            ((TextView) findViewById(R.id.letter5)).setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
-            ((TextView) findViewById(R.id.letter5)).setPaintFlags(((TextView) findViewById(R.id.letter5)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+            ((ImageView) findViewById(R.id.letterBox5))
+                    .setImageResource(R.drawable.rounded_text_unselected);
+            ((TextView) findViewById(R.id.letter5))
+                    .setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
+            ((TextView) findViewById(R.id.letter5))
+                    .setPaintFlags(((TextView) findViewById(R.id.letter5)).getPaintFlags()
+                            & (~ Paint.STRIKE_THRU_TEXT_FLAG));
         }
         if(wordStatus.get(5).equals("0") || wordStatus.get(5).equals("1")){
             wordStatus.set(5, "0");
-            ((ImageView) findViewById(R.id.frame6)).setImageResource(R.drawable.rounded_text_unselected);
-            ((TextView) findViewById(R.id.letter6)).setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
-            ((TextView) findViewById(R.id.letter6)).setPaintFlags(((TextView) findViewById(R.id.letter6)).getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+            ((ImageView) findViewById(R.id.letterBox6))
+                    .setImageResource(R.drawable.rounded_text_unselected);
+            ((TextView) findViewById(R.id.letter6))
+                    .setTextColor(ContextCompat.getColor(this,R.color.normalBlack));
+            ((TextView) findViewById(R.id.letter6))
+                    .setPaintFlags(((TextView) findViewById(R.id.letter6)).getPaintFlags()
+                    & (~ Paint.STRIKE_THRU_TEXT_FLAG));
         }
 
     }//end private void clearInCorrects(){
 
-    ////////////////////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////////////////////
-
-    private void inBetweenRounds(int level){
-        if(level==0){
+    /**
+     * hides orange mic man and validate
+     * @param mPart represents part of round
+     */
+    private void inBetweenRounds(int mPart){
+        if(mPart==0){
             findViewById(R.id.micDude).setVisibility(ImageView.INVISIBLE);
             findViewById(R.id.btnValidate).setVisibility(ImageView.INVISIBLE);
         }else{
             findViewById(R.id.micDude).setVisibility(ImageView.VISIBLE);
             findViewById(R.id.btnValidate).setVisibility(ImageView.VISIBLE);
 
-            ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_off_mic);
+            ((ImageView) findViewById(R.id.btnValidate))
+                    .setImageResource(R.drawable.btn_validate_off_mic);
 
         }
     }

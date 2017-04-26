@@ -7,27 +7,25 @@
     android:id="@+id/activityMainFrame"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_lt02"
-    >
+    android:background="@drawable/bg_lt02">
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/activityMainPart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@drawable/bg_lt02"
-        android:id="@+id/activityMainPart">
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/activityMainPartSecond"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="horizontal"
-            android:visibility="visible"
             android:padding="6dp"
-            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="visible"
             app:layout_constraintBottom_toTopOf="@+id/btnValidate"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_weight=".15">
 
             <include
@@ -45,46 +43,46 @@
             app:layout_constraintGuide_percent="0.05" />
 
         <android.support.constraint.Guideline
+            android:id="@+id/guidelineTop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/guidelineTop"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.05"
-            tools:layout_editor_absoluteY="43dp"
-            tools:layout_editor_absoluteX="0dp" />
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="43dp" />
 
         <RelativeLayout
             android:id="@+id/frame0"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/rounded_box_selected_blue"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalMid"
             app:layout_constraintLeft_toLeftOf="@+id/guidelineLeft"
             app:layout_constraintRight_toLeftOf="@+id/guidelineVerticalMidRight"
-            app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalMid"
             app:layout_constraintTop_toTopOf="@+id/guidelineTop">
 
             <TextView
                 android:id="@+id/letter0"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
                 android:gravity="center_vertical|center_horizontal"
                 android:text="@string/strRandomLetter"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/normalBlack"
-                android:textSize="@dimen/letterTopTextBox"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true" />
+                android:textSize="@dimen/letterTopTextBox" />
 
         </RelativeLayout>
 
         <android.support.constraint.Guideline
+            android:id="@+id/guidelineVerticalMidRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/guidelineVerticalMidRight"
-            app:layout_constraintGuide_percent="0.5"
             android:orientation="vertical"
-            tools:layout_editor_absoluteY="0dp"
-            tools:layout_editor_absoluteX="640dp" />
+            app:layout_constraintGuide_percent="0.5"
+            tools:layout_editor_absoluteX="640dp"
+            tools:layout_editor_absoluteY="0dp" />
 
         <ImageButton
             android:id="@+id/btnValidate"
@@ -94,25 +92,25 @@
             android:contentDescription="@string/strNone"
             android:scaleType="fitStart"
             android:src="@drawable/btn_validate_off"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/guidelineVerticalMidRight"
             app:layout_constraintRight_toLeftOf="@id/guidelineRight"
             app:layout_constraintTop_toBottomOf="@+id/activityMainPartSecond"
-            app:layout_constraintVertical_weight="1"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintVertical_weight="1" />
 
         <android.support.constraint.Guideline
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/guidelineRight"
-            app:layout_constraintGuide_percent="0.95"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteY="0dp"
-            tools:layout_editor_absoluteX="1255dp" />
-
-        <android.support.constraint.Guideline
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95"
+            tools:layout_editor_absoluteX="1255dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <android.support.constraint.Guideline
             android:id="@+id/guidelineHorizontalMid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.7" />
 
@@ -123,11 +121,10 @@
             android:layout_height="0dp"
             android:contentDescription="@string/strNone"
             android:src="@drawable/frm_sd01_off"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/frame2"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/guidelineHorizontalMid"/>
-
+            app:layout_constraintTop_toBottomOf="@id/guidelineHorizontalMid" />
 
 
         <TextView
@@ -139,9 +136,9 @@
             android:textColor="@color/normalBlack"
             android:textSize="@dimen/letterSetOf4Boxes"
             app:layout_constraintBottom_toBottomOf="@+id/frame1"
-            app:layout_constraintTop_toTopOf="@+id/frame1"
+            app:layout_constraintLeft_toLeftOf="@+id/frame1"
             app:layout_constraintRight_toRightOf="@+id/frame1"
-            app:layout_constraintLeft_toLeftOf="@+id/frame1"/>
+            app:layout_constraintTop_toTopOf="@+id/frame1" />
 
         <ImageView
             android:id="@+id/frame2"
@@ -149,11 +146,10 @@
             android:layout_height="0dp"
             android:contentDescription="@string/strNone"
             android:src="@drawable/frm_sd01_off"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/frame1"
             app:layout_constraintRight_toLeftOf="@+id/frame3"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/guidelineHorizontalMid"/>
-
+            app:layout_constraintTop_toBottomOf="@id/guidelineHorizontalMid" />
 
 
         <TextView
@@ -165,9 +161,9 @@
             android:textColor="@color/normalBlack"
             android:textSize="@dimen/letterSetOf4Boxes"
             app:layout_constraintBottom_toBottomOf="@+id/frame2"
-            app:layout_constraintTop_toTopOf="@+id/frame2"
+            app:layout_constraintLeft_toLeftOf="@+id/frame2"
             app:layout_constraintRight_toRightOf="@+id/frame2"
-            app:layout_constraintLeft_toLeftOf="@+id/frame2" />
+            app:layout_constraintTop_toTopOf="@+id/frame2" />
 
         <ImageView
             android:id="@+id/frame3"
@@ -175,12 +171,10 @@
             android:layout_height="0dp"
             android:contentDescription="@string/strNone"
             android:src="@drawable/frm_sd01_off"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/frame2"
             app:layout_constraintRight_toLeftOf="@+id/frame4"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/guidelineHorizontalMid"/>
-
-
+            app:layout_constraintTop_toBottomOf="@id/guidelineHorizontalMid" />
 
 
         <TextView
@@ -192,9 +186,9 @@
             android:textColor="@color/normalBlack"
             android:textSize="@dimen/letterSetOf4Boxes"
             app:layout_constraintBottom_toBottomOf="@+id/frame3"
-            app:layout_constraintTop_toTopOf="@+id/frame3"
+            app:layout_constraintLeft_toLeftOf="@+id/frame3"
             app:layout_constraintRight_toRightOf="@+id/frame3"
-            app:layout_constraintLeft_toLeftOf="@+id/frame3" />
+            app:layout_constraintTop_toTopOf="@+id/frame3" />
 
         <ImageView
             android:id="@+id/frame4"
@@ -203,12 +197,10 @@
             android:clickable="false"
             android:contentDescription="@string/strNone"
             android:src="@drawable/frm_sd01_off"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/frame3"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/guidelineHorizontalMid"/>
-
-
+            app:layout_constraintTop_toBottomOf="@id/guidelineHorizontalMid" />
 
 
         <TextView
@@ -220,12 +212,11 @@
             android:textColor="@color/normalBlack"
             android:textSize="@dimen/letterSetOf4Boxes"
             app:layout_constraintBottom_toBottomOf="@+id/frame4"
-            app:layout_constraintTop_toTopOf="@+id/frame4"
+            app:layout_constraintLeft_toLeftOf="@+id/frame4"
             app:layout_constraintRight_toRightOf="@+id/frame4"
-            app:layout_constraintLeft_toLeftOf="@+id/frame4" />
+            app:layout_constraintTop_toTopOf="@+id/frame4" />
 
     </android.support.constraint.ConstraintLayout>
-
 
 
 </FrameLayout>

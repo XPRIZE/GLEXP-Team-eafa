@@ -11,8 +11,7 @@
     <android.support.constraint.ConstraintLayout
         android:id="@+id/activityMainPart"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/bg_bk03_side">
+        android:layout_height="match_parent">
 
 
         <android.support.constraint.Guideline
@@ -158,12 +157,12 @@
             android:layout_height="wrap_content"
             android:contentDescription="@string/none"
             android:src="@drawable/icon_letters_names_act"
-            android:visibility="visible"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@+id/videoFrame"
             app:layout_constraintLeft_toLeftOf="@+id/videoFrame"
             app:layout_constraintRight_toLeftOf="@+id/videoBird"
             app:layout_constraintTop_toTopOf="@+id/videoFrame"
-            app:layout_constraintVertical_bias="0.4" />
+            app:layout_constraintVertical_bias="0.401" />
 
         <ImageView
             android:id="@+id/videoBird"
@@ -172,6 +171,7 @@
             android:contentDescription="@string/none"
             android:scaleType="fitEnd"
             android:src="@drawable/btn_spound_closed"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@+id/videoFrame"
             app:layout_constraintLeft_toRightOf="@+id/activityIcon"
             app:layout_constraintRight_toRightOf="@+id/videoFrame"

@@ -40,8 +40,7 @@ public class Activities_Platform extends ActivitiesMasterParent
         super.onCreate(savedInstanceState);
         overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out);
         setContentView(R.layout.activities_platform);
-        findViewById(R.id.activityMainPart)
-                .setVisibility(LinearLayout.INVISIBLE);
+        fadeInOrOutScreenInActivity(true);
         appData = ((Motoli_Application) getApplicationContext());
 
         appData.setClassesForActivities();
@@ -452,13 +451,10 @@ public class Activities_Platform extends ActivitiesMasterParent
     protected void displayScreen(){
 
 
-        findViewById(R.id.activityMainPart)
-                .setVisibility(LinearLayout.VISIBLE);
-        findViewById(R.id.activityMainPart)
-                .setAnimation(AnimationUtils.loadAnimation(
-                        getApplicationContext(), R.anim.fade_in));
+        fadeInOrOutScreenInActivity(true);
         if(mCurrentActivities.get(0).get(3).equals("0")
-                && mCurrentGSP.get("group_id").equals("3")) {
+                && mCurrentGSP.get("group_id").equals("3")
+                && !mCurrentActivities.get(0).get(0).equals("47")) {
             findViewById(R.id.btnVideo).setAlpha(0.5f);
         }else{
             findViewById(R.id.btnVideo).setAlpha(1.0f);
@@ -750,7 +746,8 @@ public class Activities_Platform extends ActivitiesMasterParent
         findViewById(R.id.btnVideo).setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 if(!(mCurrentActivities.get(0).get(3).equals("0")
-                        && mCurrentGSP.get("group_id").equals("3"))) {
+                        && mCurrentGSP.get("group_id").equals("3"))
+                        || !mCurrentActivities.get(0).get(0).equals("47")) {
                     moveToVideo();
                 }
             }

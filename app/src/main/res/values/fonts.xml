@@ -83,6 +83,8 @@
 
 
     <dimen name="qn_numbers">90sp</dimen>
+    <dimen name="qn03_numbers">100sp</dimen>
+
     <dimen name="qn_massive_numbers">130sp</dimen>
     <dimen name="qn01_font_size">70sp</dimen>
     <dimen name="settings_font_size">36sp</dimen>

@@ -98,7 +98,7 @@ public class AppProviderProcesses {
                         }
                         break;
                     case 4:
-                        processGroup4NULL(mAppUserId, mUserGPL.get(i));
+                        processGroup4WordsNULL(mAppUserId, mUserGPL.get(i));
                         break;
                     case 5:
                         processGroup5NULL();
@@ -107,14 +107,14 @@ public class AppProviderProcesses {
                         processGroup6NULL(mAppUserId, mUserGPL.get(i));
                         break;
                     case 7:
-                        processGroup7NULL(mAppUserId, mUserGPL.get(i));
+                        processGroup7NumbersNULL(mAppUserId, mUserGPL.get(i));
                         break;
                     case 8:
-                        processGroup8NULL(mAppUserId, mUserGPL.get(i));
+                        processGroup8MathOperationsNULL(mAppUserId, mUserGPL.get(i));
                         break;
                 }//end switch(Integer.parseInt(mUserGPL.get(i).get(2))){
             }else{
-                /**
+                /*
                  * Take care of updating variables is needed
                  */
                 int mInARowCorrect=Constants.INA_ROW_CORRECT;
@@ -129,6 +129,7 @@ public class AppProviderProcesses {
                     mInARowCorrect = Constants.INA_ROW_CORRECT_WORDS;
                 }else if(mUserGPL.get(i).get("group_id").equals("8")){
                     mInARowCorrect = Constants.MATH_OPERATIONS_INA_ROW_CORRECT;
+
                 }
                 //  || mCurrentActivities.get(i).get(4).equals("CS")
                 mMinNumberCorrect = mCursor.getInt(mCursor.getColumnIndex("minNumberCorrect"));
@@ -165,7 +166,7 @@ public class AppProviderProcesses {
                             }
                             break;
                         case 4:   //group for words
-                            processGroup4(mAppUserId, mUserGPL.get(i));
+                            processGroup4Words(mAppUserId, mUserGPL.get(i));
                             break;
                         case 5:
                             processGroup5();
@@ -174,10 +175,10 @@ public class AppProviderProcesses {
                             processGroup6(mAppUserId, mUserGPL.get(i));
                             break;
                         case 7:
-                            processGroup7( mAppUserId, mUserGPL.get(i));
+                            processGroup7Numbers( mAppUserId, mUserGPL.get(i));
                             break;
                         case 8:
-                            processGroup8( mAppUserId, mUserGPL.get(i));
+                            processGroup8MathOperations( mAppUserId, mUserGPL.get(i));
                             break;
                     }//end switch(Integer.parseInt(mUserGPL.get(i).get(2))){
                 }//end  if ((mMinNumberCorrect >= Constants.INA_ROW_CORRECT)
@@ -197,8 +198,6 @@ public class AppProviderProcesses {
 
 
     }
-
-
 
 
     //////////////////////////////////////////////////////////////////////////////////////////////
@@ -268,7 +267,7 @@ public class AppProviderProcesses {
                         }
                         break;
                     case 4:
-                        processGroup4NULL(mAppUserId, mUserGPL.get(i));
+                        processGroup4WordsNULL(mAppUserId, mUserGPL.get(i));
                         break;
                     case 5:
                         processGroup5NULL();
@@ -277,10 +276,10 @@ public class AppProviderProcesses {
                         processGroup6NULL( mAppUserId, mUserGPL.get(i));
                         break;
                     case 7:
-                        processGroup7NULL(mAppUserId, mUserGPL.get(i));
+                        processGroup7NumbersNULL(mAppUserId, mUserGPL.get(i));
                         break;
                     case 8:
-                        processGroup8NULL(mAppUserId, mUserGPL.get(i));
+                        processGroup8MathOperationsNULL(mAppUserId, mUserGPL.get(i));
                         break;
                 }//end switch(Integer.parseInt(mUserGPL.get(i).get(2))){
             }else{
@@ -331,7 +330,7 @@ public class AppProviderProcesses {
                             }
                             break;
                         case 4:   //group for words
-                            processGroup4(mAppUserId, mUserGPL.get(i));
+                            processGroup4Words(mAppUserId, mUserGPL.get(i));
                             break;
                         case 5:
                             processGroup5();
@@ -340,10 +339,10 @@ public class AppProviderProcesses {
                             processGroup6(mAppUserId, mUserGPL.get(i));
                             break;
                         case 7:
-                            processGroup7(mAppUserId, mUserGPL.get(i));
+                            processGroup7Numbers(mAppUserId, mUserGPL.get(i));
                             break;
                         case 8:
-                            processGroup8(mAppUserId, mUserGPL.get(i));
+                            processGroup8MathOperations(mAppUserId, mUserGPL.get(i));
                             break;
                     }//end switch(Integer.parseInt(mUserGPL.get(i).get(2))){
                 }else{
@@ -471,7 +470,7 @@ public class AppProviderProcesses {
                     i<=Integer.parseInt(mDesiredLevel);
                     i++){
                     Log.d(Constants.LOGCAT,"Words moving to level: "+i);
-                    processGroup4(mAppUserID,mUserGPL.get(5));
+                    processGroup4Words(mAppUserID,mUserGPL.get(5));
                 }
 
                 mRawSQL="UPDATE app_users_activity_variable_values " +
@@ -500,7 +499,7 @@ public class AppProviderProcesses {
                     i<=Integer.parseInt(mDesiredLevel);
                     i++){
                     Log.d(Constants.LOGCAT,"Math Operations moving to level: "+i);
-                    processGroup8(mAppUserID,mUserGPL.get(8));
+                    processGroup8MathOperations(mAppUserID,mUserGPL.get(8));
                 }
                 mRawSQL="UPDATE app_users_activity_variable_values " +
                         "SET number_correct_in_a_row=12 " +
@@ -986,7 +985,7 @@ public class AppProviderProcesses {
 
     /////////////////////////////////////////////////////////////////////////////////////////////
 
-    private void processGroup4NULL(String mAppUserId,
+    private void processGroup4WordsNULL(String mAppUserId,
                                    HashMap<String,String> mUserGPLCurrent) {
         AppProviderUpdateGroups mUpdateGroups = new AppProviderUpdateGroups(mContext,
                 mUserGPL,
@@ -1093,7 +1092,7 @@ public class AppProviderProcesses {
 
     /////////////////////////////////////////////////////////////////////////////////////////////
 
-    private void processGroup7NULL(String mAppUserId,
+    private void processGroup7NumbersNULL(String mAppUserId,
                                    HashMap<String,String> mUserGPLCurrent) {
         AppProviderUpdateGroups mUpdateGroups = new AppProviderUpdateGroups(mContext,
                 mUserGPL,
@@ -1125,7 +1124,7 @@ public class AppProviderProcesses {
 
     /////////////////////////////////////////////////////////////////////////////////////////////
 
-    private void processGroup8NULL(String mAppUserId,
+    private void processGroup8MathOperationsNULL(String mAppUserId,
                                    HashMap<String,String> mUserGPLCurrent) {
 
         AppProviderUpdateGroups mUpdateGroups = new AppProviderUpdateGroups(mContext,
@@ -1359,7 +1358,7 @@ public class AppProviderProcesses {
 
     /////////////////////////////////////////////////////////////////////////////////////////////
 
-    private void processGroup4( String mAppUserId,
+    private void processGroup4Words( String mAppUserId,
                                 HashMap<String,String> mUserGPLCurrent) {
 
         AppProviderUpdateGroups mUpdateGroups = new AppProviderUpdateGroups(mContext,
@@ -1493,7 +1492,7 @@ public class AppProviderProcesses {
 
     /////////////////////////////////////////////////////////////////////////////////////////////
 
-    private void processGroup7(String mAppUserId,
+    private void processGroup7Numbers(String mAppUserId,
                                HashMap<String,String> mUserGPLCurrent) {
 
         AppProviderUpdateGroups mUpdateGroups = new AppProviderUpdateGroups(mContext,
@@ -1544,7 +1543,7 @@ public class AppProviderProcesses {
 
     /////////////////////////////////////////////////////////////////////////////////////////////
 
-    private void processGroup8(String mAppUserId,
+    private void processGroup8MathOperations(String mAppUserId,
                                HashMap<String,String> mUserGPLCurrent) {
 
         AppProviderUpdateGroups mUpdateGroups = new AppProviderUpdateGroups(mContext,

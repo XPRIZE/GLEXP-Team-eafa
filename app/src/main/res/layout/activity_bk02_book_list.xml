@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,8 +12,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/activityMainPart"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/bk02_bg">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:id="@+id/topIcons"
@@ -28,7 +28,6 @@
             app:layout_constraintTop_toTopOf="parent">
 
 
-
             <ImageView
                 android:id="@+id/btnBackward"
                 android:layout_width="0dp"
@@ -36,7 +35,8 @@
                 android:layout_weight="1"
                 android:contentDescription="@string/none"
                 android:onClick="moveBackward"
-                android:src="@drawable/btn_move_bluelight_up" />
+                android:src="@drawable/btn_move_bluelight_up"
+                android:visibility="invisible" />
 
             <ImageView
                 android:id="@+id/btnForward"
@@ -45,7 +45,8 @@
                 android:layout_weight="1"
                 android:contentDescription="@string/none"
                 android:onClick="moveForward"
-                android:src="@drawable/btn_move_bluelight_down" />
+                android:src="@drawable/btn_move_bluelight_down"
+                android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/activityName"
@@ -111,55 +112,60 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="8dp"
-            android:scaleType="fitCenter"
-            android:src="@color/ver_off_white"
             android:contentDescription="@string/none"
             android:onClick="openBook"
+            android:scaleType="fitCenter"
+            android:src="@color/transparent"
             app:layout_constraintBottom_toTopOf="@+id/text1"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/image2"
             app:layout_constraintTop_toBottomOf="@+id/topIcons"
             app:layout_constraintVertical_weight="0.45" />
+
         <ImageView
+            android:id="@+id/cup1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/cup1"
-            android:src="@drawable/btn_award_red"
-            android:scaleType="fitStart"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="0dp"
 
+            android:alpha="0"
             android:contentDescription="@string/none"
+            android:scaleType="fitStart"
+            android:src="@drawable/btn_award_red"
+            app:layout_constraintDimensionRatio="h,4:1"
             app:layout_constraintRight_toRightOf="@+id/image1"
-            app:layout_constraintTop_toTopOf="@+id/image1"
-            app:layout_constraintDimensionRatio="h,3:1"
-            />
+            app:layout_constraintTop_toTopOf="@+id/image1" />
 
         <ImageView
             android:id="@+id/image2"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="8dp"
-            android:scaleType="fitCenter"
             android:contentDescription="@string/none"
             android:onClick="openBook"
+            android:scaleType="fitCenter"
+            android:src="@color/transparent"
             app:layout_constraintBottom_toTopOf="@+id/text2"
             app:layout_constraintLeft_toRightOf="@+id/image1"
             app:layout_constraintRight_toLeftOf="@+id/image3"
             app:layout_constraintTop_toBottomOf="@+id/topIcons"
-            app:layout_constraintVertical_weight="0.45"
-            android:src="@color/ver_off_white"/>
+            app:layout_constraintVertical_weight="0.45" />
+
         <ImageView
+            android:id="@+id/cup2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/cup2"
-            android:src="@drawable/btn_award_red"
-            android:scaleType="fitStart"
-
+            android:alpha="0"
             android:contentDescription="@string/none"
+
+            android:scaleType="fitStart"
+            android:src="@drawable/btn_award_red"
+            app:layout_constraintDimensionRatio="h,4:1"
             app:layout_constraintRight_toRightOf="@+id/image2"
-            app:layout_constraintTop_toTopOf="@+id/image2"
-            app:layout_constraintDimensionRatio="h,3:1"
-            />
+            app:layout_constraintTop_toTopOf="@+id/image2" />
+
         <ImageView
             android:id="@+id/image3"
             android:layout_width="0dp"
@@ -167,24 +173,26 @@
             android:layout_margin="8dp"
             android:contentDescription="@string/none"
             android:onClick="openBook"
+            android:src="@color/transparent"
             app:layout_constraintBottom_toTopOf="@+id/text3"
             app:layout_constraintLeft_toRightOf="@+id/image2"
             app:layout_constraintRight_toLeftOf="@+id/image4"
             app:layout_constraintTop_toBottomOf="@+id/topIcons"
-            app:layout_constraintVertical_weight="0.45"
-            android:src="@color/ver_off_white" />
+            app:layout_constraintVertical_weight="0.45" />
+
         <ImageView
+            android:id="@+id/cup3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/cup3"
-            android:src="@drawable/btn_award_red"
-            android:scaleType="fitStart"
+            android:alpha="0"
             android:contentDescription="@string/none"
+            android:scaleType="fitStart"
 
+            android:src="@drawable/btn_award_red"
+            app:layout_constraintDimensionRatio="h,4:1"
             app:layout_constraintRight_toRightOf="@+id/image3"
-            app:layout_constraintTop_toTopOf="@+id/image3"
-            app:layout_constraintDimensionRatio="h,3:1"
-            />
+            app:layout_constraintTop_toTopOf="@+id/image3" />
+
         <ImageView
             android:id="@+id/image4"
             android:layout_width="0dp"
@@ -192,30 +200,32 @@
             android:layout_margin="8dp"
             android:contentDescription="@string/none"
             android:onClick="openBook"
+            android:src="@color/transparent"
             app:layout_constraintBottom_toTopOf="@+id/text4"
             app:layout_constraintLeft_toRightOf="@+id/image3"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/topIcons"
-            app:layout_constraintVertical_weight="0.45"
-            android:src="@color/ver_off_white"/>
+            app:layout_constraintVertical_weight="0.45" />
+
         <ImageView
+            android:id="@+id/cup4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/cup4"
-            android:src="@drawable/btn_award_red"
-            android:scaleType="fitStart"
+            android:alpha="0"
             android:contentDescription="@string/none"
+            android:scaleType="fitStart"
 
+            android:src="@drawable/btn_award_red"
+            app:layout_constraintDimensionRatio="h,4:1"
             app:layout_constraintRight_toRightOf="@+id/image4"
-            app:layout_constraintTop_toTopOf="@+id/image4"
-            app:layout_constraintDimensionRatio="h,3:1"
-            />
+            app:layout_constraintTop_toTopOf="@+id/image4" />
+
         <TextView
             android:id="@+id/text1"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:gravity="center_horizontal"
-            android:text="@string/largeRandomString"
+            android:text="@string/strNone"
             android:textColor="@color/bk02_font_color"
             android:textSize="@dimen/bk02_font_size"
             app:layout_constraintBottom_toTopOf="@+id/image5"
@@ -231,55 +241,57 @@
             android:layout_margin="8dp"
             android:contentDescription="@string/none"
             android:onClick="openBook"
+            android:src="@color/transparent"
             app:layout_constraintBottom_toTopOf="@+id/text5"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/image6"
             app:layout_constraintTop_toBottomOf="@+id/text1"
-            app:layout_constraintVertical_weight="0.45"
-            android:src="@color/ver_off_white" />
+            app:layout_constraintVertical_weight="0.45" />
+
         <ImageView
+            android:id="@+id/cup5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/cup5"
-            android:src="@drawable/btn_award_red"
-            android:scaleType="fitStart"
+            android:alpha="0"
             android:contentDescription="@string/none"
+            android:scaleType="fitStart"
 
+            android:src="@drawable/btn_award_red"
+            app:layout_constraintDimensionRatio="h,4:1"
             app:layout_constraintRight_toRightOf="@+id/image5"
-            app:layout_constraintTop_toTopOf="@+id/image5"
-            app:layout_constraintDimensionRatio="h,3:1"
-            />
+            app:layout_constraintTop_toTopOf="@+id/image5" />
+
         <TextView
             android:id="@+id/text5"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:text="@string/largeRandomString"
-            android:textSize="@dimen/bk02_font_size"
             android:gravity="center_horizontal"
+            android:text="@string/strNone"
             android:textColor="@color/bk02_font_color"
+            android:textSize="@dimen/bk02_font_size"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image5"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/text6"
-            app:layout_constraintVertical_weight="0.05"/>
+            app:layout_constraintTop_toBottomOf="@+id/image5"
+            app:layout_constraintVertical_weight="0.05" />
 
 
         <TextView
             android:id="@+id/text2"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:text="@string/largeRandomString"
-            android:textSize="@dimen/bk02_font_size"
             android:gravity="center_horizontal"
+            android:text="@string/strNone"
             android:textColor="@color/bk02_font_color"
-            app:layout_constraintHorizontal_chainStyle="spread"
-            app:layout_constraintTop_toBottomOf="@+id/image2"
-            app:layout_constraintLeft_toRightOf="@+id/text1"
+            android:textSize="@dimen/bk02_font_size"
             app:layout_constraintBottom_toTopOf="@+id/image6"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintLeft_toRightOf="@+id/text1"
             app:layout_constraintRight_toLeftOf="@+id/text3"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintVertical_weight="0.05"/>
+            app:layout_constraintTop_toBottomOf="@+id/image2"
+            app:layout_constraintVertical_weight="0.05" />
 
         <ImageView
             android:id="@+id/image6"
@@ -288,53 +300,55 @@
             android:layout_margin="8dp"
             android:contentDescription="@string/none"
             android:onClick="openBook"
+            android:src="@color/transparent"
             app:layout_constraintBottom_toTopOf="@+id/text6"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintLeft_toRightOf="@+id/image5"
             app:layout_constraintRight_toLeftOf="@+id/image7"
             app:layout_constraintTop_toBottomOf="@+id/text2"
-            app:layout_constraintVertical_weight="0.45"
-            android:src="@color/ver_off_white" />
+            app:layout_constraintVertical_weight="0.45" />
+
         <ImageView
+            android:id="@+id/cup6"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/cup6"
-            android:src="@drawable/btn_award_red"
-            android:scaleType="fitStart"
+            android:alpha="0"
             android:contentDescription="@string/none"
+            android:scaleType="fitStart"
+            android:src="@drawable/btn_award_red"
+            app:layout_constraintDimensionRatio="h,4:1"
             app:layout_constraintRight_toRightOf="@+id/image6"
-            app:layout_constraintTop_toTopOf="@+id/image6"
-            app:layout_constraintDimensionRatio="h,3:1"
-            />
+            app:layout_constraintTop_toTopOf="@+id/image6" />
+
         <TextView
             android:id="@+id/text6"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:text="@string/largeRandomString"
-            android:textSize="@dimen/bk02_font_size"
             android:gravity="center_horizontal"
+            android:text="@string/strNone"
             android:textColor="@color/bk02_font_color"
+            android:textSize="@dimen/bk02_font_size"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintLeft_toRightOf="@+id/text5"
-            app:layout_constraintTop_toBottomOf="@+id/image6"
             app:layout_constraintRight_toLeftOf="@+id/text7"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_weight="0.05"/>
+            app:layout_constraintTop_toBottomOf="@+id/image6"
+            app:layout_constraintVertical_weight="0.05" />
 
 
         <TextView
             android:id="@+id/text3"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:text="@string/largeRandomString"
-            android:textSize="@dimen/bk02_font_size"
             android:gravity="center_horizontal"
+            android:text="@string/strNone"
             android:textColor="@color/bk02_font_color"
-            app:layout_constraintTop_toBottomOf="@+id/image3"
-            app:layout_constraintLeft_toRightOf="@+id/text2"
+            android:textSize="@dimen/bk02_font_size"
             app:layout_constraintBottom_toTopOf="@+id/image7"
+            app:layout_constraintLeft_toRightOf="@+id/text2"
             app:layout_constraintRight_toLeftOf="@+id/text4"
-            app:layout_constraintVertical_weight="0.05"/>
+            app:layout_constraintTop_toBottomOf="@+id/image3"
+            app:layout_constraintVertical_weight="0.05" />
 
         <ImageView
             android:id="@+id/image7"
@@ -343,51 +357,53 @@
             android:layout_margin="8dp"
             android:contentDescription="@string/none"
             android:onClick="openBook"
+            android:src="@color/transparent"
             app:layout_constraintBottom_toTopOf="@+id/text7"
             app:layout_constraintLeft_toRightOf="@+id/image6"
             app:layout_constraintRight_toLeftOf="@+id/image8"
             app:layout_constraintTop_toBottomOf="@+id/text3"
-            app:layout_constraintVertical_weight="0.45"
-            android:src="@color/ver_off_white" />
+            app:layout_constraintVertical_weight="0.45" />
+
         <ImageView
+            android:id="@+id/cup7"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/cup7"
-            android:src="@drawable/btn_award_red"
-            android:scaleType="fitStart"
+            android:alpha="0"
             android:contentDescription="@string/none"
+            android:scaleType="fitStart"
 
+            android:src="@drawable/btn_award_red"
+            app:layout_constraintDimensionRatio="h,4:1"
             app:layout_constraintRight_toRightOf="@+id/image7"
-            app:layout_constraintTop_toTopOf="@+id/image7"
-            app:layout_constraintDimensionRatio="h,3:1"
-            />
+            app:layout_constraintTop_toTopOf="@+id/image7" />
+
         <TextView
             android:id="@+id/text7"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:text="@string/largeRandomString"
-            android:textSize="@dimen/bk02_font_size"
             android:gravity="center_horizontal"
+            android:text="@string/strNone"
             android:textColor="@color/bk02_font_color"
-            app:layout_constraintLeft_toRightOf="@+id/text6"
-            app:layout_constraintTop_toBottomOf="@+id/image7"
-            app:layout_constraintRight_toLeftOf="@+id/text8"
+            android:textSize="@dimen/bk02_font_size"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_weight="0.05"/>
+            app:layout_constraintLeft_toRightOf="@+id/text6"
+            app:layout_constraintRight_toLeftOf="@+id/text8"
+            app:layout_constraintTop_toBottomOf="@+id/image7"
+            app:layout_constraintVertical_weight="0.05" />
 
         <TextView
             android:id="@+id/text4"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:text="@string/largeRandomString"
-            android:textSize="@dimen/bk02_font_size"
             android:gravity="center_horizontal"
+            android:text="@string/strNone"
             android:textColor="@color/bk02_font_color"
-            app:layout_constraintTop_toBottomOf="@+id/image4"
-            app:layout_constraintLeft_toRightOf="@+id/text3"
+            android:textSize="@dimen/bk02_font_size"
             app:layout_constraintBottom_toTopOf="@+id/image8"
+            app:layout_constraintLeft_toRightOf="@+id/text3"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintVertical_weight="0.05"/>
+            app:layout_constraintTop_toBottomOf="@+id/image4"
+            app:layout_constraintVertical_weight="0.05" />
 
         <ImageView
             android:id="@+id/image8"
@@ -396,37 +412,39 @@
             android:layout_margin="8dp"
             android:contentDescription="@string/none"
             android:onClick="openBook"
+            android:src="@color/transparent"
             app:layout_constraintBottom_toTopOf="@+id/text8"
             app:layout_constraintLeft_toRightOf="@+id/image7"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text4"
-            app:layout_constraintVertical_weight="0.45"
-            android:src="@color/ver_off_white" />
+            app:layout_constraintVertical_weight="0.45" />
+
         <ImageView
+            android:id="@+id/cup8"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/cup8"
-            android:src="@drawable/btn_award_red"
-            android:scaleType="fitStart"
-
+            android:alpha="0"
             android:contentDescription="@string/none"
+
+            android:scaleType="fitStart"
+            android:src="@drawable/btn_award_red"
+            app:layout_constraintDimensionRatio="h,4:1"
             app:layout_constraintRight_toRightOf="@+id/image8"
-            app:layout_constraintTop_toTopOf="@+id/image8"
-            app:layout_constraintDimensionRatio="h,3:1"
-            />
+            app:layout_constraintTop_toTopOf="@+id/image8" />
+
         <TextView
             android:id="@+id/text8"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:text="@string/largeRandomString"
-            android:textSize="@dimen/bk02_font_size"
             android:gravity="center_horizontal"
+            android:text="@string/strNone"
             android:textColor="@color/bk02_font_color"
-            app:layout_constraintLeft_toRightOf="@+id/text7"
-            app:layout_constraintTop_toBottomOf="@+id/image8"
-            app:layout_constraintRight_toRightOf="parent"
+            android:textSize="@dimen/bk02_font_size"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_weight="0.05"/>
+            app:layout_constraintLeft_toRightOf="@+id/text7"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image8"
+            app:layout_constraintVertical_weight="0.05" />
 
     </android.support.constraint.ConstraintLayout>
 </FrameLayout>

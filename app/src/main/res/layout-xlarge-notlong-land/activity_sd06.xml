@@ -5,13 +5,13 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_desert_with_cactus"
     >
-    <android.support.constraint.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/activityMainPart"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bg_desert_with_cactus">
+        android:layout_height="match_parent">
+
         <LinearLayout
             android:id="@+id/topIcons"
             android:layout_width="0dp"
@@ -19,11 +19,11 @@
             android:orientation="horizontal"
             android:padding="6dp"
             android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/iconSpace"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_weight=".15"
-            app:layout_constraintBottom_toTopOf="@+id/iconSpace">
+            app:layout_constraintVertical_weight=".15">
 
             <include
                 layout="@layout/activity_top_area"
@@ -36,133 +36,139 @@
             android:id="@+id/iconSpace"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@+id/topIcons"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/topIcons"
             app:layout_constraintVertical_weight="1" />
 
 
         <ImageView
+            android:id="@+id/beginningPhonicCircle"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:id="@+id/beginningPhonicCircle"
-            android:src="@drawable/btn_circle"
-            android:scaleType="fitCenter"
+            android:layout_marginEnd="10dp"
             android:contentDescription="@string/none"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintTop_toBottomOf="@+id/topIcons"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btn_circle"
             app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalMid"
+            app:layout_constraintHorizontal_weight="1"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/btnValidate"
-            android:layout_marginEnd="10dp" />
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:id="@+id/btnValidate"
-            android:src="@drawable/btn_validate_ok"
-            android:scaleType="fitCenter"
-            android:contentDescription="@string/none"
-            app:layout_constraintHorizontal_weight="1.4"
-            app:layout_constraintTop_toBottomOf="@+id/topIcons"
-            app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalMid"
-            app:layout_constraintLeft_toRightOf="@+id/beginningPhonicCircle"
-            app:layout_constraintRight_toLeftOf="@+id/endingPhonicStar" />
+            app:layout_constraintTop_toBottomOf="@+id/topIcons" />
 
         <ImageView
+            android:id="@+id/btnValidate"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:id="@+id/endingPhonicStar"
-            android:src="@drawable/btn_star"
+            android:contentDescription="@string/none"
             android:scaleType="fitCenter"
-            android:contentDescription="@string/none"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintTop_toBottomOf="@+id/topIcons"
+            android:src="@drawable/btn_validate_ok"
             app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalMid"
-            app:layout_constraintLeft_toRightOf="@+id/btnValidate"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginEnd="10dp" />
-        <android.support.constraint.Guideline
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/guidelineHorizontalMid"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.5"/>
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:id="@+id/line"
-            android:src="@drawable/rs03_line"
-            android:contentDescription="@string/none"
+            app:layout_constraintHorizontal_weight="1.4"
             app:layout_constraintLeft_toRightOf="@+id/beginningPhonicCircle"
             app:layout_constraintRight_toLeftOf="@+id/endingPhonicStar"
-            app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalMidLower"
-            app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalMid" />
+            app:layout_constraintTop_toBottomOf="@+id/topIcons" />
+
+        <ImageView
+            android:id="@+id/endingPhonicStar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/none"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btn_star"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalMid"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/btnValidate"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/topIcons" />
+
         <android.support.constraint.Guideline
+            android:id="@+id/guidelineHorizontalMid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/guidelineHorizontalMidLower"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.55"/>
+            app:layout_constraintGuide_percent="0.5" />
+
         <ImageView
+            android:id="@+id/line"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/none"
+            android:src="@drawable/rs03_line"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalMidLower"
+            app:layout_constraintLeft_toRightOf="@+id/beginningPhonicCircle"
+            app:layout_constraintRight_toLeftOf="@+id/endingPhonicStar"
+            app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalMid" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineHorizontalMidLower"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.55" />
+
+        <ImageView
+            android:id="@+id/frame1"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:id="@+id/frame1"
-            android:src="@drawable/frm_sd06"
-            android:scaleType="fitCenter"
             android:layout_margin="10dp"
             android:contentDescription="@string/none"
-            app:layout_constraintHorizontal_bias="0.9"
+            android:scaleType="fitCenter"
+            android:src="@drawable/frm_sd06"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.9"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/guidelineVerticalMidRight"
-            app:layout_constraintTop_toBottomOf="@+id/line"/>
+            app:layout_constraintTop_toBottomOf="@+id/line" />
 
         <TextView
+            android:id="@+id/phonic0"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:id="@+id/phonic0"
+            android:gravity="center_vertical|center_horizontal"
             android:text="@string/letter_13"
             android:textColor="@color/normalBlack"
-            android:textStyle="normal"
             android:textSize="@dimen/rs01_letterFontSize"
-            android:gravity="center_vertical|center_horizontal"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="@+id/frame1"
             app:layout_constraintLeft_toLeftOf="@+id/frame1"
             app:layout_constraintRight_toRightOf="@+id/frame1"
-            app:layout_constraintBottom_toBottomOf="@+id/frame1"
-            app:layout_constraintTop_toTopOf="@+id/frame1"
-            />
+            app:layout_constraintTop_toTopOf="@+id/frame1" />
+
         <android.support.constraint.Guideline
+            android:id="@+id/guidelineVerticalMidRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/guidelineVerticalMidRight"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.5"/>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:id="@+id/frame2"
-            android:layout_weight="1"
-            android:src="@drawable/frm_sd06"
-            android:scaleType="fitCenter"
-            android:contentDescription="@string/none"
-            android:layout_margin="10dp"
-            app:layout_constraintHorizontal_bias="0.1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/guidelineVerticalMidRight"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/guidelineHorizontalMidLower"     />
+            app:layout_constraintGuide_percent="0.5" />
 
         <ImageView
+            android:id="@+id/frame2"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/none"
+            android:scaleType="fitCenter"
+            android:src="@drawable/frm_sd06"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintLeft_toRightOf="@+id/guidelineVerticalMidRight"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guidelineHorizontalMidLower" />
+
+        <ImageView
+            android:id="@+id/image0"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:id="@+id/btnImageRS03"
-            android:src="@drawable/dummy_img_phonic_word"
             android:layout_margin="30dp"
             android:contentDescription="@string/none"
+            android:src="@drawable/dummy_img_phonic_word"
+            app:layout_constraintBottom_toBottomOf="@+id/frame2"
             app:layout_constraintLeft_toLeftOf="@+id/frame2"
             app:layout_constraintRight_toRightOf="@+id/frame2"
-            app:layout_constraintBottom_toBottomOf="@+id/frame2"
             app:layout_constraintTop_toTopOf="@+id/frame2" />
     </android.support.constraint.ConstraintLayout>
 

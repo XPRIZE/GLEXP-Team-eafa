@@ -253,8 +253,7 @@ public class ActivitySD01 extends ActivitySDRoot
                             findViewById(R.id.activityMainPart)
                                     .setAnimation(AnimationUtils.loadAnimation(
                                             getApplicationContext(), R.anim.fade_out));
-                            findViewById(R.id.activityMainPartSecond)
-                                    .setVisibility(LinearLayout.INVISIBLE);
+
                         }
                     }else{
                         ((ImageView) findViewById(R.id.btnValidate))

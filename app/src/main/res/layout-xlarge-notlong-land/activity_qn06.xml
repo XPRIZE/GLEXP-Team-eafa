@@ -12,7 +12,6 @@
         android:id="@+id/bg_qn06"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_qn06"
         android:orientation="vertical">
 
         <LinearLayout
@@ -57,18 +56,18 @@
             app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalMid"
             app:layout_constraintLeft_toLeftOf="@+id/guidelineLeft"
             app:layout_constraintRight_toLeftOf="@+id/guidelineVerticalMidLeft"
-            app:layout_constraintTop_toTopOf="@+id/guidelineTop">
-        </ImageView>
+            app:layout_constraintTop_toTopOf="@+id/guidelineTop"></ImageView>
+
         <com.motoli.apps.allsubjects.MathOperationDots
             android:id="@+id/shape0"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="@dimen/qn06_dots_all_margin"
             android:tag="12"
-            app:layout_constraintLeft_toLeftOf="@+id/frame0"
             app:layout_constraintBottom_toBottomOf="@+id/frame0"
+            app:layout_constraintLeft_toLeftOf="@+id/frame0"
             app:layout_constraintRight_toRightOf="@+id/frame0"
-            app:layout_constraintTop_toTopOf="@+id/frame0"/>
+            app:layout_constraintTop_toTopOf="@+id/frame0" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guidelineVerticalMidLeft"
@@ -76,12 +75,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.45" />
+
         <android.support.constraint.Guideline
             android:id="@+id/guidelineVerticalMidRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.55" />
+
         <ImageButton
             android:id="@+id/btnValidate"
             android:layout_width="0dp"
@@ -124,7 +125,6 @@
             app:layout_constraintTop_toBottomOf="@id/guidelineHorizontalMid" />
 
 
-
         <TextView
             android:id="@+id/number1"
             android:layout_width="wrap_content"
@@ -150,7 +150,6 @@
             app:layout_constraintTop_toBottomOf="@id/guidelineHorizontalMid" />
 
 
-
         <TextView
             android:id="@+id/number2"
             android:layout_width="wrap_content"
@@ -174,7 +173,6 @@
             app:layout_constraintLeft_toRightOf="@+id/frame2"
             app:layout_constraintRight_toLeftOf="@+id/frame4"
             app:layout_constraintTop_toBottomOf="@id/guidelineHorizontalMid" />
-
 
 
         <TextView

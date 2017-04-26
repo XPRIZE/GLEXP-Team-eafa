@@ -2175,7 +2175,7 @@ public class AppProvider extends ContentProvider {
         String mRawSQL="SELECT MAX(level_number) as max_level_number " +
                 "FROM variable_phase_levels " +
                 "WHERE group_id=3 " +
-                "AND phase_id=1 " +
+                "AND phase_id=2 " +
                 "LIMIT 1";
         Cursor mCursor = mDatabase.rawQuery(mRawSQL, null);
         int mMaxLevelNumber=0;
@@ -2477,7 +2477,65 @@ public class AppProvider extends ContentProvider {
 
     private Cursor booksReadAloud(String mSort) {
         Log.d(Constants.LOGCAT, "booksReadAloud");
-        String mRawSQL="SELECT books.*," +
+        String mRawSQL="SELECT ( " +
+                "SELECT COUNT(books.book_id) " +
+                "FROM groups_phase_levels " +
+                "INNER JOIN books " +
+                "ON books.associated_levels = groups_phase_levels.gpl_id " +
+                "AND books.book_type=0 " +
+                "INNER JOIN book_pages " +
+                "ON book_pages.book_id=books.book_id  " +
+                "AND book_pages.book_page_order=0 " +
+                "INNER JOIN app_users_current_gpl " +
+                "ON app_users_current_gpl.group_id = groups_phase_levels.group_id " +
+                "AND app_users_current_gpl.phase_id = groups_phase_levels.phase_id   " +
+                "WHERE ( groups_phase_levels.group_id = 2 " +
+                "AND  (groups_phase_levels.phase_id = 1 OR groups_phase_levels.phase_id = 2) " +
+                "AND  app_users_current_gpl.app_user_current_level  > 4   " +
+                "AND groups_phase_levels.level_number" +
+                " < app_users_current_gpl.app_user_current_level) " +
+                "OR (groups_phase_levels.group_id != 2 " +
+                "AND groups_phase_levels.level_number  " +
+                " < app_users_current_gpl.app_user_current_level ) " +
+                "OR (groups_phase_levels.group_id = 2 " +
+                "AND  groups_phase_levels.phase_id = 3 " +
+                "AND groups_phase_levels.level_number  " +
+                " < app_users_current_gpl.app_user_current_level )  )  " +
+                "AS book_count,  books.*," +
+                "book_pages.book_page_image, " +
+                "groups_phase_levels.gpl_id, " +
+                "groups_phase_levels.level_number, " +
+                "app_users_current_gpl.app_user_current_level, " +
+                "app_users_current_gpl.group_id, " +
+                "app_users_current_gpl.phase_id  " +
+                "FROM groups_phase_levels INNER JOIN books " +
+                "ON books.associated_levels = groups_phase_levels.gpl_id   " +
+                "AND books.book_type=0 " +
+                "INNER JOIN book_pages " +
+                "ON book_pages.book_id=books.book_id " +
+                " AND book_pages.book_page_order=0 " +
+                " INNER JOIN app_users_current_gpl " +
+                "ON app_users_current_gpl.group_id = groups_phase_levels.group_id " +
+                "AND app_users_current_gpl.phase_id = groups_phase_levels.phase_id " +
+                "WHERE ( groups_phase_levels.group_id = 2 " +
+                "AND  (groups_phase_levels.phase_id = 1 " +
+                "OR groups_phase_levels.phase_id = 2) " +
+                "AND  app_users_current_gpl.app_user_current_level  > 4 " +
+                "AND groups_phase_levels.level_number " +
+                "< app_users_current_gpl.app_user_current_level) " +
+                "OR (groups_phase_levels.group_id != 2 " +
+                "AND groups_phase_levels.level_number " +
+                "< app_users_current_gpl.app_user_current_level ) " +
+                "OR (groups_phase_levels.group_id = 2 " +
+                "AND  groups_phase_levels.phase_id = 3 " +
+                "AND groups_phase_levels.level_number " +
+                "< app_users_current_gpl.app_user_current_level ) " +
+                "" +
+                "GROUP BY books.book_id " +
+                "ORDER BY books.difficulty_level ASC, " +
+                "books.book_title ASC ";
+       /*
+          String mRawSQL3="SELECT books.*," +
                 "book_pages.book_page_image, " +
                 "groups_phase_levels.gpl_id, " +
                 "groups_phase_levels.level_number, " +
@@ -2503,10 +2561,10 @@ public class AppProvider extends ContentProvider {
                 "GROUP BY books.book_id " +
                 "ORDER BY books.difficulty_level ASC, " +
                 "books.book_title ASC ";
-        /*
-            OLDER VERSION
 
-        String mRawSQL="SELECT " +
+            OLDER VERSION
+ */
+        String mRawSQL2="SELECT " +
                 "(SELECT COUNT(bk2.book_id)  " +
                 "FROM groups_phase_levels AS gpl " +
                 "INNER JOIN books AS bk2 " +
@@ -2535,8 +2593,9 @@ public class AppProvider extends ContentProvider {
                 "AND book_pages.book_page_order=0" +
                 " ORDER BY books.difficulty_level ASC, " +
                 "books.book_title ASC ";
-        */
+
         if(mSort!=null){
+            mRawSQL2+=mSort;
             mRawSQL+=mSort;
         }
         return mDatabase.rawQuery(mRawSQL, null);
@@ -2653,6 +2712,7 @@ public class AppProvider extends ContentProvider {
 
 
     //////////////////////////////////////////////////////////////////////////////////////
+
 
     @Override
     public int update(@NonNull Uri uri, ContentValues mValues, String mWhere,
@@ -2898,16 +2958,43 @@ public class AppProvider extends ContentProvider {
                                 "SET number_correct=number_correct+" + mInfo[0] + ", " +
                                 "number_incorrect=number_incorrect+" + mInfo[1];
 
+                        String mActivityID ="0";
+                        if(mInfo.length >= 6) {
+                            mActivityID = mInfo[5];
+                        }
+                        String mCurrentLevel = mInfo[2];
+
                         if(mCorrectInARow<=Constants.MAX_CORRECT_INA_ROW){
                             if (mInfo[0].equals("1") && mInfo[4].equals("0")) {
-                                mRawSQL += ", number_correct_in_a_row=number_correct_in_a_row+1 ";
+                                if(((mActivityID.equals("60")||mActivityID.equals("62"))
+                                        &&mCurrentLevel.equals("1"))
+                                        ||((mActivityID.equals("63")||mActivityID.equals("64"))
+                                        &&Integer.valueOf(mCurrentLevel)<=4)
+                                        ||mActivityID.equals("65")
+                                        &&Integer.valueOf(mCurrentLevel)<=6){
+                                    if(mCorrectInARow>=(Constants.NUMBER_QN_VARIABLES-1)){
+                                        mRawSQL += ", number_correct_in_a_row" +
+                                                "="+Constants.MAX_CORRECT_INA_ROW;
+                                    }else {
+                                        mRawSQL += ", number_correct_in_a_row" +
+                                                "=number_correct_in_a_row+1 ";
+                                    }
+                                }else {
+                                    mRawSQL += ", number_correct_in_a_row" +
+                                            "=number_correct_in_a_row+1 ";
+                                }
                             } else if(mCorrectInARow>0 && Integer.parseInt(mInfo[4])<2) {
                                 mRawSQL += ", number_correct_in_a_row=number_correct_in_a_row-1";
                             }else if(Integer.parseInt(mInfo[4])<2) {
                                 mRawSQL += ", number_correct_in_a_row=0 ";
                             }
                         }
-                        /*
+
+
+
+ /*
+
+
                         if(mValues!=null && mValues.containsKey("activity_id")
                                 && mValues.get("activity_id").equals("59")
                                 && mCorrectInARow < Constants.INA_ROW_CORRECT_HIGHER){
@@ -2926,6 +3013,9 @@ public class AppProvider extends ContentProvider {
                             }
                         }
                         */
+
+
+
                         mRawSQL += mWhere;
                         mDatabase.execSQL(mRawSQL);
 

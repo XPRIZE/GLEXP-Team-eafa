@@ -12,8 +12,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/activityMainFrame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bg_yellow_fish_in_sea" >
+        android:layout_height="match_parent">
         <LinearLayout
             android:id="@+id/activityMainPartSecond"
             android:layout_width="0dp"

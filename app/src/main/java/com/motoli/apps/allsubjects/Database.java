@@ -537,7 +537,7 @@ final class Database {
                     current_level=2;
                 }
                 if(group_id==3 && phase_id==2 ){
-                    current_level=1;
+                    current_level=0;
                 }
 
                 if(group_id==4){

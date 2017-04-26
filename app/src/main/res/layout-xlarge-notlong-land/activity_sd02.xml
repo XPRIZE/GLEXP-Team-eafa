@@ -5,206 +5,197 @@
     android:id="@+id/activityMainFrame"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg_sd02"
 
-    android:id="@+id/activityMainPart">
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/activityMainPart"
+        android:layout_width="match_parent"
 
-    <LinearLayout
-        android:id="@+id/activityMainPartSecond"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:visibility="visible"
-        android:padding="6dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/btnMicDude"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintVertical_weight=".15">
+        android:layout_height="match_parent">
 
-        <include
-            layout="@layout/activity_top_area"
+        <LinearLayout
+            android:id="@+id/activityMainPartSecond"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:padding="6dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/btnMicDude"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight=".15">
+
+            <include
+                layout="@layout/activity_top_area"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/btnMicDude"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            android:contentDescription="@string/none"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btn_dude_sd02"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/guideline4"
+            app:layout_constraintTop_toBottomOf="@+id/activityMainPartSecond"
+            app:layout_constraintVertical_weight="1" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline4"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
 
-    </LinearLayout>
-
-
-
-
-    <ImageView
-        android:id="@+id/btnMicDude"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-
-        android:contentDescription="@string/none"
-        android:scaleType="fitCenter"
-        android:src="@drawable/btn_dude_sd02"
-        app:layout_constraintTop_toBottomOf="@+id/activityMainPartSecond"
-        app:layout_constraintVertical_weight="1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/guideline4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5"/>
-
-    <ImageView
-        android:id="@+id/btnValidate"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:contentDescription="@string/strNone"
-        android:scaleType="fitCenter"
-        android:src="@drawable/btn_validate_on_mic"
-        app:layout_constraintTop_toBottomOf="@+id/activityMainPartSecond"
-        app:layout_constraintLeft_toRightOf="@+id/btnMicDude"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        <ImageView
+            android:id="@+id/btnValidate"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/strNone"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btn_validate_on_mic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/btnMicDude"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activityMainPartSecond" />
 
 
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.65" />
 
-    <android.support.constraint.Guideline
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/guideline"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.65" />
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineImageTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.73" />
 
-    <android.support.constraint.Guideline
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/guidelineImageTop"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.73" />
-
-    <ImageView
-        android:id="@+id/frame1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:contentDescription="@string/strNone"
-        android:src="@drawable/frm_sd02_on"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/frame2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline"
-        app:layout_constraintVertical_bias="0.0" />
-
-
-    <ImageView
-        android:id="@+id/image1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/strNone"
-        android:scaleType="fitCenter"
-        android:src="@drawable/random_image"
-        android:padding="@dimen/sd02_image_padding"
-        app:layout_constraintBottom_toBottomOf="@+id/guidelineImageBottom"
-        app:layout_constraintTop_toBottomOf="@+id/guidelineImageTop"
-        app:layout_constraintRight_toRightOf="@+id/frame1"
-        app:layout_constraintLeft_toLeftOf="@+id/frame1" />
+        <ImageView
+            android:id="@+id/frame1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/strNone"
+            android:src="@drawable/frm_sd02_on"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/frame2"
+            app:layout_constraintTop_toTopOf="@+id/guideline"
+            app:layout_constraintVertical_bias="0.0" />
 
 
-
-    <ImageView
-        android:id="@+id/frame2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:contentDescription="@string/strNone"
-        android:src="@drawable/frm_sd02_off"
-        app:layout_constraintLeft_toRightOf="@+id/frame1"
-        app:layout_constraintRight_toLeftOf="@+id/frame3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline"/>
-
-    <ImageView
-        android:id="@+id/image2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/strNone"
-        android:scaleType="fitCenter"
-        android:src="@drawable/random_image"
-        android:padding="@dimen/sd02_image_padding"
-        app:layout_constraintBottom_toBottomOf="@+id/guidelineImageBottom"
-        app:layout_constraintTop_toBottomOf="@+id/guidelineImageTop"
-        app:layout_constraintRight_toRightOf="@+id/frame2"
-        app:layout_constraintLeft_toLeftOf="@+id/frame2"/>
+        <ImageView
+            android:id="@+id/image1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/strNone"
+            android:padding="@dimen/sd02_image_padding"
+            android:scaleType="fitCenter"
+            android:src="@drawable/random_image"
+            app:layout_constraintBottom_toBottomOf="@+id/guidelineImageBottom"
+            app:layout_constraintLeft_toLeftOf="@+id/frame1"
+            app:layout_constraintRight_toRightOf="@+id/frame1"
+            app:layout_constraintTop_toBottomOf="@+id/guidelineImageTop" />
 
 
+        <ImageView
+            android:id="@+id/frame2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/strNone"
+            android:src="@drawable/frm_sd02_off"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/frame1"
+            app:layout_constraintRight_toLeftOf="@+id/frame3"
+            app:layout_constraintTop_toTopOf="@+id/guideline" />
 
-    <ImageView
-        android:id="@+id/frame3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:contentDescription="@string/strNone"
-        android:src="@drawable/frm_sd02_off"
-        app:layout_constraintLeft_toRightOf="@+id/frame2"
-        app:layout_constraintRight_toLeftOf="@+id/frame4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline"/>
-
-
-
-    <ImageView
-        android:id="@+id/image3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/strNone"
-        android:scaleType="fitCenter"
-        android:src="@drawable/random_image"
-        android:padding="@dimen/sd02_image_padding"
-        app:layout_constraintBottom_toBottomOf="@+id/guidelineImageBottom"
-        app:layout_constraintTop_toBottomOf="@+id/guidelineImageTop"
-        app:layout_constraintRight_toRightOf="@+id/frame3"
-        app:layout_constraintLeft_toLeftOf="@+id/frame3"/>
-
-    <ImageView
-        android:id="@+id/frame4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:clickable="false"
-        android:contentDescription="@string/strNone"
-        android:src="@drawable/frm_sd02_off"
-        app:layout_constraintLeft_toRightOf="@+id/frame3"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline"/>
+        <ImageView
+            android:id="@+id/image2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/strNone"
+            android:padding="@dimen/sd02_image_padding"
+            android:scaleType="fitCenter"
+            android:src="@drawable/random_image"
+            app:layout_constraintBottom_toBottomOf="@+id/guidelineImageBottom"
+            app:layout_constraintLeft_toLeftOf="@+id/frame2"
+            app:layout_constraintRight_toRightOf="@+id/frame2"
+            app:layout_constraintTop_toBottomOf="@+id/guidelineImageTop" />
 
 
+        <ImageView
+            android:id="@+id/frame3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/strNone"
+            android:src="@drawable/frm_sd02_off"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/frame2"
+            app:layout_constraintRight_toLeftOf="@+id/frame4"
+            app:layout_constraintTop_toTopOf="@+id/guideline" />
 
 
-    <ImageView
-        android:id="@+id/image4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/strNone"
-        android:scaleType="fitCenter"
-        android:src="@drawable/random_image"
-        android:padding="@dimen/sd02_image_padding"
-        app:layout_constraintBottom_toBottomOf="@+id/guidelineImageBottom"
-        app:layout_constraintTop_toBottomOf="@+id/guidelineImageTop"
-        app:layout_constraintRight_toRightOf="@+id/frame4"
-        app:layout_constraintLeft_toLeftOf="@+id/frame4"/>
+        <ImageView
+            android:id="@+id/image3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/strNone"
+            android:padding="@dimen/sd02_image_padding"
+            android:scaleType="fitCenter"
+            android:src="@drawable/random_image"
+            app:layout_constraintBottom_toBottomOf="@+id/guidelineImageBottom"
+            app:layout_constraintLeft_toLeftOf="@+id/frame3"
+            app:layout_constraintRight_toRightOf="@+id/frame3"
+            app:layout_constraintTop_toBottomOf="@+id/guidelineImageTop" />
 
-    <android.support.constraint.Guideline
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/guidelineImageBottom"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.93" />
+        <ImageView
+            android:id="@+id/frame4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:clickable="false"
+            android:contentDescription="@string/strNone"
+            android:src="@drawable/frm_sd02_off"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/frame3"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline" />
 
-</android.support.constraint.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/image4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/strNone"
+            android:padding="@dimen/sd02_image_padding"
+            android:scaleType="fitCenter"
+            android:src="@drawable/random_image"
+            app:layout_constraintBottom_toBottomOf="@+id/guidelineImageBottom"
+            app:layout_constraintLeft_toLeftOf="@+id/frame4"
+            app:layout_constraintRight_toRightOf="@+id/frame4"
+            app:layout_constraintTop_toBottomOf="@+id/guidelineImageTop" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineImageBottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.93" />
+
+    </android.support.constraint.ConstraintLayout>
     </FrameLayout>

@@ -10,7 +10,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import static android.os.Process.getElapsedCpuTime;
@@ -76,6 +78,24 @@ public abstract class ActivitiesMasterParent extends Master_Parent {
         getElapsedCpuTime();
 
     }
+
+    protected void fadeInOrOutScreenInActivity(boolean mFadeIn){
+        if(findViewById(R.id.activityMainPart)!=null) {
+            if (mFadeIn) {
+                findViewById(R.id.activityMainPart)
+                        .setVisibility(LinearLayout.VISIBLE);
+                findViewById(R.id.activityMainPart)
+                        .setAnimation(AnimationUtils.loadAnimation(
+                                getApplicationContext(), R.anim.fade_in));
+            } else {
+                findViewById(R.id.activityMainPart)
+                        .setVisibility(LinearLayout.INVISIBLE);
+                findViewById(R.id.activityMainPart)
+                        .setAnimation(AnimationUtils.loadAnimation(
+                                getApplicationContext(), R.anim.fade_out));
+            }
+        }
+    }
     
     ////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -91,7 +111,7 @@ public abstract class ActivitiesMasterParent extends Master_Parent {
         }
 
         if(findViewById(R.id.activityName)!=null) {
-            findViewById(R.id.activityName).setVisibility(TextView.INVISIBLE);
+           // findViewById(R.id.activityName).setVisibility(TextView.INVISIBLE);
             if (appData.getAllowActivityText()) {
                 ((TextView) findViewById(R.id.activityName))
                         .setText(appData.getActivityName() + " ("
@@ -276,14 +296,16 @@ public abstract class ActivitiesMasterParent extends Master_Parent {
                         "0",
                         mCurrentGSP.get("current_level"),
                         mCorrectID,
-                        String.valueOf(mIncorrectInRound)};
+                        String.valueOf(mIncorrectInRound),
+                        appData.getCurrentActivity().get(0)};
             }else{
                 mInfo = new String[]{
                         "1",
                         "0",
                         mCurrentGSP.get("current_level"),
                         mCorrectID,
-                        String.valueOf(mIncorrectInRound)};
+                        String.valueOf(mIncorrectInRound),
+                        appData.getCurrentActivity().get(0)};
             }
             
             getContentResolver().update(
@@ -294,7 +316,8 @@ public abstract class ActivitiesMasterParent extends Master_Parent {
                     "1",
                     mCurrentGSP.get("current_level"),
                     mCorrectID,
-                    String.valueOf(mIncorrectInRound)};
+                    String.valueOf(mIncorrectInRound),
+                    appData.getCurrentActivity().get(0)};
 
             getContentResolver().update(
                     AppProvider.CONTENT_URI_ACTIVITY_USER_RW_UPDATE, null, mWhere, mInfo);
@@ -351,6 +374,19 @@ public abstract class ActivitiesMasterParent extends Master_Parent {
     protected long playInstructionAudio(){
         return playGeneralAudio(mInstructionAudio);
     }
+
+    /**
+     * Plays audio of current word so long as audio exists
+     */
+    protected Runnable playWordAudioTimed = new Runnable(){
+
+        @Override
+        public void run(){
+            mAudioHandler.removeCallbacks(playWordAudioTimed);
+            if(!mCurrentAudio.equals(""))
+                playGeneralAudio(mCurrentAudio);
+        }
+    };
     protected void processData(Cursor mCursor){    }
     protected void processTheGuess(long mAudioDuration){ }
     protected void processValidationDisplay(){ }

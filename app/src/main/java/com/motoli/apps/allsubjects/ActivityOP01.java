@@ -49,13 +49,14 @@ public class  ActivityOP01 extends ActivityOPRoot
                 .setAnimation(AnimationUtils.loadAnimation(
                         getApplicationContext(), R.anim.fade_in));
         mInstructionAudio="info_op01";
-        findViewById(R.id.finalDots).setAlpha(0f);
         mCurrentGSP = new HashMap<>(appData.getCurrentGroup_Section_Phase());
         TextView mEquationNumber1, mEquationNumber2;
 
 
-        ((ImageView) findViewById(R.id.btnValidate)).setImageResource(R.drawable.btn_validate_off_sm);
+        ((ImageView) findViewById(R.id.btnValidate))
+                .setImageResource(R.drawable.btn_validate_off_sm);
 
+        findViewById(R.id.betweenRoundsCover).setVisibility(ImageView.VISIBLE);
 
 
         mFinalNumber = ((TextView) findViewById(R.id.equationResult));
@@ -65,6 +66,7 @@ public class  ActivityOP01 extends ActivityOPRoot
         mEquationDots1 = ((MathOperationDots) findViewById(R.id.equationDots1));
         mEquationDots2 = ((MathOperationDots) findViewById(R.id.equationDots2));
         mFinalDots = ((MathOperationDots) findViewById(R.id.finalDots));
+        mFinalDots.setAlpha(0f);
 
 
 
@@ -125,6 +127,7 @@ public class  ActivityOP01 extends ActivityOPRoot
     //////////////////////////////////////////////////////////////////////////////////////////
 
     protected void displayScreen(){
+
         mCurrentMathOperationsId=mMathOperations.get(mRoundNumber).get("math_operations_id");
         mAnswer=Integer.parseInt(mMathOperations.get(mRoundNumber).get("number_one"))
                 + Integer.parseInt(mMathOperations.get(mRoundNumber).get("number_two"));
@@ -152,6 +155,7 @@ public class  ActivityOP01 extends ActivityOPRoot
         if(mRoundNumber==0)
             playInstructionAudio();
 
+        findViewById(R.id.betweenRoundsCover).setVisibility(ImageView.INVISIBLE);
     }
 
 
@@ -203,8 +207,6 @@ public class  ActivityOP01 extends ActivityOPRoot
 
     ///////////////////////////////////////////////////////////////////////////////////////////
 
-    ////////////////////////////////////////////////////////////////////////////////////////////
-
     private void processPoints() {
         String where = " WHERE app_user_id=" + appData.getCurrentUserID()+ " " +
                 "AND variable_id=" + mCurrentGSP.get("current_level") + " " +
@@ -236,7 +238,6 @@ public class  ActivityOP01 extends ActivityOPRoot
                     String.valueOf(mIncorrectInRound),
                     appData.getCurrentActivity().get(0),
                     appData.getCurrentUserID()};
-
 
             getContentResolver().update(AppProvider.CONTENT_URI_ACTIVITY_USER_RW_UPDATE,
                     null, where, selectionArgs);
@@ -314,8 +315,7 @@ public class  ActivityOP01 extends ActivityOPRoot
         if(Integer.parseInt(mFinalNumber.getText().toString())==mAnswer){
             ((ImageView) findViewById(R.id.btnValidate))
                     .setImageResource(R.drawable.btn_validate_ok_sm);
-            findViewById(R.id.finalDots).setAlpha(1.0f);
-            //.setVisibility(LinearLayout.GONE);
+            mFinalDots.setAlpha(1.0f);
             mCorrect=true;
             mCorrectInARow++;
             mFinalNumber.setTextColor(ContextCompat.getColor(this, R.color.correct_green));
@@ -371,7 +371,7 @@ public class  ActivityOP01 extends ActivityOPRoot
 
                         if(mRoundNumber<mMathOperations.size()){
                             mProcessGuessPosition++;
-                            guessHandler.postDelayed(processGuess, 1100);
+                            guessHandler.postDelayed(processGuess, 600);
                         }else{
                             mLastActivityData=0;
                             findViewById(R.id.activityMainPart)
@@ -429,7 +429,8 @@ public class  ActivityOP01 extends ActivityOPRoot
         if(mClear){
             mUsersAnswer="";
             mFinalNumber.setText("");
-            findViewById(R.id.finalDots).setAlpha(0f);
+            mFinalDots.setAlpha(0f);
+            findViewById(R.id.betweenRoundsCover).setVisibility(ImageView.VISIBLE);
             mFinalNumber.setTextColor(ContextCompat.getColor(this, R.color.normalBlack));
             mFinalNumber.setPaintFlags(mFinalNumber.getPaintFlags()
                     & (~ Paint.STRIKE_THRU_TEXT_FLAG));

@@ -35,11 +35,7 @@ public class ActivityOP08 extends ActivityOPRoot {
 
         restartActivity();
 
-        findViewById(R.id.activityMainPart)
-                 .setVisibility(LinearLayout.VISIBLE);
-        findViewById(R.id.activityMainPart)
-                .setAnimation(AnimationUtils.loadAnimation(
-                        getApplicationContext(), R.anim.fade_in));
+        fadeInOrOutScreenInActivity(true);
         mCurrentGSP = new HashMap<>(appData.getCurrentGroup_Section_Phase());
         mInstructionAudio = "info_op08";
         long mAudionDuration=0;//playInstructionAudio();
@@ -340,7 +336,7 @@ public class ActivityOP08 extends ActivityOPRoot {
                     break;
             }
 
-            DecimalFormat formatter = new DecimalFormat("#,###,###");
+            DecimalFormat formatter = new DecimalFormat("#######");
             mResultNumber = formatter.format(mResult);
 
            findViewById(R.id.equalSymbol).setAlpha(1.0f);

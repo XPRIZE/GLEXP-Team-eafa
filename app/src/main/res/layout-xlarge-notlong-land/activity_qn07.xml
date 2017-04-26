@@ -8,58 +8,56 @@
     >
 
 
-    <android.support.constraint.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/activityMainPart"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bg_qn06">
+        android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/topIcons"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:padding="6dp"
-        android:visibility="visible"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_weight=".15"
-        app:layout_constraintBottom_toTopOf="@+id/iconSpace">
+        <LinearLayout
+            android:id="@+id/topIcons"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:padding="6dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/iconSpace"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight=".15">
 
-        <include
-            layout="@layout/activity_top_area"
+            <include
+                layout="@layout/activity_top_area"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <Space
+            android:id="@+id/iconSpace"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-
-    <Space
-        android:id="@+id/iconSpace"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/topIcons"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintVertical_weight="1" />
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/topIcons"
+            app:layout_constraintVertical_weight="1" />
 
 
         <ImageView
             android:id="@+id/frame0"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:scaleType="fitCenter"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="100dp"
-            android:contentDescription="@string/none"
             android:background="@drawable/rounded_box_selected_blue"
-            app:layout_constraintLeft_toLeftOf="parent"
+            android:contentDescription="@string/none"
+            android:scaleType="fitCenter"
             app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalMid"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/guidelineVerticalMidRight"
-            android:layout_marginStart="20dp" />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <android.support.constraint.Guideline
@@ -68,16 +66,17 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.2"
-            tools:layout_editor_absoluteY="171dp"
-            tools:layout_editor_absoluteX="0dp" />
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="171dp" />
+
         <android.support.constraint.Guideline
             android:id="@+id/guidelineNumberLeft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.07"
-            tools:layout_editor_absoluteY="0dp"
-            tools:layout_editor_absoluteX="90dp" />
+            tools:layout_editor_absoluteX="90dp"
+            tools:layout_editor_absoluteY="0dp" />
 
 
         <android.support.constraint.Guideline
@@ -85,84 +84,80 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.35"/>
-
+            app:layout_constraintGuide_percent="0.35" />
 
 
         <ImageView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
             android:id="@+id/horizontalLine"
-            android:src="@drawable/a_line"
-            android:contentDescription="@string/none"
-            android:layout_alignParentBottom="false"
-            app:layout_constraintTop_toBottomOf="@+id/guidelineVerticalLineTop"
-            app:layout_constraintBottom_toTopOf="@+id/guidelineVerticalLineBottom"
-            app:layout_constraintRight_toLeftOf="@+id/guidelineNumberRight"
-            app:layout_constraintLeft_toLeftOf="@+id/guidelineNumberLeft" />
-
-
-        <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/a_vertical_line"
-            android:id="@+id/verticalLine1"
+            android:layout_alignParentBottom="false"
             android:contentDescription="@string/none"
-            app:layout_constraintRight_toLeftOf="@+id/orderedNumber2"
+            android:src="@drawable/a_line"
             app:layout_constraintBottom_toTopOf="@+id/guidelineVerticalLineBottom"
             app:layout_constraintLeft_toLeftOf="@+id/guidelineNumberLeft"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineNumberRight"
+            app:layout_constraintTop_toBottomOf="@+id/guidelineVerticalLineTop" />
+
+
+        <ImageView
+            android:id="@+id/verticalLine1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/none"
+            android:src="@drawable/a_vertical_line"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineVerticalLineBottom"
+            app:layout_constraintLeft_toLeftOf="@+id/guidelineNumberLeft"
+            app:layout_constraintRight_toLeftOf="@+id/orderedNumber2"
             app:layout_constraintTop_toBottomOf="@+id/guidelineVerticalLineTop" />
 
         <ImageView
+            android:id="@+id/verticalLine2"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/a_vertical_line"
-            android:id="@+id/verticalLine2"
             android:contentDescription="@string/none"
+            android:src="@drawable/a_vertical_line"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineVerticalLineBottom"
             app:layout_constraintLeft_toRightOf="@+id/orderedNumber1"
             app:layout_constraintRight_toLeftOf="@+id/orderedNumber3"
-            app:layout_constraintBottom_toTopOf="@+id/guidelineVerticalLineBottom"
-            app:layout_constraintTop_toBottomOf="@+id/guidelineVerticalLineTop"  />
+            app:layout_constraintTop_toBottomOf="@+id/guidelineVerticalLineTop" />
 
         <ImageView
+            android:id="@+id/verticalLine3"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/a_vertical_line"
-            android:id="@+id/verticalLine3"
             android:contentDescription="@string/none"
+            android:src="@drawable/a_vertical_line"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineVerticalLineBottom"
             app:layout_constraintLeft_toRightOf="@+id/orderedNumber2"
             app:layout_constraintRight_toLeftOf="@+id/orderedNumber4"
-            app:layout_constraintBottom_toTopOf="@+id/guidelineVerticalLineBottom"
-            app:layout_constraintTop_toBottomOf="@+id/guidelineVerticalLineTop"   />
-
+            app:layout_constraintTop_toBottomOf="@+id/guidelineVerticalLineTop" />
 
 
         <ImageView
+            android:id="@+id/verticalLine4"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/a_vertical_line"
-            android:id="@+id/verticalLine4"
             android:contentDescription="@string/none"
+            android:src="@drawable/a_vertical_line"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineVerticalLineBottom"
             app:layout_constraintLeft_toRightOf="@+id/verticalLine3"
             app:layout_constraintRight_toLeftOf="@+id/guidelineNumberRight"
-            app:layout_constraintBottom_toTopOf="@+id/guidelineVerticalLineBottom"
-            app:layout_constraintTop_toBottomOf="@+id/guidelineVerticalLineTop"/>
+            app:layout_constraintTop_toBottomOf="@+id/guidelineVerticalLineTop" />
 
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/arrowend"
-            android:contentDescription="@string/none"
-            android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:layout_marginEnd="30dp"
-            app:layout_constraintLeft_toRightOf="@+id/horizontalLine"
+            android:layout_marginTop="20dp"
+            android:contentDescription="@string/none"
+            android:src="@drawable/arrowend"
             app:layout_constraintBottom_toTopOf="@+id/guidelineVerticalLineLowerBottom"
-            app:layout_constraintTop_toBottomOf="@+id/guidelineVerticalLineTop"
-            app:layout_constraintRight_toRightOf="@+id/frame0"/>
-
-
+            app:layout_constraintLeft_toRightOf="@+id/horizontalLine"
+            app:layout_constraintRight_toRightOf="@+id/frame0"
+            app:layout_constraintTop_toBottomOf="@+id/guidelineVerticalLineTop" />
 
 
         <android.support.constraint.Guideline
@@ -180,60 +175,61 @@
             app:layout_constraintGuide_percent="0.55" />
 
 
-
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-
             android:id="@+id/orderedNumber1"
+            android:layout_width="0dp"
+
+            android:layout_height="0dp"
+            android:gravity="bottom|center_horizontal"
             android:text="@string/ninetyNine"
             android:textColor="@color/normalBlack"
             android:textSize="@dimen/qn07_top_numbers"
-            android:gravity="bottom|center_horizontal"
-            app:layout_constraintRight_toLeftOf="@+id/orderedNumber2"
             app:layout_constraintBottom_toTopOf="@+id/guidelineNumberBottom"
             app:layout_constraintLeft_toLeftOf="@+id/guidelineNumberLeft"
+            app:layout_constraintRight_toLeftOf="@+id/orderedNumber2"
             app:layout_constraintTop_toTopOf="@+id/guidelineNumberTop" />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
 
+        <TextView
             android:id="@+id/orderedNumber2"
+            android:layout_width="0dp"
+
+            android:layout_height="0dp"
+            android:gravity="bottom|center_horizontal"
             android:text="@string/ninetyNine"
             android:textColor="@color/normalBlack"
             android:textSize="@dimen/qn07_top_numbers"
-            android:gravity="bottom|center_horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineNumberBottom"
             app:layout_constraintLeft_toRightOf="@+id/orderedNumber1"
             app:layout_constraintRight_toLeftOf="@+id/orderedNumber3"
-            app:layout_constraintBottom_toTopOf="@+id/guidelineNumberBottom"
             app:layout_constraintTop_toTopOf="@+id/guidelineNumberTop" />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
 
+        <TextView
             android:id="@+id/orderedNumber3"
+            android:layout_width="0dp"
+
+            android:layout_height="0dp"
+            android:gravity="bottom|center_horizontal"
             android:text="@string/ninetyNine"
             android:textColor="@color/normalBlack"
             android:textSize="@dimen/qn07_top_numbers"
-            android:gravity="bottom|center_horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineNumberBottom"
             app:layout_constraintLeft_toRightOf="@+id/orderedNumber2"
             app:layout_constraintRight_toLeftOf="@+id/orderedNumber4"
-            app:layout_constraintBottom_toTopOf="@+id/guidelineNumberBottom"
             app:layout_constraintTop_toTopOf="@+id/guidelineNumberTop" />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
 
+        <TextView
             android:id="@+id/orderedNumber4"
+            android:layout_width="0dp"
+
+            android:layout_height="0dp"
+            android:gravity="bottom|center_horizontal"
             android:text="@string/ninetyNine"
             android:textColor="@color/normalBlack"
             android:textSize="@dimen/qn07_top_numbers"
-            android:gravity="bottom|center_horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineNumberBottom"
             app:layout_constraintLeft_toRightOf="@+id/orderedNumber3"
             app:layout_constraintRight_toLeftOf="@+id/guidelineNumberRight"
-            app:layout_constraintBottom_toTopOf="@+id/guidelineNumberBottom"
             app:layout_constraintTop_toTopOf="@+id/guidelineNumberTop" />
-
 
 
         <android.support.constraint.Guideline
@@ -242,8 +238,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.68"
-            tools:layout_editor_absoluteY="0dp"
-            tools:layout_editor_absoluteX="871dp" />
+            tools:layout_editor_absoluteX="871dp"
+            tools:layout_editor_absoluteY="0dp" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guidelineVerticalMidRight"
@@ -251,16 +247,18 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.75"
-            tools:layout_editor_absoluteY="0dp"
-            tools:layout_editor_absoluteX="960dp" />
+            tools:layout_editor_absoluteX="960dp"
+            tools:layout_editor_absoluteY="0dp" />
+
         <android.support.constraint.Guideline
             android:id="@+id/guidelineNumberBottom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.35"
-            tools:layout_editor_absoluteY="298dp"
-            tools:layout_editor_absoluteX="0dp" />
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="298dp" />
+
         <ImageButton
             android:id="@+id/btnValidate"
             android:layout_width="0dp"
@@ -270,9 +268,9 @@
             android:scaleType="fitCenter"
             android:src="@drawable/btn_validate_off"
             app:layout_constraintBottom_toBottomOf="@+id/frame0"
-            app:layout_constraintTop_toTopOf="@+id/frame0"
             app:layout_constraintLeft_toLeftOf="@+id/guidelineVerticalMidRight"
-            app:layout_constraintRight_toRightOf="parent"/>
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/frame0" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guidelineHorizontalMid"
@@ -280,13 +278,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.6"
-            tools:layout_editor_absoluteY="511dp"
-            tools:layout_editor_absoluteX="0dp" />
-
-
-
-
-
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="511dp" />
 
 
         <ImageView
@@ -299,7 +292,6 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/frame2"
             app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalMid" />
-
 
 
         <TextView
@@ -327,7 +319,6 @@
             app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalMid" />
 
 
-
         <TextView
             android:id="@+id/number2"
             android:layout_width="wrap_content"
@@ -351,7 +342,6 @@
             app:layout_constraintLeft_toRightOf="@+id/frame2"
             app:layout_constraintRight_toLeftOf="@+id/frame4"
             app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalMid" />
-
 
 
         <TextView

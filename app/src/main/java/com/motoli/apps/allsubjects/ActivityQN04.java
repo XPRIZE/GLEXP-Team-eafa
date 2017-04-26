@@ -57,11 +57,7 @@ public class ActivityQN04 extends ActivitiesMasterParent
         findViewById(R.id.activityMainPart)
                 .setAnimation(AnimationUtils.loadAnimation(
                         getApplicationContext(), R.anim.fade_in));
-        findViewById(R.id.activityMainPartSecond)
-                .setVisibility(LinearLayout.VISIBLE);
-        findViewById(R.id.activityMainPartSecond)
-                .setAnimation(AnimationUtils.loadAnimation(
-                        getApplicationContext(), R.anim.fade_in));
+
         mInstructionAudio="info_qn04";
 
         ((ImageView) findViewById(R.id.btnValidate))
@@ -299,11 +295,7 @@ public class ActivityQN04 extends ActivitiesMasterParent
                             findViewById(R.id.activityMainPart)
                                     .setAnimation(AnimationUtils.loadAnimation(
                                             getApplicationContext(), R.anim.fade_out));
-                            findViewById(R.id.activityMainPartSecond)
-                                    .setVisibility(LinearLayout.INVISIBLE);
-                            findViewById(R.id.activityMainPartSecond)
-                                    .setAnimation(AnimationUtils.loadAnimation(
-                                            getApplicationContext(), R.anim.fade_out));
+
 
                             lastActivityDataHandler.postDelayed(returnToActivities_Platorm, 10);
                         }
@@ -327,6 +319,7 @@ public class ActivityQN04 extends ActivitiesMasterParent
             }//switch(mProcessGuessPosition){
         }//public void run(){
     };
+
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////

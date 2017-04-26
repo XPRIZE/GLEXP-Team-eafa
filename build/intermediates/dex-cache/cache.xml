@@ -84,12 +84,30 @@
     </item>
     <item
         is-multidex="true"
+        jar="C:\Users\aborsay\.gradle\caches\modules-2\files-2.1\com.squareup.haha\haha\2.0.3\640a438d2d415c056ca6a673ac26b183b044e160\haha-2.0.3.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="640a438d2d415c056ca6a673ac26b183b044e160">
+        <dex dex="C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\build\intermediates\transforms\dex\debug\folders\1000\10\haha-2.0.3_512106f64065308a2a84247e55ad45cd7e2d6308\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\aborsay\.android\build-cache\bd08b6a74e29bbf45ab487b88e5e24b9989b08df\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="150252b33b00274cc868578ade018fda0d43a3eb">
         <dex dex="C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d331e025b06de64d811452b67ed946d574fe12a0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\aborsay\.android\build-cache\1df1db82322f8015e2813b82cdd219af5df6ee89\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c7a2672b3122b897a0751f327929ae405ea02bf7">
+        <dex dex="C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c21b92e96be13bf933e1318215770389a160cff4\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -142,8 +160,17 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="c9562e937f484a5c72e739159a13867245ad5c4b">
+        sha1="491c7dea6bec1efe4cd0064f264976ded54fd617">
         <dex dex="C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_4b59d6ec22ff89f4c5d26c81caa092d062ff5045\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\aborsay\.gradle\caches\modules-2\files-2.1\com.squareup.leakcanary\leakcanary-analyzer\1.5\3277b0b0c2ace34a2edb5ddf9d1f67829561fb8f\leakcanary-analyzer-1.5.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3277b0b0c2ace34a2edb5ddf9d1f67829561fb8f">
+        <dex dex="C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\build\intermediates\transforms\dex\debug\folders\1000\10\leakcanary-analyzer-1.5_6c14e897f3fc2d95bf411be4a0ca800f2e6266ff\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -153,6 +180,15 @@
         revision="25.0.2"
         sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
         <dex dex="C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_bc5801c77eb9d52efa9f92b721caa20ac581ab44\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\aborsay\.gradle\caches\modules-2\files-2.1\com.squareup.leakcanary\leakcanary-watcher\1.5\288101b16513158c2923ad3fb6161d1452b65e73\leakcanary-watcher-1.5.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="288101b16513158c2923ad3fb6161d1452b65e73">
+        <dex dex="C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\build\intermediates\transforms\dex\debug\folders\1000\10\leakcanary-watcher-1.5_73c6fd70a44b598bf97a5772b9b4257081ef8209\classes.dex" />
     </item>
 
 </items>

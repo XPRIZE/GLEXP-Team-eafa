@@ -12,7 +12,6 @@
         android:id="@+id/bg_qn06"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_qn06"
         android:orientation="vertical">
 
         <LinearLayout

@@ -141,17 +141,17 @@
         </FrameLayout>
 
         <ImageView
+            android:id="@+id/activityIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/activityIcon"
-            android:src="@drawable/icon_letters_names_act"
-            android:visibility="visible"
             android:contentDescription="@string/none"
-            app:layout_constraintVertical_bias=".4"
+            android:src="@drawable/icon_letters_names_act"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/videoFrame"
             app:layout_constraintLeft_toLeftOf="@+id/videoFrame"
             app:layout_constraintRight_toLeftOf="@+id/videoBird"
             app:layout_constraintTop_toTopOf="@+id/videoFrame"
-            app:layout_constraintBottom_toBottomOf="@+id/videoFrame"/>
+            app:layout_constraintVertical_bias=".4" />
 
         <ImageView
             android:id="@+id/videoBird"
@@ -160,6 +160,7 @@
             android:contentDescription="@string/none"
             android:scaleType="fitEnd"
             android:src="@drawable/btn_spound_closed"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@+id/videoFrame"
             app:layout_constraintLeft_toRightOf="@+id/activityIcon"
             app:layout_constraintRight_toRightOf="@+id/videoFrame"

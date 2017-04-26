@@ -10,8 +10,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/activityMainPart"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bg_pink_bottom_yellow_hill_pink_plants">
+        android:layout_height="match_parent">
         <LinearLayout
             android:id="@+id/topIcons"
             android:layout_width="0dp"

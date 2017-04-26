@@ -699,7 +699,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:gravity="start|center_vertical"
-            android:text="@string/stringEqual"
+            android:text="@string/strNone"
             android:textColor="@color/normalBlack"
             android:textSize="@dimen/op8_large_number_font_size"
             app:layout_constraintBottom_toTopOf="@+id/guidelineEquationBottom"

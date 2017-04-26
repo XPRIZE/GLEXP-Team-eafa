@@ -1,4 +1,14 @@
-﻿# Version as of April 20th 2017
+﻿# Version as of April 26th 2017
+
+1. Fixed issue with Counting Syllabe activities (CS01,CS02)
+2. Fixed issue with math operations to make it move to next level more smooth.
+3. Cleaned up books to only show book title in text and make sure book is not available until
+    user finishes related levels.
+4. Fixed other random bugs
+
+April 20th actions still need to be addressed have begun commenting code to make more sense.
+
+# Version as of April 20th 2017
 
 1. Removed majority of warnings in code. The warning left I am still researching the best
     way to handle them.

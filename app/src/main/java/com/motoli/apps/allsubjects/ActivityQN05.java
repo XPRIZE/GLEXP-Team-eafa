@@ -56,11 +56,7 @@ public class ActivityQN05 extends ActivityQNRoot
         ((TextView)findViewById(R.id.number4)).setTypeface(appData.getNumberFontTypeface());
 
 
-        findViewById(R.id.activityMainPart)
-                .setVisibility(LinearLayout.VISIBLE);
-        findViewById(R.id.activityMainPart)
-                .setAnimation(AnimationUtils.loadAnimation(
-                        getApplicationContext(), R.anim.fade_in));
+        fadeInOrOutScreenInActivity(true);
         mInstructionAudio="info_qn05";
         mRoundNumber=0;
 

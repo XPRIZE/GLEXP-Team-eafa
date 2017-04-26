@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activityMainFrame"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_sd04">
+
     <android.support.constraint.ConstraintLayout
         android:id="@+id/activityMainPart"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bg_sd04">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:id="@+id/topIcons"
@@ -18,11 +18,11 @@
             android:orientation="horizontal"
             android:padding="6dp"
             android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/iconSpace"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_weight=".15"
-            app:layout_constraintBottom_toTopOf="@+id/iconSpace">
+            app:layout_constraintVertical_weight=".15">
 
             <include
                 layout="@layout/activity_top_area"
@@ -35,27 +35,27 @@
             android:id="@+id/iconSpace"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@+id/topIcons"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/topIcons"
             app:layout_constraintVertical_weight="1" />
 
 
         <android.support.constraint.Guideline
+            android:id="@+id/guidelineTopBalloon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/guidelineTopBalloon"
-            app:layout_constraintGuide_percent="0.2"
-            android:orientation="horizontal" />
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.2" />
 
 
         <android.support.constraint.Guideline
+            android:id="@+id/guidelineLeftBalloon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/guidelineLeftBalloon"
-            app:layout_constraintGuide_percent="0.15"
-            android:orientation="vertical" />
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.15" />
 
 
         <ImageView
@@ -66,8 +66,8 @@
             android:scaleType="fitCenter"
             android:src="@drawable/btn_sd04_left"
             app:layout_constraintBottom_toTopOf="@+id/guidelineBottomBalloon"
-            app:layout_constraintRight_toLeftOf="@+id/guidelineLeftBalloonEnd"
             app:layout_constraintLeft_toLeftOf="@+id/guidelineLeftBalloon"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineLeftBalloonEnd"
             app:layout_constraintTop_toTopOf="@+id/guidelineTopBalloon" />
 
         <TextView
@@ -78,25 +78,25 @@
             android:text="@string/strRandomLetter"
             android:textColor="@color/veryDarkGray"
             android:textSize="@dimen/sd04_font_size"
-            app:layout_constraintTop_toTopOf="@+id/speechBalloon0"
             app:layout_constraintBottom_toBottomOf="@+id/speechBalloon0"
             app:layout_constraintLeft_toLeftOf="@+id/speechBalloon0"
-            app:layout_constraintRight_toRightOf="@+id/speechBalloon0"/>
+            app:layout_constraintRight_toRightOf="@+id/speechBalloon0"
+            app:layout_constraintTop_toTopOf="@+id/speechBalloon0" />
 
         <android.support.constraint.Guideline
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/guidelineLeftBalloonEnd"
-            app:layout_constraintGuide_percent="0.4"
-            android:orientation="vertical" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.4" />
 
 
         <android.support.constraint.Guideline
+            android:id="@+id/guidelineRightBalloon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/guidelineRightBalloon"
-            app:layout_constraintGuide_percent="0.6"
-            android:orientation="vertical" />
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.6" />
 
         <ImageView
             android:id="@+id/speechBalloon1"
@@ -106,8 +106,8 @@
             android:scaleType="fitCenter"
             android:src="@drawable/btn_sd04_right"
             app:layout_constraintBottom_toTopOf="@+id/guidelineBottomBalloon"
-            app:layout_constraintRight_toLeftOf="@+id/guidelineRightBalloonEnd"
             app:layout_constraintLeft_toLeftOf="@+id/guidelineRightBalloon"
+            app:layout_constraintRight_toLeftOf="@+id/guidelineRightBalloonEnd"
             app:layout_constraintTop_toTopOf="@+id/guidelineTopBalloon" />
 
         <TextView
@@ -118,33 +118,32 @@
             android:text="@string/strRandomLetter"
             android:textColor="@color/veryDarkGray"
             android:textSize="@dimen/sd04_font_size"
-            app:layout_constraintTop_toTopOf="@+id/speechBalloon1"
             app:layout_constraintBottom_toBottomOf="@+id/speechBalloon1"
             app:layout_constraintLeft_toLeftOf="@+id/speechBalloon1"
-            app:layout_constraintRight_toRightOf="@+id/speechBalloon1"/>
+            app:layout_constraintRight_toRightOf="@+id/speechBalloon1"
+            app:layout_constraintTop_toTopOf="@+id/speechBalloon1" />
 
         <android.support.constraint.Guideline
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/guidelineRightBalloonEnd"
-            app:layout_constraintGuide_percent="0.85"
-            android:orientation="vertical"/>
-
-        <android.support.constraint.Guideline
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.85" />
+
+        <android.support.constraint.Guideline
             android:id="@+id/guidelineBottomBalloon"
-            app:layout_constraintGuide_percent="0.5"
-            android:orientation="horizontal" />
-
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
 
 
         <android.support.constraint.Guideline
+            android:id="@+id/guidelineTopImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/guidelineTopImage"
-            app:layout_constraintGuide_percent="0.45"
-            android:orientation="horizontal" />
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.45" />
 
         <ImageView
             android:id="@+id/frame0"
@@ -160,31 +159,31 @@
             app:layout_constraintTop_toBottomOf="@+id/guidelineTopImage" />
 
         <ImageView
+            android:id="@+id/image0"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:id="@+id/image0"
-            android:src="@drawable/dummy_img_phonic_word"
             android:layout_margin="@dimen/sd04_image_margins"
-            android:scaleType="fitCenter"
             android:contentDescription="@string/general_image"
+            android:scaleType="fitCenter"
+            android:src="@drawable/dummy_img_phonic_word"
+            app:layout_constraintBottom_toBottomOf="@+id/frame0"
             app:layout_constraintLeft_toLeftOf="@+id/frame0"
             app:layout_constraintRight_toRightOf="@+id/frame0"
-            app:layout_constraintTop_toTopOf="@+id/frame0"
-            app:layout_constraintBottom_toBottomOf="@+id/frame0"/>
+            app:layout_constraintTop_toTopOf="@+id/frame0" />
 
         <android.support.constraint.Guideline
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/guidelineBottomImage"
-            app:layout_constraintGuide_percent="0.95"
-            android:orientation="horizontal" />
-
-        <android.support.constraint.Guideline
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <android.support.constraint.Guideline
             android:id="@+id/guidelineTopMicDudes"
-            app:layout_constraintGuide_percent="0.45"
-            android:orientation="horizontal" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.45" />
 
         <ImageView
             android:id="@+id/btnMicDude1"
@@ -195,10 +194,10 @@
             android:scaleType="fitStart"
             android:src="@drawable/btn_dude_left_on"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/guidelineTopMicDudes"
+            app:layout_constraintHorizontal_bias=".02"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintHorizontal_bias=".02"/>
+            app:layout_constraintTop_toBottomOf="@+id/guidelineTopMicDudes" />
 
         <ImageView
             android:id="@+id/btnMicDude2"
@@ -208,27 +207,27 @@
             android:contentDescription="@string/none"
             android:src="@drawable/btn_dude_right_on"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/guidelineTopMicDudes"
+            app:layout_constraintHorizontal_bias=".98"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintHorizontal_bias=".98" />
+            app:layout_constraintTop_toBottomOf="@+id/guidelineTopMicDudes" />
 
 
         <ImageView
+            android:id="@+id/btnValidate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/btnValidate"
-            android:src="@drawable/btn_validate_ok"
-            android:scaleType="fitStart"
-            android:layout_marginStart="40dp"
             android:layout_marginEnd="40dp"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="@dimen/sd04_top_val"
             android:contentDescription="@string/general_image"
+            android:scaleType="fitStart"
+            android:src="@drawable/btn_validate_ok"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="@+id/frame0"
             app:layout_constraintRight_toRightOf="@+id/frame0"
-            app:layout_constraintVertical_bias="0.02"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.02" />
 
 
     </android.support.constraint.ConstraintLayout>

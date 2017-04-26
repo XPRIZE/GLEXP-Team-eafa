@@ -10,8 +10,7 @@
         android:id="@+id/activityMainPart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@drawable/bg_sh04">
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/activityMainPartSecond"

@@ -70,7 +70,7 @@ public class ActivityBK02BookList extends ActivitiesMasterParent
                         cursor.getString(cursor.getColumnIndex("book_read")));		        //8
                 mAllBooks.get(mStoryOrder).put("group_id",
                         cursor.getString(cursor.getColumnIndex("group_id")));		        //9
-                mBookCount=cursor.getCount();//.getInt(cursor.getColumnIndex("book_count"));
+                mBookCount=cursor.getInt(cursor.getColumnIndex("book_count"));
                 mStoryOrder++;
                 cursor.moveToNext();
             }
@@ -174,11 +174,99 @@ public class ActivityBK02BookList extends ActivitiesMasterParent
 
     public void moveBackward(View view){
         mSection--;
+        for(int mPosition=1; mPosition<=8; mPosition++) {
+            ImageView mBookImage;
+            TextView mBookText;
+            ImageView mBookCup;
+
+            if (mPosition == 1) {
+                mBookText = ((TextView) findViewById(R.id.text1));
+                mBookCup = ((ImageView) findViewById(R.id.cup1));
+                mBookImage = ((ImageView) findViewById(R.id.image1));
+            } else if (mPosition == 2) {
+                mBookText = ((TextView) findViewById(R.id.text2));
+                mBookCup = ((ImageView) findViewById(R.id.cup2));
+                mBookImage = ((ImageView) findViewById(R.id.image2));
+            } else if (mPosition == 3) {
+                mBookText = ((TextView) findViewById(R.id.text3));
+                mBookCup = ((ImageView) findViewById(R.id.cup3));
+                mBookImage = ((ImageView) findViewById(R.id.image3));
+            } else if (mPosition == 4) {
+                mBookText = ((TextView) findViewById(R.id.text4));
+                mBookCup = ((ImageView) findViewById(R.id.cup4));
+                mBookImage = ((ImageView) findViewById(R.id.image4));
+            } else if (mPosition == 5) {
+                mBookText = ((TextView) findViewById(R.id.text5));
+                mBookCup = ((ImageView) findViewById(R.id.cup5));
+                mBookImage = ((ImageView) findViewById(R.id.image5));
+            } else if (mPosition == 6) {
+                mBookText = ((TextView) findViewById(R.id.text6));
+                mBookCup = ((ImageView) findViewById(R.id.cup6));
+                mBookImage = ((ImageView) findViewById(R.id.image6));
+            } else if (mPosition == 7) {
+                mBookText = ((TextView) findViewById(R.id.text7));
+                mBookCup = ((ImageView) findViewById(R.id.cup7));
+                mBookImage = ((ImageView) findViewById(R.id.image7));
+            } else {
+                mBookText = ((TextView) findViewById(R.id.text8));
+                mBookCup = ((ImageView) findViewById(R.id.cup8));
+                mBookImage = ((ImageView) findViewById(R.id.image8));
+            }
+
+            mBookCup.setAlpha(0.0f);
+            mBookText.setText("");
+            mBookImage.setAlpha(0.0f);
+        }
+
         getLoaderManager().restartLoader(Constants.BOOKS_READ_ALOUD, null, this);
     }
 
     public void moveForward(View view){
         mSection++;
+        for(int mPosition=1; mPosition<=8; mPosition++) {
+            ImageView mBookImage;
+            TextView mBookText;
+            ImageView mBookCup;
+
+            if (mPosition == 1) {
+                mBookText = ((TextView) findViewById(R.id.text1));
+                mBookCup = ((ImageView) findViewById(R.id.cup1));
+                mBookImage = ((ImageView) findViewById(R.id.image1));
+            } else if (mPosition == 2) {
+                mBookText = ((TextView) findViewById(R.id.text2));
+                mBookCup = ((ImageView) findViewById(R.id.cup2));
+                mBookImage = ((ImageView) findViewById(R.id.image2));
+            } else if (mPosition == 3) {
+                mBookText = ((TextView) findViewById(R.id.text3));
+                mBookCup = ((ImageView) findViewById(R.id.cup3));
+                mBookImage = ((ImageView) findViewById(R.id.image3));
+            } else if (mPosition == 4) {
+                mBookText = ((TextView) findViewById(R.id.text4));
+                mBookCup = ((ImageView) findViewById(R.id.cup4));
+                mBookImage = ((ImageView) findViewById(R.id.image4));
+            } else if (mPosition == 5) {
+                mBookText = ((TextView) findViewById(R.id.text5));
+                mBookCup = ((ImageView) findViewById(R.id.cup5));
+                mBookImage = ((ImageView) findViewById(R.id.image5));
+            } else if (mPosition == 6) {
+                mBookText = ((TextView) findViewById(R.id.text6));
+                mBookCup = ((ImageView) findViewById(R.id.cup6));
+                mBookImage = ((ImageView) findViewById(R.id.image6));
+            } else if (mPosition == 7) {
+                mBookText = ((TextView) findViewById(R.id.text7));
+                mBookCup = ((ImageView) findViewById(R.id.cup7));
+                mBookImage = ((ImageView) findViewById(R.id.image7));
+            } else {
+                mBookText = ((TextView) findViewById(R.id.text8));
+                mBookCup = ((ImageView) findViewById(R.id.cup8));
+                mBookImage = ((ImageView) findViewById(R.id.image8));
+            }
+
+            mBookCup.setAlpha(0.0f);
+            mBookText.setText("");
+            mBookImage.setAlpha(0.0f);
+        }
+
         getLoaderManager().restartLoader(Constants.BOOKS_READ_ALOUD, null, this);
     }
     public void openBook(View view){

@@ -38,7 +38,7 @@
     <dimen name="bk02_font_above_normal">28sp</dimen>
     <dimen name="bk02_font_largest">59sp</dimen>
 
-    <dimen name="wdFirstFontSize">46sp</dimen>
+    <dimen name="wdFirstFontSize">60sp</dimen>
     <dimen name="wdSecondFontSize">40sp</dimen>
     <dimen name="wdThirdFontSize">35sp</dimen>
     <dimen name="wdForthFontSize">29sp</dimen>
@@ -85,6 +85,8 @@
 
 
     <dimen name="qn_numbers">120sp</dimen>
+    <dimen name="qn03_numbers">140sp</dimen>
+
     <dimen name="qn_massive_numbers">170sp</dimen>
     <dimen name="qn01_font_size">70sp</dimen>
     <dimen name="qn07_top_numbers">110sp</dimen>
