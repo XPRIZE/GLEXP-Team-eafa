@@ -33,6 +33,7 @@ public class ActivityWD06 extends ActivitiesMasterParent
     private String[] mLocationOfChar;
     private ArrayList<Integer> mLocationOfCharacter;
 
+    private final static int VALIDATE_TIME=1200;
     private final static int VALIDATE_TIME_SMALLER=400;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -211,24 +212,17 @@ public class ActivityWD06 extends ActivitiesMasterParent
 
             switch(mProcessGuessPosition){
                 case 0:
-                default:{
-                    if(mCorrect){
-                        mAudioDuration=playGeneralAudio("sfx_right");
-                    }else{
-                        mAudioDuration=playGeneralAudio("sfx_wrong");
-                    }
+                default:
                     mProcessGuessPosition++;
-                    mAudioHandler.postDelayed(processGuess, mAudioDuration+10);
+                    mAudioHandler.postDelayed(processGuess, playCorrectOrNot(mCorrect)+10);
                     break;
-                }
-                case 1:{
+                case 1:
                     processPointsAndView();
                     mAudioDuration=0;
                     mProcessGuessPosition++;
                     mAudioHandler.postDelayed(processGuess, mAudioDuration+10);
                     break;
-                }
-                case 2:{
+                case 2:
                     guessHandler.removeCallbacks(processGuess);
                     if(mCorrect){
                         hideLetters();
@@ -241,12 +235,7 @@ public class ActivityWD06 extends ActivitiesMasterParent
                             guessHandler.postDelayed(processGuess, 500);
                         }else{
                             mLastActivityData=0;
-                            findViewById(R.id.activityMainPart)
-                                    .setVisibility(LinearLayout.INVISIBLE);
-                            findViewById(R.id.activityMainPart)
-                                    .setAnimation(AnimationUtils.loadAnimation(
-                                            getApplicationContext(), R.anim.fade_out));
-
+                            fadeInOrOutScreenInActivity(false);
                             lastActivityDataHandler.postDelayed(returnToActivities_Platorm,10);
                         }
                     }else{
@@ -257,7 +246,8 @@ public class ActivityWD06 extends ActivitiesMasterParent
                         }
                         mGuessWord="";
                         ((TextView) findViewById(R.id.word0))
-                                .setTextColor(ContextCompat.getColor(ActivityWD06.this,R.color.regularBlack));
+                                .setTextColor(ContextCompat.getColor(
+                                        ActivityWD06.this,R.color.regularBlack));
                         ((TextView) findViewById(R.id.word0)).setText("");
                         ((ImageView) findViewById(R.id.btnValidate))
                                 .setImageResource(R.drawable.btn_validate_off);
@@ -266,12 +256,10 @@ public class ActivityWD06 extends ActivitiesMasterParent
                     }
 
                     break;
-                }
-                case 3:{
+                case 3:
                     beginRound();
                     guessHandler.removeCallbacks(processGuess);
                     break;
-                }
             }//switch(mProcessGuessPosition){
         }//public void run(){
     };
@@ -299,7 +287,7 @@ public class ActivityWD06 extends ActivitiesMasterParent
 
                     mGuessWord+=mSeparateLetters.get(0).get("letter_text");
                     mLocationOfChar[mGuessWord.length()-1]="1";
-                    ((TextView) findViewById(R.id.word0)).setText(mGuessWord);
+                    ((TextView) findViewById(R.id.wordText)).setText(mGuessWord);
                     checkIfCorrect();
                     mSeparateLetters.get(0).put("guessed","1");
                     findViewById(R.id.letter1).setVisibility(TextView.INVISIBLE);
@@ -438,6 +426,67 @@ public class ActivityWD06 extends ActivitiesMasterParent
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////
+
+    public void deleteLetter(View view){
+        if (mGuessWord!="" && !mBeingValidated && mGuessWord.length()>0) {
+            mBeingValidated=true;
+            int mLocation=(returnFirstZero()-1);
+            int mLetterLocation=mLocationOfCharacter.get(mLocation);
+            mLocationOfCharacter.set(mLocation,0);
+
+
+            String mToRemove;
+            switch(mLetterLocation) {
+                default:
+                    mToRemove="";
+                    break;
+                case 1:
+                    mSeparateLetters.get(0).put("guessed","0");
+                    mToRemove=mSeparateLetters.get(0).get("letter_text");
+                    findViewById(R.id.letter1).setVisibility(TextView.VISIBLE);
+                    break;
+                case 2:
+                    mSeparateLetters.get(1).put("guessed","0");
+                    mToRemove=mSeparateLetters.get(1).get("letter_text");
+                    findViewById(R.id.letter2).setVisibility(TextView.VISIBLE);
+                    break;
+                case 3:
+                    mSeparateLetters.get(2).put("guessed","0");
+                    mToRemove=mSeparateLetters.get(2).get("letter_text");
+                    findViewById(R.id.letter3).setVisibility(TextView.VISIBLE);
+                    break;
+                case 4:
+                    mSeparateLetters.get(3).put("guessed","0");
+                    mToRemove=mSeparateLetters.get(3).get("letter_text");
+                    findViewById(R.id.letter4).setVisibility(TextView.VISIBLE);
+                    break;
+                case 5:
+                    mSeparateLetters.get(4).put("guessed","0");
+                    mToRemove=mSeparateLetters.get(4).get("letter_text");
+                    findViewById(R.id.letter5).setVisibility(TextView.VISIBLE);
+                    break;
+                case 6:
+                    mSeparateLetters.get(5).put("guessed","0");
+                    mToRemove=mSeparateLetters.get(5).get("letter_text");
+                    findViewById(R.id.letter6).setVisibility(TextView.VISIBLE);
+                    break;
+            }
+
+            int endIndex = mGuessWord.lastIndexOf(mToRemove);
+            if (endIndex != -1) {
+                mGuessWord = mGuessWord.substring(0, endIndex);
+            }
+            ((TextView) findViewById(R.id.word0)).setText(mGuessWord);
+            ((ImageView) findViewById(R.id.btnValidate))
+                    .setImageResource(R.drawable.btn_validate_off);
+            mValidateAvailable=false;
+        }else{
+            Log.d(Constants.LOGCAT,"extra");
+        }
+
+        validateHandler.postDelayed(allowValidate, VALIDATE_TIME);
+    }
+
 
     private void displayImage(){
         if(!mCurrentWord.get("image_url").equals("")) {
@@ -630,7 +679,8 @@ public class ActivityWD06 extends ActivitiesMasterParent
                         "AND words.word_separation != '' ";
 
                 cursorLoader = new CursorLoader(this,
-                        AppProvider.CONTENT_URI_CURRENT_WORDS_BY_LEVEL, projection, selection, null, null);
+                        AppProvider.CONTENT_URI_CURRENT_WORDS_BY_LEVEL,
+                        projection, selection, null, null);
                 break;
             }
         }

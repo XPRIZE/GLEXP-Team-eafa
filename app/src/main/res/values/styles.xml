@@ -43,4 +43,11 @@
         <item name="android:textColor">#FFFFFF</item>
     </style>
 
+    <style name="RS01">
+        <item name="android:background">@drawable/bg_rs01</item>
+    </style>
+    <style name="RS02">
+        <item name="android:background">@drawable/bg_rs02</item>
+    </style>
+
 </resources>

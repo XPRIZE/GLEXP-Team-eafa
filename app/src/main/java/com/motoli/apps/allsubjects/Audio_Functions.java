@@ -120,6 +120,16 @@ import android.media.MediaPlayer;
 
         /////////////////////////////////////////////////////////////////////////////////////
 
+    public long playCorrectOrNot(boolean mCorrect){
+        long mAudioDuration;
+        if(mCorrect){
+            mAudioDuration=playGeneralAudio("sfx_right");
+        }else{
+            mAudioDuration=playGeneralAudio("sfx_wrong");
+
+        }
+        return mAudioDuration;
+    }
         public long playGeneralAudio(String sfxAudio){
 
             long mAudioDuration=0;

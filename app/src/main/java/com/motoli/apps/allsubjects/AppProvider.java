@@ -317,73 +317,12 @@ public class AppProvider extends ContentProvider {
                 mCursor =mAppProcesses.processesIndividualSections(projection);
                 break;
             case RESET_LEVELS:
-                mRawSQL="DELETE FROM app_users_activity_use_info " +
-                        "WHERE app_user_id=" + selection + " ";
-                mDatabase.execSQL(mRawSQL);
-                mRawSQL="DELETE FROM app_users_variables_values " +
-                        "WHERE app_user_id=" + selection + " ";
-                mDatabase.execSQL(mRawSQL);
-                mRawSQL="DELETE FROM app_users_activity_variable_values " +
-                        "WHERE app_user_id=" + selection + " ";
-                mDatabase.execSQL(mRawSQL);
+                /*
+                 * Called in settings page of main page. This just clears out the database and
+                 * resets all of the code
+                 */
+                mCursor = resetLevels(selection);
 
-                mRawSQL="DELETE FROM app_users_current_gpl " +
-                        "WHERE app_user_id=" + selection + " ";
-                mDatabase.execSQL(mRawSQL);
-
-                mRawSQL="SELECT * FROM groups_phase";
-                mCursor=mDatabase.rawQuery(mRawSQL, null);
-
-                while(mCursor.moveToNext()){
-                    int phase_id=mCursor.getInt(mCursor.getColumnIndex("phase_id"));
-                    int group_id=mCursor.getInt(mCursor.getColumnIndex("group_id"));
-                    int current_level=(phase_id==1) ? 0 :0;
-                    if (group_id==2 && phase_id==1){
-                        current_level=0;
-                    }
-
-                    if(group_id==2 && phase_id==3){
-                        current_level=0;
-                    }
-
-                    if(group_id==3 && phase_id==1 ){
-                        current_level=2;
-                    }
-                    if(group_id==3 && phase_id==2 ){
-                        current_level=1;
-                    }
-
-                    if(group_id==4){
-                        current_level=1;
-                    }
-
-                    if(group_id==5){
-                        current_level=1;
-                    }
-
-                    if(group_id==7) {
-                        current_level=0;
-                    }
-                    if(group_id==8){
-                        current_level=0;
-                    }
-                    if( group_id==6 ){
-                        current_level=0;
-                    }
-                    if(group_id==9){
-                        current_level=1;
-                    }
-                    if(group_id!=1) {
-                        String insertQuery = "INSERT INTO app_users_current_gpl (" +
-                                "app_user_id, group_id, phase_id, app_user_current_level ) " +
-                                "VALUES(" + selection + "," + group_id + "," +
-                                phase_id + "," + current_level + ")";
-                        mDatabase.execSQL(insertQuery);
-                    }
-                }
-
-                mRawSQL = "SELECT * FROM activities LIMIT 1";
-                mCursor = mDatabase.rawQuery(mRawSQL, null);
                 break;
             case ALL_MAX_LEVELS:
                 mRawSQL="SELECT MAX(groups_phase_levels.level_number) AS max_level_number, " +
@@ -675,7 +614,6 @@ public class AppProvider extends ContentProvider {
                             "math_operations_levels.max_multiplication_number_one " +
                             "AS allow_multiplication, ";
                 }
-              /*   */
                 mRawSQL+="activities.*," +
                         "groups_phase_sections_activities.* " +
                         "FROM groups_phase_sections_activities " +
@@ -685,15 +623,6 @@ public class AppProvider extends ContentProvider {
                     mRawSQL+="INNER JOIN math_operations_levels " +
                             "ON math_operations_levels.math_equation_levels="+projection[0]+" ";
 
-
-                    /*
-                    mRawSQL+="LEFT JOIN math_operations " +
-                            "ON math_operations.math_equation_levels<=1 " +
-                            "AND  " +
-                            "CASE WHEN activities.activity_id=65 " +
-                            "THEN  math_operations.operand=3 " +
-                            "ELSE math_operations.operand=1 END ";
-                            */
                 }
 
                 mRawSQL+="WHERE " + selection + " " +
@@ -721,7 +650,7 @@ public class AppProvider extends ContentProvider {
                         "ON app_users_activity_variable_values.activity_id" +
                         "=activities.activity_id " +
                         " WHERE app_users_activity_variable_values.level_number " +
-                        "= (SELECT  MAX(auavv.level_number) " +
+                        "= (SELECT  MIN(auavv.level_number) " +
                         "FROM app_users_activity_variable_values auavv " +
                         "WHERE auavv.activity_id=activities.activity_id )" +
                         "GROUP BY app_users_activity_variable_values.activity_id " +
@@ -2435,10 +2364,84 @@ public class AppProvider extends ContentProvider {
     }
 
 
+    /**
+     * Called in settings page of main page. This just clears out the database reset to default
+     * levels for uses
+     * @return mCursor
+     */
+    private Cursor resetLevels(String mWhere){
+        String mRawSQL;
+        Cursor mCursor;
+        mRawSQL="DELETE FROM app_users_activity_use_info " +
+                "WHERE app_user_id=" + mWhere + " ";
+        mDatabase.execSQL(mRawSQL);
+        mRawSQL="DELETE FROM app_users_variables_values " +
+                "WHERE app_user_id=" + mWhere + " ";
+        mDatabase.execSQL(mRawSQL);
+        mRawSQL="DELETE FROM app_users_activity_variable_values " +
+                "WHERE app_user_id=" + mWhere + " ";
+        mDatabase.execSQL(mRawSQL);
 
+        mRawSQL="DELETE FROM app_users_current_gpl " +
+                "WHERE app_user_id=" + mWhere + " ";
+        mDatabase.execSQL(mRawSQL);
 
+        mRawSQL="SELECT * FROM groups_phase";
+        mCursor=mDatabase.rawQuery(mRawSQL, null);
 
+        while(mCursor.moveToNext()){
+            int phase_id=mCursor.getInt(mCursor.getColumnIndex("phase_id"));
+            int group_id=mCursor.getInt(mCursor.getColumnIndex("group_id"));
+            int current_level=(phase_id==1) ? 0 :0;
 
+            if (group_id==2 && phase_id==1){
+                current_level=0;
+            }
+
+            if(group_id==2 && phase_id==3){
+                current_level=0;
+            }
+
+            if(group_id==3 && phase_id==1 ){
+                current_level=2;
+            }
+            if(group_id==3 && phase_id==2 ){
+                current_level=1;
+            }
+
+            if(group_id==4){
+                current_level=1;
+            }
+
+            if(group_id==5){
+                current_level=1;
+            }
+
+            if(group_id==7) {
+                current_level=0;
+            }
+            if(group_id==8){
+                current_level=0;
+            }
+            if( group_id==6 ){
+                current_level=0;
+            }
+            if(group_id==9){
+                current_level=1;
+            }
+            if(group_id!=1) {
+                String insertQuery = "INSERT INTO app_users_current_gpl (" +
+                        "app_user_id, group_id, phase_id, app_user_current_level ) " +
+                        "VALUES(" + mWhere + "," + group_id + "," +
+                        phase_id + "," + current_level + ")";
+                mDatabase.execSQL(insertQuery);
+            }
+        }
+
+        mRawSQL = "SELECT * FROM activities LIMIT 1";
+        mCursor = mDatabase.rawQuery(mRawSQL, null);
+        return mCursor;
+    }
 
 
 

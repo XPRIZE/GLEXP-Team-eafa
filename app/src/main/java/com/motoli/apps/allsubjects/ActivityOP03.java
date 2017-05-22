@@ -349,28 +349,15 @@ public class ActivityOP03 extends ActivityOPRoot
 
             switch(mProcessGuessPosition){
                 case 0:
-                default:{
-                    if(mCorrect){
-                        mAudioDuration=playGeneralAudio("sfx_right");
-                    }else{
-                        mAudioDuration=playGeneralAudio("sfx_wrong");
-                    }
+                default:
+                    mProcessGuessPosition++;
+                    mAudioHandler.postDelayed(processGuess, playCorrectOrNot(mCorrect)+10);
+                    break;
+                case 1:
                     mProcessGuessPosition++;
                     mAudioHandler.postDelayed(processGuess, mAudioDuration+10);
                     break;
-                }
-                case 1:{
-                    /*
-                    if(mCorrect){
-                        mAudioDuration=playGeneralAudio(currentLtrWrdAudio);
-                    }
-                    */
-                    mProcessGuessPosition++;
-                    mAudioHandler.postDelayed(processGuess, mAudioDuration+10);
-                    break;
-                }
-                case 2:{
-
+                case 2:
                     processPoints();
                     guessHandler.removeCallbacks(processGuess);
 
@@ -429,14 +416,12 @@ public class ActivityOP03 extends ActivityOPRoot
                         }
                     }
                     break;
-                }
-                case 3:{
+                case 3:
                     inBetweenRounds(false);
                     beginRound();
                     guessHandler.removeCallbacks(processGuess);
                     break;
-                }
-                case 4:{
+                case 4:
                     ((ImageView) findViewById(R.id.btnValidate))
                             .setImageResource(R.drawable.btn_validate_on);
                     ((ImageView) findViewById(R.id.btnVerticalValidate))
@@ -446,7 +431,6 @@ public class ActivityOP03 extends ActivityOPRoot
                     mFinalNumber.setText(String.valueOf(mAnswer));
                     mVerticalFinalNumber.setText(String.valueOf(mAnswer));
                     break;
-                }
             }//switch(mProcessGuessPosition){
         }//public void run(){
     };//end private Runnable processGuess = new Runnable(){

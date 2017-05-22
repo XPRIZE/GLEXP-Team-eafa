@@ -89,6 +89,8 @@
             android:textColor="@color/normalBlack"
             android:gravity="center_vertical|center_horizontal"
             android:textSize="@dimen/wd06_word"
+
+            android:onClick="deleteLetter"
             app:layout_constraintTop_toTopOf="@+id/wordFrame0"
             app:layout_constraintBottom_toBottomOf="@+id/wordFrame0"
             app:layout_constraintRight_toRightOf="@+id/wordFrame0"

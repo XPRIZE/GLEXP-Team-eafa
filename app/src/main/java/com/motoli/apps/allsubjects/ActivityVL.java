@@ -53,6 +53,8 @@ public class ActivityVL extends ActivitiesMasterParent implements
     private VideoView mVideoView;
     private ImageView mActivityIcon;
     private ImageView mVideoBird;
+
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         overridePendingTransition(R.anim.activity_fade_in, R.anim.activity_fade_out);
@@ -71,210 +73,145 @@ public class ActivityVL extends ActivitiesMasterParent implements
         mActivityIcon.setVisibility(ImageView.INVISIBLE);
         mVideoBird = (ImageView) findViewById(R.id.videoBird);
         mVideoBird.setVisibility(ImageView.INVISIBLE);
-        FrameLayout mFrame =((FrameLayout) findViewById(R.id.videoFrame));
-        switch(appData.getCurrentVideoID()){
-           default:
-           case 2:{
-               mFrame.setForeground(ContextCompat.getDrawable(this,R.drawable.a_rounded_boxa));
-               findViewById(R.id.videoList)
-                       .setBackgroundResource(R.color.video_page_letters_side);
-               findViewById(R.id.videoListBackground)
-                       .setBackgroundResource(R.color.video_page_letters_side);
 
-               findViewById(R.id.activityMainPart)
-                       .setBackgroundResource(R.color.video_page_letters_side);
-               findViewById(R.id.topIcons)
-                       .setBackgroundResource(R.color.video_page_letters_main);
-               findViewById(R.id.iconSpace)
-                       .setBackgroundResource(R.color.video_page_letters_main);
-               getLoaderManager().initLoader(Constants.ACTIVITY_CURRENT_LETTERS, null, this);
-               break;
-           }
-           case 3:{
-               mFrame.setForeground(ContextCompat.getDrawable(this,R.drawable.a_rounded_boxa));
-               findViewById(R.id.topIcons)
-                       .setBackgroundResource(R.color.video_page_letters_main);
-               findViewById(R.id.iconSpace)
-                       .setBackgroundResource(R.color.video_page_letters_main);
-               findViewById(R.id.activityMainPart)
-                       .setBackgroundResource(R.color.video_page_letters_side);
-               findViewById(R.id.videoList)
-                       .setBackgroundResource(R.color.video_page_letters_side);
-               findViewById(R.id.videoListBackground)
-                       .setBackgroundResource(R.color.video_page_letters_side);
-               getLoaderManager().initLoader(Constants.CURRENT_PHONIC_LETTERS, null, this);
-               break;
-           }
-           case 4:{
 
-               mFrame.setForeground(ContextCompat.getDrawable(this,R.drawable.a_rounded_boxa));
-               findViewById(R.id.activityMainPart)
-                       .setBackgroundResource(R.color.video_page_letters_side);
-               findViewById(R.id.videoList)
-                       .setBackgroundResource(R.color.video_page_letters_side);
-               findViewById(R.id.videoListBackground)
-                       .setBackgroundResource(R.color.video_page_letters_side);
-               findViewById(R.id.topIcons)
-                       .setBackgroundResource(R.color.video_page_letters_main);
-               findViewById(R.id.iconSpace)
-                       .setBackgroundResource(R.color.video_page_letters_main);
-               getLoaderManager().initLoader(Constants.ACTIVITY_CURRENT_SYLLABLES, null, this);
-               break;
-           }
-           case 5:{
-               mFrame.setForeground(ContextCompat.getDrawable(this,R.drawable.a_rounded_box_words));
-               findViewById(R.id.topIcons)
-                       .setBackgroundResource(R.color.application_words_video);
-               findViewById(R.id.iconSpace)
-                       .setBackgroundResource(R.color.application_words_video);
-               findViewById(R.id.videoList)
-                       .setBackgroundResource(R.color.application_words_video_side);
-               findViewById(R.id.videoListBackground)
-                       .setBackgroundResource(R.color.application_words_video_side);
-               findViewById(R.id.activityMainPart)
-                       .setBackgroundResource(R.color.application_words_video_side);
-               getLoaderManager().initLoader(Constants.CURRENT_WORDS, null, this);
-               break;
-           }
-           case 6:{
-               getLoaderManager().initLoader(Constants.BOOKS_READ_ALOUD, null, this);
-               break;
-           }
-            case 7:{
-                mFrame.setForeground(ContextCompat.getDrawable(this,R.drawable.a_rounded_boxa));
-                findViewById(R.id.activityMainPart)
-                        .setBackgroundResource(R.color.video_page_letters_side);
-                findViewById(R.id.videoList)
-                        .setBackgroundResource(R.color.video_page_letters_side);
-                findViewById(R.id.videoListBackground)
-                        .setBackgroundResource(R.color.video_page_letters_side);
-                findViewById(R.id.topIcons)
-                        .setBackgroundResource(R.color.video_page_letters_main);
-                findViewById(R.id.iconSpace)
-                        .setBackgroundResource(R.color.video_page_letters_main);
-                getLoaderManager().initLoader(Constants.MATH_SHAPES_SET, null, this);
-                break;
-            }
-            case 8:{
-                mFrame.setForeground(ContextCompat.getDrawable(this,R.drawable.a_rounded_boxa));
-                findViewById(R.id.activityMainPart)
-                        .setBackgroundResource(R.color.video_page_letters_side);
-                findViewById(R.id.videoList)
-                        .setBackgroundResource(R.color.video_page_letters_side);
-                findViewById(R.id.videoListBackground)
-                        .setBackgroundResource(R.color.video_page_letters_side);
-                findViewById(R.id.topIcons)
-                        .setBackgroundResource(R.color.video_page_letters_main);
-                findViewById(R.id.iconSpace)
-                        .setBackgroundResource(R.color.video_page_letters_main);
-                getLoaderManager().initLoader(Constants.MATH_NUMBERS_SET, null, this);
-                break;
-            }
-            case 9:{
-                mFrame.setForeground(ContextCompat.getDrawable(this,R.drawable.a_rounded_boxa));
-                findViewById(R.id.activityMainPart)
-                        .setBackgroundResource(R.color.video_page_letters_side);
-                findViewById(R.id.videoList)
-                        .setBackgroundResource(R.color.video_page_letters_side);
-                findViewById(R.id.videoListBackground)
-                        .setBackgroundResource(R.color.video_page_letters_side);
-                findViewById(R.id.topIcons)
-                        .setBackgroundResource(R.color.video_page_letters_main);
-                findViewById(R.id.iconSpace)
-                        .setBackgroundResource(R.color.video_page_letters_main);
-                getLoaderManager().initLoader(Constants.MATH_OPERATIONS, null, this);
-                break;
-            }
+        setVideoIcons();
+        setActivityPerCurrentVideo();
+    }
+
+
+    /**
+     * called if video is clicked, if video is finished it will allow application to screen
+     * to change to activities related to current group
+     * @param view videoView
+     */
+    public void videoViewClicked(View view){
+        if (mProceedPast) {
+            findViewById(R.id.videoFrame).setVisibility(View.INVISIBLE);
+            moveToActivities();
         }
+    }
 
 
-        mProceedPast=false;
-        mPlayingVideo=false;
+    /**
+     * sets video icons on top of activity based on current video ID (aka group)
+     */
+    private void setVideoIcons(){
         switch(appData.getCurrentVideoID()) {
-            default:{
+            default:
                 findViewById(R.id.noVideoSpace).setVisibility(Space.VISIBLE);
                 findViewById(R.id.letterVideo).setVisibility(ImageView.GONE);
                 findViewById(R.id.syllablesVideo).setVisibility(ImageView.GONE);
                 break;
-            }
-            case 2: {
+            case 2:
                 findViewById(R.id.noVideoSpace).setVisibility(Space.GONE);
                 findViewById(R.id.letterVideo).setVisibility(ImageView.VISIBLE);
                 findViewById(R.id.syllablesVideo).setVisibility(ImageView.GONE);
-
-                findViewById(R.id.letterVideo).setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View v) {
-
-                       if(!mPlayingVideo) {
-                            mActivityIcon.setVisibility(ImageView.INVISIBLE);
-                           mVideoBird.setVisibility(ImageView.INVISIBLE);
-
-                            Uri mVideoUri= Uri.parse("android.resource://" + getPackageName() + "/"
-                                    + R.raw.group_video_letters);
-
-                            mVideoView.setMediaController(null);
-                            mVideoView.setVideoURI(mVideoUri);
-                            mVideoView.requestFocus();
-                            mVideoView.setZOrderOnTop(true);
-                            mVideoView.seekTo(0);
-                            mVideoView.start();
-                            mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-
-                                @Override
-                                public void onPrepared(MediaPlayer mp) {
-
-                                    mVideoView.setZOrderOnTop(false);
-                                    mVideoView.setBackgroundColor(Color.TRANSPARENT);
-                                    mAudioDuration = mp.getDuration();
-                                    mAudioHandler.postDelayed(runAfterVideoLetter,
-                                            mAudioDuration + 500);
-                                }
-                            });
-                          /*   */
-                        }
-                    }
-                });
                 break;
-            }
-            case 4: {
+            case 4:
                 findViewById(R.id.noVideoSpace).setVisibility(Space.GONE);
                 findViewById(R.id.letterVideo).setVisibility(ImageView.GONE);
                 findViewById(R.id.syllablesVideo).setVisibility(ImageView.VISIBLE);
-                findViewById(R.id.syllablesVideo).setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View v) {
-                        playSyllableCountVideo();
-                    }
-                });
-
                 break;
-            }
+        }
+    }
 
+    /**
+     * sets the colors of the page based on whatever group (VideoID) it is currently on.
+     * Then initialized the onCreateLoader for what every set of videos in the group it is
+     * currently in.
+     */
+    private void setActivityPerCurrentVideo(){
+        FrameLayout mFrame =((FrameLayout) findViewById(R.id.videoFrame));
+
+        switch(appData.getCurrentVideoID()) {
+            case 2:
+            case 3:
+            case 4:
+            case 7:
+            case 8:
+            case 9:
+                mFrame.setForeground(ContextCompat.getDrawable(this, R.drawable.a_rounded_boxa));
+                findViewById(R.id.videoList)
+                        .setBackgroundResource(R.color.video_page_letters_side);
+                findViewById(R.id.videoListBackground)
+                        .setBackgroundResource(R.color.video_page_letters_side);
+
+                findViewById(R.id.activityMainPart)
+                        .setBackgroundResource(R.color.video_page_letters_side);
+                findViewById(R.id.topIcons)
+                        .setBackgroundResource(R.color.video_page_letters_main);
+                findViewById(R.id.iconSpace)
+                        .setBackgroundResource(R.color.video_page_letters_main);
+                break;
+            default:
+            case 5:
+                mFrame.setForeground(ContextCompat.getDrawable(this,
+                        R.drawable.a_rounded_box_words));
+                findViewById(R.id.topIcons)
+                        .setBackgroundResource(R.color.application_words_video);
+                findViewById(R.id.iconSpace)
+                        .setBackgroundResource(R.color.application_words_video);
+                findViewById(R.id.videoList)
+                        .setBackgroundResource(R.color.application_words_video_side);
+                findViewById(R.id.videoListBackground)
+                        .setBackgroundResource(R.color.application_words_video_side);
+                findViewById(R.id.activityMainPart)
+                        .setBackgroundResource(R.color.application_words_video_side);
+                break;
         }
 
-        mVideoView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (mProceedPast) {
-                    findViewById(R.id.videoFrame).setVisibility(View.INVISIBLE);
-                    moveToActivities();
-                    return true;
-                }
-                return false;
-            }
-        });
 
+        switch(appData.getCurrentVideoID()){
+            default:
+            case 2:
+                getLoaderManager().initLoader(Constants.ACTIVITY_CURRENT_LETTERS, null, this);
+                break;
+            case 3:
+                getLoaderManager().initLoader(Constants.CURRENT_PHONIC_LETTERS, null, this);
+                break;
+            case 4:
+                getLoaderManager().initLoader(Constants.ACTIVITY_CURRENT_SYLLABLES, null, this);
+                break;
+            case 5:
+                getLoaderManager().initLoader(Constants.CURRENT_WORDS, null, this);
+                break;
+            case 6:
+                getLoaderManager().initLoader(Constants.BOOKS_READ_ALOUD, null, this);
+                break;
+            case 7:
+                getLoaderManager().initLoader(Constants.MATH_SHAPES_SET, null, this);
+                break;
+            case 8:
+                getLoaderManager().initLoader(Constants.MATH_NUMBERS_SET, null, this);
+                break;
+            case 9:
+                getLoaderManager().initLoader(Constants.MATH_OPERATIONS, null, this);
+                break;
+        }
+
+        mProceedPast=false;
+        mPlayingVideo=false;
 
     }
 
-    public void syllabelVideoClicked(View view) {
+
+    /**
+     * plays general syllable video when icon is clicked so long as another video is not
+     * currently playing
+     * @param view syllablesVideo
+     */
+    public void syllableVideoClicked(View view) {
         playSyllableCountVideo();
     }
+
+    /**
+     * called when syllableVideo is clicked or at the beginning of the activity in displayScreen
+     */
     public void playSyllableCountVideo(){
         if (!mPlayingVideo) {
-
             mActivityIcon.setVisibility(ImageView.INVISIBLE);
             mVideoBird.setVisibility(ImageView.INVISIBLE);
-
 
             Uri mVideoUri = Uri.parse("android.resource://" + getPackageName() + "/"
                     + R.raw.group_video_syllables);
@@ -295,9 +232,43 @@ public class ActivityVL extends ActivitiesMasterParent implements
                     mAudioHandler.postDelayed(runAfterVideoLetter, mAudioDuration + 500);
                 }
             });
-                       /*       */
         }
     }
+
+    /**
+     * plays general letters video when icon is clicked so long as another video is not
+     * currently playing
+     * @param view lettersVideo
+     */
+    public void playLetterVideo(View view){
+        if(!mPlayingVideo) {
+            mActivityIcon.setVisibility(ImageView.INVISIBLE);
+            mVideoBird.setVisibility(ImageView.INVISIBLE);
+
+            Uri mVideoUri= Uri.parse("android.resource://" + getPackageName() + "/"
+                    + R.raw.group_video_letters);
+
+            mVideoView.setMediaController(null);
+            mVideoView.setVideoURI(mVideoUri);
+            mVideoView.requestFocus();
+            mVideoView.setZOrderOnTop(true);
+            mVideoView.seekTo(0);
+            mVideoView.start();
+            mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+
+                @Override
+                public void onPrepared(MediaPlayer mp) {
+
+                    mVideoView.setZOrderOnTop(false);
+                    mVideoView.setBackgroundColor(Color.TRANSPARENT);
+                    mAudioDuration = mp.getDuration();
+                    mAudioHandler.postDelayed(runAfterVideoLetter,
+                            mAudioDuration + 500);
+                }
+            });
+        }
+    }
+
     //////////////////////////////////////////////////////////////////////////////////////////////
 
     private void moveToActivities(){

@@ -1,10 +1,31 @@
-﻿# Version as of April 26th 2017
+﻿# Update as of May 22nd 2017
 
-1. Fixed issue with Counting Syllabe activities (CS01,CS02)
+1. Fixed issue with missing background in a phonics game (sd03)
+2. Fixed issue with moving ahead in setting for lower/upper case letters (lt0*) that all
+    previous activities not matched as complete causing uppercase to be stuck
+3. Added for exiting application icons (green to stay, red to leave) to replace former dialog
+    with words
+4. A spelling activity has been placed in the books section that is only available until 
+    words are reached
+5. Added a calculator activity in math operations replace a duplicate addition activity. 
+6. Some more comments were added
+7. Added Fabric plugin to allow tracking of crashes
+    
+
+
+Currently working on settings page to allow childs name and data to be sent in CSV form to ET4D 
+and any people wanting it. This is also fixing up the Launch_Platform page in order to 
+accommodate fragments to allow cleaner code.
+
+Also am doing more work on finding any memory leaks
+
+# Version as of April 26th 2017
+
+1. Fixed issue with Counting Syllable activities (CS01,CS02)
 2. Fixed issue with math operations to make it move to next level more smooth.
 3. Cleaned up books to only show book title in text and make sure book is not available until
     user finishes related levels.
-4. Fixed other random bugs
+4. Fixed other  random bugs
 
 April 20th actions still need to be addressed have begun commenting code to make more sense.
 

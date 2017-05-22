@@ -256,13 +256,8 @@ public class ActivityLT02 extends ActivityLTRoot
             switch(mProcessGuessPosition){
                 case 0:
                 default:
-                    if(mCorrect){
-                        mAudioDuration=playGeneralAudio("sfx_right");
-                    }else{
-                        mAudioDuration=playGeneralAudio("sfx_wrong");
-                    }
                     mProcessGuessPosition++;
-                    mAudioHandler.postDelayed(processGuess, mAudioDuration+10);
+                    mAudioHandler.postDelayed(processGuess, playCorrectOrNot(mCorrect)+10);
                     break;
                 case 1:
 

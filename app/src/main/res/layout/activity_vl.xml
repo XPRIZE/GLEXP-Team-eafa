@@ -65,6 +65,7 @@
                 android:layout_weight="1"
                 android:contentDescription="@string/none"
                 android:scaleType="fitCenter"
+                android:onClick="playLetterVideo"
                 android:src="@drawable/btn_video_song"
                 android:visibility="gone" />
 
@@ -74,7 +75,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="@string/none"
-                android:onClick="syllabelVideoClicked"
+                android:onClick="syllableVideoClicked"
                 android:src="@drawable/btn_video_countsyl"
                 android:visibility="visible" />
 
@@ -133,11 +134,12 @@
             app:layout_constraintTop_toBottomOf="@+id/topIcons" >
 
             <VideoView
+                android:id="@+id/videoView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/videoView"
                 android:layout_gravity="bottom|end|start|top"
-                android:background="@drawable/bg_learn_letters"/>
+                android:background="@drawable/bg_learn_letters"
+                android:onClick="videoViewClicked" />
         </FrameLayout>
 
         <ImageView

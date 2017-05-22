@@ -334,23 +334,16 @@ public class ActivityWD01 extends ActivityWDRoot
 
             switch(mProcessGuessPosition){
                 case 0:
-                default:{
-                    if(mCorrect){
-                        mAudioDuration=playGeneralAudio("sfx_right");
-                    }else{
-                        mAudioDuration=playGeneralAudio("sfx_wrong");
-                    }
+                default:
                     mProcessGuessPosition++;
-                    mAudioHandler.postDelayed(processGuess, mAudioDuration+10);
+                    mAudioHandler.postDelayed(processGuess, playCorrectOrNot(mCorrect)+10);
                     break;
-                }
-                case 1:{
+                case 1:
                     mAudioDuration=playGeneralAudio(mCurrentAudio);
                     mProcessGuessPosition++;
                     mAudioHandler.postDelayed(processGuess, mAudioDuration+10);
                     break;
-                }
-                case 2:{
+                case 2:
                     processChoiceView();
                     guessHandler.removeCallbacks(processGuess);
                     clearFrames();
@@ -363,11 +356,7 @@ public class ActivityWD01 extends ActivityWDRoot
                             guessHandler.postDelayed(processGuess, 50);
                         }else{
                             mLastActivityData=0;
-                            findViewById(R.id.activityMainPart)
-                                    .setVisibility(LinearLayout.INVISIBLE);
-                            findViewById(R.id.activityMainPart)
-                                    .setAnimation(AnimationUtils.loadAnimation(
-                                            getApplicationContext(), R.anim.fade_out));
+                            fadeInOrOutScreenInActivity(false);
                             lastActivityDataHandler.postDelayed(returnToActivities_Platorm,10);
                         }
                     }else{
@@ -378,14 +367,12 @@ public class ActivityWD01 extends ActivityWDRoot
                     }
 
                     break;
-                }
-                case 3:{
+                case 3:
                     ((ImageView) findViewById(R.id.btnValidate))
                             .setImageResource(R.drawable.btn_validate_off_mic);
                     beginRound();
                     guessHandler.removeCallbacks(processGuess);
                     break;
-                }
             }//switch(mProcessGuessPosition){
         }//public void run(){
     };

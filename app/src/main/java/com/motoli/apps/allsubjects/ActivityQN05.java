@@ -389,24 +389,17 @@ public class ActivityQN05 extends ActivityQNRoot
 
             switch(mProcessGuessPosition){
                 case 0:
-                default:{
-                    if(mCorrect){
-                        mAudioDuration=playGeneralAudio("sfx_right");
-                    }else{
-                        mAudioDuration=playGeneralAudio("sfx_wrong");
-                    }
+                default:
                     mProcessGuessPosition++;
-                    mAudioHandler.postDelayed(processGuess, mAudioDuration+10);
+                    mAudioHandler.postDelayed(processGuess, playCorrectOrNot(mCorrect)+10);
                     break;
-                }
-                case 1:{
+                case 1:
                     mAudioDuration=0;
                     //playGeneralAudio(mCurrentNumberAudio);
                     mProcessGuessPosition++;
                     mAudioHandler.postDelayed(processGuess, mAudioDuration+10);
                     break;
-                }
-                case 2:{
+                case 2:
                     mColor=0;
                     clearWrong();
                     mBeingValidated=false;
@@ -427,11 +420,7 @@ public class ActivityQN05 extends ActivityQNRoot
                             guessHandler.postDelayed(processGuess, 10);
                         }else{
                             mLastActivityData=0;
-                            findViewById(R.id.activityMainPart)
-                                    .setVisibility(LinearLayout.INVISIBLE);
-                            findViewById(R.id.activityMainPart)
-                                    .setAnimation(AnimationUtils.loadAnimation(
-                                            getApplicationContext(), R.anim.fade_out));
+                            fadeInOrOutScreenInActivity(false);
                             lastActivityDataHandler.postDelayed(returnToActivities_Platorm,10);
                         }
                     } else {
@@ -440,12 +429,10 @@ public class ActivityQN05 extends ActivityQNRoot
                     }
 
                     break;
-                }
-                case 3: {
+                case 3:
                     beginRound();
                     guessHandler.removeCallbacks(processGuess);
                     break;
-                }
             }//switch(mProcessGuessPosition){
         }//public void run(){
     };

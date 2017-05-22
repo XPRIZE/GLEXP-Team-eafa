@@ -593,9 +593,17 @@ public class AppProviderUpdateGroups {
 
 
         Cursor mCursor = mDatabase.rawQuery(mRawSQL, null);
-        while(mCursor.moveToNext()){
-            String mActivityID=mCursor.getString(mCursor.getColumnIndex(
-                    "activity_id"));
+        ArrayList<String> mActivityIDs = new ArrayList<>();
+
+        if(mCursor.moveToFirst()){
+            do{
+                mActivityIDs.add(mCursor.getString(mCursor.getColumnIndex("activity_id")));
+            }while(mCursor.moveToNext());
+        }
+        mActivityIDs.add("74");
+        for(String mActivityID : mActivityIDs){
+
+
 
 
             mRawSQL="SELECT variable_type_relations.variable_type_id, " +
@@ -610,8 +618,17 @@ public class AppProviderUpdateGroups {
                     "LEFT JOIN app_users_activity_variable_values "+
                     "ON app_users_activity_variable_values.variable_id=words.word_id "+
                     "AND app_users_activity_variable_values.activity_id="+mActivityID+" "+
-                    "AND app_users_activity_variable_values.app_user_id="+projection[1]+" "+
-                    "WHERE "+whereSection;
+                    "AND app_users_activity_variable_values.app_user_id="+projection[1]+" ";
+            if(mActivityID.equals("74")){
+                mRawSQL+="WHERE variable_phase_levels.group_id = 5 " +
+                        "AND variable_phase_levels.phase_id = 1 " +
+                        "AND variable_phase_levels.level_number <= "+
+                        projection[5] + " " +
+                        "AND variable_phase_levels.level_number>0 "+
+                        "AND variable_type_relations.variable_type_id=6";
+            }else {
+                mRawSQL+="WHERE " + whereSection;
+            }
             Cursor mCursor2 = mDatabase.rawQuery(mRawSQL, null);
 
 
@@ -657,7 +674,8 @@ public class AppProviderUpdateGroups {
 
                     mDatabase.execSQL(mRawSQL);
 
-                }else if(mCursor2.getInt(mCursor2.getColumnIndex("number_correct"))>=Constants.NUMBER_CORRECT){
+                }else if(mCursor2.getInt(mCursor2.getColumnIndex("number_correct"))
+                        >=Constants.NUMBER_CORRECT){
                     blankCount++;
                 }//end if(auavv_id.equals("")){
             }//end  while(mCursor.moveToNext()){
@@ -692,7 +710,8 @@ public class AppProviderUpdateGroups {
                     "app_users_activity_variable_values.*, " +
                     "variable_type_relations.variable_type_id, " +
                     "syllables.* " +
-                    "FROM syllables LEFT JOIN variable_type_relations " +
+                    "FROM syllables " +
+                    "LEFT JOIN variable_type_relations " +
                     "ON variable_type_relations.variable_id=syllables.syllables_id  " +
                     "INNER JOIN variable_phase_levels " +
                     "ON variable_phase_levels.variable_id=syllables.syllables_id " +

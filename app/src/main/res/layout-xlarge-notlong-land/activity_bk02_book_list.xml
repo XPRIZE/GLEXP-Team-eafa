@@ -35,7 +35,7 @@
             android:layout_weight="1"
             android:contentDescription="@string/none"
             android:onClick="moveBackward"
-            android:src="@drawable/btn_move_bluelight_up"
+            android:src="@drawable/book_up_arrow"
             android:visibility="invisible" />
 
         <ImageView
@@ -45,7 +45,7 @@
             android:layout_weight="1"
             android:contentDescription="@string/none"
             android:onClick="moveForward"
-            android:src="@drawable/btn_move_bluelight_down"
+            android:src="@drawable/book_down_arrow"
             android:visibility="invisible" />
 
         <TextView

@@ -62,7 +62,17 @@ public abstract class ActivitiesMasterParent extends Master_Parent {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        /*
+        runs garbage collection before the start of every new activity. This is for any lose ties
+        will use to help find garbage leaks as well
+         */
+        freeMemory();
+
         mFinishRound=false;
+        /*
+        sets mCurrentGSP for current GSP or set to defauly group 2 is date isfound
+         */
         if(appData.getCurrentGroup_Section_Phase()!=null) {
             mCurrentGSP = new HashMap<>(appData.getCurrentGroup_Section_Phase());
         }else{
@@ -79,6 +89,10 @@ public abstract class ActivitiesMasterParent extends Master_Parent {
 
     }
 
+    /**
+     * This function is called to just cause either a fade in or out of the activity page
+     * @param mFadeIn true it will fade in, otherwise false is fade out
+     */
     protected void fadeInOrOutScreenInActivity(boolean mFadeIn){
         if(findViewById(R.id.activityMainPart)!=null) {
             if (mFadeIn) {
@@ -96,9 +110,12 @@ public abstract class ActivitiesMasterParent extends Master_Parent {
             }
         }
     }
-    
-    ////////////////////////////////////////////////////////////////////////////////////////////
 
+    /**
+     * onResume() called naturally to hide the change case and video icons. If able it will show
+     * the activityName (only used for debugging purposes. This will also begin the process of
+     * tracking the number of times a user uses certain app for certain level
+     */
     @Override
     public void onResume(){
         super.onResume();
@@ -137,8 +154,11 @@ public abstract class ActivitiesMasterParent extends Master_Parent {
         }
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////
-
+    /**
+     * addActivityPointsByLevel
+     * Is called only by SD (Phonic) activities called in ActivitySDRoot.
+     * Add point for right or wrong answer to database
+     */
     protected  void addActivityPointsByLevel(){
         String where = " WHERE app_user_id=" + appData.getCurrentUserID()+ " " +
                 "AND variable_id=" + mCurrentGSP.get("current_level") + " " +
@@ -173,10 +193,13 @@ public abstract class ActivitiesMasterParent extends Master_Parent {
         }
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////
-
     /**
-     * This is used in phonics right now alone
+     * addActivityPointsToVariablesValues
+     * Is called only by SD (Phonic) activities called in ActivitySDRoot. called  immediately after
+     * addActivityPointsByLevel
+     * Add point for right or wrong answer to database
+     * fairlyadb boot sure this was done due to original multiple tables to add points to
+     *Will possibly remove later
      */
     protected  void addActivityPointsToVariablesValues(){
         String mWhere=" WHERE app_user_id="+appData.getCurrentUserID()
@@ -215,7 +238,15 @@ public abstract class ActivitiesMasterParent extends Master_Parent {
         }
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////
+    /**
+     * used to free memory by running a garbage collection used ast beginning of each activity
+     */
+    public void freeMemory(){
+        System.runFinalization();
+        Runtime.getRuntime().gc();
+        System.gc();
+    }
+
 
     /**
      * This is used only in letters and words and eventually syllables
@@ -284,6 +315,12 @@ public abstract class ActivitiesMasterParent extends Master_Parent {
                 AppProvider.CONTENT_URI_ACTIVITY_USER_RW_UPDATE_EVV, null, null, mInfo);
     }
 
+    /**
+     * addActivityPoints()
+     * sets data to be called in AppProvider.CONTENT_URI_ACTIVITY_USER_RW_UPDATE in order to
+     * either add points to relevant correct answer or set to zero if needed. Also to track
+     * general right or wrong.
+     */
     protected  void addActivityPoints(){
         String mWhere=" WHERE app_user_id="+appData.getCurrentUserID()
                 +" AND variable_id="+mCorrectID
@@ -291,6 +328,9 @@ public abstract class ActivitiesMasterParent extends Master_Parent {
         String[] mInfo;
         if(mCorrect) {
             if(mIncorrectInRound>=1) {
+                /*
+                 * if last answer was incorrect and second
+                 */
                 mInfo = new String[]{
                         "0",
                         "0",

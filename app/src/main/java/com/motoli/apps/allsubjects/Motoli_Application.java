@@ -1,6 +1,8 @@
 package com.motoli.apps.allsubjects;
 
 
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -70,6 +72,7 @@ public class Motoli_Application extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics());
 
 
         if (LeakCanary.isInAnalyzerProcess(this)) {
@@ -161,6 +164,7 @@ public class Motoli_Application extends Application {
     /**
      * This is for debugging to allow activity text to appear in each activity for test purposes.
      * This is set statically by Motoli_Application
+     * For release of applicaton this must always be false
      * @return      True if allowed, otherwise false
      */
     public boolean getAllowActivityText(){

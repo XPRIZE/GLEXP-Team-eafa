@@ -104,7 +104,8 @@
             android:text="Large Text"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/darkGray"
-            android:textSize="@dimen/activity_name_font_size" />
+            android:textSize="@dimen/activity_name_font_size"
+            android:visibility="invisible" />
 
         <ImageButton
             android:id="@+id/btnRepeat"

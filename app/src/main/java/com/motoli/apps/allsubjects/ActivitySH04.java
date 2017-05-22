@@ -632,17 +632,11 @@ public class ActivitySH04 extends ActivitiesMasterParent
 
             switch(mProcessGuessPosition){
                 case 0:
-                default:{
-                    if(mCorrect){
-                        mAudioDuration=playGeneralAudio("sfx_right");
-                    }else{
-                        mAudioDuration=playGeneralAudio("sfx_wrong");
-                    }
+                default:
                     mProcessGuessPosition++;
-                    mAudioHandler.postDelayed(processGuess, mAudioDuration+10);
+                    mAudioHandler.postDelayed(processGuess, playCorrectOrNot(mCorrect)+10);
                     break;
-                }
-                case 1:{
+                case 1:
                     if(mCorrect){
                         mAudioDuration=playGeneralAudio(mLanguage + "_mathshape_typeid_a");
                     }else{
@@ -651,15 +645,13 @@ public class ActivitySH04 extends ActivitiesMasterParent
                     mProcessGuessPosition++;
                     mAudioHandler.postDelayed(processGuess, mAudioDuration+10);
                     break;
-                }
-                case 2:{
+                case 2:
                     mAudioDuration=playGeneralAudio(mCurrentMathShapeTypeAudio);
 
                     mProcessGuessPosition++;
                     mAudioHandler.postDelayed(processGuess, mAudioDuration+10);
                     break;
-                }
-                case 3:{
+                case 3:
                     clearWrong();
                     guessHandler.removeCallbacks(processGuess);
 
@@ -692,14 +684,12 @@ public class ActivitySH04 extends ActivitiesMasterParent
                     }
 
                     break;
-                }
-                case 4:{
+                case 4:
                     ((ImageView) findViewById(R.id.btnValidate))
                             .setImageResource(R.drawable.btn_validate_off);
                     beginRound();
                     guessHandler.removeCallbacks(processGuess);
                     break;
-                }
             }//switch(mProcessGuessPosition){
         }//public void run(){
     };

@@ -22,6 +22,8 @@ public class AppProviderProcesses {
     private Context mContext;
     private Motoli_Application mAppData;
 
+    private boolean mPrivateMax=false;
+
     public AppProviderProcesses(Context mContext,
                                 ArrayList<HashMap<String,String>> mUserGPL,
                                 SQLiteDatabase mDatabase,
@@ -398,7 +400,7 @@ public class AppProviderProcesses {
             default:
                 break;
             case 2:
-                switch(Integer.parseInt(mInfo[2])){
+                switch(Integer.parseInt(mPhaseID)){
                     default:
                     case 1:
                         mRawSQL="UPDATE app_users_activity_variable_values " +
@@ -412,8 +414,15 @@ public class AppProviderProcesses {
                             i<=Integer.parseInt(mDesiredLevel);
                             i++){
                             Log.d(Constants.LOGCAT,"Lower moving to level: "+i);
+                            mPrivateMax=true;
                             processGroup2Phase1( mAppUserID,mUserGPL.get(0));
                         }
+                        mRawSQL="UPDATE app_users_activity_variable_values " +
+                                "SET number_correct_in_a_row=12 " +
+                                "WHERE group_id=2 " +
+                                "AND phase_id=1 " +
+                                "AND level_number<=" + mDesiredLevel;
+                        mDatabase.execSQL(mRawSQL);
                         groupPhaseLevelsUpdateAll( mAppUserID);
                         break;
                     case 2:
@@ -421,13 +430,16 @@ public class AppProviderProcesses {
                             i<=Integer.parseInt(mDesiredLevel);
                             i++){
                             Log.d(Constants.LOGCAT,"Upper moving to level: "+i);
+                            mPrivateMax=true;
                             processGroup2Phase2( mAppUserID,mUserGPL.get(1));
                         }
+
                         mRawSQL="UPDATE app_users_activity_variable_values " +
                                 "SET number_correct_in_a_row=12 " +
                                 "WHERE group_id=" + mGroupID + " " +
                                 "AND phase_id=" + mPhaseID + " " +
                                 "AND level_number<" + mDesiredLevel;
+                        mPrivateMax=false;
                         mDatabase.execSQL(mRawSQL);
                         break;
                     case 3:
@@ -435,8 +447,10 @@ public class AppProviderProcesses {
                             i<=Integer.parseInt(mDesiredLevel);
                             i++){
                             Log.d(Constants.LOGCAT,"Phonics moving to level: "+i);
+                            mPrivateMax=true;
                             processGroup2Phase3( mAppUserID,mUserGPL.get(2));
                         }
+                        mPrivateMax=false;
                         mRawSQL="UPDATE app_users_activity_variable_values " +
                                 "SET number_correct_in_a_row=12 " +
                                 "WHERE group_id=" + mGroupID + " " +
@@ -450,13 +464,15 @@ public class AppProviderProcesses {
                 }
                 break;
             case 3:
-                if(mInfo[2].equals("1")){
+                if(mInfo[2].equals("2")){
                     for(int i=(Integer.parseInt(mCurrentLevel)+1);
                         i<=Integer.parseInt(mDesiredLevel);
                         i++){
                         Log.d(Constants.LOGCAT,"Syllables moving to level: "+i);
-                        processGroup3Phase1( mAppUserID,mUserGPL.get(3));
+                        mPrivateMax=true;
+                        processGroup3Phase2( mAppUserID,mUserGPL.get(3));
                     }
+                    mPrivateMax=false;
                     mRawSQL="UPDATE app_users_activity_variable_values " +
                             "SET number_correct_in_a_row=12 " +
                             "WHERE group_id=" + mGroupID + " " +
@@ -470,8 +486,10 @@ public class AppProviderProcesses {
                     i<=Integer.parseInt(mDesiredLevel);
                     i++){
                     Log.d(Constants.LOGCAT,"Words moving to level: "+i);
+                    mPrivateMax=true;
                     processGroup4Words(mAppUserID,mUserGPL.get(5));
                 }
+                mPrivateMax=false;
 
                 mRawSQL="UPDATE app_users_activity_variable_values " +
                         "SET number_correct_in_a_row=12 " +
@@ -485,8 +503,10 @@ public class AppProviderProcesses {
                     i<=Integer.parseInt(mDesiredLevel);
                     i++){
                     Log.d(Constants.LOGCAT,"Shapes moving to level: "+i);
+                    mPrivateMax=true;
                     processGroup6( mAppUserID,mUserGPL.get(6));
                 }
+                mPrivateMax=false;
                 mRawSQL="UPDATE app_users_activity_variable_values " +
                         "SET number_correct_in_a_row=12 " +
                         "WHERE group_id=" + mGroupID + " " +
@@ -499,8 +519,10 @@ public class AppProviderProcesses {
                     i<=Integer.parseInt(mDesiredLevel);
                     i++){
                     Log.d(Constants.LOGCAT,"Math Operations moving to level: "+i);
+                    mPrivateMax=true;
                     processGroup8MathOperations(mAppUserID,mUserGPL.get(8));
                 }
+                mPrivateMax=false;
                 mRawSQL="UPDATE app_users_activity_variable_values " +
                         "SET number_correct_in_a_row=12 " +
                         "WHERE group_id=" + mGroupID + " " +

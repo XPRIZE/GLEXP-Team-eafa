@@ -356,13 +356,8 @@ public class ActivityRS01 extends ActivitiesMasterParent
             switch(mProcessGuessPosition){
                 case 0:
                 default:{
-                    if(mCorrect){
-                        mAudioDuration=playGeneralAudio("sfx_right");
-                    }else{
-                        mAudioDuration=playGeneralAudio("sfx_wrong");
-                    }
                     mProcessGuessPosition++;
-                    mAudioHandler.postDelayed(processGuess, mAudioDuration+10);
+                    mAudioHandler.postDelayed(processGuess, playCorrectOrNot(mCorrect)+10);
                     break;
                 }
                 case 1:{
@@ -387,11 +382,7 @@ public class ActivityRS01 extends ActivitiesMasterParent
                             mLastActivityData=0;
 
                             lastActivityDataHandler.postDelayed(returnToActivities_Platorm,10);
-                            findViewById(R.id.activityMainPart)
-                                    .setVisibility(LinearLayout.INVISIBLE);
-                            findViewById(R.id.activityMainPart)
-                                    .setAnimation(AnimationUtils.loadAnimation(
-                                            getApplicationContext(), R.anim.fade_out));
+                            fadeInOrOutScreenInActivity(false);
 
                         }
                     }else{
@@ -667,7 +658,6 @@ public class ActivityRS01 extends ActivitiesMasterParent
 
         mAllSyllables=new ArrayList<>();
         mSyllableNumber=0;
-        int mNumberCorrectInARow=Constants.INA_ROW_CORRECT;
         if(mCursor.moveToFirst()){
             do {
                 mAllSyllables.add(new ArrayList<String>());
@@ -688,10 +678,7 @@ public class ActivityRS01 extends ActivitiesMasterParent
                 mAllSyllables.get(mSyllableNumber).add(mCursor.getString(
                         mCursor.getColumnIndex("syllable_sister_id"))); //7
 
-                mNumberCorrectInARow=(mNumberCorrectInARow>Integer.parseInt(
-                        mAllSyllables.get(mSyllableNumber).get(5)))
-                        ? Integer.parseInt(mAllSyllables.get(mSyllableNumber).get(5))
-                        :mNumberCorrectInARow;
+
                 mSyllableNumber++;
             }while(mCursor.moveToNext());
         }

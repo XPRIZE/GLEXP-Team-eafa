@@ -16,9 +16,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 
 /**
@@ -235,9 +233,12 @@ public class Activities_Platform extends ActivitiesMasterParent
                         mCurrentActivities.get(mActivityCount).add(data.getString(
                                 data.getColumnIndex("activity_name"))); //1
                         mCurrentActivities.get(mActivityCount).add(data.getString(
-                                data.getColumnIndex("activity_img"))); //2
-
-                        if(Integer.parseInt(mCurrentGSP.get("phase_id"))>= Integer.parseInt(
+                                data.getColumnIndex("activity_img")));
+                         int mPhaseID = Integer.parseInt(mCurrentGSP.get("phase_id"));
+                        if(data.getString(data.getColumnIndex("activity_type")).equals("RS")){
+                            mPhaseID = 2;
+                        }
+                        if(mPhaseID>= Integer.parseInt(
                                 data.getString(data.getColumnIndex("minphase_id")))){
                             mCurrentActivities.get(mActivityCount).add("1"); //3
                         }else{
@@ -425,9 +426,17 @@ public class Activities_Platform extends ActivitiesMasterParent
      @Override
      public void onLoaderReset(Loader<Cursor> loader) { }
 
+
+    /**
+     * Tests is variables are possibly met to make reward cup visible
+     * called in Activities_Platform->displayScreen()
+     * @param mPosition referring to which activity location is called
+     * @return true is reward is visible
+     */
     private boolean visibleReward(int mPosition){
         if(((mCurrentGSP.get("group_id").equals("4") ||
-                mCurrentGSP.get("group_id").equals("6")
+                (mCurrentGSP.get("group_id").equals("6") && (mPosition!=5
+                        ||  Integer.parseInt(mCurrentGSP.get("current_level"))>6))
                 || mCurrentGSP.get("group_id").equals("3")) &&
                 Integer.parseInt(mCurrentActivities.get(mPosition).get(5))
                         >=Constants.INA_ROW_CORRECT_WORDS)
@@ -446,8 +455,10 @@ public class Activities_Platform extends ActivitiesMasterParent
         }
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////////////
 
+    /**
+     * displayScreen()
+     */
     protected void displayScreen(){
 
 
@@ -460,13 +471,29 @@ public class Activities_Platform extends ActivitiesMasterParent
             findViewById(R.id.btnVideo).setAlpha(1.0f);
         }
 
+
+        /*
+        goes through all the activities and set what the reward cup image will be depending on the
+        group currently being used in app. Then decides if reward mug should be shown or not in
+        following switch statement.
+         */
         for(int i=0; i<mCurrentActivities.size(); i++){
             String imageName=mCurrentActivities.get(i).get(2)
                     .replace(".jpg", "").replace(".png", "");
 
             Class<drawable> res = R.drawable.class;
-            int drawableId;
+            int drawableId=0;
             Field field;
+            boolean mValidImage;
+            try {
+                field = res.getField(imageName);
+                drawableId = field.getInt(null);
+                mValidImage=true;
+            }catch (Exception e) {
+                mValidImage=false;
+                Log.e("MyTag", "Failure to get drawable id.", e);
+            }
+
             if(mCurrentGSP.get("group_id").equals("2")){
                 ((ImageView) findViewById(R.id.rewardCup1)).setImageDrawable(
                         ContextCompat.getDrawable(this,drawable.btn_award_red));
@@ -507,9 +534,14 @@ public class Activities_Platform extends ActivitiesMasterParent
                 ((ImageView) findViewById(R.id.rewardCup6)).setImageDrawable(
                         ContextCompat.getDrawable(this,drawable.btn_award_orange));
             }
+
+            /*
+             switch(i)
+             the i is the current locaiton of activity Id clicked
+             */
             switch(i){
                 default:
-                case 0:{
+                case 0:
                     findViewById(R.id.activityIcon1).setTag(mCurrentActivities.get(i));
                     if(mCurrentActivities.get(i).get(3).equals("0")){
                         findViewById(R.id.activityIcon1).setAlpha(0.5f);
@@ -542,51 +574,30 @@ public class Activities_Platform extends ActivitiesMasterParent
                         }
                     }
 
-                    try{
-                        field = res.getField(imageName);
-                        drawableId = field.getInt(null);
+                    if(mValidImage){
                         ((ImageView) findViewById(R.id.activityIcon1)).setImageResource(drawableId);
-
-                    }catch (Exception e) {
-                        Log.e("MyTag", "Failure to get drawable id.", e);
                     }
                     break;
-                }
-                case 1:{
+                case 1:
                      findViewById(R.id.activityIcon2).setTag(mCurrentActivities.get(i));
                     if(mCurrentActivities.get(i).get(3).equals("0")){
                         findViewById(R.id.activityIcon2).setAlpha(0.5f);
                         findViewById(R.id.rewardCup2).setVisibility(ImageView.INVISIBLE);
                     }else{
                         findViewById(R.id.activityIcon2).setAlpha(1.0f);
-                        if(((mCurrentGSP.get("group_id").equals("4")
-                                || mCurrentGSP.get("group_id").equals("6")
-                                || mCurrentGSP.get("group_id").equals("3"))
-                                && Integer.parseInt(mCurrentActivities.get(i).get(5))
-                                >=Constants.INA_ROW_CORRECT_WORDS)
-                                || (mCurrentGSP.get("group_id").equals("8")
-                                && Integer.parseInt(mCurrentActivities.get(i).get(5))
-                                >=Constants.MATH_OPERATIONS_INA_ROW_CORRECT)
-                                || (Integer.parseInt(mCurrentActivities.get(i).get(5))
-                                >=Constants.INA_ROW_CORRECT)
-                                && !mCurrentGSP.get("group_id").equals("8")){
+                        if(visibleReward(i)){
                             findViewById(R.id.rewardCup2).setVisibility(ImageView.VISIBLE);
                         }else{
                             findViewById(R.id.rewardCup2).setVisibility(ImageView.INVISIBLE);
                         }
                     }
 
-                    try{
-                        field = res.getField(imageName);
-                        drawableId = field.getInt(null);
-                        ((ImageView) findViewById(R.id.activityIcon2)).setImageResource(drawableId);
 
-                    }catch (Exception e) {
-                        Log.e("MyTag", "Failure to get drawable id.", e);
+                    if(mValidImage){
+                        ((ImageView) findViewById(R.id.activityIcon2)).setImageResource(drawableId);
                     }
                     break;
-                }
-                case 2:{
+                case 2:
                      findViewById(R.id.activityIcon3).setTag(mCurrentActivities.get(i));
                     if(mCurrentActivities.get(i).get(3).equals("0")){
                         findViewById(R.id.activityIcon3).setAlpha(0.5f);
@@ -602,17 +613,12 @@ public class Activities_Platform extends ActivitiesMasterParent
                         }
                     }
 
-                    try{
-                        field = res.getField(imageName);
-                        drawableId = field.getInt(null);
-                        ((ImageView) findViewById(R.id.activityIcon3)).setImageResource(drawableId);
 
-                    }catch (Exception e) {
-                        Log.e("MyTag", "Failure to get drawable id.", e);
+                    if(mValidImage){
+                        ((ImageView) findViewById(R.id.activityIcon3)).setImageResource(drawableId);
                     }
                     break;
-                }
-                case 3:{
+                case 3:
 
                      findViewById(R.id.activityIcon4).setTag(mCurrentActivities.get(i));
                     if(mCurrentActivities.get(i).get(3).equals("0")){
@@ -620,17 +626,7 @@ public class Activities_Platform extends ActivitiesMasterParent
                         findViewById(R.id.rewardCup4).setVisibility(ImageView.INVISIBLE);
                     }else{
                         findViewById(R.id.activityIcon4).setAlpha(1.0f);
-                        if(((mCurrentGSP.get("group_id").equals("4") ||
-                                mCurrentGSP.get("group_id").equals("6")
-                                || mCurrentGSP.get("group_id").equals("3"))&&
-                                Integer.parseInt(mCurrentActivities.get(i).get(5))
-                                        >=Constants.INA_ROW_CORRECT_WORDS)
-                                || (mCurrentGSP.get("group_id").equals("8")
-                                && Integer.parseInt(mCurrentActivities.get(i).get(5))
-                                >=Constants.MATH_OPERATIONS_INA_ROW_CORRECT)
-                                || (Integer.parseInt(mCurrentActivities.get(i).get(5))
-                                >=Constants.INA_ROW_CORRECT)
-                                && !mCurrentGSP.get("group_id").equals("8")){
+                        if(visibleReward(i)){
                             findViewById(R.id.rewardCup4)
                                     .setVisibility(ImageView.VISIBLE);
                         }else{
@@ -639,35 +635,18 @@ public class Activities_Platform extends ActivitiesMasterParent
                         }
                     }
 
-                    try{
-                        field = res.getField(imageName);
-                        drawableId = field.getInt(null);
-                        ((ImageView) findViewById(R.id.activityIcon4))
-                                .setImageResource(drawableId);
-
-                    }catch (Exception e) {
-                        Log.e("MyTag", "Failure to get drawable id.", e);
+                    if(mValidImage) {
+                        ((ImageView) findViewById(R.id.activityIcon4)).setImageResource(drawableId);
                     }
                     break;
-                }
-                case 4:{
+                case 4:
                      findViewById(R.id.activityIcon5).setTag(mCurrentActivities.get(i));
                     if(mCurrentActivities.get(i).get(3).equals("0")){
                         findViewById(R.id.activityIcon5).setAlpha(0.5f);
                         findViewById(R.id.rewardCup5).setVisibility(ImageView.INVISIBLE);
                     }else{
                         findViewById(R.id.activityIcon5).setAlpha(1.0f);
-                        if(((mCurrentGSP.get("group_id").equals("4") ||
-                                mCurrentGSP.get("group_id").equals("6")
-                                || mCurrentGSP.get("group_id").equals("3") )&&
-                                Integer.parseInt(mCurrentActivities.get(i).get(5))
-                                        >=Constants.INA_ROW_CORRECT_WORDS)
-                                || (mCurrentGSP.get("group_id").equals("8")
-                                && Integer.parseInt(mCurrentActivities.get(i).get(5))
-                                >=Constants.MATH_OPERATIONS_INA_ROW_CORRECT)
-                                || (Integer.parseInt(mCurrentActivities.get(i).get(5))
-                                >=Constants.INA_ROW_CORRECT)
-                                && !mCurrentGSP.get("group_id").equals("8")){
+                        if(visibleReward(i)){
                             findViewById(R.id.rewardCup5).setVisibility(ImageView.VISIBLE);
                         }else{
                             findViewById(R.id.rewardCup5)
@@ -675,17 +654,11 @@ public class Activities_Platform extends ActivitiesMasterParent
                         }
                     }
 
-                    try{
-                        field = res.getField(imageName);
-                        drawableId = field.getInt(null);
+                    if(mValidImage){
                         ((ImageView) findViewById(R.id.activityIcon5)).setImageResource(drawableId);
-
-                    }catch (Exception e) {
-                        Log.e("MyTag", "Failure to get drawable id.", e);
                     }
                     break;
-                }
-                case 5:{
+                case 5:
                     if(mCurrentActivities.get(5).get(0).equals("59")
                             && Integer.parseInt(mCurrentGSP.get("current_level"))<7){
                         mCurrentActivities.get(i).set(3,"0");
@@ -698,7 +671,7 @@ public class Activities_Platform extends ActivitiesMasterParent
                         findViewById(R.id.rewardCup6).setVisibility(ImageView.INVISIBLE);
                     }else{
                         findViewById(R.id.activityIcon6).setAlpha(1.0f);
-
+/*
                         if(((mCurrentGSP.get("group_id").equals("4") ||
                                 (mCurrentGSP.get("group_id").equals("6")
                                         && Integer.parseInt(mCurrentGSP.get("current_level"))>6)
@@ -711,26 +684,18 @@ public class Activities_Platform extends ActivitiesMasterParent
                                 || (Integer.parseInt(mCurrentActivities.get(i).get(5))
                                 >=Constants.INA_ROW_CORRECT)
                                 && !mCurrentGSP.get("group_id").equals("8")){
-
+                            */
+                        if(visibleReward(i)){
                             findViewById(R.id.rewardCup6).setVisibility(ImageView.VISIBLE);
                         }else{
                             findViewById(R.id.rewardCup6).setVisibility(ImageView.INVISIBLE);
                         }
                     }
 
-                    try{
-                        field = res.getField(imageName);
-                        drawableId = field.getInt(null);
+                    if(mValidImage){
                         ((ImageView) findViewById(R.id.activityIcon6)).setImageResource(drawableId);
-
-                    }catch (Exception e) {
-                        Log.e("MyTag", "Failure to get drawable id.", e);
                     }
                     break;
-                }
-
-
-
             }//end switch(i){
         }//end for(int i=0; i<mCurrentActivities.size(); i++){
 
@@ -745,8 +710,7 @@ public class Activities_Platform extends ActivitiesMasterParent
 
         findViewById(R.id.btnVideo).setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                if(!(mCurrentActivities.get(0).get(3).equals("0")
-                        && mCurrentGSP.get("group_id").equals("3"))
+                if( mCurrentGSP.get("group_id").equals("3")
                         || !mCurrentActivities.get(0).get(0).equals("47")) {
                     moveToVideo();
                 }
@@ -824,8 +788,10 @@ public class Activities_Platform extends ActivitiesMasterParent
 
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////////////
-
+    /**
+     * Called in activityButtonListener activityIcon* is clicked to then open associated activity
+     * @param imageTag is associated activity_id from image tag
+     */
     private void processActivityButton(Object imageTag){
         int clickedActivityID= Integer.parseInt(imageTag.toString());
 
@@ -835,341 +801,289 @@ public class Activities_Platform extends ActivitiesMasterParent
 
         appData.setCurrentActivity(currentActivity);
 
+        Intent mMain;
         switch(clickedActivityID){
             default:{
                 break;
             }
-            case 6:{
+            case 6:
                 appData.setCurrentActivityName("ActivityLT03");
-                Intent main = new Intent(this,ActivityLT03.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivityLT03.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }
-            case 20:{
+            case 20:
                 appData.setCurrentActivityName("ActivityLT05");
-                Intent main = new Intent(this,ActivityLT05.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivityLT05.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }//end case 20 LT05
-            case 22:{
+            case 22:
                 appData.setCurrentActivityName("ActivityLT01");
-                Intent main = new Intent(this,ActivityLT01.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivityLT01.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }//end case 22 TL01
-            case 2:{
+            case 2:
                 appData.setCurrentActivityName("ActivityLT02");
-                Intent main = new Intent(this,ActivityLT02.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivityLT02.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }//end case 2 LT02
-            case 4:{
+            case 4:
                 appData.setCurrentActivityName("ActivityLT06");
-                Intent main = new Intent(this,ActivityLT06.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivityLT06.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }//end case 2 LT02
-            case 8:{
+            case 8:
                 appData.setCurrentActivityName("ActivityLT04");
-                Intent main = new Intent(this,ActivityLT04.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivityLT04.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }//end case 8 LT04
-            case 23:{
+            case 23:
                 appData.setCurrentActivityName("ActivitySD01");
-                Intent main = new Intent(this,ActivitySD01.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivitySD01.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }
-            case 15:{
+            case 15:
                 appData.setCurrentActivityName("ActivitySD02");
-                Intent main = new Intent(this,ActivitySD02.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivitySD02.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }//end case 15 ActivitySD02
-            case 17:{
+            case 17:
                 appData.setCurrentActivityName("ActivitySD03");
-                Intent main = new Intent(this,ActivitySD03.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivitySD03.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }//end case 17 ActivitySD03
-            case 24:{
+            case 24:
                 appData.setCurrentActivityName("ActivitySD06");
-                Intent main = new Intent(this,ActivitySD06.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivitySD06.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }//end case 17 ActivitySD03
-            case 35:{
+            case 35:
                 appData.setCurrentActivityName("ActivitySD07");
-                Intent main = new Intent(this,ActivitySD07.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivitySD07.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }//end case 35 ActivitySD07
-            case 25:{
+            case 25:
                 appData.setCurrentActivityName("ActivitySD04");
-                Intent main = new Intent(this,ActivitySD04.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivitySD04.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }//end case 17 ActivitySD03
-
-            case 29:{
+            case 29:
                 mCurrentGSP.put("phase_id","1");
                 appData.setCurrentActivityName("ActivityCS01");
-                Intent main = new Intent(this,ActivityCS01.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivityCS01.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }//end case 29 ActivityCS01
-            case 30:{
+            case 30:
                 mCurrentGSP.put("phase_id","1");
                 appData.setCurrentActivityName("ActivityCS02");
-                Intent main = new Intent(this,ActivityCS02.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivityCS02.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }//end case 30 ActivityCS02
-
-            case 32:{
+            case 32:
                 mCurrentGSP.put("phase_id","2");
                 appData.setCurrentGroup_Section_Phase(mCurrentGSP.get("group_id"),
                         mCurrentGSP.get("phase_id"),
                         mCurrentGSP.get("section_id"),
                         mCurrentGSP.get("current_level"));
                 appData.setCurrentActivityName("ActivityRS01");
-                Intent main = new Intent(this,ActivityRS01.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivityRS01.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }//end case 32 ActivityRS01
-            case 33:{
+            case 33:
                 mCurrentGSP.put("phase_id","2");
                 appData.setCurrentGroup_Section_Phase(mCurrentGSP.get("group_id"),
                         mCurrentGSP.get("phase_id"),
                         mCurrentGSP.get("section_id"),
                         mCurrentGSP.get("current_level"));
                 appData.setCurrentActivityName("ActivityRS02");
-                Intent main = new Intent(this,ActivityRS02.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivityRS02.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }//end case 33 ActivityRS02
-            case 34:{
+            case 34:
                 mCurrentGSP.put("phase_id","2");
                 appData.setCurrentGroup_Section_Phase(mCurrentGSP.get("group_id"), mCurrentGSP.get("phase_id"),
                         mCurrentGSP.get("section_id"), mCurrentGSP.get("current_level"));
                 appData.setCurrentActivityName("ActivityRS03");
-                Intent main = new Intent(this,ActivityRS03.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivityRS03.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }//end case 34 ActivityRS03
-            case 41:{
+            case 41:
                 appData.setCurrentActivityName("ActivityWD01");
-                Intent main = new Intent(this,ActivityWD01.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivityWD01.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }//end case 41 ActivityWD01
-            case 42:{
+            case 42:
                 appData.setCurrentActivityName("ActivityWD02");
-                Intent main = new Intent(this,ActivityWD02.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivityWD02.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }//end case 42 ActivityWD02
-            case 43:{
+            case 43:
                 appData.setCurrentActivityName("ActivityWD03");
-                Intent main = new Intent(this,ActivityWD03.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivityWD03.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }//end case 43 ActivityWD03
-            case 44:{
+            case 44:
                 appData.setCurrentActivityName("ActivityWD04");
-                Intent main = new Intent(this,ActivityWD04.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivityWD04.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }//end case 44 ActivityWD04
-            case 45:{
+            case 45:
                 appData.setCurrentActivityName("ActivityWD05");
-                Intent main = new Intent(this,ActivityWD05.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivityWD05.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }//end case 45 ActivityWD05
-            case 46:{
+            case 46:
                 appData.setCurrentActivityName("ActivityWD06");
-                Intent main = new Intent(this,ActivityWD06.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivityWD06.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }//end case 46 ActivityWD06
-            case 47:{
+            case 47:
                 mCurrentGSP.put("phase_id","2");
                 appData.setCurrentGroup_Section_Phase(mCurrentGSP.get("group_id"), mCurrentGSP.get("phase_id"),
                         mCurrentGSP.get("section_id"), mCurrentGSP.get("current_level"));
                 appData.setCurrentActivityName("ActivityRS04");
-                Intent main = new Intent(this,ActivityRS04.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivityRS04.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }//end case 46 ActivityWD06
-            case 54:{
+            case 54:
                 appData.setCurrentActivityName("ActivitySH01");
-                Intent main = new Intent(this,ActivitySH01.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivitySH01.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }
-            case 55:{
+            case 55:
                 appData.setCurrentActivityName("ActivitySH02");
-                Intent main = new Intent(this,ActivitySH02.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivitySH02.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }
-            case 56:{
+            case 56:
                 appData.setCurrentActivityName("ActivitySH03");
-                Intent main = new Intent(this,ActivitySH03.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivitySH03.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }
-            case 57:{
+            case 57:
                 appData.setCurrentActivityName("ActivitySH04");
-                Intent main = new Intent(this,ActivitySH04.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivitySH04.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }
-            case 58:{
+            case 58:
                 appData.setCurrentActivityName("ActivitySH05");
-                Intent main = new Intent(this,ActivitySH05.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivitySH05.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }
-            case 59:{
+            case 59:
                 appData.setCurrentActivityName("ActivitySH06");
-                Intent main = new Intent(this,ActivitySH06.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivitySH06.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }
-            case 48:{
+            case 48:
                 appData.setCurrentActivityName("ActivityQN01");
-                Intent main = new Intent(this,ActivityQN01.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivityQN01.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }
-            case 49:{
+            case 49:
                 appData.setCurrentActivityName("ActivityQN02");
-                Intent main = new Intent(this,ActivityQN02.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivityQN02.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }
-            case 50:{
+            case 50:
                 appData.setCurrentActivityName("ActivityQN03");
-                Intent main = new Intent(this,ActivityQN03.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivityQN03.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }
-            case 51:{
+            case 51:
                 appData.setCurrentActivityName("ActivityQN04");
-                Intent main = new Intent(this,ActivityQN04.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivityQN04.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }
-            case 52:{
+            case 52:
                 appData.setCurrentActivityName("ActivityQN05");
-                Intent main = new Intent(this,ActivityQN05.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivityQN05.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }
-            case 53:{
+            case 53:
                 appData.setCurrentActivityName("ActivityQN06");
-                Intent main = new Intent(this,ActivityQN06.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivityQN06.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }
-
-            case 60:{
+            case 60:
                 appData.setCurrentActivityName("ActivityOP01");
-                Intent main = new Intent(this,ActivityOP01.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivityOP01.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }
-            case 61:{
-                /*
-                appData.setCurrentActivityName("ActivityOP02");
-                Intent main = new Intent(this,ActivityOP02.class);
-                 */
+            case 61:
                 appData.setCurrentActivityName("ActivityOP08");
-                Intent main = new Intent(this,ActivityOP08.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivityOP08.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }
-            case 62:{
+            case 62:
                 appData.setCurrentActivityName("ActivityOP03");
-                Intent main = new Intent(this,ActivityOP03.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivityOP03.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }
-            case 63:{
+            case 63:
                 appData.setCurrentActivityName("ActivityOP04");
-                Intent main = new Intent(this,ActivityOP04.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivityOP04.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }
-            case 64:{
+            case 64:
                 appData.setCurrentActivityName("ActivityOP05");
-                Intent main = new Intent(this,ActivityOP05.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivityOP05.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }
-            case 65:{
+            case 65:
                 appData.setCurrentActivityName("ActivityOP06");
-                Intent main = new Intent(this,ActivityOP06.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivityOP06.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }
-            case 67:{
+            case 67:
                 appData.setCurrentActivityName("ActivityQN07");
-                Intent main = new Intent(this,ActivityQN07.class);
-                startActivity(main);
+                mMain = new Intent(this,ActivityQN07.class);
+                startActivity(mMain);
                 finish();
                 break;
-            }
-
         }//end switch(clickedActivityID){
 
     }
-
-
 
 }

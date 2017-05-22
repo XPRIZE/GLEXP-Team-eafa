@@ -341,22 +341,15 @@ public class  ActivityOP02 extends ActivityOPRoot
 
             switch(mProcessGuessPosition){
                 case 0:
-                default:{
-                    if(mCorrect){
-                        mAudioDuration=playGeneralAudio("sfx_right");
-                    }else{
-                        mAudioDuration=playGeneralAudio("sfx_wrong");
-                    }
+                default:
+                    mProcessGuessPosition++;
+                    mAudioHandler.postDelayed(processGuess, playCorrectOrNot(mCorrect)+10);
+                    break;
+                case 1:
                     mProcessGuessPosition++;
                     mAudioHandler.postDelayed(processGuess, mAudioDuration+10);
                     break;
-                }
-                case 1:{
-                    mProcessGuessPosition++;
-                    mAudioHandler.postDelayed(processGuess, mAudioDuration+10);
-                    break;
-                }
-                case 2:{
+                case 2:
 
                     processPoints();
                     guessHandler.removeCallbacks(processGuess);
@@ -374,11 +367,7 @@ public class  ActivityOP02 extends ActivityOPRoot
                             guessHandler.postDelayed(processGuess, 1100);
                         }else{
                             mLastActivityData=0;
-                            findViewById(R.id.activityMainPart)
-                                    .setVisibility(LinearLayout.INVISIBLE);
-                            findViewById(R.id.activityMainPart)
-                                    .setAnimation(AnimationUtils.loadAnimation(
-                                            getApplicationContext(), R.anim.fade_out));
+                            fadeInOrOutScreenInActivity(false);
                             lastActivityDataHandler.postDelayed(returnToActivities_Platorm,10);
                         }
                     }else{
@@ -404,22 +393,19 @@ public class  ActivityOP02 extends ActivityOPRoot
                         }
                     }
                     break;
-                }
-                case 3:{
+                case 3:
                     inBetweenRounds(false);
                     //inBetweenRounds(1);
                     beginRound();
                     guessHandler.removeCallbacks(processGuess);
                     break;
-                }
-                case 4:{
+                case 4:
                     ((ImageView) findViewById(R.id.btnValidate))
                             .setImageResource(R.drawable.btn_validate_on_sm);
                     mValidateAvailable=true;
                     mUsersAnswer = String.valueOf(mAnswer);
                     mFinalNumber.setText(String.valueOf(mAnswer));
                     break;
-                }
             }//switch(mProcessGuessPosition){
         }//public void run(){
     };//end private Runnable processGuess = new Runnable(){

@@ -151,4 +151,7 @@
     <string name="action_color">Color</string>
     <string name="action_save">Save</string>
     <string name="update_online">Update Data to ET4D</string>
+    <string name="StudentName">Student Name</string>
+    <string name="emailForData">Email For Data</string>
+    <string name="emailForDataInfo">Enter an email to send a CSV file consisting of the students progress. In addition an email to ET4D will be in copy. Will send only to ET4D if no email entered.</string>
 </resources>

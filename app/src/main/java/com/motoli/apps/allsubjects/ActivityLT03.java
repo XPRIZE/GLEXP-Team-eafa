@@ -516,7 +516,6 @@ public class ActivityLT03 extends ActivityLTRoot
         ((TextView)findViewById(R.id.letter5)).setText("");
         ((TextView)findViewById(R.id.letter6)).setText("");
 
-        mCurrentGSP=new HashMap<>(appData.getCurrentGroup_Section_Phase());
     }
 
     /**

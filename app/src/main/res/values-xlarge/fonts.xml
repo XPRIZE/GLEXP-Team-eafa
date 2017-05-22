@@ -26,7 +26,8 @@
 
 
     <dimen name="gridText">70sp</dimen>
-    <dimen name="bk02_font_size">14sp</dimen>
+    <dimen name="gridTextSmall">56sp</dimen>
+    <dimen name="bk02_font_size">16sp</dimen>
 
     <dimen name="bk02_font_smallest">25sp</dimen>
     <dimen name="bk02_font_below_normal">34sp</dimen>

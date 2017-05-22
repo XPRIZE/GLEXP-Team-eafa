@@ -782,22 +782,15 @@ public class ActivityQN03 extends ActivitiesMasterParent
 
             switch(mProcessGuessPosition){
                 case 0:
-                default:{
-                    if(mCorrect){
-                        mAudioDuration=playGeneralAudio("sfx_right");
-                    }else{
-                        mAudioDuration=playGeneralAudio("sfx_wrong");
-                    }
+                default:
+                    mProcessGuessPosition++;
+                    mAudioHandler.postDelayed(processGuess, playCorrectOrNot(mCorrect)+10);
+                    break;
+                case 1:
                     mProcessGuessPosition++;
                     mAudioHandler.postDelayed(processGuess, mAudioDuration+10);
                     break;
-                }
-                case 1:{
-                    mProcessGuessPosition++;
-                    mAudioHandler.postDelayed(processGuess, mAudioDuration+10);
-                    break;
-                }
-                case 2:{
+                case 2:
                     mNumbersChosen=0;
                     mCurrentNumberID="";
                     mChosenFrames.set(0, "");
@@ -812,13 +805,7 @@ public class ActivityQN03 extends ActivitiesMasterParent
                         }else{
                             mLastActivityData=0;
                             addPointToAllAvailable();
-
-
-                            findViewById(R.id.activityMainPart)
-                                    .setVisibility(LinearLayout.INVISIBLE);
-                            findViewById(R.id.activityMainPart)
-                                    .setAnimation(AnimationUtils.loadAnimation(
-                                            getApplicationContext(), R.anim.fade_out));
+                            fadeInOrOutScreenInActivity(false);
                             lastActivityDataHandler.postDelayed(returnToActivities_Platorm,10);
                         }
                     }else{
@@ -829,8 +816,7 @@ public class ActivityQN03 extends ActivitiesMasterParent
 
                     }
                     break;
-                }
-                case 3:{
+                case 3:
                     if(mCorrectNumberCount==3) {
                         inBetweenRounds(1);
                         displayScreen();
@@ -842,7 +828,6 @@ public class ActivityQN03 extends ActivitiesMasterParent
                         guessHandler.removeCallbacks(processGuess);
                     }
                     break;
-                }
             }//switch(mProcessGuessPosition){
         }//public void run(){
     };//end private Runnable processGuess = new Runnable(){

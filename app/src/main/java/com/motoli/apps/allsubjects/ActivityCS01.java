@@ -189,6 +189,7 @@ public class ActivityCS01 extends ActivitiesMasterParent
                 }//end   switch (i) {
             }//end for(int i=0;i<mChosenSyllables.size(); i++) {
         }else{
+            mIncorrectInRound++;
             ((ImageView) findViewById(R.id.btnValidate))
                     .setImageResource(R.drawable.btn_validate_no_ok_mic);
             for(int i=0;i<mChosenSyllables.size(); i++) {

@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.motoli.apps.allsubjects"
     android:installLocation="auto"
-    android:versionCode="48"
-    android:versionName="1.31.048" >
+    android:versionCode="52"
+    android:versionName="1.32.003" >
 
     <uses-sdk
         android:minSdkVersion="17"
@@ -367,6 +367,17 @@
             android:logo="@drawable/btn_act_tr01"
             android:screenOrientation="sensorLandscape"
             android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+        <activity
+            android:name="com.motoli.apps.allsubjects.LearnToSpell"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:logo="@drawable/icon_spell"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="67f1db336afedbd45578980709575bd75eaed7d5" />
 
         <service
             android:name="com.squareup.leakcanary.internal.HeapAnalyzerService"

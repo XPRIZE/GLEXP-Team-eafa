@@ -697,24 +697,17 @@ public class ActivityQN06 extends ActivitiesMasterParent
 
             switch(mProcessGuessPosition){
                 case 0:
-                default:{
-                    if(mCorrect){
-                        mAudioDuration=playGeneralAudio("sfx_right");
-                    }else{
-                        mAudioDuration=playGeneralAudio("sfx_wrong");
-                    }
+                default:
                     mProcessGuessPosition++;
-                    mAudioHandler.postDelayed(processGuess, mAudioDuration+10);
+                    mAudioHandler.postDelayed(processGuess, playCorrectOrNot(mCorrect)+10);
                     break;
-                }
-                case 1:{
+                case 1:
                     mAudioDuration=0;
                     //playGeneralAudio(mCurrentNumberAudio);
                     mProcessGuessPosition++;
                     mAudioHandler.postDelayed(processGuess, mAudioDuration+300);
                     break;
-                }
-                case 2:{
+                case 2:
                     mColor=0;
                     clearWrong();
                     mBeingValidated=false;
@@ -735,11 +728,7 @@ public class ActivityQN06 extends ActivitiesMasterParent
                             guessHandler.postDelayed(processGuess, 500);
                         }else{
                             mLastActivityData=0;
-                            findViewById(R.id.activityMainPart)
-                                    .setVisibility(LinearLayout.INVISIBLE);
-                            findViewById(R.id.activityMainPart)
-                                    .setAnimation(AnimationUtils.loadAnimation(
-                                            getApplicationContext(), R.anim.fade_out));
+                            fadeInOrOutScreenInActivity(false);
 
                             lastActivityDataHandler.postDelayed(returnToActivities_Platorm,10);
                         }
@@ -749,12 +738,10 @@ public class ActivityQN06 extends ActivitiesMasterParent
                     }
 
                     break;
-                }
-                case 3: {
+                case 3:
                     beginRound();
                     guessHandler.removeCallbacks(processGuess);
                     break;
-                }
             }//switch(mProcessGuessPosition){
         }//public void run(){
     };

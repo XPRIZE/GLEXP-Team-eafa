@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    >
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/activityMainPart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
+
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/iconSpace"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight=".15"
+            android:onClick="backButtonClicked"
+            android:src="@drawable/btn_move_bluelight" />
+        <Space
+            android:id="@+id/iconSpace"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/btnBack"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintVertical_weight="1" />
+
+
+        <android.support.constraint.Guideline
+            android:id="@+id/verticalTopPoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".01" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/verticalUpperTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".1" />
+
+        <ImageView
+            android:id="@+id/wordImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/bird_no_image_left_close"
+            app:layout_constraintBottom_toTopOf="@+id/verticalMidPoint"
+            app:layout_constraintLeft_toRightOf="@+id/leftLetters"
+            app:layout_constraintRight_toLeftOf="@+id/horizontalLeftQuarter"
+            app:layout_constraintTop_toBottomOf="@+id/verticalTopPoint" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/bottomWordImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".35" />
+
+        <TextView
+            android:id="@+id/wordActual"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="top|center_horizontal"
+            android:text="TextView"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/wordTextSpell"
+            android:visibility="invisible"
+            app:layout_constraintRight_toLeftOf="@+id/btnValidate"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread"
+            app:layout_constraintVertical_weight=".5"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="9dp" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/horizontalLeftQuarter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".3" />
+
+        <TextView
+            android:id="@+id/wordText"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="top|left"
+            android:paddingBottom="20dp"
+            android:paddingLeft="10dp"
+            android:text="TextView"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/wordTextSpell"
+            app:layout_constraintBottom_toTopOf="@+id/verticalLowerTop"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toLeftOf="@+id/horizontalLeftQuarter"
+            app:layout_constraintRight_toLeftOf="@+id/rightLetters"
+            app:layout_constraintTop_toTopOf="@+id/verticalUpperTop"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/verticalLowerTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".25" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/verticalUpperLowerTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".15" />
+
+        <ImageView
+            android:id="@+id/restart"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:onClick="restartWord"
+            android:padding="20dp"
+            android:scaleType="fitStart"
+            android:src="@drawable/btn_calc_refresh"
+            app:layout_constraintBottom_toTopOf="@+id/verticalMidPoint"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/horizontalLeftQuarter"
+            app:layout_constraintRight_toLeftOf="@+id/backspace"
+            app:layout_constraintTop_toBottomOf="@+id/verticalLowerTop" />
+
+
+        <ImageView
+            android:id="@+id/backspace"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:onClick="deleteLetter"
+            android:padding="20dp"
+            android:scaleType="fitStart"
+            android:src="@drawable/btn_calc_arrow"
+            app:layout_constraintBottom_toTopOf="@+id/verticalMidPoint"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/restart"
+            app:layout_constraintRight_toRightOf="@+id/btnValidate"
+            app:layout_constraintTop_toBottomOf="@+id/verticalLowerTop" />
+
+        <ImageView
+            android:id="@+id/btnValidate"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:paddingBottom="20dp"
+            android:paddingTop="40dp"
+            android:scaleType="fitEnd"
+            android:src="@drawable/btn_validate_assess_no_ok"
+            app:layout_constraintBottom_toTopOf="@+id/verticalMidPoint"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/backspace"
+            app:layout_constraintRight_toRightOf="@+id/rightLetters"
+            app:layout_constraintTop_toTopOf="@+id/verticalUpperLowerTop" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/leftLetters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".01" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/rightLetters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".99" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/verticalMidPoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".42" />
+
+        <GridView
+            android:id="@+id/lettersGrid"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:listSelector="@android:color/transparent"
+            android:numColumns="8"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/verticalMidPoint"
+            app:layout_constraintVertical_bias="1.0" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</FrameLayout>

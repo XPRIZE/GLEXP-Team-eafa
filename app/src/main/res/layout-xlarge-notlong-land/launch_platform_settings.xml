@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/settingFrames"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/launchpagbck">
+
+    <RelativeLayout
+        android:id="@+id/spinnerWaiting"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="false"
+            android:text="Please Wait"
+            android:textColor="@color/application_syllables"
+            android:textSize="56sp" />
+
+    </RelativeLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/settingsPassword"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible">
+
+        <TextView
+            android:id="@+id/passwordLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:paddingBottom="10dp"
+            android:paddingLeft="40dp"
+            android:text="@string/admin_password_below"
+            android:textColor="@color/normalBlack"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/adminPassword"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/horizontalPasswordMidPoint" />
+
+        <EditText
+            android:id="@+id/adminPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/rounded_text_box"
+            android:ems="10"
+            android:inputType="text"
+            android:textColor="@color/normalBlack"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/verticalPasswordMidPoint"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/horizontalPasswordMidPoint" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/horizontalPasswordMidPoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5"
+            tools:layout_editor_absoluteX="512dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <TextView
+            android:id="@+id/incorrectPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:alpha="0"
+            android:gravity="bottom|center_horizontal"
+            android:paddingBottom="10dp"
+            android:text="@string/admin_password_incorrect"
+            android:textColor="@color/incorrect_red"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/passwordButton"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/horizontalPasswordMidPoint" />
+
+        <Button
+            android:id="@+id/passwordButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:onClick="submitAdminPassword"
+            android:text="@string/submit_admin_password"
+            app:layout_constraintBottom_toTopOf="@+id/verticalPasswordMidPoint"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/horizontalPasswordMidPoint" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/verticalPasswordMidPoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="360dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/coming_soon"
+            android:textColor="@color/normalBlack"
+            android:textSize="@dimen/coming_soon_font"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/verticalPasswordMidPoint" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/settingsPage"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/horizontalMidPoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5"
+            tools:layout_editor_absoluteX="512dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <TextView
+            android:id="@+id/studentNameLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/StudentName"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/userName"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/horizontalMidPoint"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/userName"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/rounded_text_box"
+            android:inputType="textPersonName"
+            android:text="Name"
+            android:textColor="@color/regularBlack"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/belowUserName"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/horizontalMidPoint"
+            app:layout_constraintTop_toBottomOf="@+id/studentNameLabel" />
+
+        <Button
+            android:id="@+id/userNameSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:scaleType="fitStart"
+            android:src="@drawable/btn_rs03_circle"
+            android:text="@string/submit"
+            app:layout_constraintBottom_toTopOf="@+id/belowUserName"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintLeft_toLeftOf="@+id/horizontalMidPoint"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/studentNameLabel" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/belowUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.15"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="108dp" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:src="@color/darkGray"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@+id/belowUserName" />
+
+        <TextView
+            android:id="@+id/spinnerLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="center_vertical"
+            android:text="Choose Levels"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/belowSpinnerLabel"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/belowUserName"
+            app:layout_constraintVertical_weight=".2" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/belowSpinnerLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.2"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="144dp" />
+
+        <Spinner
+            android:id="@+id/lowerCaseLevels"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="4dp"
+            android:layout_weight=".5"
+
+            android:background="@android:drawable/btn_dropdown"
+            android:gravity="center_vertical|center_horizontal"
+            android:spinnerMode="dropdown"
+            app:layout_constraintBottom_toTopOf="@+id/lowerCaseLabel"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/upperCaseLevels"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintTop_toTopOf="@+id/belowSpinnerLabel" />
+
+        <TextView
+            android:id="@+id/lowerCaseLabel"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight=".5"
+            android:gravity="top|center_horizontal"
+            android:text="Lowercase"
+            android:textColor="@color/regularBlack"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/belowSpinners"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/upperCaseLabel"
+            app:layout_constraintTop_toBottomOf="@+id/lowerCaseLevels"
+            app:layout_constraintVertical_weight=".5" />
+
+        <Spinner
+            android:id="@+id/upperCaseLevels"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="4dp"
+            android:layout_weight=".5"
+
+            android:alpha="0.5"
+            android:background="@android:drawable/btn_dropdown"
+            android:gravity="center_vertical|center_horizontal"
+            android:spinnerMode="dropdown"
+            app:layout_constraintBottom_toTopOf="@+id/upperCaseLabel"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/lowerCaseLevels"
+            app:layout_constraintRight_toLeftOf="@+id/phonicLevels"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintTop_toTopOf="@+id/belowSpinnerLabel" />
+
+        <TextView
+            android:id="@+id/upperCaseLabel"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight=".5"
+            android:gravity="top|center_horizontal"
+            android:text="Uppercase"
+            android:textColor="@color/regularBlack"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/belowSpinners"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/lowerCaseLabel"
+            app:layout_constraintRight_toLeftOf="@+id/phonicLabel"
+            app:layout_constraintTop_toBottomOf="@+id/upperCaseLevels"
+            app:layout_constraintVertical_weight=".5" />
+
+        <Spinner
+            android:id="@+id/phonicLevels"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="4dp"
+            android:layout_weight=".5"
+
+            android:alpha="0.5"
+            android:background="@android:drawable/btn_dropdown"
+            android:gravity="center_vertical|center_horizontal"
+            android:spinnerMode="dropdown"
+            app:layout_constraintBottom_toTopOf="@+id/phonicLabel"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/upperCaseLevels"
+            app:layout_constraintRight_toLeftOf="@+id/syllableLevels"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintTop_toTopOf="@+id/belowSpinnerLabel" />
+
+        <TextView
+            android:id="@+id/phonicLabel"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight=".5"
+            android:gravity="top|center_horizontal"
+            android:text="Phonics"
+            android:textColor="@color/regularBlack"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/belowSpinners"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/upperCaseLabel"
+            app:layout_constraintRight_toLeftOf="@+id/syllableLabel"
+            app:layout_constraintTop_toBottomOf="@+id/phonicLevels"
+            app:layout_constraintVertical_weight=".5" />
+
+        <Spinner
+            android:id="@+id/syllableLevels"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="4dp"
+            android:layout_weight=".5"
+
+            android:alpha="0.5"
+            android:background="@android:drawable/btn_dropdown"
+            android:gravity="center_vertical|center_horizontal"
+            android:spinnerMode="dropdown"
+            app:layout_constraintBottom_toTopOf="@+id/syllableLabel"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/phonicLevels"
+            app:layout_constraintRight_toLeftOf="@+id/wordLevels"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintTop_toTopOf="@+id/belowSpinnerLabel" />
+
+        <TextView
+            android:id="@+id/syllableLabel"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight=".5"
+            android:gravity="top|center_horizontal"
+            android:text="Syllables"
+            android:textColor="@color/regularBlack"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/belowSpinners"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/phonicLabel"
+            app:layout_constraintRight_toLeftOf="@+id/wordsLabel"
+            app:layout_constraintTop_toBottomOf="@+id/syllableLevels"
+            app:layout_constraintVertical_weight=".5" />
+
+        <Spinner
+            android:id="@+id/wordLevels"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="4dp"
+            android:layout_weight=".5"
+
+            android:alpha="0.5"
+            android:background="@android:drawable/btn_dropdown"
+            android:gravity="center_vertical|center_horizontal"
+            android:spinnerMode="dropdown"
+            app:layout_constraintBottom_toTopOf="@+id/wordsLabel"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/syllableLevels"
+            app:layout_constraintRight_toLeftOf="@+id/shapeLevels"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintTop_toTopOf="@+id/belowSpinnerLabel" />
+
+        <TextView
+            android:id="@+id/wordsLabel"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight=".5"
+            android:gravity="top|center_horizontal"
+            android:text="Words"
+            android:textColor="@color/regularBlack"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/belowSpinners"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/syllableLabel"
+            app:layout_constraintRight_toLeftOf="@+id/shapesLabel"
+            app:layout_constraintTop_toBottomOf="@+id/wordLevels"
+            app:layout_constraintVertical_weight=".5" />
+
+        <Spinner
+            android:id="@+id/shapeLevels"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="4dp"
+            android:layout_weight=".5"
+
+            android:alpha="0.5"
+            android:background="@android:drawable/btn_dropdown"
+            android:gravity="center_vertical|center_horizontal"
+            android:spinnerMode="dropdown"
+            app:layout_constraintBottom_toTopOf="@+id/shapesLabel"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/wordLevels"
+            app:layout_constraintRight_toLeftOf="@+id/mathOperationsLevels"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintTop_toTopOf="@+id/belowSpinnerLabel" />
+
+        <TextView
+            android:id="@+id/shapesLabel"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight=".5"
+            android:gravity="top|center_horizontal"
+            android:text="Shapes"
+            android:textColor="@color/regularBlack"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/belowSpinners"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/wordsLabel"
+            app:layout_constraintRight_toLeftOf="@+id/mathOperationsLabel"
+            app:layout_constraintTop_toBottomOf="@+id/shapeLevels"
+            app:layout_constraintVertical_weight=".5" />
+
+        <Spinner
+            android:id="@+id/mathOperationsLevels"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="4dp"
+            android:layout_weight=".5"
+
+            android:alpha="0.5"
+            android:background="@android:drawable/btn_dropdown"
+            android:gravity="center_vertical|center_horizontal"
+            android:spinnerMode="dropdown"
+            app:layout_constraintBottom_toTopOf="@+id/mathOperationsLabel"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/shapeLevels"
+            app:layout_constraintRight_toLeftOf="@+id/endOfSpinners"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintTop_toTopOf="@+id/belowSpinnerLabel" />
+
+        <TextView
+            android:id="@+id/mathOperationsLabel"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight=".5"
+            android:gravity="top|center_horizontal"
+            android:text="Math Operations"
+            android:textColor="@color/regularBlack"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/belowSpinners"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/shapesLabel"
+            app:layout_constraintRight_toLeftOf="@+id/endOfSpinners"
+            app:layout_constraintTop_toBottomOf="@+id/mathOperationsLevels"
+            app:layout_constraintVertical_weight=".5" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/endOfSpinners"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.9"
+            tools:layout_editor_absoluteY="0dp"
+            tools:layout_editor_absoluteX="922dp" />
+
+        <Button
+            android:id="@+id/reset"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="5dp"
+            android:onClick="resetLevels"
+            android:text="@string/reset"
+            app:layout_constraintBottom_toTopOf="@+id/submit"
+            app:layout_constraintLeft_toRightOf="@+id/endOfSpinners"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/belowSpinnerLabel" />
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_margin="5dp"
+            android:onClick="updateLevels"
+            android:tag="1"
+            android:text="@string/submit"
+            app:layout_constraintBottom_toTopOf="@+id/belowSpinners"
+            app:layout_constraintLeft_toRightOf="@+id/endOfSpinners"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/reset" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/belowSpinners"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".35"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="360dp" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            app:layout_constraintTop_toBottomOf="@+id/belowSpinners"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+
+            android:src="@color/darkGray" />
+
+        <TextView
+            android:id="@+id/emailLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/emailForData"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/emailForData"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/horizontalMidPoint"
+            app:layout_constraintTop_toBottomOf="@+id/belowSpinners" />
+
+
+        <EditText
+            android:id="@+id/emailForData"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/rounded_text_box"
+            android:inputType="textPersonName"
+            android:text="Name"
+            android:textColor="@color/regularBlack"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/belowSubmitData"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/horizontalMidPoint"
+            app:layout_constraintTop_toBottomOf="@+id/emailLabel" />
+
+
+        <Button
+            android:id="@+id/emailDataSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:scaleType="fitStart"
+            android:src="@drawable/btn_rs03_circle"
+            android:text="@string/submit"
+            app:layout_constraintBottom_toTopOf="@+id/belowSubmitData"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintLeft_toLeftOf="@+id/horizontalMidPoint"
+            app:layout_constraintRight_toLeftOf="@+id/infoDataSubmit"
+            app:layout_constraintTop_toBottomOf="@+id/emailLabel" />
+
+
+        <TextView
+            android:id="@+id/infoDataSubmit"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:text="@string/emailForDataInfo"
+            android:textColor="@android:color/holo_blue_dark"
+            app:layout_constraintBottom_toTopOf="@+id/belowSubmitData"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/emailDataSubmit"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/emailLabel" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/belowSubmitData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".5" />
+
+    </android.support.constraint.ConstraintLayout>
+</FrameLayout>

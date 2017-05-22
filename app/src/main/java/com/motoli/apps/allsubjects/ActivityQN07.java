@@ -504,24 +504,17 @@ public class ActivityQN07 extends ActivityQNRoot
 
             switch(mProcessGuessPosition){
                 case 0:
-                default:{
-                    if(mCorrect){
-                        mAudioDuration=playGeneralAudio("sfx_right");
-                    }else{
-                        mAudioDuration=playGeneralAudio("sfx_wrong");
-                    }
+                default:
                     mProcessGuessPosition++;
-                    mAudioHandler.postDelayed(processGuess, mAudioDuration+10);
+                    mAudioHandler.postDelayed(processGuess, playCorrectOrNot(mCorrect)+10);
                     break;
-                }
-                case 1:{
+                case 1:
                     mAudioDuration=0;
                     //playGeneralAudio(mCurrentNumberAudio);
                     mProcessGuessPosition++;
                     mAudioHandler.postDelayed(processGuess, mAudioDuration+10);
                     break;
-                }
-                case 2:{
+                case 2:
                     mBeingValidated=false;
                     mValidateAvailable=false;
                     guessHandler.removeCallbacks(processGuess);
@@ -542,11 +535,7 @@ public class ActivityQN07 extends ActivityQNRoot
                                 addPointToAllAvailableIfNoIncorrect();
                             }
                             mLastActivityData=0;
-                            findViewById(R.id.activityMainPart)
-                                    .setVisibility(LinearLayout.INVISIBLE);
-                            findViewById(R.id.activityMainPart)
-                                    .setAnimation(AnimationUtils.loadAnimation(
-                                            getApplicationContext(), R.anim.fade_out));
+                            fadeInOrOutScreenInActivity(false);
                             lastActivityDataHandler.postDelayed(returnToActivities_Platorm,10);
                         }
                     } else {
@@ -557,13 +546,11 @@ public class ActivityQN07 extends ActivityQNRoot
                     }
 
                     break;
-                }
-                case 3: {
+                case 3:
                     clearNumbers();
                     beginRound();
                     guessHandler.removeCallbacks(processGuess);
                     break;
-                }
             }//switch(mProcessGuessPosition){
         }//public void run(){
     };

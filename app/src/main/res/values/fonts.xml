@@ -26,6 +26,7 @@
     <dimen name="rs04_fontSize">60sp</dimen>
 
     <dimen name="gridText">70sp</dimen>
+    <dimen name="gridTextSmall">56sp</dimen>
     <dimen name="bk02_font_size">14sp</dimen>
     
     <dimen name="bk02_font_smallest">25sp</dimen>
@@ -96,4 +97,5 @@
     <dimen name="coming_soon_font">120sp</dimen>
     <dimen name="op8_number_box_font_size">72sp</dimen>
     <dimen name="op8_large_number_font_size">68sp</dimen>
+    <dimen name="wordTextSpell">90sp</dimen>
 </resources>

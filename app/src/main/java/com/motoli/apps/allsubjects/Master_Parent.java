@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.WindowManager;
 
 /**
@@ -59,6 +60,9 @@ public class Master_Parent extends Activity {
 
     /////////////////////////////////////////////////////////////////////////////////////////////
 
+    protected long playCorrectOrNot(boolean mCorrect){
+        return  audioFunctions.playCorrectOrNot(mCorrect);
+    }
     protected long playGeneralAudio(String mAudioUrl){
         return audioFunctions.playGeneralAudio(mAudioUrl);
         
@@ -122,8 +126,30 @@ public class Master_Parent extends Activity {
                 .show();
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////
 
+    /**
+     * Will exit application completely
+     * @param view exitApp Image
+     */
+    public void exitApplication(View view){
+        finishAffinity();
+    }
+
+    /**
+     * Leave app open and returns screen to normalcy
+     * @param view stayInApp Image
+     */
+    public void stayInApplication(View view){
+        appData.addToClassOrder(2);
+        if(findViewById(R.id.exitOrStayIcons) != null) {
+            findViewById(R.id.launchGeneral).setAlpha(1.0f);
+            findViewById(R.id.exitOrStayIcons).setVisibility(View.INVISIBLE);
+        }
+    }
+
+    /**
+     *
+     */
     protected void moveBackwords(){
         int mActivityType=appData.getActivityType();
         Intent main;
@@ -134,32 +160,49 @@ public class Master_Parent extends Activity {
             default:
             case 0://FRONT PAGE
             case 1:
-                new AlertDialog.Builder(this)
-                .setTitle(getResources().getString(R.string.strLeaveApp))
-                .setMessage(getResources().getString(R.string.strWouldYouLieToLeave))
-                .setPositiveButton(getResources().getString(R.string.strYes), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
 
-                        finishAffinity();
-                    }
-                 })
-                .setNegativeButton(getResources().getString(R.string.strNo), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        appData.addToClassOrder(2);
-                    }
-                 })
-                 .show();
+                //  New style for eixit application if icons are available show them
+                //  otherwise run former dialog box asking if use really wants to leave
+                if(findViewById(R.id.exitOrStayIcons) != null){
+                    findViewById(R.id.launchGeneral).setAlpha(0.2f);
+                    findViewById(R.id.exitOrStayIcons).setVisibility(View.VISIBLE);
+
+                }else {
+                    new AlertDialog.Builder(this)
+                            .setTitle(getResources().getString(R.string.strLeaveApp))
+                            .setMessage(getResources().getString(R.string.strWouldYouLieToLeave))
+                            .setPositiveButton(getResources().getString(R.string.strYes), new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                    finishAffinity();
+                                }
+                            })
+                            .setNegativeButton(getResources().getString(R.string.strNo), new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    appData.addToClassOrder(2);
+                                }
+                            })
+                            .show();
+                }
                 break;
 
-            case 2://Goto LAUNCH PLATFORM
+            case 2:
             case 4:
+                /*
+                If mActivityType stored is 2 or 4 then return app back to Launch_Platform page
+                and close current activity
+                 */
                 appData.setCurrentActivityName("Launch_Platform");
 
                 main = new Intent(getApplicationContext(),Launch_Platform.class);
                 startActivity(main);
                 finish();
                 break;
-            case 3://Goto ACTIVITIES PLATFORM
+            case 3:
+                /*
+                This is called from actual activity of learning, cause app to move back to
+                Activities_Platoform where another "game" can be chosen
+                 */
                 appData.setCurrentActivityName("Activities_Platform");
 
                 main = new Intent(getApplicationContext(),Activities_Platform.class);
@@ -180,83 +223,7 @@ public class Master_Parent extends Activity {
                 startActivity(main);
                 finish();	
                 break;
-        /*    case 7://ACTIVITY SD01
-                appData.setCurrentActivityName("ActivitySD01");
-                main = new Intent(getApplicationContext(),ActivitySD01.class);
-                startActivity(main);
-                finish();
-                break;
-            case 8://ACTIVITY SD02
-                appData.setCurrentActivityName("ActivitySD02");
-                main = new Intent(getApplicationContext(),ActivitySD02.class);
-                startActivity(main);
-                finish();
-                break;
-            case 9://ACTIVITY SD03
-                appData.setCurrentActivityName("ActivitySD03");
-                main = new Intent(getApplicationContext(),ActivitySD03.class);
-                startActivity(main);
-                finish();
-                break;
-            case 10://ACTIVITY SD06
-                appData.setCurrentActivityName("ActivitySD06");
-                main = new Intent(getApplicationContext(),ActivitySD06.class);
-                startActivity(main);
-                finish();
-                break;
-            case 11://ACTIVITY SD04
-                appData.setCurrentActivityName("ActivitySD04");
-                main = new Intent(getApplicationContext(),ActivitySD04.class);
-                startActivity(main);
-                finish();
-                break;
 
-
-            case 13://ACTIVITY CS01
-                appData.setCurrentActivityName("ActivityCS01");
-                main = new Intent(getApplicationContext(),ActivityCS01.class);
-                startActivity(main);
-                finish();
-                break;
-            case 14://ACTIVITY CS02
-                appData.setCurrentActivityName("ActivityCS02");
-                main = new Intent(getApplicationContext(),ActivityCS02.class);
-                startActivity(main);
-                finish();
-                break;
-
-
-            case 16://ACTIVITY RS01
-                appData.setCurrentActivityName("ActivityRS01");
-                main = new Intent(getApplicationContext(),ActivityRS01.class);
-                startActivity(main);
-                finish();
-                break;
-            case 17://ACTIVITY RS02
-                appData.setCurrentActivityName("ActivityRS02");
-                main = new Intent(getApplicationContext(),ActivityRS02.class);
-                startActivity(main);
-                finish();
-                break;
-            case 18://ACTIVITY RS03
-                appData.setCurrentActivityName("ActivityRS03");
-                main = new Intent(getApplicationContext(),ActivityRS03.class);
-                startActivity(main);
-                finish();
-                break;
-            case 19://ACTIVITY BK02
-                appData.setCurrentActivityName("ActivityBK02BookList");
-                main = new Intent(getApplicationContext(),ActivityBK02BookList.class);
-                startActivity(main);
-                finish();
-                break;
-            case 20://ACTIVITY BK02
-                appData.setCurrentActivityName("ActivityBK02Book");
-                main = new Intent(getApplicationContext(),ActivityBK02Book.class);
-                startActivity(main);
-                finish();
-                break;
-           */
         }
 
     }

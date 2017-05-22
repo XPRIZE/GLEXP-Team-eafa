@@ -72,7 +72,8 @@ public class LaunchPlatformAwards extends BaseAdapter {
 
                     mVariableNumber=mMaxLevel;
                     mCurrentNumber=mCurrentLevel;
-                    holder.progress.setProgressDrawable(ContextCompat.getDrawable(mContext,R.drawable.progress_letter_phonics));
+                    holder.progress.setProgressDrawable(ContextCompat.getDrawable(
+                            mContext,R.drawable.progress_letter_phonics));
 
                     break;
                 }

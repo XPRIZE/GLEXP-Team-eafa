@@ -75,6 +75,8 @@ LoaderManager.LoaderCallbacks<Cursor>{
         mLoaded=false;
         mInSettings=false;
         int mUpdateType=appData.getUpdateType();
+        findViewById(R.id.exitOrStayIcons).setVisibility(View.INVISIBLE);
+
         if(mUpdateType==0) {
             findViewById(R.id.progressFrame).setVisibility(View.VISIBLE);
             findViewById(R.id.sidePanelIcon).setVisibility(View.INVISIBLE);
@@ -382,10 +384,11 @@ LoaderManager.LoaderCallbacks<Cursor>{
 
 
 
+                /*
                     if(mCursor.getString(mCursor.getColumnIndex("section_id")).equals("13")
                             /*
                             || mCursor.getString(mCursor.getColumnIndex("section_id")).equals("25")
-                            || mCursor.getString(mCursor.getColumnIndex("section_id")).equals("26")*/){
+                            || mCursor.getString(mCursor.getColumnIndex("section_id")).equals("26")*//*){
                         allSections.add(new HashMap<String, String>());
 
                         allSections.get(mNumber).put("section_id","0");
@@ -401,6 +404,7 @@ LoaderManager.LoaderCallbacks<Cursor>{
                         mNumber++;
                         //groupCount++;
                     }
+                    */
                    //}
                 //}
                 if(groupCount>2 || currentGroup!=presentGroup ){
@@ -449,6 +453,20 @@ LoaderManager.LoaderCallbacks<Cursor>{
         //Syllable videos are always available
         allSections.get(4).put("usable_section","1");
 
+
+        //Takes care of learn to spell activity to only allow after all lowercase letters completed
+        //and word have begun otherwise default is not available
+        allSections.get(10).put("usable_section","0");
+        allSections.get(10).put("activity_count","0");
+        if(allSections.get(1).get("lowest_phase_id").equals("2")
+                & Integer.valueOf(allSections.get(7).get("app_user_current_level")) > 1 ){
+            allSections.get(10).put("usable_section","1");
+            allSections.get(10).put("activity_count","1");
+            allSections.get(10).put("variable_count","0");
+            allSections.get(10).put("app_user_current_level",
+                    allSections.get(7).get("app_user_current_level"));
+        }
+
         GridView mSectionGrid = (GridView) findViewById(R.id.SectionGrid);
 
         mSectionGrid.setAdapter(new Launch_Platform_Section(this, allSections));
@@ -458,61 +476,51 @@ LoaderManager.LoaderCallbacks<Cursor>{
             case 0:
             case 1:
             case 2:
-            case 3:{
+            case 3:
                 mRow=3;
                 break;
-            }
             case 4:
             case 5:
-            case 6:{
+            case 6:
                 mRow=5;
                 break;
-            }
             case 7:
             case 8:
-            case 9:{
+            case 9:
                 mRow=7;
                 break;
-            }
             case 10:
             case 11:
-            case 12:{
                 mRow=9;
                 break;
-            }
             case 13:
-            case 14:{
+            case 14:
                 mRow=11;
                 break;
-            }
-            case 15:{
+            case 12:
+            case 15:
                 mRow=13;
                 break;
-            }
             case 16:
             case 17:
-            case 18:{
+            case 18:
                 mRow=15;
                 break;
-            }
             case 19:
             case 20:
-            case 21:{
+            case 21:
                 mRow=17;
                 break;
-            }
             case 22:
             case 23:
-            case 24:{
+            case 24:
                 mRow=19;
                 break;
-            }
             case 25:
             case 26:
-            case 27:{
+            case 27:
                 mRow=21;
                 break;
-            }
         }
         mSectionGrid.setSmoothScrollbarEnabled(true);
         mSectionGrid.smoothScrollToPosition(mRow);
@@ -813,6 +821,12 @@ LoaderManager.LoaderCallbacks<Cursor>{
                 finish();
                 break;
             }//end case 72 vl
+            case 74:
+                appData.setCurrentActivityName("LearnToSpell");
+                Intent main = new Intent(this,LearnToSpell.class);
+                startActivity(main);
+                finish();
+                break;
         }
 
     }
@@ -1013,16 +1027,16 @@ LoaderManager.LoaderCallbacks<Cursor>{
                             mLevelsArray.add(String.valueOf(i));
                         }
                         mSpinner.setAlpha(1.0f);
-                        findViewById(R.id.lowerCaseSubmit).setVisibility(Button.VISIBLE);
+                        findViewById(R.id.submit).setVisibility(Button.VISIBLE);
                         if (Integer.parseInt(mCurrentLevel.get("current_level"))
                                 >= Integer.parseInt(mCurrentLevel.get("max_level_number"))) {
                             mLowerCaseFinished = true;
                             mSpinner.setAlpha(0.5f);
                             mLevelsArray.add(mCurrentLevel.get("max_level_number"));
-                            findViewById(R.id.lowerCaseSubmit).setVisibility(Button.INVISIBLE);
+                            findViewById(R.id.submit).setVisibility(Button.INVISIBLE);
                         } else {
                             mSpinner.setAlpha(1.0f);
-                            findViewById(R.id.lowerCaseSubmit).setVisibility(Button.VISIBLE);
+                            findViewById(R.id.submit).setVisibility(Button.VISIBLE);
                             mLowerCaseFinished = false;
                         }
                         mAdapter = new ArrayAdapter<>(this,
@@ -1613,7 +1627,10 @@ LoaderManager.LoaderCallbacks<Cursor>{
                 //number and math section
                 }else if(mSectionData.get(mPosition).get("section_id").equals("17") ||
                         mSectionData.get(mPosition).get("section_id").equals("20") ||
-                        mSectionData.get(mPosition).get("section_id").equals("23")){
+                        mSectionData.get(mPosition).get("section_id").equals("23")) {
+                    holder.icon.setAlpha(1.0f);
+                }else if(mSectionData.get(mPosition).get("section_id").equals("12")
+                        && mSectionData.get(mPosition).get("usable_section").equals("1")){
                     holder.icon.setAlpha(1.0f);
                 }else if(Integer.parseInt(mSectionData.get(mPosition).get("activity_count"))>1 &&
                         Integer.parseInt(mSectionData.get(mPosition).get("variable_count"))>=4){

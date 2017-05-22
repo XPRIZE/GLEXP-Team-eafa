@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:2:1-365:12
+ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:2:1-375:12
 	package
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:2:11-48
 		INJECTED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml
@@ -28,6 +28,11 @@ MERGED from [com.squareup.leakcanary:leakcanary-android:1.5] C:\Users\aborsay\.a
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:10:22-78
 uses-permission#android.permission.INTERNET
 ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:11:5-66
+MERGED from [com.crashlytics.sdk.android:crashlytics:2.6.8] C:\Users\aborsay\.android\build-cache\6ce6a98f77a90915fd51c590149026b3ca1cf571\output\AndroidManifest.xml:9:5-67
+MERGED from [com.crashlytics.sdk.android:beta:1.2.5] C:\Users\aborsay\.android\build-cache\ae8e4922c52090b3245e44f0cc62af566c2fb014\output\AndroidManifest.xml:9:5-67
+MERGED from [com.crashlytics.sdk.android:crashlytics-core:2.3.17] C:\Users\aborsay\.android\build-cache\08229c7cd727095dd8834b10d125a572d747b672\output\AndroidManifest.xml:52:5-67
+MERGED from [com.crashlytics.sdk.android:answers:1.3.13] C:\Users\aborsay\.android\build-cache\444a8d1dc6befc6d03f32089dce56210b6085f7b\output\AndroidManifest.xml:9:5-67
+MERGED from [io.fabric.sdk.android:fabric:1.3.17] C:\Users\aborsay\.android\build-cache\941d05662c396868352efe10c85d50e9699be723\output\AndroidManifest.xml:29:5-67
 	android:name
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:11:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
@@ -39,7 +44,7 @@ ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\A
 	android:name
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:13:22-77
 application
-ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:15:5-363:19
+ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:15:5-373:19
 MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\aborsay\.android\build-cache\bd08b6a74e29bbf45ab487b88e5e24b9989b08df\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\aborsay\.android\build-cache\2797547c658b7665986655734c1cfdb655227aa8\output\AndroidManifest.xml:26:5-20
 MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\aborsay\.android\build-cache\4ff5aa15ad434db2cc979e9f1f2fc5514e72b543\output\AndroidManifest.xml:26:5-20
@@ -52,6 +57,11 @@ MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\aborsay\.andro
 MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\aborsay\.android\build-cache\d54332cce69a46ecf663a16c34dbc4e84572ba08\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-compat:25.3.1] C:\Users\aborsay\.android\build-cache\74b32b0f507ae873c01efca4c85b4b204e254a94\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\aborsay\.android\build-cache\e8cd3d4aab6837be36199bd9637cd1bd74ff539f\output\AndroidManifest.xml:9:5-20
+MERGED from [com.crashlytics.sdk.android:crashlytics:2.6.8] C:\Users\aborsay\.android\build-cache\6ce6a98f77a90915fd51c590149026b3ca1cf571\output\AndroidManifest.xml:11:5-20
+MERGED from [com.crashlytics.sdk.android:beta:1.2.5] C:\Users\aborsay\.android\build-cache\ae8e4922c52090b3245e44f0cc62af566c2fb014\output\AndroidManifest.xml:11:5-20
+MERGED from [com.crashlytics.sdk.android:crashlytics-core:2.3.17] C:\Users\aborsay\.android\build-cache\08229c7cd727095dd8834b10d125a572d747b672\output\AndroidManifest.xml:54:5-20
+MERGED from [com.crashlytics.sdk.android:answers:1.3.13] C:\Users\aborsay\.android\build-cache\444a8d1dc6befc6d03f32089dce56210b6085f7b\output\AndroidManifest.xml:11:5-20
+MERGED from [io.fabric.sdk.android:fabric:1.3.17] C:\Users\aborsay\.android\build-cache\941d05662c396868352efe10c85d50e9699be723\output\AndroidManifest.xml:31:5-20
 MERGED from [com.squareup.leakcanary:leakcanary-android:1.5] C:\Users\aborsay\.android\build-cache\1df1db82322f8015e2813b82cdd219af5df6ee89\output\AndroidManifest.xml:28:5-57:19
 	android:label
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:19:9-41
@@ -737,6 +747,26 @@ ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\A
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:359:13-50
 	android:name
 		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:357:13-45
+activity#com.motoli.apps.allsubjects.LearnToSpell
+ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:363:9-369:79
+	android:screenOrientation
+		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:368:13-56
+	android:launchMode
+		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:367:13-43
+	android:configChanges
+		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:365:13-74
+	android:theme
+		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:369:13-77
+	android:logo
+		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:366:13-48
+	android:name
+		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:364:13-41
+meta-data#io.fabric.ApiKey
+ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:370:9-372:72
+	android:value
+		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:372:13-69
+	android:name
+		ADDED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:371:13-44
 uses-sdk
 INJECTED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\aborsay\.android\build-cache\bd08b6a74e29bbf45ab487b88e5e24b9989b08df\output\AndroidManifest.xml:21:5-23:78
@@ -751,6 +781,11 @@ MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\aborsay\.andro
 MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\aborsay\.android\build-cache\d54332cce69a46ecf663a16c34dbc4e84572ba08\output\AndroidManifest.xml:21:5-23:61
 MERGED from [com.android.support:support-compat:25.3.1] C:\Users\aborsay\.android\build-cache\74b32b0f507ae873c01efca4c85b4b204e254a94\output\AndroidManifest.xml:21:5-23:58
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\aborsay\.android\build-cache\e8cd3d4aab6837be36199bd9637cd1bd74ff539f\output\AndroidManifest.xml:5:5-7:41
+MERGED from [com.crashlytics.sdk.android:crashlytics:2.6.8] C:\Users\aborsay\.android\build-cache\6ce6a98f77a90915fd51c590149026b3ca1cf571\output\AndroidManifest.xml:7:5-43
+MERGED from [com.crashlytics.sdk.android:beta:1.2.5] C:\Users\aborsay\.android\build-cache\ae8e4922c52090b3245e44f0cc62af566c2fb014\output\AndroidManifest.xml:7:5-43
+MERGED from [com.crashlytics.sdk.android:crashlytics-core:2.3.17] C:\Users\aborsay\.android\build-cache\08229c7cd727095dd8834b10d125a572d747b672\output\AndroidManifest.xml:50:5-43
+MERGED from [com.crashlytics.sdk.android:answers:1.3.13] C:\Users\aborsay\.android\build-cache\444a8d1dc6befc6d03f32089dce56210b6085f7b\output\AndroidManifest.xml:7:5-43
+MERGED from [io.fabric.sdk.android:fabric:1.3.17] C:\Users\aborsay\.android\build-cache\941d05662c396868352efe10c85d50e9699be723\output\AndroidManifest.xml:27:5-43
 MERGED from [com.squareup.leakcanary:leakcanary-android:1.5] C:\Users\aborsay\.android\build-cache\1df1db82322f8015e2813b82cdd219af5df6ee89\output\AndroidManifest.xml:20:5-22:41
 	tools:overrideLibrary
 		ADDED from [com.android.support:appcompat-v7:25.3.1] C:\Users\aborsay\.android\build-cache\bd08b6a74e29bbf45ab487b88e5e24b9989b08df\output\AndroidManifest.xml:23:9-75
@@ -777,7 +812,7 @@ MERGED from [com.android.support:support-compat:25.3.1] C:\Users\aborsay\.androi
 		ADDED from [com.android.support:appcompat-v7:25.3.1] C:\Users\aborsay\.android\build-cache\bd08b6a74e29bbf45ab487b88e5e24b9989b08df\output\AndroidManifest.xml:26:9-47
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
 ADDED from [com.squareup.leakcanary:leakcanary-android:1.5] C:\Users\aborsay\.android\build-cache\1df1db82322f8015e2813b82cdd219af5df6ee89\output\AndroidManifest.xml:25:5-80
-IMPLIED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:2:1-365:12 reason: com.squareup.leakcanary requested WRITE_EXTERNAL_STORAGE
+IMPLIED from C:\Users\aborsay\AndroidStudioProjects\GLEXP-Team-eafa\app\src\main\AndroidManifest.xml:2:1-375:12 reason: com.squareup.leakcanary requested WRITE_EXTERNAL_STORAGE
 	android:name
 		ADDED from [com.squareup.leakcanary:leakcanary-android:1.5] C:\Users\aborsay\.android\build-cache\1df1db82322f8015e2813b82cdd219af5df6ee89\output\AndroidManifest.xml:25:22-77
 service#com.squareup.leakcanary.internal.HeapAnalyzerService
